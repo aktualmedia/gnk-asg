@@ -1,0 +1,38 @@
+name: Hourly Business and Market Update
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hourly-public-data-update
+  cancel-in-progress: false
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Update public data
+        run: python scripts/update_data.py
+      - name: Commit changed datasets
+        run: |
+          git config user.name "gnk-asg-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/news.json data/market.json data/update_status.json data/mentions_found.json
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -m "Automated hourly public data update"
+            git push
+          fi
