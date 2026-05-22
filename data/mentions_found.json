@@ -1,5 +1,6 @@
 {
-  "generated_at": "2026-05-22T19:57:06+00:00",
-  "public_display": false,
+  "generated_at": "2026-05-22T20:03:40+00:00",
+  "public_display": true,
+  "removable_via": "data/blocked_news.json",
   "items": []
 }
