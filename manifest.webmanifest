@@ -1,0 +1,14 @@
+{
+  "name": "GNK ASG d.o.o. — Corporate Technology Portal",
+  "short_name": "GNK ASG",
+  "description": "Korporativni portal GNK ASG d.o.o. — sport, tehnologija, financije, umjetna inteligencija i digitalna imovina.",
+  "lang": "hr-HR",
+  "start_url": "/gnk-asg/",
+  "scope": "/gnk-asg/",
+  "display": "standalone",
+  "background_color": "#f7f9fc",
+  "theme_color": "#07162d",
+  "icons": [
+    {"src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}
