@@ -1,29 +1,17 @@
 {
-  "updated_at": "2026-05-22T20:43:03+00:00",
+  "updated_at": "2026-05-22T20:50:51+00:00",
   "news": {
-    "public_items": 264,
+    "public_items": 373,
     "by_group": {
-      "technology": 89,
-      "international": 60,
+      "technology": 118,
+      "international": 77,
       "hrvatska": 20,
-      "digital-assets": 55,
-      "srbija": 30,
-      "bih": 10
+      "digital-assets": 85,
+      "srbija": 31,
+      "bih": 12,
+      "slovenija": 30
     },
-    "errors": [
-      {
-        "source": "Lider",
-        "error": "HTTP Error 404: Not Found"
-      },
-      {
-        "source": "SEEbiz",
-        "error": "HTTP Error 403: Forbidden"
-      },
-      {
-        "source": "Finance.si",
-        "error": "HTTP Error 404: Not Found"
-      }
-    ]
+    "errors": []
   },
   "market": {
     "coins": 8,
