@@ -2,24 +2,26 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260522-9'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260522-10'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260522-9'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260522-10'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
+  style('assets/bitcoin-chart.css');
   script('assets/status.js');
   script('assets/market.js');
+  script('assets/bitcoin-chart.js');
   script('assets/news-live.js');
   script('assets/assistant.js');
   script('assets/inline-assistant.js');
 
   var notice = document.querySelector('.mention-notice');
   if (notice) {
-    notice.innerHTML = '<strong>Automatski prikaz objava o društvu:</strong> pronađene javne objave koje izravno spominju GNK ASG d.o.o., GNK DINAMO Ltd. ili Nermina Sefića automatski se prikazuju u rubrici GNK ASG u medijima. Neželjena vijest uklanja se kroz blok-listu portala.';
+    notice.innerHTML = '<strong>Automatski prikaz objava o društvu:</strong> javne objave koje izravno spominju GNK ASG d.o.o., GNK DINAMO Ltd. ili Nermina Sefića automatski se prikazuju u rubrici GNK ASG u medijima. Neželjena vijest uklanja se kroz blok-listu portala.';
   }
   var menuButton = document.getElementById('menuToggle');
   var menu = document.getElementById('navLinks');
