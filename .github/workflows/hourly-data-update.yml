@@ -8,8 +8,9 @@ on:
     branches:
       - main
     paths:
-      - 'scripts/update_data.py'
-      - 'data/sources.json'
+      - 'scripts/update_feeds_v2.py'
+      - 'data/news_config_v2.json'
+      - 'data/blocked_news.json'
       - '.github/workflows/hourly-data-update.yml'
 
 permissions:
@@ -21,8 +22,9 @@ concurrency:
 
 jobs:
   update-data:
+    name: Refresh classified news and digital assets
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,16 +32,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Update public data
-        run: python scripts/update_data.py
-      - name: Commit changed datasets
+      - name: Update fresh news, prices and Bitcoin history
+        run: python scripts/update_feeds_v2.py
+      - name: Commit refreshed public datasets
         run: |
           git config user.name "gnk-asg-data-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/news.json data/market.json data/update_status.json data/mentions_found.json
+          git add data/news.json data/market.json data/btc_chart.json data/update_status.json
           if git diff --cached --quiet; then
             echo "No data changes."
           else
-            git commit -m "Automated hourly public data update"
+            git commit -m "Automated hourly classified data update"
             git push
           fi
