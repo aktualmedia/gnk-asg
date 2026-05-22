@@ -1,6 +1,6 @@
 {
-  "retention_days": 45,
-  "max_items": 500,
+  "retention_days": 30,
+  "max_items": 600,
   "sources": [
     {"name":"Poslovni dnevnik","group":"hrvatska","category":"business","url":"https://www.poslovni.hr/feed"},
     {"name":"Lider","group":"hrvatska","category":"business","url":"https://lidermedia.hr/rss"},
@@ -13,5 +13,15 @@
     {"name":"TechCrunch","group":"technology","category":"technology","url":"https://techcrunch.com/feed/"},
     {"name":"MIT Technology Review","group":"technology","category":"technology","url":"https://www.technologyreview.com/feed/"},
     {"name":"CoinDesk","group":"digital-assets","category":"digital-assets","url":"https://www.coindesk.com/arc/outboundfeeds/rss/"}
+  ],
+  "queries": [
+    {"name":"Hrvatska Business","group":"hrvatska","category":"business","q":"tvrtke gospodarstvo financije investicije Hrvatska when:14d"},
+    {"name":"Slovenija Business","group":"slovenija","category":"business","q":"podjetja gospodarstvo finance investicije Slovenija when:14d"},
+    {"name":"Srbija Business","group":"srbija","category":"business","q":"kompanije biznis investicije tržište Srbija when:14d"},
+    {"name":"BiH Business","group":"bih","category":"business","q":"kompanije biznis investicije privreda BiH when:14d"},
+    {"name":"Global Markets","group":"international","category":"business","q":"global business financial markets companies investment when:7d"},
+    {"name":"AI Technology","group":"technology","category":"technology","q":"artificial intelligence AI software semiconductor robotics when:7d"},
+    {"name":"Digital Assets","group":"digital-assets","category":"digital-assets","q":"bitcoin ethereum blockchain digital assets market when:7d"},
+    {"name":"GNK ASG Monitor","group":"mentions","category":"mentions","q":"GNK ASG GNK DINAMO Ltd Nermin Sefic when:60d"}
   ]
 }
