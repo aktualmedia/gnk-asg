@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aktualmedia.github.io/gnk-asg/sitemap.xml
