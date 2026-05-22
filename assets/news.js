@@ -4,21 +4,17 @@
   let articles = [];
   const clean = (value) => String(value || '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function card(item) {
-    const className = item.category === 'technology' ? ' is-tech' : (item.category === 'digital-assets' ? ' is-assets' : '');
-    return `<article class="news-card${className}"><span class="meta">${clean(item.source || item.category || 'BUSINESS')}</span><h3>${clean(item.title)}</h3><p>${clean(item.summary || 'Otvorite izvor za cijelu objavu.')}</p><a target="_blank" rel="noopener" href="${clean(item.url)}">OTVORI IZVOR →</a></article>`;
+    const type = item.category === 'technology' ? ' is-tech' : item.category === 'digital-assets' ? ' is-assets' : item.group === 'mentions' ? ' is-mention' : '';
+    return `<article class="news-card${type}"><span class="meta">${clean(item.source || item.category || 'NEWS')}</span><h3>${clean(item.title)}</h3><p>${clean(item.summary || 'Otvorite izvor za cijelu objavu.')}</p><a target="_blank" rel="noopener nofollow" href="${clean(item.url)}">OTVORI IZVOR →</a></article>`;
   }
   function render(filter) {
     if (!grid) return;
     if (filter === 'fina') {
-      grid.innerHTML = '<article class="news-card"><span class="meta">FINA / RGFI</span><h3>Službene javne informacije</h3><p>FINA i RGFI poveznice prikazane su u zasebnom panelu uz poslovne vijesti.</p><a href="https://rgfi.fina.hr/JavnaObjava-web/" target="_blank" rel="noopener">OTVORI JAVNU OBJAVU →</a></article>';
-      return;
-    }
-    if (filter === 'mentions') {
-      grid.innerHTML = '<article class="news-card is-mention"><span class="meta">KONTROLIRANI PRIKAZ</span><h3>GNK ASG u medijima</h3><p>Objave koje izravno spominju GNK ASG, GNK DINAMO Ltd. ili Nermina Sefića prikazivat će se nakon pregleda i odobrenja za javnu objavu.</p></article>';
+      grid.innerHTML = '<article class="news-card"><span class="meta">FINA / RGFI</span><h3>Službene javne informacije</h3><p>Službene FINA i RGFI poveznice prikazane su u bočnom panelu.</p><a href="https://rgfi.fina.hr/JavnaObjava-web/" target="_blank" rel="noopener nofollow">OTVORI JAVNU OBJAVU →</a></article>';
       return;
     }
     const list = filter === 'all' ? articles : articles.filter((item) => String(item.group || item.category || '').toLowerCase().includes(filter));
-    grid.innerHTML = list.length ? list.slice(0, 12).map(card).join('') : '<article class="news-card"><span class="meta">AUTOMATSKO AŽURIRANJE</span><h3>Čeka se prvo povlačenje vijesti</h3><p>Business i technology news osvježavaju se svakog sata putem GitHub workflowa.</p></article>';
+    grid.innerHTML = list.length ? list.slice(0, 15).map(card).join('') : '<article class="news-card"><span class="meta">AUTOMATSKO AŽURIRANJE</span><h3>Čeka se sadržaj rubrike</h3><p>Vijesti se osvježavaju svakog sata putem GitHub workflowa.</p></article>';
   }
   async function boot() {
     if (!grid) return;
