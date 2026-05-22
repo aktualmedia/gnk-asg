@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-22T21:07:43+00:00",
+  "updated_at": "2026-05-22T21:43:17+00:00",
   "title": "BTC, zlato, Brent nafta i USD/EUR - statistička usporedba",
   "period": "posljednjih 30 dostupnih dnevnih tržišnih vrijednosti",
   "disclaimer": "Indikativni javni tržišni podatci; prikaz nije usluga trgovanja niti investicijski savjet.",
@@ -11,7 +11,7 @@
       "ticker": "BTC",
       "unit": "USD / BTC",
       "invert": false,
-      "current": 75903.28125,
+      "current": 75903.0625,
       "change_7d_percent": -4.0,
       "change_30d_percent": -2.94,
       "low_30d": 75776.1328125,
@@ -139,7 +139,7 @@
         ],
         [
           1779408000000,
-          75903.28125
+          75903.0625
         ]
       ],
       "indexed_points": [
@@ -265,7 +265,7 @@
         ],
         [
           1779408000000,
-          97.0592
+          97.0589
         ]
       ]
     },
@@ -275,9 +275,9 @@
       "ticker": "XAU",
       "unit": "USD / trojska unca",
       "invert": false,
-      "current": 4509.20019531,
-      "change_7d_percent": -4.01,
-      "change_30d_percent": -4.72,
+      "current": 4510.5,
+      "change_7d_percent": -3.98,
+      "change_30d_percent": -4.69,
       "low_30d": 4506.29980469,
       "high_30d": 4732.5,
       "points": [
@@ -371,7 +371,7 @@
         ],
         [
           1779422400000,
-          4509.20019531
+          4510.5
         ]
       ],
       "indexed_points": [
@@ -465,7 +465,7 @@
         ],
         [
           1779422400000,
-          95.2816
+          95.309
         ]
       ]
     },
@@ -475,9 +475,9 @@
       "ticker": "BRENT",
       "unit": "USD / barel",
       "invert": false,
-      "current": 103.98000336,
-      "change_7d_percent": -1.56,
-      "change_30d_percent": 2.03,
+      "current": 103.94000244,
+      "change_7d_percent": -1.6,
+      "change_30d_percent": 1.99,
       "low_30d": 100.05999756,
       "high_30d": 118.02999878,
       "points": [
@@ -571,7 +571,7 @@
         ],
         [
           1779422400000,
-          103.98000336
+          103.94000244
         ]
       ],
       "indexed_points": [
@@ -665,7 +665,7 @@
         ],
         [
           1779422400000,
-          102.0312
+          101.992
         ]
       ]
     },
@@ -774,7 +774,7 @@
           0.86049996
         ],
         [
-          1779484036000,
+          1779485356000,
           0.86169999
         ]
       ],
@@ -872,15 +872,15 @@
           101.0593
         ],
         [
-          1779484036000,
+          1779485356000,
           101.2003
         ]
       ]
     }
   },
   "correlations": {
-    "btc_gold": 0.034,
-    "btc_oil": 0.053,
+    "btc_gold": 0.032,
+    "btc_oil": 0.054,
     "btc_usd": -0.002
   },
   "errors": []
