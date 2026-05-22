@@ -1,11 +1,8 @@
 {
   "retention_days": 30,
-  "max_items": 600,
+  "max_items": 800,
   "sources": [
     {"name":"Poslovni dnevnik","group":"hrvatska","category":"business","url":"https://www.poslovni.hr/feed"},
-    {"name":"Lider","group":"hrvatska","category":"business","url":"https://lidermedia.hr/rss"},
-    {"name":"SEEbiz","group":"hrvatska","category":"business","url":"https://www.seebiz.eu/rss"},
-    {"name":"Finance.si","group":"slovenija","category":"business","url":"https://www.finance.si/rss"},
     {"name":"Biznis.rs","group":"srbija","category":"business","url":"https://biznis.rs/feed/"},
     {"name":"BiznisInfo.ba","group":"bih","category":"business","url":"https://www.biznisinfo.ba/feed/"},
     {"name":"CNBC Business","group":"international","category":"business","url":"https://www.cnbc.com/id/10001147/device/rss/rss.html"},
@@ -16,12 +13,20 @@
   ],
   "queries": [
     {"name":"Hrvatska Business","group":"hrvatska","category":"business","q":"tvrtke gospodarstvo financije investicije Hrvatska when:14d"},
-    {"name":"Slovenija Business","group":"slovenija","category":"business","q":"podjetja gospodarstvo finance investicije Slovenija when:14d"},
-    {"name":"Srbija Business","group":"srbija","category":"business","q":"kompanije biznis investicije tržište Srbija when:14d"},
-    {"name":"BiH Business","group":"bih","category":"business","q":"kompanije biznis investicije privreda BiH when:14d"},
-    {"name":"Global Markets","group":"international","category":"business","q":"global business financial markets companies investment when:7d"},
-    {"name":"AI Technology","group":"technology","category":"technology","q":"artificial intelligence AI software semiconductor robotics when:7d"},
-    {"name":"Digital Assets","group":"digital-assets","category":"digital-assets","q":"bitcoin ethereum blockchain digital assets market when:7d"},
+    {"name":"Hrvatska Kompanije","group":"hrvatska","category":"business","q":"Poslovni dnevnik Lider kompanije ulaganja Hrvatska when:30d"},
+    {"name":"Slovenija Gospodarstvo","group":"slovenija","category":"business","q":"Slovenija gospodarstvo podjetja poslovanje when:30d"},
+    {"name":"Slovenia Business","group":"slovenija","category":"business","q":"Slovenia business companies investment economy when:30d"},
+    {"name":"Slovenija Finance","group":"slovenija","category":"business","q":"Finance.si podjetja gospodarstvo naložbe when:30d"},
+    {"name":"Srbija Business","group":"srbija","category":"business","q":"kompanije biznis investicije tržište Srbija when:30d"},
+    {"name":"Srbija Tehnologija","group":"srbija","category":"business","q":"Srbija kompanije tehnologija ulaganje privreda when:30d"},
+    {"name":"BiH Business","group":"bih","category":"business","q":"kompanije biznis investicije privreda BiH when:30d"},
+    {"name":"BiH Ekonomija","group":"bih","category":"business","q":"Bosna Hercegovina poslovanje ekonomija kompanije when:30d"},
+    {"name":"Global Markets","group":"international","category":"business","q":"global business financial markets companies investment when:14d"},
+    {"name":"Global Economy","group":"international","category":"business","q":"economy markets corporate finance Reuters CNBC when:14d"},
+    {"name":"AI Technology","group":"technology","category":"technology","q":"artificial intelligence AI software semiconductor robotics when:14d"},
+    {"name":"Cyber and Cloud","group":"technology","category":"technology","q":"cybersecurity cloud computing data center software when:14d"},
+    {"name":"Digital Assets","group":"digital-assets","category":"digital-assets","q":"bitcoin ethereum blockchain digital assets market when:14d"},
+    {"name":"Crypto Regulation","group":"digital-assets","category":"digital-assets","q":"crypto regulation stablecoin digital finance when:14d"},
     {"name":"GNK ASG Monitor","group":"mentions","category":"mentions","q":"GNK ASG GNK DINAMO Ltd Nermin Sefic when:60d"}
   ]
 }
