@@ -1,0 +1,17 @@
+{
+  "retention_days": 45,
+  "max_items": 500,
+  "sources": [
+    {"name":"Poslovni dnevnik","group":"hrvatska","category":"business","url":"https://www.poslovni.hr/feed"},
+    {"name":"Lider","group":"hrvatska","category":"business","url":"https://lidermedia.hr/rss"},
+    {"name":"SEEbiz","group":"hrvatska","category":"business","url":"https://www.seebiz.eu/rss"},
+    {"name":"Finance.si","group":"slovenija","category":"business","url":"https://www.finance.si/rss"},
+    {"name":"Biznis.rs","group":"srbija","category":"business","url":"https://biznis.rs/feed/"},
+    {"name":"BiznisInfo.ba","group":"bih","category":"business","url":"https://www.biznisinfo.ba/feed/"},
+    {"name":"CNBC Business","group":"international","category":"business","url":"https://www.cnbc.com/id/10001147/device/rss/rss.html"},
+    {"name":"CNBC Technology","group":"technology","category":"technology","url":"https://www.cnbc.com/id/19854910/device/rss/rss.html"},
+    {"name":"TechCrunch","group":"technology","category":"technology","url":"https://techcrunch.com/feed/"},
+    {"name":"MIT Technology Review","group":"technology","category":"technology","url":"https://www.technologyreview.com/feed/"},
+    {"name":"CoinDesk","group":"digital-assets","category":"digital-assets","url":"https://www.coindesk.com/arc/outboundfeeds/rss/"}
+  ]
+}
