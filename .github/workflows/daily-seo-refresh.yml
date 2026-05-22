@@ -1,0 +1,44 @@
+name: Daily SEO Refresh
+
+on:
+  schedule:
+    - cron: '42 4 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/generate_seo.py'
+      - '.github/workflows/daily-seo-refresh.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh-seo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate search files
+        run: python scripts/generate_seo.py
+      - name: Commit search files
+        run: |
+          git config user.name "gnk-asg-seo-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add sitemap.xml robots.txt
+          if git diff --cached --quiet; then
+            echo "No SEO changes."
+          else
+            git commit -m "Automated SEO refresh"
+            git push
+          fi
