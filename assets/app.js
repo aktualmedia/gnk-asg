@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260523-3'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260523-4'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260523-3'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260523-4'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -23,10 +23,17 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/inline-assistant.js');
   script('assets/intelligence-desk.js');
 
-  var notice = document.querySelector('.mention-notice');
-  if (notice) {
-    notice.innerHTML = '<strong>Odobrene javne objave:</strong> rubrika GNK ASG u medijima prikazuje samo javne internetske i medijske objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću koje su prethodno ručno pregledane i odobrene za javni prikaz.';
+  function renderMediaNotice() {
+    var notice = document.querySelector('.mention-notice');
+    if (!notice) return;
+    var en = window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en';
+    notice.innerHTML = en
+      ? '<strong>Approved public publications:</strong> the GNK ASG in the Media section displays only public online and media publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić that have been manually reviewed and approved for public display.'
+      : '<strong>Odobrene javne objave:</strong> rubrika GNK ASG u medijima prikazuje samo javne internetske i medijske objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću koje su prethodno ručno pregledane i odobrene za javni prikaz.';
   }
+  renderMediaNotice();
+  window.addEventListener('gnk-language-change', renderMediaNotice);
+
   var menuButton = document.getElementById('menuToggle');
   var menu = document.getElementById('navLinks');
   if (menuButton && menu) menuButton.addEventListener('click', function () { menu.classList.toggle('open'); });
