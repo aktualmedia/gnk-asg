@@ -10,6 +10,8 @@ on:
       - 'admin/**'
       - 'data/**'
       - 'scripts/**'
+      - 'trzista/**'
+      - 'en/**'
       - 'sw.js'
       - 'manifest.webmanifest'
       - '.github/workflows/**'
@@ -23,9 +25,9 @@ concurrency:
 
 jobs:
   validate:
-    name: Validate portal, SEO, 3D network and live public data feeds
+    name: Validate portal SEO 3D networks and live public market feeds
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 24
     steps:
       - name: Checkout proposed portal version
         uses: actions/checkout@v4
@@ -43,6 +45,8 @@ jobs:
           node --check assets/group-network.js
           node --check assets/network-motion.js
           node --check assets/group-globe-3d.js
+          node --check assets/market-centre-data.js
+          node --check assets/market-constellation.js
           node --check assets/admin-status-only.js
           node --check assets/market.js
           node --check assets/market-expansion.js
@@ -50,18 +54,22 @@ jobs:
           node --check sw.js
       - name: Validate Python syntax for automated processors
         run: |
-          python -m py_compile scripts/update_feeds_v2.py scripts/update_macro_data.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
+          python -m py_compile scripts/update_feeds_v2.py scripts/update_macro_data.py scripts/update_fast_market.py scripts/generate_daily_market_brief.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
       - name: Validate committed portal structure and existing public datasets
         run: python scripts/validate_portal.py
-      - name: Execute live classified-news and digital-asset retrieval
+      - name: Execute hourly classified-news retrieval
         run: python scripts/update_feeds_v2.py
+      - name: Execute five-minute digital-asset stablecoin exchange and index retrieval
+        run: python scripts/update_fast_market.py
       - name: Execute live macro-market retrieval
         run: python scripts/update_macro_data.py
+      - name: Generate daily professional market brief
+        run: python scripts/generate_daily_market_brief.py
       - name: Execute safe media-monitor health retrieval
         run: python scripts/discover_corporate_media.py
       - name: Generate complete metadata and search files for public routes
         run: python scripts/generate_seo.py
-      - name: Validate refreshed datasets, secure workflows and full-page SEO
+      - name: Validate refreshed datasets secure workflows and full-page SEO
         run: python scripts/validate_portal.py --post-fetch --seo
-      - name: Show files generated during validation without publishing them
+      - name: Show generated validation files without publishing them
         run: git status --short
