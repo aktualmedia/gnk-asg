@@ -1,9 +1,9 @@
-const CACHE_NAME = 'gnk-asg-live-v14';
+const CACHE_NAME = 'gnk-asg-live-v15-3d';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/',
   './assets/style.css', './assets/advanced.css', './assets/header-premium.css',
-  './assets/group-contrast.css', './assets/group-network.css', './assets/network-motion.css',
+  './assets/group-contrast.css', './assets/group-network.css', './assets/network-motion.css', './assets/group-globe-3d.css',
   './assets/bitcoin-chart.css', './assets/market-expansion.css', './assets/language.css',
   './assets/intelligence-desk.css', './assets/mobile-app.css', './assets/desk-search.css',
   './assets/floating-intelligence.css', './assets/public-sources.css', './assets/mobile-stability.css',
@@ -14,8 +14,8 @@ const STATIC_ASSETS = [
   './assets/market-expansion.js', './assets/news-live.js', './assets/assistant.js', './assets/inline-assistant.js',
   './assets/intelligence-desk.js', './assets/desk-search.js', './assets/mobile-app.js',
   './assets/mobile-navigation.js', './assets/floating-intelligence.js', './assets/group-network.js',
-  './assets/network-motion.js', './assets/group-clarity.js', './assets/public-sources.js',
-  './assets/hourly-data-disclosure.js', './assets/admin-status-only.js', './data/group_network.json',
+  './assets/network-motion.js', './assets/group-globe-3d.js', './assets/group-clarity.js', './assets/public-sources.js',
+  './assets/hourly-data-disclosure.js', './assets/admin-status-only.js', './data/group_network.json', './data/group_network_geo.json',
   './data/public_sources.json', './data/open_data.json', './data/stock_exchanges.json',
   './data/asg_gold_asset.json', './data/media_approved.json', './data/media_monitor_status.json',
   './manifest.webmanifest', './robots.txt', './sitemap.xml'
