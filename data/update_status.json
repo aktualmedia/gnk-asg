@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-05-23T22:55:32+00:00",
+  "updated_at": "2026-05-23T23:14:33+00:00",
   "news": {
-    "public_items": 375,
+    "public_items": 373,
     "by_group": {
       "bih": 10,
       "digital-assets": 85,
       "srbija": 31,
       "technology": 119,
       "hrvatska": 20,
-      "international": 80,
+      "international": 78,
       "slovenija": 30
     },
     "errors": []

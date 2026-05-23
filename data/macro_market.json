@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-23T22:55:41+00:00",
+  "updated_at": "2026-05-23T23:14:43+00:00",
   "title": "BTC, zlato, Brent nafta i USD/EUR - statistička usporedba",
   "period": "posljednjih 30 dostupnih dnevnih tržišnih vrijednosti",
   "disclaimer": "Indikativni javni tržišni podatci; prikaz nije usluga trgovanja niti investicijski savjet.",
@@ -11,9 +11,9 @@
       "ticker": "BTC",
       "unit": "USD / BTC",
       "invert": false,
-      "current": 76489.9375,
-      "change_7d_percent": -2.1,
-      "change_30d_percent": -2.27,
+      "current": 76574.1796875,
+      "change_7d_percent": -1.99,
+      "change_30d_percent": -2.17,
       "low_30d": 75488.2421875,
       "high_30d": 82138.9296875,
       "points": [
@@ -139,7 +139,7 @@
         ],
         [
           1779494400000,
-          76489.9375
+          76574.1796875
         ]
       ],
       "indexed_points": [
@@ -265,7 +265,7 @@
         ],
         [
           1779494400000,
-          97.727
+          97.8347
         ]
       ]
     },
@@ -865,7 +865,7 @@
   "correlations": {
     "btc_gold": -0.251,
     "btc_oil": 0.195,
-    "btc_usd": 0.039
+    "btc_usd": 0.04
   },
   "errors": []
 }
