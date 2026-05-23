@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v15-3d';
+const CACHE_NAME = 'gnk-asg-live-v16-seo';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/',
@@ -7,7 +7,7 @@ const STATIC_ASSETS = [
   './assets/bitcoin-chart.css', './assets/market-expansion.css', './assets/language.css',
   './assets/intelligence-desk.css', './assets/mobile-app.css', './assets/desk-search.css',
   './assets/floating-intelligence.css', './assets/public-sources.css', './assets/mobile-stability.css',
-  './assets/admin-console.css', './assets/logo-gnk-asg.svg', './assets/asg-gold-coin.svg',
+  './assets/admin-console.css', './assets/logo-gnk-asg.svg', './assets/asg-gold-coin.svg', './assets/gnk-asg-social-card.svg',
   './assets/favicon.svg', './assets/app-icon-192.svg', './assets/app-icon-512.svg',
   './assets/app.js', './assets/i18n.js', './assets/language-routing.js', './assets/portal-navigation.js',
   './assets/status.js', './assets/market.js', './assets/live-market-pulse.js', './assets/bitcoin-chart.js',
