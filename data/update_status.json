@@ -1,19 +1,17 @@
 {
-  "updated_at": "2026-05-23T06:22:27+00:00",
+  "updated_at": "2026-05-23T07:44:03+00:00",
   "news": {
-    "public_items": 377,
+    "public_items": 374,
     "by_group": {
       "srbija": 31,
-      "hrvatska": 20,
+      "bih": 10,
       "technology": 119,
-      "international": 80,
+      "hrvatska": 20,
+      "international": 79,
       "digital-assets": 85,
-      "bih": 12,
       "slovenija": 30
     },
-    "errors": [],
-    "capacity": 1000,
-    "moderated_public_mentions": 0
+    "errors": []
   },
   "market": {
     "coins": 8,
