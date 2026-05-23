@@ -1,0 +1,21 @@
+{
+  "updated_at": "2026-05-23",
+  "max_pending_items": 1000,
+  "subjects": [
+    {
+      "name": "GNK ASG d.o.o.",
+      "queries": ["\"GNK ASG\"", "\"GNK ASG d.o.o.\"", "\"GNK ASG doo\""]
+    },
+    {
+      "name": "GNK DINAMO Ltd.",
+      "queries": ["\"GNK DINAMO Ltd\"", "\"GNK DINAMO LTD\"", "\"GNK Dinamo Ltd\""]
+    },
+    {
+      "name": "Nermin Sefić",
+      "queries": ["\"Nermin Sefić\"", "\"Nermin Sefic\""]
+    }
+  ],
+  "period_queries": ["", " when:30d", " when:365d"],
+  "source_note_hr": "Automatski nalaz iz javno dostupne pretrage vijesti; objava se na javnom portalu pojavljuje tek nakon ručnog odobrenja.",
+  "source_note_en": "Automatically discovered through a public news search; the item appears on the public portal only after manual approval."
+}
