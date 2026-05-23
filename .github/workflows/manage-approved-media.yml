@@ -1,0 +1,77 @@
+name: Approve Corporate Media Publication
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Radnja / Action'
+        required: true
+        type: choice
+        options:
+          - approve
+          - remove
+        default: approve
+      subject:
+        description: 'Subjekt / Subject (npr. GNK ASG d.o.o., GNK DINAMO Ltd., Nermin Sefić)'
+        required: false
+        type: string
+        default: 'GNK ASG d.o.o.'
+      title:
+        description: 'Naslov javne objave / Public publication title'
+        required: false
+        type: string
+      source:
+        description: 'Naziv javnog izvora / Public source name'
+        required: false
+        type: string
+      url:
+        description: 'Javni URL objave / Public source URL'
+        required: true
+        type: string
+      published_at:
+        description: 'Datum objave ISO / Publication date (YYYY-MM-DD)'
+        required: false
+        type: string
+      summary:
+        description: 'Kratki javni sažetak / Short public summary'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: approved-corporate-media
+  cancel-in-progress: false
+
+jobs:
+  manage-approved-publication:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate and update public approved list
+        env:
+          MEDIA_ACTION: ${{ inputs.action }}
+          MEDIA_SUBJECT: ${{ inputs.subject }}
+          MEDIA_TITLE: ${{ inputs.title }}
+          MEDIA_SOURCE: ${{ inputs.source }}
+          MEDIA_URL: ${{ inputs.url }}
+          MEDIA_DATE: ${{ inputs.published_at }}
+          MEDIA_SUMMARY: ${{ inputs.summary }}
+        run: python scripts/manage_approved_media.py
+      - name: Commit public approved media list
+        run: |
+          if git diff --quiet -- data/media_approved.json; then
+            echo "No approved-media list changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/media_approved.json
+          git commit -m "Update manually approved corporate media publication [skip ci]"
+          git push
