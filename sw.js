@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v8';
+const CACHE_NAME = 'gnk-asg-live-v9';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -9,6 +9,7 @@ const STATIC_ASSETS = [
   './intelligence-desk/',
   './instalacija/',
   './financije/',
+  './registri/',
   './assets/style.css',
   './assets/advanced.css',
   './assets/header-premium.css',
@@ -42,6 +43,7 @@ const STATIC_ASSETS = [
   './assets/mobile-navigation.js',
   './assets/floating-intelligence.js',
   './assets/group-network.js',
+  './assets/group-clarity.js',
   './assets/public-sources.js',
   './data/group_network.json',
   './data/public_sources.json',
