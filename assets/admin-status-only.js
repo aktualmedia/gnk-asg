@@ -6,8 +6,6 @@
   const monitorState = document.getElementById('monitorState');
   const monitorMessage = document.getElementById('monitorMessage');
   const queueUpdated = document.getElementById('queueUpdated');
-  const workflowLink = Array.from(document.querySelectorAll('.admin-action')).find(link => link.href.includes('review-queue-refresh'));
-  if (workflowLink) workflowLink.href = workflowLink.href.replace('review-queue-refresh.yml', 'media-monitor-status.yml');
   function esc(value) {
     return String(value || '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
   }
