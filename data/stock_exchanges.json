@@ -1,0 +1,68 @@
+{
+  "updated_at": null,
+  "refresh_frequency": "Every 5 minutes",
+  "disclaimer_hr": "Informativni burzovni prikaz. Podatci mogu biti vremenski odgođeni; prije financijske odluke provjerite službeni izvor burze.",
+  "disclaimer_en": "Informational stock-market display. Data may be delayed; verify the exchange official source before any financial decision.",
+  "markets": [
+    {
+      "id": "crobex",
+      "exchange": "Zagrebačka burza",
+      "name": "CROBEX",
+      "symbol": "CBX",
+      "region_hr": "Hrvatska",
+      "region_en": "Croatia",
+      "status": "official_online",
+      "delay_hr": "Službeni ZSE prikaz · odgoda 15 min",
+      "delay_en": "Official ZSE display · 15 min delay",
+      "official_url": "https://zse.hr/hr/indeks/365?isin=HRZB00ICBEX6&tab=stock_info",
+      "value": null,
+      "change_percent": null,
+      "points": []
+    },
+    {
+      "id": "crobex10",
+      "exchange": "Zagrebačka burza",
+      "name": "CROBEX10",
+      "symbol": "CROBEX10",
+      "region_hr": "Hrvatska",
+      "region_en": "Croatia",
+      "status": "official_online",
+      "delay_hr": "Službeni ZSE online prikaz",
+      "delay_en": "Official ZSE online display",
+      "official_url": "https://zse.hr/hr/burzovni-indeksi/38",
+      "value": null,
+      "change_percent": null,
+      "points": []
+    },
+    {
+      "id": "nyse",
+      "exchange": "New York Stock Exchange",
+      "name": "NYSE Composite",
+      "symbol": "NYA",
+      "region_hr": "SAD",
+      "region_en": "USA",
+      "status": "awaiting_refresh",
+      "delay_hr": "Javni informativni indeksni podatak",
+      "delay_en": "Public informational index data",
+      "official_url": "https://www.nyse.com/quote/index/NYA",
+      "value": null,
+      "change_percent": null,
+      "points": []
+    },
+    {
+      "id": "nasdaq",
+      "exchange": "Nasdaq",
+      "name": "Nasdaq Composite",
+      "symbol": "COMP",
+      "region_hr": "SAD",
+      "region_en": "USA",
+      "status": "awaiting_refresh",
+      "delay_hr": "Indeksni podatci mogu biti odgođeni",
+      "delay_en": "Index data may be delayed",
+      "official_url": "https://www.nasdaq.com/market-activity/index/comp",
+      "value": null,
+      "change_percent": null,
+      "points": []
+    }
+  ]
+}
