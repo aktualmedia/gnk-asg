@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260523-4'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260523-5'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260523-4'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260523-5'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -23,11 +23,13 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/inline-assistant.js');
   script('assets/intelligence-desk.js');
 
+  function isEnglish() {
+    return window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en';
+  }
   function renderMediaNotice() {
     var notice = document.querySelector('.mention-notice');
     if (!notice) return;
-    var en = window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en';
-    notice.innerHTML = en
+    notice.innerHTML = isEnglish()
       ? '<strong>Approved public publications:</strong> the GNK ASG in the Media section displays only public online and media publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić that have been manually reviewed and approved for public display.'
       : '<strong>Odobrene javne objave:</strong> rubrika GNK ASG u medijima prikazuje samo javne internetske i medijske objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću koje su prethodno ručno pregledane i odobrene za javni prikaz.';
   }
@@ -49,13 +51,15 @@ document.addEventListener('DOMContentLoaded', function () {
       var current = 0;
       function show() {
         var item = items[current]; if (!item) return;
-        panel.innerHTML = '<header class="fina-head"><small>Službene poslovne informacije</small><h3>FINA Info.BIZ / RGFI</h3><p>Javni izvori i provjere</p></header><div class="fina-stage"><article class="fina-item"><span class="fina-tag"></span><h4></h4><p></p><a target="_blank" rel="noopener">Provjeri izvor</a></article></div><div class="fina-legal">Prikazuju se samo javno dostupne i provjerljive informacije te poveznice prema službenim izvorima.</div>';
+        var en = isEnglish();
+        panel.innerHTML = '<header class="fina-head"><small>' + (en ? 'Official business information' : 'Službene poslovne informacije') + '</small><h3>FINA Info.BIZ / RGFI</h3><p>' + (en ? 'Public sources and verification' : 'Javni izvori i provjere') + '</p></header><div class="fina-stage"><article class="fina-item"><span class="fina-tag"></span><h4></h4><p></p><a target="_blank" rel="noopener">' + (en ? 'Verify source' : 'Provjeri izvor') + '</a></article></div><div class="fina-legal">' + (en ? 'Only publicly available and verifiable information and links to official sources are displayed.' : 'Prikazuju se samo javno dostupne i provjerljive informacije te poveznice prema službenim izvorima.') + '</div>';
         panel.querySelector('.fina-tag').textContent = item.category || '';
         panel.querySelector('h4').textContent = item.title || '';
         panel.querySelector('.fina-item p').textContent = item.summary || '';
         panel.querySelector('a').href = item.url || '#';
       }
       show();
+      window.addEventListener('gnk-language-change', show);
       if (items.length > 1) window.setInterval(function () { current = (current + 1) % items.length; show(); }, 11000);
     }).catch(function () {});
   }
