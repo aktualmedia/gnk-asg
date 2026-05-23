@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Administracija medijskih objava | GNK ASG d.o.o.</title>
+<meta name="description" content="Administratorski ulaz za ručno odobravanje javnih medijskih objava GNK ASG portala putem autoriziranog GitHub workflowa.">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#07162d">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css?v=20260523-14">
+<link rel="stylesheet" href="../assets/header-premium.css?v=20260523-14">
+<link rel="stylesheet" href="../assets/admin-console.css?v=20260523-14">
+</head>
+<body class="admin-page">
+<header class="site-header"><div class="container nav"><a class="brand" href="../"><img src="../assets/logo-gnk-asg.svg" alt="GNK ASG d.o.o."></a><nav class="nav-links"><a href="../">Portal</a><a href="../#global-network">Mreža</a><a href="../#publicSources">Izvori</a><a href="../#assistant">AI Desk</a></nav></div></header>
+<main>
+<section class="admin-hero"><div class="container"><p class="eyebrow">Administratorska kontrola · Ručno odobravanje</p><h1>Medijske objave</h1><p>Siguran ulaz za upravljanje objavama o GNK ASG d.o.o., GNK DINAMO Ltd. i Nerminu Sefiću. Javna stranica prikazuje samo sadržaj koji je ručno odobren kroz ovlašteni GitHub workflow.</p></div></section>
+<section><div class="container admin-grid">
+<article class="admin-card"><h2>Pristup</h2><div class="access-row"><small>Administratorski korisnik</small><strong>aktualmedia</strong></div><div class="access-row"><small>Način prijave</small><strong>GitHub račun s pravom pisanja u repozitorij</strong></div><div class="access-row"><small>Javna lozinka</small><strong>Ne postoji — nije izložena u javnom portalu</strong></div><div class="security-callout">Lozinka poput <strong>gnkasg</strong> ne bi bila sigurna na GitHub Pages stranici jer bi bila javno vidljiva u kodu. Stvarno odobravanje zaštićeno je vašom GitHub prijavom.</div><div class="admin-actions"><a class="admin-action primary" target="_blank" rel="noopener" href="https://github.com/aktualmedia/gnk-asg/actions/workflows/manage-approved-media.yml"><div><strong>Odobri ili ukloni objavu</strong><span>Otvori autorizirani obrazac u GitHub Actionsu</span></div><b>→</b></a><a class="admin-action" target="_blank" rel="noopener" href="https://github.com/aktualmedia/gnk-asg/blob/main/data/media_approved.json"><div><strong>Pregled javno odobrene liste</strong><span>Objavljuje se samo odobreni sadržaj</span></div><b>→</b></a></div></article>
+<article class="admin-card"><h2>Kako odobriti vijest</h2><div class="steps"><div class="step"><i>1</i><div><strong>Otvorite autorizirani obrazac</strong><p>Pritisnite gumb lijevo i na GitHubu odaberite <em>Run workflow</em>.</p></div></div><div class="step"><i>2</i><div><strong>Odaberite radnju</strong><p><strong>approve</strong> objavljuje javnu poveznicu, a <strong>remove</strong> je uklanja iz portala.</p></div></div><div class="step"><i>3</i><div><strong>Unesite podatke objave</strong><p>Naslov, javni izvor, URL, datum, subjekt i kratki sažetak.</p></div></div><div class="step"><i>4</i><div><strong>Pokrenite workflow</strong><p>Odobrena objava automatski će se pojaviti u rubrici „GNK ASG u medijima”.</p></div></div></div><div class="approved-status"><small>Javno odobrene objave</small><strong id="approvedCount">—</strong><span id="approvedLast">Učitavanje statusa…</span></div><div id="approvedPreview"></div></article>
+</div></section>
+</main>
+<footer class="admin-footer"><div class="container">GNK ASG d.o.o. · Sigurni administratorski ulaz za javne medijske objave · <a href="../">Povratak na portal</a></div></footer>
+<script src="../assets/admin-console.js?v=20260523-14" defer></script>
+</body>
+</html>
