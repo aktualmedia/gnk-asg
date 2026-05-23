@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260523-11'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260523-12'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260523-11'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260523-12'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('assets/mobile-stability.css');
   style('assets/desk-search.css');
   style('assets/floating-intelligence.css');
+  style('assets/public-sources.css');
   script('assets/i18n.js');
   script('assets/language-routing.js');
   script('assets/status.js');
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/mobile-navigation.js');
   script('assets/floating-intelligence.js');
   script('assets/group-network.js');
+  script('assets/public-sources.js');
 
   function isEnglish() {
     return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
