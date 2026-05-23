@@ -37,5 +37,5 @@ def entry(page: dict) -> str:
 
 sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + '\n'.join(entry(page) for page in PAGES) + '\n</urlset>\n'
 (ROOT / 'sitemap.xml').write_text(sitemap, encoding='utf-8')
-(ROOT / 'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ' + SITE + 'sitemap.xml\n', encoding='utf-8')
+(ROOT / 'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /gnk-asg/admin/\n\nSitemap: ' + SITE + 'sitemap.xml\n', encoding='utf-8')
 print('Generated multilingual public sitemap.xml and robots.txt for GNK ASG portal.')
