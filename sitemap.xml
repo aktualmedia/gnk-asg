@@ -25,6 +25,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aktualmedia.github.io/gnk-asg/tehnologija/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aktualmedia.github.io/gnk-asg/intelligence-desk/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://aktualmedia.github.io/gnk-asg/instalacija/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
