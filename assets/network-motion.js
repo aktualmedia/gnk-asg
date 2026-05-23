@@ -25,6 +25,7 @@
   }
   function flowingPath(source, className, delay) {
     const path = source.cloneNode(false);
+    path.removeAttribute('id');
     path.removeAttribute('class');
     path.setAttribute('class', className);
     path.style.animationDelay = delay + 's';
@@ -33,13 +34,15 @@
   function dot(path, type, duration, begin) {
     const circle = svgEl('circle', {r: type === 'direct' ? '2.6' : '2.2', class:`network-travel-dot ${type}`});
     const motion = svgEl('animateMotion', {dur:`${duration}s`, repeatCount:'indefinite', begin:`${begin}s`, rotate:'auto'});
-    const mpath = svgEl('mpath', {'href':`#${path.id}`});
+    const mpath = svgEl('mpath', {href:`#${path.id}`});
     motion.appendChild(mpath);
     circle.appendChild(motion);
     return circle;
   }
   function enhance(svg) {
-    if (!svg || svg.dataset.motionReady === '1') return;
+    if (!svg || (svg.dataset.motionReady === '1' && svg.querySelector('.network-motion-layer'))) return;
+    svg.querySelector('.network-motion-layer')?.remove();
+    svg.querySelector('.network-electric-label')?.remove();
     const basePaths = Array.from(svg.querySelectorAll('.network-link-direct, .network-link-peer, .network-link-plan'));
     if (!basePaths.length) return;
     svg.dataset.motionReady = '1';
@@ -69,17 +72,12 @@
     svg.appendChild(label);
   }
   function watch() {
-    const host = document.getElementById('global-network') || document.body;
+    const host = document.body;
     const run = () => enhance(document.getElementById('networkSvg'));
     run();
     const observer = new MutationObserver(() => run());
     observer.observe(host, {childList:true, subtree:true});
-    window.addEventListener('gnk-language-change', () => {
-      window.setTimeout(() => {
-        const svg = document.getElementById('networkSvg');
-        if (svg) { svg.dataset.motionReady = ''; enhance(svg); }
-      }, 40);
-    });
+    window.addEventListener('gnk-language-change', () => window.setTimeout(run, 60));
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', watch) : watch();
 })();
