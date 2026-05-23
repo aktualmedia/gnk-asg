@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v12';
+const CACHE_NAME = 'gnk-asg-live-v13';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -16,6 +16,7 @@ const STATIC_ASSETS = [
   './assets/header-premium.css',
   './assets/group-contrast.css',
   './assets/group-network.css',
+  './assets/network-motion.css',
   './assets/bitcoin-chart.css',
   './assets/market-expansion.css',
   './assets/language.css',
@@ -49,15 +50,17 @@ const STATIC_ASSETS = [
   './assets/mobile-navigation.js',
   './assets/floating-intelligence.js',
   './assets/group-network.js',
+  './assets/network-motion.js',
   './assets/group-clarity.js',
   './assets/public-sources.js',
-  './assets/admin-console.js',
+  './assets/admin-status-only.js',
   './data/group_network.json',
   './data/public_sources.json',
   './data/open_data.json',
   './data/stock_exchanges.json',
   './data/asg_gold_asset.json',
   './data/media_approved.json',
+  './data/media_monitor_status.json',
   './manifest.webmanifest',
   './robots.txt',
   './sitemap.xml'
