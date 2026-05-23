@@ -1,17 +1,24 @@
-const CACHE_NAME = 'gnk-asg-live-v1';
+const CACHE_NAME = 'gnk-asg-live-v2';
 const STATIC_ASSETS = [
   './',
   './index.html',
   './assets/style.css',
   './assets/advanced.css',
   './assets/fina-panel.css',
+  './assets/bitcoin-chart.css',
+  './assets/language.css',
+  './assets/intelligence-desk.css',
   './assets/logo-gnk-asg.svg',
   './assets/favicon.svg',
   './assets/app.js',
+  './assets/i18n.js',
+  './assets/status.js',
   './assets/market.js',
-  './assets/news.js',
+  './assets/bitcoin-chart.js',
+  './assets/news-live.js',
   './assets/assistant.js',
   './assets/inline-assistant.js',
+  './assets/intelligence-desk.js',
   './manifest.webmanifest'
 ];
 self.addEventListener('install', (event) => {
