@@ -2,16 +2,17 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260522-10'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260523-1'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260522-10'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260523-1'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
   style('assets/bitcoin-chart.css');
+  script('assets/i18n.js');
   script('assets/status.js');
   script('assets/market.js');
   script('assets/bitcoin-chart.js');
