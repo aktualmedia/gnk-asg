@@ -22,9 +22,12 @@
   },
   "corporate_media_monitor": {
     "status": "ok",
-    "pending_review": 0,
+    "updated_at": "2026-05-23T19:19:06+00:00",
+    "checked_queries": 8,
+    "public_results_detected": 0,
     "approved_public": 0,
-    "updated_at": "2026-05-23T16:11:24+00:00",
-    "errors": []
+    "public_display_policy": "manual_approval_only",
+    "privacy_notice": "Unapproved search results are not stored or displayed by the public portal.",
+    "errors_count": 0
   }
 }
