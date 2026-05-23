@@ -2,25 +2,26 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260523-13'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260523-14'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260523-13'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260523-14'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
+  style('assets/header-premium.css');
   style('assets/group-contrast.css');
   style('assets/group-network.css');
   style('assets/bitcoin-chart.css');
   style('assets/language.css');
   style('assets/intelligence-desk.css');
   style('assets/mobile-app.css');
-  style('assets/mobile-stability.css');
   style('assets/desk-search.css');
   style('assets/floating-intelligence.css');
   style('assets/public-sources.css');
+  style('assets/mobile-stability.css');
   script('assets/i18n.js');
   script('assets/language-routing.js');
   script('assets/status.js');
