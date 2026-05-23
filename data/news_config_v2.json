@@ -1,6 +1,6 @@
 {
   "retention_days": 30,
-  "max_items": 800,
+  "max_items": 1000,
   "sources": [
     {"name":"Poslovni dnevnik","group":"hrvatska","category":"business","url":"https://www.poslovni.hr/feed"},
     {"name":"Biznis.rs","group":"srbija","category":"business","url":"https://biznis.rs/feed/"},
