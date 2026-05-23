@@ -59,7 +59,7 @@ def check_structure() -> None:
         "scripts/apply_review_decision.py", "assets/admin-console.js",
     ]
     for item in forbidden:
-        if (ROOT.joinpath(item).exists():
+        if ROOT.joinpath(item).exists():
             fail(f"Javni/zastarjeli adminsko-redni artefakt nije uklonjen: {item}")
         else:
             ok(f"Uklonjeno iz javne verzije: {item}")
