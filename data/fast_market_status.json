@@ -1,0 +1,9 @@
+{
+  "updated_at": null,
+  "cadence": "scheduled every five minutes",
+  "digital_assets": {"coins": 0, "stablecoins": 0},
+  "btc_chart_points": 0,
+  "exchanges": 0,
+  "indices": 0,
+  "errors": []
+}
