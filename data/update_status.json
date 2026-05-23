@@ -1,33 +1,22 @@
 {
-  "updated_at": "2026-05-23T16:59:05+00:00",
+  "updated_at": "2026-05-23T20:10:37+00:00",
   "news": {
-    "public_items": 374,
+    "public_items": 373,
     "by_group": {
-      "hrvatska": 20,
       "technology": 119,
       "digital-assets": 85,
-      "srbija": 31,
-      "international": 79,
+      "hrvatska": 20,
       "bih": 10,
+      "srbija": 31,
+      "international": 78,
       "slovenija": 30
     },
-    "errors": []
+    "errors": [],
+    "capacity": 1000,
+    "moderated_public_mentions": 0
   },
   "market": {
-    "status": "ok",
     "coins": 8,
-    "macro_assets": 4,
-    "refresh_frequency": "Every 5 minutes",
-    "updated_at": "2026-05-23T16:59:05+00:00"
-  },
-  "corporate_media_monitor": {
-    "status": "ok",
-    "updated_at": "2026-05-23T19:19:06+00:00",
-    "checked_queries": 8,
-    "public_results_detected": 0,
-    "approved_public": 0,
-    "public_display_policy": "manual_approval_only",
-    "privacy_notice": "Unapproved search results are not stored or displayed by the public portal.",
-    "errors_count": 0
+    "btc_chart_points": 169
   }
 }
