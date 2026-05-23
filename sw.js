@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v10';
+const CACHE_NAME = 'gnk-asg-live-v11';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const STATIC_ASSETS = [
   './instalacija/',
   './financije/',
   './registri/',
+  './admin/',
   './assets/style.css',
   './assets/advanced.css',
   './assets/header-premium.css',
@@ -23,6 +24,7 @@ const STATIC_ASSETS = [
   './assets/floating-intelligence.css',
   './assets/public-sources.css',
   './assets/mobile-stability.css',
+  './assets/admin-console.css',
   './assets/logo-gnk-asg.svg',
   './assets/favicon.svg',
   './assets/app-icon-192.svg',
@@ -30,6 +32,7 @@ const STATIC_ASSETS = [
   './assets/app.js',
   './assets/i18n.js',
   './assets/language-routing.js',
+  './assets/portal-navigation.js',
   './assets/status.js',
   './assets/market.js',
   './assets/live-market-pulse.js',
@@ -45,9 +48,11 @@ const STATIC_ASSETS = [
   './assets/group-network.js',
   './assets/group-clarity.js',
   './assets/public-sources.js',
+  './assets/admin-console.js',
   './data/group_network.json',
   './data/public_sources.json',
   './data/open_data.json',
+  './data/media_approved.json',
   './manifest.webmanifest',
   './robots.txt',
   './sitemap.xml'
