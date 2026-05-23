@@ -22,6 +22,7 @@
       }).join('');
       const stamp = document.getElementById('marketUpdated');
       if (stamp && data.updated_at) stamp.textContent = (en() ? 'Updated: ' : 'Ažurirano: ') + new Date(data.updated_at).toLocaleString(en() ? 'en-GB' : 'hr-HR') + (en() ? ' · fast market update' : ' · brzo tržišno ažuriranje');
+      window.dispatchEvent(new CustomEvent('gnk-market-grid-refreshed', {detail:{updated_at:data.updated_at, currency:unit}}));
     } catch (error) {}
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', () => { pulse(); setInterval(pulse, 60000); }) : (pulse(), setInterval(pulse, 60000));
