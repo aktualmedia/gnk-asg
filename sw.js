@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v3';
+const CACHE_NAME = 'gnk-asg-live-v4';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -14,6 +14,8 @@ const STATIC_ASSETS = [
   './assets/desk-search.css',
   './assets/logo-gnk-asg.svg',
   './assets/favicon.svg',
+  './assets/app-icon-192.svg',
+  './assets/app-icon-512.svg',
   './assets/app.js',
   './assets/i18n.js',
   './assets/status.js',
@@ -23,6 +25,7 @@ const STATIC_ASSETS = [
   './assets/assistant.js',
   './assets/inline-assistant.js',
   './assets/intelligence-desk.js',
+  './assets/desk-search.js',
   './assets/mobile-app.js',
   './manifest.webmanifest',
   './robots.txt',
