@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://aktualmedia.github.io/gnk-asg/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/" />
     <lastmod>2026-05-23</lastmod>
   </url>
   <url>
-    <loc>https://aktualmedia.github.io/gnk-asg/index.html</loc>
+    <loc>https://aktualmedia.github.io/gnk-asg/en/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/" />
     <lastmod>2026-05-23</lastmod>
   </url>
 </urlset>
