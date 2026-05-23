@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Validate portal, 3D network and live public data feeds
+    name: Validate portal, SEO, 3D network and live public data feeds
     runs-on: ubuntu-latest
     timeout-minutes: 18
     steps:
@@ -59,9 +59,9 @@ jobs:
         run: python scripts/update_macro_data.py
       - name: Execute safe media-monitor health retrieval
         run: python scripts/discover_corporate_media.py
-      - name: Generate SEO files using current generator
+      - name: Generate complete metadata and search files for public routes
         run: python scripts/generate_seo.py
-      - name: Validate newly retrieved datasets and workflow-safe state
-        run: python scripts/validate_portal.py --post-fetch
+      - name: Validate refreshed datasets, secure workflows and full-page SEO
+        run: python scripts/validate_portal.py --post-fetch --seo
       - name: Show files generated during validation without publishing them
         run: git status --short
