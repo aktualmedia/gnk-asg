@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/network-motion.js');
   script('assets/group-clarity.js');
   script('assets/public-sources.js');
+  script('assets/hourly-data-disclosure.js');
 
   function isEnglish() {
     return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
