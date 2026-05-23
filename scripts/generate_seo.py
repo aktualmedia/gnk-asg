@@ -1,178 +1,47 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-
-import json
-import re
+import json, re
 from datetime import datetime, timezone
 from pathlib import Path
 from xml.sax.saxutils import escape
-
-ROOT = Path(__file__).resolve().parents[1]
-SITE = 'https://aktualmedia.github.io/gnk-asg/'
-IMAGE = SITE + 'assets/gnk-asg-social-card.svg'
-TODAY = datetime.now(timezone.utc).date().isoformat()
-ORG_ID = SITE + '#organization'
-WEBSITE_ID = SITE + '#website'
-
-PAGES = [
-    {
-        'path': '', 'file': 'index.html', 'lang': 'hr', 'locale': 'hr_HR', 'changefreq': 'daily', 'priority': '1.0', 'alternates': True,
-        'title': 'GNK ASG d.o.o. | Korporativni tehnološki i financijski portal',
-        'description': 'Službeni korporativni portal GNK ASG d.o.o.: financijski pokazatelji za 2025., GNK DINAMO Ltd. grupni okvir, 3D mreža društava, tehnologija, AI, tržišta i poslovne vijesti.',
-        'type': 'WebPage', 'name': 'GNK ASG d.o.o. — Korporativni portal', 'crumb': 'Početna'
-    },
-    {
-        'path': 'en/', 'file': 'en/index.html', 'lang': 'en', 'locale': 'en_US', 'changefreq': 'weekly', 'priority': '0.9', 'alternates': True,
-        'title': 'GNK ASG d.o.o. | Corporate Technology, Finance and AI Portal',
-        'description': 'Official GNK ASG d.o.o. portal: FY 2025 financial indicators, GNK DINAMO Ltd. group framework, 3D global network, technology, AI, market data and business news.',
-        'type': 'WebPage', 'name': 'GNK ASG d.o.o. — Corporate Portal', 'crumb': 'Home'
-    },
-    {
-        'path': 'sadrzaj/', 'file': 'sadrzaj/index.html', 'lang': 'hr', 'locale': 'hr_HR', 'changefreq': 'weekly', 'priority': '0.8',
-        'title': 'Sadržaj portala | GNK ASG d.o.o.',
-        'description': 'Pregled javnih sadržaja portala GNK ASG d.o.o.: financije, 3D mreža društava, tehnologija, Intelligence Desk, registri, tržišni podatci, vijesti i aplikacija.',
-        'type': 'CollectionPage', 'name': 'Sadržaj portala GNK ASG d.o.o.', 'crumb': 'Sadržaj'
-    },
-    {
-        'path': 'financije/', 'file': 'financije/index.html', 'lang': 'hr', 'locale': 'hr_HR', 'changefreq': 'weekly', 'priority': '0.8',
-        'title': 'Financijski profil FY 2025 | GNK ASG d.o.o.',
-        'description': 'Javni financijski profil GNK ASG d.o.o. za 2025.: prihodi, aktiva, kapital i rezerve, obveze te revizijska i dokumentacijska osnova prikaza.',
-        'type': 'WebPage', 'name': 'Financijski profil FY 2025 — GNK ASG d.o.o.', 'crumb': 'Financije'
-    },
-    {
-        'path': 'tehnologija/', 'file': 'tehnologija/index.html', 'lang': 'hr', 'locale': 'hr_HR', 'changefreq': 'weekly', 'priority': '0.8',
-        'title': 'Tehnologija i umjetna inteligencija | GNK ASG d.o.o.',
-        'description': 'Tehnološki profil GNK ASG d.o.o.: umjetna inteligencija, softverske platforme, podatkovna analitika, digitalna imovina, sportska tehnologija i kibernetička sigurnost.',
-        'type': 'WebPage', 'name': 'Tehnologija i umjetna inteligencija — GNK ASG d.o.o.', 'crumb': 'Tehnologija'
-    },
-    {
-        'path': 'intelligence-desk/', 'file': 'intelligence-desk/index.html', 'lang': 'hr', 'locale': 'hr_HR', 'changefreq': 'weekly', 'priority': '0.8',
-        'title': 'GNK ASG Intelligence Desk | AI i istraživanje javnih podataka',
-        'description': 'GNK ASG Intelligence Desk: digitalni pomoćnik za javne korporativne podatke, financijske pokazatelje, tehnologiju, tržišta i istraživanje javno objavljenih tema.',
-        'type': 'WebPage', 'name': 'GNK ASG Intelligence Desk', 'crumb': 'Intelligence Desk'
-    },
-    {
-        'path': 'registri/', 'file': 'registri/index.html', 'lang': 'hr', 'locale': 'hr_HR', 'changefreq': 'weekly', 'priority': '0.8',
-        'title': 'Javni registri i službeni izvori | GNK ASG d.o.o.',
-        'description': 'Službeni javni izvori za provjeru GNK ASG d.o.o. i grupnog okvira: Sudski registar RH, FINA RGFI, Colorado Business Database, EUIPO, ECB i ENISA.',
-        'type': 'CollectionPage', 'name': 'Javni registri i službeni izvori — GNK ASG d.o.o.', 'crumb': 'Registri'
-    },
-    {
-        'path': 'instalacija/', 'file': 'instalacija/index.html', 'lang': 'hr', 'locale': 'hr_HR', 'changefreq': 'monthly', 'priority': '0.7',
-        'title': 'Instaliraj GNK ASG aplikaciju u Chromeu | GNK ASG d.o.o.',
-        'description': 'Upute za instalaciju GNK ASG korporativnog portala kao aplikacije putem Google Chromea na Android mobitelu ili računalu.',
-        'type': 'HowTo', 'name': 'Instalacija GNK ASG aplikacije preko Google Chromea', 'crumb': 'Instalacija'
-    },
-]
-
-
-def url(page: dict) -> str:
-    return SITE + page['path']
-
-
-def organisation() -> dict:
-    return {
-        '@type': 'Organization', '@id': ORG_ID, 'name': 'GNK ASG d.o.o.', 'url': SITE,
-        'logo': SITE + 'assets/logo-gnk-asg.svg', 'image': IMAGE, 'taxID': '75227917632',
-        'address': {'@type': 'PostalAddress', 'streetAddress': 'Zagrebačka cesta 130', 'addressLocality': 'Zagreb', 'addressCountry': 'HR'}
-    }
-
-
-def schema(page: dict) -> dict:
-    page_url = url(page)
-    item = {
-        '@type': page['type'], '@id': page_url + '#webpage', 'url': page_url, 'name': page['name'],
-        'description': page['description'], 'inLanguage': page['lang'], 'isPartOf': {'@id': WEBSITE_ID},
-        'about': {'@id': ORG_ID}, 'primaryImageOfPage': {'@type': 'ImageObject', 'url': IMAGE}
-    }
-    if page['path'] not in ('', 'en/'):
-        item['breadcrumb'] = {'@id': page_url + '#breadcrumb'}
-    graph = [
-        {'@type': 'WebSite', '@id': WEBSITE_ID, 'url': SITE, 'name': 'GNK ASG d.o.o. | Corporate Technology Portal', 'publisher': {'@id': ORG_ID}, 'inLanguage': ['hr', 'en']},
-        organisation(), item
-    ]
-    if page['path'] not in ('', 'en/'):
-        graph.append({'@type': 'BreadcrumbList', '@id': page_url + '#breadcrumb', 'itemListElement': [
-            {'@type': 'ListItem', 'position': 1, 'name': 'GNK ASG', 'item': SITE},
-            {'@type': 'ListItem', 'position': 2, 'name': page['crumb'], 'item': page_url}
-        ]})
-    if page['type'] == 'HowTo':
-        item['step'] = [
-            {'@type': 'HowToStep', 'name': 'Otvorite portal u Chromeu', 'text': 'Otvorite GNK ASG portal u pregledniku Google Chrome.'},
-            {'@type': 'HowToStep', 'name': 'Pokrenite instalaciju', 'text': 'U izborniku preglednika odaberite instalaciju aplikacije ili dodavanje na početni zaslon.'},
-            {'@type': 'HowToStep', 'name': 'Potvrdite instalaciju', 'text': 'Potvrdite instalaciju i pokrenite portal kao aplikaciju.'}
-        ]
-    return {'@context': 'https://schema.org', '@graph': graph}
-
-
-def metadata_block(page: dict) -> str:
-    page_url = url(page)
-    other_locale = 'en_US' if page['locale'] == 'hr_HR' else 'hr_HR'
-    lines = [
-        '<!-- SEO:BEGIN generated by scripts/generate_seo.py -->',
-        '  <meta name="author" content="GNK ASG d.o.o.">',
-        '  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">',
-        '  <meta name="theme-color" content="#07162d">',
-        f'  <link rel="canonical" href="{page_url}">',
-        f'  <meta property="og:title" content="{escape(page["title"])}">',
-        f'  <meta property="og:description" content="{escape(page["description"])}">',
-        '  <meta property="og:type" content="website">',
-        f'  <meta property="og:url" content="{page_url}">',
-        '  <meta property="og:site_name" content="GNK ASG d.o.o.">',
-        f'  <meta property="og:locale" content="{page["locale"]}">',
-        f'  <meta property="og:locale:alternate" content="{other_locale}">',
-        f'  <meta property="og:image" content="{IMAGE}">',
-        '  <meta property="og:image:type" content="image/svg+xml">',
-        '  <meta property="og:image:width" content="1200">',
-        '  <meta property="og:image:height" content="630">',
-        '  <meta property="og:image:alt" content="GNK ASG d.o.o. — Corporate Technology and Finance Portal">',
-        '  <meta name="twitter:card" content="summary_large_image">',
-        f'  <meta name="twitter:title" content="{escape(page["title"])}">',
-        f'  <meta name="twitter:description" content="{escape(page["description"])}">',
-        f'  <meta name="twitter:image" content="{IMAGE}">',
-        '  <meta name="twitter:image:alt" content="GNK ASG d.o.o. — Corporate Technology and Finance Portal">',
-    ]
-    if page.get('alternates'):
-        lines.extend([
-            f'  <link rel="alternate" hreflang="hr" href="{SITE}">',
-            f'  <link rel="alternate" hreflang="en" href="{SITE}en/">',
-            f'  <link rel="alternate" hreflang="x-default" href="{SITE}">',
-        ])
-    lines.append('  <script type="application/ld+json">' + json.dumps(schema(page), ensure_ascii=False, separators=(',', ':')) + '</script>')
-    lines.append('<!-- SEO:END -->')
-    return '\n'.join(lines)
-
-
-def enhance_html(page: dict) -> None:
-    target = ROOT / page['file']
-    html = target.read_text(encoding='utf-8')
-    html = re.sub(r'\s*<!-- SEO:BEGIN generated by scripts/generate_seo\.py -->.*?<!-- SEO:END -->\s*', '\n', html, flags=re.S)
-    html = re.sub(r'<title>.*?</title>', '<title>' + page['title'] + '</title>', html, count=1, flags=re.S)
-    html = re.sub(r'<meta\s+name="description"\s+content="[^"]*"\s*/?>', '<meta name="description" content="' + page['description'] + '">', html, count=1)
-    html = re.sub(r'\s*<meta\s+name="(?:author|robots|theme-color|twitter:[^"]+)"[^>]*>', '', html)
-    html = re.sub(r'\s*<meta\s+property="og:[^"]+"[^>]*>', '', html)
-    html = re.sub(r'\s*<link\s+rel="(?:canonical|alternate)"[^>]*>', '', html)
-    html = re.sub(r'\s*<script\s+type="application/ld\+json">.*?</script>', '', html, flags=re.S)
-    html = html.replace('</head>', '\n' + metadata_block(page) + '\n</head>', 1)
-    target.write_text(html, encoding='utf-8')
-
-
-def entry(page: dict) -> str:
-    lines = ['  <url>', '    <loc>' + escape(url(page)) + '</loc>']
-    if page.get('alternates'):
-        lines.extend([
-            f'    <xhtml:link rel="alternate" hreflang="hr" href="{escape(SITE)}" />',
-            f'    <xhtml:link rel="alternate" hreflang="en" href="{escape(SITE + "en/")}" />',
-            f'    <xhtml:link rel="alternate" hreflang="x-default" href="{escape(SITE)}" />',
-        ])
-    lines.extend([f'    <lastmod>{TODAY}</lastmod>', f'    <changefreq>{page["changefreq"]}</changefreq>', f'    <priority>{page["priority"]}</priority>', '  </url>'])
-    return '\n'.join(lines)
-
-
-for public_page in PAGES:
-    enhance_html(public_page)
-
-sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + '\n'.join(entry(page) for page in PAGES) + '\n</urlset>\n'
-(ROOT / 'sitemap.xml').write_text(sitemap, encoding='utf-8')
-(ROOT / 'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /gnk-asg/admin/\n\nSitemap: ' + SITE + 'sitemap.xml\n', encoding='utf-8')
-print('Generated full metadata, structured data, sitemap.xml and robots.txt for eight public GNK ASG pages.')
+ROOT=Path(__file__).resolve().parents[1]
+SITE='https://aktualmedia.github.io/gnk-asg/'
+IMAGE=SITE+'assets/gnk-asg-social-card.svg'
+TODAY=datetime.now(timezone.utc).date().isoformat()
+ORG_ID=SITE+'#organization'; WEBSITE_ID=SITE+'#website'
+PAGES=[
+{'path':'','file':'index.html','lang':'hr','locale':'hr_HR','changefreq':'daily','priority':'1.0','alt':('','en/'),'title':'GNK ASG d.o.o. | Korporativni tehnološki i financijski portal','description':'Službeni korporativni portal GNK ASG d.o.o.: financijski pokazatelji za 2025., GNK DINAMO Ltd. grupni okvir, 3D mreža društava, tehnologija, AI, tržišta i poslovne vijesti.','type':'WebPage','name':'GNK ASG d.o.o. — Korporativni portal','crumb':'Početna'},
+{'path':'en/','file':'en/index.html','lang':'en','locale':'en_US','changefreq':'weekly','priority':'0.9','alt':('','en/'),'title':'GNK ASG d.o.o. | Corporate Technology, Finance and AI Portal','description':'Official GNK ASG d.o.o. portal: FY 2025 financial indicators, GNK DINAMO Ltd. group framework, 3D global network, technology, AI, market data and business news.','type':'WebPage','name':'GNK ASG d.o.o. — Corporate Portal','crumb':'Home'},
+{'path':'trzista/','file':'trzista/index.html','lang':'hr','locale':'hr_HR','changefreq':'daily','priority':'0.9','alt':('trzista/','en/markets/'),'title':'Market Intelligence | Stablecoini, burze i dnevni osvrt | GNK ASG d.o.o.','description':'GNK ASG Market Intelligence: informativni petominutni pregled digitalne imovine, stablecoina, kripto burzi, globalnih indeksa i dnevni stručni tržišni osvrt.','type':'CollectionPage','name':'Market Intelligence — GNK ASG d.o.o.','crumb':'Tržišta'},
+{'path':'en/markets/','file':'en/markets/index.html','lang':'en','locale':'en_US','changefreq':'daily','priority':'0.9','alt':('trzista/','en/markets/'),'title':'Market Intelligence | Stablecoins, Exchanges and Daily Brief | GNK ASG d.o.o.','description':'GNK ASG Market Intelligence: informational five-minute view of digital assets, stablecoins, crypto exchanges, global equity indices and a professional daily market brief.','type':'CollectionPage','name':'Market Intelligence — GNK ASG d.o.o.','crumb':'Markets'},
+{'path':'sadrzaj/','file':'sadrzaj/index.html','lang':'hr','locale':'hr_HR','changefreq':'weekly','priority':'0.8','title':'Sadržaj portala | GNK ASG d.o.o.','description':'Pregled javnih sadržaja portala GNK ASG d.o.o.: financije, 3D mreža društava, tehnologija, Intelligence Desk, registri, tržišni podatci, vijesti i aplikacija.','type':'CollectionPage','name':'Sadržaj portala GNK ASG d.o.o.','crumb':'Sadržaj'},
+{'path':'financije/','file':'financije/index.html','lang':'hr','locale':'hr_HR','changefreq':'weekly','priority':'0.8','title':'Financijski profil FY 2025 | GNK ASG d.o.o.','description':'Javni financijski profil GNK ASG d.o.o. za 2025.: prihodi, aktiva, kapital i rezerve, obveze te revizijska i dokumentacijska osnova prikaza.','type':'WebPage','name':'Financijski profil FY 2025 — GNK ASG d.o.o.','crumb':'Financije'},
+{'path':'tehnologija/','file':'tehnologija/index.html','lang':'hr','locale':'hr_HR','changefreq':'weekly','priority':'0.8','title':'Tehnologija i umjetna inteligencija | GNK ASG d.o.o.','description':'Tehnološki profil GNK ASG d.o.o.: umjetna inteligencija, softverske platforme, podatkovna analitika, digitalna imovina, sportska tehnologija i kibernetička sigurnost.','type':'WebPage','name':'Tehnologija i umjetna inteligencija — GNK ASG d.o.o.','crumb':'Tehnologija'},
+{'path':'intelligence-desk/','file':'intelligence-desk/index.html','lang':'hr','locale':'hr_HR','changefreq':'weekly','priority':'0.8','title':'GNK ASG Intelligence Desk | AI i istraživanje javnih podataka','description':'GNK ASG Intelligence Desk: digitalni pomoćnik za javne korporativne podatke, financijske pokazatelje, tehnologiju, tržišta i istraživanje javno objavljenih tema.','type':'WebPage','name':'GNK ASG Intelligence Desk','crumb':'Intelligence Desk'},
+{'path':'registri/','file':'registri/index.html','lang':'hr','locale':'hr_HR','changefreq':'weekly','priority':'0.8','title':'Javni registri i službeni izvori | GNK ASG d.o.o.','description':'Službeni javni izvori za provjeru GNK ASG d.o.o. i grupnog okvira: Sudski registar RH, FINA RGFI, Colorado Business Database, EUIPO, ECB i ENISA.','type':'CollectionPage','name':'Javni registri i službeni izvori — GNK ASG d.o.o.','crumb':'Registri'},
+{'path':'instalacija/','file':'instalacija/index.html','lang':'hr','locale':'hr_HR','changefreq':'monthly','priority':'0.7','title':'Instaliraj GNK ASG aplikaciju u Chromeu | GNK ASG d.o.o.','description':'Upute za instalaciju GNK ASG korporativnog portala kao aplikacije putem Google Chromea na Android mobitelu ili računalu.','type':'HowTo','name':'Instalacija GNK ASG aplikacije preko Google Chromea','crumb':'Instalacija'}]
+def url(p): return SITE+p['path']
+def organisation(): return {'@type':'Organization','@id':ORG_ID,'name':'GNK ASG d.o.o.','url':SITE,'logo':SITE+'assets/logo-gnk-asg.svg','image':IMAGE,'taxID':'75227917632','address':{'@type':'PostalAddress','streetAddress':'Zagrebačka cesta 130','addressLocality':'Zagreb','addressCountry':'HR'}}
+def schema(p):
+ u=url(p); item={'@type':p['type'],'@id':u+'#webpage','url':u,'name':p['name'],'description':p['description'],'inLanguage':p['lang'],'isPartOf':{'@id':WEBSITE_ID},'about':{'@id':ORG_ID},'primaryImageOfPage':{'@type':'ImageObject','url':IMAGE}}
+ graph=[{'@type':'WebSite','@id':WEBSITE_ID,'url':SITE,'name':'GNK ASG d.o.o. | Corporate Technology Portal','publisher':{'@id':ORG_ID},'inLanguage':['hr','en']},organisation(),item]
+ if p['path'] not in ('','en/'):
+  item['breadcrumb']={'@id':u+'#breadcrumb'}; graph.append({'@type':'BreadcrumbList','@id':u+'#breadcrumb','itemListElement':[{'@type':'ListItem','position':1,'name':'GNK ASG','item':SITE},{'@type':'ListItem','position':2,'name':p['crumb'],'item':u}]})
+ if p['type']=='HowTo': item['step']=[{'@type':'HowToStep','name':'Otvorite portal u Chromeu','text':'Otvorite GNK ASG portal u pregledniku Google Chrome.'},{'@type':'HowToStep','name':'Pokrenite instalaciju','text':'U izborniku preglednika odaberite instalaciju aplikacije ili dodavanje na početni zaslon.'},{'@type':'HowToStep','name':'Potvrdite instalaciju','text':'Potvrdite instalaciju i pokrenite portal kao aplikaciju.'}]
+ return {'@context':'https://schema.org','@graph':graph}
+def metadata(p):
+ u=url(p); other='en_US' if p['locale']=='hr_HR' else 'hr_HR'; lines=['<!-- SEO:BEGIN generated by scripts/generate_seo.py -->','  <meta name="author" content="GNK ASG d.o.o.">','  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">','  <meta name="theme-color" content="#07162d">',f'  <link rel="canonical" href="{u}">',f'  <meta property="og:title" content="{escape(p["title"])}">',f'  <meta property="og:description" content="{escape(p["description"])}">','  <meta property="og:type" content="website">',f'  <meta property="og:url" content="{u}">','  <meta property="og:site_name" content="GNK ASG d.o.o.">',f'  <meta property="og:locale" content="{p["locale"]}">',f'  <meta property="og:locale:alternate" content="{other}">',f'  <meta property="og:image" content="{IMAGE}">','  <meta property="og:image:type" content="image/svg+xml">','  <meta property="og:image:width" content="1200">','  <meta property="og:image:height" content="630">','  <meta property="og:image:alt" content="GNK ASG d.o.o. — Corporate Technology and Finance Portal">','  <meta name="twitter:card" content="summary_large_image">',f'  <meta name="twitter:title" content="{escape(p["title"])}">',f'  <meta name="twitter:description" content="{escape(p["description"])}">',f'  <meta name="twitter:image" content="{IMAGE}">','  <meta name="twitter:image:alt" content="GNK ASG d.o.o. — Corporate Technology and Finance Portal">']
+ if p.get('alt'):
+  hr,en=p['alt']; lines += [f'  <link rel="alternate" hreflang="hr" href="{SITE+hr}">',f'  <link rel="alternate" hreflang="en" href="{SITE+en}">',f'  <link rel="alternate" hreflang="x-default" href="{SITE+hr}">']
+ lines += ['  <script type="application/ld+json">'+json.dumps(schema(p),ensure_ascii=False,separators=(',',':'))+'</script>','<!-- SEO:END -->']; return '\n'.join(lines)
+def enhance(p):
+ target=ROOT/p['file']; html=target.read_text(encoding='utf-8'); html=re.sub(r'\s*<!-- SEO:BEGIN generated by scripts/generate_seo\.py -->.*?<!-- SEO:END -->\s*','\n',html,flags=re.S); html=re.sub(r'<title>.*?</title>','<title>'+p['title']+'</title>',html,count=1,flags=re.S); html=re.sub(r'<meta\s+name="description"\s+content="[^"]*"\s*/?>','<meta name="description" content="'+p['description']+'">',html,count=1); html=re.sub(r'\s*<meta\s+name="(?:author|robots|theme-color|twitter:[^"]+)"[^>]*>','',html); html=re.sub(r'\s*<meta\s+property="og:[^"]+"[^>]*>','',html); html=re.sub(r'\s*<link\s+rel="(?:canonical|alternate)"[^>]*>','',html); html=re.sub(r'\s*<script\s+type="application/ld\+json">.*?</script>','',html,flags=re.S); html=html.replace('</head>','\n'+metadata(p)+'\n</head>',1); target.write_text(html,encoding='utf-8')
+def entry(p):
+ lines=['  <url>','    <loc>'+escape(url(p))+'</loc>'];
+ if p.get('alt'):
+  hr,en=p['alt']; lines += [f'    <xhtml:link rel="alternate" hreflang="hr" href="{escape(SITE+hr)}" />',f'    <xhtml:link rel="alternate" hreflang="en" href="{escape(SITE+en)}" />',f'    <xhtml:link rel="alternate" hreflang="x-default" href="{escape(SITE+hr)}" />']
+ lines += [f'    <lastmod>{TODAY}</lastmod>',f'    <changefreq>{p["changefreq"]}</changefreq>',f'    <priority>{p["priority"]}</priority>','  </url>']; return '\n'.join(lines)
+for page in PAGES: enhance(page)
+(ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'+'\n'.join(entry(p) for p in PAGES)+'\n</urlset>\n',encoding='utf-8')
+(ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /gnk-asg/admin/\n\nSitemap: '+SITE+'sitemap.xml\n',encoding='utf-8')
+print('Generated full metadata, structured data, sitemap.xml and robots.txt for public GNK ASG pages, including Market Intelligence.')
