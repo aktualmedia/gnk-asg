@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v11';
+const CACHE_NAME = 'gnk-asg-live-v12';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -17,6 +17,7 @@ const STATIC_ASSETS = [
   './assets/group-contrast.css',
   './assets/group-network.css',
   './assets/bitcoin-chart.css',
+  './assets/market-expansion.css',
   './assets/language.css',
   './assets/intelligence-desk.css',
   './assets/mobile-app.css',
@@ -26,6 +27,7 @@ const STATIC_ASSETS = [
   './assets/mobile-stability.css',
   './assets/admin-console.css',
   './assets/logo-gnk-asg.svg',
+  './assets/asg-gold-coin.svg',
   './assets/favicon.svg',
   './assets/app-icon-192.svg',
   './assets/app-icon-512.svg',
@@ -37,6 +39,7 @@ const STATIC_ASSETS = [
   './assets/market.js',
   './assets/live-market-pulse.js',
   './assets/bitcoin-chart.js',
+  './assets/market-expansion.js',
   './assets/news-live.js',
   './assets/assistant.js',
   './assets/inline-assistant.js',
@@ -52,6 +55,8 @@ const STATIC_ASSETS = [
   './data/group_network.json',
   './data/public_sources.json',
   './data/open_data.json',
+  './data/stock_exchanges.json',
+  './data/asg_gold_asset.json',
   './data/media_approved.json',
   './manifest.webmanifest',
   './robots.txt',
