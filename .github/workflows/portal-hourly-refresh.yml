@@ -1,0 +1,43 @@
+name: Portal Hourly Refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '11 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'data/news_config_v2.json'
+      - 'scripts/update_feeds_v2.py'
+      - '.github/workflows/portal-hourly-refresh.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: portal-hourly-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Refresh public news and market data
+        run: python scripts/update_feeds_v2.py
+      - name: Commit refreshed public data
+        run: |
+          if git diff --quiet -- data; then
+            echo "No public data changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/news.json data/market.json data/btc_chart.json data/update_status.json
+          git commit -m "Refresh portal data [skip ci]"
+          git push
