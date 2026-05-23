@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Collect public-news search results concerning moderated corporate subjects.
+"""Discover public media mentions without publishing unapproved results.
 
-Items are written to the review queue only; they are never made public in the
-portal media section until a separate authorized approval decision is recorded.
+The candidate list is written to a workflow artifact path, not to public site
+JSON. Only a minimal monitor-health status is safe for the public portal.
+Approved publications remain managed separately by an authorized workflow.
 """
 from __future__ import annotations
 
 import email.utils
 import hashlib
 import json
+import os
 import re
 import urllib.parse
 import urllib.request
@@ -19,10 +21,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 CONFIG = DATA / "media_queries.json"
-QUEUE = DATA / "corporate_review_queue.json"
-DECISIONS = DATA / "corporate_review_decisions.json"
 APPROVED = DATA / "media_approved.json"
-UA = "GNK-ASG-Public-Media-Monitor/1.0"
+OUTPUT = ROOT / os.environ.get("MEDIA_CANDIDATE_OUTPUT", "_private_review/candidates.json")
+STATUS = ROOT / os.environ.get("MEDIA_PUBLIC_STATUS_OUTPUT", "data/media_monitor_status.json")
+UA = "GNK-ASG-Public-Media-Monitor/2.0"
 
 
 def load(path: Path, default):
@@ -33,6 +35,7 @@ def load(path: Path, default):
 
 
 def save(path: Path, value) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
@@ -51,7 +54,7 @@ def fetch_feed(query: str) -> list[dict]:
     request = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(request, timeout=25) as response:
         root = ET.fromstring(response.read())
-    results: list[dict] = []
+    rows: list[dict] = []
     for row in root.findall("./channel/item"):
         link = clean(row.findtext("link", ""))
         title = clean(row.findtext("title", ""))
@@ -64,27 +67,24 @@ def fetch_feed(query: str) -> list[dict]:
             parsed = raw_date
         source_node = row.find("source")
         source = clean(source_node.text if source_node is not None and source_node.text else "Google News")
-        description = clean(row.findtext("description", ""))
-        results.append({
+        rows.append({
             "id": item_id(link),
             "title": title,
             "source": source,
             "url": link,
             "published_at": parsed,
-            "summary": description[:420],
-            "discovered_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
-            "origin": "Google News public RSS"
+            "summary": clean(row.findtext("description", ""))[:420],
+            "origin": "Google News public RSS",
         })
-    return results
+    return rows
 
 
 def main() -> None:
     config = load(CONFIG, {})
-    existing = load(QUEUE, [])
-    decisions = {entry.get("id"): entry.get("decision") for entry in load(DECISIONS, []) if entry.get("id")}
-    approved_urls = {entry.get("url") for entry in load(APPROVED, []) if entry.get("url")}
-    known = {entry.get("id"): entry for entry in existing if entry.get("id")}
+    approved_urls = {str(entry.get("url", "")).strip() for entry in load(APPROVED, []) if entry.get("url")}
+    candidates: dict[str, dict] = {}
     errors: list[str] = []
+    discovered_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
     for subject in config.get("subjects", []):
         for base_query in subject.get("queries", []):
@@ -92,31 +92,25 @@ def main() -> None:
                 query = base_query + period
                 try:
                     for item in fetch_feed(query):
-                        item["subject"] = subject.get("name", "")
-                        item["query"] = query
-                        if item["url"] in approved_urls or decisions.get(item["id"]) in {"rejected", "deleted"}:
+                        if item["url"] in approved_urls:
                             continue
-                        prior = known.get(item["id"], {})
-                        item["discovered_at"] = prior.get("discovered_at", item["discovered_at"])
-                        item["status"] = "pending_review"
-                        known[item["id"]] = item
+                        item.update({"subject": subject.get("name", ""), "query": query, "discovered_at": discovered_at, "status": "requires_authorized_review"})
+                        candidates.setdefault(item["id"], item)
                 except Exception as error:
                     errors.append(f"{query}: {str(error)[:110]}")
 
-    queue = sorted(known.values(), key=lambda entry: entry.get("published_at", ""), reverse=True)
-    queue = [entry for entry in queue if entry.get("url") not in approved_urls and decisions.get(entry.get("id")) not in {"rejected", "deleted"}]
+    queue = sorted(candidates.values(), key=lambda item: item.get("published_at", ""), reverse=True)
     queue = queue[: int(config.get("max_pending_items", 1000))]
-    save(QUEUE, queue)
-    status = load(DATA / "update_status.json", {})
-    status["corporate_media_monitor"] = {
+    save(OUTPUT, queue)
+    public_status = {
         "status": "ok" if not errors else "partial",
-        "pending_review": len(queue),
-        "approved_public": len(approved_urls),
-        "updated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
-        "errors": errors[:4]
+        "updated_at": discovered_at,
+        "review_access": "authorized_github_actions_artifact",
+        "public_display_policy": "manual_approval_only",
+        "errors_count": len(errors),
     }
-    save(DATA / "update_status.json", status)
-    print(json.dumps(status["corporate_media_monitor"], ensure_ascii=False))
+    save(STATUS, public_status)
+    print(json.dumps({**public_status, "private_candidates": len(queue)}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
