@@ -13,7 +13,8 @@ GitHub Pages adresa:
 - korporativni profil GNK ASG d.o.o. i vizualni identitet
 - revidirani financijski pokazatelji za FY 2025
 - GNK DINAMO Ltd. Group Overview s odvojenom napomenom o osnovi grupnih podataka
-- interaktivna globalna mreža grupe: 33 postojeća društva i 12 planiranih pozicija, filtri, zumiranje i premium animirani tokovi povezanosti
+- rotirajući **3D globus globalne mreže**: 33 postojeća društva i 12 planiranih pozicija, geografske koordinate, ručna rotacija, zumiranje, automatska rotacija, animirani tokovi, klik na lokaciju i prebacivanje na postojeći 2D prikaz
+- postojeća 2D mreža s filtrima i premium animiranim vezama kao dostupni alternativni prikaz / fallback
 - Technology & Artificial Intelligence odjeljak
 - Digital Assets Monitor s indikativnim cijenama, valutnim konverterom i tržišnim grafovima
 - ASG Gold Reference informativni pre-launch prikaz
@@ -21,6 +22,17 @@ GitHub Pages adresa:
 - FINA Info.BIZ / RGFI panel sa službenim poveznicama za provjeru
 - GNK ASG Intelligence Desk kao informativno korisničko sučelje nad javnim podatcima portala
 - PWA manifest, mobilna navigacija i network-first service worker
+
+## 3D mreža društava
+
+3D prikaz izrađen je kao vlastiti Canvas modul bez vanjskih CDN biblioteka, radi stabilnosti javnog portala i instalirane PWA aplikacije.
+
+- modul: `assets/group-globe-3d.js`
+- stilovi: `assets/group-globe-3d.css`
+- geografski podatci: `data/group_network_geo.json`
+- izvorni poslovni model mreže ostaje u `data/group_network.json`
+- korisnik može rotirati globus mišem ili dodirom, zumirati, uključiti/isključiti automatsku rotaciju i odabrati lokaciju radi detalja
+- postojeći 2D prikaz ostaje dostupan gumbom `2D mreža`
 
 ## Sigurnosni model medijskih objava
 
@@ -65,6 +77,17 @@ Datoteka: `.github/workflows/daily-seo-refresh.yml`
 - izvršava se dnevno;
 - moguće ga je pokrenuti ručno;
 - generira `sitemap.xml` i `robots.txt` za javne stranice, bez indeksiranja administratorskog ulaza.
+
+### `Portal Validation and Live Data Test`
+
+Datoteka: `.github/workflows/portal-validation.yml`
+
+- izvršava se na pull requestu i ručno;
+- validira JavaScript i Python sintaksu aktivnih modula;
+- provjerava 3D mrežu, svih 45 lokacija i pripadajuće geografske koordinate;
+- potvrđuje da javni admin ne sadrži nesigurne datoteke reda kandidata;
+- izvršava stvarno probno povlačenje vijesti, kripto tržišnih podataka, BTC grafa, makro tržišnih serija i statusa medijskog monitora;
+- ne commitira probne podatke u javni portal.
 
 ## Kontrola prikaza vijesti
 
