@@ -6,6 +6,8 @@
   const monitorState = document.getElementById('monitorState');
   const monitorMessage = document.getElementById('monitorMessage');
   const queueUpdated = document.getElementById('queueUpdated');
+  const workflowLink = Array.from(document.querySelectorAll('.admin-action')).find(link => link.href.includes('review-queue-refresh'));
+  if (workflowLink) workflowLink.href = workflowLink.href.replace('review-queue-refresh.yml', 'media-monitor-status.yml');
   function esc(value) {
     return String(value || '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
   }
@@ -36,8 +38,8 @@
       const status = response.ok ? await response.json() : {};
       const ok = status.status === 'ok';
       if (monitorState) monitorState.textContent = ok ? 'AKTIVAN' : (status.status === 'partial' ? 'DJELOMIČAN' : '—');
-      if (monitorMessage) monitorMessage.textContent = ok ? 'Monitoring javnih izvora radi. Pregled nalaza obavlja ovlašteni korisnik kroz kontrolirani radni postupak.' : 'Status monitoringa nije potpuno uredan. Ovlašteni korisnik treba pregledati posljednje izvršenje.';
-      if (queueUpdated) queueUpdated.textContent = 'Posljednja provjera monitoringa: ' + formatDate(status.updated_at) + '. Javni portal prikazuje samo ručno odobrene objave.';
+      if (monitorMessage) monitorMessage.textContent = ok ? 'Monitoring javnih izvora radi. Javno se prikazuju samo ručno odobrene objave.' : 'Status monitoringa nije potpuno uredan. Ovlašteni korisnik treba pregledati posljednje izvršenje.';
+      if (queueUpdated) queueUpdated.textContent = 'Posljednja provjera monitoringa: ' + formatDate(status.updated_at) + '. Neodobrene stavke nisu dio javnog prikaza.';
     } catch (error) {
       if (monitorState) monitorState.textContent = '—';
       if (monitorMessage) monitorMessage.textContent = 'Status automatskog monitoringa trenutačno nije dostupan.';
