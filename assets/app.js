@@ -2,18 +2,19 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260523-19'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260523-21'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260523-19'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260523-21'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
   style('assets/header-premium.css');
   style('assets/group-contrast.css');
   style('assets/group-network.css');
+  style('assets/network-motion.css');
   style('assets/bitcoin-chart.css');
   style('assets/market-expansion.css');
   style('assets/language.css');
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/mobile-navigation.js');
   script('assets/floating-intelligence.js');
   script('assets/group-network.js');
+  script('assets/network-motion.js');
   script('assets/group-clarity.js');
   script('assets/public-sources.js');
 
