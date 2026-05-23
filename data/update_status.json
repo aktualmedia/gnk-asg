@@ -1,25 +1,20 @@
 {
-  "updated_at": "2026-05-23T13:34:18+00:00",
+  "updated_at": "2026-05-23T15:50:02+00:00",
   "news": {
     "public_items": 374,
     "by_group": {
-      "srbija": 31,
       "hrvatska": 20,
-      "digital-assets": 85,
       "technology": 119,
-      "bih": 10,
+      "digital-assets": 85,
+      "srbija": 31,
       "international": 79,
+      "bih": 10,
       "slovenija": 30
     },
-    "errors": [],
-    "capacity": 1000,
-    "moderated_public_mentions": 0
+    "errors": []
   },
   "market": {
-    "status": "ok",
     "coins": 8,
-    "macro_assets": 4,
-    "refresh_frequency": "Every 5 minutes",
-    "updated_at": "2026-05-23T13:34:18+00:00"
+    "btc_chart_points": 169
   }
 }
