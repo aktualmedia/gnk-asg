@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v4';
+const CACHE_NAME = 'gnk-asg-live-v5';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -18,6 +18,7 @@ const STATIC_ASSETS = [
   './assets/app-icon-512.svg',
   './assets/app.js',
   './assets/i18n.js',
+  './assets/language-routing.js',
   './assets/status.js',
   './assets/market.js',
   './assets/bitcoin-chart.js',
