@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260523-2'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260523-3'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260523-2'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260523-3'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var notice = document.querySelector('.mention-notice');
   if (notice) {
-    notice.innerHTML = '<strong>Automatski prikaz objava o društvu:</strong> javne objave koje izravno spominju GNK ASG d.o.o., GNK DINAMO Ltd. ili Nermina Sefića automatski se prikazuju u rubrici GNK ASG u medijima. Neželjena vijest uklanja se kroz blok-listu portala.';
+    notice.innerHTML = '<strong>Odobrene javne objave:</strong> rubrika GNK ASG u medijima prikazuje samo javne internetske i medijske objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću koje su prethodno ručno pregledane i odobrene za javni prikaz.';
   }
   var menuButton = document.getElementById('menuToggle');
   var menu = document.getElementById('navLinks');
