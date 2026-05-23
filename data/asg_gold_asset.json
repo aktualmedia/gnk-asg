@@ -1,0 +1,22 @@
+{
+  "updated_at": "2026-05-23",
+  "id": "asg-gold-reference",
+  "name": "ASG Stable Coin",
+  "ticker": "ASG",
+  "issuer": "GNK DINAMO Ltd.",
+  "status_hr": "Pre-launch informativni prikaz",
+  "status_en": "Pre-launch informational display",
+  "total_supply": 10000000,
+  "reference_rule_hr": "100 ASG = 1 kg zlata",
+  "reference_rule_en": "100 ASG = 1 kg of gold",
+  "formula_hr": "1 ASG = vrijednost 0,01 kg zlata",
+  "formula_en": "1 ASG = value of 0.01 kg of gold",
+  "legal_note_hr": "Informativni koncept vrijednosti vezan uz zlato. Nije javna ponuda, prospekt, bijela knjiga kriptoimovine, investicijski savjet niti potvrda izdavanja reguliranog stablecoina.",
+  "legal_note_en": "Informational gold-linked value concept. Not a public offer, prospectus, crypto-asset white paper, investment advice or confirmation of issuance of a regulated stablecoin.",
+  "visual_theme": "gold-corporate",
+  "gold_kg_per_asg": 0.01,
+  "current_value_usd": null,
+  "current_value_eur": null,
+  "gold_reference_usd_per_kg": null,
+  "change_30d_percent": null
+}
