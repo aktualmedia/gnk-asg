@@ -1,0 +1,67 @@
+name: Portal Validation and Live Data Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'assets/**'
+      - 'admin/**'
+      - 'data/**'
+      - 'scripts/**'
+      - 'sw.js'
+      - 'manifest.webmanifest'
+      - '.github/workflows/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portal-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate portal, 3D network and live public data feeds
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout proposed portal version
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Node.js for JavaScript syntax validation
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate JavaScript syntax for active public modules
+        run: |
+          node --check assets/app.js
+          node --check assets/group-network.js
+          node --check assets/network-motion.js
+          node --check assets/group-globe-3d.js
+          node --check assets/admin-status-only.js
+          node --check assets/market.js
+          node --check assets/market-expansion.js
+          node --check assets/news-live.js
+          node --check sw.js
+      - name: Validate Python syntax for automated processors
+        run: |
+          python -m py_compile scripts/update_feeds_v2.py scripts/update_macro_data.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
+      - name: Validate committed portal structure and existing public datasets
+        run: python scripts/validate_portal.py
+      - name: Execute live classified-news and digital-asset retrieval
+        run: python scripts/update_feeds_v2.py
+      - name: Execute live macro-market retrieval
+        run: python scripts/update_macro_data.py
+      - name: Execute safe media-monitor health retrieval
+        run: python scripts/discover_corporate_media.py
+      - name: Generate SEO files using current generator
+        run: python scripts/generate_seo.py
+      - name: Validate newly retrieved datasets and workflow-safe state
+        run: python scripts/validate_portal.py --post-fetch
+      - name: Show files generated during validation without publishing them
+        run: git status --short
