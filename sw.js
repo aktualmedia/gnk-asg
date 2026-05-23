@@ -1,13 +1,17 @@
-const CACHE_NAME = 'gnk-asg-live-v2';
+const CACHE_NAME = 'gnk-asg-live-v3';
 const STATIC_ASSETS = [
   './',
   './index.html',
+  './en/',
+  './en/index.html',
   './assets/style.css',
   './assets/advanced.css',
   './assets/fina-panel.css',
   './assets/bitcoin-chart.css',
   './assets/language.css',
   './assets/intelligence-desk.css',
+  './assets/mobile-app.css',
+  './assets/desk-search.css',
   './assets/logo-gnk-asg.svg',
   './assets/favicon.svg',
   './assets/app.js',
@@ -19,7 +23,10 @@ const STATIC_ASSETS = [
   './assets/assistant.js',
   './assets/inline-assistant.js',
   './assets/intelligence-desk.js',
-  './manifest.webmanifest'
+  './assets/mobile-app.js',
+  './manifest.webmanifest',
+  './robots.txt',
+  './sitemap.xml'
 ];
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS)).then(() => self.skipWaiting()));
@@ -30,7 +37,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
-  const liveData = url.pathname.includes('/data/') || url.pathname.endsWith('.html') || url.pathname.endsWith('/');
+  const liveData = url.pathname.includes('/data/') || url.pathname.endsWith('.html') || url.pathname.endsWith('/') || url.pathname.endsWith('sitemap.xml') || url.pathname.endsWith('robots.txt');
   if (liveData) {
     event.respondWith(fetch(event.request, {cache:'no-store'}).catch(() => caches.match(event.request)));
     return;
