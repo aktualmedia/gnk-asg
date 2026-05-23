@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
-"""Discover public media mentions without publishing unapproved results.
+"""Verify public-media search availability without publishing unapproved results.
 
-The candidate list is written to a workflow artifact path, not to public site
-JSON. Only a minimal monitor-health status is safe for the public portal.
-Approved publications remain managed separately by an authorized workflow.
+The public GNK ASG portal exposes only monitor health and manually approved
+publications. Candidate results are deliberately not written into this public
+repository because the portal is hosted on GitHub Pages.
 """
 from __future__ import annotations
 
 import email.utils
-import hashlib
 import json
-import os
 import re
 import urllib.parse
 import urllib.request
@@ -22,9 +20,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 CONFIG = DATA / "media_queries.json"
 APPROVED = DATA / "media_approved.json"
-OUTPUT = ROOT / os.environ.get("MEDIA_CANDIDATE_OUTPUT", "_private_review/candidates.json")
-STATUS = ROOT / os.environ.get("MEDIA_PUBLIC_STATUS_OUTPUT", "data/media_monitor_status.json")
-UA = "GNK-ASG-Public-Media-Monitor/2.0"
+STATUS = DATA / "media_monitor_status.json"
+UA = "GNK-ASG-Public-Media-Monitor/3.0"
 
 
 def load(path: Path, default):
@@ -35,7 +32,6 @@ def load(path: Path, default):
 
 
 def save(path: Path, value) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
@@ -44,73 +40,58 @@ def clean(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def item_id(url: str) -> str:
-    return hashlib.sha256(url.encode("utf-8")).hexdigest()[:20]
-
-
-def fetch_feed(query: str) -> list[dict]:
+def fetch_feed(query: str) -> int:
     encoded = urllib.parse.quote_plus(query)
     url = f"https://news.google.com/rss/search?q={encoded}&hl=hr&gl=HR&ceid=HR:hr"
     request = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(request, timeout=25) as response:
         root = ET.fromstring(response.read())
-    rows: list[dict] = []
+    usable = 0
     for row in root.findall("./channel/item"):
         link = clean(row.findtext("link", ""))
         title = clean(row.findtext("title", ""))
+        raw_date = clean(row.findtext("pubDate", ""))
         if not link or not title:
             continue
-        raw_date = clean(row.findtext("pubDate", ""))
-        try:
-            parsed = email.utils.parsedate_to_datetime(raw_date).astimezone(timezone.utc).isoformat()
-        except Exception:
-            parsed = raw_date
-        source_node = row.find("source")
-        source = clean(source_node.text if source_node is not None and source_node.text else "Google News")
-        rows.append({
-            "id": item_id(link),
-            "title": title,
-            "source": source,
-            "url": link,
-            "published_at": parsed,
-            "summary": clean(row.findtext("description", ""))[:420],
-            "origin": "Google News public RSS",
-        })
-    return rows
+        if raw_date:
+            try:
+                email.utils.parsedate_to_datetime(raw_date).astimezone(timezone.utc)
+            except Exception:
+                pass
+        usable += 1
+    return usable
 
 
 def main() -> None:
     config = load(CONFIG, {})
-    approved_urls = {str(entry.get("url", "")).strip() for entry in load(APPROVED, []) if entry.get("url")}
-    candidates: dict[str, dict] = {}
+    approved = load(APPROVED, [])
+    checked_queries = 0
+    available_results = 0
     errors: list[str] = []
-    discovered_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-
     for subject in config.get("subjects", []):
         for base_query in subject.get("queries", []):
-            for period in config.get("period_queries", [""]):
-                query = base_query + period
-                try:
-                    for item in fetch_feed(query):
-                        if item["url"] in approved_urls:
-                            continue
-                        item.update({"subject": subject.get("name", ""), "query": query, "discovered_at": discovered_at, "status": "requires_authorized_review"})
-                        candidates.setdefault(item["id"], item)
-                except Exception as error:
-                    errors.append(f"{query}: {str(error)[:110]}")
-
-    queue = sorted(candidates.values(), key=lambda item: item.get("published_at", ""), reverse=True)
-    queue = queue[: int(config.get("max_pending_items", 1000))]
-    save(OUTPUT, queue)
+            query = base_query + " when:30d"
+            checked_queries += 1
+            try:
+                available_results += fetch_feed(query)
+            except Exception as error:
+                errors.append(f"{subject.get('name', '')}: {str(error)[:100]}")
+    timestamp = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     public_status = {
         "status": "ok" if not errors else "partial",
-        "updated_at": discovered_at,
-        "review_access": "authorized_github_actions_artifact",
+        "updated_at": timestamp,
+        "checked_queries": checked_queries,
+        "public_results_detected": available_results,
+        "approved_public": len(approved) if isinstance(approved, list) else 0,
         "public_display_policy": "manual_approval_only",
-        "errors_count": len(errors),
+        "privacy_notice": "Unapproved search results are not stored or displayed by the public portal.",
+        "errors_count": len(errors)
     }
     save(STATUS, public_status)
-    print(json.dumps({**public_status, "private_candidates": len(queue)}, ensure_ascii=False))
+    status = load(DATA / "update_status.json", {})
+    status["corporate_media_monitor"] = public_status
+    save(DATA / "update_status.json", status)
+    print(json.dumps(public_status, ensure_ascii=False))
 
 
 if __name__ == "__main__":
