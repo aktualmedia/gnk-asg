@@ -1,0 +1,47 @@
+name: Hourly Business News Update
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/update_feeds_v2.py'
+      - 'data/news_config_v2.json'
+      - 'data/blocked_news.json'
+      - '.github/workflows/hourly-news-update.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hourly-public-news-update
+  cancel-in-progress: false
+
+jobs:
+  update-news:
+    name: Refresh classified business and technology news
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Update fresh classified news
+        run: python scripts/update_feeds_v2.py
+      - name: Commit refreshed public news dataset
+        run: |
+          git config user.name "gnk-asg-news-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/news.json data/update_status.json
+          if git diff --cached --quiet; then
+            echo "No news changes."
+          else
+            git commit -m "Automated hourly business news update"
+            git push
+          fi
