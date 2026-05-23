@@ -21,5 +21,15 @@
     "macro_assets": 4,
     "refresh_frequency": "Every 5 minutes",
     "updated_at": "2026-05-23T20:12:01+00:00"
+  },
+  "corporate_media_monitor": {
+    "status": "ok",
+    "updated_at": "2026-05-23T22:38:24+00:00",
+    "checked_queries": 8,
+    "public_results_detected": 0,
+    "approved_public": 0,
+    "public_display_policy": "manual_approval_only",
+    "privacy_notice": "Unapproved search results are not stored or displayed by the public portal.",
+    "errors_count": 0
   }
 }
