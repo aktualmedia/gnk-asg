@@ -26,8 +26,6 @@
     {"name":"AI Technology","group":"technology","category":"technology","q":"artificial intelligence AI software semiconductor robotics when:14d"},
     {"name":"Cyber and Cloud","group":"technology","category":"technology","q":"cybersecurity cloud computing data center software when:14d"},
     {"name":"Digital Assets","group":"digital-assets","category":"digital-assets","q":"bitcoin ethereum blockchain digital assets market when:14d"},
-    {"name":"Crypto Regulation","group":"digital-assets","category":"digital-assets","q":"crypto regulation stablecoin digital finance when:14d"},
-    {"name":"GNK ASG Monitor","group":"mentions","category":"mentions","q":"GNK ASG when:60d"},
-    {"name":"GNK DINAMO Monitor","group":"mentions","category":"mentions","q":"GNK DINAMO Ltd when:60d"}
+    {"name":"Crypto Regulation","group":"digital-assets","category":"digital-assets","q":"crypto regulation stablecoin digital finance when:14d"}
   ]
 }
