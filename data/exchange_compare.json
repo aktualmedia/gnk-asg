@@ -1,0 +1,8 @@
+{
+  "updated_at": null,
+  "cadence": "scheduled every five minutes",
+  "asset": "Bitcoin",
+  "source": "CoinGecko exchange ticker aggregation",
+  "exchanges": [],
+  "disclaimer": "Usporedni informativni prikaz javno dostupnih ticker podataka; nije preporuka burze niti usluga izvršenja naloga."
+}
