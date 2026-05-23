@@ -2,18 +2,19 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260523-5'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260523-6'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260523-5'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260523-6'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
   style('assets/bitcoin-chart.css');
   style('assets/language.css');
   style('assets/intelligence-desk.css');
+  style('assets/mobile-app.css');
   script('assets/i18n.js');
   script('assets/status.js');
   script('assets/market.js');
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/assistant.js');
   script('assets/inline-assistant.js');
   script('assets/intelligence-desk.js');
+  script('assets/mobile-app.js');
 
   function isEnglish() {
     return window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en';
