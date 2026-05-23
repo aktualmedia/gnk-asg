@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-23T16:43:51+00:00",
+  "updated_at": "2026-05-23T16:59:05+00:00",
   "news": {
     "public_items": 374,
     "by_group": {
@@ -18,7 +18,7 @@
     "coins": 8,
     "macro_assets": 4,
     "refresh_frequency": "Every 5 minutes",
-    "updated_at": "2026-05-23T16:43:51+00:00"
+    "updated_at": "2026-05-23T16:59:05+00:00"
   },
   "corporate_media_monitor": {
     "status": "ok",

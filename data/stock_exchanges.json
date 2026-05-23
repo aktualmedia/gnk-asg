@@ -1,5 +1,5 @@
 {
-  "updated_at": null,
+  "updated_at": "2026-05-23T16:59:07+00:00",
   "refresh_frequency": "Every 5 minutes",
   "disclaimer_hr": "Informativni burzovni prikaz. Podatci mogu biti vremenski odgođeni; prije financijske odluke provjerite službeni izvor burze.",
   "disclaimer_en": "Informational stock-market display. Data may be delayed; verify the exchange official source before any financial decision.",
@@ -41,13 +41,103 @@
       "symbol": "NYA",
       "region_hr": "SAD",
       "region_en": "USA",
-      "status": "awaiting_refresh",
+      "status": "public_market_feed",
       "delay_hr": "Javni informativni indeksni podatak",
       "delay_en": "Public informational index data",
       "official_url": "https://www.nyse.com/quote/index/NYA",
-      "value": null,
-      "change_percent": null,
-      "points": []
+      "value": 23225.75,
+      "change_percent": 1.19,
+      "points": [
+        [
+          1776951000000,
+          22952.740234375
+        ],
+        [
+          1777037400000,
+          22934.55078125
+        ],
+        [
+          1777296600000,
+          22905.4609375
+        ],
+        [
+          1777383000000,
+          22835.58984375
+        ],
+        [
+          1777469400000,
+          22751.509765625
+        ],
+        [
+          1777555800000,
+          23144.640625
+        ],
+        [
+          1777642200000,
+          23041.150390625
+        ],
+        [
+          1777901400000,
+          22893.4609375
+        ],
+        [
+          1777987800000,
+          23008.669921875
+        ],
+        [
+          1778074200000,
+          23284.390625
+        ],
+        [
+          1778160600000,
+          23011.310546875
+        ],
+        [
+          1778247000000,
+          22942.150390625
+        ],
+        [
+          1778506200000,
+          22970.76953125
+        ],
+        [
+          1778592600000,
+          23015.33984375
+        ],
+        [
+          1778679000000,
+          22973.55078125
+        ],
+        [
+          1778765400000,
+          23101.849609375
+        ],
+        [
+          1778851800000,
+          22799.4296875
+        ],
+        [
+          1779111000000,
+          22900.5703125
+        ],
+        [
+          1779197400000,
+          22797.669921875
+        ],
+        [
+          1779283800000,
+          23021.740234375
+        ],
+        [
+          1779370200000,
+          23127.689453125
+        ],
+        [
+          1779456600000,
+          23225.75
+        ]
+      ],
+      "currency": "USD"
     },
     {
       "id": "nasdaq",
@@ -56,13 +146,107 @@
       "symbol": "COMP",
       "region_hr": "SAD",
       "region_en": "USA",
-      "status": "awaiting_refresh",
+      "status": "public_market_feed",
       "delay_hr": "Indeksni podatci mogu biti odgođeni",
       "delay_en": "Index data may be delayed",
       "official_url": "https://www.nasdaq.com/market-activity/index/comp",
-      "value": null,
-      "change_percent": null,
-      "points": []
+      "value": 26343.97,
+      "change_percent": 7.8,
+      "points": [
+        [
+          1776951000000,
+          24438.5
+        ],
+        [
+          1777037400000,
+          24836.599609375
+        ],
+        [
+          1777296600000,
+          24887.099609375
+        ],
+        [
+          1777383000000,
+          24663.80078125
+        ],
+        [
+          1777469400000,
+          24673.240234375
+        ],
+        [
+          1777555800000,
+          24892.310546875
+        ],
+        [
+          1777642200000,
+          25114.439453125
+        ],
+        [
+          1777901400000,
+          25067.80078125
+        ],
+        [
+          1777987800000,
+          25326.130859375
+        ],
+        [
+          1778074200000,
+          25838.939453125
+        ],
+        [
+          1778160600000,
+          25806.19921875
+        ],
+        [
+          1778247000000,
+          26247.080078125
+        ],
+        [
+          1778506200000,
+          26274.130859375
+        ],
+        [
+          1778592600000,
+          26088.19921875
+        ],
+        [
+          1778679000000,
+          26402.33984375
+        ],
+        [
+          1778765400000,
+          26635.220703125
+        ],
+        [
+          1778851800000,
+          26225.140625
+        ],
+        [
+          1779111000000,
+          26090.73046875
+        ],
+        [
+          1779197400000,
+          25870.7109375
+        ],
+        [
+          1779283800000,
+          26270.359375
+        ],
+        [
+          1779370200000,
+          26293.099609375
+        ],
+        [
+          1779456600000,
+          26343.970703125
+        ]
+      ],
+      "currency": "USD"
     }
-  ]
+  ],
+  "automated_sources": {
+    "nyse": "Yahoo Finance public chart feed; verify at NYSE official source",
+    "nasdaq": "Yahoo Finance public chart feed; verify at Nasdaq official source"
+  }
 }
