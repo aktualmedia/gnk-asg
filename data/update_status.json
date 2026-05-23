@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-23T15:50:02+00:00",
+  "updated_at": "2026-05-23T16:43:51+00:00",
   "news": {
     "public_items": 374,
     "by_group": {
@@ -14,8 +14,11 @@
     "errors": []
   },
   "market": {
+    "status": "ok",
     "coins": 8,
-    "btc_chart_points": 169
+    "macro_assets": 4,
+    "refresh_frequency": "Every 5 minutes",
+    "updated_at": "2026-05-23T16:43:51+00:00"
   },
   "corporate_media_monitor": {
     "status": "ok",
