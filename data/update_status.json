@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-23T23:14:33+00:00",
+  "updated_at": "2026-05-23T23:14:56+00:00",
   "news": {
     "public_items": 373,
     "by_group": {
@@ -11,7 +11,9 @@
       "international": 78,
       "slovenija": 30
     },
-    "errors": []
+    "errors": [],
+    "capacity": 1000,
+    "moderated_public_mentions": 0
   },
   "market": {
     "coins": 8,
