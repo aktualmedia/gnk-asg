@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260523-12'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260523-13'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260523-12'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260523-13'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/language-routing.js');
   script('assets/status.js');
   script('assets/market.js');
+  script('assets/live-market-pulse.js');
   script('assets/bitcoin-chart.js');
   script('assets/news-live.js');
   script('assets/assistant.js');
