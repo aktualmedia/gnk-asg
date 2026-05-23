@@ -3,9 +3,9 @@
   const isEnglish = () => /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   function labels() {
     return isEnglish() ? {
-      finance:'Financials', technology:'Technology & AI', markets:'Markets', news:'News', desk:'Intelligence Desk', documents:'Documents', install:'Install app', home:'Home'
+      finance:'Financials', network:'Global Network', technology:'Technology & AI', markets:'Markets', news:'News', desk:'Intelligence Desk', registers:'Public Registers', documents:'Documents', install:'Install app', home:'Home'
     } : {
-      finance:'Financije', technology:'Tehnologija i AI', markets:'Tržišta', news:'Vijesti', desk:'Intelligence Desk', documents:'Dokumenti', install:'Instaliraj aplikaciju', home:'Početna'
+      finance:'Financije', network:'Globalna mreža', technology:'Tehnologija i AI', markets:'Tržišta', news:'Vijesti', desk:'Intelligence Desk', registers:'Javni registri', documents:'Dokumenti', install:'Instaliraj aplikaciju', home:'Početna'
     };
   }
   function renderMenu() {
@@ -20,10 +20,12 @@
     }
     const t = labels();
     mobile.innerHTML = '<a class="primary" href="#assistant">' + t.desk + '</a>' +
+      '<a href="#global-network">' + t.network + '</a>' +
       '<a href="#financials">' + t.finance + '</a>' +
       '<a href="#technology">' + t.technology + '</a>' +
       '<a href="#digital-assets">' + t.markets + '</a>' +
       '<a href="#news">' + t.news + '</a>' +
+      '<a href="#publicSources">' + t.registers + '</a>' +
       '<a href="#dokumenti">' + t.documents + '</a>' +
       '<a href="instalacija/">' + t.install + '</a>';
     mobile.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
