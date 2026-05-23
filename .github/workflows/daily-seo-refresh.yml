@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - 'scripts/generate_seo.py'
+      - 'assets/gnk-asg-social-card.svg'
       - '.github/workflows/daily-seo-refresh.yml'
 
 permissions:
@@ -29,16 +30,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Generate search files
+      - name: Generate page metadata and search files
         run: python scripts/generate_seo.py
-      - name: Commit search files
+      - name: Commit generated SEO output
         run: |
           git config user.name "gnk-asg-seo-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add sitemap.xml robots.txt
+          git add index.html en/index.html sadrzaj/index.html financije/index.html tehnologija/index.html intelligence-desk/index.html registri/index.html instalacija/index.html sitemap.xml robots.txt
           if git diff --cached --quiet; then
             echo "No SEO changes."
           else
-            git commit -m "Automated SEO refresh"
+            git commit -m "Automated full-page SEO metadata refresh"
             git push
           fi
