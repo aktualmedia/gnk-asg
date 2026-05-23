@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v9';
+const CACHE_NAME = 'gnk-asg-live-v10';
 const STATIC_ASSETS = [
   './',
   './index.html',
