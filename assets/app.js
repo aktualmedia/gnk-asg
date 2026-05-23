@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260523-8'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260523-10'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260523-8'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260523-10'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
   style('assets/language.css');
   style('assets/intelligence-desk.css');
   style('assets/mobile-app.css');
+  style('assets/mobile-stability.css');
   style('assets/desk-search.css');
+  style('assets/floating-intelligence.css');
   script('assets/i18n.js');
   script('assets/language-routing.js');
   script('assets/status.js');
@@ -27,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/intelligence-desk.js');
   script('assets/desk-search.js');
   script('assets/mobile-app.js');
+  script('assets/mobile-navigation.js');
+  script('assets/floating-intelligence.js');
 
   function isEnglish() {
     return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
@@ -43,7 +47,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var menuButton = document.getElementById('menuToggle');
   var menu = document.getElementById('navLinks');
-  if (menuButton && menu) menuButton.addEventListener('click', function () { menu.classList.toggle('open'); });
+  if (menuButton && menu) {
+    menuButton.addEventListener('click', function () { menu.classList.toggle('open'); });
+    document.addEventListener('click', function (event) {
+      if (!menu.contains(event.target) && event.target !== menuButton) menu.classList.remove('open');
+    });
+  }
 
   var grid = document.getElementById('newsGrid');
   if (grid) {
