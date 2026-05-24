@@ -5,7 +5,7 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/" />
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,43 +14,109 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/" />
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://aktualmedia.github.io/gnk-asg/trzista/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/trzista/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/markets/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/trzista/" />
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aktualmedia.github.io/gnk-asg/en/markets/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/trzista/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/markets/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/trzista/" />
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://aktualmedia.github.io/gnk-asg/sadrzaj/</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aktualmedia.github.io/gnk-asg/financije/</loc>
-    <lastmod>2026-05-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/financije/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/finance/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/financije/" />
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aktualmedia.github.io/gnk-asg/en/finance/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/financije/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/finance/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/financije/" />
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aktualmedia.github.io/gnk-asg/tehnologija/</loc>
-    <lastmod>2026-05-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/tehnologija/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/technology/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/tehnologija/" />
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aktualmedia.github.io/gnk-asg/en/technology/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/tehnologija/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/technology/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/tehnologija/" />
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aktualmedia.github.io/gnk-asg/intelligence-desk/</loc>
-    <lastmod>2026-05-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/intelligence-desk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/intelligence-desk/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/intelligence-desk/" />
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aktualmedia.github.io/gnk-asg/en/intelligence-desk/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/intelligence-desk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/intelligence-desk/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/intelligence-desk/" />
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aktualmedia.github.io/gnk-asg/registri/</loc>
-    <lastmod>2026-05-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/registri/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/registries/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/registri/" />
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aktualmedia.github.io/gnk-asg/en/registries/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://aktualmedia.github.io/gnk-asg/registri/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aktualmedia.github.io/gnk-asg/en/registries/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aktualmedia.github.io/gnk-asg/registri/" />
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aktualmedia.github.io/gnk-asg/instalacija/</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
