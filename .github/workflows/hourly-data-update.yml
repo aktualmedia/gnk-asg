@@ -1,5 +1,6 @@
 name: Hourly News and Macro Reference Update
 
+# Production activation: first clean hourly run after fast-market separation.
 on:
   schedule:
     - cron: '17 * * * *'
