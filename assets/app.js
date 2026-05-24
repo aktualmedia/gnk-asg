@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260523-3d1'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260524-desk1'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260523-3d1'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260524-desk1'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('assets/market-expansion.css');
   style('assets/language.css');
   style('assets/intelligence-desk.css');
+  style('assets/desk-hybrid.css');
   style('assets/mobile-app.css');
   style('assets/desk-search.css');
   style('assets/floating-intelligence.css');
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/assistant.js');
   script('assets/inline-assistant.js');
   script('assets/intelligence-desk.js');
+  script('assets/desk-hybrid.js');
   script('assets/desk-search.js');
   script('assets/mobile-app.js');
   script('assets/mobile-navigation.js');
