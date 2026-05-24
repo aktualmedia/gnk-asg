@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260524-globe4'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260524-geo5'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260524-globe4'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260524-geo5'; el.async = false; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('assets/network-motion.css');
   style('assets/group-globe-3d.css');
   style('assets/group-location-insights.css');
+  style('assets/group-map-2d-geo.css');
   style('assets/bitcoin-chart.css');
   style('assets/market-expansion.css');
   style('assets/language.css');
@@ -45,9 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/mobile-app.js');
   script('assets/mobile-navigation.js');
   script('assets/floating-intelligence.js');
+  script('assets/world-geography.js');
   script('assets/group-network.js');
   script('assets/network-motion.js');
   script('assets/group-globe-3d.js');
+  script('assets/group-map-2d-geo.js');
   script('assets/group-location-insights.js');
   script('assets/network-selection-sync.js');
   script('assets/command-centre.js');
