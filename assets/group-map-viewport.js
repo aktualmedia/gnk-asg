@@ -1,9 +1,9 @@
 (() => {
   'use strict';
-  const V = { zoom: 1, x: 0, y: 0, dragging: false, moved: false, lastX: 0, lastY: 0, ready: false };
+  const V = { zoom: 1, x: 0, y: 0, dragging: false, moved: false, lastX: 0, lastY: 0 };
   const $ = id => document.getElementById(id);
   const en = () => document.documentElement.lang === 'en' || /\/en\/?$/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
-  const c = () => en() ? { hint:'Drag map to pan · scroll to zoom', center:'Centre map', zoom:'Zoom' } : { hint:'Povucite kartu za pomicanje · kotačić za povećanje', center:'Centriraj kartu', zoom:'Povećanje' };
+  const c = () => en() ? { hint:'Drag map to pan · scroll to zoom', center:'Centre map' } : { hint:'Povucite kartu za pomicanje · kotačić za povećanje', center:'Centriraj kartu' };
   function stage() { return $('networkGeoStage'); }
   function svg() { return $('networkGeoSvg'); }
   function apply() {
@@ -15,9 +15,10 @@
   }
   function limitPan() {
     const box = stage(), map = svg(); if (!box || !map) return;
-    const bounds = box.getBoundingClientRect(), mapBounds = map.getBoundingClientRect();
-    const extraX = Math.max(0, (mapBounds.width - bounds.width) / 2 + 56);
-    const extraY = Math.max(0, (mapBounds.height - bounds.height) / 2 + 42);
+    const bounds = box.getBoundingClientRect();
+    const baseWidth = map.offsetWidth * V.zoom, baseHeight = map.offsetHeight * V.zoom;
+    const extraX = Math.max(0, (baseWidth - bounds.width) / 2 + 48);
+    const extraY = Math.max(0, (baseHeight - bounds.height) / 2 + 42);
     V.x = Math.max(-extraX, Math.min(extraX, V.x));
     V.y = Math.max(-extraY, Math.min(extraY, V.y));
   }
@@ -27,21 +28,29 @@
     if (V.zoom === 1) { V.x = 0; V.y = 0; }
     limitPan(); apply();
   }
+  function cleanButton(original, label, handler) {
+    if (!original) return null;
+    const button = original.cloneNode(true);
+    button.setAttribute('aria-label', label);
+    original.replaceWith(button);
+    button.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); handler(); });
+    return button;
+  }
   function mountControls() {
     const canvas = document.querySelector('#global-network .network-canvas'), controls = canvas?.querySelector('.network-controls');
     if (!canvas || !controls) return;
     if (!$('geoViewportHint')) {
       const hint = document.createElement('div'); hint.id = 'geoViewportHint'; hint.className = 'geo-viewport-hint'; hint.textContent = c().hint; canvas.appendChild(hint);
     }
+    if (!controls.dataset.viewportClean) {
+      controls.dataset.viewportClean = '1';
+      cleanButton(controls.querySelector('[data-zoom="in"]'), '+', () => zoom(.18));
+      cleanButton(controls.querySelector('[data-zoom="out"]'), '−', () => zoom(-.18));
+      cleanButton(controls.querySelector('[data-zoom="reset"]'), c().center, reset);
+    }
     let value = $('geoZoomValue');
     if (!value) { value = document.createElement('span'); value.id = 'geoZoomValue'; value.className = 'geo-zoom-value'; controls.appendChild(value); }
-    if (controls.dataset.viewportReady) { apply(); return; }
-    controls.dataset.viewportReady = '1';
-    const plus = controls.querySelector('[data-zoom="in"]'), minus = controls.querySelector('[data-zoom="out"]'), center = controls.querySelector('[data-zoom="reset"]');
-    plus?.addEventListener('click', event => { event.preventDefault(); event.stopImmediatePropagation(); zoom(.18); }, true);
-    minus?.addEventListener('click', event => { event.preventDefault(); event.stopImmediatePropagation(); zoom(-.18); }, true);
-    center?.setAttribute('aria-label', c().center);
-    center?.addEventListener('click', event => { event.preventDefault(); event.stopImmediatePropagation(); reset(); }, true);
+    apply();
   }
   function wrapMap() {
     const map = svg(); if (!map) return false;
@@ -65,7 +74,7 @@
       });
       const end = event => { if (!V.dragging) return; V.dragging = false; box.classList.remove('dragging'); try { box.releasePointerCapture(event.pointerId); } catch (_) {} };
       box.addEventListener('pointerup', end); box.addEventListener('pointercancel', end);
-      box.addEventListener('wheel', event => { event.preventDefault(); zoom(event.deltaY < 0 ? .12 : -.12); }, {passive:false});
+      box.addEventListener('wheel', event => { event.preventDefault(); zoom(event.deltaY < 0 ? .12 : -.12); }, { passive: false });
       box.addEventListener('dblclick', event => { if (!event.target.closest('.geo-node')) reset(); });
       window.addEventListener('resize', () => { limitPan(); apply(); });
     }
@@ -73,7 +82,10 @@
   }
   function init() {
     let tries = 0; const timer = setInterval(() => { if (wrapMap() || ++tries > 180) clearInterval(timer); }, 60);
-    window.addEventListener('gnk-language-change', () => { const hint = $('geoViewportHint'); if (hint) hint.textContent = c().hint; const resetButton = document.querySelector('#global-network [data-zoom="reset"]'); if (resetButton) resetButton.setAttribute('aria-label', c().center); });
+    window.addEventListener('gnk-language-change', () => {
+      const hint = $('geoViewportHint'); if (hint) hint.textContent = c().hint;
+      const resetButton = document.querySelector('#global-network [data-zoom="reset"]'); if (resetButton) resetButton.setAttribute('aria-label', c().center);
+    });
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 })();
