@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v30-location-weather';
+const CACHE_NAME = 'gnk-asg-live-v31-location-context-layout';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/',
