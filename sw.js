@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v27-2d-legend-click-fix';
+const CACHE_NAME = 'gnk-asg-live-v28-local-time-legend';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/',
