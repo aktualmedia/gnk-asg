@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260524-googlemap13'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260524-weather14'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260524-googlemap13'; el.async = false; document.body.appendChild(el);
+    el.src = path + '?v=20260524-weather14'; el.async = false; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('assets/group-location-insights.css');
   style('assets/group-map-2d-geo.css');
   style('assets/group-google-map.css');
+  style('assets/group-location-weather.css');
   style('assets/bitcoin-chart.css');
   style('assets/market-expansion.css');
   style('assets/language.css');
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/group-location-insights.js');
   script('assets/group-map-selection-bridge.js');
   script('assets/group-google-map.js');
+  script('assets/group-location-weather.js');
   script('assets/network-selection-sync.js');
   script('assets/command-centre.js');
   script('assets/network-search-3d.js');
