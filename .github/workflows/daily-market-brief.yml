@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '12 6 * * *'
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/generate_daily_market_brief.py'
+      - '.github/workflows/daily-market-brief.yml'
 
 permissions:
   contents: write
@@ -16,7 +22,7 @@ jobs:
   publish-brief:
     name: Generate professional daily public market commentary
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 15
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,9 +30,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Generate factual daily market brief from latest published data
+      - name: Refresh local observation context without publishing source tables
+        run: |
+          python scripts/update_fast_market.py
+          python scripts/update_macro_data.py
+      - name: Generate factual daily market brief from latest observations
         run: python scripts/generate_daily_market_brief.py
-      - name: Commit daily public market commentary
+      - name: Commit daily public market commentary only
         run: |
           git config user.name "gnk-asg-brief-bot"
           git config user.email "actions@users.noreply.github.com"
