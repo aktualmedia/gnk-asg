@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260524-desk1'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260524-command2'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260524-desk1'; el.defer = true; document.body.appendChild(el);
+    el.src = path + '?v=20260524-command2'; el.defer = true; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('assets/language.css');
   style('assets/intelligence-desk.css');
   style('assets/desk-hybrid.css');
+  style('assets/command-centre.css');
   style('assets/mobile-app.css');
   style('assets/desk-search.css');
   style('assets/floating-intelligence.css');
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/group-network.js');
   script('assets/network-motion.js');
   script('assets/group-globe-3d.js');
+  script('assets/command-centre.js');
   script('assets/group-clarity.js');
   script('assets/public-sources.js');
   script('assets/hourly-data-disclosure.js');
