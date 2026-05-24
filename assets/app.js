@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260524-map-fix9'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260524-legend10'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260524-map-fix9'; el.async = false; document.body.appendChild(el);
+    el.src = path + '?v=20260524-legend10'; el.async = false; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
