@@ -1,4 +1,4 @@
-name: Hourly Business and Market Update
+name: Hourly News and Macro Reference Update
 
 on:
   schedule:
@@ -18,12 +18,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: hourly-public-data-update
+  group: hourly-public-news-macro-update
   cancel-in-progress: false
 
 jobs:
-  update-data:
-    name: Refresh classified news and market intelligence
+  update-hourly:
+    name: Refresh classified news and macro reference series
     runs-on: ubuntu-latest
     timeout-minutes: 14
     steps:
@@ -33,18 +33,18 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Update fresh news and digital assets
+      - name: Update hourly classified news
         run: python scripts/update_feeds_v2.py
-      - name: Update Bitcoin, gold, Brent oil and USD comparison
+      - name: Update macro comparison reference
         run: python scripts/update_macro_data.py
-      - name: Commit refreshed public datasets
+      - name: Commit refreshed hourly public datasets
         run: |
-          git config user.name "gnk-asg-data-bot"
+          git config user.name "gnk-asg-hourly-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/news.json data/market.json data/btc_chart.json data/macro_market.json data/update_status.json
+          git add data/news.json data/macro_market.json data/update_status.json
           if git diff --cached --quiet; then
-            echo "No data changes."
+            echo "No hourly data changes."
           else
-            git commit -m "Automated hourly market intelligence update"
+            git commit -m "Automated hourly news and macro reference update"
             git push
           fi

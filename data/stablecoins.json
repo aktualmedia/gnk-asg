@@ -1,0 +1,8 @@
+{
+  "updated_at": null,
+  "cadence": "scheduled every five minutes",
+  "source": "CoinGecko public market data",
+  "reference": "Observed market deviation from stated reference currency; not a reserve or redemption assessment.",
+  "regulatory_notice": "GNK ASG d.o.o. ne izdaje niti nudi stablecoin kroz ovaj prikaz. Svaki budući token zahtijevao bi zasebnu pravnu, regulatornu i tehničku procjenu prije javne ponude.",
+  "stablecoins": []
+}
