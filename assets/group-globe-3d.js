@@ -2,6 +2,7 @@
   'use strict';
   const TAU = Math.PI * 2;
   const DEG = Math.PI / 180;
+  const AUTO_ROTATION_SPEED = .00056;
   const state = {
     network:null, geo:null, mode:'3d', filter:'all',
     yaw:-18 * DEG, pitch:18 * DEG, zoom:1, auto:true,
@@ -174,7 +175,7 @@
     const canvas = document.getElementById('groupGlobeCanvas');
     if (!canvas || state.mode !== '3d' || !state.network || !state.geo) return;
     resize(canvas); const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-    if (state.auto && !state.drag && !matchMedia('(prefers-reduced-motion: reduce)').matches) state.yaw += .00038 * Math.min(35, timestamp - (state.lastFrame || timestamp));
+    if (state.auto && !state.drag && !matchMedia('(prefers-reduced-motion: reduce)').matches) state.yaw += AUTO_ROTATION_SPEED * Math.min(35, timestamp - (state.lastFrame || timestamp));
     state.lastFrame = timestamp; drawOcean(ctx, canvas); drawGrid(ctx, canvas); drawLand(ctx, canvas);
     const centre = pointData('boulder');
     state.network.nodes.filter(visible).forEach(node => drawArc(ctx, canvas, centre, pointData(node.id), node.status === 'planned', timestamp));
@@ -224,6 +225,13 @@
   function at(canvas, event) { const rect = canvas.getBoundingClientRect(), x = event.clientX - rect.left, y = event.clientY - rect.top; return (canvas._points || []).find(point => Math.hypot(point.x - x, point.y - y) <= point.r); }
   function hover(canvas, event) { const selected = at(canvas, event), tip = document.getElementById('globeTooltip'); if (!tip) return; if (!selected) { tip.classList.remove('visible'); return; } tip.innerHTML = `${name(selected.node)}<small>${place(selected.node)}</small>`; tip.style.left = `${selected.x}px`; tip.style.top = `${selected.y}px`; tip.classList.add('visible'); }
   function select(canvas, event) { const selected = at(canvas, event); if (selected) { state.selected = selected.node.id; updateDetail(selected.node); } }
+  window.GNK_GLOBE = {
+    getCanvas() { return document.getElementById('groupGlobeCanvas'); },
+    getSelected() { return state.selected; },
+    isActive() { return state.mode === '3d'; },
+    activate() { const button = document.querySelector('[data-globe-mode="3d"]'); if (button && state.mode !== '3d') button.click(); },
+    selectLocation(id) { const item = pointData(id); if (!item) return false; state.selected = id; updateDetail(item); return true; }
+  };
   async function init() {
     try {
       const [networkResponse, geoResponse] = await Promise.all([fetch('data/group_network.json?v=' + Date.now(), {cache:'no-store'}), fetch('data/group_network_geo.json?v=' + Date.now(), {cache:'no-store'})]);
