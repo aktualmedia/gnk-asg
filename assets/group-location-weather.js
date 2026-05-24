@@ -33,11 +33,11 @@
     catch (_) { return value; }
   }
   function host() {
-    const canvas = document.querySelector('#global-network .network-canvas');
-    if (!canvas) return null;
-    canvas.classList.add('has-location-weather');
+    let dock = window.GNK_LOCATION_CONTEXT?.dock?.() || $('networkLocationContext');
+    if (!dock) return null;
+    dock.classList.add('has-weather');
     let panel = $('locationWeatherPanel');
-    if (!panel) { panel = document.createElement('section'); panel.id = 'locationWeatherPanel'; panel.className = 'location-weather-panel'; canvas.appendChild(panel); }
+    if (!panel) { panel = document.createElement('section'); panel.id = 'locationWeatherPanel'; panel.className = 'location-weather-panel'; dock.appendChild(panel); }
     return panel;
   }
   function header(name) { const T = tr(); return `<header class="weather-head"><div><small>${T.live}</small><strong>${T.title} · ${name}</strong></div><a href="https://open-meteo.com/" target="_blank" rel="noopener">${T.source} ↗</a></header>`; }
@@ -86,7 +86,7 @@
     [state.network, state.geo, state.facts] = await Promise.all([get('data/group_network.json'), get('data/group_network_geo.json'), get('data/group_location_facts.json')]);
     if (!state.network || !state.geo) return;
     let attempts = 0; const timer = setInterval(() => {
-      if ($('googleLocationMap')) { const initial = window.GNK_LOCATION_INSIGHTS?.current?.() || window.GNK_GEO_MAP?.getSelected?.() || 'boulder'; load(initial); clearInterval(timer); }
+      if ($('networkLocationContext') || window.GNK_LOCATION_CONTEXT?.dock?.()) { const initial = window.GNK_LOCATION_INSIGHTS?.current?.() || window.GNK_GEO_MAP?.getSelected?.() || window.GNK_GLOBE?.getSelected?.() || 'boulder'; load(initial); clearInterval(timer); }
       else if (++attempts > 220) clearInterval(timer);
     }, 60);
     document.addEventListener('gnk-location-selected', event => { if (event.detail?.id) load(event.detail.id); });
