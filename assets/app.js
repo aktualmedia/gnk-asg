@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260524-geo5'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260524-geo6'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260524-geo5'; el.async = false; document.body.appendChild(el);
+    el.src = path + '?v=20260524-geo6'; el.async = false; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/network-selection-sync.js');
   script('assets/command-centre.js');
   script('assets/network-search-3d.js');
+  script('assets/group-map-pdf.js');
   script('assets/group-clarity.js');
   script('assets/public-sources.js');
   script('assets/hourly-data-disclosure.js');
