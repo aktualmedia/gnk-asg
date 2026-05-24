@@ -1,8 +1,75 @@
 {
-  "updated_at": null,
+  "updated_at": "2026-05-24T07:49:57+00:00",
   "cadence": "scheduled every five minutes",
-  "source": "Public quotation feed",
-  "indices": [],
+  "source": "Public market quote feed",
+  "indices": [
+    {
+      "id": "sp500",
+      "symbol": "^GSPC",
+      "label": "S&P 500",
+      "region": "SAD",
+      "current": 7473.47021484375,
+      "previous_close": 7408.5,
+      "change_percent": 0.88,
+      "currency": "USD",
+      "market_time": 1779482708
+    },
+    {
+      "id": "nasdaq",
+      "symbol": "^IXIC",
+      "label": "Nasdaq Composite",
+      "region": "SAD",
+      "current": 26343.970703125,
+      "previous_close": 26225.14,
+      "change_percent": 0.45,
+      "currency": "USD",
+      "market_time": 1779484559
+    },
+    {
+      "id": "stoxx50",
+      "symbol": "^STOXX50E",
+      "label": "EURO STOXX 50",
+      "region": "Europa",
+      "current": 6019.4501953125,
+      "previous_close": 5849.0,
+      "change_percent": 2.91,
+      "currency": "EUR",
+      "market_time": 1779465600
+    },
+    {
+      "id": "dax",
+      "symbol": "^GDAXI",
+      "label": "DAX",
+      "region": "Njemačka",
+      "current": 24888.560546875,
+      "previous_close": 23950.57,
+      "change_percent": 3.92,
+      "currency": "EUR",
+      "market_time": 1779465600
+    },
+    {
+      "id": "ftse",
+      "symbol": "^FTSE",
+      "label": "FTSE 100",
+      "region": "UK",
+      "current": 10466.259765625,
+      "previous_close": 10195.4,
+      "change_percent": 2.66,
+      "currency": "GBP",
+      "market_time": 1779464130
+    },
+    {
+      "id": "nikkei",
+      "symbol": "^N225",
+      "label": "Nikkei 225",
+      "region": "Japan",
+      "current": 63339.0703125,
+      "previous_close": 60815.95,
+      "change_percent": 4.15,
+      "currency": "JPY",
+      "market_time": 1779432303
+    }
+  ],
   "errors": [],
   "notice": "Informativni prikaz posljednjih dostupnih vrijednosti; podatci mogu biti odgođeni."
 }
