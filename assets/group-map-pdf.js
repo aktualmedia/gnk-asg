@@ -22,8 +22,10 @@
   }
   function inlineSvg(svg) {
     const clone = svg.cloneNode(true); clone.removeAttribute('style'); clone.setAttribute('width','1040'); clone.setAttribute('height','545');
+    const interactiveLayer = clone.querySelector('#networkGeoLayer');
+    if (interactiveLayer) interactiveLayer.removeAttribute('transform');
     const style = document.createElementNS('http://www.w3.org/2000/svg','style');
-    style.textContent = '.geo-ocean{fill:#06182e}.geo-grid line{stroke:rgba(91,151,195,.18);stroke-width:1;stroke-dasharray:2 7}.geo-land path{fill:#164e43;stroke:#65ab82;stroke-width:.8}.geo-micro-land circle{fill:#27784f;stroke:#b0dfb8;stroke-width:1.2}.geo-continent-labels text{fill:#d4af37;font-size:11px;font-weight:800;letter-spacing:2px;paint-order:stroke;stroke:#06182e;stroke-width:4px}.geo-route{fill:none;stroke-linecap:round}.geo-route.direct{stroke:#2c8ef5;stroke-width:1.2;opacity:.65}.geo-route.peer{stroke:#8cb9e8;stroke-width:.8;opacity:.5;stroke-dasharray:3 4}.geo-route.planned{stroke:#65d27d;stroke-width:1.1;opacity:.8;stroke-dasharray:4 3}.geo-node circle{stroke-width:1.7}.geo-node.active circle{fill:#2f8ef4;stroke:#a6dbff}.geo-node.planned circle{fill:#45b960;stroke:#b3f1bb}.geo-node.hq circle{fill:#d4af37;stroke:#f8dd80}.geo-node.selected circle{fill:#ef3340;stroke:#fff;stroke-width:2.6}.geo-node text{fill:#edf5ff;font-size:9px;font-weight:800;paint-order:stroke;stroke:#061326;stroke-width:3px}.geo-node text.sub{fill:#9db4ce;font-size:7.8px}';
+    style.textContent = '.geo-ocean{fill:#06182e}.geo-grid line{stroke:rgba(91,151,195,.18);stroke-width:1;stroke-dasharray:2 7}.geo-land path{fill:#164e43;stroke:#65ab82;stroke-width:.8}.geo-micro-land circle{fill:#27784f;stroke:#b0dfb8;stroke-width:1.2}.geo-continent-labels text{fill:#d4af37;font-size:11px;font-weight:800;letter-spacing:2px;paint-order:stroke;stroke:#06182e;stroke-width:4px}.geo-route{fill:none;stroke-linecap:round}.geo-route.direct{stroke:#2c8ef5;stroke-width:1.2;opacity:.65}.geo-route.peer{stroke:#8cb9e8;stroke-width:.8;opacity:.5;stroke-dasharray:3 4}.geo-route.planned{stroke:#65d27d;stroke-width:1.1;opacity:.8;stroke-dasharray:4 3}.geo-node .geo-node-hit{fill:transparent;stroke:transparent;stroke-width:0}.geo-node .geo-node-pin{stroke-width:1.7}.geo-node.active .geo-node-pin{fill:#2f8ef4;stroke:#a6dbff}.geo-node.planned .geo-node-pin{fill:#45b960;stroke:#b3f1bb}.geo-node.hq .geo-node-pin{fill:#d4af37;stroke:#f8dd80}.geo-node.selected .geo-node-pin{fill:#ef3340;stroke:#fff;stroke-width:2.6}.geo-node text{fill:#edf5ff;font-size:9px;font-weight:800;paint-order:stroke;stroke:#061326;stroke-width:3px}.geo-node text.sub{fill:#9db4ce;font-size:7.8px}';
     clone.insertBefore(style, clone.firstChild); return clone;
   }
   function svgImage(svg) {
@@ -68,7 +70,7 @@
     const objects=[null,bytes('<< /Type /Catalog /Pages 2 0 R >>'),bytes('<< /Type /Pages /Kids [3 0 R] /Count 1 >>'),bytes(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageW} ${pageH}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>`),concat([bytes(`<< /Type /XObject /Subtype /Image /Width 1754 /Height 1240 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${image.length} >>\nstream\n`),image,bytes('\nendstream')]),bytes(`<< /Length ${content.length} >>\nstream\n${content}endstream`)];
     const parts=[bytes('%PDF-1.4\n%\xE2\xE3\xCF\xD3\n')], offsets=[0]; let length=parts[0].length;
     for(let i=1;i<objects.length;i++){offsets[i]=length;const part=concat([bytes(`${i} 0 obj\n`),objects[i],bytes('\nendobj\n')]);parts.push(part);length+=part.length;}
-    const xref=length; let table=`xref\n0 ${objects.length}\n0000000000 65535 f \n`; for(let i=1;i<objects.length;i++) table+=`${String(offsets[i]).padStart(10,'0')} 00000 n \n`;
+    const xref=length; let table=`xref\n0 ${objects.length}\n0000000000 65535 f \n`; for(let i=1;i<objects.length;i++)table+=`${String(offsets[i]).padStart(10,'0')} 00000 n \n`;
     parts.push(bytes(`${table}trailer\n<< /Size ${objects.length} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`)); return new Blob([concat(parts)],{type:'application/pdf'});
   }
   async function download(button) {
