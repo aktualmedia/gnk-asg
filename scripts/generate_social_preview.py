@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Generate a raster social-preview image for Open Graph and Twitter Cards."""
+"""Generate a raster social-preview image for Open Graph and Twitter Cards.
+
+Production activation: initial PNG publication for the bilingual Market Intelligence release.
+"""
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
