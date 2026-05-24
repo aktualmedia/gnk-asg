@@ -18,5 +18,15 @@
   "market": {
     "coins": 8,
     "btc_chart_points": 169
+  },
+  "corporate_media_monitor": {
+    "status": "ok",
+    "updated_at": "2026-05-24T05:38:26+00:00",
+    "checked_queries": 8,
+    "public_results_detected": 0,
+    "approved_public": 0,
+    "public_display_policy": "manual_approval_only",
+    "privacy_notice": "Unapproved search results are not stored or displayed by the public portal.",
+    "errors_count": 0
   }
 }
