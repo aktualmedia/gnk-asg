@@ -5,11 +5,12 @@
   let references = null;
   let content = null;
   let observer = null;
+  let arranging = false;
   const en = () => document.documentElement.lang === 'en' || /\/en\/?$/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const words = () => en() ? {
-    reference: 'Legend and notes', detail: 'Selected location information', map: 'Selected location map', weather: 'Weather forecast for selected location'
+    reference: 'Legend, sources and downloads', detail: 'Selected location information', map: 'Selected location map', weather: 'Weather forecast for selected location'
   } : {
-    reference: 'Legenda i napomene', detail: 'Podatci odabrane lokacije', map: 'Karta odabrane lokacije', weather: 'Vremenska prognoza odabrane lokacije'
+    reference: 'Legenda, izvori i preuzimanja', detail: 'Podatci odabrane lokacije', map: 'Karta odabrane lokacije', weather: 'Vremenska prognoza odabrane lokacije'
   };
   function moveToReference(node) {
     if (!node || moved.some(item => item.node === node)) return;
@@ -25,13 +26,17 @@
       references.innerHTML = '<summary></summary><div class="mobile-network-reference-content"></div>';
       content = references.querySelector('.mobile-network-reference-content');
     }
-    references.querySelector('summary').textContent = words().reference;
+    const label = words().reference;
+    const summary = references.querySelector('summary');
+    if (summary.textContent !== label) summary.textContent = label;
     if (!references.isConnected) sidebar.appendChild(references);
   }
   function mobileArrange() {
+    if (arranging) return false;
     const sidebar = document.querySelector('#global-network .network-sidebar');
     const detail = document.getElementById('networkDetail');
     if (!sidebar || !detail) return false;
+    arranging = true;
     buildReference(sidebar);
     detail.setAttribute('aria-label', words().detail);
     detail.setAttribute('aria-live', 'polite');
@@ -45,16 +50,20 @@
     const weather = document.getElementById('locationWeatherPanel');
     if (map) map.setAttribute('aria-label', words().map);
     if (weather) { weather.setAttribute('aria-label', words().weather); weather.setAttribute('aria-live', 'polite'); }
-    sidebar.appendChild(references);
+    if (sidebar.lastElementChild !== references) sidebar.appendChild(references);
+    arranging = false;
     return true;
   }
   function desktopRestore() {
+    if (arranging) return;
+    arranging = true;
     moved.forEach(({ node, marker }) => {
       if (marker.parentNode) marker.parentNode.insertBefore(node, marker);
       marker.remove();
     });
     moved.length = 0;
     references?.remove();
+    arranging = false;
   }
   function arrange() {
     if (mobile.matches) mobileArrange();
@@ -67,7 +76,7 @@
         arrange();
         window.clearInterval(timer);
         const root = document.getElementById('global-network');
-        observer = new MutationObserver(() => { if (mobile.matches) mobileArrange(); });
+        observer = new MutationObserver(() => { if (mobile.matches && !arranging) mobileArrange(); });
         observer.observe(root, { childList: true, subtree: true });
       } else if (++tries > 220) window.clearInterval(timer);
     }, 60);
