@@ -2,43 +2,239 @@
   'use strict';
   const TAU = Math.PI * 2;
   const DEG = Math.PI / 180;
-  const state = { network: null, geo: null, mode: '3d', filter: 'all', yaw: -18 * DEG, pitch: 18 * DEG, zoom: 1, auto: true, drag: false, moved: false, lastX: 0, lastY: 0, hover: null, selected: 'boulder', pulse: 0, raf: 0 };
+  const state = {
+    network:null, geo:null, mode:'3d', filter:'all',
+    yaw:-18 * DEG, pitch:18 * DEG, zoom:1, auto:true,
+    drag:false, moved:false, lastX:0, lastY:0,
+    selected:'boulder', raf:0, lastFrame:0
+  };
   const isEn = () => /\/en\/?$/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
-  const txt = { hr: { globe:'3D globus', map:'2D mreža', rotate:'Auto rotacija', reset:'Reset', centre:'Fokus centar', live:'Živa globalna mreža', guide:'Povuci za rotaciju · kotačić za zoom · klikni društvo', active:'Postojeće društvo', planned:'Planirano 2026.', hq:'Središnje sjedište', region:'Regija', status:'Status', ocean:'OCEANI', na:'SJEVERNA AMERIKA', sa:'JUŽNA AMERIKA', eu:'EUROPA', af:'AFRIKA', as:'AZIJA', oc:'OCEANIJA' }, en: { globe:'3D Globe', map:'2D Network', rotate:'Auto rotate', reset:'Reset', centre:'Focus centre', live:'Live global network', guide:'Drag to rotate · scroll to zoom · click an entity', active:'Existing company', planned:'Planned 2026', hq:'Central headquarters', region:'Region', status:'Status', ocean:'OCEANS', na:'NORTH AMERICA', sa:'SOUTH AMERICA', eu:'EUROPE', af:'AFRICA', as:'ASIA', oc:'OCEANIA' } };
-  const t = () => txt[isEn() ? 'en' : 'hr'];
-  const byId = id => state.network.nodes.find(node => node.id === id) || (id === state.network.center.id ? state.network.center : null);
-  const pointData = id => { const node = byId(id); const geo = id === 'boulder' ? state.geo.center : state.geo.nodes[id]; return node && geo ? {...node, ...geo} : null; };
-  function visible(node) { if (!node) return false; if (state.filter === 'active') return node.status === 'active' || node.id === 'boulder'; if (state.filter === 'planned') return node.status === 'planned'; if (state.filter === 'outside') return node.region !== 'Europa'; return true; }
-  function name(node) { return node.id === 'boulder' ? node.name : (isEn() ? node.name_en : node.name_hr); }
-  function place(node) { return node.id === 'boulder' ? node.place : (isEn() ? node.place_en : node.place_hr); }
-  function sphere(lat, lng) { const a = lat * DEG, b = lng * DEG; return { x: Math.cos(a) * Math.cos(b), y: Math.sin(a), z: Math.cos(a) * Math.sin(b) }; }
-  function rotate(p) { const cy = Math.cos(state.yaw), sy = Math.sin(state.yaw), cp = Math.cos(state.pitch), sp = Math.sin(state.pitch); const x1 = p.x * cy - p.z * sy; const z1 = p.x * sy + p.z * cy; return { x: x1, y: p.y * cp - z1 * sp, z: p.y * sp + z1 * cp }; }
-  function project(p, canvas) { const size = Math.min(canvas.clientWidth, canvas.clientHeight); const radius = size * .37 * state.zoom; const x = canvas.clientWidth / 2 + p.x * radius; const y = canvas.clientHeight / 2 - p.y * radius; return { x, y, z: p.z, scale: .52 + ((p.z + 1) / 2) * .55 }; }
-  function resize(canvas) { const dpr = Math.min(window.devicePixelRatio || 1, 2); const w = canvas.clientWidth, h = canvas.clientHeight; if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) { canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); const ctx = canvas.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); } }
-  const land = [
-    {key:'na', pts:[[72,-168],[68,-142],[61,-130],[54,-124],[49,-125],[44,-116],[30,-112],[18,-104],[8,-82],[18,-77],[28,-81],[37,-75],[47,-67],[57,-61],[70,-83],[78,-111]]},
-    {key:'sa', pts:[[12,-81],[5,-76],[-4,-78],[-14,-72],[-24,-69],[-35,-71],[-55,-67],[-52,-50],[-34,-46],[-18,-40],[-3,-48],[8,-61]]},
-    {key:'eu', pts:[[36,-10],[43,-9],[51,-5],[59,8],[70,22],[67,40],[55,35],[48,26],[40,29],[35,18]]},
-    {key:'af', pts:[[36,-17],[33,12],[22,35],[6,43],[-15,38],[-35,20],[-35,11],[-20,-8],[3,-16],[20,-17]]},
-    {key:'as', pts:[[70,23],[72,70],[62,108],[54,142],[39,146],[30,121],[11,109],[8,74],[25,52],[45,40],[55,35]]},
-    {key:'oc', pts:[[-10,112],[-19,115],[-36,113],[-44,145],[-36,154],[-16,151],[-9,132]]},
-    {key:'oc', pts:[[-34,166],[-46,168],[-48,179],[-35,177]]}
-  ];
-  const labels = {na:[50,-105],sa:[-18,-58],eu:[53,15],af:[5,20],as:[41,90],oc:[-27,135]};
-  function greatArc(a, b, steps = 34) { const pa = sphere(a.lat, a.lng), pb = sphere(b.lat, b.lng); const dot = Math.max(-1, Math.min(1, pa.x * pb.x + pa.y * pb.y + pa.z * pb.z)); const angle = Math.acos(dot); if (angle < .0001) return [pa, pb]; const sin = Math.sin(angle); return Array.from({length: steps + 1}, (_, i) => { const u = i / steps; const lift = Math.sin(Math.PI * u) * .09; const k1 = Math.sin((1-u)*angle)/sin, k2 = Math.sin(u*angle)/sin; const p = {x:pa.x*k1+pb.x*k2, y:pa.y*k1+pb.y*k2, z:pa.z*k1+pb.z*k2}; const l = Math.hypot(p.x,p.y,p.z); const r = 1 + lift; return {x:p.x/l*r,y:p.y/l*r,z:p.z/l*r}; }); }
-  function arc(ctx, canvas, a, b, planned, tick) { const pts = greatArc(a, b); const mapped = pts.map(p => project(rotate(p), canvas)); const front = mapped.filter(p => p.z > -.12); if (front.length < 2) return; ctx.save(); ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = planned ? 'rgba(113,237,145,.38)' : 'rgba(118,199,255,.35)'; ctx.lineWidth = planned ? 1.35 : 1.1; ctx.beginPath(); let open = false; mapped.forEach(p => { if (p.z < -.12) { open=false; return; } if (!open) {ctx.moveTo(p.x,p.y);open=true;} else ctx.lineTo(p.x,p.y); }); ctx.stroke(); const position = ((tick * (planned ? .00014 : .0002)) + (a.lng + b.lng) / 600) % 1; const idx = Math.min(mapped.length - 1, Math.floor(position * (mapped.length - 1))); const glow = mapped[idx]; if (glow && glow.z > -.08) { ctx.shadowBlur = 14; ctx.shadowColor = planned ? '#71ed91' : '#76c7ff'; ctx.fillStyle = planned ? '#abffbb' : '#e1f5ff'; ctx.beginPath(); ctx.arc(glow.x, glow.y, planned ? 2.25 : 2.45, 0, TAU); ctx.fill(); } ctx.restore(); }
-  function globe(ctx, canvas) { const cx=canvas.clientWidth/2, cy=canvas.clientHeight/2, r=Math.min(canvas.clientWidth,canvas.clientHeight)*.37*state.zoom; const g=ctx.createRadialGradient(cx-r*.4,cy-r*.4,r*.03,cx,cy,r*1.2); g.addColorStop(0,'#23648d'); g.addColorStop(.26,'#0b466e'); g.addColorStop(.58,'#062845'); g.addColorStop(1,'#020b18'); ctx.save(); ctx.shadowBlur=42;ctx.shadowColor='rgba(63,155,226,.46)';ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.fill();ctx.shadowBlur=0;ctx.strokeStyle='rgba(125,213,255,.43)';ctx.lineWidth=1.3;ctx.stroke(); ctx.beginPath();ctx.arc(cx,cy,r+5,0,TAU);ctx.strokeStyle='rgba(118,199,255,.12)';ctx.lineWidth=9;ctx.stroke(); ctx.globalAlpha=.14; ctx.fillStyle='#9fdfff';ctx.beginPath();ctx.ellipse(cx-r*.31,cy-r*.44,r*.3,r*.11,-.6,0,TAU);ctx.fill();ctx.restore(); grid(ctx,canvas,r); drawLand(ctx,canvas); }
-  function grid(ctx, canvas) { ctx.save(); ctx.lineWidth=.55;ctx.strokeStyle='rgba(103,180,220,.13)'; [-60,-30,0,30,60].forEach(lat => { let begun=false;ctx.beginPath();for(let lng=-180;lng<=180;lng+=4){ const p=project(rotate(sphere(lat,lng)),canvas); if(p.z<0){begun=false;continue;} if(!begun){ctx.moveTo(p.x,p.y);begun=true;}else ctx.lineTo(p.x,p.y);}ctx.stroke(); }); for(let lng=-150;lng<=180;lng+=30){let begun=false;ctx.beginPath();for(let lat=-90;lat<=90;lat+=3){const p=project(rotate(sphere(lat,lng)),canvas);if(p.z<0){begun=false;continue;}if(!begun){ctx.moveTo(p.x,p.y);begun=true;}else ctx.lineTo(p.x,p.y);}ctx.stroke();} ctx.restore(); }
-  function drawLand(ctx, canvas) { ctx.save(); land.forEach(shape => { const points = shape.pts.map(([lat,lng]) => project(rotate(sphere(lat,lng)),canvas)); if (points.filter(p=>p.z>-.05).length < 2) return; ctx.beginPath(); let opened=false; points.forEach(p => { if(p.z<-.12){opened=false; return;} if(!opened){ctx.moveTo(p.x,p.y);opened=true;} else ctx.lineTo(p.x,p.y); }); if(opened) ctx.closePath(); ctx.fillStyle='rgba(45,115,98,.62)'; ctx.strokeStyle='rgba(112,196,145,.43)'; ctx.lineWidth=.8; ctx.fill(); ctx.stroke(); }); Object.entries(labels).forEach(([key,[lat,lng]]) => { const p=project(rotate(sphere(lat,lng)),canvas); if(p.z<.12) return; ctx.fillStyle='rgba(219,235,198,.62)'; ctx.font='700 10px system-ui, sans-serif'; ctx.textAlign='center'; ctx.fillText(t()[key],p.x,p.y); }); ctx.restore(); }
-  function drawPoint(ctx,pos,node,timestamp) { const central=node.id==='boulder', planned=node.status==='planned', selected=state.selected===node.id; const radius=(central?8:planned?4.4:4.8)*pos.scale; ctx.save(); if(selected){ const wave=radius+7+Math.sin(timestamp/150)*4; ctx.strokeStyle='rgba(239,51,64,.86)';ctx.lineWidth=2;ctx.shadowBlur=18;ctx.shadowColor='#ef3340';ctx.beginPath();ctx.arc(pos.x,pos.y,wave,0,TAU);ctx.stroke();ctx.fillStyle='#ef3340';ctx.beginPath();ctx.arc(pos.x,pos.y,central?radius:radius+1.2,0,TAU);ctx.fill(); } else { ctx.shadowBlur=central?22:13;ctx.shadowColor=central?'#d4af37':planned?'#71ed91':'#76c7ff';ctx.fillStyle=central?'#d4af37':planned?'#71ed91':'#76c7ff';ctx.beginPath();ctx.arc(pos.x,pos.y,radius,0,TAU);ctx.fill(); } ctx.restore(); return Math.max(radius+10,14); }
-  function draw(timestamp) { const canvas=document.getElementById('groupGlobeCanvas'); if(!canvas || state.mode !== '3d') return; resize(canvas); const ctx=canvas.getContext('2d'); ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight); if(state.auto && !state.drag && !matchMedia('(prefers-reduced-motion: reduce)').matches) state.yaw += .00038 * Math.min(35, timestamp-(state.lastFrame||timestamp)); state.lastFrame=timestamp; globe(ctx,canvas); const center=pointData('boulder'); const all=[center,...state.network.nodes.map(n=>pointData(n.id)).filter(Boolean)]; state.network.nodes.filter(n => visible(n)).forEach(n => { const target=pointData(n.id); arc(ctx,canvas,center,target,n.status==='planned',timestamp); }); state.network.peer_links.forEach(pair => {const a=pointData(pair[0]),b=pointData(pair[1]);if(a&&b&&visible(a)&&visible(b)) arc(ctx,canvas,a,b,a.status==='planned'||b.status==='planned',timestamp+800);}); const clickable=[]; all.filter(n=>visible(n)).map(node => ({node,pos:project(rotate(sphere(node.lat,node.lng)),canvas)})).filter(v=>v.pos.z>-.05).sort((a,b)=>a.pos.z-b.pos.z).forEach(({node,pos}) => { clickable.push({node,x:pos.x,y:pos.y,r:drawPoint(ctx,pos,node,timestamp)}); }); canvas._points=clickable; state.raf=requestAnimationFrame(draw); }
-  function updateDetail(node) { const box=document.getElementById('networkDetail'); if(!box||!node)return; const status=node.id==='boulder'?t().hq:(node.status==='planned'?t().planned:t().active); box.innerHTML=`<small>${t().globe}</small><h4>${name(node)}</h4><p>${place(node)}</p><p><strong>${t().region}:</strong> ${node.region || '—'}</p><span class="state ${node.id==='boulder'?'hq':node.status}">${status}</span>`; document.dispatchEvent(new CustomEvent('gnk-location-selected',{detail:{id:node.id}})); }
-  function build() { const layout=document.querySelector('#global-network .network-layout'); const canvas2d=layout && layout.querySelector('.network-canvas'); if(!layout||!canvas2d||document.getElementById('groupGlobeCanvas'))return false; const toolbar=document.createElement('div'); toolbar.className='globe-toolbar'; toolbar.innerHTML=`<div class="globe-mode"><button type="button" class="globe-btn active" data-globe-mode="3d">${t().globe}</button><button type="button" class="globe-btn" data-globe-mode="2d">${t().map}</button></div><div class="globe-tools"><button type="button" class="globe-btn active" data-globe-auto>${t().rotate}: ON</button><button type="button" class="globe-btn" data-globe-focus>${t().centre}</button><button type="button" class="globe-btn" data-globe-reset>${t().reset}</button></div>`; layout.parentNode.insertBefore(toolbar, layout); const panel=document.createElement('div'); panel.className='globe-panel';panel.innerHTML=`<canvas id="groupGlobeCanvas" class="globe-canvas" aria-label="${t().globe}"></canvas><div class="globe-badge">${t().live}</div><div class="globe-legend"><span><i class="h"></i>${t().hq}</span><span><i class="a"></i>${t().active}</span><span><i class="p"></i>${t().planned}</span><span><i class="r"></i>${isEn()?'Selected':'Odabrano'}</span></div><div class="globe-guide"><span><strong>3D</strong> · ${t().guide}</span><span>45 LOCATIONS</span></div><div class="globe-tooltip" id="globeTooltip"></div>`; layout.insertBefore(panel,canvas2d); layout.classList.add('is-3d'); bind(toolbar,panel); updateDetail(pointData('boulder')); state.raf=requestAnimationFrame(draw); return true; }
-  function bind(toolbar,panel) { const canvas=panel.querySelector('canvas'); toolbar.addEventListener('click', e => {const mode=e.target.dataset.globeMode;if(mode){state.mode=mode;layoutMode(mode,toolbar);return;}if(e.target.dataset.globeAuto!==undefined){state.auto=!state.auto;e.target.classList.toggle('active',state.auto);e.target.textContent=`${t().rotate}: ${state.auto?'ON':'OFF'}`;}if(e.target.dataset.globeReset!==undefined){state.yaw=-18*DEG;state.pitch=18*DEG;state.zoom=1;}if(e.target.dataset.globeFocus!==undefined){state.selected='boulder';updateDetail(pointData('boulder'));state.yaw=-18*DEG;state.pitch=18*DEG;state.zoom=1.18;}}); canvas.addEventListener('pointerdown',e=>{state.drag=true;state.moved=false;state.lastX=e.clientX;state.lastY=e.clientY;canvas.setPointerCapture(e.pointerId);state.auto=false;const btn=toolbar.querySelector('[data-globe-auto]');if(btn){btn.classList.remove('active');btn.textContent=`${t().rotate}: OFF`;}}); canvas.addEventListener('pointermove',e=>{if(state.drag){const dx=e.clientX-state.lastX,dy=e.clientY-state.lastY; if(Math.abs(dx)+Math.abs(dy)>2)state.moved=true; state.yaw+=dx*.007;state.pitch=Math.max(-1.2,Math.min(1.2,state.pitch+dy*.006));state.lastX=e.clientX;state.lastY=e.clientY;} hover(canvas,e);}); canvas.addEventListener('pointerup',e=>{if(!state.moved) select(canvas,e);state.drag=false;}); canvas.addEventListener('pointerleave',()=>{const tip=document.getElementById('globeTooltip');if(tip)tip.classList.remove('visible');state.drag=false;}); canvas.addEventListener('wheel',e=>{e.preventDefault();state.zoom=Math.max(.68,Math.min(1.55,state.zoom+(e.deltaY<0?.06:-.06)));},{passive:false}); }
-  function layoutMode(mode,toolbar) { const layout=document.querySelector('#global-network .network-layout'); if(!layout)return; state.mode=mode; layout.classList.toggle('is-3d',mode==='3d'); toolbar.querySelectorAll('[data-globe-mode]').forEach(btn=>btn.classList.toggle('active',btn.dataset.globeMode===mode)); cancelAnimationFrame(state.raf); if(mode==='3d')state.raf=requestAnimationFrame(draw); }
-  function at(canvas,e){const r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;return (canvas._points||[]).find(p=>Math.hypot(p.x-x,p.y-y)<=p.r);}
-  function hover(canvas,e){const p=at(canvas,e),tip=document.getElementById('globeTooltip');if(!tip)return;if(!p){tip.classList.remove('visible');return;}tip.innerHTML=`${name(p.node)}<small>${place(p.node)}</small>`;tip.style.left=(p.x)+'px';tip.style.top=(p.y)+'px';tip.classList.add('visible');}
-  function select(canvas,e){const p=at(canvas,e);if(p){state.selected=p.node.id;updateDetail(p.node);}}
-  async function init(){ try { const [net,geo]=await Promise.all([fetch('data/group_network.json?v='+Date.now(),{cache:'no-store'}),fetch('data/group_network_geo.json?v='+Date.now(),{cache:'no-store'})]); if(!net.ok||!geo.ok)return; state.network=await net.json();state.geo=await geo.json(); const timer=setInterval(()=>{if(build())clearInterval(timer);},60); setTimeout(()=>clearInterval(timer),6000); document.addEventListener('click',e=>{if(e.target.matches('#global-network [data-filter]')){state.filter=e.target.dataset.filter||'all';}}); document.addEventListener('gnk-location-selected',e=>{if(e.detail&&e.detail.id&&byId(e.detail.id)){state.selected=e.detail.id;}}); window.addEventListener('gnk-language-change',()=>{const node=pointData(state.selected);if(node)updateDetail(node);}); } catch(error) { console.warn('3D globe unavailable; existing 2D network remains active.',error); } }
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+  const copy = {
+    hr: {globe:'3D globus', map:'2D mreža', rotate:'Auto rotacija', reset:'Reset', centre:'Fokus centar', live:'Živa globalna mreža', guide:'Povuci za rotaciju · kotačić za povećanje · klikni lokaciju', active:'Postojeće društvo', planned:'Planirano 2026.', hq:'Središnje sjedište', selected:'Odabrano', region:'Regija', coast:'Kopno i oceani', natural:'Detaljna svjetska obala', embedded:'Lokalni sigurnosni sloj', na:'SJEVERNA AMERIKA', sa:'JUŽNA AMERIKA', eu:'EUROPA', af:'AFRIKA', as:'AZIJA', oc:'OCEANIJA'},
+    en: {globe:'3D Globe', map:'2D Network', rotate:'Auto rotate', reset:'Reset', centre:'Focus centre', live:'Live global network', guide:'Drag to rotate · scroll to zoom · click a location', active:'Existing company', planned:'Planned 2026', hq:'Central headquarters', selected:'Selected', region:'Region', coast:'Land and oceans', natural:'Detailed world coastline', embedded:'Local fallback layer', na:'NORTH AMERICA', sa:'SOUTH AMERICA', eu:'EUROPE', af:'AFRICA', as:'ASIA', oc:'OCEANIA'}
+  };
+  const t = () => copy[isEn() ? 'en' : 'hr'];
+  const geography = () => window.GNK_GEOGRAPHY || {state:{polygons:[],source:'embedded'}, labels:{}, microLand:{}};
+  const byId = id => state.network?.nodes.find(node => node.id === id) || (id === state.network?.center.id ? state.network.center : null);
+  const pointData = id => {
+    const node = byId(id);
+    const geo = id === 'boulder' ? state.geo?.center : state.geo?.nodes[id];
+    return node && geo ? {...node, ...geo} : null;
+  };
+  const name = node => node.id === 'boulder' ? node.name : (isEn() ? node.name_en : node.name_hr);
+  const place = node => node.id === 'boulder' ? node.place : (isEn() ? node.place_en : node.place_hr);
+  function visible(node) {
+    if (!node) return false;
+    if (state.filter === 'active') return node.status === 'active' || node.id === 'boulder';
+    if (state.filter === 'planned') return node.status === 'planned';
+    if (state.filter === 'outside') return node.region !== 'Europa';
+    return true;
+  }
+  function sphere(lat, lng) {
+    const a = lat * DEG, b = lng * DEG;
+    return {x:Math.cos(a) * Math.cos(b), y:Math.sin(a), z:Math.cos(a) * Math.sin(b)};
+  }
+  function rotate(p) {
+    const cy = Math.cos(state.yaw), sy = Math.sin(state.yaw), cp = Math.cos(state.pitch), sp = Math.sin(state.pitch);
+    const x = p.x * cy - p.z * sy;
+    const z = p.x * sy + p.z * cy;
+    return {x, y:p.y * cp - z * sp, z:p.y * sp + z * cp};
+  }
+  function globeRadius(canvas) { return Math.min(canvas.clientWidth, canvas.clientHeight) * .37 * state.zoom; }
+  function project(p, canvas) {
+    const r = globeRadius(canvas);
+    return {x:canvas.clientWidth / 2 + p.x * r, y:canvas.clientHeight / 2 - p.y * r, z:p.z, scale:.52 + ((p.z + 1) / 2) * .55};
+  }
+  function resize(canvas) {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2), w = canvas.clientWidth, h = canvas.clientHeight;
+    if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      canvas.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+  }
+  function clipSphere(ctx, canvas) {
+    ctx.beginPath();
+    ctx.arc(canvas.clientWidth / 2, canvas.clientHeight / 2, globeRadius(canvas), 0, TAU);
+    ctx.clip();
+  }
+  function greatArc(a, b, steps = 38) {
+    const pa = sphere(a.lat, a.lng), pb = sphere(b.lat, b.lng);
+    const dot = Math.max(-1, Math.min(1, pa.x * pb.x + pa.y * pb.y + pa.z * pb.z));
+    const angle = Math.acos(dot);
+    if (angle < .0001) return [pa, pb];
+    const sin = Math.sin(angle);
+    return Array.from({length:steps + 1}, (_, i) => {
+      const u = i / steps, lift = Math.sin(Math.PI * u) * .085;
+      const k1 = Math.sin((1 - u) * angle) / sin, k2 = Math.sin(u * angle) / sin;
+      const p = {x:pa.x * k1 + pb.x * k2, y:pa.y * k1 + pb.y * k2, z:pa.z * k1 + pb.z * k2};
+      const length = Math.hypot(p.x, p.y, p.z), r = 1 + lift;
+      return {x:p.x / length * r, y:p.y / length * r, z:p.z / length * r};
+    });
+  }
+  function drawOcean(ctx, canvas) {
+    const cx = canvas.clientWidth / 2, cy = canvas.clientHeight / 2, r = globeRadius(canvas);
+    const grad = ctx.createRadialGradient(cx - r * .37, cy - r * .43, r * .03, cx, cy, r * 1.17);
+    grad.addColorStop(0, '#3989b4'); grad.addColorStop(.21, '#175e87'); grad.addColorStop(.53, '#083754'); grad.addColorStop(.82, '#041c32'); grad.addColorStop(1, '#020914');
+    ctx.save();
+    ctx.shadowBlur = 46; ctx.shadowColor = 'rgba(57,158,225,.48)';
+    ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(cx, cy, r, 0, TAU); ctx.fill();
+    ctx.shadowBlur = 0; ctx.strokeStyle = 'rgba(142,218,255,.5)'; ctx.lineWidth = 1.25; ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy, r + 6, 0, TAU); ctx.strokeStyle = 'rgba(88,177,232,.14)'; ctx.lineWidth = 11; ctx.stroke();
+    clipSphere(ctx, canvas); ctx.globalAlpha = .13; ctx.fillStyle = '#e4f7ff'; ctx.beginPath(); ctx.ellipse(cx - r * .27, cy - r * .45, r * .3, r * .115, -.58, 0, TAU); ctx.fill(); ctx.restore();
+  }
+  function drawGrid(ctx, canvas) {
+    ctx.save(); clipSphere(ctx, canvas); ctx.lineWidth = .48; ctx.strokeStyle = 'rgba(129,198,233,.13)';
+    [-60,-30,0,30,60].forEach(lat => {
+      ctx.beginPath(); let started = false;
+      for (let lng = -180; lng <= 180; lng += 3) {
+        const p = project(rotate(sphere(lat, lng)), canvas);
+        if (p.z < 0) { started = false; continue; }
+        if (!started) { ctx.moveTo(p.x, p.y); started = true; } else ctx.lineTo(p.x, p.y);
+      }
+      ctx.stroke();
+    });
+    for (let lng = -150; lng <= 180; lng += 30) {
+      ctx.beginPath(); let started = false;
+      for (let lat = -90; lat <= 90; lat += 3) {
+        const p = project(rotate(sphere(lat, lng)), canvas);
+        if (p.z < 0) { started = false; continue; }
+        if (!started) { ctx.moveTo(p.x, p.y); started = true; } else ctx.lineTo(p.x, p.y);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  function traceRing(ctx, canvas, ring) {
+    let started = false, prior = null, count = 0;
+    ring.forEach(([lng, lat]) => {
+      const p = project(rotate(sphere(lat, lng)), canvas);
+      const discontinuity = prior && Math.hypot(p.x - prior.x, p.y - prior.y) > globeRadius(canvas) * .45;
+      if (p.z < -.018 || discontinuity) { started = false; prior = p; return; }
+      if (!started) { ctx.moveTo(p.x, p.y); started = true; } else ctx.lineTo(p.x, p.y);
+      count += 1; prior = p;
+    });
+    return count;
+  }
+  function drawLand(ctx, canvas) {
+    const polygons = geography().state.polygons || [];
+    ctx.save(); clipSphere(ctx, canvas); ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    polygons.forEach(poly => {
+      ctx.beginPath(); let visiblePoints = 0;
+      poly.forEach(ring => { visiblePoints += traceRing(ctx, canvas, ring); ctx.closePath(); });
+      if (visiblePoints < 3) return;
+      ctx.fillStyle = 'rgba(52,112,77,.90)'; ctx.strokeStyle = 'rgba(151,218,165,.40)'; ctx.lineWidth = .58;
+      ctx.fill('evenodd'); ctx.stroke();
+    });
+    ctx.restore(); drawMicroLand(ctx, canvas); drawContinentLabels(ctx, canvas);
+  }
+  function drawMicroLand(ctx, canvas) {
+    ctx.save();
+    Object.entries(geography().microLand || {}).forEach(([, dot]) => {
+      const p = project(rotate(sphere(dot.lat, dot.lng)), canvas);
+      if (p.z < .02) return;
+      ctx.shadowBlur = 6; ctx.shadowColor = 'rgba(110,187,129,.8)'; ctx.fillStyle = 'rgba(68,128,82,.98)'; ctx.strokeStyle = 'rgba(181,231,184,.85)'; ctx.lineWidth = .7;
+      ctx.beginPath(); ctx.arc(p.x, p.y, dot.size * p.scale, 0, TAU); ctx.fill(); ctx.stroke();
+    });
+    ctx.restore();
+  }
+  function drawContinentLabels(ctx, canvas) {
+    ctx.save(); ctx.textAlign = 'center'; ctx.font = '700 10px system-ui, sans-serif';
+    Object.entries(geography().labels || {}).forEach(([key, coords]) => {
+      const p = project(rotate(sphere(coords[0], coords[1])), canvas);
+      if (p.z < .23) return;
+      ctx.shadowBlur = 6; ctx.shadowColor = 'rgba(2,9,20,.9)'; ctx.fillStyle = 'rgba(232,240,212,.62)'; ctx.fillText(t()[key], p.x, p.y);
+    });
+    ctx.restore();
+  }
+  function drawArc(ctx, canvas, a, b, planned, timestamp) {
+    const points = greatArc(a, b).map(p => project(rotate(p), canvas));
+    if (points.filter(p => p.z > -.12).length < 2) return;
+    ctx.save(); clipSphere(ctx, canvas); ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = planned ? 'rgba(113,237,145,.43)' : 'rgba(121,205,255,.38)'; ctx.lineWidth = planned ? 1.3 : 1.05;
+    ctx.beginPath(); let started = false;
+    points.forEach(p => { if (p.z < -.12) { started = false; return; } if (!started) { ctx.moveTo(p.x, p.y); started = true; } else ctx.lineTo(p.x, p.y); }); ctx.stroke();
+    const u = ((timestamp * (planned ? .00014 : .00020)) + (a.lng + b.lng) / 600) % 1;
+    const glow = points[Math.min(points.length - 1, Math.floor(u * (points.length - 1)))];
+    if (glow && glow.z > -.08) { ctx.shadowBlur = 14; ctx.shadowColor = planned ? '#71ed91' : '#76c7ff'; ctx.fillStyle = planned ? '#abffbb' : '#e1f5ff'; ctx.beginPath(); ctx.arc(glow.x, glow.y, planned ? 2.25 : 2.45, 0, TAU); ctx.fill(); }
+    ctx.restore();
+  }
+  function drawPoint(ctx, pos, node, timestamp) {
+    const central = node.id === 'boulder', planned = node.status === 'planned', selected = state.selected === node.id;
+    const radius = (central ? 8 : planned ? 4.4 : 4.8) * pos.scale;
+    ctx.save();
+    if (selected) {
+      const wave = radius + 7 + Math.sin(timestamp / 145) * 4;
+      ctx.strokeStyle = 'rgba(239,51,64,.90)'; ctx.lineWidth = 2.2; ctx.shadowBlur = 20; ctx.shadowColor = '#ef3340'; ctx.beginPath(); ctx.arc(pos.x, pos.y, wave, 0, TAU); ctx.stroke();
+      ctx.fillStyle = '#ef3340'; ctx.beginPath(); ctx.arc(pos.x, pos.y, central ? radius : radius + 1.2, 0, TAU); ctx.fill();
+    } else {
+      ctx.shadowBlur = central ? 22 : 13; ctx.shadowColor = central ? '#d4af37' : planned ? '#71ed91' : '#76c7ff'; ctx.fillStyle = central ? '#d4af37' : planned ? '#71ed91' : '#76c7ff'; ctx.beginPath(); ctx.arc(pos.x, pos.y, radius, 0, TAU); ctx.fill();
+    }
+    ctx.restore(); return Math.max(radius + 10, 14);
+  }
+  function draw(timestamp) {
+    const canvas = document.getElementById('groupGlobeCanvas');
+    if (!canvas || state.mode !== '3d' || !state.network || !state.geo) return;
+    resize(canvas); const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+    if (state.auto && !state.drag && !matchMedia('(prefers-reduced-motion: reduce)').matches) state.yaw += .00038 * Math.min(35, timestamp - (state.lastFrame || timestamp));
+    state.lastFrame = timestamp; drawOcean(ctx, canvas); drawGrid(ctx, canvas); drawLand(ctx, canvas);
+    const centre = pointData('boulder');
+    state.network.nodes.filter(visible).forEach(node => drawArc(ctx, canvas, centre, pointData(node.id), node.status === 'planned', timestamp));
+    state.network.peer_links.forEach(pair => { const a = pointData(pair[0]), b = pointData(pair[1]); if (a && b && visible(a) && visible(b)) drawArc(ctx, canvas, a, b, a.status === 'planned' || b.status === 'planned', timestamp + 800); });
+    const points = [centre, ...state.network.nodes.map(node => pointData(node.id)).filter(Boolean)].filter(visible).map(node => ({node, pos:project(rotate(sphere(node.lat, node.lng)), canvas)})).filter(item => item.pos.z > -.05).sort((a, b) => a.pos.z - b.pos.z);
+    canvas._points = points.map(item => ({node:item.node, x:item.pos.x, y:item.pos.y, r:drawPoint(ctx, item.pos, item.node, timestamp)}));
+    state.raf = requestAnimationFrame(draw);
+  }
+  function updateDetail(node) {
+    const box = document.getElementById('networkDetail'); if (!box || !node) return;
+    const status = node.id === 'boulder' ? t().hq : node.status === 'planned' ? t().planned : t().active;
+    box.innerHTML = `<small>${t().globe}</small><h4>${name(node)}</h4><p>${place(node)}</p><p><strong>${t().region}:</strong> ${node.region || '—'}</p><span class="state ${node.id === 'boulder' ? 'hq' : node.status}">${status}</span>`;
+    document.dispatchEvent(new CustomEvent('gnk-location-selected', {detail:{id:node.id}}));
+  }
+  function updateCoastLabel() {
+    const badge = document.getElementById('globeCoastSource');
+    if (badge) badge.textContent = `${t().coast}: ${geography().state.source === 'natural-earth' ? t().natural : t().embedded}`;
+  }
+  function build() {
+    const layout = document.querySelector('#global-network .network-layout'), twoD = layout && layout.querySelector('.network-canvas');
+    if (!layout || !twoD || document.getElementById('groupGlobeCanvas')) return false;
+    const toolbar = document.createElement('div'); toolbar.className = 'globe-toolbar';
+    toolbar.innerHTML = `<div class="globe-mode"><button type="button" class="globe-btn active" data-globe-mode="3d">${t().globe}</button><button type="button" class="globe-btn" data-globe-mode="2d">${t().map}</button></div><div class="globe-tools"><button type="button" class="globe-btn active" data-globe-auto>${t().rotate}: ON</button><button type="button" class="globe-btn" data-globe-focus>${t().centre}</button><button type="button" class="globe-btn" data-globe-reset>${t().reset}</button></div>`;
+    layout.parentNode.insertBefore(toolbar, layout);
+    const panel = document.createElement('div'); panel.className = 'globe-panel';
+    panel.innerHTML = `<canvas id="groupGlobeCanvas" class="globe-canvas" aria-label="${t().globe}"></canvas><div class="globe-badge">${t().live}</div><div class="globe-coast-source" id="globeCoastSource"></div><div class="globe-legend"><span><i class="h"></i>${t().hq}</span><span><i class="a"></i>${t().active}</span><span><i class="p"></i>${t().planned}</span><span><i class="r"></i>${t().selected}</span></div><div class="globe-guide"><span><strong>3D</strong> · ${t().guide}</span><span>45 LOCATIONS</span></div><div class="globe-tooltip" id="globeTooltip"></div>`;
+    layout.insertBefore(panel, twoD); layout.classList.add('is-3d'); bind(toolbar, panel); updateCoastLabel(); updateDetail(pointData('boulder')); state.raf = requestAnimationFrame(draw); return true;
+  }
+  function bind(toolbar, panel) {
+    const canvas = panel.querySelector('canvas');
+    toolbar.addEventListener('click', event => {
+      const mode = event.target.dataset.globeMode; if (mode) { layoutMode(mode, toolbar); return; }
+      if (event.target.dataset.globeAuto !== undefined) { state.auto = !state.auto; event.target.classList.toggle('active', state.auto); event.target.textContent = `${t().rotate}: ${state.auto ? 'ON' : 'OFF'}`; }
+      if (event.target.dataset.globeReset !== undefined) { state.yaw = -18 * DEG; state.pitch = 18 * DEG; state.zoom = 1; }
+      if (event.target.dataset.globeFocus !== undefined) { state.selected = 'boulder'; updateDetail(pointData('boulder')); state.yaw = -18 * DEG; state.pitch = 18 * DEG; state.zoom = 1.18; }
+    });
+    canvas.addEventListener('pointerdown', event => { state.drag = true; state.moved = false; state.lastX = event.clientX; state.lastY = event.clientY; canvas.setPointerCapture(event.pointerId); state.auto = false; const button = toolbar.querySelector('[data-globe-auto]'); if (button) { button.classList.remove('active'); button.textContent = `${t().rotate}: OFF`; } });
+    canvas.addEventListener('pointermove', event => { if (state.drag) { const dx = event.clientX - state.lastX, dy = event.clientY - state.lastY; if (Math.abs(dx) + Math.abs(dy) > 2) state.moved = true; state.yaw += dx * .007; state.pitch = Math.max(-1.2, Math.min(1.2, state.pitch + dy * .006)); state.lastX = event.clientX; state.lastY = event.clientY; } hover(canvas, event); });
+    canvas.addEventListener('pointerup', event => { if (!state.moved) select(canvas, event); state.drag = false; });
+    canvas.addEventListener('pointerleave', () => { document.getElementById('globeTooltip')?.classList.remove('visible'); state.drag = false; });
+    canvas.addEventListener('wheel', event => { event.preventDefault(); state.zoom = Math.max(.68, Math.min(1.55, state.zoom + (event.deltaY < 0 ? .06 : -.06))); }, {passive:false});
+  }
+  function layoutMode(mode, toolbar) {
+    const layout = document.querySelector('#global-network .network-layout'); if (!layout) return;
+    state.mode = mode; layout.classList.toggle('is-3d', mode === '3d'); toolbar.querySelectorAll('[data-globe-mode]').forEach(button => button.classList.toggle('active', button.dataset.globeMode === mode)); cancelAnimationFrame(state.raf); if (mode === '3d') state.raf = requestAnimationFrame(draw);
+  }
+  function at(canvas, event) { const rect = canvas.getBoundingClientRect(), x = event.clientX - rect.left, y = event.clientY - rect.top; return (canvas._points || []).find(point => Math.hypot(point.x - x, point.y - y) <= point.r); }
+  function hover(canvas, event) { const selected = at(canvas, event), tip = document.getElementById('globeTooltip'); if (!tip) return; if (!selected) { tip.classList.remove('visible'); return; } tip.innerHTML = `${name(selected.node)}<small>${place(selected.node)}</small>`; tip.style.left = `${selected.x}px`; tip.style.top = `${selected.y}px`; tip.classList.add('visible'); }
+  function select(canvas, event) { const selected = at(canvas, event); if (selected) { state.selected = selected.node.id; updateDetail(selected.node); } }
+  async function init() {
+    try {
+      const [networkResponse, geoResponse] = await Promise.all([fetch('data/group_network.json?v=' + Date.now(), {cache:'no-store'}), fetch('data/group_network_geo.json?v=' + Date.now(), {cache:'no-store'})]);
+      if (!networkResponse.ok || !geoResponse.ok) return;
+      state.network = await networkResponse.json(); state.geo = await geoResponse.json(); geography().load?.().then(updateCoastLabel);
+      const timer = setInterval(() => { if (build()) clearInterval(timer); }, 60); setTimeout(() => clearInterval(timer), 6000);
+      document.addEventListener('click', event => { if (event.target.matches('#global-network [data-filter]')) state.filter = event.target.dataset.filter || 'all'; });
+      document.addEventListener('gnk-location-selected', event => { if (event.detail?.id && byId(event.detail.id)) state.selected = event.detail.id; });
+      document.addEventListener('gnk-geography-ready', updateCoastLabel);
+      window.addEventListener('gnk-language-change', () => { updateCoastLabel(); const item = pointData(state.selected); if (item) updateDetail(item); });
+    } catch (error) { console.warn('3D globe unavailable; existing 2D network remains active.', error); }
+  }
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 })();
