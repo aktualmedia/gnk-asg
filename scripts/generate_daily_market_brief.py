@@ -42,6 +42,17 @@ def coin_change(item: dict) -> float | None:
     return float(value) if value is not None else None
 
 
+def reference_session(indices: list[dict]) -> str:
+    stamps = []
+    for item in indices:
+        value = item.get("market_time")
+        if isinstance(value, (int, float)) and value > 0:
+            stamps.append(int(value))
+    if stamps:
+        return dt.datetime.fromtimestamp(max(stamps), tz=dt.timezone.utc).date().isoformat()
+    return (NOW.date() - dt.timedelta(days=1)).isoformat()
+
+
 def describe_tone_hr(values: list[float]) -> str:
     positive = sum(1 for value in values if value >= 0)
     if positive == len(values):
@@ -73,7 +84,7 @@ def main() -> None:
     market = read("market.json", {}).get("coins", [])
     stablecoins = read("stablecoins.json", {}).get("stablecoins", [])
     macro = read("macro_market.json", {}).get("assets", {})
-    dated = (NOW.date() - dt.timedelta(days=1)).isoformat()
+    dated = reference_session(indices)
     valid_indices = [item for item in indices if row_change(item) is not None]
     index_values = [row_change(item) for item in valid_indices]
     index_values = [value for value in index_values if value is not None]
@@ -115,8 +126,8 @@ def main() -> None:
         "generated_at": NOW.isoformat(), "reference_date": dated, "status": "published",
         "title": "Dnevni tržišni osvrt — prethodna raspoloživa sesija",
         "title_en": "Daily Market Brief — Previous Available Session",
-        "headline": "Pregled prethodne raspoložive tržišne sesije temeljen na javno dostupnim podatcima o indeksima, digitalnoj imovini i stablecoin odstupanjima.",
-        "headline_en": "Review of the previous available market session based on publicly available index, digital-asset and stablecoin-deviation observations.",
+        "headline": "Pregled posljednje raspoložive tržišne sesije temeljen na javno dostupnim podatcima o indeksima, digitalnoj imovini i stablecoin odstupanjima.",
+        "headline_en": "Review of the latest available market session based on publicly available index, digital-asset and stablecoin-deviation observations.",
         "summary": [equities_hr, crypto_hr, stable_hr, "; ".join(macro_lines_hr) + "." if macro_lines_hr else "Sedmodnevni usporedni makro prikaz nije bio dostupan."],
         "summary_en": [equities_en, crypto_en, stable_en, "; ".join(macro_lines_en) + "." if macro_lines_en else "The seven-day comparative macro view was not available."],
         "risk_note": "Informativni analitički prikaz temeljen na javno dostupnim podatcima; nije investicijski savjet, preporuka ulaganja niti jamstvo budućeg kretanja.",
@@ -124,7 +135,7 @@ def main() -> None:
         "sources": ["CoinGecko public market data", "Public market quote feed"]
     }
     save(payload)
-    print(json.dumps({"generated_at": payload["generated_at"], "status": payload["status"], "points_hr": len(payload["summary"])}, ensure_ascii=False))
+    print(json.dumps({"generated_at": payload["generated_at"], "reference_date": payload["reference_date"], "status": payload["status"], "points_hr": len(payload["summary"])}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
