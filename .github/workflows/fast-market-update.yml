@@ -1,6 +1,6 @@
 name: Five Minute Market Intelligence Update
 
-# Recovery activation after replacement of the legacy combined market workflow.
+# Resilient refresh: successful modules and status are published even if one public source is temporarily unavailable.
 on:
   schedule:
     - cron: '*/5 * * * *'
@@ -17,13 +17,15 @@ permissions:
 
 concurrency:
   group: fast-market-intelligence-update
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   refresh-market:
     name: Refresh digital assets stablecoins exchanges and indices
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,8 +34,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Update fast moving market datasets
+        id: market_fetch
+        continue-on-error: true
         run: python scripts/update_fast_market.py
-      - name: Commit refreshed market datasets
+      - name: Commit refreshed or partially refreshed market datasets
         run: |
           git config user.name "gnk-asg-market-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -42,5 +46,9 @@ jobs:
             echo "No market changes."
           else
             git commit -m "Automated five minute market intelligence update"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main || (sleep 8 && git pull --rebase origin main && git push origin HEAD:main)
           fi
+      - name: Disclose partial refresh without blocking publication
+        if: steps.market_fetch.outcome == 'failure'
+        run: echo "At least one public market source was temporarily unavailable; status and successfully generated datasets were published."
