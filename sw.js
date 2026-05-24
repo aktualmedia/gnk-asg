@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v21-geographic-map';
+const CACHE_NAME = 'gnk-asg-live-v22-map-pdf-interactive';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/',
@@ -21,9 +21,10 @@ const STATIC_ASSETS = [
   './assets/mobile-navigation.js', './assets/floating-intelligence.js', './assets/world-geography.js',
   './assets/group-network.js', './assets/network-motion.js', './assets/group-globe-3d.js', './assets/group-map-2d-geo.js',
   './assets/group-location-insights.js', './assets/network-selection-sync.js', './assets/command-centre.js',
-  './assets/network-search-3d.js', './assets/group-clarity.js', './assets/public-sources.js', './assets/hourly-data-disclosure.js',
-  './assets/admin-status-only.js', './assets/market-centre-data.js', './assets/market-constellation.js',
-  './data/desk_public_config.json', './data/group_network.json', './data/group_network_geo.json', './data/group_location_facts.json',
+  './assets/network-search-3d.js', './assets/group-map-pdf.js', './assets/group-clarity.js',
+  './assets/public-sources.js', './assets/hourly-data-disclosure.js', './assets/admin-status-only.js',
+  './assets/market-centre-data.js', './assets/market-constellation.js', './data/desk_public_config.json',
+  './data/group_network.json', './data/group_network_geo.json', './data/group_location_facts.json',
   './data/public_sources.json', './data/open_data.json', './data/stock_exchanges.json', './data/asg_gold_asset.json',
   './data/media_approved.json', './data/media_monitor_status.json', './data/market.json', './data/btc_chart.json',
   './data/stablecoins.json', './data/exchange_compare.json', './data/market_indices.json', './data/fast_market_status.json',
