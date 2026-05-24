@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T08:18:41+00:00",
+  "generated_at": "2026-05-24T09:00:39+00:00",
   "reference_date": "2026-05-22",
   "status": "published",
   "title": "Dnevni tržišni osvrt — prethodna raspoloživa sesija",
@@ -8,15 +8,15 @@
   "headline_en": "Review of the latest available market session based on publicly available index, digital-asset and stablecoin-deviation observations.",
   "summary": [
     "Promatrani burzovni indeksi zabilježili su široko pozitivan raspored kretanja. Najjaču promjenu pokazao je Nikkei 225 (+4.15%), dok je najslabiji rezultat imao Nasdaq Composite (+0.45%).",
-    "U promatranom skupu digitalne imovine SOL je imao najizraženiju 24-satnu promjenu (+4.88%), dok je BTC zabilježio najslabije kretanje (+2.83%).",
-    "Najveće promatrano stablecoin odstupanje od referentne valute zabilježeno je kod FDUSD (-0.2542%). To je tržišno opažanje, a ne procjena rezervi ili otkupivosti.",
-    "zlato: -3.76% u sedmodnevnoj usporedbi; Brent nafta: -1.98% u sedmodnevnoj usporedbi."
+    "U promatranom skupu digitalne imovine SOL je imao najizraženiju 24-satnu promjenu (+4.98%), dok je BTC zabilježio najslabije kretanje (+2.93%).",
+    "Najveće promatrano stablecoin odstupanje od referentne valute zabilježeno je kod FDUSD (-0.2728%). To je tržišno opažanje, a ne procjena rezervi ili otkupivosti.",
+    "Bitcoin: -0.92% u sedmodnevnoj usporedbi; zlato: -3.71% u sedmodnevnoj usporedbi; Brent nafta: -5.13% u sedmodnevnoj usporedbi."
   ],
   "summary_en": [
     "Observed equity indices showed a broadly positive distribution of moves. Nikkei 225 recorded the strongest change (+4.15%), while Nasdaq Composite was weakest (+0.45%).",
-    "Within the observed digital-asset set, SOL recorded the strongest 24-hour move (+4.88%), while BTC was weakest (+2.83%).",
-    "The largest observed stablecoin deviation from its reference currency was recorded for FDUSD (-0.2542%). This is a market observation, not a reserve or redemption assessment.",
-    "gold: -3.76% over the seven-day comparison; Brent crude: -1.98% over the seven-day comparison."
+    "Within the observed digital-asset set, SOL recorded the strongest 24-hour move (+4.98%), while BTC was weakest (+2.93%).",
+    "The largest observed stablecoin deviation from its reference currency was recorded for FDUSD (-0.2728%). This is a market observation, not a reserve or redemption assessment.",
+    "Bitcoin: -0.92% over the seven-day comparison; gold: -3.71% over the seven-day comparison; Brent crude: -5.13% over the seven-day comparison."
   ],
   "risk_note": "Informativni analitički prikaz temeljen na javno dostupnim podatcima; nije investicijski savjet, preporuka ulaganja niti jamstvo budućeg kretanja.",
   "risk_note_en": "Informational analytical display based on publicly available data; it is not investment advice, an investment recommendation or a guarantee of future performance.",
