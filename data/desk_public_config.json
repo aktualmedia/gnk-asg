@@ -1,0 +1,20 @@
+{
+  "version": "2026-05-24",
+  "name": "GNK ASG Intelligence Desk",
+  "mode": "hybrid_public_context",
+  "enabled": false,
+  "endpoint": "",
+  "model_label": "External AI answer",
+  "max_question_characters": 1800,
+  "public_context_only": true,
+  "portal_answers": true,
+  "source_links": true,
+  "web_search_link": true,
+  "export_transcript": true,
+  "activation_hr": "AI način rada pripremljen je za aktivaciju nakon postavljanja sigurnog serverskog endpointa.",
+  "activation_en": "AI mode is ready for activation after a secure server endpoint is configured.",
+  "privacy_hr": "U AI način ne upisujte osobne, povjerljive ni druge nejavne podatke.",
+  "privacy_en": "Do not enter personal, confidential or other non-public data in AI mode.",
+  "disclaimer_hr": "AI odgovori su informativni i moraju se provjeriti prema javnim izvorima.",
+  "disclaimer_en": "AI answers are informational and must be verified against public sources."
+}
