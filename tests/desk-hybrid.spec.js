@@ -9,11 +9,11 @@ test('Intelligence Desk answers from verified portal datasets', async ({ page })
   await expect(page.locator('#deskTranscript .desk-source a').last()).toContainText('Market Intelligence');
 });
 
-test('Connected AI mode is safe before external endpoint activation', async ({ page }) => {
+test('Connected AI mode is safe before endpoint activation for broader questions', async ({ page }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
   await expect(page.locator('#deskAiBadge')).toContainText('AI veza pripremljena', { timeout: 10000 });
   await page.locator('.desk-switch button[data-mode="ai"]').click();
-  await page.locator('#deskInput').fill('Objasni što je umjetna inteligencija općenito.');
+  await page.locator('#deskInput').fill('Objasni globalne promjene u potrošačkim navikama.');
   await page.locator('#deskForm button[type="submit"]').click();
   await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('nije aktivan');
 });
