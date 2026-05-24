@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v32-mobile-accessible-network';
+const CACHE_NAME = 'gnk-asg-live-v33-mobile-language-switch';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/',
