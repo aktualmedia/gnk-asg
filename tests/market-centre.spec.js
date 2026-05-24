@@ -26,8 +26,13 @@ for (const route of routes) {
   });
 }
 
-test('početna stranica povezuje Market Intelligence i korporativni 3D globus', async ({ page }) => {
+test('početna stranica povezuje Market Intelligence i korporativni 3D globus', async ({ page, isMobile }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
+  if (isMobile) {
+    const toggle = page.locator('#menuToggle');
+    await expect(toggle).toBeVisible();
+    await toggle.click();
+  }
   await expect(page.locator('a[href="/gnk-asg/trzista/"]')).toBeVisible();
   await expect(page.locator('#global-network')).toBeVisible();
 });
