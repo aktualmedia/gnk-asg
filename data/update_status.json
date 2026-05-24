@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-24T14:50:29+00:00",
+  "updated_at": "2026-05-24T15:49:09+00:00",
   "news": {
     "updated_at": "2026-05-24T14:50:29+00:00",
     "cadence": "hourly",
@@ -26,5 +26,12 @@
     "public_display_policy": "manual_approval_only",
     "privacy_notice": "Unapproved search results are not stored or displayed by the public portal.",
     "errors_count": 0
+  },
+  "market": {
+    "status": "ok",
+    "coins": 8,
+    "macro_assets": 4,
+    "refresh_frequency": "Every 5 minutes",
+    "updated_at": "2026-05-24T15:49:09+00:00"
   }
 }
