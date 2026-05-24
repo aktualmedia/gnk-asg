@@ -10,8 +10,11 @@ on:
       - 'admin/**'
       - 'data/**'
       - 'scripts/**'
+      - 'tests/**'
       - 'trzista/**'
       - 'en/**'
+      - 'package.json'
+      - 'playwright.config.js'
       - 'sw.js'
       - 'manifest.webmanifest'
       - '.github/workflows/**'
@@ -25,9 +28,9 @@ concurrency:
 
 jobs:
   validate:
-    name: Validate portal SEO 3D networks and live public market feeds
+    name: Validate SEO 3D networks markets news and browser UX
     runs-on: ubuntu-latest
-    timeout-minutes: 24
+    timeout-minutes: 32
     steps:
       - name: Checkout proposed portal version
         uses: actions/checkout@v4
@@ -35,13 +38,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Set up Node.js for JavaScript syntax validation
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Install preview image generator dependency
+        run: python -m pip install --disable-pip-version-check pillow
       - name: Validate JavaScript syntax for active public modules
         run: |
           node --check assets/app.js
+          node --check assets/portal-navigation.js
           node --check assets/group-network.js
           node --check assets/network-motion.js
           node --check assets/group-globe-3d.js
@@ -52,9 +58,11 @@ jobs:
           node --check assets/market-expansion.js
           node --check assets/news-live.js
           node --check sw.js
+          node --check playwright.config.js
+          node --check tests/market-centre.spec.js
       - name: Validate Python syntax for automated processors
         run: |
-          python -m py_compile scripts/update_feeds_v2.py scripts/update_macro_data.py scripts/update_fast_market.py scripts/generate_daily_market_brief.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
+          python -m py_compile scripts/update_feeds_v2.py scripts/update_macro_data.py scripts/update_fast_market.py scripts/generate_daily_market_brief.py scripts/generate_social_preview.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
       - name: Validate committed portal structure and existing public datasets
         run: python scripts/validate_portal.py
       - name: Execute hourly classified-news retrieval
@@ -67,9 +75,17 @@ jobs:
         run: python scripts/generate_daily_market_brief.py
       - name: Execute safe media-monitor health retrieval
         run: python scripts/discover_corporate_media.py
-      - name: Generate complete metadata and search files for public routes
-        run: python scripts/generate_seo.py
+      - name: Generate PNG social preview and complete SEO metadata
+        run: |
+          python scripts/generate_social_preview.py
+          python scripts/generate_seo.py
       - name: Validate refreshed datasets secure workflows and full-page SEO
         run: python scripts/validate_portal.py --post-fetch --seo
+      - name: Install browser smoke-test dependencies
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Run desktop and mobile browser interaction tests
+        run: npm run test:e2e
       - name: Show generated validation files without publishing them
         run: git status --short
