@@ -1,5 +1,6 @@
 name: Five Minute Market Intelligence Update
 
+# Recovery activation after replacement of the legacy combined market workflow.
 on:
   schedule:
     - cron: '*/5 * * * *'
