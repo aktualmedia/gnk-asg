@@ -4,9 +4,9 @@
   const $ = id => document.getElementById(id);
   const en = () => document.documentElement.lang === 'en' || /\/en\/?$/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const tr = () => en() ? {
-    label:'Google Maps · Selected location', open:'Open larger map', loading:'Loading selected location map', coordinates:'Geographic position'
+    label:'Google Maps · Selected location', open:'Open larger map', coordinates:'Geographic position'
   } : {
-    label:'Google Maps · Odabrana lokacija', open:'Otvori veću kartu', loading:'Učitavanje karte odabrane lokacije', coordinates:'Geografska pozicija'
+    label:'Google Maps · Odabrana lokacija', open:'Otvori veću kartu', coordinates:'Geografska pozicija'
   };
   async function get(path) {
     try {
@@ -15,12 +15,10 @@
     } catch (_) { return null; }
   }
   function node(id) {
-    if (!data.network) return null;
-    return [data.network.center].concat(data.network.nodes || []).find(item => item.id === id) || null;
+    return data.network && [data.network.center].concat(data.network.nodes || []).find(item => item.id === id) || null;
   }
   function coords(id) {
-    if (!data.geo) return null;
-    return id === 'boulder' ? data.geo.center : data.geo.nodes?.[id];
+    return data.geo && (id === 'boulder' ? data.geo.center : data.geo.nodes?.[id]);
   }
   function fact(id) { return data.facts?.locations?.[id] || null; }
   function title(id) {
@@ -44,16 +42,30 @@
     if (!position) return '#';
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${position.lat},${position.lng}`)}`;
   }
+  function contextDock() {
+    const layout = document.querySelector('#global-network .network-layout');
+    const sidebar = layout?.querySelector('.network-sidebar');
+    if (!layout) return null;
+    layout.classList.add('has-location-context');
+    let dock = $('networkLocationContext');
+    if (!dock) {
+      dock = document.createElement('section');
+      dock.id = 'networkLocationContext';
+      dock.className = 'location-context-dock';
+      if (sidebar) layout.insertBefore(dock, sidebar);
+      else layout.appendChild(dock);
+    }
+    return dock;
+  }
   function panel() {
-    const canvas = document.querySelector('#global-network .network-canvas');
-    if (!canvas) return null;
-    canvas.classList.add('has-google-location-map');
+    const dock = contextDock();
+    if (!dock) return null;
     let host = $('googleLocationMap');
     if (!host) {
       host = document.createElement('section');
       host.id = 'googleLocationMap';
       host.className = 'google-location-map';
-      canvas.appendChild(host);
+      dock.prepend(host);
     }
     return host;
   }
@@ -65,6 +77,7 @@
     host.innerHTML = `<header class="google-location-head"><div><small>${T.label}</small><strong>${title(id)}</strong><span>${locationLine(id)} · ${T.coordinates}: ${position.lat.toFixed(4)}, ${position.lng.toFixed(4)}</span></div><a href="${externalUrl(id)}" target="_blank" rel="noopener">${T.open} ↗</a></header><iframe class="google-location-frame" title="${T.label}: ${locationLine(id)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="${embedUrl(id)}"></iframe>`;
     return true;
   }
+  window.GNK_LOCATION_CONTEXT = { dock: contextDock, showMap: render };
   async function init() {
     [data.network, data.geo, data.facts] = await Promise.all([
       get('data/group_network.json'), get('data/group_network_geo.json'), get('data/group_location_facts.json')
@@ -72,8 +85,8 @@
     if (!data.network || !data.geo || !data.facts) return;
     let tries = 0;
     const timer = setInterval(() => {
-      if ($('networkGeoStage')) {
-        const initial = window.GNK_LOCATION_INSIGHTS?.current?.() || window.GNK_GEO_MAP?.getSelected?.() || 'boulder';
+      if (document.querySelector('#global-network .network-layout')) {
+        const initial = window.GNK_LOCATION_INSIGHTS?.current?.() || window.GNK_GEO_MAP?.getSelected?.() || window.GNK_GLOBE?.getSelected?.() || 'boulder';
         render(initial);
         clearInterval(timer);
       } else if (++tries > 180) clearInterval(timer);
