@@ -45,7 +45,10 @@
     const lineLegend = sidebar.querySelector(':scope > .line-legend');
     const note = sidebar.querySelector(':scope > .network-note');
     [title, legendContainer, lineLegend, note].forEach(moveToReference);
-    sidebar.querySelectorAll('.network-pdf-export').forEach(panel => panel.setAttribute('aria-label', 'PDF'));
+    sidebar.querySelectorAll(':scope > .network-pdf-export').forEach(panel => {
+      panel.setAttribute('aria-label', 'PDF');
+      moveToReference(panel);
+    });
     const map = document.getElementById('googleLocationMap');
     const weather = document.getElementById('locationWeatherPanel');
     if (map) map.setAttribute('aria-label', words().map);
