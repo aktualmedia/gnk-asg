@@ -4,8 +4,8 @@ from __future__ import annotations
 import argparse, json, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/'data'; SITE='https://aktualmedia.github.io/gnk-asg/'
-IMAGE=SITE+'assets/gnk-asg-social-card.svg'; ERRORS=[]; PASSED=[]
-PAGES=[('index.html',SITE),('en/index.html',SITE+'en/'),('trzista/index.html',SITE+'trzista/'),('en/markets/index.html',SITE+'en/markets/'),('sadrzaj/index.html',SITE+'sadrzaj/'),('financije/index.html',SITE+'financije/'),('tehnologija/index.html',SITE+'tehnologija/'),('intelligence-desk/index.html',SITE+'intelligence-desk/'),('registri/index.html',SITE+'registri/'),('instalacija/index.html',SITE+'instalacija/')]
+IMAGE=SITE+'assets/gnk-asg-social-card.png'; ERRORS=[]; PASSED=[]
+PAGES=[('index.html',SITE),('en/index.html',SITE+'en/'),('trzista/index.html',SITE+'trzista/'),('en/markets/index.html',SITE+'en/markets/'),('sadrzaj/index.html',SITE+'sadrzaj/'),('financije/index.html',SITE+'financije/'),('en/finance/index.html',SITE+'en/finance/'),('tehnologija/index.html',SITE+'tehnologija/'),('en/technology/index.html',SITE+'en/technology/'),('intelligence-desk/index.html',SITE+'intelligence-desk/'),('en/intelligence-desk/index.html',SITE+'en/intelligence-desk/'),('registri/index.html',SITE+'registri/'),('en/registries/index.html',SITE+'en/registries/'),('instalacija/index.html',SITE+'instalacija/')]
 def ok(text): PASSED.append(text); print('PASS: '+text)
 def fail(text): ERRORS.append(text); print('FAIL: '+text,file=sys.stderr)
 def load(path):
@@ -15,9 +15,10 @@ def needed(path):
  p=ROOT/path
  if p.exists() and p.stat().st_size>0: ok('Datoteka postoji: '+path)
  else: fail('Nedostaje datoteka: '+path)
-def check_structure():
- required=['index.html','en/index.html','trzista/index.html','en/markets/index.html','admin/index.html','sw.js','manifest.webmanifest','assets/app.js','assets/group-network.js','assets/network-motion.js','assets/group-globe-3d.js','assets/market-centre.css','assets/market-centre-panels.css','assets/market-centre-data.js','assets/market-constellation.js','assets/gnk-asg-social-card.svg','assets/admin-status-only.js','data/group_network.json','data/group_network_geo.json','data/media_approved.json','data/media_monitor_status.json','data/stablecoins.json','data/exchange_compare.json','data/market_indices.json','data/fast_market_status.json','data/daily_market_brief.json','scripts/update_feeds_v2.py','scripts/update_macro_data.py','scripts/update_fast_market.py','scripts/generate_daily_market_brief.py','scripts/discover_corporate_media.py','scripts/generate_seo.py','scripts/validate_portal.py','.github/workflows/hourly-data-update.yml','.github/workflows/fast-market-update.yml','.github/workflows/daily-market-brief.yml','.github/workflows/daily-seo-refresh.yml','.github/workflows/media-monitor-status.yml','.github/workflows/manage-approved-media.yml','.github/workflows/portal-validation.yml']
+def check_structure(seo=False):
+ required=['index.html','en/index.html','trzista/index.html','en/markets/index.html','financije/index.html','en/finance/index.html','tehnologija/index.html','en/technology/index.html','intelligence-desk/index.html','en/intelligence-desk/index.html','registri/index.html','en/registries/index.html','admin/index.html','sw.js','manifest.webmanifest','package.json','playwright.config.js','tests/market-centre.spec.js','assets/app.js','assets/portal-navigation.js','assets/group-network.js','assets/network-motion.js','assets/group-globe-3d.js','assets/market-centre.css','assets/market-centre-panels.css','assets/market-centre-data.js','assets/market-constellation.js','assets/gnk-asg-social-card.svg','assets/admin-status-only.js','data/group_network.json','data/group_network_geo.json','data/media_approved.json','data/media_monitor_status.json','data/stablecoins.json','data/exchange_compare.json','data/market_indices.json','data/fast_market_status.json','data/daily_market_brief.json','scripts/update_feeds_v2.py','scripts/update_macro_data.py','scripts/update_fast_market.py','scripts/generate_daily_market_brief.py','scripts/generate_social_preview.py','scripts/discover_corporate_media.py','scripts/generate_seo.py','scripts/validate_portal.py','.github/workflows/hourly-data-update.yml','.github/workflows/fast-market-update.yml','.github/workflows/daily-market-brief.yml','.github/workflows/daily-seo-refresh.yml','.github/workflows/media-monitor-status.yml','.github/workflows/manage-approved-media.yml','.github/workflows/portal-validation.yml']
  for path in required: needed(path)
+ if seo: needed('assets/gnk-asg-social-card.png')
  for path in ['data/corporate_review_queue.json','data/corporate_review_decisions.json','.github/workflows/queue-item-action.yml','.github/workflows/review-queue-refresh.yml','scripts/apply_review_decision.py','assets/admin-console.js','.github/workflows/hourly-news-update.yml']:
   if (ROOT/path).exists(): fail('Neželjeni ili duplicirani javni artefakt: '+path)
   else: ok('Nije prisutno: '+path)
@@ -36,20 +37,20 @@ def check_structure():
  workflows={p:(ROOT/p).read_text(encoding='utf-8') for p in ['.github/workflows/hourly-data-update.yml','.github/workflows/fast-market-update.yml','.github/workflows/daily-market-brief.yml']}
  if "cron: '17 * * * *'" in workflows['.github/workflows/hourly-data-update.yml'] and 'data/market.json' not in workflows['.github/workflows/hourly-data-update.yml']: ok('Vijesti/makro ostaju satni bez prepisivanja brzog marketa')
  else: fail('Satni workflow nije pravilno odvojen od brzog marketa')
- if "cron: '*/5 * * * *'" in workflows['.github/workflows/fast-market-update.yml'] and 'fast_market_status.json' in workflows['.github/workflows/fast-market-update.yml']: ok('Market Intelligence osvježavanje postavljeno je na pet minuta')
+ if "cron: '*/5 * * * *'" in workflows['.github/workflows/fast-market-update.yml'] and 'fast_market_status.json' in workflows['.github/workflows/fast-market-update.yml'] and 'update_status.json' not in workflows['.github/workflows/fast-market-update.yml']: ok('Market Intelligence osvježavanje postavljeno je na pet minuta i izolirano')
  else: fail('Petominutni tržišni workflow nije ispravno postavljen')
  if 'generate_daily_market_brief.py' in workflows['.github/workflows/daily-market-brief.yml']: ok('Dnevni tržišni osvrt ima workflow')
  else: fail('Nedostaje workflow dnevnog osvrta')
 def check_seo():
- tokens=['<title>','name="description"','name="robots"','rel="canonical"','property="og:title"','property="og:description"','property="og:url"','property="og:image"','name="twitter:card"','name="twitter:image"','type="application/ld+json"','SEO:BEGIN generated by scripts/generate_seo.py']
+ tokens=['<title>','name="description"','name="robots"','rel="canonical"','property="og:title"','property="og:description"','property="og:url"','property="og:image"','property="og:image:type" content="image/png"','name="twitter:card"','name="twitter:image"','type="application/ld+json"','SEO:BEGIN generated by scripts/generate_seo.py']
  for file,url in PAGES:
   html=(ROOT/file).read_text(encoding='utf-8'); missing=[t for t in tokens if t not in html]
   if missing: fail(f'SEO paket nije potpun za {file}: {missing}')
-  elif f'href="{url}"' not in html or f'content="{url}"' not in html or IMAGE not in html: fail('Canonical ili social preview nije usklađen za '+file)
+  elif f'href="{url}"' not in html or f'content="{url}"' not in html or IMAGE not in html: fail('Canonical ili PNG social preview nije usklađen za '+file)
   else: ok('Potpuni SEO paket: '+file)
  sitemap=(ROOT/'sitemap.xml').read_text(encoding='utf-8'); missing=[url for _,url in PAGES if url not in sitemap]
  if missing: fail('Sitemap nema sve javne rute: '+', '.join(missing))
- else: ok('Sitemap sadrži svih deset javnih ruta')
+ else: ok('Sitemap sadrži svih četrnaest javnih ruta')
  robots=(ROOT/'robots.txt').read_text(encoding='utf-8')
  if 'Disallow: /gnk-asg/admin/' in robots and SITE+'sitemap.xml' in robots: ok('Robots politika zadržava admin izvan indeksa')
  else: fail('Robots politika nije ispravna')
@@ -77,7 +78,7 @@ def check_data(post_fetch):
   else: fail('Usporedba burzi je prazna')
   if len(indices.get('indices',[]))>=3: ok(f'Globalni indeksi sadrže {len(indices.get("indices",[]))} tržišta')
   else: fail('Usporedba indeksa nema dovoljno tržišta')
-  if not fast.get('errors') and fast.get('digital_assets',{}).get('coins',0)>=8: ok('Petominutni status potvrđuje tržišni dohvat')
+  if not fast.get('errors') and fast.get('digital_assets',{}).get('coins',0)>=8 and fast.get('cadence')=='scheduled every five minutes': ok('Petominutni status potvrđuje tržišni dohvat')
   else: fail('Petominutni tržišni status sadrži pogrešku')
   if 'market' not in hourly and hourly.get('news',{}).get('public_items',0)>0: ok('Satni status potvrđuje odvojeni dohvat vijesti')
   else: fail('Satni status nije odvojen od marketa ili vijesti nisu učitane')
@@ -89,7 +90,7 @@ def check_data(post_fetch):
   else: fail('Politika media monitora nije ispravna')
 def main():
  parser=argparse.ArgumentParser(); parser.add_argument('--post-fetch',action='store_true'); parser.add_argument('--seo',action='store_true'); args=parser.parse_args()
- check_structure(); check_network(); check_data(args.post_fetch)
+ check_structure(args.seo); check_network(); check_data(args.post_fetch)
  if args.seo: check_seo()
  print(f'\nRezultat: {len(PASSED)} provjera prošlo; {len(ERRORS)} provjera nije prošlo.')
  if ERRORS:
