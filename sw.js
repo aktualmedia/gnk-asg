@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v18-market-intelligence';
+const CACHE_NAME = 'gnk-asg-live-v19-hybrid-desk';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/',
@@ -8,7 +8,7 @@ const STATIC_ASSETS = [
   './assets/style.css', './assets/advanced.css', './assets/header-premium.css',
   './assets/group-contrast.css', './assets/group-network.css', './assets/network-motion.css', './assets/group-globe-3d.css',
   './assets/bitcoin-chart.css', './assets/market-expansion.css', './assets/language.css',
-  './assets/intelligence-desk.css', './assets/mobile-app.css', './assets/desk-search.css',
+  './assets/intelligence-desk.css', './assets/desk-hybrid.css', './assets/mobile-app.css', './assets/desk-search.css',
   './assets/floating-intelligence.css', './assets/public-sources.css', './assets/mobile-stability.css',
   './assets/market-centre.css', './assets/market-centre-panels.css', './assets/admin-console.css',
   './assets/logo-gnk-asg.svg', './assets/asg-gold-coin.svg', './assets/gnk-asg-social-card.svg',
@@ -16,11 +16,11 @@ const STATIC_ASSETS = [
   './assets/app.js', './assets/i18n.js', './assets/language-routing.js', './assets/portal-navigation.js',
   './assets/status.js', './assets/market.js', './assets/live-market-pulse.js', './assets/bitcoin-chart.js',
   './assets/market-expansion.js', './assets/news-live.js', './assets/assistant.js', './assets/inline-assistant.js',
-  './assets/intelligence-desk.js', './assets/desk-search.js', './assets/mobile-app.js',
+  './assets/intelligence-desk.js', './assets/desk-hybrid.js', './assets/desk-search.js', './assets/mobile-app.js',
   './assets/mobile-navigation.js', './assets/floating-intelligence.js', './assets/group-network.js',
   './assets/network-motion.js', './assets/group-globe-3d.js', './assets/group-clarity.js', './assets/public-sources.js',
   './assets/hourly-data-disclosure.js', './assets/admin-status-only.js', './assets/market-centre-data.js', './assets/market-constellation.js',
-  './data/group_network.json', './data/group_network_geo.json', './data/public_sources.json', './data/open_data.json',
+  './data/desk_public_config.json', './data/group_network.json', './data/group_network_geo.json', './data/public_sources.json', './data/open_data.json',
   './data/stock_exchanges.json', './data/asg_gold_asset.json', './data/media_approved.json', './data/media_monitor_status.json',
   './data/market.json', './data/btc_chart.json', './data/stablecoins.json', './data/exchange_compare.json',
   './data/market_indices.json', './data/fast_market_status.json', './data/daily_market_brief.json',
