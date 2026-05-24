@@ -1,16 +1,16 @@
 (() => {
   'use strict';
   const NS = 'http://www.w3.org/2000/svg';
-  const state = { network: null, geo: null, filter: 'all', selected: 'boulder', scale: 1 };
+  const state = { network: null, geo: null, filter: 'all', selected: 'boulder' };
   const en = () => document.documentElement.lang === 'en' || /\/en\/?$/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const t = () => en() ? {
     map: '2D Geographic Network', coast: 'Verified geographic coastline', hq: 'Central headquarters',
     active: 'Existing company', planned: 'Planned expansion 2026', region: 'Region',
-    click: 'Click a location for details'
+    click: 'Click a location for details', movement: 'Drag to pan · wheel or buttons to zoom'
   } : {
     map: '2D geografska mreža', coast: 'Provjereni geografski obrisi kopna', hq: 'Središnje sjedište',
     active: 'Postojeće društvo', planned: 'Planirano širenje 2026.', region: 'Regija',
-    click: 'Kliknite lokaciju za detalje'
+    click: 'Kliknite lokaciju za detalje', movement: 'Povucite za pomicanje · kotačić ili gumbi za povećanje'
   };
   const geography = () => window.GNK_GEOGRAPHY || { state: { polygons: [] }, labels: {}, microLand: {} };
   const project = (lat, lng) => ({ x: 38 + ((lng + 180) / 360) * 964, y: 34 + ((90 - lat) / 180) * 468 });
@@ -30,7 +30,7 @@
     legacy.classList.add('legacy-network-svg');
     let svg = document.getElementById('networkGeoSvg');
     if (!svg) {
-      svg = el('svg', { id: 'networkGeoSvg', viewBox: '0 0 1040 545', 'aria-label': t().map, role: 'img' });
+      svg = el('svg', { id: 'networkGeoSvg', viewBox: '0 0 1040 545', preserveAspectRatio: 'xMidYMid meet', 'aria-label': t().map, role: 'img' });
       svg.classList.add('network-geo-svg');
       host.insertBefore(svg, legacy);
       svg.addEventListener('pointermove', hover);
@@ -78,7 +78,10 @@
     [point('boulder'), ...state.network.nodes.map(item => point(item.id)).filter(Boolean)].filter(visible).forEach(node => {
       const group = el('g', { class: `geo-node ${node.id === 'boulder' ? 'hq' : node.status}${node.id === state.selected ? ' selected' : ''}`, 'data-location-id': node.id, tabindex: '0', role: 'button', 'aria-label': `${name(node)}, ${place(node)}` });
       group.appendChild(el('circle', { cx: node.x, cy: node.y, r: node.id === 'boulder' ? 8 : node.status === 'planned' ? 5 : 5.4 }));
-      if (node.id === state.selected || node.id === 'boulder') { const label = el('text', { x: node.x + 11, y: node.y - 7 }); label.textContent = name(node); group.appendChild(label); const sub = el('text', { class: 'sub', x: node.x + 11, y: node.y + 8 }); sub.textContent = place(node); group.appendChild(sub); }
+      if (node.id === state.selected || node.id === 'boulder') {
+        const label = el('text', { x: node.x + 11, y: node.y - 7 }); label.textContent = name(node); group.appendChild(label);
+        const sub = el('text', { class: 'sub', x: node.x + 11, y: node.y + 8 }); sub.textContent = place(node); group.appendChild(sub);
+      }
       group.addEventListener('click', () => showDetail(node));
       group.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); showDetail(node); } });
       layer.appendChild(group);
@@ -94,8 +97,7 @@
   function hover(event) {
     const group = event.target.closest && event.target.closest('.geo-node'), tip = tooltip();
     if (!tip || !group) { hideTooltip(); return; }
-    const node = point(group.dataset.locationId), rect = event.currentTarget.getBoundingClientRect();
-    if (!node) return;
+    const node = point(group.dataset.locationId), rect = event.currentTarget.getBoundingClientRect(); if (!node) return;
     tip.innerHTML = `<strong>${name(node)}</strong><span>${place(node)}</span><small>${t().click}</small>`;
     tip.style.left = `${event.clientX - rect.left + 14}px`; tip.style.top = `${event.clientY - rect.top - 10}px`; tip.classList.add('visible');
   }
@@ -103,17 +105,17 @@
   function draw() {
     if (!state.network || !state.geo) return;
     const svg = createShell(); if (!svg) return;
-    svg.innerHTML = ''; drawSea(svg); drawLand(svg); drawLabels(svg); drawRoutes(svg); drawNodes(svg); svg.style.transform = `scale(${state.scale})`;
+    svg.innerHTML = ''; drawSea(svg); drawLand(svg); drawLabels(svg); drawRoutes(svg); drawNodes(svg);
   }
-  function controls() {
-    const canvas = document.querySelector('#global-network .network-canvas'); if (!canvas || document.getElementById('geoMapBadge')) return;
-    const badge = document.createElement('div'); badge.id = 'geoMapBadge'; badge.className = 'geo-map-badge'; badge.innerHTML = `<strong>${t().map}</strong><span>${t().coast}</span>`; canvas.appendChild(badge); tooltip();
-    canvas.querySelector('[data-zoom="in"]')?.addEventListener('click', event => { event.stopImmediatePropagation(); state.scale = Math.min(1.55, state.scale + .15); draw(); }, true);
-    canvas.querySelector('[data-zoom="out"]')?.addEventListener('click', event => { event.stopImmediatePropagation(); state.scale = Math.max(.75, state.scale - .15); draw(); }, true);
-    canvas.querySelector('[data-zoom="reset"]')?.addEventListener('click', event => { event.stopImmediatePropagation(); state.scale = 1; draw(); }, true);
+  function decorate() {
+    const canvas = document.querySelector('#global-network .network-canvas'); if (!canvas) return;
+    let badge = document.getElementById('geoMapBadge');
+    if (!badge) { badge = document.createElement('div'); badge.id = 'geoMapBadge'; badge.className = 'geo-map-badge'; canvas.appendChild(badge); }
+    badge.innerHTML = `<strong>${t().map}</strong><span>${t().coast}</span><em>${t().movement}</em>`;
+    tooltip();
   }
   window.GNK_GEO_MAP = {
-    selectLocation(id) { const node = point(id); if (!node) return false; state.selected = id; showDetail(node); return true; },
+    selectLocation(id) { const node = point(id); if (!node) return false; showDetail(node); return true; },
     getSelected() { return state.selected; },
     getSvg() { return document.getElementById('networkGeoSvg'); },
     redraw: draw
@@ -123,11 +125,11 @@
       const [net, geo] = await Promise.all([fetch('data/group_network.json?v=' + Date.now(), { cache: 'no-store' }), fetch('data/group_network_geo.json?v=' + Date.now(), { cache: 'no-store' })]);
       if (!net.ok || !geo.ok) return;
       state.network = await net.json(); state.geo = await geo.json(); geography().load?.().then(draw);
-      let attempts = 0; const timer = setInterval(() => { if (createShell()) { controls(); draw(); clearInterval(timer); } else if (++attempts > 120) clearInterval(timer); }, 70);
+      let attempts = 0; const timer = setInterval(() => { if (createShell()) { decorate(); draw(); clearInterval(timer); } else if (++attempts > 120) clearInterval(timer); }, 70);
       document.addEventListener('click', event => { if (event.target.matches('#global-network [data-filter]')) { state.filter = event.target.dataset.filter || 'all'; draw(); } });
       document.addEventListener('gnk-location-selected', event => { if (event.detail?.id && event.detail.source !== '2d' && state.selected !== event.detail.id) { state.selected = event.detail.id; draw(); } });
       document.addEventListener('gnk-geography-ready', draw);
-      window.addEventListener('gnk-language-change', () => { document.getElementById('geoMapBadge')?.remove(); controls(); draw(); });
+      window.addEventListener('gnk-language-change', () => { decorate(); draw(); });
     } catch (error) { console.warn('Geographic 2D layer unavailable; standard network remains active.', error); }
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
