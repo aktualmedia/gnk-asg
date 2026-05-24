@@ -67,7 +67,7 @@
     const box = document.getElementById('networkDetail');
     const item = node(id);
     const fact = facts?.locations?.[id];
-    if (!box || !item || !fact) return;
+    if (!box || !item || !fact) return false;
     activeId = id;
     const key = `${id}:${en() ? 'en' : 'hr'}`;
     let card = box.querySelector('.location-insights');
@@ -83,7 +83,16 @@
     box.dataset.locationId = id;
     pulseLegacy2d(id);
     pulseVisible2d(id);
+    return true;
   }
+  window.GNK_LOCATION_INSIGHTS = {
+    select(id) {
+      activeId = id || activeId;
+      return renderFacts(activeId, true);
+    },
+    current() { return activeId; },
+    refresh() { return renderFacts(activeId, true); }
+  };
   function watchDetail() {
     const detail = document.getElementById('networkDetail');
     if (!detail || detailObserverReady) return false;
