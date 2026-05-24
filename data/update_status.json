@@ -1,19 +1,21 @@
 {
-  "updated_at": "2026-05-24T20:14:53+00:00",
+  "updated_at": "2026-05-24T22:15:14+00:00",
   "news": {
-    "updated_at": "2026-05-24T20:14:53+00:00",
+    "updated_at": "2026-05-24T22:15:14+00:00",
     "cadence": "hourly",
-    "public_items": 374,
+    "public_items": 377,
     "by_group": {
-      "digital-assets": 84,
       "technology": 119,
+      "bih": 10,
+      "international": 83,
+      "digital-assets": 84,
       "srbija": 31,
       "hrvatska": 20,
-      "bih": 10,
-      "international": 80,
       "slovenija": 30
     },
-    "errors": []
+    "errors": [],
+    "capacity": 1000,
+    "moderated_public_mentions": 0
   },
   "corporate_media_monitor": {
     "status": "ok",
