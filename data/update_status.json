@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-05-24T11:58:53+00:00",
+  "updated_at": "2026-05-24T14:50:29+00:00",
   "news": {
-    "updated_at": "2026-05-24T09:11:22+00:00",
+    "updated_at": "2026-05-24T14:50:29+00:00",
     "cadence": "hourly",
     "public_items": 373,
     "by_group": {
-      "bih": 10,
       "hrvatska": 20,
-      "srbija": 31,
       "digital-assets": 84,
+      "srbija": 31,
+      "bih": 10,
       "technology": 119,
-      "slovenija": 30,
-      "international": 79
+      "international": 79,
+      "slovenija": 30
     },
     "errors": [],
     "capacity": 1000,
@@ -26,12 +26,5 @@
     "public_display_policy": "manual_approval_only",
     "privacy_notice": "Unapproved search results are not stored or displayed by the public portal.",
     "errors_count": 0
-  },
-  "market": {
-    "status": "ok",
-    "coins": 8,
-    "macro_assets": 4,
-    "refresh_frequency": "Every 5 minutes",
-    "updated_at": "2026-05-24T11:58:53+00:00"
   }
 }
