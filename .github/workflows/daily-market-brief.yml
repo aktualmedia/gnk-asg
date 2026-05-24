@@ -1,5 +1,6 @@
 name: Daily Market Brief Publication
 
+# Production regeneration: refresh commentary after restoration of the five-minute market dataset.
 on:
   schedule:
     - cron: '12 6 * * *'
