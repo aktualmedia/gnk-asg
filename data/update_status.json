@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-05-23T23:14:56+00:00",
+  "updated_at": "2026-05-24T05:37:45+00:00",
   "news": {
     "public_items": 373,
     "by_group": {
-      "bih": 10,
-      "digital-assets": 85,
-      "srbija": 31,
-      "technology": 119,
       "hrvatska": 20,
-      "international": 78,
-      "slovenija": 30
+      "digital-assets": 84,
+      "technology": 119,
+      "slovenija": 30,
+      "bih": 10,
+      "srbija": 31,
+      "international": 79
     },
     "errors": [],
     "capacity": 1000,
