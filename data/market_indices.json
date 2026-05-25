@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-24T23:40:33+00:00",
+  "updated_at": "2026-05-25T09:52:57+00:00",
   "cadence": "scheduled every five minutes",
   "source": "Public market quote feed",
   "indices": [
@@ -30,22 +30,22 @@
       "symbol": "^STOXX50E",
       "label": "EURO STOXX 50",
       "region": "Europa",
-      "current": 6019.4501953125,
+      "current": 6027.3798828125,
       "previous_close": 5849.0,
-      "change_percent": 2.91,
+      "change_percent": 3.05,
       "currency": "EUR",
-      "market_time": 1779465600
+      "market_time": 1779701865
     },
     {
       "id": "dax",
       "symbol": "^GDAXI",
       "label": "DAX",
       "region": "Njemačka",
-      "current": 24888.560546875,
-      "previous_close": 23950.57,
-      "change_percent": 3.92,
+      "current": 25230.890625,
+      "previous_close": 24307.92,
+      "change_percent": 3.8,
       "currency": "EUR",
-      "market_time": 1779465600
+      "market_time": 1779701877
     },
     {
       "id": "ftse",
@@ -63,11 +63,11 @@
       "symbol": "^N225",
       "label": "Nikkei 225",
       "region": "Japan",
-      "current": 63339.0703125,
-      "previous_close": 60815.95,
-      "change_percent": 4.15,
+      "current": 65158.19140625,
+      "previous_close": 60550.59,
+      "change_percent": 7.61,
       "currency": "JPY",
-      "market_time": 1779432303
+      "market_time": 1779691503
     }
   ],
   "errors": [],
