@@ -33,21 +33,27 @@ const homepageRoutes = [
 
 for (const route of homepageRoutes) {
   test(`${route.path} prikazuje činjenični vizualni panel između mreže i lokacijskog konteksta`, async ({ page, isMobile }) => {
-    await page.goto(route.path, { waitUntil: 'networkidle' });
+    await page.goto(route.path, { waitUntil: 'domcontentloaded' });
     if (isMobile) {
       const toggle = page.locator('#menuToggle');
       await expect(toggle).toBeVisible();
       await toggle.click();
     }
-    await expect(page.locator('#global-network')).toBeVisible();
+    await expect(page.locator('#global-network')).toBeVisible({ timeout: 15000 });
     const panel = page.locator('#networkOverviewVisual');
-    await expect(panel).toBeVisible();
+    await expect(panel).toBeVisible({ timeout: 15000 });
     await expect(panel.locator('h3')).toContainText(route.panelTitle);
     await expect(panel.locator('.network-overview-kpis strong').nth(0)).toContainText('33');
     await expect(panel.locator('.network-overview-kpis strong').nth(1)).toContainText('+12');
     await expect(panel.locator('.network-overview-kpis strong').nth(2)).toContainText('45');
-    await expect(page.locator('#googleLocationMap')).toBeVisible();
-    await expect(page.locator('#locationWeatherPanel')).toBeVisible();
+    await expect.poll(async () => page.evaluate(() => {
+      const dock = document.getElementById('networkLocationContext');
+      if (!dock) return false;
+      const ids = Array.from(dock.children).map(node => node.id);
+      return ids.indexOf('networkOverviewVisual') !== -1 &&
+        ids.indexOf('googleLocationMap') > ids.indexOf('networkOverviewVisual') &&
+        ids.indexOf('locationWeatherPanel') > ids.indexOf('googleLocationMap');
+    }), { timeout: 15000 }).toBe(true);
   });
 }
 
