@@ -51,6 +51,7 @@ jobs:
           node --check assets/group-network.js
           node --check assets/network-motion.js
           node --check assets/group-globe-3d.js
+          node --check assets/group-overview-panel.js
           node --check assets/market-centre-data.js
           node --check assets/market-constellation.js
           node --check assets/admin-status-only.js
