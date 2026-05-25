@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-25T09:52:57+00:00",
+  "updated_at": "2026-05-25T12:47:41+00:00",
   "cadence": "scheduled every five minutes",
   "source": "Public market quote feed",
   "indices": [
@@ -34,18 +34,18 @@
       "previous_close": 5849.0,
       "change_percent": 3.05,
       "currency": "EUR",
-      "market_time": 1779701865
+      "market_time": 1779712350
     },
     {
       "id": "dax",
       "symbol": "^GDAXI",
       "label": "DAX",
       "region": "Njemačka",
-      "current": 25230.890625,
+      "current": 25279.7890625,
       "previous_close": 24307.92,
-      "change_percent": 3.8,
+      "change_percent": 4.0,
       "currency": "EUR",
-      "market_time": 1779701877
+      "market_time": 1779712362
     },
     {
       "id": "ftse",
