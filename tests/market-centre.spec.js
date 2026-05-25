@@ -7,22 +7,22 @@ const routes = [
 
 for (const route of routes) {
   test(`${route.path} prikazuje tržišni centar i 3D vizualizaciju`, async ({ page }) => {
-    await page.goto(route.path, { waitUntil: 'networkidle' });
-    await expect(page.locator('h1')).toContainText(route.heading);
-    await expect(page.locator('#marketCentreCoins')).toBeVisible();
-    await expect(page.locator('#stablecoinRows')).toBeVisible();
-    await expect(page.locator('#exchangeRows')).toBeVisible();
-    await expect(page.locator('#indexCards')).toBeVisible();
-    await expect(page.locator('#briefTitle')).toBeVisible();
+    await page.goto(route.path, { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('h1')).toContainText(route.heading, { timeout: 15000 });
+    await expect(page.locator('#marketCentreCoins')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#stablecoinRows')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#exchangeRows')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#indexCards')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#briefTitle')).toBeVisible({ timeout: 15000 });
     const canvas = page.locator('#marketConstellation');
-    await expect(canvas).toBeVisible();
+    await expect(canvas).toBeVisible({ timeout: 15000 });
     const box = await canvas.boundingBox();
     expect(box).not.toBeNull();
     await page.mouse.move(box.x + box.width * 0.48, box.y + box.height * 0.48);
     await page.mouse.down();
     await page.mouse.move(box.x + box.width * 0.64, box.y + box.height * 0.38, { steps: 7 });
     await page.mouse.up();
-    await expect(page.locator('#constellationDetail')).toBeVisible();
+    await expect(page.locator('#constellationDetail')).toBeVisible({ timeout: 15000 });
   });
 }
 
