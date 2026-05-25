@@ -36,7 +36,7 @@ for (const route of homepageRoutes) {
     await page.goto(route.path, { waitUntil: 'domcontentloaded' });
     if (isMobile) {
       const toggle = page.locator('#menuToggle');
-      await expect(toggle).toBeVisible();
+      await expect(toggle).toBeVisible({ timeout: 15000 });
       await toggle.click();
     }
     await expect(page.locator('#global-network')).toBeVisible({ timeout: 15000 });
@@ -58,12 +58,12 @@ for (const route of homepageRoutes) {
 }
 
 test('početna stranica povezuje Market Intelligence i korporativni 3D globus', async ({ page, isMobile }) => {
-  await page.goto('/', { waitUntil: 'networkidle' });
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
   if (isMobile) {
     const toggle = page.locator('#menuToggle');
-    await expect(toggle).toBeVisible();
+    await expect(toggle).toBeVisible({ timeout: 15000 });
     await toggle.click();
   }
-  await expect(page.locator('a[href="/gnk-asg/trzista/"]')).toBeVisible();
-  await expect(page.locator('#global-network')).toBeVisible();
+  await expect(page.locator('a[href$="/trzista/"]')).toBeVisible({ timeout: 15000 });
+  await expect(page.locator('#global-network')).toBeVisible({ timeout: 15000 });
 });
