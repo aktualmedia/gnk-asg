@@ -26,6 +26,31 @@ for (const route of routes) {
   });
 }
 
+const homepageRoutes = [
+  { path: '/', panelTitle: 'Globalna mreža u jednom brendiranom kadru' },
+  { path: '/en/', panelTitle: 'Global network in one branded frame' }
+];
+
+for (const route of homepageRoutes) {
+  test(`${route.path} prikazuje činjenični vizualni panel između mreže i lokacijskog konteksta`, async ({ page, isMobile }) => {
+    await page.goto(route.path, { waitUntil: 'networkidle' });
+    if (isMobile) {
+      const toggle = page.locator('#menuToggle');
+      await expect(toggle).toBeVisible();
+      await toggle.click();
+    }
+    await expect(page.locator('#global-network')).toBeVisible();
+    const panel = page.locator('#networkOverviewVisual');
+    await expect(panel).toBeVisible();
+    await expect(panel.locator('h3')).toContainText(route.panelTitle);
+    await expect(panel.locator('.network-overview-kpis strong').nth(0)).toContainText('33');
+    await expect(panel.locator('.network-overview-kpis strong').nth(1)).toContainText('+12');
+    await expect(panel.locator('.network-overview-kpis strong').nth(2)).toContainText('45');
+    await expect(page.locator('#googleLocationMap')).toBeVisible();
+    await expect(page.locator('#locationWeatherPanel')).toBeVisible();
+  });
+}
+
 test('početna stranica povezuje Market Intelligence i korporativni 3D globus', async ({ page, isMobile }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
   if (isMobile) {
