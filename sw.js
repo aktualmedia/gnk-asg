@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v33-mobile-language-switch';
+const CACHE_NAME = 'gnk-asg-live-v34-mobile-qa-fixes';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/',
