@@ -2,6 +2,13 @@
   'use strict';
   if (window.GNK_SITE_SHARE_READY) return;
   window.GNK_SITE_SHARE_READY = true;
+  const ROOT = '/gnk-asg/';
+  if (!document.querySelector('link[data-gnk-share-style]')) {
+    const css = document.createElement('link');
+    css.rel = 'stylesheet'; css.dataset.gnkShareStyle = '1';
+    css.href = ROOT + 'assets/site-share.css?v=20260525-share02';
+    document.head.appendChild(css);
+  }
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname);
   const copy = () => isEn() ? {label:'Share page', native:'Share'} : {label:'Podijeli stranicu', native:'Podijeli'};
   const currentUrl = () => window.location.href;
