@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /webmail/
 
 Sitemap: https://gnk-asg.hr/sitemap.xml
