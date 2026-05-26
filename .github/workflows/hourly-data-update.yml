@@ -1,6 +1,6 @@
 name: Hourly News and Macro Reference Update
 
-# Production activation: first clean hourly run after fast-market separation.
+# Resilient hourly publication: news and macro data are committed even when other automated updates reach main concurrently.
 on:
   schedule:
     - cron: '17 * * * *'
@@ -47,5 +47,6 @@ jobs:
             echo "No hourly data changes."
           else
             git commit -m "Automated hourly news and macro reference update"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main || (sleep 8 && git pull --rebase origin main && git push origin HEAD:main)
           fi
