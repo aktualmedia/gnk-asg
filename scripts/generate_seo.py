@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from xml.sax.saxutils import escape
 ROOT=Path(__file__).resolve().parents[1]
-SITE='https://aktualmedia.github.io/gnk-asg/'
+SITE='https://gnk-asg.hr/'
 IMAGE=SITE+'assets/gnk-asg-social-card.png'
 TODAY=datetime.now(timezone.utc).date().isoformat()
 ORG_ID=SITE+'#organization'; WEBSITE_ID=SITE+'#website'
@@ -47,5 +47,5 @@ def entry(p):
  lines += [f'    <lastmod>{TODAY}</lastmod>',f'    <changefreq>{p["changefreq"]}</changefreq>',f'    <priority>{p["priority"]}</priority>','  </url>']; return '\n'.join(lines)
 for page in PAGES: enhance(page)
 (ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'+'\n'.join(entry(p) for p in PAGES)+'\n</urlset>\n',encoding='utf-8')
-(ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /gnk-asg/admin/\n\nSitemap: '+SITE+'sitemap.xml\n',encoding='utf-8')
+(ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: '+SITE+'sitemap.xml\n',encoding='utf-8')
 print('Generated full metadata and sitemap for bilingual public GNK ASG corpus including Market Intelligence.')
