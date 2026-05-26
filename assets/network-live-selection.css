@@ -3,8 +3,9 @@
 #global-network .network-overview-kpis{margin-bottom:6px}
 #global-network .network-overview-slot{min-width:0;min-height:350px}
 #global-network .network-overview-slot>section{height:100%;box-sizing:border-box}
-#global-network .network-overview-image{height:350px!important;min-height:350px!important;margin:0;border-radius:14px}
+#global-network .network-overview-image{position:relative;height:350px!important;min-height:350px!important;margin:0;border-radius:14px;cursor:zoom-in}
 #global-network .network-overview-image img{display:block;width:100%;height:350px!important;min-height:350px!important;max-height:none!important;object-fit:cover!important;object-position:center}
+#global-network .network-overview-zoom-label{position:absolute;right:9px;bottom:9px;padding:8px 11px;border:1px solid #d4af37;border-radius:20px;background:#081a31;color:#f2d46f;font:800 .5rem system-ui,sans-serif;text-transform:uppercase}
 #global-network .overview-map-slot .google-location-map{display:block!important;height:350px!important;min-height:350px!important;max-height:none!important;margin:0!important;padding:0!important;border:1px solid rgba(118,199,255,.18)!important;overflow:hidden!important;border-radius:14px!important}
 #global-network .overview-map-slot .google-location-head{height:62px;padding:9px 10px;gap:7px}
 #global-network .overview-map-slot .google-location-head small{font-size:.5rem}
@@ -35,5 +36,10 @@
 #global-network .overview-weather-slot .weather-day strong{font-size:.58rem}
 #global-network .overview-weather-slot .weather-day span{display:none}
 #global-network .overview-weather-slot .weather-day em{font-size:.4rem}
+.network-image-modal-open{overflow:hidden}
+.network-overview-image-modal{position:fixed;z-index:9999;inset:0;display:none;align-items:center;justify-content:center;padding:60px 24px 20px;background:rgba(2,7,17,.96)}
+.network-overview-image-modal.is-open{display:flex}
+.network-overview-image-modal img{display:block;max-width:96vw;max-height:calc(100vh - 80px);width:auto;height:auto;border:1px solid rgba(117,175,236,.42);border-radius:14px;background:#031025}
+.network-overview-image-close{position:fixed;right:20px;top:16px;width:45px;height:45px;border:1px solid #d4af37;border-radius:50%;background:#081a31;color:#fff;font-size:30px;line-height:1;cursor:pointer}
 @media(max-width:1160px){#global-network .network-overview-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#global-network .network-overview-image{grid-column:1/-1;grid-row:1;height:294px!important;min-height:294px!important}#global-network .network-overview-image img{height:294px!important;min-height:294px!important}}
-@media(max-width:680px){#global-network .network-overview-live-grid{grid-template-columns:1fr}#global-network .network-overview-image{grid-column:auto;grid-row:auto;height:235px!important;min-height:235px!important}#global-network .network-overview-image img{height:235px!important;min-height:235px!important}#global-network .overview-map-slot .google-location-map{height:302px!important;min-height:302px!important}#global-network .overview-map-slot .google-location-frame{height:202px}#global-network .overview-weather-slot .location-weather-panel{height:auto!important;min-height:342px!important}}
+@media(max-width:680px){#global-network .network-overview-live-grid{grid-template-columns:1fr}#global-network .network-overview-image{grid-column:auto;grid-row:auto;height:235px!important;min-height:235px!important}#global-network .network-overview-image img{height:235px!important;min-height:235px!important}#global-network .overview-map-slot .google-location-map{height:302px!important;min-height:302px!important}#global-network .overview-map-slot .google-location-frame{height:202px}#global-network .overview-weather-slot .location-weather-panel{height:auto!important;min-height:342px!important}.network-overview-image-modal{padding:58px 8px 8px}.network-overview-image-close{right:9px;top:9px}}
