@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v38-location-context';
+const CACHE_NAME = 'gnk-asg-live-v40-map-weather-image-modal';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/', './webmail/',
@@ -7,7 +7,7 @@ const STATIC_ASSETS = [
   './en/intelligence-desk/', './en/intelligence-desk/index.html', './en/registries/', './en/registries/index.html',
   './assets/style.css', './assets/advanced.css', './assets/header-premium.css',
   './assets/group-contrast.css', './assets/group-network.css', './assets/network-motion.css', './assets/group-globe-3d.css',
-  './assets/group-location-insights.css', './assets/group-map-2d-geo.css', './assets/group-google-map.css', './assets/group-location-weather.css', './assets/group-overview-panel.css', './assets/network-reading-layout.css', './assets/portal-integration.css', './assets/portal-status.css', './assets/command-centre.css',
+  './assets/group-location-insights.css', './assets/group-map-2d-geo.css', './assets/group-google-map.css', './assets/group-location-weather.css', './assets/group-overview-panel.css', './assets/network-reading-layout.css', './assets/network-live-selection.css', './assets/portal-integration.css', './assets/portal-status.css', './assets/command-centre.css',
   './assets/bitcoin-chart.css', './assets/market-expansion.css', './assets/language.css',
   './assets/intelligence-desk.css', './assets/desk-hybrid.css', './assets/mobile-app.css', './assets/desk-search.css',
   './assets/floating-intelligence.css', './assets/public-sources.css', './assets/site-share.css', './assets/mobile-stability.css', './assets/group-mobile-accessible.css',
@@ -31,22 +31,29 @@ const STATIC_ASSETS = [
   './data/daily_market_brief.json', './manifest.webmanifest', './robots.txt', './sitemap.xml'
 ];
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(STATIC_ASSETS)).then(() => self.skipWaiting()));
+  const requests = STATIC_ASSETS.map(asset => new Request(asset, { cache: 'reload' }));
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(requests)).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))))
+      .then(() => self.clients.claim())
+      .then(() => self.clients.matchAll({ type: 'window', includeUncontrolled: true }))
+      .then(clients => clients.forEach(client => client.postMessage({ type: 'GNK_PORTAL_CACHE_REFRESHED', version: CACHE_NAME })))
+  );
 });
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-  const liveData = url.pathname.includes('/data/') || url.pathname.endsWith('.html') || url.pathname.endsWith('/') || url.pathname.endsWith('sitemap.xml') || url.pathname.endsWith('robots.txt');
-  if (liveData) {
-    event.respondWith(fetch(event.request, {cache:'no-store'}).catch(() => caches.match(event.request)));
-    return;
-  }
-  event.respondWith(fetch(event.request, {cache:'no-cache'}).then(response => {
-    const copy = response.clone();
-    caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-    return response;
-  }).catch(() => caches.match(event.request)));
+  const sameOrigin = new URL(event.request.url).origin === self.location.origin;
+  if (!sameOrigin) return;
+  event.respondWith(
+    fetch(event.request, { cache: 'no-store' }).then(response => {
+      if (response && response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+      }
+      return response;
+    }).catch(() => caches.match(event.request))
+  );
 });
