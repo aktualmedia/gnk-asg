@@ -1,7 +1,7 @@
 name: Five Minute Market Intelligence Update
 
-# Resilient refresh: successful modules and status are published even if one public source is temporarily unavailable.
-# The schedule is offset from the top of the hour to reduce GitHub Actions queue congestion.
+# Jedini aktivni proces za tržišne, makro, ASG Gold i otvorene tržišne podatke.
+# Raspored je pomaknut od pune minute radi manjeg opterećenja GitHub Actions reda.
 on:
   schedule:
     - cron: '2-57/5 * * * *'
@@ -11,20 +11,23 @@ on:
       - main
     paths:
       - 'scripts/update_fast_market.py'
+      - 'scripts/update_macro_data.py'
+      - 'scripts/update_market_extensions.py'
+      - 'scripts/update_open_data.py'
       - '.github/workflows/fast-market-update.yml'
 
 permissions:
   contents: write
 
 concurrency:
-  group: fast-market-intelligence-update
+  group: public-portal-data-publication
   cancel-in-progress: false
 
 jobs:
   refresh-market:
-    name: Refresh digital assets stablecoins exchanges and indices
+    name: Refresh all public market panels
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 14
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
@@ -34,30 +37,44 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Update fast moving market datasets
-        id: market_fetch
+      - name: Update fast-moving digital asset datasets
+        id: fast_market
         continue-on-error: true
         run: python scripts/update_fast_market.py
+      - name: Update comparative macro-market dataset
+        id: macro_market
+        continue-on-error: true
+        run: python scripts/update_macro_data.py
+      - name: Update ASG reference profile and stock-exchange cards
+        id: market_extensions
+        continue-on-error: true
+        run: python scripts/update_market_extensions.py
+      - name: Update ECB public exchange-rate dataset
+        id: open_data
+        continue-on-error: true
+        run: python scripts/update_open_data.py
       - name: Publish latest generated market datasets without merge conflicts
         run: |
           set -e
           git config user.name "gnk-asg-market-bot"
           git config user.email "actions@users.noreply.github.com"
-          mkdir -p /tmp/gnk-fast-market-data
-          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-fast-market-data/
+          mkdir -p /tmp/gnk-market-data
+          for file in market.json stablecoins.json exchange_compare.json market_indices.json btc_chart.json fast_market_status.json macro_market.json asg_gold_asset.json stock_exchanges.json open_data.json; do
+            if [ -f "data/$file" ]; then cp "data/$file" /tmp/gnk-market-data/; fi
+          done
           publish_generated_data() {
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/gnk-fast-market-data/*.json data/
-            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+            cp /tmp/gnk-market-data/*.json data/
+            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json
             if git diff --cached --quiet; then
               echo "No market changes."
               return 0
             fi
-            git commit -m "Automated five minute market intelligence update"
+            git commit -m "Automated consolidated market intelligence update"
             git push origin HEAD:main
           }
           publish_generated_data || (sleep 8 && publish_generated_data)
-      - name: Disclose partial refresh without blocking publication
-        if: steps.market_fetch.outcome == 'failure'
-        run: echo "At least one public market source was temporarily unavailable; status and successfully generated datasets were published."
+      - name: Report partial public-source availability
+        if: steps.fast_market.outcome == 'failure' || steps.macro_market.outcome == 'failure' || steps.market_extensions.outcome == 'failure' || steps.open_data.outcome == 'failure'
+        run: echo "One or more public market sources were temporarily unavailable; successfully generated current datasets were published."
