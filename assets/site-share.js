@@ -3,13 +3,13 @@
   if (window.GNK_SITE_SHARE_READY) return;
   window.GNK_SITE_SHARE_READY = true;
   const ROOT = '/';
-  const COUNTER_START = new Date('2026-05-26T17:00:00+02:00');
+  const COUNTER_START = new Date('2026-05-26T16:00:00+02:00');
   const COUNTER_BASE = 2062;
   const ZONE = 'Europe/Zagreb';
   if (!document.querySelector('link[data-gnk-share-style]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet'; css.dataset.gnkShareStyle = '1';
-    css.href = ROOT + 'assets/site-share.css?v=20260526-home-counter02';
+    css.href = ROOT + 'assets/site-share.css?v=20260526-home-counter03';
     document.head.appendChild(css);
   }
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname);
@@ -35,14 +35,17 @@
     return 6;
   }
   function indicativeVisits(now = new Date()) {
+    if (now <= COUNTER_START) return COUNTER_BASE;
     let value = COUNTER_BASE;
-    if (now <= COUNTER_START) return value;
     let cursor = new Date(COUNTER_START.getTime());
-    while (cursor.getTime() + 3600000 <= now.getTime()) {
-      value += hourlyRate(localHour(cursor));
-      cursor = new Date(cursor.getTime() + 3600000);
+    while (cursor < now) {
+      const nextHour = new Date(cursor.getTime() + 3600000);
+      const segmentEnd = nextHour < now ? nextHour : now;
+      const elapsedHours = (segmentEnd.getTime() - cursor.getTime()) / 3600000;
+      value += hourlyRate(localHour(cursor)) * elapsedHours;
+      cursor = segmentEnd;
     }
-    return value;
+    return Math.floor(value);
   }
   function visitorMarkup() {
     const t = copy();
