@@ -3,9 +3,9 @@
 #global-network .network-overview-kpis{margin-bottom:6px}
 #global-network .network-overview-slot{min-width:0;min-height:350px}
 #global-network .network-overview-slot>section{height:100%;box-sizing:border-box}
-#global-network .network-overview-image{height:350px;min-height:350px;margin:0;border-radius:14px}
-#global-network .network-overview-image img{display:block;width:100%;height:350px!important;min-height:350px!important;object-fit:cover;object-position:center}
-#global-network .portal-context-grid .overview-map-slot .google-location-map{display:block!important;height:350px!important;min-height:350px!important;max-height:none!important;margin:0!important;padding:0!important;border:1px solid rgba(118,199,255,.18)!important;overflow:hidden!important;border-radius:14px!important}
+#global-network .network-overview-image{height:350px!important;min-height:350px!important;margin:0;border-radius:14px}
+#global-network .network-overview-image img{display:block;width:100%;height:350px!important;min-height:350px!important;max-height:none!important;object-fit:cover!important;object-position:center}
+#global-network .overview-map-slot .google-location-map{display:block!important;height:350px!important;min-height:350px!important;max-height:none!important;margin:0!important;padding:0!important;border:1px solid rgba(118,199,255,.18)!important;overflow:hidden!important;border-radius:14px!important}
 #global-network .overview-map-slot .google-location-head{height:62px;padding:9px 10px;gap:7px}
 #global-network .overview-map-slot .google-location-head small{font-size:.5rem}
 #global-network .overview-map-slot .google-location-head strong{font-size:.8rem}
@@ -13,7 +13,7 @@
 #global-network .overview-map-slot .google-location-head a{height:29px;padding:0 7px;font-size:.45rem}
 #global-network .overview-map-slot .google-location-frame{height:246px}
 #global-network .overview-map-slot .google-location-context-note{display:block!important;height:auto!important;min-height:0!important;max-height:none!important;margin:0!important;padding:8px 10px!important;border:0!important;border-top:1px solid rgba(118,199,255,.12)!important;color:#8ea9c5;font:650 .49rem/1.3 system-ui,sans-serif}
-#global-network .portal-context-grid .overview-weather-slot .location-weather-panel{display:block!important;height:350px!important;min-height:350px!important;max-height:none!important;margin:0!important;padding:0!important;border:1px solid rgba(118,199,255,.18)!important;overflow:hidden!important;border-radius:14px!important}
+#global-network .overview-weather-slot .location-weather-panel{display:block!important;height:350px!important;min-height:350px!important;max-height:none!important;margin:0!important;padding:0!important;border:1px solid rgba(118,199,255,.18)!important;overflow:hidden!important;border-radius:14px!important}
 #global-network .overview-weather-slot .weather-head{min-height:56px;padding:8px 9px}
 #global-network .overview-weather-slot .weather-head strong{font-size:.72rem}
 #global-network .overview-weather-slot .weather-head a{height:28px;padding:0 7px;font-size:.44rem}
@@ -35,8 +35,5 @@
 #global-network .overview-weather-slot .weather-day strong{font-size:.58rem}
 #global-network .overview-weather-slot .weather-day span{display:none}
 #global-network .overview-weather-slot .weather-day em{font-size:.4rem}
-.weather-local-clock{display:flex;align-items:center;gap:8px;margin:0 7px 7px;padding:6px 8px;border:1px solid rgba(118,199,255,.12);border-radius:9px;background:rgba(8,27,48,.75)}
-.weather-local-clock .clock-symbol{width:25px;height:25px;display:grid;place-items:center;border:1px solid rgba(212,175,55,.55);border-radius:50%;color:#d4af37;font:800 .92rem/1 system-ui,sans-serif}
-.weather-local-clock div{display:flex;flex-direction:column;gap:2px;min-width:0}.weather-local-clock small{color:#7a9aba;font:900 .39rem/1 system-ui,sans-serif;text-transform:uppercase}.weather-local-clock strong{color:#eef6fd;font:850 .91rem/1 system-ui,sans-serif;font-variant-numeric:tabular-nums}.weather-local-clock em{color:#97b1ca;font:650 .4rem/1.2 system-ui,sans-serif;font-style:normal;text-transform:capitalize}.weather-local-clock b{margin-left:auto;color:#d4af37;font:800 .42rem/1.2 system-ui,sans-serif;text-align:right;max-width:76px}
-@media(max-width:1160px){#global-network .network-overview-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#global-network .network-overview-image{grid-column:1/-1;grid-row:1;height:294px;min-height:294px}#global-network .network-overview-image img{height:294px!important;min-height:294px!important}}
-@media(max-width:680px){#global-network .network-overview-live-grid{grid-template-columns:1fr}#global-network .network-overview-image{grid-column:auto;grid-row:auto;height:235px;min-height:235px}#global-network .network-overview-image img{height:235px!important;min-height:235px!important}#global-network .portal-context-grid .overview-map-slot .google-location-map{height:302px!important;min-height:302px!important}#global-network .overview-map-slot .google-location-frame{height:202px}#global-network .portal-context-grid .overview-weather-slot .location-weather-panel{height:auto!important;min-height:342px!important}}
+@media(max-width:1160px){#global-network .network-overview-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#global-network .network-overview-image{grid-column:1/-1;grid-row:1;height:294px!important;min-height:294px!important}#global-network .network-overview-image img{height:294px!important;min-height:294px!important}}
+@media(max-width:680px){#global-network .network-overview-live-grid{grid-template-columns:1fr}#global-network .network-overview-image{grid-column:auto;grid-row:auto;height:235px!important;min-height:235px!important}#global-network .network-overview-image img{height:235px!important;min-height:235px!important}#global-network .overview-map-slot .google-location-map{height:302px!important;min-height:302px!important}#global-network .overview-map-slot .google-location-frame{height:202px}#global-network .overview-weather-slot .location-weather-panel{height:auto!important;min-height:342px!important}}
