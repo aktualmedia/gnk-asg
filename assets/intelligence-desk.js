@@ -86,8 +86,8 @@
     document.getElementById('deskInput').value = '';
   }
   async function loadData() {
-    try { const response = await fetch('data/macro_market.json?v=' + Date.now(), {cache:'no-store'}); if (response.ok) market = await response.json(); } catch (error) {}
-    try { const response = await fetch('data/update_status.json?v=' + Date.now(), {cache:'no-store'}); if (response.ok) status = await response.json(); } catch (error) {}
+    try { const response = await fetch('/data/macro_market.json?v=' + Date.now(), {cache:'no-store'}); if (response.ok) market = await response.json(); } catch (error) {}
+    try { const response = await fetch('/data/update_status.json?v=' + Date.now(), {cache:'no-store'}); if (response.ok) status = await response.json(); } catch (error) {}
   }
   function init() {
     solutionsSection(); desk(); loadData();
