@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260526-location-recovery06';
+  var VERSION = '20260526-demographic-compact07';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/group-globe-3d.css');
   style('/assets/group-location-insights.css');
   style('/assets/group-map-2d-geo.css');
-  style('/assets/group-google-map.css');
-  style('/assets/group-location-weather.css');
   style('/assets/group-overview-panel.css');
   style('/assets/network-reading-layout.css');
   style('/assets/bitcoin-chart.css');
@@ -46,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/mobile-stability.css');
   style('/assets/group-mobile-accessible.css');
   style('/assets/portal-integration.css');
-  style('/assets/portal-status.css');
   script('/assets/i18n.js');
   script('/assets/language-routing.js');
   script('/assets/portal-navigation.js');
@@ -71,8 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/group-map-2d-geo.js');
   script('/assets/group-location-insights.js');
   script('/assets/group-map-selection-bridge.js');
-  script('/assets/group-google-map.js');
-  script('/assets/group-location-weather.js');
   script('/assets/group-overview-panel.js');
   script('/assets/network-selection-sync.js');
   script('/assets/command-centre.js');
@@ -85,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/site-share.js');
   script('/assets/hourly-data-disclosure.js');
   script('/assets/portal-layout.js');
-  script('/assets/location-recovery.js');
 
   function isEnglish() {
     return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
