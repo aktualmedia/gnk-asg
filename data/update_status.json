@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-05-26T12:58:24+00:00",
+  "updated_at": "2026-05-26T14:41:36+00:00",
   "news": {
-    "updated_at": "2026-05-26T12:58:24+00:00",
+    "updated_at": "2026-05-26T14:41:36+00:00",
     "cadence": "hourly",
-    "public_items": 369,
+    "public_items": 341,
     "by_group": {
+      "technology": 90,
       "srbija": 31,
-      "digital-assets": 85,
       "hrvatska": 20,
-      "technology": 119,
-      "international": 84,
-      "slovenija": 30
+      "slovenija": 30,
+      "digital-assets": 85,
+      "international": 85
     },
     "errors": [
       {
