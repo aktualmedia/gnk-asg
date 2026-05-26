@@ -9,7 +9,7 @@
   if (!document.querySelector('link[data-gnk-share-style]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet'; css.dataset.gnkShareStyle = '1';
-    css.href = ROOT + 'assets/site-share.css?v=20260526-home-counter03';
+    css.href = ROOT + 'assets/site-share.css?v=20260526-home-counter04';
     document.head.appendChild(css);
   }
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname);
@@ -27,12 +27,12 @@
     return Number(new Intl.DateTimeFormat('en-GB', { hour:'2-digit', hourCycle:'h23', timeZone:ZONE }).format(date));
   }
   function hourlyRate(hour) {
-    if (hour >= 7 && hour < 9) return 48;
-    if (hour >= 9 && hour < 14) return 27;
-    if (hour >= 14 && hour < 17) return 19;
-    if (hour >= 17 && hour < 19) return 22;
+    if (hour >= 7 && hour < 9) return 48;       // 19 + dodatnih 29
+    if (hour >= 9 && hour < 14) return 27;      // 19 + dodatnih 8
+    if (hour >= 14 && hour < 17) return 19;     // osnovni dnevni ritam
+    if (hour >= 17 && hour < 19) return 15;     // približno 20 % manje od prethodnog razdoblja
     if (hour >= 19 && hour < 23) return 31;
-    return 6;
+    return hour % 2 === 0 ? 5 : 6;              // prosjek 5,5 tijekom noći
   }
   function indicativeVisits(now = new Date()) {
     if (now <= COUNTER_START) return COUNTER_BASE;
