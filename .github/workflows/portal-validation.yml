@@ -9,6 +9,7 @@ on:
       - 'assets/**'
       - 'admin/**'
       - 'webmail/**'
+      - 'data/**'
       - 'scripts/**'
       - 'tests/**'
       - 'trzista/**'
@@ -34,6 +35,7 @@ on:
       - 'assets/**'
       - 'admin/**'
       - 'webmail/**'
+      - 'data/**'
       - 'scripts/**'
       - 'tests/**'
       - 'trzista/**'
@@ -88,7 +90,10 @@ jobs:
           node --check assets/group-network.js
           node --check assets/network-motion.js
           node --check assets/group-globe-3d.js
+          node --check assets/group-map-2d-geo.js
+          node --check assets/group-location-insights.js
           node --check assets/group-overview-panel.js
+          node --check assets/portal-layout.js
           node --check assets/market-centre-data.js
           node --check assets/market-constellation.js
           node --check assets/admin-status-only.js
