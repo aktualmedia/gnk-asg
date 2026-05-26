@@ -9,11 +9,17 @@
   if (!document.querySelector('link[data-gnk-share-style]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet'; css.dataset.gnkShareStyle = '1';
-    css.href = ROOT + 'assets/site-share.css?v=20260526-indicative-visits01';
+    css.href = ROOT + 'assets/site-share.css?v=20260526-home-counter02';
     document.head.appendChild(css);
   }
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname);
-  const copy = () => isEn() ? {label:'Share page', native:'Share', visits:'Indicative visits', note:'Indicative activity model; not measured traffic analytics.'} : {label:'Podijeli stranicu', native:'Podijeli', visits:'Indikativni posjeti', note:'Indikativni model aktivnosti; nije mjerena analitika posjeta.'};
+  const copy = () => isEn() ? {
+    label:'Share page', native:'Share', visits:'Indicative visits', home:'Home',
+    note:'Indicative activity model; not measured traffic analytics.'
+  } : {
+    label:'Podijeli stranicu', native:'Podijeli', visits:'Indikativni posjeti', home:'Početna',
+    note:'Indikativni model aktivnosti; nije mjerena analitika posjeta.'
+  };
   const currentUrl = () => window.location.href;
   const pageTitle = () => document.title || 'GNK ASG d.o.o.';
   const encoded = value => encodeURIComponent(value);
@@ -42,11 +48,15 @@
     const t = copy();
     return `<span class="gnk-visitor-pill" title="${t.note}"><small>${t.visits}</small><b data-gnk-indicative-visits>${new Intl.NumberFormat(isEn() ? 'en-GB' : 'hr-HR').format(indicativeVisits())}</b></span>`;
   }
+  function homeMarkup() {
+    const t = copy();
+    return `<a class="gnk-home-pill" href="/" aria-label="${t.home}" title="${t.home}"><span aria-hidden="true">⌂</span><em>${t.home}</em></a>`;
+  }
   function markup(className) {
     const t = copy(), url = encoded(currentUrl()), title = encoded(pageTitle());
     const native = navigator.share ? `<button type="button" class="native" data-gnk-native-share>${t.native}</button>` : '';
-    const visits = className === 'gnk-share-dock' ? visitorMarkup() : '';
-    return `<div class="${className}"><strong>${t.label}</strong>${visits}<a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${url}">LinkedIn</a><a target="_blank" rel="noopener" href="https://wa.me/?text=${title}%20${url}">WhatsApp</a><a href="mailto:?subject=${title}&body=${title}%0A${url}">E-mail</a>${native}</div>`;
+    const dockExtras = className === 'gnk-share-dock' ? homeMarkup() + visitorMarkup() : homeMarkup();
+    return `<div class="${className}"><strong>${t.label}</strong>${dockExtras}<a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${url}">LinkedIn</a><a target="_blank" rel="noopener" href="https://wa.me/?text=${title}%20${url}">WhatsApp</a><a href="mailto:?subject=${title}&body=${title}%0A${url}">E-mail</a>${native}</div>`;
   }
   function create(markupText) { const host = document.createElement('div'); host.innerHTML = markupText; return host.firstElementChild; }
   function bindNative(root) {
