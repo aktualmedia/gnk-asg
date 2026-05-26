@@ -24,7 +24,7 @@
         try { localStorage.setItem(KEY, target); } catch (error) {}
         if (target === current) { applyCurrent(); return; }
         const anchor = window.location.hash || '';
-        window.location.assign(target === 'en' ? '/gnk-asg/en/' + anchor : '/gnk-asg/' + anchor);
+        window.location.assign(target === 'en' ? '/en/' + anchor : '/' + anchor);
       };
     });
     return true;
