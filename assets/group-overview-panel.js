@@ -13,7 +13,7 @@
     currentList:'01-33 · Existing companies / positions', plannedList:'E01-E12 · Planned expansion 2026',
     dataNote:'Full local registered names are shown only where contained in the portal dataset. Official registration status is verified in the relevant public register.',
     network:'2D / 3D network', registries:'Public registers', markets:'Live markets', news:'News', documents:'Documents', download:'Download static image as PDF', preparing:'Preparing PDF…', failed:'PDF unavailable',
-    share:'Share this overview', central:'Central headquarters', company:'Group company', plan:'Planned location'
+    share:'Share this overview', open:'Open list', close:'Close list', items:'positions'
   } : {
     eyebrow:'GNK DINAMO Ltd. Group · Statični pregled',
     title:'Globalna mreža: 33 postojeća društva i +12 planiranih lokacija',
@@ -23,7 +23,7 @@
     currentList:'01-33 · Postojeća društva / pozicije grupe', plannedList:'E01-E12 · Planirana ekspanzija 2026.',
     dataNote:'Puni lokalni registracijski nazivi prikazuju se samo gdje postoje u podatkovnoj bazi portala. Službeni registracijski status potvrđuje se u mjerodavnom javnom registru.',
     network:'Mreža tvrtki · 2D / 3D', registries:'Javni registri', markets:'Tržišta uživo', news:'Vijesti', documents:'Dokumenti', download:'Preuzmi statičnu sliku u PDF-u', preparing:'Pripremam PDF…', failed:'PDF nije dostupan',
-    share:'Podijeli pregled', central:'Središnje sjedište', company:'Društvo grupe', plan:'Planirana lokacija'
+    share:'Podijeli pregled', open:'Otvori popis', close:'Zatvori popis', items:'pozicija'
   };
   function activeRows() { return [state.network.center].concat((state.network.nodes || []).filter(item => item.status === 'active')); }
   function plannedRows() { return (state.network.nodes || []).filter(item => item.status === 'planned'); }
@@ -34,9 +34,28 @@
     const cls = item.id === 'boulder' ? ' hq' : planned ? ' planned' : '';
     return `<div class="network-overview-row${cls}"><b>${number}</b><div><strong>${esc(name(item))}</strong><span>${esc(place(item))} · ${esc(item.region || '')}</span></div></div>`;
   }
+  function disclosure(title, items, planned) {
+    const t = T();
+    const cls = planned ? 'network-overview-planned' : 'network-overview-existing';
+    return `<details class="network-overview-disclosure${planned ? ' is-planned' : ''}"><summary><span>${esc(title)}</span><b>${items.length}</b><em data-disclosure-state>${t.open}</em><i aria-hidden="true"></i></summary><div class="network-overview-body ${cls}">${items.map((item, i) => row(item, i, planned)).join('')}</div></details>`;
+  }
   function shareLinks() {
     const t = T(), url = encodeURIComponent(location.origin + location.pathname + '#networkOverviewVisual'), title = encodeURIComponent('GNK DINAMO Ltd. - ' + t.title);
     return `<div class="network-overview-share"><strong>${t.share}</strong><a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${url}">LinkedIn</a><a target="_blank" rel="noopener" href="https://wa.me/?text=${title}%20${url}">WhatsApp</a><a href="mailto:?subject=${title}&body=${title}%0A${url}">E-mail</a></div>`;
+  }
+  function bindDisclosures(panel) {
+    const t = T();
+    const lists = Array.from(panel.querySelectorAll('.network-overview-disclosure'));
+    lists.forEach(item => item.addEventListener('toggle', () => {
+      const stateText = item.querySelector('[data-disclosure-state]');
+      if (stateText) stateText.textContent = item.open ? t.close : t.open;
+      if (!item.open) return;
+      lists.filter(other => other !== item && other.open).forEach(other => {
+        other.open = false;
+        const otherState = other.querySelector('[data-disclosure-state]');
+        if (otherState) otherState.textContent = t.open;
+      });
+    }));
   }
   function render() {
     const shell = document.querySelector('#global-network .network-shell');
@@ -51,8 +70,9 @@
     }
     const t = T(), existing = activeRows(), planned = plannedRows(), count = state.network.counts || {};
     const regLink = en() ? 'en/registries/' : 'registri/';
-    panel.innerHTML = `<header class="network-overview-head"><div><small>${t.eyebrow}</small><h3>${t.title}</h3><p>${t.body}</p></div><aside><span>${t.governance}</span><strong>Nermin Sefić</strong></aside></header><div class="network-overview-kpis"><div><strong>${count.existing_total || existing.length}</strong><span>${t.existing}</span></div><div class="planned"><strong>+${count.planned_2026 || planned.length}</strong><span>${t.planned}</span></div><div><strong>${count.expanded_total || (existing.length + planned.length)}</strong><span>${t.total}</span></div></div><figure class="network-overview-image"><img src="assets/gnk-global-static-overview-accurate.svg?v=20260525-static-network02" loading="lazy" decoding="async" alt="${esc(t.alt)}"></figure><nav class="network-overview-actions"><button class="primary" type="button" id="networkOverviewPdf">↓ ${t.download}</button><a href="#global-network">${t.network}</a><a href="${regLink}">${t.registries}</a><a href="#digital-assets">${t.markets}</a><a href="#news">${t.news}</a><a href="#dokumenti">${t.documents}</a></nav><div class="network-overview-lists"><section><h4>${t.currentList}</h4><div class="network-overview-existing">${existing.map((item, i) => row(item, i, false)).join('')}</div></section><section><h4>${t.plannedList}</h4><div class="network-overview-planned">${planned.map((item, i) => row(item, i, true)).join('')}</div></section></div><p class="network-overview-note">${t.dataNote}</p>${shareLinks()}`;
+    panel.innerHTML = `<header class="network-overview-head"><div><small>${t.eyebrow}</small><h3>${t.title}</h3><p>${t.body}</p></div><aside><span>${t.governance}</span><strong>Nermin Sefić</strong></aside></header><div class="network-overview-kpis"><div><strong>${count.existing_total || existing.length}</strong><span>${t.existing}</span></div><div class="planned"><strong>+${count.planned_2026 || planned.length}</strong><span>${t.planned}</span></div><div><strong>${count.expanded_total || (existing.length + planned.length)}</strong><span>${t.total}</span></div></div><figure class="network-overview-image"><img src="assets/gnk-global-static-overview-accurate.svg?v=20260526-accordion01" loading="lazy" decoding="async" alt="${esc(t.alt)}"></figure><nav class="network-overview-actions"><button class="primary" type="button" id="networkOverviewPdf">↓ ${t.download}</button><a href="#global-network">${t.network}</a><a href="${regLink}">${t.registries}</a><a href="#digital-assets">${t.markets}</a><a href="#news">${t.news}</a><a href="#dokumenti">${t.documents}</a></nav><div class="network-overview-disclosures">${disclosure(t.currentList, existing, false)}${disclosure(t.plannedList, planned, true)}</div><p class="network-overview-note">${t.dataNote}</p>${shareLinks()}`;
     $('networkOverviewPdf')?.addEventListener('click', () => downloadPdf($('networkOverviewPdf')));
+    bindDisclosures(panel);
     return true;
   }
   function bytes(value) { return new TextEncoder().encode(value); }
