@@ -1,21 +1,23 @@
 {
-  "updated_at": "2026-05-25T22:41:34+00:00",
+  "updated_at": "2026-05-26T12:58:24+00:00",
   "news": {
-    "updated_at": "2026-05-25T22:41:34+00:00",
+    "updated_at": "2026-05-26T12:58:24+00:00",
     "cadence": "hourly",
-    "public_items": 380,
+    "public_items": 369,
     "by_group": {
+      "srbija": 31,
       "digital-assets": 85,
       "hrvatska": 20,
-      "international": 85,
       "technology": 119,
-      "bih": 10,
-      "srbija": 31,
+      "international": 84,
       "slovenija": 30
     },
-    "errors": [],
-    "capacity": 1000,
-    "moderated_public_mentions": 0
+    "errors": [
+      {
+        "source": "BiznisInfo.ba",
+        "error": "not well-formed (invalid token): line 325, column 241"
+      }
+    ]
   },
   "corporate_media_monitor": {
     "status": "ok",
