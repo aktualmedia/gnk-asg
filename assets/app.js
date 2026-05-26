@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260526-route-assets-fix02';
+  var VERSION = '20260526-root-data-fetch01';
+
+  // All dynamically loaded portal modules share public datasets in /data/.
+  // Normalize legacy relative requests so nested routes such as /en/ do not
+  // accidentally resolve them as /en/data/... and lose visual/data panels.
+  var nativeFetch = window.fetch && window.fetch.bind(window);
+  if (nativeFetch && !window.__gnkRootDataFetch) {
+    window.__gnkRootDataFetch = true;
+    window.fetch = function (input, init) {
+      if (typeof input === 'string' && input.indexOf('data/') === 0) input = '/' + input;
+      return nativeFetch(input, init);
+    };
+  }
+
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
