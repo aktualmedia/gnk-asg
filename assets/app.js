@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260526-map-weather04';
+  var VERSION = '20260526-map-weather05';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/mobile-stability.css');
   style('/assets/group-mobile-accessible.css');
   style('/assets/portal-integration.css');
+  style('/assets/portal-status.css');
   script('/assets/i18n.js');
   script('/assets/language-routing.js');
   script('/assets/portal-navigation.js');
