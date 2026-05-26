@@ -13,7 +13,7 @@
     currentList:'01-33 · Existing companies / positions', plannedList:'E01-E12 · Planned expansion 2026',
     dataNote:'Select a point on the globe or the 2D map to display its position and local weather. Official registration status is verified in the relevant public register.',
     network:'2D / 3D network', registries:'Public registers', markets:'Live markets', news:'News', documents:'Documents', download:'Download static image as PDF', preparing:'Preparing PDF…', failed:'PDF unavailable',
-    share:'Share this overview', open:'Open list', close:'Close list', mapSlot:'Map of selected location', weatherSlot:'Weather and local time for selected location'
+    share:'Share this overview', open:'Open list', close:'Close list', mapSlot:'Map of selected location', weatherSlot:'Weather and local time for selected location', enlarge:'Enlarge network image', closeImage:'Close enlarged image'
   } : {
     eyebrow:'GNK DINAMO Ltd. Group · Statični pregled',
     title:'Globalna mreža: 33 postojeća društva i +12 planiranih lokacija',
@@ -23,7 +23,7 @@
     currentList:'01-33 · Postojeća društva / pozicije grupe', plannedList:'E01-E12 · Planirana ekspanzija 2026.',
     dataNote:'Odaberite točku na globusu ili 2D karti za prikaz položaja i lokalnih vremenskih prilika. Službeni registracijski status potvrđuje se u mjerodavnom javnom registru.',
     network:'Mreža tvrtki · 2D / 3D', registries:'Javni registri', markets:'Tržišta uživo', news:'Vijesti', documents:'Dokumenti', download:'Preuzmi statičnu sliku u PDF-u', preparing:'Pripremam PDF…', failed:'PDF nije dostupan',
-    share:'Podijeli pregled', open:'Otvori popis', close:'Zatvori popis', mapSlot:'Karta odabrane lokacije', weatherSlot:'Vrijeme i lokalno vrijeme odabrane lokacije'
+    share:'Podijeli pregled', open:'Otvori popis', close:'Zatvori popis', mapSlot:'Karta odabrane lokacije', weatherSlot:'Vrijeme i lokalno vrijeme odabrane lokacije', enlarge:'Povećaj prikaz mreže', closeImage:'Zatvori povećani prikaz'
   };
   function activeRows() { return [state.network.center].concat((state.network.nodes || []).filter(item => item.status === 'active')); }
   function plannedRows() { return (state.network.nodes || []).filter(item => item.status === 'planned'); }
@@ -57,6 +57,38 @@
       });
     }));
   }
+  function closeImage() {
+    const modal = $('networkOverviewImageModal');
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('network-image-modal-open');
+  }
+  function openImage(image) {
+    let modal = $('networkOverviewImageModal');
+    const t = T();
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'networkOverviewImageModal';
+      modal.className = 'network-overview-image-modal';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(modal);
+      modal.addEventListener('click', event => { if (event.target === modal || event.target.closest('[data-close-network-image]')) closeImage(); });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') closeImage(); });
+    }
+    modal.innerHTML = `<button class="network-overview-image-close" type="button" data-close-network-image aria-label="${esc(t.closeImage)}">×</button><img src="${image.src}" alt="${esc(image.alt)}">`;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('network-image-modal-open');
+    modal.querySelector('button').focus();
+  }
+  function bindImageZoom(panel) {
+    const figure = panel.querySelector('.network-overview-image');
+    const image = figure && figure.querySelector('img');
+    if (!figure || !image) return;
+    figure.addEventListener('click', () => openImage(image));
+    figure.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openImage(image); } });
+  }
   function contextDock() {
     if (window.GNK_LOCATION_CONTEXT && window.GNK_LOCATION_CONTEXT.dock) return window.GNK_LOCATION_CONTEXT.dock();
     return $('networkLocationContext');
@@ -75,13 +107,14 @@
     }
     const t = T(), existing = activeRows(), planned = plannedRows(), count = state.network.counts || {};
     const regLink = en() ? '/en/registries/' : '/registri/';
-    panel.innerHTML = `<header class="network-overview-head"><div><small>${t.eyebrow}</small><h3>${t.title}</h3><p>${t.body}</p></div><aside><span>${t.governance}</span><strong>Nermin Sefić</strong></aside></header><div class="network-overview-kpis"><div><strong>${count.existing_total || existing.length}</strong><span>${t.existing}</span></div><div class="planned"><strong>+${count.planned_2026 || planned.length}</strong><span>${t.planned}</span></div><div><strong>${count.expanded_total || (existing.length + planned.length)}</strong><span>${t.total}</span></div></div><div class="network-overview-live-grid"><div class="network-overview-slot overview-map-slot" id="overviewMapSlot" aria-label="${esc(t.mapSlot)}"></div><figure class="network-overview-image"><img src="/assets/gnk-global-static-overview-accurate.svg?v=20260526-location-live01" loading="lazy" decoding="async" alt="${esc(t.alt)}"></figure><div class="network-overview-slot overview-weather-slot" id="overviewWeatherSlot" aria-label="${esc(t.weatherSlot)}"></div></div><nav class="network-overview-actions"><button class="primary" type="button" id="networkOverviewPdf">↓ ${t.download}</button><a href="#global-network">${t.network}</a><a href="${regLink}">${t.registries}</a><a href="#digital-assets">${t.markets}</a><a href="#news">${t.news}</a><a href="#dokumenti">${t.documents}</a></nav><div class="network-overview-disclosures">${disclosure(t.currentList, existing, false)}${disclosure(t.plannedList, planned, true)}</div><p class="network-overview-note">${t.dataNote}</p>${shareLinks()}`;
+    panel.innerHTML = `<header class="network-overview-head"><div><small>${t.eyebrow}</small><h3>${t.title}</h3><p>${t.body}</p></div><aside><span>${t.governance}</span><strong>Nermin Sefić</strong></aside></header><div class="network-overview-kpis"><div><strong>${count.existing_total || existing.length}</strong><span>${t.existing}</span></div><div class="planned"><strong>+${count.planned_2026 || planned.length}</strong><span>${t.planned}</span></div><div><strong>${count.expanded_total || (existing.length + planned.length)}</strong><span>${t.total}</span></div></div><div class="network-overview-live-grid"><div class="network-overview-slot overview-map-slot" id="overviewMapSlot" aria-label="${esc(t.mapSlot)}"></div><figure class="network-overview-image" role="button" tabindex="0" title="${esc(t.enlarge)}" aria-label="${esc(t.enlarge)}"><img src="/assets/gnk-global-static-overview-accurate.svg?v=20260526-image-modal01" loading="lazy" decoding="async" alt="${esc(t.alt)}"><span class="network-overview-zoom-label">⤢ ${t.enlarge}</span></figure><div class="network-overview-slot overview-weather-slot" id="overviewWeatherSlot" aria-label="${esc(t.weatherSlot)}"></div></div><nav class="network-overview-actions"><button class="primary" type="button" id="networkOverviewPdf">↓ ${t.download}</button><a href="#global-network">${t.network}</a><a href="${regLink}">${t.registries}</a><a href="#digital-assets">${t.markets}</a><a href="#news">${t.news}</a><a href="#dokumenti">${t.documents}</a></nav><div class="network-overview-disclosures">${disclosure(t.currentList, existing, false)}${disclosure(t.plannedList, planned, true)}</div><p class="network-overview-note">${t.dataNote}</p>${shareLinks()}`;
     const map = $('googleLocationMap');
     const weather = $('locationWeatherPanel');
     if (map) $('overviewMapSlot').appendChild(map);
     if (weather) $('overviewWeatherSlot').appendChild(weather);
     $('networkOverviewPdf')?.addEventListener('click', () => downloadPdf($('networkOverviewPdf')));
     bindDisclosures(panel);
+    bindImageZoom(panel);
     document.dispatchEvent(new CustomEvent('gnk-overview-mounted'));
     return true;
   }
