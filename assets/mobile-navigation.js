@@ -1,11 +1,11 @@
 (() => {
   'use strict';
-  const isEnglish = () => /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
+  const isEnglish = () => /\/en(?:\/|$)/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   function labels() {
     return isEnglish() ? {
-      finance:'Financials', network:'Global Network', technology:'Technology & AI', markets:'Markets', news:'News', desk:'Intelligence Desk', registers:'Public Registers', documents:'Documents', install:'Install app', control:'Control', home:'Home'
+      finance:'Financials', network:'Global Network', technology:'Technology & AI', markets:'Markets', news:'News', desk:'Intelligence Desk', registers:'Public Registers', documents:'Documents', mail:'Webmail', install:'Install app', control:'Control', home:'Home'
     } : {
-      finance:'Financije', network:'Globalna mreža', technology:'Tehnologija i AI', markets:'Tržišta', news:'Vijesti', desk:'Intelligence Desk', registers:'Javni registri', documents:'Dokumenti', install:'Instaliraj aplikaciju', control:'Upravljanje', home:'Početna'
+      finance:'Financije', network:'Globalna mreža', technology:'Tehnologija i AI', markets:'Tržišta', news:'Vijesti', desk:'Intelligence Desk', registers:'Javni registri', documents:'Dokumenti', mail:'Webmail', install:'Instaliraj aplikaciju', control:'Upravljanje', home:'Početna'
     };
   }
   function renderMenu() {
@@ -27,8 +27,9 @@
       '<a href="#news">' + t.news + '</a>' +
       '<a href="#publicSources">' + t.registers + '</a>' +
       '<a href="#dokumenti">' + t.documents + '</a>' +
-      '<a href="instalacija/">' + t.install + '</a>' +
-      '<a class="management-link" href="/gnk-asg/admin/">' + t.control + '</a>';
+      '<a href="/webmail/">' + t.mail + '</a>' +
+      '<a href="/instalacija/">' + t.install + '</a>' +
+      '<a class="management-link" href="/admin/">' + t.control + '</a>';
     mobile.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
   }
   function renderHome() {
