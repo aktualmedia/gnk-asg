@@ -38,18 +38,26 @@ jobs:
         id: market_fetch
         continue-on-error: true
         run: python scripts/update_fast_market.py
-      - name: Commit refreshed or partially refreshed market datasets
+      - name: Publish latest generated market datasets without merge conflicts
         run: |
+          set -e
           git config user.name "gnk-asg-market-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
-          if git diff --cached --quiet; then
-            echo "No market changes."
-          else
+          mkdir -p /tmp/gnk-fast-market-data
+          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-fast-market-data/
+          publish_generated_data() {
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/gnk-fast-market-data/*.json data/
+            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+            if git diff --cached --quiet; then
+              echo "No market changes."
+              return 0
+            fi
             git commit -m "Automated five minute market intelligence update"
-            git pull --rebase origin main
-            git push origin HEAD:main || (sleep 8 && git pull --rebase origin main && git push origin HEAD:main)
-          fi
+            git push origin HEAD:main
+          }
+          publish_generated_data || (sleep 8 && publish_generated_data)
       - name: Disclose partial refresh without blocking publication
         if: steps.market_fetch.outcome == 'failure'
         run: echo "At least one public market source was temporarily unavailable; status and successfully generated datasets were published."
