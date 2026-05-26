@@ -32,7 +32,7 @@ const homepageRoutes = [
 ];
 
 for (const route of homepageRoutes) {
-  test(`${route.path} prikazuje činjenični vizualni panel između mreže i lokacijskog konteksta`, async ({ page, isMobile }) => {
+  test(`${route.path} prikazuje globus s kompaktnim demografskim kontekstom neposredno ispod prikaza`, async ({ page, isMobile }) => {
     await page.goto(route.path, { waitUntil: 'domcontentloaded' });
     if (isMobile) {
       const toggle = page.locator('#menuToggle');
@@ -47,12 +47,15 @@ for (const route of homepageRoutes) {
     await expect(panel.locator('.network-overview-kpis strong').nth(1)).toContainText('+12');
     await expect(panel.locator('.network-overview-kpis strong').nth(2)).toContainText('45');
     await expect.poll(async () => page.evaluate(() => {
+      const layout = document.querySelector('#global-network .network-layout');
       const dock = document.getElementById('networkLocationContext');
-      if (!dock) return false;
-      const ids = Array.from(dock.children).map(node => node.id);
-      return ids.indexOf('networkOverviewVisual') !== -1 &&
-        ids.indexOf('googleLocationMap') > ids.indexOf('networkOverviewVisual') &&
-        ids.indexOf('locationWeatherPanel') > ids.indexOf('googleLocationMap');
+      const facts = dock && dock.querySelector('.network-sidebar .location-insights');
+      const visual = layout && (layout.querySelector('.globe-panel') || layout.querySelector('.network-canvas'));
+      if (!layout || !dock || !facts || !visual) return false;
+      const visualBottom = visual.getBoundingClientRect().bottom;
+      const dockTop = dock.getBoundingClientRect().top;
+      return dockTop >= visualBottom - 4 && dockTop - visualBottom < 24 &&
+        !dock.querySelector('#googleLocationMap') && !dock.querySelector('#locationWeatherPanel');
     }), { timeout: 15000 }).toBe(true);
   });
 }
