@@ -2,11 +2,11 @@
   'use strict';
   if (window.GNK_SITE_SHARE_READY) return;
   window.GNK_SITE_SHARE_READY = true;
-  const ROOT = '/gnk-asg/';
+  const ROOT = '/';
   if (!document.querySelector('link[data-gnk-share-style]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet'; css.dataset.gnkShareStyle = '1';
-    css.href = ROOT + 'assets/site-share.css?v=20260526-share03';
+    css.href = ROOT + 'assets/site-share.css?v=20260526-share04';
     document.head.appendChild(css);
   }
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname);
