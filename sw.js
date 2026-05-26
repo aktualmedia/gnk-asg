@@ -1,7 +1,7 @@
-const CACHE_NAME = 'gnk-asg-live-v36-network-accordion';
+const CACHE_NAME = 'gnk-asg-live-v37-custom-domain-webmail';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
-  './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/',
+  './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/', './webmail/',
   './trzista/', './trzista/index.html', './en/markets/', './en/markets/index.html',
   './en/finance/', './en/finance/index.html', './en/technology/', './en/technology/index.html',
   './en/intelligence-desk/', './en/intelligence-desk/index.html', './en/registries/', './en/registries/index.html',
