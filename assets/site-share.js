@@ -6,7 +6,7 @@
   if (!document.querySelector('link[data-gnk-share-style]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet'; css.dataset.gnkShareStyle = '1';
-    css.href = ROOT + 'assets/site-share.css?v=20260525-share02';
+    css.href = ROOT + 'assets/site-share.css?v=20260526-share03';
     document.head.appendChild(css);
   }
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname);
