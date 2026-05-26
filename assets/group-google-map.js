@@ -4,9 +4,9 @@
   const $ = id => document.getElementById(id);
   const en = () => document.documentElement.lang === 'en' || /\/en\/?$/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const tr = () => en() ? {
-    label:'Google Maps · Selected location', open:'Open larger map', coordinates:'Geographic position'
+    label:'Google Maps · Selected location', open:'Open larger map', coordinates:'Geographic position', context:'Demographic context changes with each selected 2D / 3D point.'
   } : {
-    label:'Google Maps · Odabrana lokacija', open:'Otvori veću kartu', coordinates:'Geografska pozicija'
+    label:'Google Maps · Odabrana lokacija', open:'Otvori veću kartu', coordinates:'Geografska pozicija', context:'Demografski podatci mijenjaju se svakim odabirom točke u 2D / 3D prikazu.'
   };
   async function get(path) {
     try {
@@ -43,8 +43,9 @@
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${position.lat},${position.lng}`)}`;
   }
   function contextDock() {
-    const layout = document.querySelector('#global-network .network-layout');
-    const sidebar = layout?.querySelector('.network-sidebar');
+    const shell = document.querySelector('#global-network .network-shell');
+    const layout = shell?.querySelector('.network-layout');
+    const sidebar = shell?.querySelector('.network-sidebar');
     if (!layout) return null;
     layout.classList.add('has-location-context');
     let dock = $('networkLocationContext');
@@ -52,8 +53,11 @@
       dock = document.createElement('section');
       dock.id = 'networkLocationContext';
       dock.className = 'location-context-dock';
-      if (sidebar) layout.insertBefore(dock, sidebar);
-      else layout.appendChild(dock);
+      layout.appendChild(dock);
+    }
+    if (sidebar && sidebar.parentElement !== dock) {
+      sidebar.classList.add('location-demographic-card');
+      dock.appendChild(sidebar);
     }
     return dock;
   }
@@ -74,7 +78,7 @@
     if (!host || !position || !placeFact) return false;
     data.selected = id;
     const T = tr();
-    host.innerHTML = `<header class="google-location-head"><div><small>${T.label}</small><strong>${title(id)}</strong><span>${locationLine(id)} · ${T.coordinates}: ${position.lat.toFixed(4)}, ${position.lng.toFixed(4)}</span></div><a href="${externalUrl(id)}" target="_blank" rel="noopener">${T.open} ↗</a></header><iframe class="google-location-frame" title="${T.label}: ${locationLine(id)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="${embedUrl(id)}"></iframe>`;
+    host.innerHTML = `<header class="google-location-head"><div><small>${T.label}</small><strong>${title(id)}</strong><span>${locationLine(id)} · ${T.coordinates}: ${position.lat.toFixed(4)}, ${position.lng.toFixed(4)}</span></div><a href="${externalUrl(id)}" target="_blank" rel="noopener">${T.open} ↗</a></header><iframe class="google-location-frame" title="${T.label}: ${locationLine(id)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="${embedUrl(id)}"></iframe><p class="google-location-context-note">● ${T.context}</p>`;
     return true;
   }
   window.GNK_LOCATION_CONTEXT = { dock: contextDock, showMap: render };
