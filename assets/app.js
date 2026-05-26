@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260526-map-weather05';
+  var VERSION = '20260526-location-recovery06';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/site-share.js');
   script('/assets/hourly-data-disclosure.js');
   script('/assets/portal-layout.js');
+  script('/assets/location-recovery.js');
 
   function isEnglish() {
     return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
