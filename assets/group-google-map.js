@@ -4,9 +4,9 @@
   const $ = id => document.getElementById(id);
   const en = () => document.documentElement.lang === 'en' || /\/en\/?$/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const tr = () => en() ? {
-    label:'Google Maps · Selected location', open:'Open larger map', coordinates:'Geographic position', context:'Demographic context changes with each selected 2D / 3D point.'
+    label:'Google Maps · Selected location', open:'Open larger map', coordinates:'Geographic position', context:'Select any 2D / 3D point to update this map and the local weather panel.'
   } : {
-    label:'Google Maps · Odabrana lokacija', open:'Otvori veću kartu', coordinates:'Geografska pozicija', context:'Demografski podatci mijenjaju se svakim odabirom točke u 2D / 3D prikazu.'
+    label:'Google Maps · Odabrana lokacija', open:'Otvori veću kartu', coordinates:'Geografska pozicija', context:'Odaberite bilo koju 2D / 3D točku za ažuriranje karte i lokalnih vremenskih prilika.'
   };
   async function get(path) {
     try {
@@ -23,9 +23,9 @@
   function fact(id) { return data.facts?.locations?.[id] || null; }
   function title(id) {
     const item = node(id), placeFact = fact(id);
+    if (placeFact?.city) return placeFact.city;
     if (!item) return '';
-    if (id === 'boulder') return item.name;
-    return placeFact?.city || (en() ? item.name_en : item.name_hr);
+    return id === 'boulder' ? item.name : (en() ? item.name_en : item.name_hr);
   }
   function locationLine(id) {
     const placeFact = fact(id);
@@ -64,13 +64,14 @@
   function panel() {
     const dock = contextDock();
     if (!dock) return null;
+    const mount = $('overviewMapSlot') || dock;
     let host = $('googleLocationMap');
     if (!host) {
       host = document.createElement('section');
       host.id = 'googleLocationMap';
       host.className = 'google-location-map';
-      dock.prepend(host);
     }
+    if (host.parentElement !== mount) mount.appendChild(host);
     return host;
   }
   function render(id) {
@@ -98,6 +99,7 @@
     document.addEventListener('gnk-location-selected', event => {
       if (event.detail?.id) render(event.detail.id);
     });
+    document.addEventListener('gnk-overview-mounted', () => render(data.selected));
     window.addEventListener('gnk-language-change', () => render(data.selected));
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
