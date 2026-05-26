@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260526-root-data-fetch01';
+  var VERSION = '20260526-integrated-network01';
 
   // All dynamically loaded portal modules share public datasets in /data/.
   // Normalize legacy relative requests so nested routes such as /en/ do not
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/group-google-map.css');
   style('/assets/group-location-weather.css');
   style('/assets/group-overview-panel.css');
+  style('/assets/network-reading-layout.css');
   style('/assets/bitcoin-chart.css');
   style('/assets/market-expansion.css');
   style('/assets/language.css');
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/public-sources.css');
   style('/assets/mobile-stability.css');
   style('/assets/group-mobile-accessible.css');
+  style('/assets/portal-integration.css');
   script('/assets/i18n.js');
   script('/assets/language-routing.js');
   script('/assets/portal-navigation.js');
@@ -84,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/public-sources.js');
   script('/assets/site-share.js');
   script('/assets/hourly-data-disclosure.js');
+  script('/assets/portal-layout.js');
 
   function isEnglish() {
     return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
