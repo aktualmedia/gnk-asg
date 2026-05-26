@@ -57,20 +57,25 @@
       });
     }));
   }
+  function contextDock() {
+    if (window.GNK_LOCATION_CONTEXT && window.GNK_LOCATION_CONTEXT.dock) return window.GNK_LOCATION_CONTEXT.dock();
+    return $('networkLocationContext');
+  }
   function render() {
     const shell = document.querySelector('#global-network .network-shell');
     const layout = shell && shell.querySelector('.network-layout');
-    if (!shell || !layout || !state.network) return false;
+    const dock = contextDock();
+    if (!shell || !layout || !dock || !state.network) return false;
     let panel = $('networkOverviewVisual');
     if (!panel) {
       panel = document.createElement('section'); panel.id = 'networkOverviewVisual'; panel.className = 'network-overview-visual';
-      layout.insertAdjacentElement('afterend', panel);
-    } else if (panel.previousElementSibling !== layout) {
-      layout.insertAdjacentElement('afterend', panel);
+      dock.prepend(panel);
+    } else if (panel.parentElement !== dock || panel !== dock.firstElementChild) {
+      dock.prepend(panel);
     }
     const t = T(), existing = activeRows(), planned = plannedRows(), count = state.network.counts || {};
-    const regLink = en() ? 'en/registries/' : 'registri/';
-    panel.innerHTML = `<header class="network-overview-head"><div><small>${t.eyebrow}</small><h3>${t.title}</h3><p>${t.body}</p></div><aside><span>${t.governance}</span><strong>Nermin Sefić</strong></aside></header><div class="network-overview-kpis"><div><strong>${count.existing_total || existing.length}</strong><span>${t.existing}</span></div><div class="planned"><strong>+${count.planned_2026 || planned.length}</strong><span>${t.planned}</span></div><div><strong>${count.expanded_total || (existing.length + planned.length)}</strong><span>${t.total}</span></div></div><figure class="network-overview-image"><img src="assets/gnk-global-static-overview-accurate.svg?v=20260526-accordion01" loading="lazy" decoding="async" alt="${esc(t.alt)}"></figure><nav class="network-overview-actions"><button class="primary" type="button" id="networkOverviewPdf">↓ ${t.download}</button><a href="#global-network">${t.network}</a><a href="${regLink}">${t.registries}</a><a href="#digital-assets">${t.markets}</a><a href="#news">${t.news}</a><a href="#dokumenti">${t.documents}</a></nav><div class="network-overview-disclosures">${disclosure(t.currentList, existing, false)}${disclosure(t.plannedList, planned, true)}</div><p class="network-overview-note">${t.dataNote}</p>${shareLinks()}`;
+    const regLink = en() ? '/en/registries/' : '/registri/';
+    panel.innerHTML = `<header class="network-overview-head"><div><small>${t.eyebrow}</small><h3>${t.title}</h3><p>${t.body}</p></div><aside><span>${t.governance}</span><strong>Nermin Sefić</strong></aside></header><div class="network-overview-kpis"><div><strong>${count.existing_total || existing.length}</strong><span>${t.existing}</span></div><div class="planned"><strong>+${count.planned_2026 || planned.length}</strong><span>${t.planned}</span></div><div><strong>${count.expanded_total || (existing.length + planned.length)}</strong><span>${t.total}</span></div></div><figure class="network-overview-image"><img src="/assets/gnk-global-static-overview-accurate.svg?v=20260526-context01" loading="lazy" decoding="async" alt="${esc(t.alt)}"></figure><nav class="network-overview-actions"><button class="primary" type="button" id="networkOverviewPdf">↓ ${t.download}</button><a href="#global-network">${t.network}</a><a href="${regLink}">${t.registries}</a><a href="#digital-assets">${t.markets}</a><a href="#news">${t.news}</a><a href="#dokumenti">${t.documents}</a></nav><div class="network-overview-disclosures">${disclosure(t.currentList, existing, false)}${disclosure(t.plannedList, planned, true)}</div><p class="network-overview-note">${t.dataNote}</p>${shareLinks()}`;
     $('networkOverviewPdf')?.addEventListener('click', () => downloadPdf($('networkOverviewPdf')));
     bindDisclosures(panel);
     return true;
@@ -89,7 +94,7 @@
   async function downloadPdf(button) {
     if (state.busy) return; state.busy = true; const t=T(), old=button.textContent; button.textContent=t.preparing; button.disabled=true;
     try {
-      const svg = await fetch('assets/gnk-global-static-overview-accurate.svg?v=' + Date.now(), {cache:'no-store'}).then(response => response.text());
+      const svg = await fetch('/assets/gnk-global-static-overview-accurate.svg?v=' + Date.now(), {cache:'no-store'}).then(response => response.text());
       const uri = URL.createObjectURL(new Blob([svg], {type:'image/svg+xml'})), image = new Image();
       await new Promise((resolve,reject) => { image.onload=resolve; image.onerror=reject; image.src=uri; });
       const canvas=document.createElement('canvas'); canvas.width=1600; canvas.height=980; canvas.getContext('2d').drawImage(image,0,0,1600,980); URL.revokeObjectURL(uri);
@@ -98,7 +103,7 @@
     button.textContent=old; button.disabled=false; state.busy=false;
   }
   async function init() {
-    try { const response = await fetch('data/group_network.json?v=' + Date.now(), {cache:'no-store'}); if (!response.ok) return; state.network = await response.json(); } catch (_) { return; }
+    try { const response = await fetch('/data/group_network.json?v=' + Date.now(), {cache:'no-store'}); if (!response.ok) return; state.network = await response.json(); } catch (_) { return; }
     let tries=0; const timer=setInterval(() => { if (render() || ++tries>180) clearInterval(timer); }, 60);
     window.addEventListener('gnk-language-change', render);
   }
