@@ -1,6 +1,7 @@
 name: Five Minute Market Intelligence Update
 
 # Jedini aktivni proces za tržišne, makro, ASG Gold i otvorene tržišne podatke.
+# Oporavak nakon uklanjanja starih paralelnih workflowa: objavljuje jedinstveni aktualni tržišni skup.
 # Raspored je pomaknut od pune minute radi manjeg opterećenja GitHub Actions reda.
 on:
   schedule:
