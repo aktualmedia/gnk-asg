@@ -1,5 +1,6 @@
 name: Media Monitor Status
 
+# Ovaj proces vodi samo status medijskog praćenja i ne smije prepisivati datum javnih vijesti.
 on:
   workflow_dispatch:
   schedule:
@@ -16,28 +17,38 @@ permissions:
   contents: write
 
 concurrency:
-  group: media-monitor-status
-  cancel-in-progress: true
+  group: public-portal-data-publication
+  cancel-in-progress: false
 
 jobs:
   status:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Refresh monitor status
         run: python scripts/discover_corporate_media.py
-      - name: Commit status files
+      - name: Publish media monitor status without modifying news timestamp
         run: |
-          if git diff --quiet -- data/media_monitor_status.json data/update_status.json; then
-            echo "No status changes."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/media_monitor_status.json data/update_status.json
-          git commit -m "Refresh media monitor status [skip ci]"
-          git push
+          set -e
+          git config user.name "gnk-asg-media-monitor-bot"
+          git config user.email "actions@users.noreply.github.com"
+          cp data/media_monitor_status.json /tmp/media_monitor_status.json
+          publish_generated_data() {
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/media_monitor_status.json data/media_monitor_status.json
+            git add data/media_monitor_status.json
+            if git diff --cached --quiet; then
+              echo "No media monitor status changes."
+              return 0
+            fi
+            git commit -m "Automated media monitor status update"
+            git push origin HEAD:main
+          }
+          publish_generated_data || (sleep 8 && publish_generated_data)
