@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
-    el.rel = 'stylesheet'; el.href = path + '?v=20260525-overview1'; document.head.appendChild(el);
+    el.rel = 'stylesheet'; el.href = path + '?v=20260525-static-network03'; document.head.appendChild(el);
   }
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=20260525-overview1'; el.async = false; document.body.appendChild(el);
+    el.src = path + '?v=20260525-static-network03'; el.async = false; document.body.appendChild(el);
   }
   style('assets/fina-panel.css');
   style('assets/advanced.css');
@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('assets/group-mobile-accessible.js');
   script('assets/group-clarity.js');
   script('assets/public-sources.js');
+  script('assets/site-share.js');
   script('assets/hourly-data-disclosure.js');
 
   function isEnglish() {
@@ -115,5 +116,5 @@ document.addEventListener('DOMContentLoaded', function () {
       if (items.length > 1) window.setInterval(function () { current = (current + 1) % items.length; show(); }, 11000);
     }).catch(function () {});
   }
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js?v=20260525-static-network03').catch(function () {});
 });
