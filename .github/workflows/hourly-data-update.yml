@@ -1,9 +1,10 @@
 name: Hourly News Update
 
 # Jedini aktivni proces za javne vijesti. Tržišni i makro podatci osvježavaju se odvojeno kroz petominutni market workflow.
+# Izvršenje je pomaknuto izvan tržišnih petominutnih termina radi čistog reda objave.
 on:
   schedule:
-    - cron: '17 * * * *'
+    - cron: '19 * * * *'
   workflow_dispatch:
   push:
     branches:
