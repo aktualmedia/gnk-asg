@@ -3,7 +3,7 @@
 from __future__ import annotations
 import argparse, json, sys
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/'data'; SITE='https://aktualmedia.github.io/gnk-asg/'
+ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/'data'; SITE='https://gnk-asg.hr/'
 IMAGE=SITE+'assets/gnk-asg-social-card.png'; ERRORS=[]; PASSED=[]
 PAGES=[('index.html',SITE),('en/index.html',SITE+'en/'),('trzista/index.html',SITE+'trzista/'),('en/markets/index.html',SITE+'en/markets/'),('sadrzaj/index.html',SITE+'sadrzaj/'),('financije/index.html',SITE+'financije/'),('en/finance/index.html',SITE+'en/finance/'),('tehnologija/index.html',SITE+'tehnologija/'),('en/technology/index.html',SITE+'en/technology/'),('intelligence-desk/index.html',SITE+'intelligence-desk/'),('en/intelligence-desk/index.html',SITE+'en/intelligence-desk/'),('registri/index.html',SITE+'registri/'),('en/registries/index.html',SITE+'en/registries/'),('instalacija/index.html',SITE+'instalacija/')]
 def ok(text): PASSED.append(text); print('PASS: '+text)
@@ -16,24 +16,32 @@ def needed(path):
  if p.exists() and p.stat().st_size>0: ok('Datoteka postoji: '+path)
  else: fail('Nedostaje datoteka: '+path)
 def check_structure(seo=False):
- required=['index.html','en/index.html','trzista/index.html','en/markets/index.html','financije/index.html','en/finance/index.html','tehnologija/index.html','en/technology/index.html','intelligence-desk/index.html','en/intelligence-desk/index.html','registri/index.html','en/registries/index.html','admin/index.html','sw.js','manifest.webmanifest','package.json','playwright.config.js','tests/market-centre.spec.js','assets/app.js','assets/portal-navigation.js','assets/group-network.js','assets/network-motion.js','assets/group-globe-3d.js','assets/market-centre.css','assets/market-centre-panels.css','assets/market-centre-data.js','assets/market-constellation.js','assets/gnk-asg-social-card.svg','assets/admin-status-only.js','data/group_network.json','data/group_network_geo.json','data/media_approved.json','data/media_monitor_status.json','data/stablecoins.json','data/exchange_compare.json','data/market_indices.json','data/fast_market_status.json','data/daily_market_brief.json','scripts/update_feeds_v2.py','scripts/update_macro_data.py','scripts/update_fast_market.py','scripts/generate_daily_market_brief.py','scripts/generate_social_preview.py','scripts/discover_corporate_media.py','scripts/generate_seo.py','scripts/validate_portal.py','.github/workflows/hourly-data-update.yml','.github/workflows/fast-market-update.yml','.github/workflows/daily-market-brief.yml','.github/workflows/daily-seo-refresh.yml','.github/workflows/media-monitor-status.yml','.github/workflows/manage-approved-media.yml','.github/workflows/portal-validation.yml']
+ required=['index.html','en/index.html','trzista/index.html','en/markets/index.html','financije/index.html','en/finance/index.html','tehnologija/index.html','en/technology/index.html','intelligence-desk/index.html','en/intelligence-desk/index.html','registri/index.html','en/registries/index.html','admin/index.html','webmail/index.html','sw.js','manifest.webmanifest','package.json','playwright.config.js','tests/market-centre.spec.js','assets/app.js','assets/language-routing.js','assets/portal-navigation.js','assets/mobile-navigation.js','assets/site-share.js','assets/group-network.js','assets/network-motion.js','assets/group-globe-3d.js','assets/market-centre.css','assets/market-centre-panels.css','assets/market-centre-data.js','assets/market-constellation.js','assets/gnk-asg-social-card.svg','assets/favicon.svg','assets/admin-status-only.js','data/group_network.json','data/group_network_geo.json','data/media_approved.json','data/media_monitor_status.json','data/stablecoins.json','data/exchange_compare.json','data/market_indices.json','data/fast_market_status.json','data/daily_market_brief.json','scripts/update_feeds_v2.py','scripts/update_macro_data.py','scripts/update_fast_market.py','scripts/generate_daily_market_brief.py','scripts/generate_social_preview.py','scripts/discover_corporate_media.py','scripts/generate_seo.py','scripts/validate_portal.py','.github/workflows/hourly-data-update.yml','.github/workflows/fast-market-update.yml','.github/workflows/daily-market-brief.yml','.github/workflows/daily-seo-refresh.yml','.github/workflows/media-monitor-status.yml','.github/workflows/manage-approved-media.yml','.github/workflows/portal-validation.yml']
  for path in required: needed(path)
  if seo: needed('assets/gnk-asg-social-card.png')
  for path in ['data/corporate_review_queue.json','data/corporate_review_decisions.json','.github/workflows/queue-item-action.yml','.github/workflows/review-queue-refresh.yml','scripts/apply_review_decision.py','assets/admin-console.js','.github/workflows/hourly-news-update.yml']:
   if (ROOT/path).exists(): fail('Neželjeni ili duplicirani javni artefakt: '+path)
   else: ok('Nije prisutno: '+path)
- app=(ROOT/'assets/app.js').read_text(encoding='utf-8'); nav=(ROOT/'assets/portal-navigation.js').read_text(encoding='utf-8')
+ app=(ROOT/'assets/app.js').read_text(encoding='utf-8'); nav=(ROOT/'assets/portal-navigation.js').read_text(encoding='utf-8'); lang=(ROOT/'assets/language-routing.js').read_text(encoding='utf-8'); mobile=(ROOT/'assets/mobile-navigation.js').read_text(encoding='utf-8'); sharing=(ROOT/'assets/site-share.js').read_text(encoding='utf-8')
  for name in ['group-globe-3d.js','network-motion.js']:
   ok('Aplikacija učitava: '+name) if name in app else fail('Aplikacija ne učitava: '+name)
- if '/gnk-asg/trzista/' in nav and '/gnk-asg/en/markets/' in nav: ok('Glavna navigacija vodi u dvojezični Market Intelligence')
- else: fail('Navigacija nema dvojezične Market Intelligence rute')
+ if "'/trzista/'" in nav and "'/en/markets/'" in nav and '/webmail/' in nav and '/gnk-asg/' not in nav: ok('Glavna navigacija koristi rute vlastite domene')
+ else: fail('Navigacija nema ispravne rute vlastite domene')
+ if "'/en/'" in lang and "'/'" in lang and '/gnk-asg/' not in lang: ok('Promjena jezika koristi rute vlastite domene')
+ else: fail('Promjena jezika još koristi staru putanju')
+ if '/webmail/' in mobile and '/admin/' in mobile and '/gnk-asg/' not in mobile: ok('Mobilni izbornik koristi rute vlastite domene i webmail')
+ else: fail('Mobilni izbornik nema ispravne nove rute')
+ if "const ROOT = '/';" in sharing and '/gnk-asg/' not in sharing: ok('Dijeljenje stranice učitava stilove s vlastite domene')
+ else: fail('Dijeljenje stranice još koristi staru putanju')
  for page in ['trzista/index.html','en/markets/index.html']:
   html=(ROOT/page).read_text(encoding='utf-8')
   if 'market-centre-data.js' in html and 'market-constellation.js' in html and 'marketConstellation' in html: ok('Market Intelligence prikaz povezan: '+page)
   else: fail('Market Intelligence prikaz nije potpuno povezan: '+page)
- admin=(ROOT/'admin/index.html').read_text(encoding='utf-8')
+ admin=(ROOT/'admin/index.html').read_text(encoding='utf-8'); webmail=(ROOT/'webmail/index.html').read_text(encoding='utf-8')
  if 'media-monitor-status.yml' in admin and 'name="robots" content="noindex,nofollow,noarchive"' in admin: ok('Admin je statusni i izvan indeksa')
  else: fail('Admin nema očekivani sigurnosni/noindex model')
+ if 'info@gnk-asg.hr' in webmail and 'noindex, nofollow, noarchive' in webmail and 'Aktivacija u pripremi' in webmail: ok('Webmail ulaz je pripremljen bez javnog prihvata zaporke')
+ else: fail('Webmail ulaz nema očekivani sigurnosni model')
  workflows={p:(ROOT/p).read_text(encoding='utf-8') for p in ['.github/workflows/hourly-data-update.yml','.github/workflows/fast-market-update.yml','.github/workflows/daily-market-brief.yml']}
  if "cron: '17 * * * *'" in workflows['.github/workflows/hourly-data-update.yml'] and 'data/market.json' not in workflows['.github/workflows/hourly-data-update.yml']: ok('Vijesti/makro ostaju satni bez prepisivanja brzog marketa')
  else: fail('Satni workflow nije pravilno odvojen od brzog marketa')
@@ -52,7 +60,7 @@ def check_seo():
  if missing: fail('Sitemap nema sve javne rute: '+', '.join(missing))
  else: ok('Sitemap sadrži svih četrnaest javnih ruta')
  robots=(ROOT/'robots.txt').read_text(encoding='utf-8')
- if 'Disallow: /gnk-asg/admin/' in robots and SITE+'sitemap.xml' in robots: ok('Robots politika zadržava admin izvan indeksa')
+ if 'Disallow: /admin/' in robots and SITE+'sitemap.xml' in robots: ok('Robots politika zadržava admin izvan indeksa')
  else: fail('Robots politika nije ispravna')
 def check_network():
  network=load(DATA/'group_network.json') or {}; geo=load(DATA/'group_network_geo.json') or {}; nodes=network.get('nodes',[]); total=len(nodes)+(1 if network.get('center') else 0)
