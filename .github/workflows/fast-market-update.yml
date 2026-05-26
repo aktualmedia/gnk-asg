@@ -1,9 +1,10 @@
 name: Five Minute Market Intelligence Update
 
 # Resilient refresh: successful modules and status are published even if one public source is temporarily unavailable.
+# The schedule is offset from the top of the hour to reduce GitHub Actions queue congestion.
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '2-57/5 * * * *'
   workflow_dispatch:
   push:
     branches:
