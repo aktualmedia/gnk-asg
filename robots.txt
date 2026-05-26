@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /gnk-asg/admin/
+Disallow: /admin/
 
-Sitemap: https://aktualmedia.github.io/gnk-asg/sitemap.xml
+Sitemap: https://gnk-asg.hr/sitemap.xml
