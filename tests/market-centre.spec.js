@@ -27,8 +27,8 @@ for (const route of routes) {
 }
 
 const homepageRoutes = [
-  { path: '/', panelTitle: 'Globalna mreža u jednom brendiranom kadru' },
-  { path: '/en/', panelTitle: 'Global network in one branded frame' }
+  { path: '/', panelTitle: 'Globalna mreža: 33 postojeća društva i +12 planiranih lokacija' },
+  { path: '/en/', panelTitle: 'Global network: 33 existing companies and +12 planned locations' }
 ];
 
 for (const route of homepageRoutes) {
