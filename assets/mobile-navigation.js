@@ -3,9 +3,9 @@
   const isEnglish = () => /\/en(?:\/|$)/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   function labels() {
     return isEnglish() ? {
-      finance:'Financials', network:'Global Network', technology:'Technology & AI', markets:'Markets', news:'News', desk:'Intelligence Desk', registers:'Public Registers', documents:'Documents', mail:'Webmail', install:'Install app', control:'Control', home:'Home'
+      finance:'Financials', network:'Global Network', technology:'Technology & AI', markets:'Markets', news:'News', desk:'Intelligence Desk', registers:'Public Registers', documents:'Documents', mail:'Webmail', install:'Install app', control:'Control'
     } : {
-      finance:'Financije', network:'Globalna mreža', technology:'Tehnologija i AI', markets:'Tržišta', news:'Vijesti', desk:'Intelligence Desk', registers:'Javni registri', documents:'Dokumenti', mail:'Webmail', install:'Instaliraj aplikaciju', control:'Upravljanje', home:'Početna'
+      finance:'Financije', network:'Globalna mreža', technology:'Tehnologija i AI', markets:'Tržišta', news:'Vijesti', desk:'Intelligence Desk', registers:'Javni registri', documents:'Dokumenti', mail:'Webmail', install:'Instaliraj aplikaciju', control:'Upravljanje'
     };
   }
   function renderMenu() {
@@ -32,21 +32,13 @@
       '<a class="management-link" href="/admin/">' + t.control + '</a>';
     mobile.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
   }
-  function renderHome() {
-    let home = document.querySelector('.float-home');
-    if (!home) {
-      home = document.createElement('a');
-      home.href = '#top';
-      document.body.appendChild(home);
-    }
-    home.classList.add('mobile-home');
-    home.innerHTML = '⌂<span class="mobile-home-label">' + labels().home + '</span>';
-    home.setAttribute('aria-label', labels().home);
+  function removeLegacyFloatingHome() {
+    document.querySelectorAll('.float-home, .mobile-home').forEach(home => home.remove());
   }
   function init() {
     renderMenu();
-    renderHome();
-    window.addEventListener('gnk-language-change', () => { renderMenu(); renderHome(); });
+    removeLegacyFloatingHome();
+    window.addEventListener('gnk-language-change', renderMenu);
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 })();
