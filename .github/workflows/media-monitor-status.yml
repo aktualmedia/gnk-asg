@@ -1,10 +1,11 @@
 name: Media Monitor Status
 
 # Ovaj proces vodi samo status medijskog praćenja i ne smije prepisivati datum javnih vijesti.
+# Termin je izdvojen iz tržišnih petominutnih termina radi čistog reda objave.
 on:
   workflow_dispatch:
   schedule:
-    - cron: '37 * * * *'
+    - cron: '39 * * * *'
   push:
     branches:
       - main
