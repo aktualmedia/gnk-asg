@@ -1,9 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260526-integrated-network01';
+  var VERSION = '20260526-context-layout03';
 
-  // All dynamically loaded portal modules share public datasets in /data/.
-  // Normalize legacy relative requests so nested routes such as /en/ do not
-  // accidentally resolve them as /en/data/... and lose visual/data panels.
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
     window.__gnkRootDataFetch = true;
