@@ -8,15 +8,49 @@ on:
     paths:
       - 'assets/**'
       - 'admin/**'
-      - 'data/**'
+      - 'webmail/**'
       - 'scripts/**'
       - 'tests/**'
       - 'trzista/**'
       - 'en/**'
+      - 'sadrzaj/**'
+      - 'financije/**'
+      - 'tehnologija/**'
+      - 'intelligence-desk/**'
+      - 'registri/**'
+      - 'instalacija/**'
+      - 'index.html'
       - 'package.json'
       - 'playwright.config.js'
       - 'sw.js'
       - 'manifest.webmanifest'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - '.github/workflows/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'assets/**'
+      - 'admin/**'
+      - 'webmail/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'trzista/**'
+      - 'en/**'
+      - 'sadrzaj/**'
+      - 'financije/**'
+      - 'tehnologija/**'
+      - 'intelligence-desk/**'
+      - 'registri/**'
+      - 'instalacija/**'
+      - 'index.html'
+      - 'package.json'
+      - 'playwright.config.js'
+      - 'sw.js'
+      - 'manifest.webmanifest'
+      - 'robots.txt'
+      - 'sitemap.xml'
       - '.github/workflows/**'
 
 permissions:
@@ -47,7 +81,10 @@ jobs:
       - name: Validate JavaScript syntax for active public modules
         run: |
           node --check assets/app.js
+          node --check assets/language-routing.js
           node --check assets/portal-navigation.js
+          node --check assets/mobile-navigation.js
+          node --check assets/site-share.js
           node --check assets/group-network.js
           node --check assets/network-motion.js
           node --check assets/group-globe-3d.js
