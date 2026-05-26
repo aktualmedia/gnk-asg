@@ -1,3 +1,4 @@
+@import url('/assets/network-live-selection.css?v=20260526-location-live01');
 /* Readability refinement: remove narrow expansion rail and align map/weather content. */
 #global-network .network-layout,
 #global-network .network-layout.has-location-context {
@@ -69,16 +70,12 @@
   border-top:1px solid rgba(116,156,205,.14);
 }
 @media(max-width:1060px) {
-  #global-network .network-information-panel {
-    grid-template-columns:1fr;
-  }
+  #global-network .network-information-panel { grid-template-columns:1fr; }
 }
 @media(max-width:820px) {
   #global-network .google-location-map { min-height:300px; }
   #global-network .google-location-frame { height:232px; }
   #global-network .network-information-panel { padding:11px; gap:10px; }
   #global-network .network-key-items,
-  #global-network .network-information-panel .line-legend {
-    grid-template-columns:1fr;
-  }
+  #global-network .network-information-panel .line-legend { grid-template-columns:1fr; }
 }
