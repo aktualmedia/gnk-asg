@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260526-route-assets-fix01';
+  var VERSION = '20260526-route-assets-fix02';
   function style(path) {
     if (document.querySelector('link[href^="' + path + '"]')) return;
     var el = document.createElement('link');
@@ -75,15 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function isEnglish() {
     return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   }
-  function renderMediaNotice() {
-    var notice = document.querySelector('.mention-notice');
-    if (!notice) return;
-    notice.innerHTML = isEnglish()
-      ? '<strong>Approved public publications:</strong> the GNK ASG in the Media section displays only public online and media publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić that have been manually reviewed and approved for public display.'
-      : '<strong>Odobrene javne objave:</strong> rubrika GNK ASG u medijima prikazuje samo javne internetske i medijske objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću koje su prethodno ručno pregledane i odobrene za javni prikaz.';
-  }
-  renderMediaNotice();
-  window.addEventListener('gnk-language-change', renderMediaNotice);
 
   var menuButton = document.getElementById('menuToggle');
   var menu = document.getElementById('navLinks');
