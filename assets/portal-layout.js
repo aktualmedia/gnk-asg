@@ -1,16 +1,37 @@
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
+  const LIVE_VERSION = '20260526-location-live01';
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname) || window.GNK_LANG?.get?.() === 'en';
   const copy = () => isEn() ? {
-    title:'Downloads and snapshots', note:'Demographic context follows the selected 2D / 3D point.', staticPdf:'Static PDF', mapPdf:'2D PDF', globePdf:'3D PDF', mapPng:'2D Image', globePng:'3D Image', busy:'Preparing…', missing:'Unavailable'
+    title:'Downloads and snapshots', note:'Selected 2D / 3D point controls the map and local weather.', staticPdf:'Static PDF', mapPdf:'2D PDF', globePdf:'3D PDF', mapPng:'2D Image', globePng:'3D Image', busy:'Preparing…', missing:'Unavailable'
   } : {
-    title:'Preuzimanja i prikazi', note:'Demografski kontekst prati odabranu točku u 2D / 3D prikazu.', staticPdf:'Statični PDF', mapPdf:'2D PDF', globePdf:'3D PDF', mapPng:'2D slika', globePng:'3D slika', busy:'Pripremam…', missing:'Nije dostupno'
+    title:'Preuzimanja i prikazi', note:'Odabrana 2D / 3D točka upravlja kartom i lokalnim vremenom.', staticPdf:'Statični PDF', mapPdf:'2D PDF', globePdf:'3D PDF', mapPng:'2D slika', globePng:'3D slika', busy:'Pripremam…', missing:'Nije dostupno'
   };
   const safeId = () => String(window.GNK_LOCATION_INSIGHTS?.current?.() || window.GNK_GLOBE?.getSelected?.() || window.GNK_GEO_MAP?.getSelected?.() || 'lokacija').replace(/[^a-z0-9_-]/gi, '_');
   function save(blob, filename) { const url = URL.createObjectURL(blob), a = document.createElement('a'); a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1200); }
   function temporary(button, value) { const initial = button.textContent; button.disabled = true; button.textContent = value; return () => { button.disabled = false; button.textContent = initial; }; }
   function proxy(button, id) { const target = $(id); if (target) { target.click(); return; } const done = temporary(button, copy().missing); setTimeout(done, 1500); }
+  function localStyle(path) {
+    if (document.querySelector(`link[href^="${path}"]`)) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `${path}?v=${LIVE_VERSION}`;
+    document.head.appendChild(link);
+  }
+  function localScript(path) {
+    if (document.querySelector(`script[src^="${path}"]`)) return;
+    const source = document.createElement('script');
+    source.src = `${path}?v=${LIVE_VERSION}`;
+    source.async = false;
+    document.body.appendChild(source);
+  }
+  function enableSelectedLocationPanels() {
+    localStyle('/assets/group-google-map.css');
+    localStyle('/assets/group-location-weather.css');
+    localScript('/assets/group-google-map.js');
+    localScript('/assets/group-location-weather.js');
+  }
   async function export2d(button) {
     const done = temporary(button, copy().busy);
     try {
@@ -50,18 +71,21 @@
     dock.classList.add('portal-context-grid');
     return dock;
   }
-  function removeInactivePanels(dock) {
-    ['googleLocationMap','locationWeatherPanel'].forEach(id => { const item = $(id); if (item && item.parentElement === dock) item.remove(); });
+  function placeSelectedLocationPanels() {
+    const mapSlot = $('overviewMapSlot'), weatherSlot = $('overviewWeatherSlot');
+    const map = $('googleLocationMap'), weather = $('locationWeatherPanel');
+    if (mapSlot && map && map.parentElement !== mapSlot) mapSlot.appendChild(map);
+    if (weatherSlot && weather && weather.parentElement !== weatherSlot) weatherSlot.appendChild(weather);
   }
   function arrange() {
     const section = $('global-network'), shell = section?.querySelector('.network-shell'), layout = shell?.querySelector('.network-layout');
     if (!section || !shell || !layout) return false;
     layout.classList.add('has-location-context');
     const dock = dockFor(layout), facts = shell.querySelector('.network-sidebar'), overview = $('networkOverviewVisual');
-    removeInactivePanels(dock);
     if (facts && facts.parentElement !== dock) dock.appendChild(facts);
     if (facts && dock.firstElementChild !== facts) dock.prepend(facts);
     if (overview && (overview.parentElement !== shell || overview !== shell.lastElementChild)) shell.appendChild(overview);
+    placeSelectedLocationPanels();
     mountToolbar(shell);
     const market = $('digital-assets');
     if (market && section.nextElementSibling !== market) section.after(market);
@@ -69,11 +93,13 @@
     return !!facts;
   }
   function init() {
+    enableSelectedLocationPanels();
     let attempts = 0, stable = 0;
     const timer = setInterval(() => { attempts += 1; stable = arrange() ? stable + 1 : 0; if (stable >= 60 || attempts >= 240) clearInterval(timer); }, 100);
     const refresh = () => setTimeout(arrange, 20);
     window.addEventListener('gnk-language-change', refresh);
     document.addEventListener('gnk-location-selected', refresh);
+    document.addEventListener('gnk-overview-mounted', refresh);
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 })();
