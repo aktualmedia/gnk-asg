@@ -8,6 +8,7 @@ from xml.sax.saxutils import escape
 ROOT = Path(__file__).resolve().parents[1]
 SITE = 'https://gnk-asg.hr/'
 DEFAULT_IMAGE = SITE + 'assets/gnk-asg-social-card.png'
+PUBLIC_TOOLS = '<script src="/assets/public-tools.js?v=20260527-asg-bpp-share-unique03" defer></script>'
 TODAY = datetime.now(timezone.utc).date().isoformat()
 ORG_ID = SITE + '#gnk-asg'
 GROUP_ID = SITE + '#gnk-dinamo-ltd'
@@ -101,6 +102,8 @@ def enhance(page):
     content = re.sub(r'\s*<link\s+rel="(?:canonical|alternate)"[^>]*>', '', content)
     content = re.sub(r'\s*<script\s+type="application/ld\+json">.*?</script>', '', content, flags=re.S)
     content = content.replace('</head>', '\n'+metadata(page)+'\n</head>', 1)
+    if page['path'] not in ('', 'en/') and 'assets/public-tools.js' not in content:
+        content = content.replace('</body>', PUBLIC_TOOLS + '</body>', 1)
     target.write_text(content, encoding='utf-8')
 def entry(page):
     lines = ['  <url>', '    <loc>'+escape(url(page))+'</loc>']
