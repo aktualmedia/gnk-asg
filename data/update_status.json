@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-05-27T08:24:12+00:00",
+  "updated_at": "2026-05-27T08:28:45+00:00",
   "news": {
-    "updated_at": "2026-05-27T08:24:12+00:00",
+    "updated_at": "2026-05-27T08:28:45+00:00",
     "cadence": "hourly",
-    "public_items": 378,
+    "public_items": 377,
     "by_group": {
       "srbija": 31,
       "hrvatska": 20,
       "technology": 118,
       "digital-assets": 85,
       "international": 60,
-      "sport": 10,
+      "sport": 9,
       "bih": 24,
       "mobilnost": 30
     },
