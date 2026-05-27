@@ -1,13 +1,48 @@
 (() => {
   'use strict';
   const grid = document.getElementById('newsGrid');
-  const tabs = Array.from(document.querySelectorAll('#newsTabs button'));
+  const tabsHost = document.getElementById('newsTabs');
   if (!grid) return;
+  let tabs = Array.from(document.querySelectorAll('#newsTabs button'));
   let articles = [];
   let approvedMedia = [];
   let activeFilter = 'all';
   const esc = (value) => String(value || '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const english = () => window.GNK_LANG && window.GNK_LANG.get() === 'en';
+  function ensureTopicControls() {
+    if (!tabsHost || tabsHost.dataset.topicsReady) return;
+    const mention = tabsHost.querySelector('[data-filter="mentions"]');
+    const entries = [
+      { filter:'economy', hr:'Ekonomija', en:'Economy' },
+      { filter:'sport', hr:'Sport', en:'Sport' },
+      { filter:'mobilnost', hr:'Mobilnost', en:'Mobility' }
+    ];
+    entries.forEach((entry) => {
+      if (tabsHost.querySelector('[data-filter="' + entry.filter + '"]')) return;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.filter = entry.filter;
+      button.dataset.hr = entry.hr;
+      button.dataset.en = entry.en;
+      button.textContent = english() ? entry.en : entry.hr;
+      tabsHost.insertBefore(button, mention || null);
+    });
+    const section = grid.closest('#news .container') || grid.parentElement;
+    if (section && !section.querySelector('.topic-monitor-link')) {
+      const note = document.createElement('p');
+      note.className = 'topic-monitor-link';
+      note.innerHTML = '<a href="/teme/">' + (english() ? 'Open thematic monitoring: economy, sport, mobility and technology →' : 'Otvori tematski monitoring: ekonomija, sport, mobilnost i tehnologija →') + '</a>';
+      tabsHost.after(note);
+    }
+    tabsHost.dataset.topicsReady = '1';
+    tabs = Array.from(tabsHost.querySelectorAll('button'));
+    bindTabs();
+  }
+  function updateLabels() {
+    tabs.forEach((button) => { if (button.dataset.hr) button.textContent = english() ? button.dataset.en : button.dataset.hr; });
+    const link = document.querySelector('.topic-monitor-link a');
+    if (link) link.textContent = english() ? 'Open thematic monitoring: economy, sport, mobility and technology →' : 'Otvori tematski monitoring: ekonomija, sport, mobilnost i tehnologija →';
+  }
   function stamp(item) {
     const raw = item.published_at || item.date || '';
     const time = Date.parse(raw);
@@ -20,7 +55,7 @@
   function renderCard(item) {
     const en = english();
     const isMention = item.group === 'mentions';
-    const type = isMention ? ' is-mention' : item.category === 'technology' ? ' is-tech' : item.category === 'digital-assets' ? ' is-assets' : '';
+    const type = isMention ? ' is-mention' : item.category === 'technology' ? ' is-tech' : item.category === 'digital-assets' ? ' is-assets' : item.category === 'automotive' ? ' is-tech' : '';
     const label = isMention ? (en ? 'GNK ASG IN THE MEDIA · MANUALLY APPROVED' : 'GNK ASG U MEDIJIMA · RUČNO ODOBRENO') : (item.source || item.category || 'BUSINESS NEWS');
     const date = stamp(item) ? new Date(stamp(item)).toLocaleDateString(en ? 'en-GB' : 'hr-HR') : '';
     const summary = item.summary || (en ? 'Open the source for the full publication.' : 'Otvorite izvor za cjelovitu objavu.');
@@ -30,7 +65,7 @@
   function collection(filter) {
     if (filter === 'mentions') return approvedMedia;
     if (filter === 'all') return articles.concat(approvedMedia);
-    return articles.filter((item) => String(item.group || item.category || '').toLowerCase().includes(filter));
+    return articles.filter((item) => String(item.group || '').toLowerCase().includes(filter) || String(item.category || '').toLowerCase().includes(filter));
   }
   function render(filter) {
     activeFilter = filter;
@@ -47,6 +82,17 @@
     }
     grid.innerHTML = selected.slice(0, 15).map(renderCard).join('');
   }
+  function bindTabs() {
+    tabs.forEach((button) => {
+      if (button.dataset.newsBound) return;
+      button.dataset.newsBound = '1';
+      button.addEventListener('click', () => {
+        tabs.forEach((entry) => entry.classList.remove('active'));
+        button.classList.add('active');
+        render(button.dataset.filter || 'all');
+      });
+    });
+  }
   async function load() {
     try {
       const responses = await Promise.all([
@@ -59,11 +105,8 @@
     } catch (error) { articles = []; approvedMedia = []; }
     render(activeFilter);
   }
-  tabs.forEach((button) => button.addEventListener('click', () => {
-    tabs.forEach((entry) => entry.classList.remove('active'));
-    button.classList.add('active');
-    render(button.dataset.filter || 'all');
-  }));
-  window.addEventListener('gnk-language-change', () => render(activeFilter));
+  ensureTopicControls();
+  bindTabs();
+  window.addEventListener('gnk-language-change', () => { updateLabels(); render(activeFilter); });
   load();
 })();
