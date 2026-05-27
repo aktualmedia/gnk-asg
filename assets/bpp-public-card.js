@@ -3,7 +3,7 @@
   if (window.GNK_BPP_CARD_READY) return;
   window.GNK_BPP_CARD_READY = true;
   const BPP_URL = 'https://bpp.is/';
-  const SHARE_URL = '/podijeli/bpp/';
+  const SHARE_URL = '/podijeli/bpp/?preview=20260527-bpp01';
   const english = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const copy = () => english() ? {
     overline:'SOFTWARE SOLUTION · BPP.IS', title:'Bitcoin Payment Processor',
