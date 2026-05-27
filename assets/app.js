@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260527-location-weather01';
+  var VERSION = '20260527-bpp-share-asg01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/network-reading-layout.css');
   style('/assets/bitcoin-chart.css');
   style('/assets/market-expansion.css');
+  style('/assets/bpp-public-card.css');
   style('/assets/language.css');
   style('/assets/intelligence-desk.css');
   style('/assets/desk-hybrid.css');
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/live-market-pulse.js');
   script('/assets/bitcoin-chart.js');
   script('/assets/market-expansion.js');
+  script('/assets/bpp-public-card.js');
   script('/assets/news-live.js');
   script('/assets/assistant.js');
   script('/assets/inline-assistant.js');
