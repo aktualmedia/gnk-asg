@@ -1,7 +1,7 @@
 name: Hourly News Update
 
-# Jedini aktivni proces za javne vijesti. Tržišni i makro podatci osvježavaju se odvojeno kroz petominutni market workflow.
-# Izvršenje je pomaknuto izvan tržišnih petominutnih termina radi čistog reda objave.
+# Samostalni proces za javne vijesti. Tržišni i makro podatci osvježavaju se odvojeno kroz petominutni market workflow.
+# Vlastiti red izvršavanja sprječava da dohvat vijesti blokira tržišne podatke, SEO ili medijski status.
 on:
   schedule:
     - cron: '19 * * * *'
@@ -19,8 +19,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: public-portal-data-publication
-  cancel-in-progress: false
+  group: hourly-public-news
+  cancel-in-progress: true
 
 jobs:
   update-hourly:
