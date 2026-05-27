@@ -3,7 +3,7 @@
   const state = { network: null, busy: false };
   const $ = id => document.getElementById(id);
   const en = () => document.documentElement.lang === 'en' || /\/en\/?$/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
-  const esc = value => String(value == null ? '' : value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc = value => String(value == null ? '' : value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const T = () => en() ? {
     eyebrow:'GNK DINAMO Ltd. Group · Static overview',
     title:'Global network: 33 existing companies and +12 planned locations',
@@ -40,7 +40,7 @@
     return `<details class="network-overview-disclosure${planned ? ' is-planned' : ''}"><summary><span>${esc(title)}</span><b>${items.length}</b><em data-disclosure-state>${t.open}</em><i aria-hidden="true"></i></summary><div class="network-overview-body ${cls}">${items.map((item, i) => row(item, i, planned)).join('')}</div></details>`;
   }
   function shareLinks() {
-    const t = T(), url = encodeURIComponent(location.origin + location.pathname + '#networkOverviewVisual'), title = encodeURIComponent('GNK DINAMO Ltd. - ' + t.title);
+    const t = T(), shareUrl = location.origin + '/podijeli/grupa/?preview=20260527-unique03', url = encodeURIComponent(shareUrl), title = encodeURIComponent('GNK DINAMO Ltd. - ' + t.title);
     return `<div class="network-overview-share"><strong>${t.share}</strong><a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${url}">LinkedIn</a><a target="_blank" rel="noopener" href="https://wa.me/?text=${title}%20${url}">WhatsApp</a><a href="mailto:?subject=${title}&body=${title}%0A${url}">E-mail</a></div>`;
   }
   function bindDisclosures(panel) {
@@ -137,13 +137,14 @@
       await new Promise((resolve,reject) => { image.onload=resolve; image.onerror=reject; image.src=uri; });
       const canvas=document.createElement('canvas'); canvas.width=1600; canvas.height=980; canvas.getContext('2d').drawImage(image,0,0,1600,980); URL.revokeObjectURL(uri);
       const file = pdfFromJpeg(canvas.toDataURL('image/jpeg',.96),1600,980), link=document.createElement('a'); link.href=URL.createObjectURL(file); link.download='GNK_DINAMO_Globalna_Mreza_33_postojeca_12_planirano_2026.pdf'; link.click(); setTimeout(() => URL.revokeObjectURL(link.href),1200);
-    } catch (_) { button.textContent=t.failed; setTimeout(() => { button.textContent=old; }, 2200); state.busy=false; button.disabled=false; return; }
-    button.textContent=old; button.disabled=false; state.busy=false;
+    } catch (_) { button.textContent=t.failed; setTimeout(() => { button.textContent=old; },1800); }
+    finally { button.disabled=false; state.busy=false; if (button.textContent===t.preparing) button.textContent=old; }
   }
   async function init() {
-    try { const response = await fetch('/data/group_network.json?v=' + Date.now(), {cache:'no-store'}); if (!response.ok) return; state.network = await response.json(); } catch (_) { return; }
-    let tries=0; const timer=setInterval(() => { if (render() || ++tries>180) clearInterval(timer); }, 60);
+    try { state.network = await fetch('/data/group_network.json?v=' + Date.now(), {cache:'no-store'}).then(response => response.json()); } catch (_) { return; }
+    let attempts=0; const timer=setInterval(() => { if (render() || ++attempts > 90) clearInterval(timer); },80);
     window.addEventListener('gnk-language-change', render);
+    document.addEventListener('gnk-location-context-ready', render);
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 })();
