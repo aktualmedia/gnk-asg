@@ -2,80 +2,101 @@
   'use strict';
   if (window.GNK_CONTENT_SHARE_READY) return;
   window.GNK_CONTENT_SHARE_READY = true;
-  const STYLE_ID = 'gnk-content-share-style';
-  const SHARE_CLASS = 'gnk-content-share';
+  const SHARE = 'gnk-content-share';
   const isEnglish = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
-  const esc = (value) => String(value || '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const abs = (url) => new URL(url || location.href, location.origin).href;
+  const absolute = (value) => new URL(value || location.href, location.origin).href;
+
   function installStyle() {
-    if (document.getElementById(STYLE_ID)) return;
+    if (document.getElementById('gnk-content-share-style')) return;
     const style = document.createElement('style');
-    style.id = STYLE_ID;
-    style.textContent = '.gnk-content-share{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:12px}.gnk-content-share[data-compact="1"]{margin-top:10px}.gnk-content-share small{color:#8a9aab;font-size:.58rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-right:3px}.gnk-content-share a,.gnk-content-share button{min-height:30px;display:inline-flex;align-items:center;justify-content:center;padding:0 10px;border:1px solid #dbe4ef;border-radius:999px;background:#f8fbff;color:#143b6d;text-decoration:none;font:850 .61rem/1 Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}.gnk-content-share a:hover,.gnk-content-share button:hover{border-color:#d4af37;background:#fffaf0;color:#07162d}.gnk-content-share .wa{border-color:#bfe5ca}.gnk-content-share .in{border-color:#cbdaf1}.gnk-content-share .mail{border-color:#ead9a4}.news-card .gnk-content-share,.topic-news .gnk-content-share,.news-item .gnk-content-share{border-top:1px solid #edf2f7;padding-top:10px}.news-card .gnk-content-share small,.topic-news .gnk-content-share small,.news-item .gnk-content-share small{width:100%;margin-bottom:2px}.section-head .gnk-content-share{margin-top:14px}.group-card .gnk-content-share,.doc .gnk-content-share,.topic-card .gnk-content-share{margin-top:14px}@media(max-width:680px){.gnk-content-share a,.gnk-content-share button{flex:1;min-width:76px;padding:0 7px}.gnk-content-share small{width:100%;margin-bottom:1px}}';
+    style.id = 'gnk-content-share-style';
+    style.textContent = [
+      '.gnk-content-share{position:relative;display:flex;justify-content:flex-end;align-items:center;margin-top:9px}',
+      '.gnk-share-toggle{display:inline-flex;align-items:center;gap:5px;min-height:24px;padding:0 8px;border:0;border-radius:999px;background:transparent;color:#8291a4;font:700 .55rem/1 Arial,sans-serif;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:color .16s ease,background .16s ease}',
+      '.gnk-share-toggle:before{content:"↗";color:#aa7c22;font-size:.65rem}',
+      '.gnk-share-toggle:hover,.gnk-content-share.open .gnk-share-toggle{color:#143b6d;background:#f4f7fb}',
+      '.gnk-share-options{position:absolute;right:0;bottom:29px;z-index:80;display:none;gap:4px;padding:5px;border:1px solid #e0e7f0;border-radius:999px;background:#fff;box-shadow:0 8px 20px rgba(7,22,45,.09);white-space:nowrap}',
+      '.gnk-content-share.open .gnk-share-options{display:flex}',
+      '.gnk-share-options a{display:inline-flex;align-items:center;min-height:25px;padding:0 8px;border-radius:999px;color:#536b85;text-decoration:none;font:700 .54rem/1 Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase;transition:background .16s ease,color .16s ease}',
+      '.gnk-share-options a:hover{background:#f4f7fb;color:#143b6d}',
+      '.news-card .gnk-content-share,.topic-news .gnk-content-share,.news-item .gnk-content-share{margin-top:7px;padding-top:6px;border-top:1px solid #f0f3f7}',
+      '.section-head .gnk-content-share{justify-content:flex-start;margin-top:8px}',
+      '.group-card .gnk-content-share,.doc .gnk-content-share,.topic-card .gnk-content-share,.publication-card .gnk-content-share{margin-top:7px}',
+      '@media(max-width:680px){.gnk-share-options{right:0;bottom:28px}.gnk-share-toggle{min-height:27px}}'
+    ].join('');
     document.head.appendChild(style);
   }
-  function links(title, url) {
-    const en = isEnglish();
-    const label = en ? 'Share' : 'Podijeli';
-    const cleanTitle = title || document.title || 'GNK ASG d.o.o.';
-    const cleanUrl = abs(url || location.href);
-    const text = encodeURIComponent(cleanTitle + ' — ' + cleanUrl);
-    const encodedUrl = encodeURIComponent(cleanUrl);
-    const encodedTitle = encodeURIComponent(cleanTitle);
-    return '<div class="' + SHARE_CLASS + '" data-compact="1"><small>' + label + '</small>' +
-      '<a class="wa" target="_blank" rel="noopener" href="https://wa.me/?text=' + text + '">WhatsApp</a>' +
-      '<a class="in" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl + '">LinkedIn</a>' +
-      '<a class="mail" href="mailto:?subject=' + encodedTitle + '&body=' + text + '">E-mail</a>' +
-      '</div>';
+
+  function shareMarkup(title, url) {
+    const label = isEnglish() ? 'Share' : 'Podijeli';
+    const itemTitle = title || document.title || 'GNK ASG d.o.o.';
+    const itemUrl = absolute(url || location.href);
+    const message = encodeURIComponent(itemTitle + ' — ' + itemUrl);
+    return '<div class="' + SHARE + '">' +
+      '<button class="gnk-share-toggle" type="button" aria-expanded="false">' + label + '</button>' +
+      '<div class="gnk-share-options" aria-label="' + label + '">' +
+        '<a class="wa" target="_blank" rel="noopener" href="https://wa.me/?text=' + message + '">WhatsApp</a>' +
+        '<a class="in" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(itemUrl) + '">LinkedIn</a>' +
+        '<a class="mail" href="mailto:?subject=' + encodeURIComponent(itemTitle) + '&body=' + message + '">E-mail</a>' +
+      '</div></div>';
   }
-  function addShare(host, title, url) {
-    if (!host || host.querySelector(':scope > .' + SHARE_CLASS)) return;
-    host.insertAdjacentHTML('beforeend', links(title, url));
-  }
-  function sectionTitle(section) {
-    const head = section.querySelector('.section-head h2, h1, h2, h3');
-    return head ? head.textContent.trim() : document.title;
-  }
-  function addSectionShares() {
-    document.querySelectorAll('section[id]').forEach((section) => {
-      const id = section.getAttribute('id');
-      if (!id || ['top'].includes(id)) return;
-      const head = section.querySelector(':scope > .container > .section-head, :scope > .container > .topic-intro, :scope > .container > .live-head');
-      if (!head) return;
-      addShare(head, sectionTitle(section), location.origin + location.pathname + '#' + id);
+
+  function bind(control) {
+    const button = control && control.querySelector('.gnk-share-toggle');
+    if (!button || button.dataset.bound) return;
+    button.dataset.bound = '1';
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();
+      document.querySelectorAll('.gnk-content-share.open').forEach(other => {
+        if (other !== control) {
+          other.classList.remove('open');
+          other.querySelector('.gnk-share-toggle')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      const open = control.classList.toggle('open');
+      button.setAttribute('aria-expanded', String(open));
     });
   }
-  function addNewsShares() {
-    document.querySelectorAll('article.news-card, article.topic-news, article.news-item').forEach((card) => {
-      const titleNode = card.querySelector('h1,h2,h3,h4');
-      const sourceLink = card.querySelector('a[href]');
-      const title = titleNode ? titleNode.textContent.trim() : document.title;
-      const url = sourceLink ? sourceLink.href : location.href;
-      addShare(card, title, url);
-    });
+
+  function add(host, title, url) {
+    if (!host || host.querySelector(':scope > .' + SHARE)) return;
+    host.insertAdjacentHTML('beforeend', shareMarkup(title, url));
+    bind(host.querySelector(':scope > .' + SHARE));
   }
-  function addCardShares() {
-    document.querySelectorAll('.group-card, .doc, .topic-card, .publication-card').forEach((card) => {
-      const titleNode = card.querySelector('h1,h2,h3,h4');
-      const link = card.querySelector('a[href]');
-      const title = titleNode ? titleNode.textContent.trim() : document.title;
-      const section = card.closest('section[id]');
-      const url = link ? link.href : (section ? location.origin + location.pathname + '#' + section.id : location.href);
-      addShare(card, title, url);
-    });
-  }
+
   function run() {
     installStyle();
-    addSectionShares();
-    addNewsShares();
-    addCardShares();
+    document.querySelectorAll('section[id]').forEach(section => {
+      if (!section.id || section.id === 'top') return;
+      const host = section.querySelector(':scope > .container > .section-head, :scope > .container > .live-head');
+      const heading = section.querySelector('h1,h2,h3');
+      if (host) add(host, heading ? heading.textContent.trim() : document.title, location.origin + location.pathname + '#' + section.id);
+    });
+    document.querySelectorAll('article.news-card, article.topic-news, article.news-item').forEach(card => {
+      const heading = card.querySelector('h1,h2,h3,h4');
+      const link = card.querySelector('a[href]:not(.wa):not(.in):not(.mail)');
+      add(card, heading ? heading.textContent.trim() : document.title, link ? link.href : location.href);
+    });
+    document.querySelectorAll('.group-card, .doc, .topic-card, .publication-card').forEach(card => {
+      const heading = card.querySelector('h1,h2,h3,h4');
+      const link = card.querySelector('a[href]:not(.wa):not(.in):not(.mail)');
+      const section = card.closest('section[id]');
+      add(card, heading ? heading.textContent.trim() : document.title, link ? link.href : (section ? location.origin + location.pathname + '#' + section.id : location.href));
+    });
   }
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.gnk-content-share.open').forEach(control => {
+      control.classList.remove('open');
+      control.querySelector('.gnk-share-toggle')?.setAttribute('aria-expanded', 'false');
+    });
+  });
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
   let queued = false;
   new MutationObserver(() => {
     if (queued) return;
     queued = true;
-    window.requestAnimationFrame(() => { queued = false; run(); });
+    requestAnimationFrame(() => { queued = false; run(); });
   }).observe(document.documentElement, { childList:true, subtree:true });
   window.addEventListener('gnk-language-change', run);
 })();
