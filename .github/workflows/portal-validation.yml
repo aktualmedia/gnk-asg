@@ -96,6 +96,10 @@ jobs:
           node --check assets/mobile-navigation.js
           node --check assets/site-share.js
           node --check assets/content-share.js
+          node --check assets/share-routing-fix.js
+          node --check assets/bpp-public-card.js
+          node --check assets/floating-intelligence.js
+          node --check assets/public-tools.js
           node --check assets/group-network.js
           node --check assets/network-motion.js
           node --check assets/group-globe-3d.js
@@ -114,11 +118,13 @@ jobs:
           node --check tests/market-centre.spec.js
       - name: Validate Python syntax for automated processors
         run: |
-          python -m py_compile scripts/update_feeds_v2.py scripts/update_macro_data.py scripts/update_fast_market.py scripts/generate_daily_market_brief.py scripts/generate_social_preview.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
+          python -m py_compile scripts/update_feeds_v2.py scripts/generate_news_share_previews.py scripts/update_macro_data.py scripts/update_fast_market.py scripts/generate_daily_market_brief.py scripts/generate_social_preview.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
       - name: Validate committed portal structure and existing public datasets
         run: python scripts/validate_portal.py
-      - name: Execute hourly classified-news retrieval
-        run: python scripts/update_feeds_v2.py
+      - name: Execute hourly classified-news retrieval and per-item sharing generation
+        run: |
+          python scripts/update_feeds_v2.py
+          python scripts/generate_news_share_previews.py
       - name: Execute five-minute digital-asset stablecoin exchange and index retrieval
         run: python scripts/update_fast_market.py
       - name: Execute live macro-market retrieval
