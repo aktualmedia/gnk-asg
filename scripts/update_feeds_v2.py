@@ -18,8 +18,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data'
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
-UA = 'GNK-ASG-News-Monitor/3.1'
+UA = 'GNK-ASG-News-Monitor/3.2'
 N1_ECONOMY = 'https://' + 'n1info.ba/vijesti/ekonomija/'
+N1_MONTHS = {'januar':1,'februar':2,'mart':3,'april':4,'maj':5,'juni':6,'juli':7,'august':8,'septembar':9,'oktobar':10,'novembar':11,'decembar':12}
 def read_json(name, default):
     try: return json.loads((DATA / name).read_text(encoding='utf-8'))
     except Exception: return default
@@ -42,28 +43,30 @@ def rss_rows(xml, source, group, category, cutoff):
         rows.append({'id':uid,'title':headline,'url':url,'summary':clean(item.findtext('description'))[:240],'source':publisher,'region':source,'group':group,'category':category,'published_at':date.isoformat()})
     return rows
 def page_meta(page, name):
-    text=page.decode('utf-8','ignore')
-    esc=re.escape(name)
+    text=page.decode('utf-8','ignore'); esc=re.escape(name)
     patterns=[rf'<meta[^>]+(?:property|name)=["\']{esc}["\'][^>]+content=["\']([^"\']+)', rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+(?:property|name)=["\']{esc}["\']']
     for pattern in patterns:
         found=re.search(pattern,text,re.I)
         if found: return clean(found.group(1))
     return ''
+def n1_visible_date(page):
+    text=clean(page.decode('utf-8','ignore')).lower()
+    match=re.search(r'(\d{1,2})\.\s*(januar|februar|mart|april|maj|juni|juli|august|septembar|oktobar|novembar|decembar)\.?\s*(\d{4})\.?\s*(\d{1,2}):(\d{2})', text)
+    if not match: return None
+    day,month,year,hour,minute=match.groups()
+    local=dt.datetime(int(year),N1_MONTHS[month],int(day),int(hour),int(minute),tzinfo=dt.timezone(dt.timedelta(hours=2)))
+    return local.astimezone(dt.timezone.utc)
 def n1_bih_rows(cutoff):
-    listing=fetch(N1_ECONOMY).decode('utf-8','ignore')
-    links=[]
+    listing=fetch(N1_ECONOMY).decode('utf-8','ignore'); links=[]
     for href in re.findall(r'href=["\']([^"\']+)["\']', listing, re.I):
         url=urllib.parse.urljoin(N1_ECONOMY, html.unescape(href))
-        if not url.startswith('https://n1info.ba/') or url.rstrip('/') == N1_ECONOMY.rstrip('/'): continue
-        if any(part in url for part in ['/tag/', '/author/', '/page/', '/kontakt', '/o-nama', '/marketing', '/politika-privatnosti', '/pravila-koristenja']): continue
+        if not url.startswith(N1_ECONOMY) or url.rstrip('/') == N1_ECONOMY.rstrip('/'): continue
         if url not in links: links.append(url)
     rows=[]
-    for url in links[:30]:
+    for url in links[:25]:
         try:
-            article=fetch(url)
-            title=page_meta(article,'og:title')
-            summary=page_meta(article,'og:description')
-            date=parsedate(page_meta(article,'article:published_time') or page_meta(article,'datePublished'))
+            article=fetch(url); title=page_meta(article,'og:title'); summary=page_meta(article,'og:description')
+            date=parsedate(page_meta(article,'article:published_time') or page_meta(article,'datePublished')) or n1_visible_date(article)
             if not title or not date or date < cutoff: continue
             uid=hashlib.sha256((title+url).encode('utf-8')).hexdigest()[:18]
             rows.append({'id':uid,'title':title,'url':url,'summary':summary[:240],'source':'N1 Bosna i Hercegovina','region':'BiH','group':'bih','category':'economy','published_at':date.isoformat()})
@@ -79,7 +82,7 @@ def update_news():
         try: items.extend(rss_rows(fetch(src['url']),src['name'],src['group'],src['category'],cutoff))
         except Exception as exc: errors.append({'source':src.get('name','RSS'),'error':str(exc)[:80]})
     try: items.extend(n1_bih_rows(cutoff))
-    except Exception as exc: errors.append({'source':'N1 Bosna i Hercegovina · Ekonomija','error':str(exc)[:80]})
+    except Exception as exc: errors.append({'source':'N1 Bosna i Hercegovina - Ekonomija','error':str(exc)[:80]})
     for src in conf.get('queries',[]):
         try: items.extend(rss_rows(fetch(gnews(src['q'])),src['name'],src['group'],src['category'],cutoff))
         except Exception as exc: errors.append({'source':src.get('name','Query'),'error':str(exc)[:80]})
