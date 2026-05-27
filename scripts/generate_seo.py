@@ -13,6 +13,7 @@ ORG_ID = SITE + '#gnk-asg'
 GROUP_ID = SITE + '#gnk-dinamo-ltd'
 PERSON_ID = SITE + '#nermin-sefic'
 WEBSITE_ID = SITE + '#website'
+BPP_ID = SITE + '#bitcoin-payment-processor'
 CORE_HR = 'GNK ASG d.o.o., GNK ASG doo, GNK ASG, GNK DINAMO Ltd., GNK DINAMO LTD, GNK Dinamo Ltd, GNK Dinamo grupa, Nermin Sefić, Nermin Sefic'
 CORE_EN = 'GNK ASG d.o.o., GNK ASG doo, GNK ASG, GNK DINAMO Ltd., GNK DINAMO LTD, GNK Dinamo Ltd, GNK Dinamo group, Nermin Sefić, Nermin Sefic'
 SOCIAL_IMAGES = {
@@ -25,8 +26,8 @@ SOCIAL_IMAGES = {
     'en/markets/': 'assets/share-trzista.png',
 }
 PAGE_TERMS = {
-    '': 'korporativni portal, korporativni profil, Zagreb, Hrvatska, Boulder Colorado, GNK DINAMO Ltd. Group, 33 povezana društva, 12 planiranih lokacija, globalna mreža društava, FY 2025, financijski pokazatelji, sportska tehnologija, digitalna imovina, poslovne vijesti',
-    'en/': 'corporate portal, corporate profile, Zagreb Croatia, Boulder Colorado, GNK DINAMO Ltd. Group, 33 group companies, 12 planned locations, global group network, FY 2025, financial indicators, sports technology, digital assets, business news',
+    '': 'korporativni portal, korporativni profil, Zagreb, Hrvatska, Boulder Colorado, GNK DINAMO Ltd. Group, 33 povezana društva, 12 planiranih lokacija, globalna mreža društava, FY 2025, financijski pokazatelji, Bitcoin Payment Processor, bpp.is, softversko rješenje, digitalna imovina, poslovne vijesti',
+    'en/': 'corporate portal, corporate profile, Zagreb Croatia, Boulder Colorado, GNK DINAMO Ltd. Group, 33 group companies, 12 planned locations, global group network, FY 2025, financial indicators, Bitcoin Payment Processor, bpp.is, software solution, digital assets, business news',
     'sadrzaj/': 'sadržaj portala, korporativni podatci, financije, tehnologija, tržišta, Intelligence Desk, tematski monitoring, poslovne vijesti, javni dokumenti',
     'teme/': 'tematski monitoring, ekonomija, gospodarstvo, javne politike, sport, košarka, tenis, sportski savezi, automobilska tehnologija, električna mobilnost, umjetna inteligencija, AI, javne vijesti, Hrvatska, BiH',
     'financije/': 'financijski profil FY 2025, revidirani financijski izvještaji, izvješće neovisnog revizora, EKVILIBRIJ d.o.o., HSFI, ukupni prihodi 504 milijuna EUR, ukupna aktiva, kapital i rezerve, bez dugoročnih obveza, FINA RGFI',
@@ -42,8 +43,8 @@ PAGE_TERMS = {
     'instalacija/': 'GNK ASG aplikacija, instalacija u Chromeu, mobilni korporativni portal, javni korporativni podatci'
 }
 PAGES = [
-    {'path':'','file':'index.html','lang':'hr','locale':'hr_HR','changefreq':'daily','priority':'1.0','alt':('','en/'),'title':'GNK ASG d.o.o. | GNK DINAMO Ltd. grupa | Nermin Sefić','description':'Službeni korporativni portal: GNK ASG d.o.o., GNK DINAMO Ltd. grupni okvir i Nermin Sefić; FY 2025 pokazatelji, globalna mreža 33 društva i +12 lokacija, tehnologija, tržišta i vijesti.','type':'WebPage','name':'GNK ASG d.o.o. — Korporativni portal GNK DINAMO Ltd. grupe','crumb':'Početna'},
-    {'path':'en/','file':'en/index.html','lang':'en','locale':'en_US','changefreq':'weekly','priority':'0.9','alt':('','en/'),'title':'GNK ASG d.o.o. | GNK DINAMO Ltd. Group | Nermin Sefić','description':'Official corporate portal for GNK ASG d.o.o., the GNK DINAMO Ltd. group framework and Nermin Sefić: FY 2025 indicators, a network of 33 companies and +12 locations, technology, markets and news.','type':'WebPage','name':'GNK ASG d.o.o. — GNK DINAMO Ltd. Group Corporate Portal','crumb':'Home'},
+    {'path':'','file':'index.html','lang':'hr','locale':'hr_HR','changefreq':'daily','priority':'1.0','alt':('','en/'),'title':'GNK ASG d.o.o. | GNK DINAMO Ltd. grupa | Nermin Sefić','description':'Službeni korporativni portal GNK ASG d.o.o. i GNK DINAMO Ltd. grupe: FY 2025 pokazatelji, globalna mreža, tržišta, vijesti i javni prikaz softverskog rješenja Bitcoin Payment Processor razvijenog za grupu.','type':'WebPage','name':'GNK ASG d.o.o. — Korporativni portal GNK DINAMO Ltd. grupe','crumb':'Početna'},
+    {'path':'en/','file':'en/index.html','lang':'en','locale':'en_US','changefreq':'weekly','priority':'0.9','alt':('','en/'),'title':'GNK ASG d.o.o. | GNK DINAMO Ltd. Group | Nermin Sefić','description':'Official corporate portal for GNK ASG d.o.o. and the GNK DINAMO Ltd. group: FY 2025 indicators, global network, markets, news and a public overview of the Bitcoin Payment Processor software solution developed for the group.','type':'WebPage','name':'GNK ASG d.o.o. — GNK DINAMO Ltd. Group Corporate Portal','crumb':'Home'},
     {'path':'trzista/','file':'trzista/index.html','lang':'hr','locale':'hr_HR','changefreq':'daily','priority':'0.9','alt':('trzista/','en/markets/'),'title':'Market Intelligence | GNK ASG d.o.o. i GNK DINAMO Ltd. | Nermin Sefić','description':'Market Intelligence portal za GNK ASG d.o.o., GNK DINAMO Ltd. i Nermina Sefića: Bitcoin, digitalna imovina, stablecoini, kripto burze, globalni indeksi i dnevni tržišni osvrt.','type':'CollectionPage','name':'Market Intelligence — GNK ASG d.o.o. i GNK DINAMO Ltd.','crumb':'Tržišta'},
     {'path':'en/markets/','file':'en/markets/index.html','lang':'en','locale':'en_US','changefreq':'daily','priority':'0.9','alt':('trzista/','en/markets/'),'title':'Market Intelligence | GNK ASG d.o.o. and GNK DINAMO Ltd. | Nermin Sefić','description':'Market Intelligence for GNK ASG d.o.o., GNK DINAMO Ltd. and Nermin Sefić: Bitcoin, digital assets, stablecoins, crypto exchanges, global indices and a daily market brief.','type':'CollectionPage','name':'Market Intelligence — GNK ASG d.o.o. and GNK DINAMO Ltd.','crumb':'Markets'},
     {'path':'sadrzaj/','file':'sadrzaj/index.html','lang':'hr','locale':'hr_HR','changefreq':'weekly','priority':'0.8','title':'Sadržaj portala | GNK ASG d.o.o. | GNK DINAMO Ltd. | Nermin Sefić','description':'Pregled javnih sadržaja o subjektima GNK ASG d.o.o., GNK DINAMO Ltd. i Nerminu Sefiću: financije, mreža društava, tehnologija, tematski monitoring, registri, tržišta i vijesti.','type':'CollectionPage','name':'Sadržaj portala GNK ASG d.o.o. i GNK DINAMO Ltd.','crumb':'Sadržaj'},
@@ -63,14 +64,19 @@ def image(page): return SITE + SOCIAL_IMAGES.get(page['path'], 'assets/gnk-asg-s
 def keywords(page): return (CORE_EN if page['lang'] == 'en' else CORE_HR) + ', ' + PAGE_TERMS.get(page['path'], '')
 def entities():
     return [
-        {'@type':'Organization','@id':ORG_ID,'name':'GNK ASG d.o.o.','alternateName':['GNK ASG doo','GNK ASG'],'url':SITE,'logo':SITE+'assets/logo-gnk-asg.svg','image':DEFAULT_IMAGE,'taxID':'75227917632','knowsAbout':['Technology','Artificial Intelligence','FinTech','Digital Assets','Sports Technology','Market Intelligence','Corporate Transparency'],'memberOf':{'@id':GROUP_ID},'address':{'@type':'PostalAddress','streetAddress':'Zagrebačka cesta 130','addressLocality':'Zagreb','addressCountry':'HR'}},
+        {'@type':'Organization','@id':ORG_ID,'name':'GNK ASG d.o.o.','alternateName':['GNK ASG doo','GNK ASG'],'url':SITE,'logo':SITE+'assets/logo-gnk-asg.svg','image':DEFAULT_IMAGE,'taxID':'75227917632','knowsAbout':['Technology','Artificial Intelligence','FinTech','Digital Assets','Sports Technology','Market Intelligence','Corporate Transparency','Software Development'],'memberOf':{'@id':GROUP_ID},'address':{'@type':'PostalAddress','streetAddress':'Zagrebačka cesta 130','addressLocality':'Zagreb','addressCountry':'HR'}},
         {'@type':'Organization','@id':GROUP_ID,'name':'GNK DINAMO Ltd.','alternateName':['GNK DINAMO LTD','GNK Dinamo Ltd','GNK DINAMO Ltd. Group'],'url':SITE,'image':DEFAULT_IMAGE,'identifier':'Entity ID 20238180649','location':{'@type':'Place','name':'Boulder, Colorado, USA'}},
         {'@type':'Person','@id':PERSON_ID,'name':'Nermin Sefić','alternateName':'Nermin Sefic','jobTitle':'Director / authorised representative / UBO of the group','worksFor':{'@id':ORG_ID},'affiliation':{'@id':GROUP_ID}}
     ]
+def bpp_entity(lang):
+    return {'@type':'SoftwareApplication','@id':BPP_ID,'name':'Bitcoin Payment Processor','alternateName':'BPP.IS','url':'https://bpp.is/','applicationCategory':'BusinessApplication','description':('Bitcoin Payment Processor software solution developed by GNK ASG d.o.o. for the GNK DINAMO Ltd. group framework. GNK ASG d.o.o. does not operate the system or provide payment processor services through it.' if lang == 'en' else 'Programsko rješenje Bitcoin Payment Processor koje je GNK ASG d.o.o. razvio za poslovni okvir GNK DINAMO Ltd. grupe. GNK ASG d.o.o. ne upravlja sustavom niti putem njega pruža uslugu payment procesora.'),'creator':{'@id':ORG_ID},'about':{'@id':GROUP_ID},'image':SITE+'assets/share-bpp.png'}
 def schema(page):
     u = url(page); keys = keywords(page); page_image = image(page)
     item = {'@type':page['type'],'@id':u+'#webpage','url':u,'name':page['name'],'description':page['description'],'keywords':keys,'inLanguage':page['lang'],'isPartOf':{'@id':WEBSITE_ID},'about':[{'@id':ORG_ID},{'@id':GROUP_ID},{'@id':PERSON_ID}],'mentions':[{'@id':ORG_ID},{'@id':GROUP_ID},{'@id':PERSON_ID}],'primaryImageOfPage':{'@type':'ImageObject','url':page_image}}
     graph = [{'@type':'WebSite','@id':WEBSITE_ID,'url':SITE,'name':'GNK ASG d.o.o. | GNK DINAMO Ltd. | Nermin Sefić','publisher':{'@id':ORG_ID},'about':[{'@id':ORG_ID},{'@id':GROUP_ID},{'@id':PERSON_ID}],'keywords':keywords(PAGES[0]),'inLanguage':['hr','en']}] + entities() + [item]
+    if page['path'] in ('','en/'):
+        graph.append(bpp_entity(page['lang']))
+        item['mentions'].append({'@id':BPP_ID})
     if page['path'] not in ('','en/'):
         item['breadcrumb']={'@id':u+'#breadcrumb'}
         graph.append({'@type':'BreadcrumbList','@id':u+'#breadcrumb','itemListElement':[{'@type':'ListItem','position':1,'name':'GNK ASG d.o.o.','item':SITE},{'@type':'ListItem','position':2,'name':page['crumb'],'item':u}]})
@@ -86,16 +92,16 @@ def metadata(page):
     lines += ['  <script type="application/ld+json">'+json.dumps(schema(page),ensure_ascii=False,separators=(',',':'))+'</script>', '<!-- SEO:END -->']
     return '\n'.join(lines)
 def enhance(page):
-    target = ROOT / page['file']; html = target.read_text(encoding='utf-8')
-    html = re.sub(r'\s*<!-- SEO:BEGIN generated by scripts/generate_seo\.py -->.*?<!-- SEO:END -->\s*', '\n', html, flags=re.S)
-    html = re.sub(r'<title>.*?</title>', '<title>'+page['title']+'</title>', html, count=1, flags=re.S)
-    html = re.sub(r'<meta\s+name="description"\s+content="[^"]*"\s*/?>', '<meta name="description" content="'+page['description']+'">', html, count=1)
-    html = re.sub(r'\s*<meta\s+name="(?:keywords|author|robots|theme-color|twitter:[^"]+)"[^>]*>', '', html)
-    html = re.sub(r'\s*<meta\s+property="og:[^"]+"[^>]*>', '', html)
-    html = re.sub(r'\s*<link\s+rel="(?:canonical|alternate)"[^>]*>', '', html)
-    html = re.sub(r'\s*<script\s+type="application/ld\+json">.*?</script>', '', html, flags=re.S)
-    html = html.replace('</head>', '\n'+metadata(page)+'\n</head>', 1)
-    target.write_text(html, encoding='utf-8')
+    target = ROOT / page['file']; content = target.read_text(encoding='utf-8')
+    content = re.sub(r'\s*<!-- SEO:BEGIN generated by scripts/generate_seo\.py -->.*?<!-- SEO:END -->\s*', '\n', content, flags=re.S)
+    content = re.sub(r'<title>.*?</title>', '<title>'+page['title']+'</title>', content, count=1, flags=re.S)
+    content = re.sub(r'<meta\s+name="description"\s+content="[^"]*"\s*/?>', '<meta name="description" content="'+page['description']+'">', content, count=1)
+    content = re.sub(r'\s*<meta\s+name="(?:keywords|author|robots|theme-color|twitter:[^"]+)"[^>]*>', '', content)
+    content = re.sub(r'\s*<meta\s+property="og:[^"]+"[^>]*>', '', content)
+    content = re.sub(r'\s*<link\s+rel="(?:canonical|alternate)"[^>]*>', '', content)
+    content = re.sub(r'\s*<script\s+type="application/ld\+json">.*?</script>', '', content, flags=re.S)
+    content = content.replace('</head>', '\n'+metadata(page)+'\n</head>', 1)
+    target.write_text(content, encoding='utf-8')
 def entry(page):
     lines = ['  <url>', '    <loc>'+escape(url(page))+'</loc>']
     if page.get('alt'):
