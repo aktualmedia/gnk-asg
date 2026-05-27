@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-27T19:36:22+00:00",
+  "updated_at": "2026-05-27T23:53:01+00:00",
   "refresh_frequency": "Hourly public reference update",
   "disclaimer_hr": "Informativni burzovni prikaz. Podatci mogu biti vremenski odgođeni; prije financijske odluke provjerite službeni izvor burze.",
   "disclaimer_en": "Informational stock-market display. Data may be delayed; verify the exchange official source before any financial decision.",
@@ -45,13 +45,9 @@
       "delay_hr": "Javni informativni indeksni podatak",
       "delay_en": "Public informational index data",
       "official_url": "https://www.nyse.com/quote/index/NYA",
-      "value": 23296.17,
-      "change_percent": 1.71,
+      "value": 23267.07,
+      "change_percent": 1.89,
       "points": [
-        [
-          1777296600000,
-          22905.4609375
-        ],
         [
           1777383000000,
           22835.58984375
@@ -134,7 +130,7 @@
         ],
         [
           1779888600000,
-          23296.16796875
+          23267.06640625
         ]
       ],
       "currency": "USD"
@@ -150,13 +146,9 @@
       "delay_hr": "Indeksni podatci mogu biti odgođeni",
       "delay_en": "Index data may be delayed",
       "official_url": "https://www.nasdaq.com/market-activity/index/comp",
-      "value": 26678.06,
-      "change_percent": 7.2,
+      "value": 26674.73,
+      "change_percent": 8.15,
       "points": [
-        [
-          1777296600000,
-          24887.099609375
-        ],
         [
           1777383000000,
           24663.80078125
@@ -239,7 +231,7 @@
         ],
         [
           1779888600000,
-          26678.05859375
+          26674.734375
         ]
       ],
       "currency": "USD"
