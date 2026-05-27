@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-27T08:20:40+00:00",
+  "updated_at": "2026-05-27T08:24:12+00:00",
   "news": {
-    "updated_at": "2026-05-27T08:20:40+00:00",
+    "updated_at": "2026-05-27T08:24:12+00:00",
     "cadence": "hourly",
-    "public_items": 354,
+    "public_items": 378,
     "by_group": {
       "srbija": 31,
       "hrvatska": 20,
@@ -11,6 +11,7 @@
       "digital-assets": 85,
       "international": 60,
       "sport": 10,
+      "bih": 24,
       "mobilnost": 30
     },
     "errors": []
