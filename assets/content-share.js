@@ -11,18 +11,24 @@
     const style = document.createElement('style');
     style.id = 'gnk-content-share-style';
     style.textContent = [
-      '.gnk-content-share{position:relative;display:flex;justify-content:flex-end;align-items:center;margin-top:9px}',
-      '.gnk-share-toggle{display:inline-flex;align-items:center;gap:5px;min-height:24px;padding:0 8px;border:0;border-radius:999px;background:transparent;color:#8291a4;font:700 .55rem/1 Arial,sans-serif;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:color .16s ease,background .16s ease}',
-      '.gnk-share-toggle:before{content:"↗";color:#aa7c22;font-size:.65rem}',
+      '.gnk-content-share{position:relative;display:flex;justify-content:flex-end;align-items:center;margin-top:6px}',
+      '.gnk-share-toggle{display:inline-flex;align-items:center;gap:4px;min-height:22px;padding:0 7px;border:0;border-radius:999px;background:transparent;color:#8695a8;font:700 .52rem/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:color .15s ease,background .15s ease}',
+      '.gnk-share-toggle:before{content:"↗";color:#ad822c;font-size:.62rem}',
       '.gnk-share-toggle:hover,.gnk-content-share.open .gnk-share-toggle{color:#143b6d;background:#f4f7fb}',
-      '.gnk-share-options{position:absolute;right:0;bottom:29px;z-index:80;display:none;gap:4px;padding:5px;border:1px solid #e0e7f0;border-radius:999px;background:#fff;box-shadow:0 8px 20px rgba(7,22,45,.09);white-space:nowrap}',
+      '.gnk-share-options{position:absolute;right:0;bottom:26px;z-index:80;display:none;gap:2px;padding:4px;border:1px solid #e4eaf2;border-radius:999px;background:#fff;box-shadow:0 7px 18px rgba(7,22,45,.08);white-space:nowrap}',
       '.gnk-content-share.open .gnk-share-options{display:flex}',
-      '.gnk-share-options a{display:inline-flex;align-items:center;min-height:25px;padding:0 8px;border-radius:999px;color:#536b85;text-decoration:none;font:700 .54rem/1 Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase;transition:background .16s ease,color .16s ease}',
+      '.gnk-share-options a{display:inline-flex;align-items:center;min-height:23px;padding:0 7px;border-radius:999px;color:#65788e;text-decoration:none;font:700 .5rem/1 Arial,sans-serif;letter-spacing:.03em;text-transform:uppercase}',
       '.gnk-share-options a:hover{background:#f4f7fb;color:#143b6d}',
-      '.news-card .gnk-content-share,.topic-news .gnk-content-share,.news-item .gnk-content-share{margin-top:7px;padding-top:6px;border-top:1px solid #f0f3f7}',
-      '.section-head .gnk-content-share{justify-content:flex-start;margin-top:8px}',
-      '.group-card .gnk-content-share,.doc .gnk-content-share,.topic-card .gnk-content-share,.publication-card .gnk-content-share{margin-top:7px}',
-      '@media(max-width:680px){.gnk-share-options{right:0;bottom:28px}.gnk-share-toggle{min-height:27px}}'
+      '.news-card .gnk-content-share,.topic-news .gnk-content-share,.news-item .gnk-content-share{position:absolute;right:10px;bottom:8px;margin:0;padding:0;border:0}',
+      '.news-card,.topic-news,.news-item{position:relative;padding-bottom:31px!important}',
+      '.news-card .gnk-share-toggle,.topic-news .gnk-share-toggle,.news-item .gnk-share-toggle{width:19px;height:19px;min-height:19px;padding:0;justify-content:center;font-size:0;opacity:.62}',
+      '.news-card .gnk-share-toggle:before,.topic-news .gnk-share-toggle:before,.news-item .gnk-share-toggle:before{font-size:.62rem}',
+      '.news-card:hover .gnk-share-toggle,.topic-news:hover .gnk-share-toggle,.news-item:hover .gnk-share-toggle,.news-card .gnk-content-share.open .gnk-share-toggle{opacity:1}',
+      '.news-card .gnk-share-options,.topic-news .gnk-share-options,.news-item .gnk-share-options{right:-2px;bottom:23px}',
+      '.section-head .gnk-content-share{justify-content:flex-start;margin-top:7px}',
+      '.group-card .gnk-content-share,.doc .gnk-content-share,.topic-card .gnk-content-share,.publication-card .gnk-content-share{margin-top:5px}',
+      '.group-card .gnk-share-toggle,.doc .gnk-share-toggle,.topic-card .gnk-share-toggle,.publication-card .gnk-share-toggle{font-size:0;width:20px;padding:0;justify-content:center}',
+      '@media(max-width:680px){.gnk-share-options{bottom:25px}.news-card .gnk-content-share,.topic-news .gnk-content-share,.news-item .gnk-content-share{right:8px;bottom:7px}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -33,11 +39,11 @@
     const itemUrl = absolute(url || location.href);
     const message = encodeURIComponent(itemTitle + ' — ' + itemUrl);
     return '<div class="' + SHARE + '">' +
-      '<button class="gnk-share-toggle" type="button" aria-expanded="false">' + label + '</button>' +
+      '<button class="gnk-share-toggle" type="button" aria-expanded="false" aria-label="' + label + '" title="' + label + '">' + label + '</button>' +
       '<div class="gnk-share-options" aria-label="' + label + '">' +
-        '<a class="wa" target="_blank" rel="noopener" href="https://wa.me/?text=' + message + '">WhatsApp</a>' +
-        '<a class="in" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(itemUrl) + '">LinkedIn</a>' +
-        '<a class="mail" href="mailto:?subject=' + encodeURIComponent(itemTitle) + '&body=' + message + '">E-mail</a>' +
+        '<a target="_blank" rel="noopener" href="https://wa.me/?text=' + message + '">WhatsApp</a>' +
+        '<a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(itemUrl) + '">LinkedIn</a>' +
+        '<a href="mailto:?subject=' + encodeURIComponent(itemTitle) + '&body=' + message + '">E-mail</a>' +
       '</div></div>';
   }
 
@@ -57,13 +63,11 @@
       button.setAttribute('aria-expanded', String(open));
     });
   }
-
   function add(host, title, url) {
     if (!host || host.querySelector(':scope > .' + SHARE)) return;
     host.insertAdjacentHTML('beforeend', shareMarkup(title, url));
     bind(host.querySelector(':scope > .' + SHARE));
   }
-
   function run() {
     installStyle();
     document.querySelectorAll('section[id]').forEach(section => {
@@ -74,17 +78,16 @@
     });
     document.querySelectorAll('article.news-card, article.topic-news, article.news-item').forEach(card => {
       const heading = card.querySelector('h1,h2,h3,h4');
-      const link = card.querySelector('a[href]:not(.wa):not(.in):not(.mail)');
+      const link = card.querySelector('a[href]:not(.gnk-share-options a)');
       add(card, heading ? heading.textContent.trim() : document.title, link ? link.href : location.href);
     });
     document.querySelectorAll('.group-card, .doc, .topic-card, .publication-card').forEach(card => {
       const heading = card.querySelector('h1,h2,h3,h4');
-      const link = card.querySelector('a[href]:not(.wa):not(.in):not(.mail)');
+      const link = card.querySelector('a[href]:not(.gnk-share-options a)');
       const section = card.closest('section[id]');
       add(card, heading ? heading.textContent.trim() : document.title, link ? link.href : (section ? location.origin + location.pathname + '#' + section.id : location.href));
     });
   }
-
   document.addEventListener('click', () => {
     document.querySelectorAll('.gnk-content-share.open').forEach(control => {
       control.classList.remove('open');
