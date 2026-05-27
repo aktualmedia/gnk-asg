@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260527-bpp-compact-share-unique03';
+  var VERSION = '20260527-market-coverage-share-card05';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/group-google-map.css');
   style('/assets/group-location-weather.css');
   style('/assets/group-overview-panel.css');
+  style('/assets/group-market-coverage.css');
   style('/assets/network-reading-layout.css');
   style('/assets/bitcoin-chart.css');
   style('/assets/market-expansion.css');
@@ -75,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/group-google-map.js');
   script('/assets/group-location-weather.js');
   script('/assets/group-overview-panel.js');
+  script('/assets/group-market-coverage.js');
   script('/assets/network-selection-sync.js');
   script('/assets/command-centre.js');
   script('/assets/network-search-3d.js');
