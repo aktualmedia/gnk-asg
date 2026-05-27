@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 async function submitDeskForm(page) {
-  await page.locator('#deskForm').evaluate(form => form.requestSubmit());
+  await page.locator('#deskInput').press('Enter');
 }
 
 test('Intelligence Desk answers from verified portal datasets', async ({ page }) => {
