@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260527-careers01';
+  var VERSION = '20260527-content-share01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/group-clarity.js');
   script('/assets/public-sources.js');
   script('/assets/site-share.js');
+  script('/assets/content-share.js');
   script('/assets/hourly-data-disclosure.js');
   script('/assets/portal-layout.js');
 
@@ -90,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     Array.prototype.forEach.call(scope.querySelectorAll('.doc'), function (card) {
       var heading = card.querySelector('h3');
       if (!heading || heading.textContent.trim() !== 'GNK DINAMO Ltd. Corporate Information') return;
-      Array.prototype.forEach.call(card.querySelectorAll('a'), function (link) { link.remove(); });
+      Array.prototype.forEach.call(card.querySelectorAll('a:not(.wa):not(.in):not(.mail)'), function (link) { link.remove(); });
     });
   }
   removeCorporateInformationExternalAction(document);
