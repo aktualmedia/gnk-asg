@@ -1,7 +1,7 @@
 name: Hourly News Update
 
-# Satni javni sloj ažurira vijesti, njihove društvene preview stranice i referentne tržišne podatke.
-# Brzi market primarno radi kroz petominutni workflow; ovdje se izvršava samo kao sigurnosni satni fallback.
+# Satni javni sloj ažurira vijesti, njihove individualne društvene preview stranice i referentne javne podatke.
+# Brzi market ostaje isključivo u zasebnom petominutnom workflowu kako se izvori i statusi ne bi prepisivali.
 on:
   schedule:
     - cron: '19 * * * *'
@@ -12,7 +12,6 @@ on:
     paths:
       - 'scripts/update_feeds_v2.py'
       - 'scripts/generate_news_share_previews.py'
-      - 'scripts/update_fast_market.py'
       - 'scripts/update_macro_data.py'
       - 'scripts/update_market_extensions.py'
       - 'scripts/update_open_data.py'
@@ -29,7 +28,7 @@ concurrency:
 
 jobs:
   update-hourly:
-    name: Refresh hourly public datasets social previews and market fallback
+    name: Refresh hourly public news previews and reference datasets
     runs-on: ubuntu-latest
     timeout-minutes: 24
     env:
@@ -44,7 +43,7 @@ jobs:
       - name: Install news preview image dependency
         run: python -m pip install --disable-pip-version-check pillow
       - name: Validate hourly Python processors
-        run: python -m py_compile scripts/update_feeds_v2.py scripts/generate_news_share_previews.py scripts/update_macro_data.py scripts/update_market_extensions.py scripts/update_open_data.py scripts/update_fast_market.py
+        run: python -m py_compile scripts/update_feeds_v2.py scripts/generate_news_share_previews.py scripts/update_macro_data.py scripts/update_market_extensions.py scripts/update_open_data.py
       - name: Update hourly classified news and per-item social previews
         run: |
           python scripts/update_feeds_v2.py
@@ -54,16 +53,14 @@ jobs:
           python scripts/update_macro_data.py
           python scripts/update_market_extensions.py
           python scripts/update_open_data.py
-      - name: Refresh fast market datasets as hourly fallback
-        run: python scripts/update_fast_market.py
-      - name: Publish latest generated datasets and news previews without merge conflicts
+      - name: Publish hourly datasets and news previews without merge conflicts
         run: |
           set -e
           git config user.name "gnk-asg-hourly-bot"
           git config user.email "actions@users.noreply.github.com"
           rm -rf /tmp/gnk-hourly-output
           mkdir -p /tmp/gnk-hourly-output/data /tmp/gnk-hourly-output/assets /tmp/gnk-hourly-output/podijeli
-          cp data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-hourly-output/data/
+          cp data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json /tmp/gnk-hourly-output/data/
           cp -R assets/news-preview /tmp/gnk-hourly-output/assets/ 2>/dev/null || true
           cp -R podijeli/vijest /tmp/gnk-hourly-output/podijeli/ 2>/dev/null || true
           publish_generated_data() {
@@ -73,12 +70,12 @@ jobs:
             mkdir -p assets podijeli
             cp -R /tmp/gnk-hourly-output/assets/news-preview assets/ 2>/dev/null || true
             cp -R /tmp/gnk-hourly-output/podijeli/vijest podijeli/ 2>/dev/null || true
-            git add data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json assets/news-preview/ podijeli/vijest/
+            git add data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json assets/news-preview/ podijeli/vijest/
             if git diff --cached --quiet; then
               echo "No hourly changes."
               return 0
             fi
-            git commit -m "Automated hourly public data and individual news preview update"
+            git commit -m "Automated hourly public news and individual preview update"
             git push origin HEAD:main
           }
           publish_generated_data || (sleep 8 && publish_generated_data)
