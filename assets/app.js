@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260526-demographic-compact07';
+  var VERSION = '20260527-careers01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -84,6 +84,17 @@ document.addEventListener('DOMContentLoaded', function () {
   function isEnglish() {
     return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   }
+
+  function removeCorporateInformationExternalAction(root) {
+    var scope = root || document;
+    Array.prototype.forEach.call(scope.querySelectorAll('.doc'), function (card) {
+      var heading = card.querySelector('h3');
+      if (!heading || heading.textContent.trim() !== 'GNK DINAMO Ltd. Corporate Information') return;
+      Array.prototype.forEach.call(card.querySelectorAll('a'), function (link) { link.remove(); });
+    });
+  }
+  removeCorporateInformationExternalAction(document);
+  new MutationObserver(function () { removeCorporateInformationExternalAction(document); }).observe(document.body, { childList: true, subtree: true });
 
   var menuButton = document.getElementById('menuToggle');
   var menu = document.getElementById('navLinks');
