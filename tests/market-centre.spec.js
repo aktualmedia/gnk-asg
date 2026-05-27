@@ -57,10 +57,7 @@ for (const route of homepageRoutes) {
       const weatherSlot = panel && panel.querySelector('#overviewWeatherSlot');
       const map = document.getElementById('googleLocationMap');
       const weather = document.getElementById('locationWeatherPanel');
-      return Boolean(
-        panel && dock && mapSlot && weatherSlot && map && weather &&
-        mapSlot.contains(map) && weatherSlot.contains(weather)
-      );
+      return Boolean(panel && dock && mapSlot && weatherSlot && map && weather && mapSlot.contains(map) && weatherSlot.contains(weather));
     }), { timeout: 15000 }).toBe(true);
     await expect(page.locator('#googleLocationMap')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('#locationWeatherPanel')).toBeVisible({ timeout: 15000 });
@@ -82,7 +79,7 @@ test('početna stranica koristi zasebne LinkedIn URL-ove za kontrolirane sekcije
   await expect.poll(async () => page.evaluate(() => {
     const control = document.querySelector('#digital-assets .gnk-content-share');
     const link = control && control.querySelector('a[href*="linkedin.com/sharing/share-offsite"]');
-    return link ? decodeURIComponent(link.href).includes('/podijeli/trzista/?preview=20260527-unique03') : false;
+    return link ? decodeURIComponent(link.href).includes('/podijeli/trzista/?preview=20260527-unique04') : false;
   }), { timeout: 15000 }).toBe(true);
   await expect(page.locator('a[href$="/trzista/"]')).toBeVisible({ timeout: 15000 });
 });
