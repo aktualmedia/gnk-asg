@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data'
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
-UA = 'GNK-ASG-News-Monitor/3.2'
+UA = 'GNK-ASG-News-Monitor/3.3'
 N1_ECONOMY = 'https://' + 'n1info.ba/vijesti/ekonomija/'
 N1_MONTHS = {'januar':1,'februar':2,'mart':3,'april':4,'maj':5,'juni':6,'juli':7,'august':8,'septembar':9,'oktobar':10,'novembar':11,'decembar':12}
 def read_json(name, default):
@@ -93,7 +93,10 @@ def update_news():
     for row in selected: counts[row['group']]=counts.get(row['group'],0)+1
     return {'updated_at':NOW.isoformat(),'cadence':'hourly','public_items':len(selected),'by_group':counts,'errors':errors}
 def main():
-    status=read_json('update_status.json',{}); status.pop('market',None); status.pop('fast_market',None); status['updated_at']=NOW.isoformat()
+    status=read_json('update_status.json',{})
+    for obsolete in ('market','fast_market','corporate_media_monitor'):
+        status.pop(obsolete, None)
+    status['updated_at']=NOW.isoformat()
     try: status['news']=update_news()
     except Exception as exc: status['news']={'updated_at':NOW.isoformat(),'cadence':'hourly','error':str(exc)[:130]}
     save('update_status.json',status); print(json.dumps({'updated_at':NOW.isoformat(),'news':status['news']},ensure_ascii=False))
