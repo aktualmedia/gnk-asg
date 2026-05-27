@@ -6,6 +6,24 @@
   const minutesOld = value => value ? Math.max(0, (Date.now() - new Date(value).getTime()) / 60000) : Infinity;
   const dateLabel = value => value ? new Date(value).toLocaleString(english() ? 'en-GB' : 'hr-HR') : (english() ? 'not available' : 'nije dostupno');
 
+  function installStyle() {
+    if (document.getElementById('gnk-live-status-style')) return;
+    const style = document.createElement('style');
+    style.id = 'gnk-live-status-style';
+    style.textContent = [
+      '.live-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:17px}',
+      '.live-badge{display:inline-flex;align-items:center;gap:7px;min-height:27px;padding:0 10px;border:1px solid #e1e7ef;border-radius:999px;background:rgba(255,255,255,.82);color:#64768b;font:750 .62rem/1 Arial,sans-serif;letter-spacing:.045em}',
+      '.live-badge:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#b9c4d1}',
+      '.live-badge.ok{border-color:#d8ebdf;color:#3c6753;background:#f7fbf8}',
+      '.live-badge.ok:before{background:#26a269}',
+      '.live-badge.warning{border-color:#efe2bd;color:#725d28;background:#fffdf8}',
+      '.live-badge.warning:before{background:#d0a12e}',
+      '.automation-status{font-weight:850;text-transform:uppercase;letter-spacing:.095em}',
+      '@media(max-width:680px){.live-row{gap:6px;margin-top:13px}.live-badge{font-size:.57rem;min-height:25px;padding:0 8px}}'
+    ].join('');
+    document.head.appendChild(style);
+  }
+
   function setBadge(id, text, state) {
     const node = document.getElementById(id);
     if (!node) return;
@@ -43,28 +61,26 @@
     } catch (error) { return null; }
   }
 
-  async function init() {
-    const hero = document.querySelector('.hero-actions');
-    if (!hero) return;
-    const row = document.createElement('div');
-    row.className = 'live-row';
-    row.innerHTML = '<span class="live-badge waiting" id="newsBadge">Business News: provjera</span><span class="live-badge waiting" id="marketBadge">Digital Assets: provjera</span><span class="live-badge waiting automation-status" id="automationBadge">Provjera ažuriranja</span>';
-    hero.insertAdjacentElement('afterend', row);
+  async function refresh() {
     [newsData, marketData, referenceData] = await Promise.all([
       read('/data/update_status.json'),
       read('/data/fast_market_status.json'),
       read('/data/open_data.json')
     ]);
     render();
+  }
+
+  async function init() {
+    const hero = document.querySelector('.hero-actions');
+    if (!hero || document.getElementById('automationBadge')) return;
+    installStyle();
+    const row = document.createElement('div');
+    row.className = 'live-row';
+    row.innerHTML = '<span class="live-badge waiting" id="newsBadge">Business News: provjera</span><span class="live-badge waiting" id="marketBadge">Digital Assets: provjera</span><span class="live-badge waiting automation-status" id="automationBadge">Provjera ažuriranja</span>';
+    hero.insertAdjacentElement('afterend', row);
+    await refresh();
     window.addEventListener('gnk-language-change', render);
-    window.setInterval(async () => {
-      [newsData, marketData, referenceData] = await Promise.all([
-        read('/data/update_status.json'),
-        read('/data/fast_market_status.json'),
-        read('/data/open_data.json')
-      ]);
-      render();
-    }, 300000);
+    window.setInterval(refresh, 300000);
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 })();
