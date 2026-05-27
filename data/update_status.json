@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-05-27T13:55:37+00:00",
+  "updated_at": "2026-05-27T14:31:27+00:00",
   "news": {
-    "updated_at": "2026-05-27T13:55:37+00:00",
+    "updated_at": "2026-05-27T14:31:27+00:00",
     "cadence": "hourly",
-    "public_items": 364,
+    "public_items": 365,
     "by_group": {
-      "technology": 118,
-      "hrvatska": 20,
       "digital-assets": 84,
       "srbija": 31,
       "international": 58,
+      "technology": 118,
+      "hrvatska": 20,
       "mobilnost": 30,
-      "sport": 11,
+      "sport": 12,
       "bih": 12
     },
     "duplicates_removed": 17,
