@@ -1,6 +1,7 @@
 name: Daily SEO Refresh
 
-# SEO izlaz objavljuje se iz najnovijeg main stanja kako ga petominutni podatkovni commit ne bi blokirao.
+# Samostalni SEO proces objavljuje se iz najnovijeg main stanja.
+# Ne dijeli red izvršavanja s petominutnim tržišnim i satnim podatkovnim procesima.
 on:
   schedule:
     - cron: '42 4 * * *'
@@ -12,7 +13,17 @@ on:
       - 'scripts/generate_seo.py'
       - 'scripts/generate_social_preview.py'
       - 'assets/gnk-asg-social-card.svg'
+      - 'index.html'
+      - 'sadrzaj/index.html'
+      - 'teme/index.html'
+      - 'autorske-objave/**'
       - 'trzista/index.html'
+      - 'financije/index.html'
+      - 'tehnologija/index.html'
+      - 'intelligence-desk/index.html'
+      - 'registri/index.html'
+      - 'instalacija/index.html'
+      - 'en/index.html'
       - 'en/markets/index.html'
       - 'en/finance/index.html'
       - 'en/technology/index.html'
@@ -24,8 +35,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: public-portal-data-publication
-  cancel-in-progress: false
+  group: daily-seo-publication
+  cancel-in-progress: true
 
 jobs:
   refresh-seo:
@@ -52,13 +63,15 @@ jobs:
           set -e
           git config user.name "gnk-asg-seo-bot"
           git config user.email "actions@users.noreply.github.com"
-          mkdir -p /tmp/gnk-seo-output/assets /tmp/gnk-seo-output/en/markets /tmp/gnk-seo-output/en/finance /tmp/gnk-seo-output/en/technology /tmp/gnk-seo-output/en/intelligence-desk /tmp/gnk-seo-output/en/registries /tmp/gnk-seo-output/en /tmp/gnk-seo-output/trzista /tmp/gnk-seo-output/sadrzaj /tmp/gnk-seo-output/financije /tmp/gnk-seo-output/tehnologija /tmp/gnk-seo-output/intelligence-desk /tmp/gnk-seo-output/registri /tmp/gnk-seo-output/instalacija
+          mkdir -p /tmp/gnk-seo-output/assets /tmp/gnk-seo-output/en/markets /tmp/gnk-seo-output/en/finance /tmp/gnk-seo-output/en/technology /tmp/gnk-seo-output/en/intelligence-desk /tmp/gnk-seo-output/en/registries /tmp/gnk-seo-output/en /tmp/gnk-seo-output/trzista /tmp/gnk-seo-output/sadrzaj /tmp/gnk-seo-output/teme /tmp/gnk-seo-output/financije /tmp/gnk-seo-output/tehnologija /tmp/gnk-seo-output/intelligence-desk /tmp/gnk-seo-output/registri /tmp/gnk-seo-output/instalacija /tmp/gnk-seo-output/autorske-objave
           cp assets/gnk-asg-social-card.png /tmp/gnk-seo-output/assets/
           cp index.html sitemap.xml robots.txt /tmp/gnk-seo-output/
           cp en/index.html /tmp/gnk-seo-output/en/
           cp trzista/index.html /tmp/gnk-seo-output/trzista/
           cp en/markets/index.html /tmp/gnk-seo-output/en/markets/
           cp sadrzaj/index.html /tmp/gnk-seo-output/sadrzaj/
+          cp teme/index.html /tmp/gnk-seo-output/teme/
+          cp autorske-objave/*.html /tmp/gnk-seo-output/autorske-objave/ 2>/dev/null || true
           cp financije/index.html /tmp/gnk-seo-output/financije/
           cp en/finance/index.html /tmp/gnk-seo-output/en/finance/
           cp tehnologija/index.html /tmp/gnk-seo-output/tehnologija/
@@ -72,7 +85,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             cp -R /tmp/gnk-seo-output/. .
-            git add assets/gnk-asg-social-card.png index.html en/index.html trzista/index.html en/markets/index.html sadrzaj/index.html financije/index.html en/finance/index.html tehnologija/index.html en/technology/index.html intelligence-desk/index.html en/intelligence-desk/index.html registri/index.html en/registries/index.html instalacija/index.html sitemap.xml robots.txt
+            git add assets/gnk-asg-social-card.png index.html en/index.html trzista/index.html en/markets/index.html sadrzaj/index.html teme/index.html autorske-objave/*.html financije/index.html en/finance/index.html tehnologija/index.html en/technology/index.html intelligence-desk/index.html en/intelligence-desk/index.html registri/index.html en/registries/index.html instalacija/index.html sitemap.xml robots.txt
             if git diff --cached --quiet; then
               echo "No SEO changes."
               return 0
