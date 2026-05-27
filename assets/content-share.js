@@ -3,7 +3,7 @@
   if (window.GNK_CONTENT_SHARE_READY) return;
   window.GNK_CONTENT_SHARE_READY = true;
   const SHARE = 'gnk-content-share';
-  const PREVIEW = 'preview=20260527-unique04';
+  const PREVIEW = 'preview=20260527-card05';
   const SECTION_SHARE = {
     financials: '/podijeli/financije/',
     grupa: '/podijeli/grupa/',
