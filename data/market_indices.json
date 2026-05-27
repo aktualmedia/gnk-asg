@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-26T23:48:27+00:00",
+  "updated_at": "2026-05-27T05:32:49+00:00",
   "cadence": "scheduled every five minutes",
   "source": "Public market quote feed",
   "indices": [
@@ -63,11 +63,11 @@
       "symbol": "^N225",
       "label": "Nikkei 225",
       "region": "Japan",
-      "current": 64996.08984375,
-      "previous_close": 59804.41,
-      "change_percent": 8.68,
+      "current": 65254.578125,
+      "previous_close": 61684.14,
+      "change_percent": 5.79,
       "currency": "JPY",
-      "market_time": 1779777903
+      "market_time": 1779859065
     }
   ],
   "errors": [],

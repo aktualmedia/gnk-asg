@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-26T23:48:31+00:00",
+  "updated_at": "2026-05-27T05:32:50+00:00",
   "refresh_frequency": "Every 5 minutes",
   "disclaimer_hr": "Informativni burzovni prikaz. Podatci mogu biti vremenski odgođeni; prije financijske odluke provjerite službeni izvor burze.",
   "disclaimer_en": "Informational stock-market display. Data may be delayed; verify the exchange official source before any financial decision.",
@@ -130,7 +130,7 @@
         ],
         [
           1779802200000,
-          23295.498046875
+          23295.5
         ]
       ],
       "currency": "USD"
