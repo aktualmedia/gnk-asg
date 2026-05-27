@@ -1,7 +1,7 @@
 (() => {
   let newsData = null;
   let marketData = null;
-  let referenceData = null;
+  let referenceData = [];
   const english = () => document.documentElement.lang === 'en' || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const minutesOld = value => value ? Math.max(0, (Date.now() - new Date(value).getTime()) / 60000) : Infinity;
   const dateLabel = value => value ? new Date(value).toLocaleString(english() ? 'en-GB' : 'hr-HR') : (english() ? 'not available' : 'nije dostupno');
@@ -42,9 +42,9 @@
       const markets = marketData.digital_assets.coins || 0;
       setBadge('marketBadge', 'Digital Assets: ' + markets + (en ? ' assets · ' : ' stavki · ') + dateLabel(marketData.updated_at), minutesOld(marketData.updated_at) <= 20 ? 'ok' : 'warning');
     }
-    const newsFresh = news && minutesOld(news.updated_at) <= 95;
-    const marketFresh = marketData && minutesOld(marketData.updated_at) <= 20;
-    const referenceFresh = referenceData && minutesOld(referenceData.updated_at) <= 95;
+    const newsFresh = Boolean(news && minutesOld(news.updated_at) <= 95);
+    const marketFresh = Boolean(marketData && minutesOld(marketData.updated_at) <= 20);
+    const referenceFresh = referenceData.length === 4 && referenceData.every(data => data && minutesOld(data.updated_at) <= 95);
     if (newsFresh && marketFresh && referenceFresh) {
       setBadge('automationBadge', en ? 'Automated updates active' : 'Automatsko ažuriranje aktivno', 'ok');
     } else if (newsFresh && marketFresh) {
@@ -62,11 +62,17 @@
   }
 
   async function refresh() {
-    [newsData, marketData, referenceData] = await Promise.all([
+    const results = await Promise.all([
       read('/data/update_status.json'),
       read('/data/fast_market_status.json'),
-      read('/data/open_data.json')
+      read('/data/open_data.json'),
+      read('/data/macro_market.json'),
+      read('/data/asg_gold_asset.json'),
+      read('/data/stock_exchanges.json')
     ]);
+    newsData = results[0];
+    marketData = results[1];
+    referenceData = results.slice(2);
     render();
   }
 
