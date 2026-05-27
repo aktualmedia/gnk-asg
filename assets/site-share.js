@@ -3,13 +3,15 @@
   if (window.GNK_SITE_SHARE_READY) return;
   window.GNK_SITE_SHARE_READY = true;
   const ROOT = '/';
-  const COUNTER_START = new Date('2026-05-26T16:00:00+02:00');
-  const COUNTER_BASE = 2062;
+  const COUNTER_START = new Date('2026-05-27T09:55:00+02:00');
+  const COUNTER_BASE = 2398;
+  const COUNTER_VERSION = 'v2398-20260527';
+  const STATE_KEY = 'gnk_asg_indicative_visits_' + COUNTER_VERSION;
   const ZONE = 'Europe/Zagreb';
   if (!document.querySelector('link[data-gnk-share-style]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet'; css.dataset.gnkShareStyle = '1';
-    css.href = ROOT + 'assets/site-share.css?v=20260526-home-counter04';
+    css.href = ROOT + 'assets/site-share.css?v=20260527-visits2398';
     document.head.appendChild(css);
   }
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname);
@@ -27,25 +29,56 @@
     return Number(new Intl.DateTimeFormat('en-GB', { hour:'2-digit', hourCycle:'h23', timeZone:ZONE }).format(date));
   }
   function hourlyRate(hour) {
-    if (hour >= 7 && hour < 9) return 48;       // 19 + dodatnih 29
-    if (hour >= 9 && hour < 14) return 27;      // 19 + dodatnih 8
-    if (hour >= 14 && hour < 17) return 19;     // osnovni dnevni ritam
-    if (hour >= 17 && hour < 19) return 15;     // približno 20 % manje od prethodnog razdoblja
+    if (hour >= 7 && hour < 9) return 48;
+    if (hour >= 9 && hour < 14) return 27;
+    if (hour >= 14 && hour < 17) return 19;
+    if (hour >= 17 && hour < 19) return 15;
     if (hour >= 19 && hour < 23) return 31;
-    return hour % 2 === 0 ? 5 : 6;              // prosjek 5,5 tijekom noći
+    return hour % 2 === 0 ? 5 : 6;
   }
-  function indicativeVisits(now = new Date()) {
+  function readState() {
+    try {
+      const value = JSON.parse(localStorage.getItem(STATE_KEY) || 'null');
+      return value && Number.isFinite(value.events) ? value : null;
+    } catch (error) { return null; }
+  }
+  function saveState(state) {
+    try { localStorage.setItem(STATE_KEY, JSON.stringify(state)); } catch (error) {}
+  }
+  function startPageVisit() {
+    const previous = readState();
+    if (!previous) {
+      saveState({ events:0, initializedAt:Date.now(), lastAction:'initial-view' });
+      return;
+    }
+    previous.events += 1;
+    previous.lastAction = 'open-or-refresh';
+    previous.updatedAt = Date.now();
+    saveState(previous);
+  }
+  function countInteraction() {
+    const state = readState() || { events:0, initializedAt:Date.now() };
+    state.events += 1;
+    state.lastAction = 'click';
+    state.updatedAt = Date.now();
+    saveState(state);
+    refreshVisits();
+  }
+  function timedVisits(now = new Date()) {
     if (now <= COUNTER_START) return COUNTER_BASE;
     let value = COUNTER_BASE;
     let cursor = new Date(COUNTER_START.getTime());
     while (cursor < now) {
-      const nextHour = new Date(cursor.getTime() + 3600000);
-      const segmentEnd = nextHour < now ? nextHour : now;
-      const elapsedHours = (segmentEnd.getTime() - cursor.getTime()) / 3600000;
-      value += hourlyRate(localHour(cursor)) * elapsedHours;
+      const hourEnd = new Date(cursor.getTime() + 3600000);
+      const segmentEnd = hourEnd < now ? hourEnd : now;
+      value += hourlyRate(localHour(cursor)) * ((segmentEnd.getTime() - cursor.getTime()) / 3600000);
       cursor = segmentEnd;
     }
     return Math.floor(value);
+  }
+  function indicativeVisits(now = new Date()) {
+    const state = readState();
+    return timedVisits(now) + (state ? state.events : 0);
   }
   function visitorMarkup() {
     const t = copy();
@@ -72,10 +105,15 @@
     document.querySelectorAll('[data-gnk-indicative-visits]').forEach(node => { node.textContent = value; });
   }
   function mount() {
+    startPageVisit();
     if (!document.querySelector('.gnk-share-dock')) { const dock = create(markup('gnk-share-dock')); document.body.appendChild(dock); bindNative(dock); }
     const footer = document.querySelector('footer');
     if (footer && !document.querySelector('.gnk-share-inline')) { const panel = create(markup('gnk-share-inline')); footer.parentNode.insertBefore(panel, footer); bindNative(panel); }
     refreshVisits();
+    document.addEventListener('click', event => {
+      if (event.target.closest('.gnk-visitor-pill')) return;
+      countInteraction();
+    }, { passive:true });
     window.setInterval(refreshVisits, 60000);
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', mount) : mount();
