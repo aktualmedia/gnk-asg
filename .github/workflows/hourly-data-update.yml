@@ -1,7 +1,5 @@
 name: Hourly News Update
 
-# Samostalni proces za javne vijesti. Tržišni i makro podatci osvježavaju se odvojeno kroz petominutni market workflow.
-# Vlastiti red izvršavanja sprječava da dohvat vijesti blokira tržišne podatke, SEO ili medijski status.
 on:
   schedule:
     - cron: '19 * * * *'
@@ -11,6 +9,9 @@ on:
       - main
     paths:
       - 'scripts/update_feeds_v2.py'
+      - 'scripts/update_macro_data.py'
+      - 'scripts/update_market_extensions.py'
+      - 'scripts/update_open_data.py'
       - 'data/news_config_v2.json'
       - 'data/blocked_news.json'
       - '.github/workflows/hourly-data-update.yml'
@@ -24,9 +25,9 @@ concurrency:
 
 jobs:
   update-hourly:
-    name: Refresh classified public news series
+    name: Refresh hourly public datasets
     runs-on: ubuntu-latest
-    timeout-minutes: 14
+    timeout-minutes: 18
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -36,23 +37,28 @@ jobs:
           python-version: '3.12'
       - name: Update hourly classified news
         run: python scripts/update_feeds_v2.py
-      - name: Publish latest generated news dataset without merge conflicts
+      - name: Update public reference datasets
+        run: |
+          python scripts/update_macro_data.py
+          python scripts/update_market_extensions.py
+          python scripts/update_open_data.py
+      - name: Publish latest generated datasets without merge conflicts
         run: |
           set -e
           git config user.name "gnk-asg-hourly-bot"
           git config user.email "actions@users.noreply.github.com"
-          mkdir -p /tmp/gnk-news-data
-          cp data/news.json data/update_status.json /tmp/gnk-news-data/
+          mkdir -p /tmp/gnk-hourly-data
+          cp data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json /tmp/gnk-hourly-data/
           publish_generated_data() {
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/gnk-news-data/*.json data/
-            git add data/news.json data/update_status.json
+            cp /tmp/gnk-hourly-data/*.json data/
+            git add data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json
             if git diff --cached --quiet; then
-              echo "No hourly news changes."
+              echo "No hourly changes."
               return 0
             fi
-            git commit -m "Automated hourly public news update"
+            git commit -m "Automated hourly public data update"
             git push origin HEAD:main
           }
           publish_generated_data || (sleep 8 && publish_generated_data)
