@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260527-bpp-compact-asg02';
+  var VERSION = '20260527-bpp-compact-share-unique03';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/public-sources.js');
   script('/assets/site-share.js');
   script('/assets/content-share.js');
+  script('/assets/share-routing-fix.js');
   script('/assets/hourly-data-disclosure.js');
   script('/assets/portal-layout.js');
 
