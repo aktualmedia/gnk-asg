@@ -1,15 +1,15 @@
-const CACHE_NAME = 'gnk-asg-live-v45-verified-status-data-share-visits2423';
+const CACHE_NAME = 'gnk-asg-live-v46-asg-bpp-share-mobile';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/',
   './trzista/', './trzista/index.html', './en/markets/', './en/markets/index.html',
   './en/finance/', './en/finance/index.html', './en/technology/', './en/technology/index.html',
   './en/intelligence-desk/', './en/intelligence-desk/index.html', './en/registries/', './en/registries/index.html',
-  './autorske-objave/', './podijeli/financije/', './podijeli/grupa/', './podijeli/trzista/', './podijeli/tehnologija/', './podijeli/vijesti/', './podijeli/dokumenti/',
+  './autorske-objave/', './podijeli/financije/', './podijeli/grupa/', './podijeli/trzista/', './podijeli/tehnologija/', './podijeli/vijesti/', './podijeli/dokumenti/', './podijeli/bpp/',
   './assets/style.css', './assets/advanced.css', './assets/header-premium.css',
   './assets/group-contrast.css', './assets/group-network.css', './assets/network-motion.css', './assets/group-globe-3d.css',
   './assets/group-location-insights.css', './assets/group-map-2d-geo.css', './assets/group-google-map.css', './assets/group-location-weather.css', './assets/group-overview-panel.css', './assets/network-reading-layout.css', './assets/network-live-selection.css', './assets/portal-integration.css', './assets/portal-status.css', './assets/command-centre.css',
-  './assets/bitcoin-chart.css', './assets/market-expansion.css', './assets/language.css',
+  './assets/bitcoin-chart.css', './assets/market-expansion.css', './assets/bpp-public-card.css', './assets/language.css',
   './assets/intelligence-desk.css', './assets/desk-hybrid.css', './assets/mobile-app.css', './assets/desk-search.css',
   './assets/floating-intelligence.css', './assets/public-sources.css', './assets/site-share.css', './assets/mobile-stability.css', './assets/group-mobile-accessible.css',
   './assets/market-centre.css', './assets/market-centre-panels.css',
@@ -17,7 +17,7 @@ const STATIC_ASSETS = [
   './assets/favicon.svg', './assets/app-icon-192.svg', './assets/app-icon-512.svg',
   './assets/app.js', './assets/i18n.js', './assets/language-routing.js', './assets/portal-navigation.js',
   './assets/status.js', './assets/market.js', './assets/live-market-pulse.js', './assets/bitcoin-chart.js',
-  './assets/market-expansion.js', './assets/news-live.js', './assets/assistant.js', './assets/inline-assistant.js',
+  './assets/market-expansion.js', './assets/bpp-public-card.js', './assets/news-live.js', './assets/assistant.js', './assets/inline-assistant.js',
   './assets/intelligence-desk.js', './assets/desk-hybrid.js', './assets/desk-search.js', './assets/mobile-app.js',
   './assets/mobile-navigation.js', './assets/floating-intelligence.js', './assets/world-geography.js',
   './assets/group-network.js', './assets/network-motion.js', './assets/group-globe-3d.js', './assets/group-map-2d-geo.js',
