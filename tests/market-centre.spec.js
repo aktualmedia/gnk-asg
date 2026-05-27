@@ -6,7 +6,7 @@ const routes = [
 ];
 
 for (const route of routes) {
-  test(`${route.path} prikazuje tržišni centar i 3D vizualizaciju`, async ({ page }) => {
+  test(`${route.path} prikazuje tržišni centar, 3D vizualizaciju i ASG alat`, async ({ page }) => {
     await page.goto(route.path, { waitUntil: 'domcontentloaded' });
     await expect(page.locator('h1')).toContainText(route.heading, { timeout: 15000 });
     await expect(page.locator('#marketCentreCoins')).toBeVisible({ timeout: 15000 });
@@ -14,6 +14,8 @@ for (const route of routes) {
     await expect(page.locator('#exchangeRows')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('#indexCards')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('#briefTitle')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#aiFab')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#aiFab .ai-fab-mark')).toContainText('ASG');
     const canvas = page.locator('#marketConstellation');
     await expect(canvas).toBeVisible({ timeout: 15000 });
     const box = await canvas.boundingBox();
@@ -27,12 +29,12 @@ for (const route of routes) {
 }
 
 const homepageRoutes = [
-  { path: '/', panelTitle: 'Globalna mreža: 33 postojeća društva i +12 planiranih lokacija' },
-  { path: '/en/', panelTitle: 'Global network: 33 existing companies and +12 planned locations' }
+  { path: '/', panelTitle: 'Globalna mreža: 33 postojeća društva i +12 planiranih lokacija', bpp: 'Bitcoin Payment Processor' },
+  { path: '/en/', panelTitle: 'Global network: 33 existing companies and +12 planned locations', bpp: 'Bitcoin Payment Processor' }
 ];
 
 for (const route of homepageRoutes) {
-  test(`${route.path} prikazuje globus s kompaktnim demografskim kontekstom neposredno ispod prikaza`, async ({ page, isMobile }) => {
+  test(`${route.path} prikazuje globus kartu vrijeme BPP i kompaktni ASG pristup`, async ({ page, isMobile }) => {
     await page.goto(route.path, { waitUntil: 'domcontentloaded' });
     if (isMobile) {
       const toggle = page.locator('#menuToggle');
@@ -55,18 +57,27 @@ for (const route of homepageRoutes) {
       const visualBottom = visual.getBoundingClientRect().bottom;
       const dockTop = dock.getBoundingClientRect().top;
       return dockTop >= visualBottom - 4 && dockTop - visualBottom < 24 &&
-        !dock.querySelector('#googleLocationMap') && !dock.querySelector('#locationWeatherPanel');
+        Boolean(dock.querySelector('#googleLocationMap')) && Boolean(dock.querySelector('#locationWeatherPanel'));
     }), { timeout: 15000 }).toBe(true);
+    await expect(page.locator('#bppPublicCard')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#bppPublicCard h3')).toContainText(route.bpp);
+    const bppBox = await page.locator('#bppPublicCard').boundingBox();
+    expect(bppBox).not.toBeNull();
+    expect(bppBox.height).toBeLessThanOrEqual(185);
+    await expect(page.locator('#bppPublicCard .bpp-share-btn')).toBeVisible();
+    await expect(page.locator('#bppPublicCard .bpp-copy-btn')).toBeVisible();
+    await expect(page.locator('#aiFab')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#aiFab .ai-fab-mark')).toContainText('ASG');
   });
 }
 
-test('početna stranica povezuje Market Intelligence i korporativni 3D globus', async ({ page, isMobile }) => {
+test('početna stranica koristi zasebne LinkedIn URL-ove za kontrolirane sekcije', async ({ page }) => {
   await page.goto('/', { waitUntil: 'domcontentloaded' });
-  if (isMobile) {
-    const toggle = page.locator('#menuToggle');
-    await expect(toggle).toBeVisible({ timeout: 15000 });
-    await toggle.click();
-  }
+  await expect(page.locator('#digital-assets')).toBeVisible({ timeout: 15000 });
+  await expect.poll(async () => page.evaluate(() => {
+    const control = document.querySelector('#digital-assets .gnk-content-share');
+    const link = control && control.querySelector('a[href*="linkedin.com/sharing/share-offsite"]');
+    return link ? decodeURIComponent(link.href).includes('/podijeli/trzista/?preview=20260527-unique03') : false;
+  }), { timeout: 15000 }).toBe(true);
   await expect(page.locator('a[href$="/trzista/"]')).toBeVisible({ timeout: 15000 });
-  await expect(page.locator('#global-network')).toBeVisible({ timeout: 15000 });
 });
