@@ -3,8 +3,17 @@
   if (window.GNK_CONTENT_SHARE_READY) return;
   window.GNK_CONTENT_SHARE_READY = true;
   const SHARE = 'gnk-content-share';
+  const SECTION_SHARE = {
+    financials: '/podijeli/financije/',
+    grupa: '/podijeli/grupa/',
+    technology: '/podijeli/tehnologija/',
+    'digital-assets': '/podijeli/trzista/',
+    news: '/podijeli/vijesti/',
+    dokumenti: '/podijeli/dokumenti/'
+  };
   const isEnglish = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const absolute = (value) => new URL(value || location.href, location.origin).href;
+  const sectionShareUrl = (id) => absolute(SECTION_SHARE[id] || (location.pathname + '#' + id));
 
   function installStyle() {
     if (document.getElementById('gnk-content-share-style')) return;
@@ -68,24 +77,39 @@
     host.insertAdjacentHTML('beforeend', shareMarkup(title, url));
     bind(host.querySelector(':scope > .' + SHARE));
   }
+  function contentLink(card) {
+    const candidates = Array.from(card.querySelectorAll('a[href]'));
+    return candidates.find(link => !link.closest('.gnk-share-options')) || null;
+  }
   function run() {
     installStyle();
     document.querySelectorAll('section[id]').forEach(section => {
       if (!section.id || section.id === 'top') return;
       const host = section.querySelector(':scope > .container > .section-head, :scope > .container > .live-head');
       const heading = section.querySelector('h1,h2,h3');
-      if (host) add(host, heading ? heading.textContent.trim() : document.title, location.origin + location.pathname + '#' + section.id);
+      if (host) add(host, heading ? heading.textContent.trim() : document.title, sectionShareUrl(section.id));
     });
     document.querySelectorAll('article.news-card, article.topic-news, article.news-item').forEach(card => {
       const heading = card.querySelector('h1,h2,h3,h4');
-      const link = card.querySelector('a[href]:not(.gnk-share-options a)');
-      add(card, heading ? heading.textContent.trim() : document.title, link ? link.href : location.href);
+      const link = contentLink(card);
+      add(card, heading ? heading.textContent.trim() : document.title, link ? link.href : sectionShareUrl('news'));
     });
-    document.querySelectorAll('.group-card, .doc, .topic-card, .publication-card').forEach(card => {
+    document.querySelectorAll('.group-card').forEach(card => {
       const heading = card.querySelector('h1,h2,h3,h4');
-      const link = card.querySelector('a[href]:not(.gnk-share-options a)');
-      const section = card.closest('section[id]');
-      add(card, heading ? heading.textContent.trim() : document.title, link ? link.href : (section ? location.origin + location.pathname + '#' + section.id : location.href));
+      add(card, heading ? heading.textContent.trim() : 'GNK DINAMO Ltd. Group', sectionShareUrl('grupa'));
+    });
+    document.querySelectorAll('.doc').forEach(card => {
+      const heading = card.querySelector('h1,h2,h3,h4');
+      add(card, heading ? heading.textContent.trim() : 'Javni dokumenti i izvori', sectionShareUrl('dokumenti'));
+    });
+    document.querySelectorAll('.topic-card').forEach(card => {
+      const heading = card.querySelector('h1,h2,h3,h4');
+      add(card, heading ? heading.textContent.trim() : document.title, absolute('/teme/'));
+    });
+    document.querySelectorAll('.publication-card').forEach(card => {
+      const heading = card.querySelector('h1,h2,h3,h4');
+      const link = contentLink(card);
+      add(card, heading ? heading.textContent.trim() : document.title, link ? link.href : absolute('/autorske-objave/'));
     });
   }
   document.addEventListener('click', () => {
