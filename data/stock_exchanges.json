@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-05-27T11:17:54+00:00",
-  "refresh_frequency": "Every 5 minutes",
+  "updated_at": "2026-05-27T11:25:51+00:00",
+  "refresh_frequency": "Hourly public reference update",
   "disclaimer_hr": "Informativni burzovni prikaz. Podatci mogu biti vremenski odgođeni; prije financijske odluke provjerite službeni izvor burze.",
   "disclaimer_en": "Informational stock-market display. Data may be delayed; verify the exchange official source before any financial decision.",
   "markets": [
@@ -240,5 +240,7 @@
   "automated_sources": {
     "nyse": "Yahoo Finance public chart feed; verify at NYSE official source",
     "nasdaq": "Yahoo Finance public chart feed; verify at Nasdaq official source"
-  }
+  },
+  "refresh_frequency_hr": "Satno osvježavanje referentnih javnih podataka",
+  "refresh_frequency_en": "Hourly public reference data refresh"
 }
