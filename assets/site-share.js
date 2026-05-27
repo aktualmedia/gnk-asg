@@ -3,15 +3,15 @@
   if (window.GNK_SITE_SHARE_READY) return;
   window.GNK_SITE_SHARE_READY = true;
   const ROOT = '/';
-  const COUNTER_START = new Date('2026-05-27T10:27:00+02:00');
-  const COUNTER_BASE = 2423;
-  const COUNTER_VERSION = 'v2423-20260527';
+  const COUNTER_START = new Date('2026-05-27T16:15:58+02:00');
+  const COUNTER_BASE = 2991;
+  const COUNTER_VERSION = 'v2991-20260527-161558';
   const STATE_KEY = 'gnk_asg_indicative_visits_' + COUNTER_VERSION;
   const ZONE = 'Europe/Zagreb';
   if (!document.querySelector('link[data-gnk-share-style]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet'; css.dataset.gnkShareStyle = '1';
-    css.href = ROOT + 'assets/site-share.css?v=20260527-visits2423';
+    css.href = ROOT + 'assets/site-share.css?v=20260527-visits2991';
     document.head.appendChild(css);
   }
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname);
