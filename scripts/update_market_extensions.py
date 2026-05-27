@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data'
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
-UA = 'GNK-ASG-Markets/1.0'
+UA = 'GNK-ASG-Markets/1.1'
 TROY_OZ_PER_KG = 32.1507465686
 
 
@@ -79,6 +79,9 @@ def update_asg() -> dict:
 
 def update_stocks() -> dict:
     output = read('stock_exchanges.json', {'markets': []})
+    output['refresh_frequency'] = 'Hourly public reference update'
+    output['refresh_frequency_hr'] = 'Satno osvježavanje referentnih javnih podataka'
+    output['refresh_frequency_en'] = 'Hourly public reference data refresh'
     mappings = {'nyse': '^NYA', 'nasdaq': '^IXIC'}
     for market in output.get('markets', []):
         symbol = mappings.get(market.get('id'))
