@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v42-share-previews-visits2423';
+const CACHE_NAME = 'gnk-asg-live-v43-automation-badge-share-visits2423';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/',
