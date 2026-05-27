@@ -1,5 +1,7 @@
 name: Hourly News Update
 
+# Satni javni sloj ažurira vijesti i referentne tržišne podatke.
+# Brzi market primarno radi kroz petominutni workflow; ovdje se izvršava samo kao sigurnosni satni fallback.
 on:
   schedule:
     - cron: '19 * * * *'
@@ -9,6 +11,7 @@ on:
       - main
     paths:
       - 'scripts/update_feeds_v2.py'
+      - 'scripts/update_fast_market.py'
       - 'scripts/update_macro_data.py'
       - 'scripts/update_market_extensions.py'
       - 'scripts/update_open_data.py'
@@ -25,9 +28,9 @@ concurrency:
 
 jobs:
   update-hourly:
-    name: Refresh hourly public datasets
+    name: Refresh hourly public datasets and market fallback
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 20
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -42,23 +45,25 @@ jobs:
           python scripts/update_macro_data.py
           python scripts/update_market_extensions.py
           python scripts/update_open_data.py
+      - name: Refresh fast market datasets as hourly fallback
+        run: python scripts/update_fast_market.py
       - name: Publish latest generated datasets without merge conflicts
         run: |
           set -e
           git config user.name "gnk-asg-hourly-bot"
           git config user.email "actions@users.noreply.github.com"
           mkdir -p /tmp/gnk-hourly-data
-          cp data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json /tmp/gnk-hourly-data/
+          cp data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-hourly-data/
           publish_generated_data() {
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/gnk-hourly-data/*.json data/
-            git add data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json
+            git add data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
             if git diff --cached --quiet; then
               echo "No hourly changes."
               return 0
             fi
-            git commit -m "Automated hourly public data update"
+            git commit -m "Automated hourly public data and market fallback update"
             git push origin HEAD:main
           }
           publish_generated_data || (sleep 8 && publish_generated_data)
