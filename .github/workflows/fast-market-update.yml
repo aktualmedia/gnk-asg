@@ -1,10 +1,10 @@
 name: Five Minute Market Intelligence Update
 
 # Prioritetni i samostalni proces samo za brze tržišne podatke.
-# GitHub schedule je best-effort; satni workflow osigurava rezervno tržišno osvježenje ako petominutni raspored kasni.
+# Izvršava se izvan pune minute kako se ne bi preklapao sa satnim procesom vijesti i previewa.
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '2-57/5 * * * *'
   workflow_dispatch:
   push:
     branches:
