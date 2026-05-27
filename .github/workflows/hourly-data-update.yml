@@ -1,6 +1,6 @@
 name: Hourly News Update
 
-# Satni javni sloj ažurira vijesti i referentne tržišne podatke.
+# Satni javni sloj ažurira vijesti, njihove društvene preview stranice i referentne tržišne podatke.
 # Brzi market primarno radi kroz petominutni workflow; ovdje se izvršava samo kao sigurnosni satni fallback.
 on:
   schedule:
@@ -11,6 +11,7 @@ on:
       - main
     paths:
       - 'scripts/update_feeds_v2.py'
+      - 'scripts/generate_news_share_previews.py'
       - 'scripts/update_fast_market.py'
       - 'scripts/update_macro_data.py'
       - 'scripts/update_market_extensions.py'
@@ -28,9 +29,11 @@ concurrency:
 
 jobs:
   update-hourly:
-    name: Refresh hourly public datasets and market fallback
+    name: Refresh hourly public datasets social previews and market fallback
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 24
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,8 +41,14 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Update hourly classified news
-        run: python scripts/update_feeds_v2.py
+      - name: Install news preview image dependency
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Validate hourly Python processors
+        run: python -m py_compile scripts/update_feeds_v2.py scripts/generate_news_share_previews.py scripts/update_macro_data.py scripts/update_market_extensions.py scripts/update_open_data.py scripts/update_fast_market.py
+      - name: Update hourly classified news and per-item social previews
+        run: |
+          python scripts/update_feeds_v2.py
+          python scripts/generate_news_share_previews.py
       - name: Update public reference datasets
         run: |
           python scripts/update_macro_data.py
@@ -47,23 +56,29 @@ jobs:
           python scripts/update_open_data.py
       - name: Refresh fast market datasets as hourly fallback
         run: python scripts/update_fast_market.py
-      - name: Publish latest generated datasets without merge conflicts
+      - name: Publish latest generated datasets and news previews without merge conflicts
         run: |
           set -e
           git config user.name "gnk-asg-hourly-bot"
           git config user.email "actions@users.noreply.github.com"
-          mkdir -p /tmp/gnk-hourly-data
-          cp data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-hourly-data/
+          rm -rf /tmp/gnk-hourly-output
+          mkdir -p /tmp/gnk-hourly-output/data /tmp/gnk-hourly-output/assets /tmp/gnk-hourly-output/podijeli
+          cp data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-hourly-output/data/
+          cp -R assets/news-preview /tmp/gnk-hourly-output/assets/ 2>/dev/null || true
+          cp -R podijeli/vijest /tmp/gnk-hourly-output/podijeli/ 2>/dev/null || true
           publish_generated_data() {
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/gnk-hourly-data/*.json data/
-            git add data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+            cp /tmp/gnk-hourly-output/data/*.json data/
+            mkdir -p assets podijeli
+            cp -R /tmp/gnk-hourly-output/assets/news-preview assets/ 2>/dev/null || true
+            cp -R /tmp/gnk-hourly-output/podijeli/vijest podijeli/ 2>/dev/null || true
+            git add data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json assets/news-preview/ podijeli/vijest/
             if git diff --cached --quiet; then
               echo "No hourly changes."
               return 0
             fi
-            git commit -m "Automated hourly public data and market fallback update"
+            git commit -m "Automated hourly public data and individual news preview update"
             git push origin HEAD:main
           }
           publish_generated_data || (sleep 8 && publish_generated_data)
