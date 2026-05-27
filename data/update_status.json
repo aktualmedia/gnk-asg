@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-05-27T08:00:47+00:00",
+  "updated_at": "2026-05-27T08:07:25+00:00",
   "news": {
-    "updated_at": "2026-05-27T08:00:47+00:00",
+    "updated_at": "2026-05-27T08:07:25+00:00",
     "cadence": "hourly",
     "public_items": 354,
     "by_group": {
@@ -13,12 +13,7 @@
       "sport": 10,
       "mobilnost": 30
     },
-    "errors": [
-      {
-        "source": "BiznisInfo.ba",
-        "error": "not well-formed (invalid token): line 405, column 241"
-      }
-    ]
+    "errors": []
   },
   "corporate_media_monitor": {
     "status": "ok",
