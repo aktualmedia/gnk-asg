@@ -1,5 +1,170 @@
 [
   {
+    "id": "3418568e16cde52b31",
+    "title": "China is increasingly keeping its best AI talent to itself",
+    "url": "https://techcrunch.com/2026/05/27/china-is-increasingly-keeping-its-best-ai-talent-to-itself/",
+    "summary": "China's AI boom is producing world-class talent, and Beijing is increasingly reluctant to let them go elsewhere.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-27T13:48:41+00:00"
+  },
+  {
+    "id": "0f992ec3de370f9bb9",
+    "title": "Putujete li u ovu europsku zemlju, budite oprezni: Prijete masovna otkazivanja i ogromna kašnjenja u prijevozu",
+    "url": "https://www.poslovni.hr/lifestyle/putujete-li-u-ovu-europsku-zemlju-budite-oprezni-i-provjerite-karte-prijete-masovna-otkazivanja-i-ogromna-kasnjenja-4540181",
+    "summary": "Novi veliki val problema očekuje se 3. lipnja u Portugalu, gdje bi putovanja mogla biti ozbiljno poremećena.",
+    "source": "Poslovni dnevnik",
+    "region": "Poslovni dnevnik",
+    "group": "hrvatska",
+    "category": "economy",
+    "published_at": "2026-05-27T13:44:00+00:00"
+  },
+  {
+    "id": "1537387752ade29ea4",
+    "title": "Banca Sella gets green light to provide crypto services to customers in Italian first",
+    "url": "https://www.coindesk.com/business/2026/05/27/banca-sella-gets-green-light-to-provide-crypto-services-to-customers-first-in-italy",
+    "summary": "The fintech-forward private bank said it is the first Italian lender to get Bank of Italy approval under MiCA to offer digital asset custody and transfers.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-27T13:43:55+00:00"
+  },
+  {
+    "id": "4a6df174584f8b5eae",
+    "title": "Ekonomske posledice povlačenja savezničkih snaga",
+    "url": "https://biznis.rs/novac/ekonomske-posledice-povlacenja-saveznickih-snaga/",
+    "summary": "Ako američki predsednik Donald Tramp (Trump) povuče 5.000 vojnika iz Nemačke, kao što je najavio, hiljade ljudi mogu ostati bez posla. Studija Centra za evropska ekonomska istraživanja (ZEW) u Manhajmu i Univerziteta u Kelnu procenjuje da u",
+    "source": "Biznis.rs",
+    "region": "Biznis.rs",
+    "group": "srbija",
+    "category": "economy",
+    "published_at": "2026-05-27T13:37:00+00:00"
+  },
+  {
+    "id": "5501a466c938b95c7d",
+    "title": "Zeleni pojas donosi hlad: Škole, bolnice i zajednice u novom valu ozelenjivanja",
+    "url": "https://www.poslovni.hr/kompanije/zeleni-pojas-donosi-hlad-skole-bolnice-i-zajednice-u-novom-valu-ozelenjivanja-4540120",
+    "summary": "Program INA Zeleni pojas kontinuirano se provodi od 2014. godine i danas je jedan od najdugovječnijih društveno odgovornih programa u Hrvatskoj usmjerenih na zaštitu okoliša i razvoj lokalnih zajednica.",
+    "source": "Poslovni dnevnik",
+    "region": "Poslovni dnevnik",
+    "group": "hrvatska",
+    "category": "economy",
+    "published_at": "2026-05-27T13:30:18+00:00"
+  },
+  {
+    "id": "89382a51aebbda17a2",
+    "title": "CoinDesk 20 performance update: Internet Computer (ICP) Jumps 9.8%",
+    "url": "https://www.coindesk.com/coindesk-indices/2026/05/27/coindesk-20-performance-update-internet-computer-icp-jumps-9-8",
+    "summary": "Stellar (XLM), up 1.7%, joined Internet Computer (ICP) as a top performer.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-27T13:20:10+00:00"
+  },
+  {
+    "id": "0d352daa526fae8997",
+    "title": "U Zapadnoj Srbiji oko 12.000 domaćinstava uskoro dobija brzi internet",
+    "url": "https://biznis.rs/vesti/u-zapadnoj-srbiji-oko-12-000-domacinstava-uskoro-dobija-brzi-internet/",
+    "summary": "U lokalnim samoupravama Zapadne Srbije 12.000 domaćinstava dobiće među prvima pristup brzom internetu, nakon uspešne realizacije druge faze projekta izgradnje širokopojasne komunikacione infrastrukture, najavio je danas ministar informisanj",
+    "source": "Biznis.rs",
+    "region": "Biznis.rs",
+    "group": "srbija",
+    "category": "economy",
+    "published_at": "2026-05-27T13:19:36+00:00"
+  },
+  {
+    "id": "0546484e20da517392",
+    "title": "Mastercard secures New York BitLicense to support stablecoin and digital payment infrastructure",
+    "url": "https://www.coindesk.com/business/2026/05/27/mastercard-secures-new-york-bitlicense-to-support-stablecoin-and-digital-payment-infrastructure",
+    "summary": "The payments giant said the approval supports its push into stablecoins and blockchain-based settlement infrastructure.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-27T13:15:00+00:00"
+  },
+  {
+    "id": "e530d8d7f5c6f52396",
+    "title": "Signos grows foothold in weight-loss wave fueled by GLP-1s with its AI health data tracking",
+    "url": "https://www.cnbc.com/2026/05/27/ai-health-tech-signos-dexcom.html",
+    "summary": "Health tech startup Signos announced a $20 million funding round Wednesday, including an expanded partnership with medical device giant Dexcom.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-27T13:11:56+00:00"
+  },
+  {
+    "id": "3e870bbb9a2a985e52",
+    "title": "Amazon starts selling its AI shopping technology to other retailers",
+    "url": "https://www.cnbc.com/2026/05/27/amazon-ai-shopping-alexa-kate-spade.html",
+    "summary": "Amazon said it's already signed up Kate Spade as a customer for its AI shopping technology.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-27T13:10:01+00:00"
+  },
+  {
+    "id": "ce13e72d4089a0162f",
+    "title": "KentBank lani ostvario rekordnu dobit",
+    "url": "https://www.poslovni.hr/financije/kentbank-lani-ostvario-rekordnu-dobit-4540175",
+    "summary": "Ukupna aktiva banke dosegnula je lani 935 milijuna eura, što predstavlja rast od 13 posto u odnosu na 2024. godinu, dok je bančin udio na hrvatskom bankarskom tržištu porastao na 1,03 posto.",
+    "source": "Poslovni dnevnik",
+    "region": "Poslovni dnevnik",
+    "group": "hrvatska",
+    "category": "economy",
+    "published_at": "2026-05-27T13:07:00+00:00"
+  },
+  {
+    "id": "179e9f35397f9a78e1",
+    "title": "ClickHouse triples anualized revenue to $250M, charting a path toward an IPO",
+    "url": "https://techcrunch.com/2026/05/27/clickhouse-triples-anualized-revenue-to-250m-charting-a-path-toward-an-ipo/",
+    "summary": "The database provider is eyeing a public debut within the next few years.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-27T13:04:20+00:00"
+  },
+  {
+    "id": "61f8880c3f952e9f8d",
+    "title": "Foot Locker returns to growth but weighs on Dick's Sporting Goods as earnings miss",
+    "url": "https://www.cnbc.com/2026/05/27/dicks-sporting-goods-dks-earnings-q1-2026.html",
+    "summary": "Since acquiring Foot Locker, Dick's Sporting Goods sales have surged, but its profitability has taken a hit given the high costs of the brand's turnaround.",
+    "source": "CNBC Business",
+    "region": "CNBC Business",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-27T13:01:46+00:00"
+  },
+  {
+    "id": "61f3f786d8057954e3",
+    "title": "YouTube will now automatically label AI videos",
+    "url": "https://techcrunch.com/2026/05/27/youtube-will-now-automatically-label-ai-videos/",
+    "summary": "YouTube will now automatically label videos that use significant photorealistic AI, instead of relying solely on creators to disclose AI-generated content themselves. It's also making AI labels more prominent.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-27T13:00:00+00:00"
+  },
+  {
+    "id": "bbb1096746cb617808",
+    "title": "Solana DEX Orca launches new marketplace for tokenized real-world assets",
+    "url": "https://www.coindesk.com/business/2026/05/27/solana-dex-orca-launches-new-marketplace-for-tokenized-real-world-assets",
+    "summary": "The launch comes as crypto companies increasingly focus on tokenizing traditional financial assets, a market many in the industry see as a major growth opportunity.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-27T13:00:00+00:00"
+  },
+  {
     "id": "73aaf3320d62c88535",
     "title": "Angela Merkel: Nadam se da će rat u Ukrajini biti završen za 10 godina",
     "url": "https://biznis.rs/vesti/angela-merkel-nadam-se-da-ce-rat-u-ukrajini-biti-zavrsen-za-10-godina/",
@@ -11,21 +176,10 @@
     "published_at": "2026-05-27T12:51:00+00:00"
   },
   {
-    "id": "61f8880c3f952e9f8d",
-    "title": "Foot Locker returns to growth but weighs on Dick's Sporting Goods as earnings miss",
-    "url": "https://www.cnbc.com/2026/05/27/dicks-sporting-goods-dks-earnings-q1-2026.html",
-    "summary": "Since acquiring Foot Locker, Dick's Sporting Goods sales have surged, but its profitability has taken a hit given the high costs of the brand's turnaround.",
-    "source": "CNBC Business",
-    "region": "CNBC Business",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-27T12:49:15+00:00"
-  },
-  {
     "id": "3b3610b9723f0d8677",
     "title": "Live markets: Bitcoin remains under pressure as Korea's SK Hynix joins Micron in $1 trillion club",
     "url": "https://www.coindesk.com/markets/2026/05/27/live-markets-bitcoin-remains-under-pressure-as-korea-s-sk-hynix-joins-micron-in-usd1-trillion-club",
-    "summary": "Memory-chip stocks are attracting capital and attention as crypto markets settle into apathy.",
+    "summary": "Memory chip stocks are attracting capital and attention as crypto markets settle into apathy.",
     "source": "CoinDesk",
     "region": "CoinDesk",
     "group": "digital-assets",
@@ -75,6 +229,17 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-27T12:30:00+00:00"
+  },
+  {
+    "id": "b848aeab5bdb4dbf40",
+    "title": "Bitcoin gauge tracking selling pressure moves into 'high-risk' zone as ETF demand slumps",
+    "url": "https://www.coindesk.com/markets/2026/05/27/bitcoin-etf-accumulation-flattens-to-just-4-500-btc-year-to-date-as-may-flips-to-outflows",
+    "summary": "U.S. spot bitcoin ETFs have accumulated a net 4,500 BTC since the start of 2026, with May reversing the buying pattern that built through March and April, per Swissblock data.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-27T12:25:15+00:00"
   },
   {
     "id": "4b0ef5143118f9b7ab",
@@ -176,6 +341,17 @@
     "published_at": "2026-05-27T11:49:21+00:00"
   },
   {
+    "id": "df996db44ed30f5196",
+    "title": "How Veterans Can Get Thousands in Technical Certifications at No Cost",
+    "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQaDltX19hcXNBVkVxWm50ZVpqcG4wYlRRV1QyOFA1YVdIaEVaeVozR2VoZ2FQQ2w2dm1yYndsLXVPU3Yxb1JrTVcxUGxuYkFaQVlWcjFnMFIyWXhhbjZBeHZHT2NPUjQ4UThTWTY5cEc1MUVlYkVVbXlPU1RPR0d6SHFGcnAwRl9HTEZZQ3dSN0xIWEowTmtFbWZCZFhKTjVNb05JVGJEbUs0aHp1a0xJZUNR?oc=5",
+    "summary": "How Veterans Can Get Thousands in Technical Certifications at No Cost Clearance Jobs",
+    "source": "Clearance Jobs",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-27T11:45:58+00:00"
+  },
+  {
     "id": "2a6fe5affece50b197",
     "title": "Seničić: Putnici u obavezi da doplate za avio-gorivo ako je cena povećana do osam odsto",
     "url": "https://biznis.rs/vesti/srbija/senicic-putnici-u-obavezi-da-doplate-za-avio-gorivo-ako-je-cena-povecana-do-osam-odsto/",
@@ -198,10 +374,10 @@
     "published_at": "2026-05-27T11:36:46+00:00"
   },
   {
-    "id": "1a69098bb131e201b3",
-    "title": "Dycom Surges On Accelerating Growth Amid Data Center Push",
+    "id": "f540f27c4b28543395",
+    "title": "Dycom Soars As Earnings, Revenue Growth Accelerate Amid Data Center Acquisitions",
     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNbW1BODNmMzRqSWo5YlpMWFRtU0htYzJiZFlVd1hWQVVGdmtDOXF4LUlEWDZvdEp2SU9UQjN3c3VKd0oxVzQtLUxLVkFvb1BTN08tbTg5UVVkdEhrY3huYnY4aVNHaER2ZnFfVVl2eFpORC16UUdTTEpPSjVHcExTUzUtb0hkcjFO?oc=5",
-    "summary": "Dycom Surges On Accelerating Growth Amid Data Center Push Investor's Business Daily",
+    "summary": "Dycom Soars As Earnings, Revenue Growth Accelerate Amid Data Center Acquisitions Investor's Business Daily",
     "source": "Investor's Business Daily",
     "region": "Cyber and Cloud",
     "group": "technology",
@@ -517,28 +693,6 @@
     "published_at": "2026-05-27T09:36:01+00:00"
   },
   {
-    "id": "11b8b5296ca61dca5d",
-    "title": "Ljetne vrućine predstavljaju opasnost pa iz HZJZ-a pozivaju vozače na oprez: Nemojte to nikada raditi",
-    "url": "https://www.poslovni.hr/lifestyle/ljetne-vrucine-predstavljaju-opasnost-pa-iz-hzjz-a-pozivaju-vozace-na-oprez-nemojte-to-nikada-raditi-4540053",
-    "summary": "Unutrašnjost vozila može se zagrijati vrlo brzo, čak i kada vanjska temperatura ne djeluje ekstremno.",
-    "source": "Poslovni dnevnik",
-    "region": "Poslovni dnevnik",
-    "group": "hrvatska",
-    "category": "economy",
-    "published_at": "2026-05-27T09:32:25+00:00"
-  },
-  {
-    "id": "6b8433eecef3d93649",
-    "title": "What Is the CLARITY Act and What Does It Mean for Crypto?",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObzItX29GSllDNU1GUzJDdU9jV2MxRy0yVlZ2dXFfa0NUbmhSNjR4ZUpYcWZQdUZZeUswT3lKcFNSRE5yYlExMFhVeVMyZ0F1UTJPVmkxR2lLS3I3eFJBUVFBNHRMeW1tSTZPRzZIMWl4Ym00X2dGZEZDUkE4eFBuSkVfQ2hiV3ZhTm1jOUxJQVloUkRreTVPY295Ri03Sl96ZVE?oc=5",
-    "summary": "What Is the CLARITY Act and What Does It Mean for Crypto? Binance",
-    "source": "Binance",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-27T09:30:32+00:00"
-  },
-  {
     "id": "b28b94a081332f1737",
     "title": "Global Regulation of Stablecoins and Tokenized Deposits Remains Fragmented in 2026",
     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNbi1KSTlhcFJsQkF1dURXTm5fVExlOGYxa0taNFlDM2JULTFkX2JpV3ZRTzJXTHF4Z0dITUVyLTZnTkdJT1J6UmpQWjVNR09Bd3dXVUtHeVJneWFxYjNVekVPOXlGLVZzMHZEeGgzZHYtakpqQkREYnZFUUtMWmVXZmZjTFpSWWJXZHNvdE04T1NBNEFuTE96MlZYVQ?oc=5",
@@ -570,28 +724,6 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-27T09:12:33+00:00"
-  },
-  {
-    "id": "5a6b125f02ccd78fad",
-    "title": "Kina ulaže bilijun dolara u infrastrukturu: inicijativa „Šest mreža” obuhvaća struju, vodu, AI i 5G",
-    "url": "https://www.poslovni.hr/svijet/kina-ulaze-bilijun-dolara-u-infrastrukturu-inicijativa-sest-mreza-obuhvaca-struju-vodu-ai-i-5g-4540047",
-    "summary": "Nova infrastruktura poput računalnih i komunikacijskih mreža potaknut će brzi rast poslužitelja, optičkih modula, AI čipova i 5G opreme. C",
-    "source": "Poslovni dnevnik",
-    "region": "Poslovni dnevnik",
-    "group": "hrvatska",
-    "category": "economy",
-    "published_at": "2026-05-27T09:01:08+00:00"
-  },
-  {
-    "id": "ff5599c1ad2ba53862",
-    "title": "Stanova malo, cijene visoke: U Osijeku ponuda manja od potražnje",
-    "url": "https://www.poslovni.hr/hrvatska/stanova-malo-cijene-visoke-u-osijeku-ponuda-manja-od-potraznje-4540048",
-    "summary": "Potencijalne kupce pravnici upozoravaju da izbjegavaju impulzivne kupnje bez provjere katastarskog upisa i tereta na nekretnini koja im se svidjela.",
-    "source": "Poslovni dnevnik",
-    "region": "Poslovni dnevnik",
-    "group": "hrvatska",
-    "category": "economy",
-    "published_at": "2026-05-27T09:00:12+00:00"
   },
   {
     "id": "4cfabc13d82359dfd7",
@@ -803,17 +935,6 @@
     "published_at": "2026-05-27T06:12:49+00:00"
   },
   {
-    "id": "4f1f141c79d309f0e2",
-    "title": "Infineon Exhibits Semiconductor Solutions for Power Infrastructure, AI Data Centers, Robotics, and Electromobility at PCIM Europe 2026",
-    "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPSmg3V2ViaFJvRmJhTkdtSW05T1JGdGppLVpla0pEMW4zdFkwTlMwU1N0aWx4WWVuX043RWx5S1NuRUpjUlcyYUhjV1ptTVUyS1IyU1R4V3VPZU13NlluZGwwQVlPc2hyMG1sV1dBUTdTTmF0c0NpSHAzMTh3LWI5YWdudnMtcDNLZzZwaWNudHdidlFYWGpFWXViYlpYTlVVX3BXUWowZnRGSC1vM3pFV0Nfd25wbGRRN1Jqd2FfZGRSdlc3RWNZODcyZmJwUjNzNm9KZGtCbHZOZjRycXNKTDBIVEVKZ0VOTFFv?oc=5",
-    "summary": "Infineon Exhibits Semiconductor Solutions for Power Infrastructure, AI Data Centers, Robotics, and Electromobility at PCIM Europe 2026 ELE Times",
-    "source": "ELE Times",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-27T06:05:29+00:00"
-  },
-  {
     "id": "fcb89cb2fa33722bbf",
     "title": "Država stopirala nove OIE projekte: Bez novih studija priključenja do 2029.",
     "url": "https://biznis.rs/vesti/srbija/drzava-stopirala-nove-oie-projekte-bez-novih-studija-prikljucenja-do-2029/",
@@ -911,17 +1032,6 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-27T02:33:14+00:00"
-  },
-  {
-    "id": "e47c3dfa5dd36f76af",
-    "title": "Top 10 Crypto Spot Volumes Halve in a Year as Market Liquidity Tightens, Kaiko Reports",
-    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE84cklHbnNMR2FmdXZhTk1uR0RJdk1wOFFRc2NPQmlHei03T2Jnd3JfQ2hfU2d3cUhZX0R4c3llUXIxNnVQU1BQWmxRRnFlRkJhNjV5YnlRVQ?oc=5",
-    "summary": "Top 10 Crypto Spot Volumes Halve in a Year as Market Liquidity Tightens, Kaiko Reports Cryptonews.net",
-    "source": "Cryptonews.net",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-27T00:55:15+00:00"
   },
   {
     "id": "1b94b97b6b3a275ec3",
@@ -1166,17 +1276,6 @@
     "published_at": "2026-05-26T16:14:00+00:00"
   },
   {
-    "id": "2d4299f62fbc2d4cb4",
-    "title": "Cloud Computing Stocks: Find Top Cloud Stocks And Track Industry Trends",
-    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE12Yjh0N3dEWUZIMmV3X3I0Wm4tb3hUVk4wQ1RFQi0ySm9HbXJBQjRaNDdPN2hqNEFXZzNRWkplUFNOQWh6WmVfLUVzS2FFWVh0eXJ6dXRkVzFtUWcxMFBkSHhWb1VaUGkwcjBTclJaU1JDcHB1eUJrLTFJMA?oc=5",
-    "summary": "Cloud Computing Stocks: Find Top Cloud Stocks And Track Industry Trends Investor's Business Daily",
-    "source": "Investor's Business Daily",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-26T16:09:00+00:00"
-  },
-  {
     "id": "475a90203e84356da0",
     "title": "This startup is betting India’s gig economy can train the world’s robots",
     "url": "https://techcrunch.com/2026/05/26/human-archive-taps-into-indias-services-startups-to-collect-data-for-physical-ai/",
@@ -1232,17 +1331,6 @@
     "published_at": "2026-05-26T15:36:51+00:00"
   },
   {
-    "id": "51f53f4ad95d92f28c",
-    "title": "XRPL could close its biggest DeFi gap if new AMM amendment passes",
-    "url": "https://www.coindesk.com/tech/2026/05/26/xrpl-could-close-its-biggest-defi-gap-if-new-amm-amendment-passes",
-    "summary": "A draft proposal filed Tuesday would extend the XRP Ledger's native automated market maker with three swappable curve types, giving liquidity providers more efficient ways to deploy capital and closing one of XRPL DeFi's longest-standing ga",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-26T15:34:09+00:00"
-  },
-  {
     "id": "f83d8db1f495fa30f2",
     "title": "Ghost hackers: the cybersecurity mystery that nobody has solved",
     "url": "https://techcrunch.com/2026/05/26/ghost-hackers-the-cybersecurity-mystery-that-nobody-has-solved/",
@@ -1276,17 +1364,6 @@
     "published_at": "2026-05-26T15:25:21+00:00"
   },
   {
-    "id": "6d7ff0503db24b6d55",
-    "title": "The Clarity Act won’t lead to adoption without crypto tax reform",
-    "url": "https://www.coindesk.com/opinion/2026/05/26/the-clarity-act-won-t-lead-to-adoption-without-crypto-tax-reform",
-    "summary": "The legislation is being framed as a turning point for U.S. crypto policy, but there’s a major piece of the puzzle being overlooked, argues Singh.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-26T15:19:18+00:00"
-  },
-  {
     "id": "2106c014e56effd868",
     "title": "Ferrari’s first EV is not for you",
     "url": "https://techcrunch.com/2026/05/26/ferraris-first-ev-is-not-for-you/",
@@ -1296,17 +1373,6 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-26T15:16:34+00:00"
-  },
-  {
-    "id": "0635ff3c5f1e6f8e95",
-    "title": "Telekom Srbija kupio sedam lokalnih kablovskih operatera širom zemlje",
-    "url": "https://biznis.rs/vesti/srbija/telekom-srbija-kupio-sedam-lokalnih-kablovskih-operatera-sirom-zemlje/",
-    "summary": "Državno preuzeće za telekomunikacije Telekom Srbija kupilo je čak sedam lokalnih kablovskih operatera širom zemlje i svi su 27. aprila ove godine u Agenciji za privredne registre registrovani kao vlasništvo te većinski državne kompanije, pi",
-    "source": "Biznis.rs",
-    "region": "Biznis.rs",
-    "group": "srbija",
-    "category": "economy",
-    "published_at": "2026-05-26T15:16:00+00:00"
   },
   {
     "id": "7db08133a5981fd1bf",
@@ -1340,83 +1406,6 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-26T14:54:10+00:00"
-  },
-  {
-    "id": "cc74a4963c2eea273a",
-    "title": "Niš: Oko 2.000 radnika propalih društvenih preduzeća dobilo i treću ratu pomoći",
-    "url": "https://biznis.rs/vesti/nis-oko-2-000-radnika-propalih-drustvenih-preduzeca-dobilo-i-trecu-ratu-pomoci/",
-    "summary": "Oko 2.000 radnika propalih društvenih preduzeća, koji su potpisali sporazum sa Gradom Nišom o isplati pomoći na osnovu neisplaćenih plata, dobili su i treću godišnju ratu pomoći, izjavio je gradski koordinator akcije rešavanja problema zaos",
-    "source": "Biznis.rs",
-    "region": "Biznis.rs",
-    "group": "srbija",
-    "category": "economy",
-    "published_at": "2026-05-26T14:54:00+00:00"
-  },
-  {
-    "id": "c1a52a7d8c8752d32b",
-    "title": "TeraWulf jumps 13% on AI data center expansion in Kentucky",
-    "url": "https://www.coindesk.com/markets/2026/05/26/terawulf-jumps-13-on-ai-data-center-expansion-in-kentucky",
-    "summary": "The bitcoin miner turned HPC infrastructure developer unveiled plans for a new 1 gigawatt facility in Kentucky aimed at servicing AI workloads.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-26T14:48:36+00:00"
-  },
-  {
-    "id": "85928167414124b178",
-    "title": "Live markets: bitcoin leads crypto slide even as tech sector closes sharply higher",
-    "url": "https://www.coindesk.com/markets/2026/05/26/live-markets-bitcoin-on-sidelines-as-markets-surge-on-iran-peace-hopes",
-    "summary": "Oil prices and bond yields opened the week sharply lower following President Trump's weekend announcement of an imminent Middle East agreement.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-26T14:43:53+00:00"
-  },
-  {
-    "id": "ffc8655e795529efa5",
-    "title": "Spotify now lets you stream narrated magazine articles, too",
-    "url": "https://techcrunch.com/2026/05/26/spotify-now-lets-you-stream-narrated-magazine-articles-too/",
-    "summary": "The streaming service said that, starting today, there will be over 650 long-form magazine articles (available in English only) from publications like Rolling Stone, The Atlantic, Vogue, Variety, Billboard, Vibe, GQ, Wired, Vanity Fair, and",
-    "source": "TechCrunch",
-    "region": "TechCrunch",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-26T14:38:05+00:00"
-  },
-  {
-    "id": "ed5c4b91c7ec02fb41",
-    "title": "TechCrunch Disrupt 2026 Early Bird ticket rates end May 29",
-    "url": "https://techcrunch.com/2026/05/26/techcrunch-disrupt-2026-early-bird-ticket-rates-end-may-29/",
-    "summary": "Save up to $410 on your TechCrunch Disrupt 2026 pass before prices increase on May 29 at 11:59 p.m. PT. Register here to join the tech epicenter in San Francisco.",
-    "source": "TechCrunch",
-    "region": "TechCrunch",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-26T14:00:00+00:00"
-  },
-  {
-    "id": "bd8492aca88b10b92d",
-    "title": "Bitmine made its largest ETH purchase this year despite Tom Lee's slowdown suggestion",
-    "url": "https://www.coindesk.com/business/2026/05/26/bitmine-made-its-largest-eth-purchase-this-year-despite-tom-lee-s-slowdown-suggestion",
-    "summary": "The company bought 111,942 ether last week worth $237 million, ramping up purchases to take advantage of ETH's drop below $2,200.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-26T13:27:51+00:00"
-  },
-  {
-    "id": "80e3b16f4c1853b9a2",
-    "title": "7-Eleven data breach affects over 185,000 people’s personal data",
-    "url": "https://techcrunch.com/2026/05/26/7-eleven-data-breach-affects-over-185000-peoples-personal-data/",
-    "summary": "The data breach included names, dates of birth, postal addresses, and Social Security numbers, according to a state government listing.",
-    "source": "TechCrunch",
-    "region": "TechCrunch",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-26T13:04:56+00:00"
   },
   {
     "id": "de460757518a16f10e",
@@ -1485,17 +1474,6 @@
     "published_at": "2026-05-26T10:30:35+00:00"
   },
   {
-    "id": "ac027a243be26cc3d5",
-    "title": "China takes aim at 'zero-gravity' seats in EV draft safety rules",
-    "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPbVVDaW1kTlllM0l2Z21YSnJkcVlQemZGb2V6YWRQd29kNVJteklPbFJ1S1VtbUJ6XzNya3RKeUdEODV4bmEtUVJCRW54UGZBcjVwTkllSVRuNXByXzgxaUpWbW8xRlpmVi1JeGIyZ0J0NHBtb2R1b29aZzdsU0hTVDdOVlVNbmUtZUFsZ0w5LWJtSmJBcmNRX0Nvc2prNWNpTDFnNldJT3RxajNRY01sWVVkUDFrWmoxR015YVVWOVJZVDA5bWFz0gHMAUFVX3lxTE9sRlJXSDlTb2R3RG5oX1RDOGNpcGZHUnF5TndhSGthUE55cHplWnA3dFE0T0NBN0ZYZGFTaF9mVWZDY3VMOUd2Zko3Rk41OEhtWUNHai1SOUU5YllaeVp2aUkzXzdZbC0tV3hoc3J4VjNLalltOVJtX05LeFdGRE9EakVVR0lBQlBXc3RVTkRXbDRmVUM0eHAxMFdXRG1ZS240azBhYjBQc2VTVkpHdjNtQjlXX1RCQ19FbDk4LU1KYXc4eUh6SThDMzR6SQ?oc=5",
-    "summary": "China takes aim at 'zero-gravity' seats in EV draft safety rules ET Auto",
-    "source": "ET Auto",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-26T09:22:27+00:00"
-  },
-  {
     "id": "b8ae44cbd5c8b12b78",
     "title": "A reality check on the AI jobs hysteria",
     "url": "https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria/",
@@ -1529,15 +1507,15 @@
     "published_at": "2026-05-26T08:58:51+00:00"
   },
   {
-    "id": "abbcc59eea1fe33604",
-    "title": "Navigating the Data Center Workforce Shortage",
-    "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNTmpVSTZpcEhKRDhSd2h0WlFxNEw1eDVOUm4ydTJoRHB1OWV3R3hHOXllNkJtY3FramJGRFZqSGV0LWNBLUNtNUR4cmxXci16aldGcWRMaS1YLTNsOUFEeG9EUi1Da0dFVm83dmp6ZmtTb2Z4VTRVTXJpLUpSN2dnSUVFZVhvUQ?oc=5",
-    "summary": "Navigating the Data Center Workforce Shortage World Business Outlook",
-    "source": "World Business Outlook",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-26T07:49:07+00:00"
+    "id": "6b8433eecef3d93649",
+    "title": "What Is the CLARITY Act and What Does It Mean for Crypto?",
+    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObzItX29GSllDNU1GUzJDdU9jV2MxRy0yVlZ2dXFfa0NUbmhSNjR4ZUpYcWZQdUZZeUswT3lKcFNSRE5yYlExMFhVeVMyZ0F1UTJPVmkxR2lLS3I3eFJBUVFBNHRMeW1tSTZPRzZIMWl4Ym00X2dGZEZDUkE4eFBuSkVfQ2hiV3ZhTm1jOUxJQVloUkRreTVPY295Ri03Sl96ZVE?oc=5",
+    "summary": "What Is the CLARITY Act and What Does It Mean for Crypto? Binance",
+    "source": "Binance",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
     "id": "d3b373a92b2debb178",
@@ -1650,6 +1628,17 @@
     "published_at": "2026-05-25T08:59:40+00:00"
   },
   {
+    "id": "dea592028c5650ee4b",
+    "title": "Managed Services Market 2026-2034: Cybersecurity Risks and Cloud Complexity Accelerate Global IT Outsourcing Demand",
+    "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPbGlKZ0pHNERacXhUSW9YWVA1ZE1ScWhubjJsOG1nb1RicS1zN1ZLYmtTbGowaF9PQkY0ZmhsNUtlTTBTS2xVVGtzNkNQbWZENFZmOGhxNjFwaGhVMnZUMWg0RUZpSDdiSlJhVHBmbWlrc2xLajd5azh1S2FVYkxCQjVRZ0RNUU0zdEFJODZkcEZ3NVRGbGE1V3ZtTTN6TnhxZlRfSXpoZ056Q1Y4cDEtYWpJb2pLcmpxZlpNRHRqU1hYY0hmV2RxT2U5TzZORGJaYlBv?oc=5",
+    "summary": "Managed Services Market 2026-2034: Cybersecurity Risks and Cloud Complexity Accelerate Global IT Outsourcing Demand vocal.media",
+    "source": "vocal.media",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-25T08:26:10+00:00"
+  },
+  {
     "id": "5ede93db72e58ebe94",
     "title": "AI wealth must benefit the public, South Korea's deputy PM says amid Samsung labor tensions",
     "url": "https://www.cnbc.com/2026/05/23/ai-wealth-must-benefit-the-public-south-koreas-deputy-pm-says.html",
@@ -1703,17 +1692,6 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-25T03:30:22+00:00"
-  },
-  {
-    "id": "c4bf43ad59d60eda91",
-    "title": "Kyrgyzstan Gold-Backed Stablecoin Enters Hong Kong’s Regulated Crypto Market",
-    "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPRkRuNUVQTlgwN3hXTTRYa2xnSzJUR0FtdHF0SjBhdGVXSVpsYVQ4X3JIOXozTHl5eXpUUkd3NERhZW1pRUR2N3JDSDZmX2NhQkJzYkZudDhYVVFzeF83cXpsWk4tRW1WN09SUHEwZjNsX2J5Mm5CTmtHamVfbUw0Nm4zb1U5c3JK?oc=5",
-    "summary": "Kyrgyzstan Gold-Backed Stablecoin Enters Hong Kong’s Regulated Crypto Market Crowdfund Insider",
-    "source": "Crowdfund Insider",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-24T22:44:33+00:00"
   },
   {
     "id": "98955e00d800411edc",
@@ -1802,17 +1780,6 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-23T17:00:00+00:00"
-  },
-  {
-    "id": "0e3d83ab22f6b2ae35",
-    "title": "Iran and US report progress in Pakistan-mediated talks as crypto markets watch closely",
-    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9XZmxhZkQzVW9OR18xQmM3LXB2V1ZwMjRiczhYQll6eVBuTlRWSkozc2hGbTBrZ3ZSdmFzbW8zVWluRGZwVnpfVVUzZ1ZQOHJNMTB0cVR2U0dSdGhDUjBzUG42elNmUmlRSGtxOWd3R3NyQQ?oc=5",
-    "summary": "Iran and US report progress in Pakistan-mediated talks as crypto markets watch closely Crypto Briefing",
-    "source": "Crypto Briefing",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-23T15:43:40+00:00"
   },
   {
     "id": "1946d9668cffb9d639",
@@ -1980,15 +1947,15 @@
     "published_at": "2026-05-22T20:17:09+00:00"
   },
   {
-    "id": "3724ff3c6a06fc46b5",
-    "title": "Record-breaking tech floats to ‘suck cash out of global markets’",
-    "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOMHRRNkZrWGduVzlpSkh6Q0t3Rk03LWVQQ3lCcWJtUklyOVBaNVgtX0RRdmVUTl82bkM5dFhCN0ljbW5TcmlNWFJIaDNuRk94LUhyQVFCNFloR3FPajdpTVBaSU0yMm1vYlNnZll3Q0RsT2ZYZmhSS085Y0Z3RGg2NXQzSGNlYTNSVE94VHQ1YnZGZjlraFlkczl3V2VTbUJYVXh0dDlKanNmNlNlSFFKSTBhMW5FVFhvNXUyT0lFdWp2Zmdscmp5ajRHTWU?oc=5",
-    "summary": "Record-breaking tech floats to ‘suck cash out of global markets’ The Times",
-    "source": "The Times",
+    "id": "1ca1678178f0328d31",
+    "title": "10 Best Growth Stocks to Buy for 2026 | Investing",
+    "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE4xd1NqS2xxR3R2aHBJb3dIME1HSDR5bU0tMDdVS1ZweXlmajJWQkxZSW0xak44RHlZTUVjX0pwZEdSY0FjYUdwODB3R1FmLXpURTNxMU1hXzJPMlhoblZHWGRnTUxzSE9oMTVEb2NKLUZZdWItLW9veg?oc=5",
+    "summary": "10 Best Growth Stocks to Buy for 2026 | Investing U.S. News Money",
+    "source": "U.S. News Money",
     "region": "Global Markets",
     "group": "international",
     "category": "economy",
-    "published_at": "2026-05-22T17:20:35+00:00"
+    "published_at": "2026-05-22T18:58:00+00:00"
   },
   {
     "id": "d4e744265735b964fe",
@@ -2112,17 +2079,6 @@
     "published_at": "2026-05-22T14:00:52+00:00"
   },
   {
-    "id": "4ac422b63425e949bc",
-    "title": "The Quiet Shift Redefining Global Business and Finance",
-    "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNY0w4Nk5mM0NXNW80RTdxRk1paEpIVkc5SGl6V3g0TmFVQ0lydDl2SFUwbW1UUWVSbVhwOVN2MU1ZbHpJeXp6SW9vQ1NocXA4WEc0dzdiQlZqQ05nOVNTWlVob3lSaVRSc2NMOWxzT0ZxWnVxM29wNUc2OG1DbksyZ3F6S19UQl9SUHBkUnFYWnhocnpNWk94QWN2Zw?oc=5",
-    "summary": "The Quiet Shift Redefining Global Business and Finance Global Banking & Finance Review",
-    "source": "Global Banking & Finance Review",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-22T13:06:22+00:00"
-  },
-  {
     "id": "2de462f1c7c6f7d180",
     "title": "What the AvalonBay, Equity Residential megamerger means for the apartment industry and rents",
     "url": "https://www.cnbc.com/2026/05/22/avalonbay-equity-residential-apartment-merger.html",
@@ -2132,17 +2088,6 @@
     "group": "international",
     "category": "economy",
     "published_at": "2026-05-22T12:55:22+00:00"
-  },
-  {
-    "id": "7b1422b322b94ee8d7",
-    "title": "BYD Dual Mode Technology Officially Launched, Combining EV Efficiency and Hybrid Flexibility",
-    "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTFBia1NIZl83VlQyZTV1cG1Xb0FLOGxWQld1cXdmVzgxOTRRbXpabFVBYm1VNUFnaEpmY0NMMjNUejdkazZRRzJv?oc=5",
-    "summary": "BYD Dual Mode Technology Officially Launched, Combining EV Efficiency and Hybrid Flexibility VOI.id",
-    "source": "VOI.id",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-22T12:44:22+00:00"
   },
   {
     "id": "a8041fe739ecb7ddc3",
@@ -2310,17 +2255,6 @@
     "published_at": "2026-05-21T21:19:32+00:00"
   },
   {
-    "id": "2d1492496494bd316e",
-    "title": "Job training for robots: How China is getting machines ready to join the workforce",
-    "url": "https://www.cnbc.com/2026/05/21/china-robots-humanoid-job-training.html",
-    "summary": "Tesla CEO Elon Musk said on the company's fourth-quarter earnings call that China is the biggest competition for humanoid robots.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-21T21:07:25+00:00"
-  },
-  {
     "id": "dcce93204bb16cc0f6",
     "title": "Roundtables: Can AI Learn to Understand the World?",
     "url": "https://www.technologyreview.com/2026/05/21/1137756/roundtables-can-ai-learn-to-understand-the-world/",
@@ -2330,17 +2264,6 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-21T20:41:05+00:00"
-  },
-  {
-    "id": "84e21bb444b42b47b9",
-    "title": "Meta, Broadcom and others to launch $125 million semiconductor research hub at UCLA",
-    "url": "https://www.cnbc.com/2026/05/21/meta-broadcom-others-to-launch-125-million-semiconductor-research-hub-at-ucla.html",
-    "summary": "Broadcom, Meta, Applied Materials, GlobalFoundries and Synopsys are joining forces to launch a $125 million \"Semiconductor Hub\" at UCLA.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-21T20:30:01+00:00"
   },
   {
     "id": "6bbc8c6eb81c005735",
@@ -2442,6 +2365,28 @@
     "published_at": "2026-05-21T16:06:12+00:00"
   },
   {
+    "id": "66a32c921f33454d86",
+    "title": "AI Stocks Powering Growth Across Nasdaq Composite Trends",
+    "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQNmNHVUIwZVQ4azZPS3JrNUhDbVdRZk9DZldzUEgxUFQtSHRSdVVYcW1DTFhwNTlGRzBvc3pwdmp0NTdsTXNPMGkwZlZuTVoyaWlwbkJvRzF1aWhIQVNldHdIR3pkTDl4X3k5VXV0d0NUc1o1d21yNTVCVElnRUhEcnM1OEFHT3dPYlhSOEMzQzhGSXFlamlXSGhuRkJDeDZjYXkxVzlHR29LR0djakpNTkw4YkdUdw?oc=5",
+    "summary": "AI Stocks Powering Growth Across Nasdaq Composite Trends Kalkine Media",
+    "source": "Kalkine Media",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-21T15:59:00+00:00"
+  },
+  {
+    "id": "1fb252c6cd9d1be988",
+    "title": "GOWIN Participates in NVIDIA APAC Robotics and Edge AI Partner Day",
+    "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOVG9pbTZTclo0TWlPMDFNYll5UGtRYmFKYU1UNF9pMkJZOVRIMzdSOVNueWVFQzZhY0lsbXp1Y1BtLWQ2dWNzeUR0ek5SU1dDYXdaQXVvQW9ZOVFCR2ltTjl2VkFSNEpOMVdrYWFGYzI5UGVBaUFXRzdlQVdfV0RJaEhiNHNUamVjTzJET1Q1T05VZ3V3MkdWLTZoNGJZQ0J4QkI5ZGdHTVZUMWc3MzR0LXI2b0loeTVoUExSUmswc0wtVGlfZUhXNnRhWmpJaDhWSDZKNg?oc=5",
+    "summary": "GOWIN Participates in NVIDIA APAC Robotics and Edge AI Partner Day GlobeNewswire",
+    "source": "GlobeNewswire",
+    "region": "AI Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-21T15:08:41+00:00"
+  },
+  {
     "id": "646cdd8c8cf4780a30",
     "title": "LIV Golf seeks to raise up to $350 million from investors as post-PIF reality sets in",
     "url": "https://www.cnbc.com/2026/05/21/liv-golf-fundraise-up-to-350-million-post-pif.html",
@@ -2473,6 +2418,17 @@
     "group": "bih",
     "category": "economy",
     "published_at": "2026-05-21T14:42:00+00:00"
+  },
+  {
+    "id": "eb9f8efabec68ae957",
+    "title": "OSL Strengthens Asia’s Digital Asset Ecosystem with Listing of State-Supervised Gold-Backed Stablecoin USDKG",
+    "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPeDkxUDF3Qm0zNjFac3ozdjNKN2FCMkg4d3Z6bWNZVGg2SVB1bW41OUR5UVJFbkxxSU1mNGN4UzhvS0x2WU5aUjR3RzRXQzAzSVFZT041ajUwZWhWRkdjUTdLYXZkYVBxUUJaSk9qTWwtbTJ3ZTZDYjVERmp1MTBDT3hidjVWTWg1dmc?oc=5",
+    "summary": "OSL Strengthens Asia’s Digital Asset Ecosystem with Listing of State-Supervised Gold-Backed Stablecoin USDKG BeInCrypto",
+    "source": "BeInCrypto",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-21T14:16:00+00:00"
   },
   {
     "id": "1a020da535b2f0313a",
@@ -2530,6 +2486,17 @@
     "published_at": "2026-05-21T12:56:00+00:00"
   },
   {
+    "id": "07b16fe2265970087e",
+    "title": "JPMorgan Chase & Co. | History, Acquisitions, & Modern Structure",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1NTFlHbzZyUml3Q3FSdTVDV09TdUFmLUc0TGUwNGxpWHhZbGVOODJZSXh1cXdNMEVKREFnQmZjX0VNYUpRTS1KRTVGQzJNSV9iaWRfYTRxX1pCZURHcEY2Z0hmZUM?oc=5",
+    "summary": "JPMorgan Chase & Co. | History, Acquisitions, & Modern Structure Britannica",
+    "source": "Britannica",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-21T12:06:00+00:00"
+  },
+  {
     "id": "56e36cab1448c920c4",
     "title": "Five things to know about women and sport",
     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNdTNadmtIeEhfMThWR1pWeE1qUHZNbGp5SlVjNDBGVjhRNFRoM3JsVlBsNktjdFEyVlpuZXQ5enFrNFRPa3F0Z2dCdWFhZWRfckFSbGhwdXQxRVBJeUV5REtMOVlWUXI5MFFKOVRja1haQmR0cE0zSzg1OEJweVJnRWJiS2poOE1fVkRzamMxa2E?oc=5",
@@ -2550,17 +2517,6 @@
     "group": "international",
     "category": "economy",
     "published_at": "2026-05-21T11:53:44+00:00"
-  },
-  {
-    "id": "aeb05620d43ad7f4e7",
-    "title": "Free Grants and Programs for Small Business",
-    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPd1JjTnpZT2h6QW9CVUR3R2hwUWdpSS1yZ3FNcDVxckl3em8tM0hBSHFqLVdlSVgyRVNRRGludWt4MzRZdHRPd0N2Uk9kNWIxcTdQaS1vT1J1TEpyTWcyMFFxaHNuQVQwTEdrQ0t6TVBxMlRsaWFDYzRoQ3lLZE1jS0ExQ1Y2OUNocXQzLVhnMA?oc=5",
-    "summary": "Free Grants and Programs for Small Business U.S. Chamber of Commerce",
-    "source": "U.S. Chamber of Commerce",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-21T07:00:00+00:00"
   },
   {
     "id": "a1e444d009c48643d1",
@@ -2605,17 +2561,6 @@
     "group": "bih",
     "category": "economy",
     "published_at": "2026-05-21T05:19:00+00:00"
-  },
-  {
-    "id": "df0941ed36c26c62d9",
-    "title": "Check Point Software Technologies Eyes Firewall Rebound After Sales Overhaul",
-    "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPSC1haG5VZ2VrTzdjclF3NHQ3VTNiWDJZQ3FJQzJRUlY1MzNqV3hzbmhTNzlkdERLVV9rRjdyQ0VBbVZkeWZQX1BrcS1reEZUVDZsVXZ4c05iMVhoeEk3YXZQU0hZVFRrQU1LVTMtTUQxTUFHSEJWQ0wyRFZPRVhRSUFSX3lSMC1DNmYxaDlpV2xWX2U4WTRFR2JtNF9yLWJTbVV4VFdiTjg5aDd5S2hjejRhMmdaWFVxal9hMG1sR08wNnVyWUdmZWpucldRNUVCNlhr?oc=5",
-    "summary": "Check Point Software Technologies Eyes Firewall Rebound After Sales Overhaul TradingView",
-    "source": "TradingView",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-21T03:03:00+00:00"
   },
   {
     "id": "e4a171e14785b17ed4",
@@ -2695,6 +2640,17 @@
     "published_at": "2026-05-20T20:18:28+00:00"
   },
   {
+    "id": "f4c7801eb81a6af823",
+    "title": "Why Now May Be the Right Time to Pay Attention to S&P Global Stock",
+    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxONFdtSkxPTERjc3lwS1hXdHlEb1F1WC1kN3drWkJGd3lOTlB3eW81ZEpnMHNXbEI5WHc5S2ZwWWNFeGRxcEQzOHA2aXBCWTdvVWJ1TWdvNUhmcEIzcFhxaWFkbl9NVzhoOW5XM2dfRWRuNU1jbUp4N09tMEZRbUNBUGhuaXpoMXk4eWJkUFREa3F1dVR0ZWow?oc=5",
+    "summary": "Why Now May Be the Right Time to Pay Attention to S&P Global Stock The Motley Fool",
+    "source": "The Motley Fool",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-20T19:23:00+00:00"
+  },
+  {
     "id": "d2115158a7384d6ef3",
     "title": "6 of the Best AI ETFs to Buy for 2026 | Investing",
     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBaV2dlUGM4T0FUc2l5U3BlNmdUVEpwcE50SGNLU2o5ZWFXaVl4LU81QzVNR0JCSDdYTHRZcWRpWmdhSkMwalRISFBOV0NxV09oSWFuVDFpOG03a0E4bDBpMC11VGxIWDBRM1d4bXBhQ1Y?oc=5",
@@ -2717,15 +2673,15 @@
     "published_at": "2026-05-20T19:00:01+00:00"
   },
   {
-    "id": "8552721dc567792725",
-    "title": "Alsea Renews Starbucks Deal Through 2046",
-    "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOaFUzWVg3am5PU0RLcEh4MDYycGJpRHJOWkRTUzNpSjdrblRSejNHMUpMUkRoTVljQkl2YVZNa1FnQXVqcTE4SXFHRlpGdmNVNnRhMkk0NDM5bFFPdEdLUnZFeWJEbFRSSVRSb3dKYlN3UDlEWU9VdzNvMm1HMVprUHZzbDZFdlBSR1p4V1RXd3RadEpfc2oyMTV3?oc=5",
-    "summary": "Alsea Renews Starbucks Deal Through 2046 Mexico Business News",
-    "source": "Mexico Business News",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-20T18:25:05+00:00"
+    "id": "be1a6b6e017d774379",
+    "title": "Global Octa Brand Explains Why Understanding Cryptocurrency Is A Basic Financial Skill",
+    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPZXU2TWg4T01rRGFqd3VPcV9KSmM1b3lOWGdzOHRWTktVYWN2TnZySmVUZlFpY3dnQ2NaUlpKT0dqU3hzaFkzaUItbzVTSkxGcDNsUTFNZ2h4aVpTQU5zZzFZaThNaWwwOHQ3Y1hKX2JyQUJVenlnOElEWE5rakplazNyeE5sTy1abmVxTEdEUUNNdENhUTh2eno5NW1FLTNyRjlKeVNPc2ZBbTdTV3lFRHlQYmRkUEN1a2ZrZG4zaWQ?oc=5",
+    "summary": "Global Octa Brand Explains Why Understanding Cryptocurrency Is A Basic Financial Skill FinSMEs",
+    "source": "FinSMEs",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-20T17:55:41+00:00"
   },
   {
     "id": "df61e865b0c200602f",
@@ -2781,17 +2737,6 @@
     "group": "international",
     "category": "economy",
     "published_at": "2026-05-20T15:42:05+00:00"
-  },
-  {
-    "id": "a6080e5ce6ce1ca971",
-    "title": "Deutsche Börse Group",
-    "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBWeC1DYnRRTmRoa3JLV1FPeXlwZDJkcXVxNU5lcy1OcW1VQUNjX2M2eDlIQm10Ul82OHhaT0Vod0t0dTBDb2dmT2RiZ2xodm8?oc=5",
-    "summary": "Deutsche Börse Group Deutsche Börse Group",
-    "source": "Deutsche Börse Group",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-20T15:35:00+00:00"
   },
   {
     "id": "dbd3a096ef628bfe79",
@@ -2871,6 +2816,17 @@
     "published_at": "2026-05-20T12:12:14+00:00"
   },
   {
+    "id": "df76290fc5d69afca5",
+    "title": "Crypto News Today (May 20): Bitcoin Struggling Below $80K, SOL & XRP ETFs Green as ETH and BTC ETFs Bleed",
+    "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxPNWRmZTBxUlVKeFlxLTBiN0RBSVdVSVRHd3lqWWgyVmUyR3hYalhwenVkWHA2QlAxY0pQYXRHNDJrSjBqX1FGLXpPck1sTkdNS1gwb2FnYjJINUhST3RET0twQ2Fia0FoNl9YRlJwSWdHZUM4emJYQnhWaGpqa0M5MUVvT1VPLTNfRHk4cFpWbWR4OEI1UFJuYTdsYllIejRpSWF2ZTFaNHlqMGRraVJOUXI3Y0tFeE0zT3JWVjdVeHQ5Vmt1U21MeGpjbU1KX0VmRnI5ZUl3dUtJR3pXbU53RXEyU2Y3NWVxMHczNldRZEw?oc=5",
+    "summary": "Crypto News Today (May 20): Bitcoin Struggling Below $80K, SOL & XRP ETFs Green as ETH and BTC ETFs Bleed TradingView",
+    "source": "TradingView",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-20T09:32:07+00:00"
+  },
+  {
     "id": "3fa147edfe367ee069",
     "title": "Philippines Automotive Market 2026: Vehicle Demand, Urban Mobility & EV Adoption",
     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNSkh0MGdGVU5XaE1od09QYk9vcHBDMzZlRm5fc0h5N3doc1gtN3J4LVRmSjBBcTBubzd5VnB4eUxsa2tfQV8zUGFERDNiQWQyYVVmdVRENHRGNUUtT0s2N2FENy1STG1USmJIQ2Z5UTF1WWZSUmZqSUNIX0piMGxaOUNnSEllNTVvSVg3SmM4V0J6MHVLWlZrczB3eEtsTldER0xFWFRzaTM0aE0?oc=5",
@@ -2901,6 +2857,17 @@
     "region": "Global Markets",
     "group": "international",
     "category": "economy",
+    "published_at": "2026-05-20T07:00:00+00:00"
+  },
+  {
+    "id": "b5a905e90a25979216",
+    "title": "The 5 Best-Performing AI Stocks in May 2026",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQZ0RPel9KWms3MVEtWUk0eXpGNnlUR3UxSFNFc0ltbEsyZDJBa0VpVTBtQVRTZmNoeTJWVWdSM3k3VllueXRZcjRCdVhfZXZLZ1lxY0J4WGI4SEdCc3BmWTFpXzVseWhuQzcxZEtmeDVjb09oN3NEQW5fUGhnam1iZjN1V3Z2QWNlazNuaXFPSQ?oc=5",
+    "summary": "The 5 Best-Performing AI Stocks in May 2026 NerdWallet",
+    "source": "NerdWallet",
+    "region": "AI Technology",
+    "group": "technology",
+    "category": "technology",
     "published_at": "2026-05-20T07:00:00+00:00"
   },
   {
@@ -2946,6 +2913,17 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-20T07:00:00+00:00"
+  },
+  {
+    "id": "5024f927977c6724cb",
+    "title": "Blackstone and Google’s joint venture launches a new AI data center company",
+    "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNTktyb0prMk02amE5OUN1T293Q0tub1p2ZTJ6ZlVwUUZiVHhOVnkzZzNPTGFxWmtJSk9WMHlYUXVva2dNREIxbzZTRVVtM2FsYjZkdzVSUER2RVdJQnNVWXhzbUw0RVctRWhObVJpUTdpSnBhSGtqLVp1VUcxdlZnUkRKUGZOVE1ZbkZFUFZEa1JkWXBSbGc?oc=5",
+    "summary": "Blackstone and Google’s joint venture launches a new AI data center company W.Media",
+    "source": "W.Media",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-20T06:44:00+00:00"
   },
   {
     "id": "0ba27868bac0e5cd81",
@@ -3047,39 +3025,6 @@
     "published_at": "2026-05-19T15:51:38+00:00"
   },
   {
-    "id": "61c43bb6b261a74d7e",
-    "title": "AVT vs. ARW: Which Electronics Distributor Stock is a Better Buy?",
-    "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxObElUNmVFb0RHMmRKMHN0NU1icWU0cHZwZ0RDbUwtOFFFWVF4T21HWW90a3YtQmFoQUFHWWZJUWp4LWU4WFNBVEpFSW5vajEyXzQxc1lmU2RKa3dPcU51OUNrUk5RSVRlMU1MeTNIakRHai1ZTjlLZWhqZlhqdEVlam53UUJwQTVkMzE5cW8yam9RNEw1bmN6X0N3RTE1RDhGTkFwdWpMZkxCbHd2cG1tVXY4ckgtZlJ2NEE?oc=5",
-    "summary": "AVT vs. ARW: Which Electronics Distributor Stock is a Better Buy? TradingView",
-    "source": "TradingView",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-19T15:29:00+00:00"
-  },
-  {
-    "id": "c54d49bb153da06a8c",
-    "title": "Data Center REITs: One of the Market’s Strongest Long-Term Infrastructure Plays",
-    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPS3ZYNlRxQ2hpQVphS1UyWnBoenE4d1pkSGN4aV9fSGFTeWZCWTZDVGtjSzNHNDNRMG9FUG9pVXZQT0xDRWhzbXFHRngxRGowVl9BT2YwdkpjeDJNVXRyTFRfODNTMjFXckE0YzhBUmVWVFpFM0Q4ZllXaUpMVjAyZGdZdFhwaVE1VThOYTVZS0JidS1PM1NURG1Lckdfc050Q0NuQ0ZNRzdWSGREc0laZ2hqSXBlOXM?oc=5",
-    "summary": "Data Center REITs: One of the Market’s Strongest Long-Term Infrastructure Plays citybiz",
-    "source": "citybiz",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-19T14:21:28+00:00"
-  },
-  {
-    "id": "590c008f7fb87d2c20",
-    "title": "JPMorgan says ether and altcoins won't catch up to bitcoin without a major network boom",
-    "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOeHZJX2FISVNoeFVkXzZMaW1TbFpKNjJIR2FoeENuMWotVkVzNGJUU1RuUFJwUFJHeTcweVBCTklVYjBfeTFIdm1TMzU3RTB6T2ttdENHQVBZZkt4ejlYT1h1Nm16UlNJUTRGRjNJUG5PanBicG5zRVB5UTZpYTEtY3J6UDI3dHRIYjdQVnNCSDBXd2U1cGFrSURhVGpNZFEyM0lfT1A0Z01BRXVFLWlUTmNBLV9GN3RHMlV0bTBCWGNMZ2otcVlYdm5TYw?oc=5",
-    "summary": "JPMorgan says ether and altcoins won't catch up to bitcoin without a major network boom CoinDesk",
-    "source": "CoinDesk",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-19T14:14:36+00:00"
-  },
-  {
     "id": "d81594a9b9d7be170e",
     "title": "Crypto Today: Bitcoin, Ethereum and XRP defend key support levels as upside gains remain capped",
     "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQUjZ2a0ZmcGdIV2loLWtBVDJ3UkZyM1dIVEZ5dVFoU0llTnhPYThCNUltSU9rZFVHMVNGSXlmSktfR2xDOGVsc2ZvbmZsV1hRRjZLTTdoQnBvWkF1M2Fvam42b2ZTNEN6QkFiYW1yQzRJSXFGbUJldWxkRmN4bmNxc1BGbmNlLW9mZ1JKb2UzemRic0lXeGg5UXVYRnp3eVhLbnptZW8yQVpJQmx6Z2ROYXFYMEo2RkNNeHFzaHVuWHNSQ3lXTENBNUE4ek5zcUxYQnRPQ3IzaHAwcklzcW5yRlJuYmRMWWpzTE5wVEQ2OFk?oc=5",
@@ -3124,6 +3069,17 @@
     "published_at": "2026-05-19T09:57:58+00:00"
   },
   {
+    "id": "5dcc8390712c5d1a41",
+    "title": "9. Cyera",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE45b25SUzY3enQtY0Vtdi1rdkdLei1XTmpYN0JNeXNMdlM3ZFZ6eTc4VER6VGphbU1kQjRVNlVvdkx4dlJueENOR24wVlBDNmlKWFhLdHNXUlV0d0o4N3h3X3dLaUQtd0tmZTJuLUhoazZrWWFnQlpv0gF8QVVfeXFMTklhRWpSempJTjI2VjZiLU5YemNNWUhQR1lFMGFvQTVWV3liZndPSmk2dXF6SzVNd1oxcWhsM2hKUTJOUTZHTXpUSkVxcXQ2TXl0QnhtSnZOc1FNTHBCcFdnVmRyM1VaWC1uWkJxNUtUSU9rbDFPQW1aZFZGSA?oc=5",
+    "summary": "9. Cyera CNBC",
+    "source": "CNBC",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-19T09:56:01+00:00"
+  },
+  {
     "id": "8ee29c085d762ecebb",
     "title": "Here's What Will Happen in Crypto If The Clarity Act Passes",
     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOYWhjeF92SklvTWdETE1YTjJuemVHOUZWaUh3a1pSZGJaUFhnU1pIbTlZbHdzT2lmM3d3aVY2NTVqWkFLY2RJTmpXdmluTXNvc043bFB6Y1RIUkdyaWpCVFpja0lRRVRQNDFwemVGTWlpTEpRbnk0SlFUaVZWZ3o3S2Y1Ym80Q1R5VnkyaThXRmZWRy1WNEFucmo4U0w?oc=5",
@@ -3140,6 +3096,17 @@
     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNZ1h6LXpSRk5IenRMYmNGbmZoWXYwTGtPdzZkcFo0eW1Wb1RKX1BlQk04VUtZcERUM25RdXVDSmRSME1ZcTJhdTdrSXNVX2hUWDIyMlRwUGVzcDhHS1VncEJJWmlBbl91N0Y5ZmRuek1GR0ZRRDBkXzQyVHZnaUFQZWRGWnZxeFJDa1dJRWZIWmt0UHBpbkFaZkpIQ1l2WGNoeE1GckdYWQ?oc=5",
     "summary": "Bitcoin vs. Ethereum: Which is better to invest in? Moomoo",
     "source": "Moomoo",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-19T07:00:00+00:00"
+  },
+  {
+    "id": "590c008f7fb87d2c20",
+    "title": "JPMorgan says ether and altcoins won't catch up to bitcoin without a major network boom",
+    "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOeHZJX2FISVNoeFVkXzZMaW1TbFpKNjJIR2FoeENuMWotVkVzNGJUU1RuUFJwUFJHeTcweVBCTklVYjBfeTFIdm1TMzU3RTB6T2ttdENHQVBZZkt4ejlYT1h1Nm16UlNJUTRGRjNJUG5PanBicG5zRVB5UTZpYTEtY3J6UDI3dHRIYjdQVnNCSDBXd2U1cGFrSURhVGpNZFEyM0lfT1A0Z01BRXVFLWlUTmNBLV9GN3RHMlV0bTBCWGNMZ2otcVlYdm5TYw?oc=5",
+    "summary": "JPMorgan says ether and altcoins won't catch up to bitcoin without a major network boom CoinDesk",
+    "source": "CoinDesk",
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
@@ -3212,11 +3179,11 @@
     "published_at": "2026-05-18T08:43:38+00:00"
   },
   {
-    "id": "ad4ab52517c0ff08d0",
-    "title": "Capital markets aren’t closed – they’re selective",
-    "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNVmpFSms5aFBQeXNCeGJsZHlNTGRpQVlVUEIxZ0w5Tm1OanVaTFJhMUhUMHZUS2l4eWdmcFgxNk45dWJ6ZlFBSk5mQXptX2hPT1A2eWxuNHZ5Zlh1bzJzTDBxVkVBRU4zLXJhR3ctaHBEQ3pKdzlsMkVNQmlUX09LLVRLb201aVJMLXdvSXNKX04?oc=5",
-    "summary": "Capital markets aren’t closed – they’re selective Barclays Investment Bank",
-    "source": "Barclays Investment Bank",
+    "id": "a6080e5ce6ce1ca971",
+    "title": "Deutsche Börse Group",
+    "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBWeC1DYnRRTmRoa3JLV1FPeXlwZDJkcXVxNU5lcy1OcW1VQUNjX2M2eDlIQm10Ul82OHhaT0Vod0t0dTBDb2dmT2RiZ2xodm8?oc=5",
+    "summary": "Deutsche Börse Group Deutsche Börse Group",
+    "source": "Deutsche Börse Group",
     "region": "Global Markets",
     "group": "international",
     "category": "economy",
@@ -3267,11 +3234,33 @@
     "published_at": "2026-05-18T07:00:00+00:00"
   },
   {
+    "id": "a579f0c07de9a70ad4",
+    "title": "Data Center REITs: One Of My Highest-Conviction Calls",
+    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOdEN5QmJwcFcyMjBvY211ZWRHYXQ0SVpxNng4VkVhQTNJS016WGJYY2xDM1V6TjdzRkN5bHFGQnBCVzBhMUZQNEJweUpDZ0w1emNGcWUzMUJDXzN3VnRQMnJRdUZpa2Rlbnl4dzVvTU5EUnpWVk1PRmplRzgtM0xhXzJsSkE5eFRkbGtaQTRJalFfRXFpMWtOZg?oc=5",
+    "summary": "Data Center REITs: One Of My Highest-Conviction Calls Seeking Alpha",
+    "source": "Seeking Alpha",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-18T07:00:00+00:00"
+  },
+  {
     "id": "ec52db5af11fdd87d1",
     "title": "How Storm-2949 turned a compromised identity into a cloud-wide breach",
     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPUHlfQWEwOVJ4TTBCVG9kb0p6UVllLUt0Q1lxZTI5dFN1elV6TFVDakNFWEtaUFlJaTZoajVqZjZzVi1wdUFZSXJJeTNfVE1ZajFsUlFxRTViSi1fc003WFJkc0hicklFcXBOZHh2a2dsWGtWTW1RTXJEUFhWX2g0TnZueFFqcUU5bXZFb2lWc0kwcEpEbW5PeGRYUXlrRkhZa0hoMWxiZXo0MEZxWElBQWE3c1N1SGo3U2JJ?oc=5",
     "summary": "How Storm-2949 turned a compromised identity into a cloud-wide breach Microsoft",
     "source": "Microsoft",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-18T07:00:00+00:00"
+  },
+  {
+    "id": "e1f2b17f8304215c1f",
+    "title": "Cybersecurity Stocks: Rosenblatt Hikes CrowdStrike, Palo Alto Price Targets",
+    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQUmVCMzRZR1Zmd3NiRjM3b2VxY1JadHc5Yk1UWFgwREFwTExFTmtoQnlPaWJMRDFPT3d2UnhXZGx2MHNuWHpKOHlYLUlOelR0Z21ZdXZ4bFZ6dFE2Vk5HNmxNLVp2cmpXYndRaGxnRmhGbWV6T2M1UHZSekYxRTBxcWxpNnR0UW9fR25Vamc5ZVRGaTRkVmJtZUY4cjdEbnF4QnE5UkU1NEYxZWZa?oc=5",
+    "summary": "Cybersecurity Stocks: Rosenblatt Hikes CrowdStrike, Palo Alto Price Targets Investor's Business Daily",
+    "source": "Investor's Business Daily",
     "region": "Cyber and Cloud",
     "group": "technology",
     "category": "technology",
@@ -3289,15 +3278,15 @@
     "published_at": "2026-05-17T08:29:02+00:00"
   },
   {
-    "id": "adb8fde6f5309d0170",
-    "title": "Week in review: Cisco patches SD-WAN 0-day, unpatched Microsoft Exchange Server flaw exploited",
-    "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRm8yb0pRVGxyTWoyQWNBc3VPSVNmSWRySjMxRk9fNXF0Q0hKVkFEZ2IwSV81WlpLcGMxRW5QcTZSLUQxOHRaemVtTE9nV205a2RReEtiS3J3OXVwY3BteE9raHc2VndMMndPTTRSXzJSWFpPUmRqYlZKZHRLSmV3TmVyeE1PTmhWVnNwLTBkS3o5MHR6U01CeWhjZnJFTjV5OWp3XzRfOFJ1WG5MMjJEQlRZbzdDQ0tmcUl4VlRObFlsRWZiVzM4LXh6Mkx3aXduU1E?oc=5",
-    "summary": "Week in review: Cisco patches SD-WAN 0-day, unpatched Microsoft Exchange Server flaw exploited Help Net Security",
-    "source": "Help Net Security",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-17T08:00:38+00:00"
+    "id": "5dc65edfb164a1d3e4",
+    "title": "Faraday Future Founder and Global CEO YT Jia Shares Weekly Investor Update: Announces the Company’s Comprehensive Transformation Across Five Areas: Strategy; Product, Technology and Business; Finance; Capital; and FF’s AI Operating System",
+    "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPN1dYdElYTFp5MzE2NWJhV1pUNlJMdjVFVmFzaGY1ZUQ5NE8zNDd1WlEtV2RQdGl1am1BekRNSWdOZEo2MW5CVzdqTXFuUV9YazhPbEZ2LTltU3ZiZVNCcXFfeURXU2VNdGQzbjd5RmZhTjlRM1U1eHhmeHZUdWZtMEg2OUY5OWRuN0RndFc3QU9OWlMtcTdmTXZmSGR1MUU?oc=5",
+    "summary": "Faraday Future Founder and Global CEO YT Jia Shares Weekly Investor Update: Announces the Company’s Comprehensive Transformation Across Five Areas: Strategy; Product, Technology and Business; Finance; Capital; and FF’s AI Operating System Y",
+    "source": "Yahoo Finance",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-17T07:00:00+00:00"
   },
   {
     "id": "5b4c638459783ca13f",
@@ -3377,6 +3366,17 @@
     "published_at": "2026-05-15T23:47:32+00:00"
   },
   {
+    "id": "eb611681621e2f09df",
+    "title": "The Great Rebalancing: Why Investors Are Quietly Preparing for a Very Different Market Decade",
+    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOLVU2UHc4eUJzcFJoQ05mZEt6M0g4UTdNWG1iMnNHekx6ZHZ3WTFEWmhmSzRpaUphMllwcmlENC0zRVRDdWFLS0tVdnotc1dsb3d6YWZibFljX3hwbDhJbVVGaktTd0dROTlyZ2U2ZDRFaWxoRTFvcnExa3BMc2c0SnZjZjlmNHJxYUwyVUxqWmVHUHNLYnJvVGZCMnNpWFRTcWZxN0hFWkpnOHc5bG44LWJvbm13WEdsanBUa0xnX0o1NU94ZHkyWF9GWXp1UQ?oc=5",
+    "summary": "The Great Rebalancing: Why Investors Are Quietly Preparing for a Very Different Market Decade Global Banking & Finance Review",
+    "source": "Global Banking & Finance Review",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-15T16:01:48+00:00"
+  },
+  {
     "id": "2f0abaea636a47e59b",
     "title": "US Stock Market Today Turns Volatile as Experts Predict Major Changes",
     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQZWttZWxUSE5EWms0aUh2bURXTUx0ZlNzOWhJV2c3bEtyNGpISDY3MkkyWHk1Yk9oeEVFT2R4amxFQTJUOFNHdDdkOURycURCTDBOM2ZwelVWMGt3ZUx2UVgwRHVaM3YzQkRRVERPWEtaYWVIQ0NPTWxXYzZ4TVJyNWFod003SVVZdEE2aG4zY1hPWHNITXZXbUFQbFk?oc=5",
@@ -3408,6 +3408,17 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-15T12:00:00+00:00"
+  },
+  {
+    "id": "ccb93ba415669b6c6e",
+    "title": "The AI Trade Is Evolving — And This New ETF Is Chasing Humanoids, Drones And Smart Factories",
+    "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNQTYzcFdYQm1PS21zYkstZTJoNFFPNnY3akNWWm93MF9adFNEN1NlWUtybEpzR21MYndINTBPNGFyTkdjZnpOWTVkeVJPcmZ0UlpNWFp6bzZoRUtrN2h1aHE1M0tYM3doUWVWakVMZzdyNTU0clpLMzVJd0FlWHlHYUpFV2lkdHh5UEllNFZ5Q1lQbHZ3aTIybUE5aktVRWxDUldiR3NxNnZud2ZNUXB4dGRvRjZjZkgtM2xPMFVJMUh1ZTlNN3BkYWpWNDBaNWFxaTBYTnIyLWQ?oc=5",
+    "summary": "The AI Trade Is Evolving — And This New ETF Is Chasing Humanoids, Drones And Smart Factories Sahm",
+    "source": "Sahm",
+    "region": "AI Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-15T10:12:48+00:00"
   },
   {
     "id": "1353d840f46132eda1",
@@ -3448,6 +3459,17 @@
     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNWVE3QkpkTXlFVHR1eW1WSUI3Q2N0TS1jTnlBUmpzeFFGdVVqMFloWUVUR0NqdGRINk5GaXQ5MkJlWlI2T1FWN3VfbzI3bDVOcmZfS0hhNzloYXpLVmNqenJpbHowWm43ZjlpcEtGWlJSQzRZY1FCQWE3SGtxSVc0eTdmek02bEZ4b041clMwSGNkb1lZZm1RdEdJVFhKSU44d19tb2d5N1J5QWJPc2RJX2Y2LWE?oc=5",
     "summary": "Connected and Autonomous Cars: Security Risks from Chinese Components American Enterprise Institute - AEI",
     "source": "AEI",
+    "region": "Global Mobility",
+    "group": "mobilnost",
+    "category": "automotive",
+    "published_at": "2026-05-15T07:00:00+00:00"
+  },
+  {
+    "id": "d5b743a5de157bc108",
+    "title": "The U.S. Still Doesn't Have an Answer to China's EV Dominance",
+    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9SS0l6ZURlaWhjNUxGblZmX3BLb1JuZ0MtZ0Fkakg0dWFWeFRVcVpvWG1GTENCdVJnUzRCbGc5akJiblRXWkV0N1U5RE8yMXVlUzdfcVFCejNVWGo1T1RvU1g1ZkVidw?oc=5",
+    "summary": "The U.S. Still Doesn't Have an Answer to China's EV Dominance Time Magazine",
+    "source": "Time Magazine",
     "region": "Global Mobility",
     "group": "mobilnost",
     "category": "automotive",
@@ -3553,17 +3575,6 @@
     "published_at": "2026-05-14T10:58:49+00:00"
   },
   {
-    "id": "c39bb86be7572a3904",
-    "title": "Stablecoins could threaten future internet finance without stronger regulation",
-    "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPN2p5ZGtDQXVhZXJ1MjZYb1ZWb29WYnRlLUQ0LUhwTzJ3bEJGZVczZHBsRE1XZjB4NmkybGZqRHk4RjE2OEFKdzNJLWFobFllaDVxZTd3UlZMWEkwZ3NEczgzMldNejBwZ21UaU5Rb3prYjIybHlselZZdlFESGs4dlRsa3FLS3lIQm00NVdqUnI4Nlo3MDdhcG1HWW1fQmEtLUVLTDFySE1mbWZ0bTBKTDJqNFE5YVBJSElSdDFKcklvNk5ZamV5NHdUYTVldnfSAdQBQVVfeXFMUGhhS3ZnSU5Ra09FendjaWdOZmVMcENUajNvTnIzY2trZHhVcHNQQmlCWjZfc0VUVUVCOWJycHh1ckU4cXg1aUtTWTZ6S2FvdktBNFQzNVRvZVRxM1J5dXBlZWRBWUJiOW41QkJHeWVqOHZjelI4X01YVy1sMkswT24xdEhaNzhjVGZvVkFWREtoTGo4Y04tWGxCSVJXdFpSclp3Yk1Lc0ZmcEZpaUlXbFF4M28wbEgxdlNqdjBfNXZWS3dUdUFBV1RIcGcwS05nN2ZlQnQ?oc=5",
-    "summary": "Stablecoins could threaten future internet finance without stronger regulation Devdiscourse",
-    "source": "Devdiscourse",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-14T09:36:15+00:00"
-  },
-  {
     "id": "445974731a160e0e78",
     "title": "Iran conflict scenario update: The Strait of Hormuz and market implications",
     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNbVZkX3RWYUdLWFpDOTZTXzNNV2JIMW55S2ZIZFdaWVp2OVVMV0EzNjVNWi1Vb09GS2pzVWhVVkt4SUlXQVY1RE5NT2R4czhSWGYwdWEtMEtYZjBwMVZ3NVYxV3FiNGRubDZreHNmcGFLdHRjMVNGNlNReGhjdjB5U2syX3dSb0w4OFZFbXNmV0tVbElaelFkRHFub3ZBeUtqeTdSM21sSzBsNlFLN0E?oc=5",
@@ -3583,28 +3594,6 @@
     "region": "Global Sport Business",
     "group": "sport",
     "category": "sport",
-    "published_at": "2026-05-14T07:00:00+00:00"
-  },
-  {
-    "id": "d3d29e4f1f86215c22",
-    "title": "AI Trade Evolves As New ETF Targets Humanoids, Drones And Smart Factories - WisdomTree Physical AI, Human",
-    "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPVVZGRnNMLXhvZjNScTNGRk9vbTlLd05CTE9VcjVEdURIaHZYcHZ1MVotdHRGaXpkLVBrLUN5eUdUT1NqMXhMdlEweURjYThlSDFoUjNxbnEtNnY0Z0k4Ym84dWpoYXA5OTh3ZEtNU1JIci1LNXlJalNpUTlNNlZmSjdXZUNqb1QwWU85TWV5UWpCb2lROGxSeDNhT3B6bS1YQ2dhWHJjYmxXd3pPazdINGQyY2lzU3RjbFZXQnp4RUhTMld3bzZfVDNrbXlkMlVUdGR6Z29XQjlJZlU?oc=5",
-    "summary": "AI Trade Evolves As New ETF Targets Humanoids, Drones And Smart Factories - WisdomTree Physical AI, Human Benzinga",
-    "source": "Benzinga",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-14T07:00:00+00:00"
-  },
-  {
-    "id": "1f95158608a3560592",
-    "title": "Opinion: Michigan should welcome data centers — but on Michigan’s terms",
-    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPU0FFZDR5Z2FnNk51NlJzaHoxN1k2akJwM0M4WEh2bHEzZmM5cnlEdWl1WFlBcE5iU0F3dXlJN1pRb0hhLTl1cnp5V0lUTmtkbEZPaDFHU0U0dnpialRySm1uVjFVemlzQ0VpTWwwaDZFTU9FR1hxVnJnM0p4SXZ1VkhvdGJ0TE12dXZmQ3pFQnhmaV9FTTJF?oc=5",
-    "summary": "Opinion: Michigan should welcome data centers — but on Michigan’s terms Crain's Detroit Business",
-    "source": "Crain's Detroit Business",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
     "published_at": "2026-05-14T07:00:00+00:00"
   },
   {
@@ -3707,17 +3696,6 @@
     "published_at": "2026-05-14T07:00:00+00:00"
   },
   {
-    "id": "8b98514e0ea8967233",
-    "title": "BorgWarner (NYSE:BWA) Rides EV Growth Momentum in Auto Sector",
-    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQY3VQa0l4d01QRWFyNWl4OUFQOG85Qk9mR3R6Vi1ha0FpcWIyQy1IY3k3TEZ3Nnphd3dJNXNzb0o5S0NKaUNHZWZVMG50enNJUmFtSEE4U2Jxd0pQVFZWcklDSU1nR3pJY0lXSFR2VnNYNVJVU2R1dW5uNTNXcHhEdGlGYV9VNmppeXN2b083S21keXcyRXc1RFB0RnpkTnRiYjR5eA?oc=5",
-    "summary": "BorgWarner (NYSE:BWA) Rides EV Growth Momentum in Auto Sector Kalkine Media",
-    "source": "Kalkine Media",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-13T23:02:00+00:00"
-  },
-  {
     "id": "e2a96a654848b2eda3",
     "title": "SoftBank profit surges on massive OpenAI valuation gain",
     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQaFllUUZRZ1gtOFpwMGwzQ3luX0pwOWRkUElxal9RZHgtd2x3SUtKYl84YVRyRTZud3c5RkN3ejV2ZjE1OHpWaXZ1RzctM2g1bTdIMXVpQXlLc2xHY3FETlQ4LWlNRFlId3BiVFNZOWcwQ25HajJLT2swWHFIWGNjYm1DN3JGMk5ReEZNOUE5WGh1Vk1Xdjc5bTJuaFhjanFRTkpkZEZMcUZsN00?oc=5",
@@ -3729,33 +3707,22 @@
     "published_at": "2026-05-13T19:48:40+00:00"
   },
   {
-    "id": "27b488787cc5a6c246",
-    "title": "Physical AI BoF from MIPI invites robotics companies ...",
-    "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA0bWlDQkwwVDhvajJ5eG1LSVlwZHRUMmpQZ0Vpd25iZC13RFVzZ05YeWNlWElqQUJ4R1V5V1JXRWhaaWt0WEZLMWpibFBncHNXR1VUeHRoZm5nbHJLeDU1T2tTcERlamExRDdHWTk5eUloZEVTWFk1WUJIOTU?oc=5",
-    "summary": "Physical AI BoF from MIPI invites robotics companies ... eeNews Europe",
-    "source": "eeNews Europe",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-13T17:27:25+00:00"
-  },
-  {
-    "id": "04c993ceae73274fed",
-    "title": "Motorcycle Market Accelerates Global Mobility Shift through EV and Premiumization Trends | US$ 250.2 billion by 2033 | Persistence Market Research",
-    "url": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxPSHZSOXpHWV84YXlhWDJrZHp0YjUzYXBHUWNLTzZSOGFuc1kzUDBLTEJRbVFtUldOWkJqY0x2LUhpMDQ0WEc2d1RlT0EyMFlXU3JlV2pQY0FMak1nVEozYWxaOGdhM04wY0cyUTJEUE5mWDViNERJZjBlU1VHMFFoN2VCczBnVDBrUUFYYlZla0VlS3E5cHFqMWNtWDJ6dC10Q05tSjNzMjR6VE5WUlpMU1dMb0E4SzllRmRmVVVkNGpvTmtobENvRU83QlFzRHY1Vk1HN2lWSDBzOVJWUEUwdG10OUFpWUlFdE9RaDF2OU1DelYzenAyTnZuek5tdVB1THg2LVZVSldCam42X05MeFVMWVN3RU51dThsdFF2dmE5X2o1WlhWMg?oc=5",
-    "summary": "Motorcycle Market Accelerates Global Mobility Shift through EV and Premiumization Trends | US$ 250.2 billion by 2033 | Persistence Market Research PR Newswire UK",
-    "source": "PR Newswire UK",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-13T16:24:00+00:00"
-  },
-  {
     "id": "90174a563bc5aa5556",
     "title": "Automotive LiDAR Market Projected to Hit $6.46B by 2033",
     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1UX2ZkTDBUTjFxSXB5WTNwUHlsTnFuckJ1bFdaRTUycGJiaUdUdzEtcHNUNUlnMzJUNzB0RjI4SWtnQzlQOUlXQU92SjNJTURaeXZqTHlGWUQ0Z3p0ZXJlNndHcjF6cEM0X0UwQ3NB?oc=5",
     "summary": "Automotive LiDAR Market Projected to Hit $6.46B by 2033 AftermarketNews",
     "source": "AftermarketNews",
+    "region": "Global Mobility",
+    "group": "mobilnost",
+    "category": "automotive",
+    "published_at": "2026-05-13T07:00:00+00:00"
+  },
+  {
+    "id": "2d268d7c09c51a793a",
+    "title": "Motorcycle Market Accelerates Global Mobility Shift through EV and Premiumization Trends | US$ 250.2 billion by 2033 | Persistence Market Research",
+    "url": "https://news.google.com/rss/articles/CBMipgJBVV95cUxNeGdqd3NVYnZNVXlJYkNGcmVEc1JRLXgxOXZXZ2ZUUTNkNWkyc2xiSE0tSmRBNjNuNE1PSV9vWjZ1RTlsNjJHMjhKWGZzN1VaVGZPRFhtTm5zTXlTU01xTnVhVzNnOEd3QUUtYzJXSXNFSnFvMnhvemdMUjVjZ2d1ZFpRSHZXYVpiV3pOUjJpS1RVQ1pFaDBXU0FxWmtfVTM3SHNndmktdGEtTVhXNjZEQk41OW1LVlQ2X2E0eG55WmV0TXJCSDBCZ2didzRiTDhuWjFHOWVVNW01TEF3a1RfbksyTVJzaE5xcEtCb28zeHRmZGY1c2k4R0xsdldudnRod1JlN1A0WGhFR2JPUG5YeENGYUJsWWg5WEdYWm5paWRQUjhROEE?oc=5",
+    "summary": "Motorcycle Market Accelerates Global Mobility Shift through EV and Premiumization Trends | US$ 250.2 billion by 2033 | Persistence Market Research PR Newswire",
+    "source": "PR Newswire",
     "region": "Global Mobility",
     "group": "mobilnost",
     "category": "automotive",
@@ -3795,6 +3762,17 @@
     "published_at": "2026-05-12T11:01:13+00:00"
   },
   {
+    "id": "c278b806e8b267a626",
+    "title": "VW-backed IAV faces protests over plans to cut 1,400 jobs",
+    "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPZEJxNTRNb1ozQ3FZYVlXVW1IVzNraHdFYzVNcDR0QTdmSDBWRmZ2ek5xYjM2Y0QtQlh3dEM4ZUZjZEJJVHp3QktWMXg3eXBicW1JcklxanBBQWdNcDhLaTd6Y2haY0x5a3NDMFpkVjdhRTJibHA4UmJKUlpMdFlRZm5HV0w3dnQ5cVEzb0N3NWZ5M3ptN0l1aEREenFUQ2RSUkUtNWd3?oc=5",
+    "summary": "VW-backed IAV faces protests over plans to cut 1,400 jobs Automotive News",
+    "source": "Automotive News",
+    "region": "Global Mobility",
+    "group": "mobilnost",
+    "category": "automotive",
+    "published_at": "2026-05-12T07:00:00+00:00"
+  },
+  {
     "id": "1d2c127a25cf6d643f",
     "title": "Europe Car Sharing Market Size, Share, Growth & Trends 2034",
     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPSWk4dU4ycXZoTVhId0NhcW11aGNiSXJkRU1mNDFyQ3hvazJtWU9oYUJOaUw0bGFGUUJmWFFsbzRVZHQwWXF6U1h4M04yNVdrMTdqNm5qOW5NSUx0T2kzZS1CMld2eDZHMjhzSnR6STZjem0wLWxVOVBKLU84aEx1SQ?oc=5",
@@ -3815,6 +3793,17 @@
     "group": "mobilnost",
     "category": "automotive",
     "published_at": "2026-05-09T07:00:00+00:00"
+  },
+  {
+    "id": "813aa8384b0c73ee3c",
+    "title": "Colombia Sees Electric Vehicle Sales Surge 304% in April 2026",
+    "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBPOFpqbjRBQjJJdnVSZUFhNU10UHpEbVNQa0NzbTdxOEU4ckNucVY1d1pqTG1GS1F6dDBNTXYwR0VOYUZYOEFzVTBMaG5yZEZOMC1iOUdWQm5Hd3lWMlRNSGJnRWVsQUNaeHZzTWp1Ny1ra1pfZmVxZ29B?oc=5",
+    "summary": "Colombia Sees Electric Vehicle Sales Surge 304% in April 2026 ColombiaOne.com",
+    "source": "ColombiaOne.com",
+    "region": "Global Mobility",
+    "group": "mobilnost",
+    "category": "automotive",
+    "published_at": "2026-05-08T07:00:00+00:00"
   },
   {
     "id": "1f8b77ad262ce87f8d",
@@ -3861,17 +3850,6 @@
     "published_at": "2026-05-06T07:00:00+00:00"
   },
   {
-    "id": "a20276136602b74f4b",
-    "title": "Auto China 2026 Show Report: electric ambition accelerates as Beijing becomes the epicentre of next-generation mobility",
-    "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQUGh4ckR1M251MWxiTW13SmFtUmxKZTRWc1cxalcwaUwtbUtqWjNlSXlhZHBLNFN5RHZfS1QxQ0pQUFVyNlhKRDh3QjIxMDVrc3JPWklHejNNUnhfSjI2ZlRlWDNCN0ZJbkZCZXBFRERyRVNGQ1JkeXNBM2FvMzBkdW4yVUNVR2NTOGVBSmJCTW9mZWRfQUJTZnk1THhPMkZiQ0dCRHdTVXozWDlmM3QxaTlhRmpZckM2THFoa29tNGNTeXltWkcwR2xCZDUzejd4bEZIRjc5Tkx4WGFpdDRJeHZXVGo4YUlkYkHSAe8BQVVfeXFMUHhlOTRaR0d2YTVaWkhEc1dpM05iNU43REhnYmlwbkVTOG5YWnp6ZEE2SEhFV2Fmakk1Tjc5QVhUTUtJTVYzWUtLRlY1d2dVNHJXdDFlTklJNW9aWFlYS2ZobXlqOVk0TmhSd1FCdGo4enZ5b1ZiampNcHJldThhUmZhUVBQbnVZUGozZ1ZNVk5nM19nNktkQjBvUlpCR2tVT1RYWnpFM3NDSl9RMThfcW9aMXUwY0M0ZDI2Ry1BTTgtWkxKOXBjZi03bTQyaldfU29XWkFIUzlOUFZMMzVZMEw4LVdSeUZrLWlhaDRid00?oc=5",
-    "summary": "Auto China 2026 Show Report: electric ambition accelerates as Beijing becomes the epicentre of next-generation mobility whichev.net",
-    "source": "whichev.net",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-05T07:00:00+00:00"
-  },
-  {
     "id": "287bf68dd8d40dd4db",
     "title": "Tri velika trgovinska lanca spremaju ulazak u Srbiju: Stiže velika konkurencija",
     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ3RmX09GblVSdDFUSGx0QUFJY21xOERldkNvN0xKRTRYS0paeUpwU1dYaHBDSmhOWE1lZGdpSzhjLVB3Y04yeF9PaWVBck1SOFd3emVGd3pwMkt3X2pPdDg5eURUQ3gyTVZBVjFLdWpqTGpMYjFIcEhVSFdQaUJBUmRQd3pDZjRCZHM0U2pPNXdiS0lyNFlCb3RBWFowRHBWc0E?oc=5",
@@ -3905,6 +3883,17 @@
     "published_at": "2026-05-04T07:00:00+00:00"
   },
   {
+    "id": "42eb00e344bc5857f0",
+    "title": "On demand Transportation Market Size, Share, Growth, Forecast, 2034",
+    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNQVdRMnJWSVViTjdLcXRLNlRhUHRCY0J4YTFBOHdPd0tPMnNVcDAtRE1aemU0TnBXZ2s0S1VBSTg1em1jei1KOE5hYndsb0xyMlJLUDFiOVRWWVdLMTFxbVFXQlBxNmd0aEdBbjRTcmU4TVJaZDV2cVNzUWQ3ZE1kUEk3M24?oc=5",
+    "summary": "On demand Transportation Market Size, Share, Growth, Forecast, 2034 Fortune Business Insights",
+    "source": "Fortune Business Insights",
+    "region": "Global Mobility",
+    "group": "mobilnost",
+    "category": "automotive",
+    "published_at": "2026-05-04T07:00:00+00:00"
+  },
+  {
     "id": "5cd3df886ad16c35a0",
     "title": "Can LIV Golf work without the Saudi billions? Sports investors predict a ‘free fall’ - The Athletic",
     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNRGF5eUV3blhjWVVlRzRaWGZ4YXJtMFVxUUtONUMxSUdWclRhbjJndG9nQmtfTnFVdWdzMm94TWlKSkpzWl9Zd095dXpXMEl6bXJoQ2JpNUwwbDJrSUhrOTdlZmpYSFpBeXkzRUhhbzd2X1dXeFY2clItNEloQnlFaUdfS1ZMcmJrZW1OQjZzQVFiUWFrWWpaS3ZsaEI4Z0xpRTI4?oc=5",
@@ -3913,6 +3902,17 @@
     "region": "Global Sport Business",
     "group": "sport",
     "category": "sport",
+    "published_at": "2026-05-03T07:00:00+00:00"
+  },
+  {
+    "id": "af26df07495a119d9c",
+    "title": "European automakers face China’s software edge with 3-pronged response strategy",
+    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNQVNwc044U0VhcE10bTN2cWlwZWdtQlJhNk12bnFpR1hFOW9HV1BBa0ZGQVY2SUVUZmlPQ1ExRjM2UlFEMXVWelEyS2ZzeHV2TE1BekJXZFRLYWNrVWw1SDFPY2wzRkhTVl9VUEtHdEh5dVJka2hobnlrRkh3RU9uaTE2cnA?oc=5",
+    "summary": "European automakers face China’s software edge with 3-pronged response strategy Automotive News",
+    "source": "Automotive News",
+    "region": "Global Mobility",
+    "group": "mobilnost",
+    "category": "automotive",
     "published_at": "2026-05-03T07:00:00+00:00"
   },
   {
@@ -3976,17 +3976,6 @@
     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9DS1FhSFpKUFVQQVYtNXBuWk5KVlJlYzZ2T2tJS0szTkRpeTF1UjAtTDJ3d05Qa3ZDYlBHOWlBdzFkNUtKbmJZRTV6Snh2OExhYTRDdXhKUGhSenZPU1FCcHVGNFM3aW9a?oc=5",
     "summary": "Top 10: European EV Companies EV Magazine",
     "source": "EV Magazine",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-04-29T07:00:00+00:00"
-  },
-  {
-    "id": "b926e3b3f52788e7c0",
-    "title": "Robotaxis, AI manufacturing and next-gen mobility on the rise",
-    "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQbk5xWF9pRURxbERpcnBxWC0xNDM3Nkk3TWFYcnR1Y3dDeEswTmFlT3VmS0ZHMU52UXNpSEFJNGZoZkNfeDA3dFJzUG9DVU5id2o1bVJIdGFfc3lQNHhwVGRrR0JfZVdhYXo5U0x0X1VkYXlPMnlzcG5VajkyS1lTb2ROTUpMdFYxUXhTeUxmWXBpaElobmhKQ25TRWV5Wi1JbVhkQmFibnQ1VEpyLW54UlY0Y0FjMXBzbllFOGJhVi0ySjA3aGNEYTZsSktQVFpfZ3Y5WmktRWxOSUpyZmN3cDBpQXpGRkdWblNsdnNZelpNY002WGlr0gH8AUFVX3lxTE16NFhvY2UwclZnMFRoSXJPUXZVaFo4MmIxYUxpS0RpekdvSEF0a0p6TUc5cW1YNlBaTmpGQlMyVGV2cGlaaURYLU1kd1dpa1paS2tWWE9zdzAwTVRFc3JNQXZDc3dkMHBKdmtORS0wZHhsZW42U3E1ZU9UZUFpUldBd20yenFQdEgyR3dKZmRsRElwaHlXQWxfSDFLZE9ROElVZFZHUng1SWlPZV9zN1ZneDRtY2JNRkt2ZkFXdXNBQ0VvaUdMSEw4N0xQQmpuUHNKREZ1dG1RY0pKUFMxNnRqMjNXSHNCbVhZNGttMUFmWm9vLXRCOHRnMXVkaQ?oc=5",
-    "summary": "Robotaxis, AI manufacturing and next-gen mobility on the rise ET Auto",
-    "source": "ET Auto",
     "region": "Global Mobility",
     "group": "mobilnost",
     "category": "automotive",
