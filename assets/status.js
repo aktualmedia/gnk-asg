@@ -36,11 +36,13 @@
     const en = english();
     const news = newsData && newsData.news;
     if (news && news.public_items != null) {
-      setBadge('newsBadge', 'Business News: ' + news.public_items + (en ? ' items · ' : ' stavki · ') + dateLabel(news.updated_at), minutesOld(news.updated_at) <= 95 ? 'ok' : 'warning');
+      const newsText = en ? 'Business News: ' + news.public_items + ' items · Updated: ' + dateLabel(news.updated_at) : 'Poslovne vijesti: ' + news.public_items + ' stavki · Ažurirano: ' + dateLabel(news.updated_at);
+      setBadge('newsBadge', newsText, minutesOld(news.updated_at) <= 95 ? 'ok' : 'warning');
     }
     if (marketData && marketData.digital_assets) {
       const markets = marketData.digital_assets.coins || 0;
-      setBadge('marketBadge', 'Digital Assets: ' + markets + (en ? ' assets · ' : ' stavki · ') + dateLabel(marketData.updated_at), minutesOld(marketData.updated_at) <= 20 ? 'ok' : 'warning');
+      const marketText = en ? 'Digital Assets: ' + markets + ' assets · Updated: ' + dateLabel(marketData.updated_at) : 'Digitalna imovina: ' + markets + ' stavki · Ažurirano: ' + dateLabel(marketData.updated_at);
+      setBadge('marketBadge', marketText, minutesOld(marketData.updated_at) <= 20 ? 'ok' : 'warning');
     }
     const newsFresh = Boolean(news && minutesOld(news.updated_at) <= 95);
     const marketFresh = Boolean(marketData && minutesOld(marketData.updated_at) <= 20);
@@ -82,7 +84,7 @@
     installStyle();
     const row = document.createElement('div');
     row.className = 'live-row';
-    row.innerHTML = '<span class="live-badge waiting" id="newsBadge">Business News: provjera</span><span class="live-badge waiting" id="marketBadge">Digital Assets: provjera</span><span class="live-badge waiting automation-status" id="automationBadge">Provjera ažuriranja</span>';
+    row.innerHTML = '<span class="live-badge waiting" id="newsBadge">Poslovne vijesti: provjera</span><span class="live-badge waiting" id="marketBadge">Digitalna imovina: provjera</span><span class="live-badge waiting automation-status" id="automationBadge">Provjera ažuriranja</span>';
     hero.insertAdjacentElement('afterend', row);
     await refresh();
     window.addEventListener('gnk-language-change', render);
