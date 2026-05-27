@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v44-verified-automation-share-visits2423';
+const CACHE_NAME = 'gnk-asg-live-v45-verified-status-data-share-visits2423';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/',
@@ -26,7 +26,7 @@ const STATIC_ASSETS = [
   './assets/group-clarity.js', './assets/public-sources.js', './assets/site-share.js', './assets/content-share.js', './assets/hourly-data-disclosure.js', './assets/portal-layout.js', './assets/public-tools.js',
   './assets/market-centre-data.js', './assets/market-constellation.js', './data/desk_public_config.json',
   './data/group_network.json', './data/group_network_geo.json', './data/group_location_facts.json',
-  './data/public_sources.json', './data/open_data.json', './data/stock_exchanges.json', './data/asg_gold_asset.json',
+  './data/public_sources.json', './data/update_status.json', './data/open_data.json', './data/macro_market.json', './data/stock_exchanges.json', './data/asg_gold_asset.json',
   './data/news.json', './data/media_approved.json', './data/media_monitor_status.json', './data/market.json', './data/btc_chart.json',
   './data/stablecoins.json', './data/exchange_compare.json', './data/market_indices.json', './data/fast_market_status.json',
   './data/daily_market_brief.json', './manifest.webmanifest', './robots.txt', './sitemap.xml', './google46686328e30c759f.html'
