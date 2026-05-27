@@ -1,6 +1,6 @@
-const CACHE_NAME = 'gnk-asg-live-v40-map-weather-image-modal';
+const CACHE_NAME = 'gnk-asg-live-v41-topics-functional-hub';
 const STATIC_ASSETS = [
-  './', './index.html', './en/', './en/index.html', './sadrzaj/', './tehnologija/',
+  './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/', './admin/', './webmail/',
   './trzista/', './trzista/index.html', './en/markets/', './en/markets/index.html',
   './en/finance/', './en/finance/index.html', './en/technology/', './en/technology/index.html',
@@ -26,9 +26,9 @@ const STATIC_ASSETS = [
   './assets/market-centre-data.js', './assets/market-constellation.js', './data/desk_public_config.json',
   './data/group_network.json', './data/group_network_geo.json', './data/group_location_facts.json',
   './data/public_sources.json', './data/open_data.json', './data/stock_exchanges.json', './data/asg_gold_asset.json',
-  './data/media_approved.json', './data/media_monitor_status.json', './data/market.json', './data/btc_chart.json',
+  './data/news.json', './data/media_approved.json', './data/media_monitor_status.json', './data/market.json', './data/btc_chart.json',
   './data/stablecoins.json', './data/exchange_compare.json', './data/market_indices.json', './data/fast_market_status.json',
-  './data/daily_market_brief.json', './manifest.webmanifest', './robots.txt', './sitemap.xml'
+  './data/daily_market_brief.json', './manifest.webmanifest', './robots.txt', './sitemap.xml', './google46686328e30c759f.html'
 ];
 self.addEventListener('install', event => {
   const requests = STATIC_ASSETS.map(asset => new Request(asset, { cache: 'reload' }));
