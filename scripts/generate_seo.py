@@ -7,7 +7,7 @@ from xml.sax.saxutils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = 'https://gnk-asg.hr/'
-IMAGE = SITE + 'assets/gnk-asg-social-card.png'
+DEFAULT_IMAGE = SITE + 'assets/gnk-asg-social-card.png'
 TODAY = datetime.now(timezone.utc).date().isoformat()
 ORG_ID = SITE + '#gnk-asg'
 GROUP_ID = SITE + '#gnk-dinamo-ltd'
@@ -15,6 +15,15 @@ PERSON_ID = SITE + '#nermin-sefic'
 WEBSITE_ID = SITE + '#website'
 CORE_HR = 'GNK ASG d.o.o., GNK ASG doo, GNK ASG, GNK DINAMO Ltd., GNK DINAMO LTD, GNK Dinamo Ltd, GNK Dinamo grupa, Nermin Sefić, Nermin Sefic'
 CORE_EN = 'GNK ASG d.o.o., GNK ASG doo, GNK ASG, GNK DINAMO Ltd., GNK DINAMO LTD, GNK Dinamo Ltd, GNK Dinamo group, Nermin Sefić, Nermin Sefic'
+SOCIAL_IMAGES = {
+    'teme/': 'assets/share-teme.png',
+    'financije/': 'assets/share-financije.png',
+    'en/finance/': 'assets/share-financije.png',
+    'tehnologija/': 'assets/share-tehnologija.png',
+    'en/technology/': 'assets/share-tehnologija.png',
+    'trzista/': 'assets/share-trzista.png',
+    'en/markets/': 'assets/share-trzista.png',
+}
 PAGE_TERMS = {
     '': 'korporativni portal, korporativni profil, Zagreb, Hrvatska, Boulder Colorado, GNK DINAMO Ltd. Group, 33 povezana društva, 12 planiranih lokacija, globalna mreža društava, FY 2025, financijski pokazatelji, sportska tehnologija, digitalna imovina, poslovne vijesti',
     'en/': 'corporate portal, corporate profile, Zagreb Croatia, Boulder Colorado, GNK DINAMO Ltd. Group, 33 group companies, 12 planned locations, global group network, FY 2025, financial indicators, sports technology, digital assets, business news',
@@ -49,18 +58,18 @@ PAGES = [
     {'path':'en/registries/','file':'en/registries/index.html','lang':'en','locale':'en_US','changefreq':'weekly','priority':'0.8','alt':('registri/','en/registries/'),'title':'Public Registries and FINA RGFI | GNK ASG d.o.o. | GNK DINAMO Ltd. | Nermin Sefić','description':'Official sources for GNK ASG d.o.o., GNK DINAMO Ltd. and Nermin Sefić: OIB and MBS, Croatian Court Register, FINA RGFI, Colorado Business Database, EUIPO, ECB and ENISA.','type':'CollectionPage','name':'Public Registries and Official Sources — GNK ASG d.o.o. and GNK DINAMO Ltd.','crumb':'Registries'},
     {'path':'instalacija/','file':'instalacija/index.html','lang':'hr','locale':'hr_HR','changefreq':'monthly','priority':'0.7','title':'Instaliraj portal | GNK ASG d.o.o. | GNK DINAMO Ltd. | Nermin Sefić','description':'Instalacija korporativnog portala GNK ASG d.o.o. s javnim podatcima o GNK DINAMO Ltd. okviru i Nerminu Sefiću kao aplikacije putem preglednika Google Chrome.','type':'HowTo','name':'Instalacija GNK ASG aplikacije preko Google Chromea','crumb':'Instalacija'}
 ]
-
 def url(page): return SITE + page['path']
+def image(page): return SITE + SOCIAL_IMAGES.get(page['path'], 'assets/gnk-asg-social-card.png')
 def keywords(page): return (CORE_EN if page['lang'] == 'en' else CORE_HR) + ', ' + PAGE_TERMS.get(page['path'], '')
 def entities():
     return [
-        {'@type':'Organization','@id':ORG_ID,'name':'GNK ASG d.o.o.','alternateName':['GNK ASG doo','GNK ASG'],'url':SITE,'logo':SITE+'assets/logo-gnk-asg.svg','image':IMAGE,'taxID':'75227917632','knowsAbout':['Technology','Artificial Intelligence','FinTech','Digital Assets','Sports Technology','Market Intelligence','Corporate Transparency'],'memberOf':{'@id':GROUP_ID},'address':{'@type':'PostalAddress','streetAddress':'Zagrebačka cesta 130','addressLocality':'Zagreb','addressCountry':'HR'}},
-        {'@type':'Organization','@id':GROUP_ID,'name':'GNK DINAMO Ltd.','alternateName':['GNK DINAMO LTD','GNK Dinamo Ltd','GNK DINAMO Ltd. Group'],'url':SITE,'image':IMAGE,'identifier':'Entity ID 20238180649','location':{'@type':'Place','name':'Boulder, Colorado, USA'}},
+        {'@type':'Organization','@id':ORG_ID,'name':'GNK ASG d.o.o.','alternateName':['GNK ASG doo','GNK ASG'],'url':SITE,'logo':SITE+'assets/logo-gnk-asg.svg','image':DEFAULT_IMAGE,'taxID':'75227917632','knowsAbout':['Technology','Artificial Intelligence','FinTech','Digital Assets','Sports Technology','Market Intelligence','Corporate Transparency'],'memberOf':{'@id':GROUP_ID},'address':{'@type':'PostalAddress','streetAddress':'Zagrebačka cesta 130','addressLocality':'Zagreb','addressCountry':'HR'}},
+        {'@type':'Organization','@id':GROUP_ID,'name':'GNK DINAMO Ltd.','alternateName':['GNK DINAMO LTD','GNK Dinamo Ltd','GNK DINAMO Ltd. Group'],'url':SITE,'image':DEFAULT_IMAGE,'identifier':'Entity ID 20238180649','location':{'@type':'Place','name':'Boulder, Colorado, USA'}},
         {'@type':'Person','@id':PERSON_ID,'name':'Nermin Sefić','alternateName':'Nermin Sefic','jobTitle':'Director / authorised representative / UBO of the group','worksFor':{'@id':ORG_ID},'affiliation':{'@id':GROUP_ID}}
     ]
 def schema(page):
-    u = url(page); keys = keywords(page)
-    item = {'@type':page['type'],'@id':u+'#webpage','url':u,'name':page['name'],'description':page['description'],'keywords':keys,'inLanguage':page['lang'],'isPartOf':{'@id':WEBSITE_ID},'about':[{'@id':ORG_ID},{'@id':GROUP_ID},{'@id':PERSON_ID}],'mentions':[{'@id':ORG_ID},{'@id':GROUP_ID},{'@id':PERSON_ID}],'primaryImageOfPage':{'@type':'ImageObject','url':IMAGE}}
+    u = url(page); keys = keywords(page); page_image = image(page)
+    item = {'@type':page['type'],'@id':u+'#webpage','url':u,'name':page['name'],'description':page['description'],'keywords':keys,'inLanguage':page['lang'],'isPartOf':{'@id':WEBSITE_ID},'about':[{'@id':ORG_ID},{'@id':GROUP_ID},{'@id':PERSON_ID}],'mentions':[{'@id':ORG_ID},{'@id':GROUP_ID},{'@id':PERSON_ID}],'primaryImageOfPage':{'@type':'ImageObject','url':page_image}}
     graph = [{'@type':'WebSite','@id':WEBSITE_ID,'url':SITE,'name':'GNK ASG d.o.o. | GNK DINAMO Ltd. | Nermin Sefić','publisher':{'@id':ORG_ID},'about':[{'@id':ORG_ID},{'@id':GROUP_ID},{'@id':PERSON_ID}],'keywords':keywords(PAGES[0]),'inLanguage':['hr','en']}] + entities() + [item]
     if page['path'] not in ('','en/'):
         item['breadcrumb']={'@id':u+'#breadcrumb'}
@@ -69,9 +78,9 @@ def schema(page):
         item['step']=[{'@type':'HowToStep','name':'Otvorite portal u Chromeu','text':'Otvorite GNK ASG d.o.o. portal u pregledniku Google Chrome.'},{'@type':'HowToStep','name':'Pokrenite instalaciju','text':'U izborniku preglednika odaberite instalaciju aplikacije ili dodavanje na početni zaslon.'},{'@type':'HowToStep','name':'Potvrdite instalaciju','text':'Potvrdite instalaciju i pokrenite portal kao aplikaciju.'}]
     return {'@context':'https://schema.org','@graph':graph}
 def metadata(page):
-    u = url(page); other = 'en_US' if page['locale']=='hr_HR' else 'hr_HR'; keys = keywords(page)
-    alt_image = 'GNK ASG d.o.o., GNK DINAMO Ltd. and Nermin Sefić — Corporate Portal' if page['lang']=='en' else 'GNK ASG d.o.o., GNK DINAMO Ltd. i Nermin Sefić — korporativni portal'
-    lines = ['<!-- SEO:BEGIN generated by scripts/generate_seo.py -->', f'  <meta name="keywords" content="{escape(keys)}">', '  <meta name="author" content="GNK ASG d.o.o.; GNK DINAMO Ltd.; Nermin Sefić">', '  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">', '  <meta name="theme-color" content="#07162d">', f'  <link rel="canonical" href="{u}">', f'  <meta property="og:title" content="{escape(page["title"])}">', f'  <meta property="og:description" content="{escape(page["description"])}">', '  <meta property="og:type" content="website">', f'  <meta property="og:url" content="{u}">', '  <meta property="og:site_name" content="GNK ASG d.o.o. | GNK DINAMO Ltd. | Nermin Sefić">', f'  <meta property="og:locale" content="{page["locale"]}">', f'  <meta property="og:locale:alternate" content="{other}">', f'  <meta property="og:image" content="{IMAGE}">', '  <meta property="og:image:type" content="image/png">', '  <meta property="og:image:width" content="1200">', '  <meta property="og:image:height" content="630">', f'  <meta property="og:image:alt" content="{escape(alt_image)}">', '  <meta name="twitter:card" content="summary_large_image">', f'  <meta name="twitter:title" content="{escape(page["title"])}">', f'  <meta name="twitter:description" content="{escape(page["description"])}">', f'  <meta name="twitter:image" content="{IMAGE}">', f'  <meta name="twitter:image:alt" content="{escape(alt_image)}">']
+    u = url(page); other = 'en_US' if page['locale']=='hr_HR' else 'hr_HR'; keys = keywords(page); page_image = image(page)
+    alt_image = page['title'] + ' — GNK ASG d.o.o.'
+    lines = ['<!-- SEO:BEGIN generated by scripts/generate_seo.py -->', f'  <meta name="keywords" content="{escape(keys)}">', '  <meta name="author" content="GNK ASG d.o.o.; GNK DINAMO Ltd.; Nermin Sefić">', '  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">', '  <meta name="theme-color" content="#07162d">', f'  <link rel="canonical" href="{u}">', f'  <meta property="og:title" content="{escape(page["title"])}">', f'  <meta property="og:description" content="{escape(page["description"])}">', '  <meta property="og:type" content="website">', f'  <meta property="og:url" content="{u}">', '  <meta property="og:site_name" content="GNK ASG d.o.o. | GNK DINAMO Ltd. | Nermin Sefić">', f'  <meta property="og:locale" content="{page["locale"]}">', f'  <meta property="og:locale:alternate" content="{other}">', f'  <meta property="og:image" content="{page_image}">', '  <meta property="og:image:type" content="image/png">', '  <meta property="og:image:width" content="1200">', '  <meta property="og:image:height" content="630">', f'  <meta property="og:image:alt" content="{escape(alt_image)}">', '  <meta name="twitter:card" content="summary_large_image">', f'  <meta name="twitter:title" content="{escape(page["title"])}">', f'  <meta name="twitter:description" content="{escape(page["description"])}">', f'  <meta name="twitter:image" content="{page_image}">', f'  <meta name="twitter:image:alt" content="{escape(alt_image)}">']
     if page.get('alt'):
         hr, english = page['alt']; lines += [f'  <link rel="alternate" hreflang="hr" href="{SITE+hr}">', f'  <link rel="alternate" hreflang="en" href="{SITE+english}">', f'  <link rel="alternate" hreflang="x-default" href="{SITE+hr}">']
     lines += ['  <script type="application/ld+json">'+json.dumps(schema(page),ensure_ascii=False,separators=(',',':'))+'</script>', '<!-- SEO:END -->']
@@ -95,4 +104,4 @@ def entry(page):
     return '\n'.join(lines)
 for page in PAGES: enhance(page)
 (ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'+'\n'.join(entry(page) for page in PAGES)+'\n</urlset>\n', encoding='utf-8')
-(ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /webmail/\n\nSitemap: '+SITE+'sitemap.xml\n', encoding='utf-8')
+(ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /webmail/\nDisallow: /podijeli/\n\nSitemap: '+SITE+'sitemap.xml\n', encoding='utf-8')
