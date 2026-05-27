@@ -40,6 +40,8 @@ for (const route of homepageRoutes) {
       const toggle = page.locator('#menuToggle');
       await expect(toggle).toBeVisible({ timeout: 15000 });
       await toggle.click();
+      await expect(page.locator('#navLinks')).toHaveClass(/open/);
+      await toggle.click();
     }
     await expect(page.locator('#global-network')).toBeVisible({ timeout: 15000 });
     const panel = page.locator('#networkOverviewVisual');
@@ -49,16 +51,19 @@ for (const route of homepageRoutes) {
     await expect(panel.locator('.network-overview-kpis strong').nth(1)).toContainText('+12');
     await expect(panel.locator('.network-overview-kpis strong').nth(2)).toContainText('45');
     await expect.poll(async () => page.evaluate(() => {
-      const layout = document.querySelector('#global-network .network-layout');
+      const panel = document.getElementById('networkOverviewVisual');
       const dock = document.getElementById('networkLocationContext');
-      const facts = dock && dock.querySelector('.network-sidebar .location-insights');
-      const visual = layout && (layout.querySelector('.globe-panel') || layout.querySelector('.network-canvas'));
-      if (!layout || !dock || !facts || !visual) return false;
-      const visualBottom = visual.getBoundingClientRect().bottom;
-      const dockTop = dock.getBoundingClientRect().top;
-      return dockTop >= visualBottom - 4 && dockTop - visualBottom < 24 &&
-        Boolean(dock.querySelector('#googleLocationMap')) && Boolean(dock.querySelector('#locationWeatherPanel'));
+      const mapSlot = panel && panel.querySelector('#overviewMapSlot');
+      const weatherSlot = panel && panel.querySelector('#overviewWeatherSlot');
+      const map = document.getElementById('googleLocationMap');
+      const weather = document.getElementById('locationWeatherPanel');
+      return Boolean(
+        panel && dock && mapSlot && weatherSlot && map && weather &&
+        mapSlot.contains(map) && weatherSlot.contains(weather)
+      );
     }), { timeout: 15000 }).toBe(true);
+    await expect(page.locator('#googleLocationMap')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#locationWeatherPanel')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('#bppPublicCard')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('#bppPublicCard h3')).toContainText(route.bpp);
     const bppBox = await page.locator('#bppPublicCard').boundingBox();
