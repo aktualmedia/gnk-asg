@@ -72,7 +72,8 @@
     const date = stamp(item) ? new Date(stamp(item)).toLocaleDateString(en ? 'en-GB' : 'hr-HR') : '';
     const summary = item.summary || (en ? 'Open the source for the full publication.' : 'Otvorite izvor za cjelovitu objavu.');
     const open = en ? 'OPEN SOURCE →' : 'OTVORI IZVOR →';
-    return '<article class="news-card' + type + '"><span class="meta">' + esc(label) + (date ? ' · ' + esc(date) : '') + '</span><h3>' + esc(item.title) + '</h3><p>' + esc(summary) + '</p><a target="_blank" rel="noopener nofollow" href="' + esc(item.url) + '">' + open + '</a></article>';
+    const share = item.share_url ? ' data-share-url="' + esc(item.share_url) + '"' : '';
+    return '<article class="news-card' + type + '"' + share + '><span class="meta">' + esc(label) + (date ? ' · ' + esc(date) : '') + '</span><h3>' + esc(item.title) + '</h3><p>' + esc(summary) + '</p><a target="_blank" rel="noopener nofollow" href="' + esc(item.url) + '">' + open + '</a></article>';
   }
   function collection(filter) {
     if (filter === 'mentions') return approvedMedia;
