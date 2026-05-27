@@ -1,7 +1,7 @@
 name: Five Minute Market Intelligence Update
 
-# Prioritetni i samostalni proces za tržišne, makro, ASG Gold i otvorene tržišne podatke.
-# Odvojen je od vijesti, SEO-a i medijskog statusa kako petominutni prikaz ne bi čekao druge objave.
+# Prioritetni i samostalni proces samo za brze tržišne podatke.
+# Makro usporedbe, ASG Gold, burzovne referentne kartice i ECB podatci obrađuju se u zasebnom satnom procesu.
 on:
   schedule:
     - cron: '2-57/5 * * * *'
@@ -11,9 +11,6 @@ on:
       - main
     paths:
       - 'scripts/update_fast_market.py'
-      - 'scripts/update_macro_data.py'
-      - 'scripts/update_market_extensions.py'
-      - 'scripts/update_open_data.py'
       - '.github/workflows/fast-market-update.yml'
 
 permissions:
@@ -25,9 +22,9 @@ concurrency:
 
 jobs:
   refresh-market:
-    name: Refresh all public market panels
+    name: Refresh fast public market panels
     runs-on: ubuntu-latest
-    timeout-minutes: 14
+    timeout-minutes: 8
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
@@ -38,43 +35,24 @@ jobs:
         with:
           python-version: '3.12'
       - name: Update fast-moving digital asset datasets
-        id: fast_market
-        continue-on-error: true
         run: python scripts/update_fast_market.py
-      - name: Update comparative macro-market dataset
-        id: macro_market
-        continue-on-error: true
-        run: python scripts/update_macro_data.py
-      - name: Update ASG reference profile and stock-exchange cards
-        id: market_extensions
-        continue-on-error: true
-        run: python scripts/update_market_extensions.py
-      - name: Update ECB public exchange-rate dataset
-        id: open_data
-        continue-on-error: true
-        run: python scripts/update_open_data.py
-      - name: Publish latest generated market datasets without merge conflicts
+      - name: Publish fast market datasets without merge conflicts
         run: |
           set -e
           git config user.name "gnk-asg-market-bot"
           git config user.email "actions@users.noreply.github.com"
-          mkdir -p /tmp/gnk-market-data
-          for file in market.json stablecoins.json exchange_compare.json market_indices.json btc_chart.json fast_market_status.json macro_market.json asg_gold_asset.json stock_exchanges.json open_data.json; do
-            if [ -f "data/$file" ]; then cp "data/$file" /tmp/gnk-market-data/; fi
-          done
+          mkdir -p /tmp/gnk-fast-market-data
+          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-fast-market-data/
           publish_generated_data() {
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/gnk-market-data/*.json data/
-            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json
+            cp /tmp/gnk-fast-market-data/*.json data/
+            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
             if git diff --cached --quiet; then
-              echo "No market changes."
+              echo "No fast-market changes."
               return 0
             fi
-            git commit -m "Automated consolidated market intelligence update"
+            git commit -m "Automated five minute fast market update"
             git push origin HEAD:main
           }
           publish_generated_data || (sleep 8 && publish_generated_data)
-      - name: Report partial public-source availability
-        if: steps.fast_market.outcome == 'failure' || steps.macro_market.outcome == 'failure' || steps.market_extensions.outcome == 'failure' || steps.open_data.outcome == 'failure'
-        run: echo "One or more public market sources were temporarily unavailable; successfully generated current datasets were published."
