@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v48-portal-share-picker-card05';
+const CACHE_NAME = 'gnk-asg-live-v49-market-coverage-card05';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/',
@@ -8,7 +8,7 @@ const STATIC_ASSETS = [
   './autorske-objave/', './podijeli/portal/', './podijeli/financije/', './podijeli/grupa/', './podijeli/trzista/', './podijeli/tehnologija/', './podijeli/vijesti/', './podijeli/dokumenti/', './podijeli/bpp/',
   './assets/style.css', './assets/advanced.css', './assets/header-premium.css',
   './assets/group-contrast.css', './assets/group-network.css', './assets/network-motion.css', './assets/group-globe-3d.css',
-  './assets/group-location-insights.css', './assets/group-map-2d-geo.css', './assets/group-google-map.css', './assets/group-location-weather.css', './assets/group-overview-panel.css', './assets/network-reading-layout.css', './assets/network-live-selection.css', './assets/portal-integration.css', './assets/portal-status.css', './assets/command-centre.css',
+  './assets/group-location-insights.css', './assets/group-map-2d-geo.css', './assets/group-google-map.css', './assets/group-location-weather.css', './assets/group-overview-panel.css', './assets/group-market-coverage.css', './assets/network-reading-layout.css', './assets/network-live-selection.css', './assets/portal-integration.css', './assets/portal-status.css', './assets/command-centre.css',
   './assets/bitcoin-chart.css', './assets/market-expansion.css', './assets/bpp-public-card.css', './assets/language.css',
   './assets/intelligence-desk.css', './assets/desk-hybrid.css', './assets/mobile-app.css', './assets/desk-search.css',
   './assets/floating-intelligence.css', './assets/public-sources.css', './assets/site-share.css', './assets/mobile-stability.css', './assets/group-mobile-accessible.css',
@@ -21,7 +21,7 @@ const STATIC_ASSETS = [
   './assets/intelligence-desk.js', './assets/desk-hybrid.js', './assets/desk-search.js', './assets/mobile-app.js',
   './assets/mobile-navigation.js', './assets/floating-intelligence.js', './assets/world-geography.js',
   './assets/group-network.js', './assets/network-motion.js', './assets/group-globe-3d.js', './assets/group-map-2d-geo.js',
-  './assets/group-location-insights.js', './assets/group-map-selection-bridge.js', './assets/group-google-map.js', './assets/group-location-weather.js', './assets/group-overview-panel.js', './assets/network-selection-sync.js', './assets/command-centre.js',
+  './assets/group-location-insights.js', './assets/group-map-selection-bridge.js', './assets/group-google-map.js', './assets/group-location-weather.js', './assets/group-overview-panel.js', './assets/group-market-coverage.js', './assets/network-selection-sync.js', './assets/command-centre.js',
   './assets/network-search-3d.js', './assets/group-map-pdf.js', './assets/group-globe-pdf.js', './assets/group-mobile-accessible.js',
   './assets/group-clarity.js', './assets/public-sources.js', './assets/site-share.js', './assets/content-share.js', './assets/share-routing-fix.js', './assets/hourly-data-disclosure.js', './assets/portal-layout.js', './assets/public-tools.js',
   './assets/market-centre-data.js', './assets/market-constellation.js', './data/desk_public_config.json',
