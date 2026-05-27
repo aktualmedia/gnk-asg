@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-27T13:00:02+00:00",
+  "generated_at": "2026-05-27T15:24:35+00:00",
   "reference_date": "2026-05-27",
   "status": "published",
   "title": "Dnevni tržišni osvrt — prethodna raspoloživa sesija",
@@ -7,16 +7,16 @@
   "headline": "Pregled posljednje raspoložive tržišne sesije temeljen na javno dostupnim podatcima o indeksima, digitalnoj imovini i stablecoin odstupanjima.",
   "headline_en": "Review of the latest available market session based on publicly available index, digital-asset and stablecoin-deviation observations.",
   "summary": [
-    "Promatrani burzovni indeksi zabilježili su široko pozitivan raspored kretanja. Najjaču promjenu pokazao je Nikkei 225 (+5.37%), dok je najslabiji rezultat imao S&P 500 (+1.57%).",
-    "U promatranom skupu digitalne imovine SOL je imao najizraženiju 24-satnu promjenu (-1.57%), dok je ETH zabilježio najslabije kretanje (-2.21%).",
-    "Najveće promatrano stablecoin odstupanje od referentne valute zabilježeno je kod FDUSD (-0.3066%). To je tržišno opažanje, a ne procjena rezervi ili otkupivosti.",
-    "Bitcoin: -2.43% u sedmodnevnoj usporedbi; zlato: -1.79% u sedmodnevnoj usporedbi; Brent nafta: -15.04% u sedmodnevnoj usporedbi."
+    "Promatrani burzovni indeksi zabilježili su široko pozitivan raspored kretanja. Najjaču promjenu pokazao je Nikkei 225 (+5.37%), dok je najslabiji rezultat imao EURO STOXX 50 (+1.64%).",
+    "U promatranom skupu digitalne imovine XRP je imao najizraženiju 24-satnu promjenu (-0.85%), dok je BTC zabilježio najslabije kretanje (-1.88%).",
+    "Najveće promatrano stablecoin odstupanje od referentne valute zabilježeno je kod FDUSD (-0.3392%). To je tržišno opažanje, a ne procjena rezervi ili otkupivosti.",
+    "Bitcoin: -3.01% u sedmodnevnoj usporedbi; zlato: -2.04% u sedmodnevnoj usporedbi; Brent nafta: -13.72% u sedmodnevnoj usporedbi."
   ],
   "summary_en": [
-    "Observed equity indices showed a broadly positive distribution of moves. Nikkei 225 recorded the strongest change (+5.37%), while S&P 500 was weakest (+1.57%).",
-    "Within the observed digital-asset set, SOL recorded the strongest 24-hour move (-1.57%), while ETH was weakest (-2.21%).",
-    "The largest observed stablecoin deviation from its reference currency was recorded for FDUSD (-0.3066%). This is a market observation, not a reserve or redemption assessment.",
-    "Bitcoin: -2.43% over the seven-day comparison; gold: -1.79% over the seven-day comparison; Brent crude: -15.04% over the seven-day comparison."
+    "Observed equity indices showed a broadly positive distribution of moves. Nikkei 225 recorded the strongest change (+5.37%), while EURO STOXX 50 was weakest (+1.64%).",
+    "Within the observed digital-asset set, XRP recorded the strongest 24-hour move (-0.85%), while BTC was weakest (-1.88%).",
+    "The largest observed stablecoin deviation from its reference currency was recorded for FDUSD (-0.3392%). This is a market observation, not a reserve or redemption assessment.",
+    "Bitcoin: -3.01% over the seven-day comparison; gold: -2.04% over the seven-day comparison; Brent crude: -13.72% over the seven-day comparison."
   ],
   "risk_note": "Informativni analitički prikaz temeljen na javno dostupnim podatcima; nije investicijski savjet, preporuka ulaganja niti jamstvo budućeg kretanja.",
   "risk_note_en": "Informational analytical display based on publicly available data; it is not investment advice, an investment recommendation or a guarantee of future performance.",
