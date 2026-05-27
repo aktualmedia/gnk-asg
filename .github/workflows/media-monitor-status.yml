@@ -1,7 +1,7 @@
 name: Media Monitor Status
 
 # Ovaj proces vodi samo status medijskog praćenja i ne smije prepisivati datum javnih vijesti.
-# Termin je izdvojen iz tržišnih petominutnih termina radi čistog reda objave.
+# Samostalan je kako ne bi blokirao tržišna ili satna podatkovna osvježenja.
 on:
   workflow_dispatch:
   schedule:
@@ -18,8 +18,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: public-portal-data-publication
-  cancel-in-progress: false
+  group: hourly-media-monitor-status
+  cancel-in-progress: true
 
 jobs:
   status:
