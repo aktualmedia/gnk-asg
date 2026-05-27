@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260527-content-share01';
+  var VERSION = '20260527-location-weather01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/group-globe-3d.css');
   style('/assets/group-location-insights.css');
   style('/assets/group-map-2d-geo.css');
+  style('/assets/group-google-map.css');
+  style('/assets/group-location-weather.css');
   style('/assets/group-overview-panel.css');
   style('/assets/network-reading-layout.css');
   style('/assets/bitcoin-chart.css');
@@ -68,6 +70,8 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/group-map-2d-geo.js');
   script('/assets/group-location-insights.js');
   script('/assets/group-map-selection-bridge.js');
+  script('/assets/group-google-map.js');
+  script('/assets/group-location-weather.js');
   script('/assets/group-overview-panel.js');
   script('/assets/network-selection-sync.js');
   script('/assets/command-centre.js');
