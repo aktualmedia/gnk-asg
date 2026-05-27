@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-27T16:03:37+00:00",
+  "updated_at": "2026-05-27T16:19:24+00:00",
   "cadence": "scheduled every five minutes",
   "source": "Public market quote feed",
   "indices": [
@@ -8,22 +8,22 @@
       "symbol": "^GSPC",
       "label": "S&P 500",
       "region": "SAD",
-      "current": 7508.39013671875,
+      "current": 7511.81982421875,
       "previous_close": 7353.61,
-      "change_percent": 2.1,
+      "change_percent": 2.15,
       "currency": "USD",
-      "market_time": 1779897817
+      "market_time": 1779898762
     },
     {
       "id": "nasdaq",
       "symbol": "^IXIC",
       "label": "Nasdaq Composite",
       "region": "SAD",
-      "current": 26585.23046875,
+      "current": 26607.513671875,
       "previous_close": 25870.71,
-      "change_percent": 2.76,
+      "change_percent": 2.85,
       "currency": "USD",
-      "market_time": 1779897817
+      "market_time": 1779898762
     },
     {
       "id": "stoxx50",
@@ -34,7 +34,7 @@
       "previous_close": 5976.07,
       "change_percent": 1.58,
       "currency": "EUR",
-      "market_time": 1779895800
+      "market_time": 1779897600
     },
     {
       "id": "dax",
@@ -45,7 +45,7 @@
       "previous_close": 24737.24,
       "change_percent": 1.78,
       "currency": "EUR",
-      "market_time": 1779895814
+      "market_time": 1779897600
     },
     {
       "id": "ftse",
