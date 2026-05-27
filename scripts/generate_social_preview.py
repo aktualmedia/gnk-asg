@@ -36,6 +36,13 @@ CARDS = {
         "footer": "Informativni tržišni prikaz  |  Public Data",
         "code": "MARKET",
     },
+    "share-bpp.png": {
+        "kicker": "GNK ASG d.o.o.  •  SOFTWARE SOLUTION",
+        "title": ["Bitcoin Payment", "Processor"],
+        "subtitle": "Developed for GNK DINAMO Ltd. group framework",
+        "footer": "Informational product overview  |  bpp.is",
+        "code": "BPP",
+    },
     "share-tehnologija.png": {
         "kicker": "GNK ASG d.o.o.",
         "title": ["Technology", "& Artificial Intelligence"],
