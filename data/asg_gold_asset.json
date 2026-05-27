@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-27T12:06:28+00:00",
+  "updated_at": "2026-05-27T12:11:53+00:00",
   "id": "asg-gold-reference",
   "name": "ASG Stable Coin",
   "ticker": "ASG",
@@ -15,10 +15,10 @@
   "legal_note_en": "Informational gold-linked value concept. Not a public offer, prospectus, crypto-asset white paper, investment advice or confirmation of issuance of a regulated stablecoin.",
   "visual_theme": "gold-corporate",
   "gold_kg_per_asg": 0.01,
-  "current_value_usd": 1434.73,
-  "current_value_eur": 1232.43,
-  "gold_reference_usd_per_kg": 143472.71,
-  "change_30d_percent": -4.55,
-  "reference_supply_value_usd": 14347270656.24,
+  "current_value_usd": 1435.4,
+  "current_value_eur": 1233.01,
+  "gold_reference_usd_per_kg": 143540.23,
+  "change_30d_percent": -4.51,
+  "reference_supply_value_usd": 14354022627.0,
   "price_source": "Gold reference price from portal market feed"
 }
