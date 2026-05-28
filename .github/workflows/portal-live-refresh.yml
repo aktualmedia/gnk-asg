@@ -1,7 +1,7 @@
 name: Portal Live Data Refresh
 
-# Glavni automatski proces javnih podataka portala.
-# Tržišni podatci: svakih 5 minuta. Vijesti i medijske objave: svakih 15 minuta.
+# Jedini glavni automatski proces javnih podataka portala.
+# Tržišni podatci: svakih 5 minuta. Javnih 500 vijesti i arhiva viška: svakih 15 minuta.
 on:
   workflow_dispatch:
   push:
@@ -9,6 +9,9 @@ on:
       - main
     paths:
       - '.github/workflows/portal-live-refresh.yml'
+      - '.github/workflows/fast-market-update.yml'
+      - '.github/workflows/hourly-data-update.yml'
+      - '.github/workflows/media-monitor-status.yml'
       - 'scripts/update_fast_market.py'
       - 'scripts/update_feeds_v2.py'
       - 'scripts/discover_corporate_media.py'
@@ -54,13 +57,13 @@ jobs:
           else
             echo "news=false" >> "$GITHUB_OUTPUT"
           fi
-      - name: Refresh newest 500 business news items
+      - name: Refresh public 500-item news list and archived overflow
         if: steps.cycle.outputs.news == 'true'
         run: python scripts/update_feeds_v2.py
       - name: Refresh corporate media discoveries
         if: steps.cycle.outputs.news == 'true'
         run: python scripts/discover_corporate_media.py || echo "Corporate media monitor temporarily unavailable; continuing with public data publication."
-      - name: Publish generated public data without conflict
+      - name: Publish generated public data and archived overflow without conflict
         shell: bash
         run: |
           set -e
@@ -70,7 +73,7 @@ jobs:
           mkdir -p /tmp/gnk-live-output
           cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-live-output/
           if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
-            cp data/news.json data/update_status.json data/media_approved.json data/media_monitor_status.json /tmp/gnk-live-output/ 2>/dev/null || true
+            cp data/news.json data/news_archive.json data/update_status.json data/media_approved.json data/media_monitor_status.json /tmp/gnk-live-output/ 2>/dev/null || true
           fi
           publish_generated_data() {
             git fetch origin main
@@ -78,10 +81,10 @@ jobs:
             cp /tmp/gnk-live-output/*.json data/
             git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
             if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
-              git add data/news.json data/update_status.json data/media_approved.json data/media_monitor_status.json 2>/dev/null || true
+              git add data/news.json data/news_archive.json data/update_status.json data/media_approved.json data/media_monitor_status.json 2>/dev/null || true
             fi
             if git diff --cached --quiet; then
-              echo "No generated public data changes."
+              echo "No generated public-data changes."
               return 0
             fi
             git commit -m "Automated portal live data refresh"
