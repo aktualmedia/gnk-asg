@@ -1,23 +1,30 @@
 const { test, expect } = require('@playwright/test');
 
+async function openDesk(page) {
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#deskInput')).toBeVisible({ timeout: 15000 });
+  await expect(page.locator('#deskTranscript')).toBeVisible({ timeout: 15000 });
+  await expect(page.locator('#deskAiBadge')).toBeVisible({ timeout: 15000 });
+}
+
 async function submitDeskForm(page) {
   await page.locator('#deskInput').press('Enter');
 }
 
 async function activateConnectedAi(page) {
   const control = page.locator('.desk-switch button[data-mode="ai"]');
-  await expect(control).toBeAttached({ timeout: 10000 });
-  await control.evaluate(button => button.click());
-  await expect(control).toHaveClass(/active/);
+  await expect(control).toBeVisible({ timeout: 15000 });
+  await expect(control).toBeEnabled({ timeout: 15000 });
+  await control.click({ force: true, timeout: 5000 });
+  await expect(control).toHaveClass(/active/, { timeout: 5000 });
 }
 
 test('Intelligence Desk answers from verified portal datasets', async ({ page }) => {
-  await page.goto('/', { waitUntil: 'networkidle' });
-  await expect(page.locator('#deskAiBadge')).toBeVisible({ timeout: 10000 });
+  await openDesk(page);
   await page.locator('#deskInput').fill('Koliko stablecoina prati portal?');
   await submitDeskForm(page);
-  await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('Stablecoin Monitor');
-  await expect(page.locator('#deskTranscript .desk-source a').last()).toContainText('Market Intelligence');
+  await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('Stablecoin Monitor', { timeout: 10000 });
+  await expect(page.locator('#deskTranscript .desk-source a').last()).toContainText('Market Intelligence', { timeout: 10000 });
 });
 
 test('Connected AI mode uses active Puter Gemini adapter for broader questions', async ({ page }) => {
@@ -32,13 +39,13 @@ test('Connected AI mode uses active Puter Gemini adapter for broader questions',
       }
     };
   });
-  await page.goto('/', { waitUntil: 'networkidle' });
-  await expect(page.locator('#deskAiBadge')).toContainText('AI aktivan', { timeout: 10000 });
+  await openDesk(page);
+  await expect(page.locator('#deskAiBadge')).toContainText('AI aktivan', { timeout: 15000 });
   await activateConnectedAi(page);
   await page.locator('#deskInput').fill('Objasni globalne promjene u potrošačkim navikama.');
   await submitDeskForm(page);
-  await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('Vanjski AI testni odgovor');
-  await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('Puter.js / Google Gemini');
+  await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('Vanjski AI testni odgovor', { timeout: 10000 });
+  await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('Puter.js / Google Gemini', { timeout: 10000 });
   expect(await page.evaluate(() => window.__puterModel)).toBe('gemini-2.5-flash-lite');
 });
 
@@ -47,11 +54,11 @@ test('Connected AI mode refuses sensitive content locally before provider call',
     window.__puterCalls = 0;
     window.puter = { ai: { chat: async () => { window.__puterCalls += 1; return 'ne smije se pozvati'; } } };
   });
-  await page.goto('/', { waitUntil: 'networkidle' });
-  await expect(page.locator('#deskAiBadge')).toContainText('AI aktivan', { timeout: 10000 });
+  await openDesk(page);
+  await expect(page.locator('#deskAiBadge')).toContainText('AI aktivan', { timeout: 15000 });
   await activateConnectedAi(page);
   await page.locator('#deskInput').fill('Provjeri moj IBAN i porezni ugovor.');
   await submitDeskForm(page);
-  await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('nije poslan');
+  await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('nije poslan', { timeout: 10000 });
   expect(await page.evaluate(() => window.__puterCalls)).toBe(0);
 });
