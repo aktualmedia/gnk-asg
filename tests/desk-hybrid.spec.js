@@ -4,6 +4,13 @@ async function submitDeskForm(page) {
   await page.locator('#deskInput').press('Enter');
 }
 
+async function activateConnectedAi(page) {
+  const control = page.locator('.desk-switch button[data-mode="ai"]');
+  await expect(control).toBeAttached({ timeout: 10000 });
+  await control.evaluate(button => button.click());
+  await expect(control).toHaveClass(/active/);
+}
+
 test('Intelligence Desk answers from verified portal datasets', async ({ page }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
   await expect(page.locator('#deskAiBadge')).toBeVisible({ timeout: 10000 });
@@ -27,8 +34,7 @@ test('Connected AI mode uses active Puter Gemini adapter for broader questions',
   });
   await page.goto('/', { waitUntil: 'networkidle' });
   await expect(page.locator('#deskAiBadge')).toContainText('AI aktivan', { timeout: 10000 });
-  await page.locator('.desk-switch button[data-mode="ai"]').click();
-  await expect(page.locator('.desk-switch button[data-mode="ai"]')).toHaveClass(/active/);
+  await activateConnectedAi(page);
   await page.locator('#deskInput').fill('Objasni globalne promjene u potrošačkim navikama.');
   await submitDeskForm(page);
   await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('Vanjski AI testni odgovor');
@@ -43,8 +49,7 @@ test('Connected AI mode refuses sensitive content locally before provider call',
   });
   await page.goto('/', { waitUntil: 'networkidle' });
   await expect(page.locator('#deskAiBadge')).toContainText('AI aktivan', { timeout: 10000 });
-  await page.locator('.desk-switch button[data-mode="ai"]').click();
-  await expect(page.locator('.desk-switch button[data-mode="ai"]')).toHaveClass(/active/);
+  await activateConnectedAi(page);
   await page.locator('#deskInput').fill('Provjeri moj IBAN i porezni ugovor.');
   await submitDeskForm(page);
   await expect(page.locator('#deskTranscript .desk-message.bot').last()).toContainText('nije poslan');
