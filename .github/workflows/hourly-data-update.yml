@@ -1,10 +1,10 @@
-name: Hourly News Update
+name: Fifteen Minute News Update
 
-# Satni javni sloj ažurira vijesti, njihove individualne društvene preview stranice i referentne javne podatke.
-# Brzi market ostaje isključivo u zasebnom petominutnom workflowu kako se izvori i statusi ne bi prepisivali.
+# Javni sloj vijesti osvježava se svakih 15 minuta radi vidljive aktualnosti portala.
+# Pomoćni preview i referentni procesi ne smiju zaustaviti objavu svježih vijesti ako pojedinačni izvor privremeno zakaže.
 on:
   schedule:
-    - cron: '19 * * * *'
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
   push:
     branches:
@@ -23,12 +23,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: hourly-public-news
+  group: public-news-refresh
   cancel-in-progress: true
 
 jobs:
-  update-hourly:
-    name: Refresh hourly public news previews and reference datasets
+  update-news:
+    name: Refresh public news and reference datasets
     runs-on: ubuntu-latest
     timeout-minutes: 24
     env:
@@ -42,40 +42,40 @@ jobs:
           python-version: '3.12'
       - name: Install news preview image dependency
         run: python -m pip install --disable-pip-version-check pillow
-      - name: Validate hourly Python processors
+      - name: Validate Python processors
         run: python -m py_compile scripts/update_feeds_v2.py scripts/generate_news_share_previews.py scripts/update_macro_data.py scripts/update_market_extensions.py scripts/update_open_data.py
-      - name: Update hourly classified news and per-item social previews
+      - name: Update classified public news
+        run: python scripts/update_feeds_v2.py
+      - name: Generate individual social previews when available
+        run: python scripts/generate_news_share_previews.py || echo "Preview generation unavailable; publishing fresh news data without blocking the update."
+      - name: Update public reference datasets when available
         run: |
-          python scripts/update_feeds_v2.py
-          python scripts/generate_news_share_previews.py
-      - name: Update public reference datasets
-        run: |
-          python scripts/update_macro_data.py
-          python scripts/update_market_extensions.py
-          python scripts/update_open_data.py
-      - name: Publish hourly datasets and news previews without merge conflicts
+          python scripts/update_macro_data.py || echo "Macro reference update unavailable in this cycle."
+          python scripts/update_market_extensions.py || echo "Market extension update unavailable in this cycle."
+          python scripts/update_open_data.py || echo "Open-data update unavailable in this cycle."
+      - name: Publish current news data without merge conflicts
         run: |
           set -e
-          git config user.name "gnk-asg-hourly-bot"
+          git config user.name "gnk-asg-news-bot"
           git config user.email "actions@users.noreply.github.com"
-          rm -rf /tmp/gnk-hourly-output
-          mkdir -p /tmp/gnk-hourly-output/data /tmp/gnk-hourly-output/assets /tmp/gnk-hourly-output/podijeli
-          cp data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json /tmp/gnk-hourly-output/data/
-          cp -R assets/news-preview /tmp/gnk-hourly-output/assets/ 2>/dev/null || true
-          cp -R podijeli/vijest /tmp/gnk-hourly-output/podijeli/ 2>/dev/null || true
+          rm -rf /tmp/gnk-news-output
+          mkdir -p /tmp/gnk-news-output/data /tmp/gnk-news-output/assets /tmp/gnk-news-output/podijeli
+          cp data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json /tmp/gnk-news-output/data/
+          cp -R assets/news-preview /tmp/gnk-news-output/assets/ 2>/dev/null || true
+          cp -R podijeli/vijest /tmp/gnk-news-output/podijeli/ 2>/dev/null || true
           publish_generated_data() {
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/gnk-hourly-output/data/*.json data/
+            cp /tmp/gnk-news-output/data/*.json data/
             mkdir -p assets podijeli
-            cp -R /tmp/gnk-hourly-output/assets/news-preview assets/ 2>/dev/null || true
-            cp -R /tmp/gnk-hourly-output/podijeli/vijest podijeli/ 2>/dev/null || true
+            cp -R /tmp/gnk-news-output/assets/news-preview assets/ 2>/dev/null || true
+            cp -R /tmp/gnk-news-output/podijeli/vijest podijeli/ 2>/dev/null || true
             git add data/news.json data/update_status.json data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json assets/news-preview/ podijeli/vijest/
             if git diff --cached --quiet; then
-              echo "No hourly changes."
+              echo "No visible news changes."
               return 0
             fi
-            git commit -m "Automated hourly public news and individual preview update"
+            git commit -m "Automated fifteen-minute public news update"
             git push origin HEAD:main
           }
           publish_generated_data || (sleep 8 && publish_generated_data)
