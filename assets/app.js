@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260528-cross-asset-chart-fixed07';
+  var VERSION = '20260529-seo-profile-discreet08';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/mobile-stability.css');
   style('/assets/group-mobile-accessible.css');
   style('/assets/portal-integration.css');
+  style('/assets/seo-profile-link.css');
   script('/assets/i18n.js');
   script('/assets/language-routing.js');
   script('/assets/portal-navigation.js');
