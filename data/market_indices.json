@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-28T12:50:54+00:00",
+  "updated_at": "2026-05-28T15:48:13+00:00",
   "cadence": "scheduled every five minutes",
   "source": "Public market quote feed",
   "indices": [
@@ -8,55 +8,55 @@
       "symbol": "^GSPC",
       "label": "S&P 500",
       "region": "SAD",
-      "current": 7520.35986328125,
-      "previous_close": 7353.61,
-      "change_percent": 2.27,
+      "current": 7557.02978515625,
+      "previous_close": 7432.97,
+      "change_percent": 1.67,
       "currency": "USD",
-      "market_time": 1779914624
+      "market_time": 1779983292
     },
     {
       "id": "nasdaq",
       "symbol": "^IXIC",
       "label": "Nasdaq Composite",
       "region": "SAD",
-      "current": 26674.734375,
-      "previous_close": 25870.71,
-      "change_percent": 3.11,
+      "current": 26838.509765625,
+      "previous_close": 26270.36,
+      "change_percent": 2.16,
       "currency": "USD",
-      "market_time": 1779916559
+      "market_time": 1779983287
     },
     {
       "id": "stoxx50",
       "symbol": "^STOXX50E",
       "label": "EURO STOXX 50",
       "region": "Europa",
-      "current": 6040.4599609375,
+      "current": 6057.75,
       "previous_close": 5960.32,
-      "change_percent": 1.34,
+      "change_percent": 1.63,
       "currency": "EUR",
-      "market_time": 1779971745
+      "market_time": 1779982200
     },
     {
       "id": "dax",
       "symbol": "^GDAXI",
       "label": "DAX",
       "region": "Njemačka",
-      "current": 25037.029296875,
+      "current": 25102.609375,
       "previous_close": 24606.77,
-      "change_percent": 1.75,
+      "change_percent": 2.02,
       "currency": "EUR",
-      "market_time": 1779971754
+      "market_time": 1779982214
     },
     {
       "id": "ftse",
       "symbol": "^FTSE",
       "label": "FTSE 100",
       "region": "UK",
-      "current": 10401.580078125,
+      "current": 10428.7099609375,
       "previous_close": 10432.3,
-      "change_percent": -0.29,
+      "change_percent": -0.03,
       "currency": "GBP",
-      "market_time": 1779971754
+      "market_time": 1779982199
     },
     {
       "id": "nikkei",
