@@ -1,28 +1,19 @@
-name: Five Minute Market Intelligence Update
+name: Manual Market Refresh Fallback
 
-# Prioritetni i samostalni proces samo za brze tržišne podatke.
-# Izričito navedene minute održavaju redoviti javni status bez oslanjanja na intervalnu interpretaciju cron zapisa.
+# Rezervni ručni postupak. Automatski raspored vodi .github/workflows/portal-live-refresh.yml.
 on:
-  schedule:
-    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 * * * *'
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - 'scripts/update_fast_market.py'
-      - '.github/workflows/fast-market-update.yml'
 
 permissions:
   contents: write
 
 concurrency:
-  group: five-minute-market-intelligence
+  group: manual-market-refresh-fallback
   cancel-in-progress: false
 
 jobs:
   refresh-market:
-    name: Refresh fast public market panels
+    name: Manually refresh public market panels
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
@@ -36,23 +27,15 @@ jobs:
           python-version: '3.12'
       - name: Update fast-moving digital asset datasets
         run: python scripts/update_fast_market.py
-      - name: Publish fast market datasets without merge conflicts
+      - name: Publish market datasets
         run: |
           set -e
           git config user.name "gnk-asg-market-bot"
           git config user.email "actions@users.noreply.github.com"
-          mkdir -p /tmp/gnk-fast-market-data
-          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-fast-market-data/
-          publish_generated_data() {
-            git fetch origin main
-            git reset --hard origin/main
-            cp /tmp/gnk-fast-market-data/*.json data/
-            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
-            if git diff --cached --quiet; then
-              echo "No fast-market changes."
-              return 0
-            fi
-            git commit -m "Automated five minute fast market update"
-            git push origin HEAD:main
-          }
-          publish_generated_data || (sleep 8 && publish_generated_data)
+          git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+          if git diff --cached --quiet; then
+            echo "No market changes."
+            exit 0
+          fi
+          git commit -m "Manual market refresh fallback update"
+          git push origin HEAD:main
