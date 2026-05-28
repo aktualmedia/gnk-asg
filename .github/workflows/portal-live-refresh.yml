@@ -80,28 +80,55 @@ jobs:
       - name: Refresh corporate media discoveries
         if: steps.cycle.outputs.news == 'true'
         run: python scripts/discover_corporate_media.py || echo "Corporate media monitor temporarily unavailable; continuing with public data publication."
-      - name: Publish generated public data and archived overflow without conflict
+      - name: Correct static portal copy and loader version
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          replacements = {
+              Path('index.html'): [
+                  ('Ažuriranje svaki sat', 'Ažuriranje svakih 15 minuta'),
+                  ('Poslovne i tehnološke vijesti iz hrvatskih, regionalnih i međunarodnih izvora. Objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću prikazuju se samo nakon ručnog odobrenja.', 'Javni prozor prikazuje do 500 najnovijih poslovnih i tehnoloških vijesti iz hrvatskih, regionalnih i međunarodnih izvora. Stariji višak ostaje spremljen u arhivi. Objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću prikazuju se automatski i mogu se ukloniti kroz ovlaštenu kontrolu.'),
+                  ('Izvori se osvježavaju automatski kroz satni workflow.', 'Najnovijih 500 javnih stavki osvježava se automatski, a stariji višak ostaje spremljen u arhivi.'),
+                  ('assets/app.js?v=20260526-demographic-compact07', 'assets/app.js?v=20260528-news-archive-unified-refresh06')
+              ],
+              Path('en/index.html'): [
+                  ('Hourly Refresh', 'Refresh every 15 minutes'),
+                  ('Business and technology news from Croatian, regional and international sources. Publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić are displayed only after manual approval.', 'The public window displays up to the 500 newest business and technology news items from Croatian, regional and international sources. Older overflow remains preserved in archive storage. Publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić are displayed automatically and may be removed through authorised control.'),
+                  ('Sources refresh automatically through the portal workflow.', 'The newest 500 public items refresh automatically; older overflow remains stored in the archive.'),
+                  ('assets/app.js?v=20260523-6', 'assets/app.js?v=20260528-news-archive-unified-refresh06')
+              ]
+          }
+          for path, rules in replacements.items():
+              text = path.read_text(encoding='utf-8')
+              for old, new in rules:
+                  text = text.replace(old, new)
+              path.write_text(text, encoding='utf-8')
+          PY
+      - name: Publish generated public data and corrected static portal without conflict
         shell: bash
         run: |
           set -e
           git config user.name "gnk-asg-live-data-bot"
           git config user.email "actions@users.noreply.github.com"
           rm -rf /tmp/gnk-live-output
-          mkdir -p /tmp/gnk-live-output
-          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-live-output/
+          mkdir -p /tmp/gnk-live-output/data /tmp/gnk-live-output/static
+          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-live-output/data/
+          cp index.html en/index.html /tmp/gnk-live-output/static/
           if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
-            cp data/news.json data/news_archive.json data/update_status.json data/media_approved.json data/media_monitor_status.json /tmp/gnk-live-output/ 2>/dev/null || true
+            cp data/news.json data/news_archive.json data/update_status.json data/media_approved.json data/media_monitor_status.json /tmp/gnk-live-output/data/ 2>/dev/null || true
           fi
           publish_generated_data() {
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/gnk-live-output/*.json data/
-            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+            cp /tmp/gnk-live-output/data/*.json data/
+            cp /tmp/gnk-live-output/static/index.html index.html
+            cp /tmp/gnk-live-output/static/index.html en/index.html
+            git add index.html en/index.html data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
             if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
               git add data/news.json data/news_archive.json data/update_status.json data/media_approved.json data/media_monitor_status.json 2>/dev/null || true
             fi
             if git diff --cached --quiet; then
-              echo "No generated public-data changes."
+              echo "No generated public-data or static-copy changes."
               return 0
             fi
             git commit -m "Automated portal live data refresh"
