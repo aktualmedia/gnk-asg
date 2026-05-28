@@ -17,5 +17,16 @@
     },
     "duplicates_removed": 17,
     "errors": []
+  },
+  "corporate_media_monitor": {
+    "status": "ok",
+    "updated_at": "2026-05-28T15:06:55+00:00",
+    "checked_queries": 8,
+    "public_results_detected": 0,
+    "published_public": 0,
+    "removed_urls": 0,
+    "public_display_policy": "automatic_publication_with_authorized_removal",
+    "privacy_notice": "Matching public corporate-media results are published automatically; authorised removals remain excluded.",
+    "errors_count": 0
   }
 }
