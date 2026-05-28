@@ -1,6 +1,7 @@
 name: Fifteen Minute News Update
 
 # Javni sloj vijesti osvježava se svakih 15 minuta radi vidljive aktualnosti portala.
+# Status repair trigger: nakon popravka bedža odmah se pokreće svježi ciklus javnih vijesti.
 # Pomoćni preview i referentni procesi ne smiju zaustaviti objavu svježih vijesti ako pojedinačni izvor privremeno zakaže.
 on:
   schedule:
