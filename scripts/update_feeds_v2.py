@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Refresh classified public news on an hourly cadence.
+"""Refresh classified public news for the public GNK ASG portal.
 
-Fast-moving market tables are maintained separately by update_fast_market.py so
-an hourly news run never overwrites newer five-minute quote observations.
+The published list is rebuilt from current sources on every successful run,
+sorted newest-first and capped at 500 items. Older or duplicate entries are
+therefore automatically removed from the public data file.
 """
 from __future__ import annotations
 import datetime as dt
@@ -19,7 +20,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data'
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
-UA = 'GNK-ASG-News-Monitor/3.4'
+UA = 'GNK-ASG-News-Monitor/3.5'
+MAX_PUBLIC_ITEMS = 500
 N1_ECONOMY = 'https://' + 'n1info.ba/vijesti/ekonomija/'
 N1_MONTHS = {'januar':1,'februar':2,'mart':3,'april':4,'maj':5,'juni':6,'juli':7,'august':8,'septembar':9,'oktobar':10,'novembar':11,'decembar':12}
 def read_json(name, default):
@@ -100,7 +102,9 @@ def deduplicate(rows, rules):
         if signature[2]: seen_signatures.add(signature)
     return selected
 def update_news():
-    conf=read_json('news_config_v2.json', {'retention_days':30,'max_items':1000,'sources':[],'queries':[]}); cutoff=NOW-dt.timedelta(days=int(conf.get('retention_days',30))); rules=read_json('blocked_news.json', {'urls':[],'title_terms':[]}); items=[]; errors=[]
+    conf=read_json('news_config_v2.json', {'retention_days':30,'max_items':MAX_PUBLIC_ITEMS,'sources':[],'queries':[]})
+    cutoff=NOW-dt.timedelta(days=int(conf.get('retention_days',30)))
+    rules=read_json('blocked_news.json', {'urls':[],'title_terms':[]}); items=[]; errors=[]
     for src in conf.get('sources',[]):
         try: items.extend(rss_rows(fetch(src['url']),src['name'],src['group'],src['category'],cutoff))
         except Exception as exc: errors.append({'source':src.get('name','RSS'),'error':str(exc)[:80]})
@@ -110,16 +114,21 @@ def update_news():
         try: items.extend(rss_rows(fetch(gnews(src['q'])),src['name'],src['group'],src['category'],cutoff))
         except Exception as exc: errors.append({'source':src.get('name','Query'),'error':str(exc)[:80]})
     clean_items=deduplicate(items, rules)
-    selected=sorted(clean_items,key=lambda row: row['published_at'],reverse=True)[:int(conf.get('max_items',1000))]; save('news.json',selected); counts={}
+    configured_limit=int(conf.get('max_items', MAX_PUBLIC_ITEMS))
+    public_limit=min(MAX_PUBLIC_ITEMS, max(1, configured_limit))
+    ordered=sorted(clean_items,key=lambda row: row['published_at'],reverse=True)
+    selected=ordered[:public_limit]
+    purged_items=max(0, len(ordered)-len(selected))
+    save('news.json',selected); counts={}
     for row in selected: counts[row['group']]=counts.get(row['group'],0)+1
-    return {'updated_at':NOW.isoformat(),'cadence':'hourly','public_items':len(selected),'by_group':counts,'duplicates_removed':len(items)-len(clean_items),'errors':errors}
+    return {'updated_at':NOW.isoformat(),'cadence':'scheduled refresh','public_items':len(selected),'max_public_items':MAX_PUBLIC_ITEMS,'older_items_removed':purged_items,'by_group':counts,'duplicates_removed':len(items)-len(clean_items),'errors':errors}
 def main():
     status=read_json('update_status.json',{})
     for obsolete in ('market','fast_market','corporate_media_monitor'):
         status.pop(obsolete, None)
     status['updated_at']=NOW.isoformat()
     try: status['news']=update_news()
-    except Exception as exc: status['news']={'updated_at':NOW.isoformat(),'cadence':'hourly','error':str(exc)[:130]}
+    except Exception as exc: status['news']={'updated_at':NOW.isoformat(),'cadence':'scheduled refresh','error':str(exc)[:130]}
     save('update_status.json',status); print(json.dumps({'updated_at':NOW.isoformat(),'news':status['news']},ensure_ascii=False))
-    if status['news'].get('error'): raise SystemExit('Satno osvježavanje vijesti nije završilo uredno.')
+    if status['news'].get('error'): raise SystemExit('Osvježavanje vijesti nije završilo uredno.')
 if __name__=='__main__': main()
