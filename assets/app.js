@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260527-market-coverage-share-card05';
+  var VERSION = '20260528-permanent-share-cards02';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/site-share.js');
   script('/assets/content-share.js');
   script('/assets/share-routing-fix.js');
+  script('/assets/share-permanent-cards.js');
   script('/assets/hourly-data-disclosure.js');
   script('/assets/portal-layout.js');
 
