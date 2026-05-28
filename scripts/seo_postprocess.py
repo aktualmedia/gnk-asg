@@ -20,6 +20,8 @@ PROFILE_META = (
 HR_HUB_CARD = '<article class="item feature seo-identity-card"><span class="tag">Javni profil</span><h2>Nermin Sefić</h2><p>Nermin Sefić, Nermin Sefic, Sefić Nermin i Sefic Nermin — profil povezan s javnim sadržajem o GNK ASG d.o.o. i GNK DINAMO Ltd.</p><a href="../nermin-sefic/">Otvori javni profil →</a></article>'
 PERSON_OLD = '"name":"Nermin Sefić","alternateName":["Nermin Sefic","Sefić Nermin","Sefic Nermin"]'
 PERSON_NEW = '"name":"Nermin Sefić","givenName":"Nermin","familyName":"Sefić","alternateName":["Nermin Sefic","Sefić Nermin","Sefic Nermin"]'
+CONTENT_LIST_ID = 'seo-public-content-list'
+CONTENT_LIST_SCHEMA = '''<script type="application/ld+json" id="seo-public-content-list">{"@context":"https://schema.org","@type":"ItemList","name":"Javni sadržaji povezani s GNK ASG d.o.o., GNK DINAMO Ltd. i Nerminom Sefićem","itemListElement":[{"@type":"ListItem","position":1,"name":"Nermin Sefić — javni korporativni profil","url":"https://gnk-asg.hr/nermin-sefic/"},{"@type":"ListItem","position":2,"name":"Financijski profil FY 2025 — GNK ASG d.o.o.","url":"https://gnk-asg.hr/financije/"},{"@type":"ListItem","position":3,"name":"Javni registri i službeni izvori","url":"https://gnk-asg.hr/registri/"},{"@type":"ListItem","position":4,"name":"Tehnologija, AI i sportska analitika","url":"https://gnk-asg.hr/tehnologija/"},{"@type":"ListItem","position":5,"name":"Market Intelligence","url":"https://gnk-asg.hr/trzista/"},{"@type":"ListItem","position":6,"name":"GNK ASG Intelligence Desk","url":"https://gnk-asg.hr/intelligence-desk/"}]}</script>'''
 
 HR_PAGES = [
     'financije/index.html', 'registri/index.html', 'tehnologija/index.html',
@@ -98,10 +100,13 @@ def ensure_person_properties(path: str) -> None:
 
 def ensure_profile_hub_card() -> None:
     target, text = read('sadrzaj/index.html')
+    original = text
     if 'seo-identity-card' not in text:
         marker = '<section><div class="container cards">'
         text = text.replace(marker, marker + HR_HUB_CARD, 1)
-        target.write_text(text, encoding='utf-8')
+    if CONTENT_LIST_ID not in text:
+        text = text.replace('</head>', CONTENT_LIST_SCHEMA + '\n</head>', 1)
+    write_if_changed(target, original, text)
 
 
 def main() -> None:
