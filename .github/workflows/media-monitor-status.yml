@@ -1,30 +1,20 @@
-name: Corporate Media Automatic Publication
+name: Manual Corporate Media Refresh Fallback
 
-# Samostalan proces automatski objavljuje javne medijske nalaze o konfiguriranim subjektima.
+# Rezervni ručni postupak. Automatski raspored vodi .github/workflows/portal-live-refresh.yml.
 # Ovlašteno uklonjene poveznice ostaju isključene putem data/media_removed.json.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '39 * * * *'
-  push:
-    branches:
-      - main
-    paths:
-      - 'data/media_queries.json'
-      - 'data/media_removed.json'
-      - 'scripts/discover_corporate_media.py'
-      - '.github/workflows/media-monitor-status.yml'
 
 permissions:
   contents: write
 
 concurrency:
-  group: hourly-media-monitor-publication
-  cancel-in-progress: true
+  group: manual-media-refresh-fallback
+  cancel-in-progress: false
 
 jobs:
   publish-media:
-    name: Discover and publish corporate media items
+    name: Manually discover and publish corporate media items
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -41,20 +31,10 @@ jobs:
           set -e
           git config user.name "gnk-asg-media-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
-          rm -rf /tmp/gnk-media-output
-          mkdir -p /tmp/gnk-media-output
-          cp data/media_approved.json data/media_monitor_status.json /tmp/gnk-media-output/
-          publish_generated_data() {
-            git fetch origin main
-            git reset --hard origin/main
-            cp /tmp/gnk-media-output/media_approved.json data/media_approved.json
-            cp /tmp/gnk-media-output/media_monitor_status.json data/media_monitor_status.json
-            git add data/media_approved.json data/media_monitor_status.json
-            if git diff --cached --quiet; then
-              echo "No corporate media changes."
-              return 0
-            fi
-            git commit -m "Automated corporate media publication update"
-            git push origin HEAD:main
-          }
-          publish_generated_data || (sleep 8 && publish_generated_data)
+          git add data/media_approved.json data/media_monitor_status.json
+          if git diff --cached --quiet; then
+            echo "No corporate media changes."
+            exit 0
+          fi
+          git commit -m "Manual corporate media publication update"
+          git push origin HEAD:main
