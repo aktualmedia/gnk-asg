@@ -4,7 +4,7 @@
   window.GNK_CONTENT_SHARE_READY = true;
   const SHARE = 'gnk-content-share';
   const SECTION_SHARE = {
-    financials: '/podijeli/financije/',
+    financials: '/podijeli/financije-kartica/',
     grupa: '/podijeli/grupa-kartica/',
     technology: '/podijeli/tehnologija/',
     'digital-assets': '/podijeli/trzista-kartica/',
