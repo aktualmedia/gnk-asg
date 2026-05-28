@@ -4,6 +4,7 @@
 Outputs are informational market observations only. They do not represent an
 exchange service, issuance, stablecoin offering, investment advice or a price
 guarantee by GNK ASG d.o.o. or GNK DINAMO Ltd.
+Scheduled and manually initiated refreshes produce the same public status payload.
 """
 from __future__ import annotations
 import datetime as dt
@@ -15,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
-UA = "GNK-ASG-Market-Intelligence/3.0"
+UA = "GNK-ASG-Market-Intelligence/3.1"
 FIATS = ["eur", "usd", "gbp", "chf", "jpy"]
 COINS = {"bitcoin":"BTC","ethereum":"ETH","solana":"SOL","ripple":"XRP","binancecoin":"BNB","cardano":"ADA","chainlink":"LINK","avalanche-2":"AVAX","tether":"USDT","usd-coin":"USDC","dai":"DAI","euro-coin":"EURC"}
 STABLECOINS = {"tether":{"symbol":"USDT","peg":"usd","issuer":"Tether"},"usd-coin":{"symbol":"USDC","peg":"usd","issuer":"Circle"},"dai":{"symbol":"DAI","peg":"usd","issuer":"Sky ecosystem"},"first-digital-usd":{"symbol":"FDUSD","peg":"usd","issuer":"First Digital"},"paypal-usd":{"symbol":"PYUSD","peg":"usd","issuer":"Paxos / PayPal"},"euro-coin":{"symbol":"EURC","peg":"eur","issuer":"Circle"}}
