@@ -111,9 +111,10 @@ jobs:
           git config user.name "gnk-asg-live-data-bot"
           git config user.email "actions@users.noreply.github.com"
           rm -rf /tmp/gnk-live-output
-          mkdir -p /tmp/gnk-live-output/data /tmp/gnk-live-output/static
+          mkdir -p /tmp/gnk-live-output/data /tmp/gnk-live-output/static/hr /tmp/gnk-live-output/static/en
           cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-live-output/data/
-          cp index.html en/index.html /tmp/gnk-live-output/static/
+          cp index.html /tmp/gnk-live-output/static/hr/index.html
+          cp en/index.html /tmp/gnk-live-output/static/en/index.html
           if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
             cp data/news.json data/news_archive.json data/update_status.json data/media_approved.json data/media_monitor_status.json /tmp/gnk-live-output/data/ 2>/dev/null || true
           fi
@@ -121,8 +122,8 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/gnk-live-output/data/*.json data/
-            cp /tmp/gnk-live-output/static/index.html index.html
-            cp /tmp/gnk-live-output/static/index.html en/index.html
+            cp /tmp/gnk-live-output/static/hr/index.html index.html
+            cp /tmp/gnk-live-output/static/en/index.html en/index.html
             git add index.html en/index.html data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
             if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
               git add data/news.json data/news_archive.json data/update_status.json data/media_approved.json data/media_monitor_status.json 2>/dev/null || true
