@@ -20,6 +20,10 @@ PROFILE_META = (
 )
 DISCREET_STYLE_TAG = '<link rel="stylesheet" href="/assets/seo-profile-link.css?v=20260529-discreet01">'
 OBSOLETE_HR_HUB_CARD = '<article class="item feature seo-identity-card"><span class="tag">Javni profil</span><h2>Nermin Sefić</h2><p>Nermin Sefić, Nermin Sefic, Sefić Nermin i Sefic Nermin — profil povezan s javnim sadržajem o GNK ASG d.o.o. i GNK DINAMO Ltd.</p><a href="../nermin-sefic/">Otvori javni profil →</a></article>'
+CONTENT_HUB_VISIBLE_OLD = 'Izravni pristup financijskom profilu, globalnoj mreži društava, tehnološkom prikazu, tematskom monitoringu, tržišnim podatcima, Intelligence Desku i javnim izvorima portala povezanima s GNK ASG d.o.o., GNK DINAMO Ltd. i Nerminom Sefićem.'
+CONTENT_HUB_VISIBLE_NEW = 'Izravni pristup financijskom profilu, globalnoj mreži društava, tehnološkom prikazu, tematskom monitoringu, tržišnim podatcima, Intelligence Desku i javnim izvorima korporativnog portala.'
+CONTENT_HUB_TAG_OLD = '<span>Nermin Sefić</span>'
+CONTENT_HUB_TAG_NEW = '<span>Transparentnost</span>'
 PERSON_OLD = '"name":"Nermin Sefić","alternateName":["Nermin Sefic","Sefić Nermin","Sefic Nermin"]'
 PERSON_NEW = '"name":"Nermin Sefić","givenName":"Nermin","familyName":"Sefić","alternateName":["Nermin Sefic","Sefić Nermin","Sefic Nermin"]'
 CONTENT_LIST_ID = 'seo-public-content-list'
@@ -107,8 +111,12 @@ def ensure_content_index_schema_without_prominent_profile_card() -> None:
     target, text = read('sadrzaj/index.html')
     original = text
     text = text.replace(OBSOLETE_HR_HUB_CARD, '')
+    text = text.replace(CONTENT_HUB_VISIBLE_OLD, CONTENT_HUB_VISIBLE_NEW)
+    text = text.replace(CONTENT_HUB_TAG_OLD, CONTENT_HUB_TAG_NEW)
     if CONTENT_LIST_ID not in text:
         text = text.replace('</head>', CONTENT_LIST_SCHEMA + '\n</head>', 1)
+    if DISCREET_STYLE_TAG not in text:
+        text = text.replace('</head>', '  ' + DISCREET_STYLE_TAG + '\n</head>', 1)
     write_if_changed(target, original, text)
 
 
@@ -116,7 +124,7 @@ def main() -> None:
     # The homepage retains its existing prominent identity presentation.
     ensure_home_links('index.html')
     ensure_home_links('en/index.html', english=True)
-    # Internal contextual references remain visible but are styled discreetly.
+    # Internal contextual references remain visible, small and readable.
     for page in HR_PAGES:
         ensure_contextual_link(page, HR_PROFILE, '<a href="/nermin-sefic/">Nermin Sefić</a>')
     for page in EN_PAGES:
