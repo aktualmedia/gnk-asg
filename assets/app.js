@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260528-permanent-share-cards02';
+  var VERSION = '20260528-live-status-fixed03';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
