@@ -1,36 +1,22 @@
-name: Fifteen Minute News Update
+name: Manual News Refresh Fallback
 
-# Javni sloj vijesti osvježava se svakih 15 minuta.
-# Svježe vijesti i status objavljuju se odmah; preview i referentni podatci su pomoćni drugi korak.
+# Rezervni ručni postupak. Automatski raspored vodi .github/workflows/portal-live-refresh.yml.
+# Javni prikaz zadržava najnovijih 500 vijesti, a višak ostaje spremljen u data/news_archive.json.
 on:
-  schedule:
-    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - 'scripts/update_feeds_v2.py'
-      - 'scripts/generate_news_share_previews.py'
-      - 'scripts/update_macro_data.py'
-      - 'scripts/update_market_extensions.py'
-      - 'scripts/update_open_data.py'
-      - 'data/news_config_v2.json'
-      - 'data/blocked_news.json'
-      - '.github/workflows/hourly-data-update.yml'
 
 permissions:
   contents: write
 
 concurrency:
-  group: public-news-refresh
-  cancel-in-progress: true
+  group: manual-news-refresh-fallback
+  cancel-in-progress: false
 
 jobs:
   update-news:
-    name: Refresh and immediately publish public news status
+    name: Manually refresh public news and archive
     runs-on: ubuntu-latest
-    timeout-minutes: 24
+    timeout-minutes: 15
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
@@ -42,63 +28,17 @@ jobs:
           python-version: '3.12'
       - name: Validate public news processor
         run: python -m py_compile scripts/update_feeds_v2.py
-      - name: Update classified public news
+      - name: Update public news and archived overflow
         run: python scripts/update_feeds_v2.py
-      - name: Publish current news status immediately
+      - name: Publish public list and archive
         run: |
           set -e
           git config user.name "gnk-asg-news-bot"
           git config user.email "actions@users.noreply.github.com"
-          mkdir -p /tmp/gnk-news-immediate
-          cp data/news.json data/update_status.json /tmp/gnk-news-immediate/
-          publish_news() {
-            git fetch origin main
-            git reset --hard origin/main
-            cp /tmp/gnk-news-immediate/news.json data/news.json
-            cp /tmp/gnk-news-immediate/update_status.json data/update_status.json
-            git add data/news.json data/update_status.json
-            if git diff --cached --quiet; then
-              echo "No public news status changes."
-              return 0
-            fi
-            git commit -m "Automated fifteen-minute public news status update"
-            git push origin HEAD:main
-          }
-          publish_news || (sleep 8 && publish_news)
-      - name: Restore latest main branch before auxiliary generation
-        run: |
-          git fetch origin main
-          git reset --hard origin/main
-      - name: Install optional news preview image dependency
-        run: python -m pip install --disable-pip-version-check pillow
-      - name: Generate auxiliary public datasets with time limits
-        run: |
-          timeout 240s python scripts/generate_news_share_previews.py || echo "Preview generation skipped or timed out; primary news status is already public."
-          timeout 120s python scripts/update_macro_data.py || echo "Macro reference update skipped or timed out."
-          timeout 120s python scripts/update_market_extensions.py || echo "Market extension update skipped or timed out."
-          timeout 120s python scripts/update_open_data.py || echo "Open-data update skipped or timed out."
-      - name: Publish auxiliary datasets if changed
-        run: |
-          set -e
-          git config user.name "gnk-asg-news-bot"
-          git config user.email "actions@users.noreply.github.com"
-          rm -rf /tmp/gnk-news-aux
-          mkdir -p /tmp/gnk-news-aux/data /tmp/gnk-news-aux/assets /tmp/gnk-news-aux/podijeli
-          cp data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json /tmp/gnk-news-aux/data/ 2>/dev/null || true
-          cp -R assets/news-preview /tmp/gnk-news-aux/assets/ 2>/dev/null || true
-          cp -R podijeli/vijest /tmp/gnk-news-aux/podijeli/ 2>/dev/null || true
-          publish_auxiliary() {
-            git fetch origin main
-            git reset --hard origin/main
-            cp /tmp/gnk-news-aux/data/*.json data/ 2>/dev/null || true
-            cp -R /tmp/gnk-news-aux/assets/news-preview assets/ 2>/dev/null || true
-            cp -R /tmp/gnk-news-aux/podijeli/vijest podijeli/ 2>/dev/null || true
-            git add data/macro_market.json data/asg_gold_asset.json data/stock_exchanges.json data/open_data.json assets/news-preview/ podijeli/vijest/ 2>/dev/null || true
-            if git diff --cached --quiet; then
-              echo "No auxiliary changes."
-              return 0
-            fi
-            git commit -m "Automated public news auxiliary dataset update"
-            git push origin HEAD:main
-          }
-          publish_auxiliary || (sleep 8 && publish_auxiliary)
+          git add data/news.json data/news_archive.json data/update_status.json
+          if git diff --cached --quiet; then
+            echo "No public news or archive changes."
+            exit 0
+          fi
+          git commit -m "Manual public news and archive refresh"
+          git push origin HEAD:main
