@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Apply durable, visible identity SEO links after metadata generation.
+"""Apply durable, readable identity SEO links after metadata generation.
 
-This step supplements structured data with normal, user-visible internal links.
-It intentionally avoids hidden keyword stuffing: every identity form appears in
-legitimate public-profile context associated with published portal content.
+Contextual identity references remain visible and indexable but visually discreet
+on internal portal pages. The homepage and dedicated public profile retain their
+normal identity presentation. This avoids hidden text while preserving natural
+internal linking for public indexing.
 """
 from __future__ import annotations
 
@@ -18,7 +19,7 @@ PROFILE_META = (
     '  <meta property="profile:last_name" content="Sefić">\n'
 )
 DISCREET_STYLE_TAG = '<link rel="stylesheet" href="/assets/seo-profile-link.css?v=20260529-discreet01">'
-HR_HUB_CARD = '<article class="item feature seo-identity-card"><span class="tag">Javni profil</span><h2>Nermin Sefić</h2><p>Nermin Sefić, Nermin Sefic, Sefić Nermin i Sefic Nermin — profil povezan s javnim sadržajem o GNK ASG d.o.o. i GNK DINAMO Ltd.</p><a href="../nermin-sefic/">Otvori javni profil →</a></article>'
+OBSOLETE_HR_HUB_CARD = '<article class="item feature seo-identity-card"><span class="tag">Javni profil</span><h2>Nermin Sefić</h2><p>Nermin Sefić, Nermin Sefic, Sefić Nermin i Sefic Nermin — profil povezan s javnim sadržajem o GNK ASG d.o.o. i GNK DINAMO Ltd.</p><a href="../nermin-sefic/">Otvori javni profil →</a></article>'
 PERSON_OLD = '"name":"Nermin Sefić","alternateName":["Nermin Sefic","Sefić Nermin","Sefic Nermin"]'
 PERSON_NEW = '"name":"Nermin Sefić","givenName":"Nermin","familyName":"Sefić","alternateName":["Nermin Sefic","Sefić Nermin","Sefic Nermin"]'
 CONTENT_LIST_ID = 'seo-public-content-list'
@@ -34,10 +35,9 @@ EN_PAGES = [
     'en/technology/index.html', 'en/markets/index.html',
     'en/intelligence-desk/index.html'
 ]
-CONTEXTUAL_PAGES = [*HR_PAGES, *EN_PAGES]
 ALL_PUBLIC_PAGES = [
     'index.html', 'en/index.html', 'nermin-sefic/index.html',
-    'en/nermin-sefic/index.html', *CONTEXTUAL_PAGES,
+    'en/nermin-sefic/index.html', *HR_PAGES, *EN_PAGES,
     'instalacija/index.html'
 ]
 
@@ -103,29 +103,27 @@ def ensure_person_properties(path: str) -> None:
         target.write_text(text.replace(PERSON_OLD, PERSON_NEW), encoding='utf-8')
 
 
-def ensure_profile_hub_card() -> None:
+def ensure_content_index_schema_without_prominent_profile_card() -> None:
     target, text = read('sadrzaj/index.html')
     original = text
-    if 'seo-identity-card' not in text:
-        marker = '<section><div class="container cards">'
-        text = text.replace(marker, marker + HR_HUB_CARD, 1)
+    text = text.replace(OBSOLETE_HR_HUB_CARD, '')
     if CONTENT_LIST_ID not in text:
         text = text.replace('</head>', CONTENT_LIST_SCHEMA + '\n</head>', 1)
     write_if_changed(target, original, text)
 
 
 def main() -> None:
-    # The homepage retains its existing prominent visible identity presentation.
+    # The homepage retains its existing prominent identity presentation.
     ensure_home_links('index.html')
     ensure_home_links('en/index.html', english=True)
-    # Only the contextual links on internal pages are styled discreetly.
+    # Internal contextual references remain visible but are styled discreetly.
     for page in HR_PAGES:
         ensure_contextual_link(page, HR_PROFILE, '<a href="/nermin-sefic/">Nermin Sefić</a>')
     for page in EN_PAGES:
         ensure_contextual_link(page, EN_PROFILE, '<a href="/en/nermin-sefic/">Nermin Sefić</a>')
     ensure_profile_meta('nermin-sefic/index.html')
     ensure_profile_meta('en/nermin-sefic/index.html')
-    ensure_profile_hub_card()
+    ensure_content_index_schema_without_prominent_profile_card()
     for page in ALL_PUBLIC_PAGES:
         ensure_person_properties(page)
 
