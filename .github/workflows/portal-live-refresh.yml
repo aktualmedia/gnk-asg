@@ -2,8 +2,8 @@ name: Portal Live Data Refresh
 
 # Jedini glavni automatski proces javnih podataka portala nakon migracije arhive vijesti.
 # Stari zasebni workflowi ostaju samo za ručno rezervno pokretanje.
-# Tržišni podatci provjeravaju se svakih 5 minuta; javnih 500 vijesti i arhiva viška
-# osvježavaju se u prvom ciklusu nakon proteka 15 minuta od zadnje uspješne objave.
+# Brzi tržišni podatci i cross-asset grafikon provjeravaju se svakih 5 minuta; javnih
+# 500 vijesti i arhiva viška osvježavaju se nakon proteka 15 minuta od zadnje objave.
 on:
   workflow_dispatch:
   push:
@@ -15,6 +15,7 @@ on:
       - '.github/workflows/hourly-data-update.yml'
       - '.github/workflows/media-monitor-status.yml'
       - 'scripts/update_fast_market.py'
+      - 'scripts/update_macro_data.py'
       - 'scripts/update_feeds_v2.py'
       - 'scripts/discover_corporate_media.py'
       - 'data/news_config_v2.json'
@@ -46,9 +47,11 @@ jobs:
         with:
           python-version: '3.12'
       - name: Validate data processors
-        run: python -m py_compile scripts/update_fast_market.py scripts/update_feeds_v2.py scripts/discover_corporate_media.py
+        run: python -m py_compile scripts/update_fast_market.py scripts/update_macro_data.py scripts/update_feeds_v2.py scripts/discover_corporate_media.py
       - name: Refresh fast market datasets every cycle
         run: python scripts/update_fast_market.py
+      - name: Refresh cross-asset Bitcoin comparison graph every cycle
+        run: python scripts/update_macro_data.py
       - name: Determine whether news and archive are due
         id: cycle
         env:
@@ -112,7 +115,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           rm -rf /tmp/gnk-live-output
           mkdir -p /tmp/gnk-live-output/data /tmp/gnk-live-output/static/hr /tmp/gnk-live-output/static/en
-          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-live-output/data/
+          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json /tmp/gnk-live-output/data/
           cp index.html /tmp/gnk-live-output/static/hr/index.html
           cp en/index.html /tmp/gnk-live-output/static/en/index.html
           if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
@@ -124,7 +127,7 @@ jobs:
             cp /tmp/gnk-live-output/data/*.json data/
             cp /tmp/gnk-live-output/static/hr/index.html index.html
             cp /tmp/gnk-live-output/static/en/index.html en/index.html
-            git add index.html en/index.html data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+            git add index.html en/index.html data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json
             if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
               git add data/news.json data/news_archive.json data/update_status.json data/media_approved.json data/media_monitor_status.json 2>/dev/null || true
             fi
