@@ -2,7 +2,8 @@ name: Portal Live Data Refresh
 
 # Jedini glavni automatski proces javnih podataka portala nakon migracije arhive vijesti.
 # Stari zasebni workflowi ostaju samo za ručno rezervno pokretanje.
-# Tržišni podatci: svakih 5 minuta. Javnih 500 vijesti i arhiva viška: svakih 15 minuta.
+# Tržišni podatci provjeravaju se svakih 5 minuta; javnih 500 vijesti i arhiva viška
+# osvježavaju se u prvom ciklusu nakon proteka 15 minuta od zadnje uspješne objave.
 on:
   workflow_dispatch:
   push:
@@ -21,8 +22,7 @@ on:
       - 'data/media_removed.json'
       - 'data/blocked_news.json'
   schedule:
-    - cron: '1,16,31,46 * * * *'
-    - cron: '6,11,21,26,36,41,51,56 * * * *'
+    - cron: '*/5 * * * *'
 
 permissions:
   contents: write
@@ -49,15 +49,31 @@ jobs:
         run: python -m py_compile scripts/update_fast_market.py scripts/update_feeds_v2.py scripts/discover_corporate_media.py
       - name: Refresh fast market datasets every cycle
         run: python scripts/update_fast_market.py
-      - name: Determine whether this cycle includes news
+      - name: Determine whether news and archive are due
         id: cycle
-        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          if [[ "${{ github.event_name }}" != "schedule" || "${{ github.event.schedule }}" == "1,16,31,46 * * * *" ]]; then
-            echo "news=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "news=false" >> "$GITHUB_OUTPUT"
-          fi
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          from pathlib import Path
+          output = Path(os.environ['GITHUB_OUTPUT'])
+          due = os.environ.get('EVENT_NAME') != 'schedule'
+          if not due:
+              try:
+                  status = json.loads(Path('data/update_status.json').read_text(encoding='utf-8'))
+                  raw = status.get('news', {}).get('updated_at')
+                  last = dt.datetime.fromisoformat(raw.replace('Z', '+00:00'))
+                  age = (dt.datetime.now(dt.timezone.utc) - last.astimezone(dt.timezone.utc)).total_seconds() / 60
+                  due = age >= 14
+              except Exception:
+                  due = True
+          with output.open('a', encoding='utf-8') as handle:
+              handle.write(f"news={'true' if due else 'false'}\n")
+          print(f"News and archive refresh due: {due}")
+          PY
       - name: Refresh public 500-item news list and archived overflow
         if: steps.cycle.outputs.news == 'true'
         run: python scripts/update_feeds_v2.py
