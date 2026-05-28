@@ -4,28 +4,39 @@
 Outputs are informational market observations only. They do not represent an
 exchange service, issuance, stablecoin offering, investment advice or a price
 guarantee by GNK ASG d.o.o. or GNK DINAMO Ltd.
-Scheduled and manually initiated refreshes produce the same public status payload.
+
+A temporary external-feed failure is disclosed as a partial refresh instead of
+blocking publication and leaving an obsolete public timestamp visible.
 """
 from __future__ import annotations
 import datetime as dt
 import json
 import math
+import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
-UA = "GNK-ASG-Market-Intelligence/3.1"
+UA = "GNK-ASG-Market-Intelligence/3.2"
 FIATS = ["eur", "usd", "gbp", "chf", "jpy"]
 COINS = {"bitcoin":"BTC","ethereum":"ETH","solana":"SOL","ripple":"XRP","binancecoin":"BNB","cardano":"ADA","chainlink":"LINK","avalanche-2":"AVAX","tether":"USDT","usd-coin":"USDC","dai":"DAI","euro-coin":"EURC"}
 STABLECOINS = {"tether":{"symbol":"USDT","peg":"usd","issuer":"Tether"},"usd-coin":{"symbol":"USDC","peg":"usd","issuer":"Circle"},"dai":{"symbol":"DAI","peg":"usd","issuer":"Sky ecosystem"},"first-digital-usd":{"symbol":"FDUSD","peg":"usd","issuer":"First Digital"},"paypal-usd":{"symbol":"PYUSD","peg":"usd","issuer":"Paxos / PayPal"},"euro-coin":{"symbol":"EURC","peg":"eur","issuer":"Circle"}}
 INDEXES = {"sp500":{"symbol":"^GSPC","label":"S&P 500","region":"SAD"},"nasdaq":{"symbol":"^IXIC","label":"Nasdaq Composite","region":"SAD"},"stoxx50":{"symbol":"^STOXX50E","label":"EURO STOXX 50","region":"Europa"},"dax":{"symbol":"^GDAXI","label":"DAX","region":"Njemačka"},"ftse":{"symbol":"^FTSE","label":"FTSE 100","region":"UK"},"nikkei":{"symbol":"^N225","label":"Nikkei 225","region":"Japan"}}
 PREFERRED_EXCHANGES = {"Binance","Coinbase Exchange","Kraken","OKX","Bitstamp","Crypto.com Exchange","Bybit"}
 def fetch_json(url: str):
-    request = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return json.loads(response.read().decode("utf-8"))
+    last_error = None
+    for attempt in range(3):
+        try:
+            request = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return json.loads(response.read().decode("utf-8"))
+        except Exception as exc:
+            last_error = exc
+            if attempt < 2:
+                time.sleep(2 * (attempt + 1))
+    raise last_error
 def save(name: str, payload) -> None:
     (DATA / name).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 def simple_prices(ids: list[str]) -> dict:
@@ -79,8 +90,7 @@ def main() -> None:
     for label, function in (("digital_assets", update_coins_and_stablecoins), ("btc_chart_points", update_btc_chart), ("exchanges", update_exchanges), ("indices", update_indices)):
         try: summary[label] = function()
         except Exception as exc: errors.append({"module": label, "error": str(exc)[:150]})
-    status = {"updated_at": NOW, "cadence": "scheduled every five minutes", **summary, "errors": errors}
+    status = {"updated_at": NOW, "cadence": "scheduled every five minutes", "status": "ok" if not errors else "partial", **summary, "errors": errors}
     save("fast_market_status.json", status)
     print(json.dumps(status, ensure_ascii=False))
-    if errors: raise SystemExit("Jedan ili više tržišnih modula nije uspješno dohvaćen.")
 if __name__ == "__main__": main()
