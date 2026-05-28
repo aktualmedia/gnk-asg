@@ -1,7 +1,7 @@
-name: Media Monitor Status
+name: Corporate Media Automatic Publication
 
-# Ovaj proces vodi samo status medijskog praćenja i ne smije prepisivati datum javnih vijesti.
-# Samostalan je kako ne bi blokirao tržišna ili satna podatkovna osvježenja.
+# Samostalan proces automatski objavljuje javne medijske nalaze o konfiguriranim subjektima.
+# Ovlašteno uklonjene poveznice ostaju isključene putem data/media_removed.json.
 on:
   workflow_dispatch:
   schedule:
@@ -11,6 +11,7 @@ on:
       - main
     paths:
       - 'data/media_queries.json'
+      - 'data/media_removed.json'
       - 'scripts/discover_corporate_media.py'
       - '.github/workflows/media-monitor-status.yml'
 
@@ -18,13 +19,14 @@ permissions:
   contents: write
 
 concurrency:
-  group: hourly-media-monitor-status
+  group: hourly-media-monitor-publication
   cancel-in-progress: true
 
 jobs:
-  status:
+  publish-media:
+    name: Discover and publish corporate media items
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 8
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,24 +34,28 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Refresh monitor status
+      - name: Discover public corporate media results
         run: python scripts/discover_corporate_media.py
-      - name: Publish media monitor status without modifying news timestamp
+      - name: Publish media items and status without modifying general news timestamp
         run: |
           set -e
           git config user.name "gnk-asg-media-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
-          cp data/media_monitor_status.json /tmp/media_monitor_status.json
+          rm -rf /tmp/gnk-media-output
+          mkdir -p /tmp/gnk-media-output
+          cp data/media_approved.json data/media_monitor_status.json data/update_status.json /tmp/gnk-media-output/
           publish_generated_data() {
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/media_monitor_status.json data/media_monitor_status.json
-            git add data/media_monitor_status.json
+            cp /tmp/gnk-media-output/media_approved.json data/media_approved.json
+            cp /tmp/gnk-media-output/media_monitor_status.json data/media_monitor_status.json
+            cp /tmp/gnk-media-output/update_status.json data/update_status.json
+            git add data/media_approved.json data/media_monitor_status.json data/update_status.json
             if git diff --cached --quiet; then
-              echo "No media monitor status changes."
+              echo "No corporate media changes."
               return 0
             fi
-            git commit -m "Automated media monitor status update"
+            git commit -m "Automated corporate media publication update"
             git push origin HEAD:main
           }
           publish_generated_data || (sleep 8 && publish_generated_data)
