@@ -1,10 +1,11 @@
 {
   "status": "ok",
-  "updated_at": "2026-05-28T12:50:46+00:00",
+  "updated_at": "2026-05-28T15:05:42+00:00",
   "checked_queries": 8,
   "public_results_detected": 0,
-  "approved_public": 0,
-  "public_display_policy": "manual_approval_only",
-  "privacy_notice": "Unapproved search results are not stored or displayed by the public portal.",
+  "published_public": 0,
+  "removed_urls": 0,
+  "public_display_policy": "automatic_publication_with_authorized_removal",
+  "privacy_notice": "Matching public corporate-media results are published automatically; authorised removals remain excluded.",
   "errors_count": 0
 }
