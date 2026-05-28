@@ -17,6 +17,7 @@ PROFILE_META = (
     '  <meta property="profile:first_name" content="Nermin">\n'
     '  <meta property="profile:last_name" content="Sefić">\n'
 )
+DISCREET_STYLE_TAG = '<link rel="stylesheet" href="/assets/seo-profile-link.css?v=20260529-discreet01">'
 HR_HUB_CARD = '<article class="item feature seo-identity-card"><span class="tag">Javni profil</span><h2>Nermin Sefić</h2><p>Nermin Sefić, Nermin Sefic, Sefić Nermin i Sefic Nermin — profil povezan s javnim sadržajem o GNK ASG d.o.o. i GNK DINAMO Ltd.</p><a href="../nermin-sefic/">Otvori javni profil →</a></article>'
 PERSON_OLD = '"name":"Nermin Sefić","alternateName":["Nermin Sefic","Sefić Nermin","Sefic Nermin"]'
 PERSON_NEW = '"name":"Nermin Sefić","givenName":"Nermin","familyName":"Sefić","alternateName":["Nermin Sefic","Sefić Nermin","Sefic Nermin"]'
@@ -33,9 +34,10 @@ EN_PAGES = [
     'en/technology/index.html', 'en/markets/index.html',
     'en/intelligence-desk/index.html'
 ]
+CONTEXTUAL_PAGES = [*HR_PAGES, *EN_PAGES]
 ALL_PUBLIC_PAGES = [
     'index.html', 'en/index.html', 'nermin-sefic/index.html',
-    'en/nermin-sefic/index.html', *HR_PAGES, *EN_PAGES,
+    'en/nermin-sefic/index.html', *CONTEXTUAL_PAGES,
     'instalacija/index.html'
 ]
 
@@ -75,9 +77,12 @@ def ensure_home_links(path: str, english: bool = False) -> None:
 
 def ensure_contextual_link(path: str, paragraph: str, exact_link: str) -> None:
     target, text = read(path)
+    original = text
     if exact_link not in text:
         text = text.replace('</footer>', paragraph + '</footer>', 1)
-        target.write_text(text, encoding='utf-8')
+    if DISCREET_STYLE_TAG not in text:
+        text = text.replace('</head>', '  ' + DISCREET_STYLE_TAG + '\n</head>', 1)
+    write_if_changed(target, original, text)
 
 
 def ensure_profile_meta(path: str) -> None:
@@ -110,8 +115,10 @@ def ensure_profile_hub_card() -> None:
 
 
 def main() -> None:
+    # The homepage retains its existing prominent visible identity presentation.
     ensure_home_links('index.html')
     ensure_home_links('en/index.html', english=True)
+    # Only the contextual links on internal pages are styled discreetly.
     for page in HR_PAGES:
         ensure_contextual_link(page, HR_PROFILE, '<a href="/nermin-sefic/">Nermin Sefić</a>')
     for page in EN_PAGES:
