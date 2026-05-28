@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Manage only publicly approved corporate media links.
+"""Manage automatic corporate-media visibility through an authorised workflow.
 
-This script is intended to be invoked by an authorized GitHub Actions workflow.
-No pending or rejected items are stored in the public repository.
+The monitor publishes matching public results automatically. This workflow can
+remove a public URL persistently or restore/add a specifically verified URL.
 """
 from __future__ import annotations
 
@@ -13,7 +13,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
-APPROVED = ROOT / "data" / "media_approved.json"
+PUBLIC_ITEMS = ROOT / "data" / "media_approved.json"
+REMOVED = ROOT / "data" / "media_removed.json"
 
 
 def value(name: str) -> str:
@@ -25,12 +26,16 @@ def valid_public_url(url: str) -> bool:
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
 
 
-def load_items() -> list[dict]:
+def load_items(path: Path) -> list:
     try:
-        items = json.loads(APPROVED.read_text(encoding="utf-8"))
+        items = json.loads(path.read_text(encoding="utf-8"))
         return items if isinstance(items, list) else []
     except (OSError, json.JSONDecodeError):
         return []
+
+
+def write(path: Path, items: list) -> None:
+    path.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def main() -> None:
@@ -41,17 +46,23 @@ def main() -> None:
     if not valid_public_url(url):
         raise SystemExit("A valid public http/https source URL is required.")
 
-    items = load_items()
-    items = [item for item in items if str(item.get("url", "")).strip() != url]
+    items = [item for item in load_items(PUBLIC_ITEMS) if str(item.get("url", "")).strip() != url]
+    removed = [item for item in load_items(REMOVED) if str(item.get("url", "")).strip() != url]
 
-    if action == "approve":
+    if action == "remove":
+        removed.append({
+            "url": url,
+            "removed_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+            "reason": "authorised_public_removal"
+        })
+    else:
         title = value("MEDIA_TITLE")
         source = value("MEDIA_SOURCE")
         published_at = value("MEDIA_DATE")
         summary = value("MEDIA_SUMMARY")
         subject = value("MEDIA_SUBJECT") or "GNK ASG d.o.o."
         if not title or not source:
-            raise SystemExit("Title and source are required for approval.")
+            raise SystemExit("Title and source are required for approval or restoration.")
         if published_at:
             try:
                 datetime.fromisoformat(published_at.replace("Z", "+00:00"))
@@ -71,8 +82,9 @@ def main() -> None:
         })
 
     items.sort(key=lambda item: str(item.get("published_at", "")), reverse=True)
-    APPROVED.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"{action}: {url}; public approved items: {len(items)}")
+    write(PUBLIC_ITEMS, items)
+    write(REMOVED, removed)
+    print(f"{action}: {url}; visible items: {len(items)}; removed URLs: {len(removed)}")
 
 
 if __name__ == "__main__":
