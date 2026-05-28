@@ -1,6 +1,8 @@
 (() => {
   'use strict';
   let marketData = null;
+  let storedStatus = null;
+  let liveMarketState = null;
   let verified = false;
   const lang = () => (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en') || /\/en\/?$/.test(location.pathname) ? 'en' : 'hr';
   const minutesOld = value => value ? Math.max(0, (Date.now() - new Date(value).getTime()) / 60000) : Infinity;
@@ -13,14 +15,21 @@
     try { const response = await fetch(path + '?v=' + Date.now(), {cache:'no-store'}); return response.ok ? await response.json() : null; }
     catch (_) { return null; }
   }
+  function evaluate() {
+    const news = storedStatus && storedStatus.news;
+    const newsReady = Boolean(news && minutesOld(news.updated_at) <= 95 && Array.isArray(news.errors) && news.errors.length === 0);
+    const storedMarketReady = Boolean(storedStatus && false);
+    const publishedMarket = storedStatus && storedStatus.fast_market;
+    const directMarketReady = Boolean(liveMarketState && liveMarketState.ok && minutesOld(liveMarketState.updated_at) <= 20);
+    const fallbackMarketReady = Boolean(publishedMarket && minutesOld(publishedMarket.updated_at) <= 20 && publishedMarket.status !== 'partial' && Array.isArray(publishedMarket.errors) && publishedMarket.errors.length === 0);
+    verified = newsReady && (directMarketReady || fallbackMarketReady || storedMarketReady);
+    paintStatus();
+  }
   async function refreshVerifiedState() {
     const values = await Promise.all([read('/data/update_status.json'), read('/data/fast_market_status.json')]);
-    const news = values[0] && values[0].news;
-    const liveMarket = values[1];
-    const newsReady = Boolean(news && minutesOld(news.updated_at) <= 35 && Array.isArray(news.errors) && news.errors.length === 0);
-    const marketReady = Boolean(liveMarket && minutesOld(liveMarket.updated_at) <= 20 && liveMarket.status !== 'partial' && Array.isArray(liveMarket.errors) && liveMarket.errors.length === 0);
-    verified = newsReady && marketReady;
-    paintStatus();
+    storedStatus = values[0] || {};
+    storedStatus.fast_market = values[1] || null;
+    evaluate();
   }
   function paintStatus() {
     const button = document.getElementById('aiFab');
@@ -50,7 +59,7 @@
       }
       return en ? 'Open Market Monitor for Bitcoin, gold, Brent oil and USD/EUR comparison.' : 'Otvorite Market Monitor za usporedbu Bitcoina, zlata, Brent nafte i USD/EUR.';
     }
-    if (/vijest|news|media|medij/.test(q)) return en ? 'Public business and technology news refresh every fifteen minutes. Public publications found for GNK ASG, GNK DINAMO Ltd. or Nermin Sefić are displayed automatically in the media section and can be removed through authorised control.' : 'Javne poslovne i tehnološke vijesti osvježavaju se svakih petnaest minuta. Javne objave pronađene za GNK ASG, GNK DINAMO Ltd. ili Nermina Sefića automatski se prikazuju u medijskoj rubrici i mogu se ukloniti kroz ovlaštenu kontrolu.';
+    if (/vijest|news|media|medij/.test(q)) return en ? 'Public business and technology news refresh through the portal cycle. Digital asset values refresh live inside the app when a public market source is available.' : 'Poslovne i tehnološke vijesti osvježavaju se kroz ciklus portala. Vrijednosti digitalne imovine osvježavaju se uživo unutar aplikacije kada je javni tržišni izvor dostupan.';
     if (/ai|desk|intelligence|umjet|tehnolog|software/.test(q)) return en ? 'Intelligence Desk explains public corporate indicators, market panels and technology topics, and offers public topic research links.' : 'Intelligence Desk pojašnjava javne korporativne pokazatelje, tržišne panele i tehnološke teme te nudi istraživanje javnih tema.';
     return en ? 'Open the full Intelligence Desk to explore this topic through portal data and public research tools.' : 'Otvorite puni Intelligence Desk kako biste temu istražili kroz podatke portala i javne alate pretrage.';
   }
@@ -85,6 +94,7 @@
     const panel = document.createElement('aside'); panel.className = 'ai-mini'; panel.id = 'aiMini';
     document.body.append(backdrop, button, panel);
     render();
+    window.addEventListener('gnk-live-market-refresh', event => { liveMarketState = event.detail || null; evaluate(); });
     try { const response = await fetch('/data/macro_market.json?v=' + Date.now(), {cache:'no-store'}); if (response.ok) marketData = await response.json(); } catch (_) {}
     refreshVerifiedState();
     window.setInterval(refreshVerifiedState, 300000);
