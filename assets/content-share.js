@@ -3,23 +3,17 @@
   if (window.GNK_CONTENT_SHARE_READY) return;
   window.GNK_CONTENT_SHARE_READY = true;
   const SHARE = 'gnk-content-share';
-  const PREVIEW = 'preview=20260527-card05';
   const SECTION_SHARE = {
     financials: '/podijeli/financije/',
-    grupa: '/podijeli/grupa/',
+    grupa: '/podijeli/grupa-kartica/',
     technology: '/podijeli/tehnologija/',
-    'digital-assets': '/podijeli/trzista/',
+    'digital-assets': '/podijeli/trzista-kartica/',
     news: '/podijeli/vijesti/',
     dokumenti: '/podijeli/dokumenti/'
   };
   const isEnglish = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const absolute = value => new URL(value || location.href, location.origin).href;
-  const versioned = value => {
-    const url = new URL(value || location.href, location.origin);
-    if (url.origin === location.origin && url.pathname.startsWith('/podijeli/') && !url.pathname.startsWith('/podijeli/vijest/')) url.search = PREVIEW;
-    return url.href;
-  };
-  const sectionShareUrl = id => versioned(SECTION_SHARE[id] || (location.pathname + '#' + id));
+  const sectionShareUrl = id => absolute(SECTION_SHARE[id] || (location.pathname + '#' + id));
   function installStyle() {
     if (document.getElementById('gnk-content-share-style')) return;
     const style = document.createElement('style');
@@ -30,7 +24,7 @@
   function shareMarkup(title, url) {
     const label = isEnglish() ? 'Share' : 'Podijeli';
     const itemTitle = title || document.title || 'GNK ASG d.o.o.';
-    const itemUrl = versioned(url || location.href);
+    const itemUrl = absolute(url || location.href);
     const message = encodeURIComponent(itemTitle + ' — ' + itemUrl);
     return '<div class="' + SHARE + '"><button class="gnk-share-toggle" type="button" aria-expanded="false" aria-label="' + label + '" title="' + label + '">' + label + '</button><div class="gnk-share-options" aria-label="' + label + '"><a target="_blank" rel="noopener" href="https://wa.me/?text=' + message + '">WhatsApp</a><a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(itemUrl) + '">LinkedIn</a><a href="mailto:?subject=' + encodeURIComponent(itemTitle) + '&body=' + message + '">E-mail</a></div></div>';
   }
