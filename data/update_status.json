@@ -1,32 +1,21 @@
 {
-  "updated_at": "2026-05-28T12:53:32+00:00",
+  "updated_at": "2026-05-28T15:50:03+00:00",
   "news": {
-    "updated_at": "2026-05-28T12:53:32+00:00",
+    "updated_at": "2026-05-28T15:50:03+00:00",
     "cadence": "hourly",
-    "public_items": 362,
+    "public_items": 361,
     "by_group": {
-      "srbija": 31,
       "international": 58,
-      "technology": 117,
+      "technology": 118,
+      "srbija": 31,
       "hrvatska": 20,
-      "digital-assets": 85,
+      "digital-assets": 84,
       "mobilnost": 30,
-      "sport": 8,
+      "sport": 7,
       "bih": 12,
       "slovenija": 1
     },
     "duplicates_removed": 17,
     "errors": []
-  },
-  "corporate_media_monitor": {
-    "status": "ok",
-    "updated_at": "2026-05-28T15:06:55+00:00",
-    "checked_queries": 8,
-    "public_results_detected": 0,
-    "published_public": 0,
-    "removed_urls": 0,
-    "public_display_policy": "automatic_publication_with_authorized_removal",
-    "privacy_notice": "Matching public corporate-media results are published automatically; authorised removals remain excluded.",
-    "errors_count": 0
   }
 }

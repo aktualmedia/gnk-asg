@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-05-28T12:53:56+00:00",
+  "updated_at": "2026-05-28T15:50:31+00:00",
   "ecb": {
     "status": "ok",
-    "reference_date": "2026-05-27",
+    "reference_date": "2026-05-28",
     "base_currency": "EUR",
     "source": "European Central Bank reference rates",
     "rates": {
-      "USD": 1.1637,
-      "GBP": 0.86618,
-      "CHF": 0.9153,
-      "JPY": 185.52
+      "USD": 1.1617,
+      "GBP": 0.86665,
+      "CHF": 0.9167,
+      "JPY": 185.24
     }
   }
 }
