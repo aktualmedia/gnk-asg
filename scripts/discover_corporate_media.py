@@ -138,9 +138,6 @@ def main() -> None:
         "errors_count": len(errors)
     }
     save(STATUS, public_status)
-    status = load(DATA / "update_status.json", {})
-    status["corporate_media_monitor"] = public_status
-    save(DATA / "update_status.json", status)
     print(json.dumps(public_status, ensure_ascii=False))
 
 
