@@ -1,23 +1,28 @@
 {
-  "updated_at": "2026-05-28T18:44:42+00:00",
+  "updated_at": "2026-05-28T19:09:22+00:00",
   "news": {
-    "updated_at": "2026-05-28T18:44:42+00:00",
+    "updated_at": "2026-05-28T19:09:22+00:00",
     "cadence": "scheduled refresh",
-    "public_items": 361,
+    "rotation_policy": "newest_unique_items_retained_oldest_removed_after_limit",
+    "public_items": 500,
     "max_public_items": 500,
-    "older_items_removed": 0,
+    "archive_days": 90,
+    "max_per_source": 60,
+    "fetched_candidates": 559,
+    "previous_archive_candidates": 361,
+    "expired_items_removed": 0,
+    "oldest_items_removed_after_limit": 70,
     "by_group": {
-      "technology": 118,
-      "digital-assets": 84,
+      "technology": 168,
+      "bih": 16,
+      "digital-assets": 135,
+      "international": 74,
       "hrvatska": 20,
-      "international": 58,
-      "srbija": 31,
-      "mobilnost": 30,
-      "sport": 7,
-      "bih": 12,
-      "slovenija": 1
+      "srbija": 50,
+      "mobilnost": 34,
+      "sport": 3
     },
-    "duplicates_removed": 17,
+    "duplicates_or_blocked_removed": 350,
     "errors": []
   }
 }
