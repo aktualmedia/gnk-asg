@@ -1,9 +1,8 @@
 name: Portal Live Data Refresh
 
-# Jedini glavni automatski proces javnih podataka portala nakon migracije arhive vijesti.
-# Stari zasebni workflowi ostaju samo za ručno rezervno pokretanje.
-# Brzi tržišni podatci i cross-asset grafikon provjeravaju se svakih 5 minuta; javnih
-# 500 vijesti i arhiva viška osvježavaju se nakon proteka 15 minuta od zadnje objave.
+# Samostalan tržišni proces portala.
+# Vijesti i arhivu vodi isključivo .github/workflows/news-feed-archive-refresh.yml.
+# Ova izolacija sprječava da kvar tržišta, grafikona ili objave blokira vijesti.
 on:
   workflow_dispatch:
   push:
@@ -11,17 +10,8 @@ on:
       - main
     paths:
       - '.github/workflows/portal-live-refresh.yml'
-      - '.github/workflows/fast-market-update.yml'
-      - '.github/workflows/hourly-data-update.yml'
-      - '.github/workflows/media-monitor-status.yml'
       - 'scripts/update_fast_market.py'
       - 'scripts/update_macro_data.py'
-      - 'scripts/update_feeds_v2.py'
-      - 'scripts/discover_corporate_media.py'
-      - 'data/news_config_v2.json'
-      - 'data/media_queries.json'
-      - 'data/media_removed.json'
-      - 'data/blocked_news.json'
   schedule:
     - cron: '*/5 * * * *'
 
@@ -29,113 +19,50 @@ permissions:
   contents: write
 
 concurrency:
-  group: portal-live-data-refresh
+  group: portal-market-live-data-refresh
   cancel-in-progress: false
 
 jobs:
-  refresh-public-data:
-    name: Refresh and publish public portal data
+  refresh-public-market-data:
+    name: Refresh and publish public market data
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
-      - name: Checkout repository
+      - name: Checkout current main branch
         uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate data processors
-        run: python -m py_compile scripts/update_fast_market.py scripts/update_macro_data.py scripts/update_feeds_v2.py scripts/discover_corporate_media.py
+      - name: Validate market processors
+        run: python -m py_compile scripts/update_fast_market.py scripts/update_macro_data.py
       - name: Refresh fast market datasets every cycle
         run: python scripts/update_fast_market.py
       - name: Refresh cross-asset Bitcoin comparison graph every cycle
         run: python scripts/update_macro_data.py
-      - name: Determine whether news and archive are due
-        id: cycle
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-        run: |
-          python - <<'PY'
-          import datetime as dt
-          import json
-          import os
-          from pathlib import Path
-          output = Path(os.environ['GITHUB_OUTPUT'])
-          due = os.environ.get('EVENT_NAME') != 'schedule'
-          if not due:
-              try:
-                  status = json.loads(Path('data/update_status.json').read_text(encoding='utf-8'))
-                  raw = status.get('news', {}).get('updated_at')
-                  last = dt.datetime.fromisoformat(raw.replace('Z', '+00:00'))
-                  age = (dt.datetime.now(dt.timezone.utc) - last.astimezone(dt.timezone.utc)).total_seconds() / 60
-                  due = age >= 14
-              except Exception:
-                  due = True
-          with output.open('a', encoding='utf-8') as handle:
-              handle.write(f"news={'true' if due else 'false'}\n")
-          print(f"News and archive refresh due: {due}")
-          PY
-      - name: Refresh public 500-item news list and archived overflow
-        if: steps.cycle.outputs.news == 'true'
-        run: python scripts/update_feeds_v2.py
-      - name: Refresh corporate media discoveries
-        if: steps.cycle.outputs.news == 'true'
-        run: python scripts/discover_corporate_media.py || echo "Corporate media monitor temporarily unavailable; continuing with public data publication."
-      - name: Correct static portal copy and loader version
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          replacements = {
-              Path('index.html'): [
-                  ('Ažuriranje svaki sat', 'Ažuriranje svakih 15 minuta'),
-                  ('Poslovne i tehnološke vijesti iz hrvatskih, regionalnih i međunarodnih izvora. Objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću prikazuju se samo nakon ručnog odobrenja.', 'Javni prozor prikazuje do 500 najnovijih poslovnih i tehnoloških vijesti iz hrvatskih, regionalnih i međunarodnih izvora. Stariji višak ostaje spremljen u arhivi. Objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću prikazuju se automatski i mogu se ukloniti kroz ovlaštenu kontrolu.'),
-                  ('Izvori se osvježavaju automatski kroz satni workflow.', 'Najnovijih 500 javnih stavki osvježava se automatski, a stariji višak ostaje spremljen u arhivi.'),
-                  ('assets/app.js?v=20260526-demographic-compact07', 'assets/app.js?v=20260528-news-archive-unified-refresh06')
-              ],
-              Path('en/index.html'): [
-                  ('Hourly Refresh', 'Refresh every 15 minutes'),
-                  ('Business and technology news from Croatian, regional and international sources. Publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić are displayed only after manual approval.', 'The public window displays up to the 500 newest business and technology news items from Croatian, regional and international sources. Older overflow remains preserved in archive storage. Publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić are displayed automatically and may be removed through authorised control.'),
-                  ('Sources refresh automatically through the portal workflow.', 'The newest 500 public items refresh automatically; older overflow remains stored in the archive.'),
-                  ('assets/app.js?v=20260523-6', 'assets/app.js?v=20260528-news-archive-unified-refresh06')
-              ]
-          }
-          for path, rules in replacements.items():
-              text = path.read_text(encoding='utf-8')
-              for old, new in rules:
-                  text = text.replace(old, new)
-              path.write_text(text, encoding='utf-8')
-          PY
-      - name: Publish generated public data and corrected static portal without conflict
+      - name: Publish generated market data without touching news archive
         shell: bash
         run: |
           set -e
-          git config user.name "gnk-asg-live-data-bot"
+          git config user.name "gnk-asg-market-bot"
           git config user.email "actions@users.noreply.github.com"
-          rm -rf /tmp/gnk-live-output
-          mkdir -p /tmp/gnk-live-output/data /tmp/gnk-live-output/static/hr /tmp/gnk-live-output/static/en
-          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json /tmp/gnk-live-output/data/
-          cp index.html /tmp/gnk-live-output/static/hr/index.html
-          cp en/index.html /tmp/gnk-live-output/static/en/index.html
-          if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
-            cp data/news.json data/news_archive.json data/update_status.json data/media_approved.json data/media_monitor_status.json /tmp/gnk-live-output/data/ 2>/dev/null || true
-          fi
-          publish_generated_data() {
+          rm -rf /tmp/gnk-market-output
+          mkdir -p /tmp/gnk-market-output
+          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json /tmp/gnk-market-output/
+          publish_market() {
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/gnk-live-output/data/*.json data/
-            cp /tmp/gnk-live-output/static/hr/index.html index.html
-            cp /tmp/gnk-live-output/static/en/index.html en/index.html
-            git add index.html en/index.html data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json
-            if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
-              git add data/news.json data/news_archive.json data/update_status.json data/media_approved.json data/media_monitor_status.json 2>/dev/null || true
-            fi
+            cp /tmp/gnk-market-output/*.json data/
+            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json
             if git diff --cached --quiet; then
-              echo "No generated public-data or static-copy changes."
+              echo "No new market changes to publish."
               return 0
             fi
-            git commit -m "Automated portal live data refresh"
+            git commit -m "Automated portal market data refresh"
             git push origin HEAD:main
           }
-          publish_generated_data || (sleep 8 && publish_generated_data)
+          publish_market || (sleep 8 && publish_market) || (sleep 15 && publish_market)
