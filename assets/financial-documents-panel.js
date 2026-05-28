@@ -11,54 +11,6 @@
     return document.documentElement.lang === 'en' || /\/en\/?$/.test(window.location.pathname);
   }
 
-  function createStrip(data, id, enabled) {
-    var item = document.createElement('div');
-    item.className = 'financial-document-strip';
-    item.id = id;
-
-    var copy = document.createElement('div');
-    copy.className = 'financial-document-copy';
-    var mark = document.createElement('span');
-    mark.className = 'financial-document-mark';
-    mark.textContent = 'PDF';
-    var text = document.createElement('div');
-    text.className = 'financial-document-text';
-    var label = document.createElement('span');
-    label.className = 'financial-document-label';
-    label.textContent = data.label;
-    var title = document.createElement('strong');
-    title.className = 'financial-document-title';
-    title.textContent = data.title;
-    var desc = document.createElement('span');
-    desc.className = 'financial-document-desc';
-    desc.textContent = data.description;
-    text.appendChild(label); text.appendChild(title); text.appendChild(desc);
-    copy.appendChild(mark); copy.appendChild(text);
-    item.appendChild(copy);
-
-    if (enabled) {
-      var link = document.createElement('a');
-      link.className = 'financial-document-action';
-      link.href = data.file;
-      link.target = '_blank';
-      link.rel = 'noopener';
-      link.textContent = data.action + ' \u2193';
-      item.appendChild(link);
-    }
-    return item;
-  }
-
-  function addCardLink(card, href, label) {
-    if (!card || card.querySelector('.document-download-action')) return;
-    var link = document.createElement('a');
-    link.className = 'document-download-action';
-    link.href = href;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = label + ' \u2192';
-    card.appendChild(link);
-  }
-
   function content(en) {
     return {
       audit: en ? {
@@ -78,9 +30,32 @@
     };
   }
 
+  function strip(data, id) {
+    var item = document.createElement('div');
+    item.className = 'financial-document-strip';
+    item.id = id;
+    item.innerHTML = '<div class="financial-document-copy"><span class="financial-document-mark">PDF</span><div class="financial-document-text"><span class="financial-document-label"></span><strong class="financial-document-title"></strong><span class="financial-document-desc"></span></div></div><a class="financial-document-action" target="_blank" rel="noopener"></a>';
+    item.querySelector('.financial-document-label').textContent = data.label;
+    item.querySelector('.financial-document-title').textContent = data.title;
+    item.querySelector('.financial-document-desc').textContent = data.description;
+    item.querySelector('.financial-document-action').href = data.file;
+    item.querySelector('.financial-document-action').textContent = data.action + ' \u2193';
+    return item;
+  }
+
+  function cardLink(card, href, label) {
+    if (!card || card.querySelector('.document-download-action')) return;
+    var link = document.createElement('a');
+    link.className = 'document-download-action';
+    link.href = href;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = label + ' \u2192';
+    card.appendChild(link);
+  }
+
   function render() {
-    var en = english();
-    var text = content(en);
+    var text = content(english());
     var kpis = document.querySelector('#financials .kpi-grid');
     var groupKpis = document.querySelector('#grupa .group-kpis');
     var oldAudit = document.getElementById('audit-document-strip');
@@ -88,29 +63,32 @@
     if (oldAudit) oldAudit.remove();
     if (oldGroup) oldGroup.remove();
 
-    if (kpis) kpis.parentNode.insertBefore(createStrip(text.audit, 'audit-document-strip', availability.audit), kpis.nextSibling);
-    if (groupKpis) {
-      var strip = createStrip(text.group, 'group-document-strip', availability.group);
+    if (availability.audit && kpis) {
+      kpis.parentNode.insertBefore(strip(text.audit, 'audit-document-strip'), kpis.nextSibling);
+    }
+    if (availability.group && groupKpis) {
+      var item = strip(text.group, 'group-document-strip');
       var note = document.querySelector('#grupa .gold-note');
-      if (note) note.parentNode.insertBefore(strip, note.nextSibling);
-      else groupKpis.parentNode.insertBefore(strip, groupKpis.nextSibling);
+      if (note) note.parentNode.insertBefore(item, note.nextSibling);
+      else groupKpis.parentNode.insertBefore(item, groupKpis.nextSibling);
     }
     var docs = document.querySelectorAll('#dokumenti .doc');
     if (docs.length > 1) {
-      if (availability.audit) addCardLink(docs[0], DOCS.audit, en ? 'Download PDF' : 'Preuzmi PDF');
-      if (availability.group) addCardLink(docs[1], DOCS.group, en ? 'Download PDF' : 'Preuzmi PDF');
+      if (availability.audit) cardLink(docs[0], DOCS.audit, english() ? 'Download PDF' : 'Preuzmi PDF');
+      if (availability.group) cardLink(docs[1], DOCS.group, english() ? 'Download PDF' : 'Preuzmi PDF');
     }
   }
 
-  function checkDocument(key) {
+  function check(key) {
     return fetch(DOCS[key], { method: 'HEAD', cache: 'no-store' }).then(function (response) {
-      availability[key] = response.ok && (response.headers.get('content-type') || '').indexOf('pdf') !== -1;
+      availability[key] = response.ok && /pdf/i.test(response.headers.get('content-type') || '');
     }).catch(function () { availability[key] = false; });
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    render();
-    Promise.all([checkDocument('audit'), checkDocument('group')]).then(render);
-  });
-  window.addEventListener('gnk-language-change', render);
+  function init() {
+    Promise.all([check('audit'), check('group')]).then(render);
+    window.addEventListener('gnk-language-change', render);
+  }
+
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 }());
