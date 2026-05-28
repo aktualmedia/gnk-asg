@@ -1,12 +1,20 @@
 name: Deploy Public Portal to GitHub Pages
 
 # Izričita objava aktualnog sadržaja grane main na javnu domenu gnk-asg.hr.
-# Rješava situaciju u kojoj su HTML i podatci ažurirani u repozitoriju, ali javna stranica ostane na staroj verziji.
+# Objavljuje i commitove koje izrađuju SEO i live-data botovi, jer se automatizirani
+# commit iz drugog workflowa ne smije oslanjati samo na novi push okidač.
 on:
   workflow_dispatch:
   push:
     branches:
       - main
+  workflow_run:
+    workflows:
+      - Portal Live Data Refresh
+      - Refresh SEO Metadata and Sitemap
+      - Patch Static Portal Copy and Loader
+    types:
+      - completed
 
 permissions:
   contents: read
@@ -20,6 +28,7 @@ concurrency:
 jobs:
   deploy:
     name: Publish current portal build
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -27,6 +36,8 @@ jobs:
     steps:
       - name: Checkout current main branch
         uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
@@ -45,8 +56,13 @@ jobs:
             ./ _site/
           test -f _site/index.html
           test -f _site/CNAME
+          test -f _site/.nojekyll
+          test -f _site/nermin-sefic/index.html
+          test -f _site/en/nermin-sefic/index.html
+          test -f _site/sitemap.xml
           test -f _site/data/news.json
           test -f _site/data/news_archive.json
+          test -f _site/data/macro_market.json
       - name: Upload public portal artifact
         uses: actions/upload-pages-artifact@v3
         with:
