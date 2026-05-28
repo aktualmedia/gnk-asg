@@ -1,7 +1,7 @@
 name: Deploy Public Portal to GitHub Pages
 
 # Izričita objava aktualnog sadržaja grane main na javnu domenu gnk-asg.hr.
-# Objavljuje i commitove koje izrađuju SEO i live-data botovi, jer se automatizirani
+# Objavljuje i commitove koje izrađuju SEO, news i market botovi, jer se automatizirani
 # commit iz drugog workflowa ne smije oslanjati samo na novi push okidač.
 on:
   workflow_dispatch:
@@ -11,6 +11,7 @@ on:
   workflow_run:
     workflows:
       - Portal Live Data Refresh
+      - News Feed and Archive Refresh
       - Refresh SEO Metadata and Sitemap
       - Patch Static Portal Copy and Loader
     types:
@@ -78,6 +79,19 @@ jobs:
           grep -q 'Sitemap: https://gnk-asg.hr/sitemap.xml' _site/robots.txt
           grep -q 'href="nermin-sefic/"' _site/index.html
           grep -q '<a href="/nermin-sefic/">Nermin Sefić</a>' _site/financije/index.html
+      - name: Validate news window and archive files before publication
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          public = json.loads(Path('_site/data/news.json').read_text(encoding='utf-8'))
+          archive = json.loads(Path('_site/data/news_archive.json').read_text(encoding='utf-8'))
+          status = json.loads(Path('_site/data/update_status.json').read_text(encoding='utf-8')).get('news', {})
+          assert len(public) <= 500, f'Public feed exceeds limit: {len(public)}'
+          assert status.get('public_items') == len(public), 'Public news status mismatch.'
+          assert status.get('archive_items') == len(archive), 'News archive status mismatch.'
+          print(f'Publishing public news={len(public)}, archived overflow={len(archive)}')
+          PY
       - name: Upload public portal artifact
         uses: actions/upload-pages-artifact@v3
         with:
