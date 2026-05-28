@@ -1,6 +1,9 @@
 {
   "retention_days": 30,
+  "archive_days": 90,
   "max_items": 500,
+  "max_per_source": 60,
+  "rotation_policy": "Nove vijesti ulaze prve; duplikati i blokirane objave se uklanjaju; nakon 500 stavki automatski se brišu najstarije.",
   "sources": [
     {"name":"Poslovni dnevnik","group":"hrvatska","category":"economy","url":"https://www.poslovni.hr/feed"},
     {"name":"Biznis.rs","group":"srbija","category":"economy","url":"https://biznis.rs/feed/"},
