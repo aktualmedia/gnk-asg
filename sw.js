@@ -15,7 +15,7 @@ const STATIC_ASSETS = [
   './assets/floating-intelligence.css', './assets/public-sources.css', './assets/site-share.css', './assets/mobile-stability.css', './assets/group-mobile-accessible.css',
   './assets/market-centre.css', './assets/market-centre-panels.css',
   './assets/logo-gnk-asg.svg', './assets/asg-gold-coin.svg', './assets/gnk-asg-social-card.svg', './assets/gnk-asg-social-card.png', './assets/share-financije.png', './assets/share-grupa.png', './assets/share-trzista.png', './assets/share-bpp.png', './assets/share-tehnologija.png', './assets/share-vijesti.png', './assets/share-teme.png', './assets/share-dokumenti.png', './assets/gnk-global-static-overview-accurate.svg',
-  './assets/favicon.svg', './assets/app-icon-192.svg', './assets/app-icon-512.svg',
+  './favicon.svg', './assets/favicon.svg', './assets/app-icon-192.svg', './assets/app-icon-512.svg',
   './assets/app.js', './assets/i18n.js', './assets/language-routing.js', './assets/portal-navigation.js',
   './assets/status.js', './assets/market.js', './assets/live-market-pulse.js', './assets/bitcoin-chart.js',
   './assets/market-expansion.js', './assets/bpp-public-card.js', './assets/news-live.js', './assets/assistant.js', './assets/inline-assistant.js',
