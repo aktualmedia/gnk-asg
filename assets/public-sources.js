@@ -37,9 +37,25 @@
       render();
     } catch (error) {}
   }
+  function loadFinancialDocumentPanels() {
+    if (!document.querySelector('link[data-financial-document-panels]')) {
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = '/assets/financial-document-downloads.css?v=20260528-01';
+      css.setAttribute('data-financial-document-panels', '');
+      document.head.appendChild(css);
+    }
+    if (!document.querySelector('script[data-financial-document-panels]')) {
+      const js = document.createElement('script');
+      js.src = '/assets/financial-documents-panel.js?v=20260528-01';
+      js.setAttribute('data-financial-document-panels', '');
+      document.body.appendChild(js);
+    }
+  }
   function init() {
     const documents = document.getElementById('dokumenti');
     if (!documents) return;
+    loadFinancialDocumentPanels();
     let section = document.getElementById('publicSources');
     if (!section) { section = document.createElement('section'); section.id = 'publicSources'; section.className = 'public-sources'; documents.insertAdjacentElement('beforebegin', section); }
     load();
