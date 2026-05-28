@@ -36,21 +36,20 @@ jobs:
           python-version: '3.12'
       - name: Discover public corporate media results
         run: python scripts/discover_corporate_media.py
-      - name: Publish media items and status without modifying general news timestamp
+      - name: Publish media items and dedicated monitor status
         run: |
           set -e
           git config user.name "gnk-asg-media-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
           rm -rf /tmp/gnk-media-output
           mkdir -p /tmp/gnk-media-output
-          cp data/media_approved.json data/media_monitor_status.json data/update_status.json /tmp/gnk-media-output/
+          cp data/media_approved.json data/media_monitor_status.json /tmp/gnk-media-output/
           publish_generated_data() {
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/gnk-media-output/media_approved.json data/media_approved.json
             cp /tmp/gnk-media-output/media_monitor_status.json data/media_monitor_status.json
-            cp /tmp/gnk-media-output/update_status.json data/update_status.json
-            git add data/media_approved.json data/media_monitor_status.json data/update_status.json
+            git add data/media_approved.json data/media_monitor_status.json
             if git diff --cached --quiet; then
               echo "No corporate media changes."
               return 0
