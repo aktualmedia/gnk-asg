@@ -5,8 +5,8 @@
   const lang = () => (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en') || /\/en\/?$/.test(location.pathname) ? 'en' : 'hr';
   const minutesOld = value => value ? Math.max(0, (Date.now() - new Date(value).getTime()) / 60000) : Infinity;
   const labels = {
-    hr: {aria:'Otvori ASG Intelligence Desk', title:'ASG Intelligence Desk', subtitle:'BRZI PRISTUP', intro:'Postavite brzo pitanje, istražite temu ili otvorite puni Intelligence Desk.', send:'PITAJ', placeholder:'Pitajte o financijama, tržištima ili AI-u…', chips:['Prihodi 2025.','Tržište danas','Što je AI Desk?','Vijesti'], full:'Puni Desk', research:'Google News', empty:'Upišite pitanje.', source:'Informativni prikaz javnih podataka portala.', verified:'ASG · JAVNI PODATCI AŽURIRANI', checking:'ASG · AŽURIRANJE NIJE POTPUNO'},
-    en: {aria:'Open ASG Intelligence Desk', title:'ASG Intelligence Desk', subtitle:'QUICK ACCESS', intro:'Ask a quick question, research a topic or open the full Intelligence Desk.', send:'ASK', placeholder:'Ask about financials, markets or AI…', chips:['2025 revenue','Markets today','What is AI Desk?','News'], full:'Full Desk', research:'Google News', empty:'Enter a question.', source:'Informational display based on public portal data.', verified:'ASG · PUBLIC DATA UPDATED', checking:'ASG · UPDATE INCOMPLETE'}
+    hr: {aria:'Otvori ASG Intelligence Desk', title:'ASG Intelligence Desk', subtitle:'BRZI PRISTUP', intro:'Postavite brzo pitanje, istražite temu ili otvorite puni Intelligence Desk.', send:'PITAJ', placeholder:'Pitajte o financijama, tržištima ili AI-u…', chips:['Prihodi 2025.','Tržište danas','Što je AI Desk?','Vijesti'], full:'Puni Desk', research:'Google News', empty:'Upišite pitanje.', source:'Informativni prikaz javnih podataka portala.', verified:'ASG · JAVNI PODATCI AŽURIRANI', checking:'ASG · PROVJERA AŽURIRANJA'},
+    en: {aria:'Open ASG Intelligence Desk', title:'ASG Intelligence Desk', subtitle:'QUICK ACCESS', intro:'Ask a quick question, research a topic or open the full Intelligence Desk.', send:'ASK', placeholder:'Ask about financials, markets or AI…', chips:['2025 revenue','Markets today','What is AI Desk?','News'], full:'Full Desk', research:'Google News', empty:'Enter a question.', source:'Informational display based on public portal data.', verified:'ASG · PUBLIC DATA UPDATED', checking:'ASG · UPDATE VERIFICATION'}
   };
   const t = () => labels[lang()];
   async function read(path) {
@@ -14,15 +14,12 @@
     catch (_) { return null; }
   }
   async function refreshVerifiedState() {
-    const values = await Promise.all([
-      read('/data/update_status.json'), read('/data/fast_market_status.json'), read('/data/open_data.json'),
-      read('/data/macro_market.json'), read('/data/asg_gold_asset.json'), read('/data/stock_exchanges.json')
-    ]);
+    const values = await Promise.all([read('/data/update_status.json'), read('/data/fast_market_status.json')]);
     const news = values[0] && values[0].news;
     const liveMarket = values[1];
-    const references = values.slice(2);
-    const marketComplete = Boolean(liveMarket && liveMarket.status !== 'partial' && Array.isArray(liveMarket.errors) && liveMarket.errors.length === 0);
-    verified = Boolean(news && minutesOld(news.updated_at) <= 95 && liveMarket && minutesOld(liveMarket.updated_at) <= 20 && marketComplete && references.every(data => data && minutesOld(data.updated_at) <= 95));
+    const newsReady = Boolean(news && minutesOld(news.updated_at) <= 35 && Array.isArray(news.errors) && news.errors.length === 0);
+    const marketReady = Boolean(liveMarket && minutesOld(liveMarket.updated_at) <= 20 && liveMarket.status !== 'partial' && Array.isArray(liveMarket.errors) && liveMarket.errors.length === 0);
+    verified = newsReady && marketReady;
     paintStatus();
   }
   function paintStatus() {
