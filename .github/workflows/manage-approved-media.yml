@@ -1,4 +1,4 @@
-name: Approve Corporate Media Publication
+name: Manage Corporate Media Visibility
 
 on:
   workflow_dispatch:
@@ -10,30 +10,30 @@ on:
         options:
           - approve
           - remove
-        default: approve
+        default: remove
       subject:
-        description: 'Subjekt / Subject (npr. GNK ASG d.o.o., GNK DINAMO Ltd., Nermin Sefić)'
+        description: 'Subjekt / Subject'
         required: false
         type: string
         default: 'GNK ASG d.o.o.'
       title:
-        description: 'Naslov javne objave / Public publication title'
+        description: 'Naslov kod rucnog dodavanja ili obnove / Title for manual add or restore'
         required: false
         type: string
       source:
-        description: 'Naziv javnog izvora / Public source name'
+        description: 'Naziv izvora kod rucnog dodavanja ili obnove / Source for manual add or restore'
         required: false
         type: string
       url:
-        description: 'Javni URL objave / Public source URL'
+        description: 'Javni URL za uklanjanje ili obnovu / Public URL to remove or restore'
         required: true
         type: string
       published_at:
-        description: 'Datum objave ISO / Publication date (YYYY-MM-DD)'
+        description: 'Datum objave ISO / Publication date'
         required: false
         type: string
       summary:
-        description: 'Kratki javni sažetak / Short public summary'
+        description: 'Kratki sazetak / Short summary'
         required: false
         type: string
 
@@ -45,7 +45,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  manage-approved-publication:
+  manage-publication:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -54,7 +54,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate and update public approved list
+      - name: Apply visibility change
         env:
           MEDIA_ACTION: ${{ inputs.action }}
           MEDIA_SUBJECT: ${{ inputs.subject }}
@@ -64,14 +64,14 @@ jobs:
           MEDIA_DATE: ${{ inputs.published_at }}
           MEDIA_SUMMARY: ${{ inputs.summary }}
         run: python scripts/manage_approved_media.py
-      - name: Commit public approved media list
+      - name: Commit visibility lists
         run: |
-          if git diff --quiet -- data/media_approved.json; then
-            echo "No approved-media list changes."
+          if git diff --quiet -- data/media_approved.json data/media_removed.json; then
+            echo "No media visibility changes."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/media_approved.json
-          git commit -m "Update manually approved corporate media publication [skip ci]"
+          git add data/media_approved.json data/media_removed.json
+          git commit -m "Update corporate media visibility [skip ci]"
           git push
