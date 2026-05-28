@@ -1,0 +1,90 @@
+name: Portal Live Data Refresh
+
+# Glavni automatski proces javnih podataka portala.
+# Tržišni podatci: svakih 5 minuta. Vijesti i medijske objave: svakih 15 minuta.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/portal-live-refresh.yml'
+      - 'scripts/update_fast_market.py'
+      - 'scripts/update_feeds_v2.py'
+      - 'scripts/discover_corporate_media.py'
+      - 'data/news_config_v2.json'
+      - 'data/media_queries.json'
+      - 'data/media_removed.json'
+      - 'data/blocked_news.json'
+  schedule:
+    - cron: '1,16,31,46 * * * *'
+    - cron: '6,11,21,26,36,41,51,56 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: portal-live-data-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh-public-data:
+    name: Refresh and publish public portal data
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate data processors
+        run: python -m py_compile scripts/update_fast_market.py scripts/update_feeds_v2.py scripts/discover_corporate_media.py
+      - name: Refresh fast market datasets every cycle
+        run: python scripts/update_fast_market.py
+      - name: Determine whether this cycle includes news
+        id: cycle
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" != "schedule" || "${{ github.event.schedule }}" == "1,16,31,46 * * * *" ]]; then
+            echo "news=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "news=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Refresh newest 500 business news items
+        if: steps.cycle.outputs.news == 'true'
+        run: python scripts/update_feeds_v2.py
+      - name: Refresh corporate media discoveries
+        if: steps.cycle.outputs.news == 'true'
+        run: python scripts/discover_corporate_media.py || echo "Corporate media monitor temporarily unavailable; continuing with public data publication."
+      - name: Publish generated public data without conflict
+        shell: bash
+        run: |
+          set -e
+          git config user.name "gnk-asg-live-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          rm -rf /tmp/gnk-live-output
+          mkdir -p /tmp/gnk-live-output
+          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-live-output/
+          if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
+            cp data/news.json data/update_status.json data/media_approved.json data/media_monitor_status.json /tmp/gnk-live-output/ 2>/dev/null || true
+          fi
+          publish_generated_data() {
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/gnk-live-output/*.json data/
+            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+            if [[ "${{ steps.cycle.outputs.news }}" == "true" ]]; then
+              git add data/news.json data/update_status.json data/media_approved.json data/media_monitor_status.json 2>/dev/null || true
+            fi
+            if git diff --cached --quiet; then
+              echo "No generated public data changes."
+              return 0
+            fi
+            git commit -m "Automated portal live data refresh"
+            git push origin HEAD:main
+          }
+          publish_generated_data || (sleep 8 && publish_generated_data)
