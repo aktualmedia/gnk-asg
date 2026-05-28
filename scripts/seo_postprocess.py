@@ -24,6 +24,8 @@ CONTENT_HUB_VISIBLE_OLD = 'Izravni pristup financijskom profilu, globalnoj mrež
 CONTENT_HUB_VISIBLE_NEW = 'Izravni pristup financijskom profilu, globalnoj mreži društava, tehnološkom prikazu, tematskom monitoringu, tržišnim podatcima, Intelligence Desku i javnim izvorima korporativnog portala.'
 CONTENT_HUB_TAG_OLD = '<span>Nermin Sefić</span>'
 CONTENT_HUB_TAG_NEW = '<span>Transparentnost</span>'
+CONTENT_HUB_FOOTER_OLD = '© 2026 GNK ASG d.o.o. · GNK DINAMO Ltd. · Nermin Sefić ·'
+CONTENT_HUB_FOOTER_NEW = '© 2026 GNK ASG d.o.o. · GNK DINAMO Ltd. ·'
 PERSON_OLD = '"name":"Nermin Sefić","alternateName":["Nermin Sefic","Sefić Nermin","Sefic Nermin"]'
 PERSON_NEW = '"name":"Nermin Sefić","givenName":"Nermin","familyName":"Sefić","alternateName":["Nermin Sefic","Sefić Nermin","Sefic Nermin"]'
 CONTENT_LIST_ID = 'seo-public-content-list'
@@ -113,6 +115,7 @@ def ensure_content_index_schema_without_prominent_profile_card() -> None:
     text = text.replace(OBSOLETE_HR_HUB_CARD, '')
     text = text.replace(CONTENT_HUB_VISIBLE_OLD, CONTENT_HUB_VISIBLE_NEW)
     text = text.replace(CONTENT_HUB_TAG_OLD, CONTENT_HUB_TAG_NEW)
+    text = text.replace(CONTENT_HUB_FOOTER_OLD, CONTENT_HUB_FOOTER_NEW)
     if CONTENT_LIST_ID not in text:
         text = text.replace('</head>', CONTENT_LIST_SCHEMA + '\n</head>', 1)
     if DISCREET_STYLE_TAG not in text:
