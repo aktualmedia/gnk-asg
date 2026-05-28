@@ -10,6 +10,7 @@ on:
     paths:
       - '.github/workflows/seo-indexing-refresh.yml'
       - 'scripts/generate_seo.py'
+      - 'scripts/seo_postprocess.py'
       - 'nermin-sefic/index.html'
       - 'en/nermin-sefic/index.html'
 
@@ -32,53 +33,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate SEO generator
-        run: python -m py_compile scripts/generate_seo.py
+      - name: Validate SEO processors
+        run: python -m py_compile scripts/generate_seo.py scripts/seo_postprocess.py
       - name: Generate metadata, JSON-LD, sitemap and robots
         run: python scripts/generate_seo.py
-      - name: Add visible contextual links to Nermin Sefić public profile
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          def replace_once(path, replacements):
-              text = path.read_text(encoding='utf-8')
-              for old, new in replacements:
-                  if old in text and new not in text:
-                      text = text.replace(old, new, 1)
-              path.write_text(text, encoding='utf-8')
-
-          replace_once(Path('index.html'), [
-              ('<a href="#dokumenti">Dokumenti</a></nav>', '<a href="#dokumenti">Dokumenti</a><a href="nermin-sefic/">Nermin Sefić</a></nav>'),
-              ('<small>Direktor</small><strong>Nermin Sefić</strong>', '<small>Direktor</small><strong><a href="nermin-sefic/">Nermin Sefić</a></strong>'),
-              ('<dt>Direktor</dt><dd>Nermin Sefić</dd>', '<dt>Direktor</dt><dd><a href="nermin-sefic/">Nermin Sefić</a></dd>'),
-              ('<dt>Ovlašteni predstavnik</dt><dd>Nermin Sefić</dd>', '<dt>Ovlašteni predstavnik</dt><dd><a href="nermin-sefic/">Nermin Sefić</a></dd>')
-          ])
-          replace_once(Path('en/index.html'), [
-              ('<a href="#dokumenti">Documents</a></nav>', '<a href="#dokumenti">Documents</a><a href="nermin-sefic/">Nermin Sefić</a></nav>'),
-              ('<small>Director</small><strong>Nermin Sefić</strong>', '<small>Director</small><strong><a href="nermin-sefic/">Nermin Sefić</a></strong>'),
-              ('<dt>Director</dt><dd>Nermin Sefić</dd>', '<dt>Director</dt><dd><a href="nermin-sefic/">Nermin Sefić</a></dd>'),
-              ('<dt>Authorised representative</dt><dd>Nermin Sefić</dd>', '<dt>Authorised representative</dt><dd><a href="nermin-sefic/">Nermin Sefić</a></dd>')
-          ])
-
-          hr_pages = ['financije/index.html','registri/index.html','tehnologija/index.html','trzista/index.html','intelligence-desk/index.html','teme/index.html','sadrzaj/index.html']
-          en_pages = ['en/finance/index.html','en/registries/index.html','en/technology/index.html','en/markets/index.html','en/intelligence-desk/index.html']
-          hr_link = '<p class="seo-profile-link">Povezani javni profil: <a href="/nermin-sefic/">Nermin Sefić</a> (Nermin Sefic; Sefić Nermin; Sefic Nermin).</p>'
-          en_link = '<p class="seo-profile-link">Related public profile: <a href="/en/nermin-sefic/">Nermin Sefić</a> (Nermin Sefic; Sefić Nermin; Sefic Nermin).</p>'
-          for file_name in hr_pages:
-              path = Path(file_name)
-              text = path.read_text(encoding='utf-8')
-              if '<a href="/nermin-sefic/">Nermin Sefić</a>' not in text:
-                  text = text.replace('</footer>', hr_link + '</footer>', 1)
-                  path.write_text(text, encoding='utf-8')
-          for file_name in en_pages:
-              path = Path(file_name)
-              text = path.read_text(encoding='utf-8')
-              if '<a href="/en/nermin-sefic/">Nermin Sefić</a>' not in text:
-                  text = text.replace('</footer>', en_link + '</footer>', 1)
-                  path.write_text(text, encoding='utf-8')
-          PY
-      - name: Confirm profile pages, visible links and sitemap entries
+      - name: Preserve visible identity links and person profile metadata
+        run: python scripts/seo_postprocess.py
+      - name: Confirm profile pages, visible links, person metadata and sitemap entries
         run: |
           test -f nermin-sefic/index.html
           test -f en/nermin-sefic/index.html
@@ -86,6 +47,8 @@ jobs:
           grep -q 'https://gnk-asg.hr/en/nermin-sefic/' sitemap.xml
           grep -q 'Sefić Nermin' nermin-sefic/index.html
           grep -q 'Sefic Nermin' en/nermin-sefic/index.html
+          grep -q 'profile:first_name' nermin-sefic/index.html
+          grep -q 'profile:last_name' en/nermin-sefic/index.html
           grep -q 'href="nermin-sefic/"' index.html
           grep -q '<a href="/nermin-sefic/">Nermin Sefić</a>' financije/index.html
           grep -q '<a href="/en/nermin-sefic/">Nermin Sefić</a>' en/finance/index.html
