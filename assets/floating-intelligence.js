@@ -5,8 +5,8 @@
   const lang = () => (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en') || /\/en\/?$/.test(location.pathname) ? 'en' : 'hr';
   const minutesOld = value => value ? Math.max(0, (Date.now() - new Date(value).getTime()) / 60000) : Infinity;
   const labels = {
-    hr: {aria:'Otvori ASG Intelligence Desk', title:'ASG Intelligence Desk', subtitle:'BRZI PRISTUP', intro:'Postavite brzo pitanje, istražite temu ili otvorite puni Intelligence Desk.', send:'PITAJ', placeholder:'Pitajte o financijama, tržištima ili AI-u…', chips:['Prihodi 2025.','Tržište danas','Što je AI Desk?','Vijesti'], full:'Puni Desk', research:'Google News', empty:'Upišite pitanje.', source:'Informativni prikaz javnih podataka portala.', verified:'ASG · JAVNI PODATCI AŽURIRANI', checking:'ASG · PROVJERA AŽURIRANJA'},
-    en: {aria:'Open ASG Intelligence Desk', title:'ASG Intelligence Desk', subtitle:'QUICK ACCESS', intro:'Ask a quick question, research a topic or open the full Intelligence Desk.', send:'ASK', placeholder:'Ask about financials, markets or AI…', chips:['2025 revenue','Markets today','What is AI Desk?','News'], full:'Full Desk', research:'Google News', empty:'Enter a question.', source:'Informational display based on public portal data.', verified:'ASG · PUBLIC DATA UPDATED', checking:'ASG · UPDATE VERIFICATION'}
+    hr: {aria:'Otvori ASG Intelligence Desk', title:'ASG Intelligence Desk', subtitle:'BRZI PRISTUP', intro:'Postavite brzo pitanje, istražite temu ili otvorite puni Intelligence Desk.', send:'PITAJ', placeholder:'Pitajte o financijama, tržištima ili AI-u…', chips:['Prihodi 2025.','Tržište danas','Što je AI Desk?','Vijesti'], full:'Puni Desk', research:'Google News', empty:'Upišite pitanje.', source:'Informativni prikaz javnih podataka portala.', verified:'ASG · JAVNI PODATCI AŽURIRANI', checking:'ASG · AŽURIRANJE NIJE POTPUNO'},
+    en: {aria:'Open ASG Intelligence Desk', title:'ASG Intelligence Desk', subtitle:'QUICK ACCESS', intro:'Ask a quick question, research a topic or open the full Intelligence Desk.', send:'ASK', placeholder:'Ask about financials, markets or AI…', chips:['2025 revenue','Markets today','What is AI Desk?','News'], full:'Full Desk', research:'Google News', empty:'Enter a question.', source:'Informational display based on public portal data.', verified:'ASG · PUBLIC DATA UPDATED', checking:'ASG · UPDATE INCOMPLETE'}
   };
   const t = () => labels[lang()];
   async function read(path) {
@@ -21,7 +21,8 @@
     const news = values[0] && values[0].news;
     const liveMarket = values[1];
     const references = values.slice(2);
-    verified = Boolean(news && minutesOld(news.updated_at) <= 95 && liveMarket && minutesOld(liveMarket.updated_at) <= 20 && references.every(data => data && minutesOld(data.updated_at) <= 95));
+    const marketComplete = Boolean(liveMarket && liveMarket.status !== 'partial' && Array.isArray(liveMarket.errors) && liveMarket.errors.length === 0);
+    verified = Boolean(news && minutesOld(news.updated_at) <= 95 && liveMarket && minutesOld(liveMarket.updated_at) <= 20 && marketComplete && references.every(data => data && minutesOld(data.updated_at) <= 95));
     paintStatus();
   }
   function paintStatus() {
@@ -52,7 +53,7 @@
       }
       return en ? 'Open Market Monitor for Bitcoin, gold, Brent oil and USD/EUR comparison.' : 'Otvorite Market Monitor za usporedbu Bitcoina, zlata, Brent nafte i USD/EUR.';
     }
-    if (/vijest|news|media|medij/.test(q)) return en ? 'Public business and technology news refresh hourly. Public publications found for GNK ASG, GNK DINAMO Ltd. or Nermin Sefić are displayed automatically in the media section and can be removed through authorised control.' : 'Javne poslovne i tehnološke vijesti osvježavaju se svakog sata. Javne objave pronađene za GNK ASG, GNK DINAMO Ltd. ili Nermina Sefića automatski se prikazuju u medijskoj rubrici i mogu se ukloniti kroz ovlaštenu kontrolu.';
+    if (/vijest|news|media|medij/.test(q)) return en ? 'Public business and technology news refresh every fifteen minutes. Public publications found for GNK ASG, GNK DINAMO Ltd. or Nermin Sefić are displayed automatically in the media section and can be removed through authorised control.' : 'Javne poslovne i tehnološke vijesti osvježavaju se svakih petnaest minuta. Javne objave pronađene za GNK ASG, GNK DINAMO Ltd. ili Nermina Sefića automatski se prikazuju u medijskoj rubrici i mogu se ukloniti kroz ovlaštenu kontrolu.';
     if (/ai|desk|intelligence|umjet|tehnolog|software/.test(q)) return en ? 'Intelligence Desk explains public corporate indicators, market panels and technology topics, and offers public topic research links.' : 'Intelligence Desk pojašnjava javne korporativne pokazatelje, tržišne panele i tehnološke teme te nudi istraživanje javnih tema.';
     return en ? 'Open the full Intelligence Desk to explore this topic through portal data and public research tools.' : 'Otvorite puni Intelligence Desk kako biste temu istražili kroz podatke portala i javne alate pretrage.';
   }
