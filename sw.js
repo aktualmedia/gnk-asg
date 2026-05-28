@@ -1,12 +1,13 @@
-const CACHE_NAME = 'gnk-asg-live-v50-news-archive-unified-refresh';
+const CACHE_NAME = 'gnk-asg-live-v52-seo-profile-discreet';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
+  './nermin-sefic/', './nermin-sefic/index.html', './en/nermin-sefic/', './en/nermin-sefic/index.html',
   './intelligence-desk/', './instalacija/', './financije/', './registri/',
   './trzista/', './trzista/index.html', './en/markets/', './en/markets/index.html',
   './en/finance/', './en/finance/index.html', './en/technology/', './en/technology/index.html',
   './en/intelligence-desk/', './en/intelligence-desk/index.html', './en/registries/', './en/registries/index.html',
   './autorske-objave/', './podijeli/portal/', './podijeli/financije/', './podijeli/grupa/', './podijeli/trzista/', './podijeli/tehnologija/', './podijeli/vijesti/', './podijeli/dokumenti/', './podijeli/bpp/',
-  './assets/style.css', './assets/advanced.css', './assets/header-premium.css',
+  './assets/style.css', './assets/advanced.css', './assets/header-premium.css', './assets/seo-profile-link.css',
   './assets/group-contrast.css', './assets/group-network.css', './assets/network-motion.css', './assets/group-globe-3d.css',
   './assets/group-location-insights.css', './assets/group-map-2d-geo.css', './assets/group-google-map.css', './assets/group-location-weather.css', './assets/group-overview-panel.css', './assets/group-market-coverage.css', './assets/network-reading-layout.css', './assets/network-live-selection.css', './assets/portal-integration.css', './assets/portal-status.css', './assets/command-centre.css',
   './assets/bitcoin-chart.css', './assets/market-expansion.css', './assets/bpp-public-card.css', './assets/language.css',
@@ -27,7 +28,7 @@ const STATIC_ASSETS = [
   './assets/market-centre-data.js', './assets/market-constellation.js', './data/desk_public_config.json',
   './data/group_network.json', './data/group_network_geo.json', './data/group_location_facts.json',
   './data/public_sources.json', './data/update_status.json', './data/open_data.json', './data/macro_market.json', './data/stock_exchanges.json', './data/asg_gold_asset.json',
-  './data/news.json', './data/media_approved.json', './data/media_monitor_status.json', './data/market.json', './data/btc_chart.json',
+  './data/news.json', './data/news_archive.json', './data/media_approved.json', './data/media_monitor_status.json', './data/market.json', './data/btc_chart.json',
   './data/stablecoins.json', './data/exchange_compare.json', './data/market_indices.json', './data/fast_market_status.json',
   './data/daily_market_brief.json', './manifest.webmanifest', './robots.txt', './sitemap.xml', './google46686328e30c759f.html'
 ];
