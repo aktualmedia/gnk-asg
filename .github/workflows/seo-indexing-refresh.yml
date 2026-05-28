@@ -68,17 +68,17 @@ jobs:
           for file_name in hr_pages:
               path = Path(file_name)
               text = path.read_text(encoding='utf-8')
-              if '/nermin-sefic/' not in text:
+              if '<a href="/nermin-sefic/">Nermin Sefić</a>' not in text:
                   text = text.replace('</footer>', hr_link + '</footer>', 1)
                   path.write_text(text, encoding='utf-8')
           for file_name in en_pages:
               path = Path(file_name)
               text = path.read_text(encoding='utf-8')
-              if '/en/nermin-sefic/' not in text:
+              if '<a href="/en/nermin-sefic/">Nermin Sefić</a>' not in text:
                   text = text.replace('</footer>', en_link + '</footer>', 1)
                   path.write_text(text, encoding='utf-8')
           PY
-      - name: Confirm profile pages, internal links and sitemap entries
+      - name: Confirm profile pages, visible links and sitemap entries
         run: |
           test -f nermin-sefic/index.html
           test -f en/nermin-sefic/index.html
@@ -87,8 +87,8 @@ jobs:
           grep -q 'Sefić Nermin' nermin-sefic/index.html
           grep -q 'Sefic Nermin' en/nermin-sefic/index.html
           grep -q 'href="nermin-sefic/"' index.html
-          grep -q '/nermin-sefic/' financije/index.html
-          grep -q '/en/nermin-sefic/' en/finance/index.html
+          grep -q '<a href="/nermin-sefic/">Nermin Sefić</a>' financije/index.html
+          grep -q '<a href="/en/nermin-sefic/">Nermin Sefić</a>' en/finance/index.html
       - name: Commit generated SEO publication files
         run: |
           git config user.name "gnk-asg-seo-bot"
