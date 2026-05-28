@@ -10,18 +10,15 @@
   const ZONE = 'Europe/Zagreb';
   const CARDS = [
     { id:'portal', hr:'Portal', en:'Portal', path:'/podijeli/portal/' },
-    { id:'financije', hr:'Financije', en:'Financials', path:'/podijeli/financije/' },
+    { id:'financije', hr:'Financije', en:'Financials', path:'/podijeli/financije-kartica/' },
     { id:'grupa', hr:'Globalna mreža', en:'Global network', path:'/podijeli/grupa-kartica/' },
     { id:'trzista', hr:'Tržišta', en:'Markets', path:'/podijeli/trzista-kartica/' },
-    { id:'bpp', hr:'BPP.IS', en:'BPP.IS', path:'/podijeli/bpp-kartica/' },
-    { id:'tehnologija', hr:'Tehnologija', en:'Technology', path:'/podijeli/tehnologija/' },
-    { id:'vijesti', hr:'Vijesti', en:'News', path:'/podijeli/vijesti/' },
-    { id:'dokumenti', hr:'Dokumenti', en:'Documents', path:'/podijeli/dokumenti/' }
+    { id:'bpp', hr:'BPP.IS', en:'BPP.IS', path:'/podijeli/bpp-kartica/' }
   ];
   if (!document.querySelector('link[data-gnk-share-style]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet'; css.dataset.gnkShareStyle = '1';
-    css.href = ROOT + 'assets/site-share.css?v=20260527-share-permanent-cards01';
+    css.href = ROOT + 'assets/site-share.css?v=20260528-permanent-cards02';
     document.head.appendChild(css);
   }
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname);
@@ -58,8 +55,6 @@
     const path = location.pathname;
     if (/\/trzista\/?$|\/en\/markets\/?$/.test(path)) return CARDS.find(card => card.id === 'trzista');
     if (/\/financije\/?$|\/en\/finance\/?$/.test(path)) return CARDS.find(card => card.id === 'financije');
-    if (/\/tehnologija\/?$|\/en\/technology\/?$/.test(path)) return CARDS.find(card => card.id === 'tehnologija');
-    if (/\/registri\/?$|\/en\/registries\/?$/.test(path)) return CARDS.find(card => card.id === 'dokumenti');
     return CARDS[0];
   }
   function cardLabel(card) { return isEn() ? card.en : card.hr; }
