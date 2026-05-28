@@ -1,0 +1,56 @@
+name: Deploy Public Portal to GitHub Pages
+
+# Izričita objava aktualnog sadržaja grane main na javnu domenu gnk-asg.hr.
+# Rješava situaciju u kojoj su HTML i podatci ažurirani u repozitoriju, ali javna stranica ostane na staroj verziji.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: public-portal-pages-deployment
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Publish current portal build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout current main branch
+        uses: actions/checkout@v4
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Prepare public portal artifact
+        run: |
+          set -e
+          rm -rf _site
+          mkdir -p _site
+          rsync -a --delete \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'scripts/' \
+            --exclude '_site/' \
+            --exclude '*.py' \
+            ./ _site/
+          test -f _site/index.html
+          test -f _site/CNAME
+          test -f _site/data/news.json
+          test -f _site/data/news_archive.json
+      - name: Upload public portal artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
