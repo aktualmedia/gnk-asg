@@ -1,6 +1,6 @@
 name: Refresh SEO Metadata and Sitemap
 
-# Generira dosljedne SEO meta-podatke, JSON-LD identitete, interne poveznice i sitemap.
+# Generira dosljedne SEO meta-podatke, JSON-LD identitete, vidljive interne poveznice i sitemap.
 # Namjena: jasna indeksacija javnog portala, uključujući profil Nermin Sefić / Nermin Sefic / Sefić Nermin / Sefic Nermin.
 on:
   workflow_dispatch:
@@ -34,9 +34,51 @@ jobs:
           python-version: '3.12'
       - name: Validate SEO generator
         run: python -m py_compile scripts/generate_seo.py
-      - name: Generate metadata, JSON-LD, links, sitemap and robots
+      - name: Generate metadata, JSON-LD, sitemap and robots
         run: python scripts/generate_seo.py
-      - name: Confirm public profile pages and sitemap entries
+      - name: Add visible contextual links to Nermin Sefić public profile
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, replacements):
+              text = path.read_text(encoding='utf-8')
+              for old, new in replacements:
+                  if old in text and new not in text:
+                      text = text.replace(old, new, 1)
+              path.write_text(text, encoding='utf-8')
+
+          replace_once(Path('index.html'), [
+              ('<a href="#dokumenti">Dokumenti</a></nav>', '<a href="#dokumenti">Dokumenti</a><a href="nermin-sefic/">Nermin Sefić</a></nav>'),
+              ('<small>Direktor</small><strong>Nermin Sefić</strong>', '<small>Direktor</small><strong><a href="nermin-sefic/">Nermin Sefić</a></strong>'),
+              ('<dt>Direktor</dt><dd>Nermin Sefić</dd>', '<dt>Direktor</dt><dd><a href="nermin-sefic/">Nermin Sefić</a></dd>'),
+              ('<dt>Ovlašteni predstavnik</dt><dd>Nermin Sefić</dd>', '<dt>Ovlašteni predstavnik</dt><dd><a href="nermin-sefic/">Nermin Sefić</a></dd>')
+          ])
+          replace_once(Path('en/index.html'), [
+              ('<a href="#dokumenti">Documents</a></nav>', '<a href="#dokumenti">Documents</a><a href="nermin-sefic/">Nermin Sefić</a></nav>'),
+              ('<small>Director</small><strong>Nermin Sefić</strong>', '<small>Director</small><strong><a href="nermin-sefic/">Nermin Sefić</a></strong>'),
+              ('<dt>Director</dt><dd>Nermin Sefić</dd>', '<dt>Director</dt><dd><a href="nermin-sefic/">Nermin Sefić</a></dd>'),
+              ('<dt>Authorised representative</dt><dd>Nermin Sefić</dd>', '<dt>Authorised representative</dt><dd><a href="nermin-sefic/">Nermin Sefić</a></dd>')
+          ])
+
+          hr_pages = ['financije/index.html','registri/index.html','tehnologija/index.html','trzista/index.html','intelligence-desk/index.html','teme/index.html','sadrzaj/index.html']
+          en_pages = ['en/finance/index.html','en/registries/index.html','en/technology/index.html','en/markets/index.html','en/intelligence-desk/index.html']
+          hr_link = '<p class="seo-profile-link">Povezani javni profil: <a href="/nermin-sefic/">Nermin Sefić</a> (Nermin Sefic; Sefić Nermin; Sefic Nermin).</p>'
+          en_link = '<p class="seo-profile-link">Related public profile: <a href="/en/nermin-sefic/">Nermin Sefić</a> (Nermin Sefic; Sefić Nermin; Sefic Nermin).</p>'
+          for file_name in hr_pages:
+              path = Path(file_name)
+              text = path.read_text(encoding='utf-8')
+              if '/nermin-sefic/' not in text:
+                  text = text.replace('</footer>', hr_link + '</footer>', 1)
+                  path.write_text(text, encoding='utf-8')
+          for file_name in en_pages:
+              path = Path(file_name)
+              text = path.read_text(encoding='utf-8')
+              if '/en/nermin-sefic/' not in text:
+                  text = text.replace('</footer>', en_link + '</footer>', 1)
+                  path.write_text(text, encoding='utf-8')
+          PY
+      - name: Confirm profile pages, internal links and sitemap entries
         run: |
           test -f nermin-sefic/index.html
           test -f en/nermin-sefic/index.html
@@ -44,14 +86,17 @@ jobs:
           grep -q 'https://gnk-asg.hr/en/nermin-sefic/' sitemap.xml
           grep -q 'Sefić Nermin' nermin-sefic/index.html
           grep -q 'Sefic Nermin' en/nermin-sefic/index.html
+          grep -q 'href="nermin-sefic/"' index.html
+          grep -q '/nermin-sefic/' financije/index.html
+          grep -q '/en/nermin-sefic/' en/finance/index.html
       - name: Commit generated SEO publication files
         run: |
           git config user.name "gnk-asg-seo-bot"
           git config user.email "actions@users.noreply.github.com"
           git add index.html en/index.html nermin-sefic/index.html en/nermin-sefic/index.html trzista/index.html en/markets/index.html sadrzaj/index.html teme/index.html financije/index.html en/finance/index.html tehnologija/index.html en/technology/index.html intelligence-desk/index.html en/intelligence-desk/index.html registri/index.html en/registries/index.html instalacija/index.html sitemap.xml robots.txt
           if git diff --cached --quiet; then
-            echo "SEO metadata and sitemap are already current."
+            echo "SEO metadata, internal links and sitemap are already current."
             exit 0
           fi
-          git commit -m "Generate public identity SEO metadata and sitemap"
+          git commit -m "Generate public identity SEO metadata and contextual links"
           git push origin HEAD:main
