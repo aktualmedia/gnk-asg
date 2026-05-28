@@ -52,7 +52,7 @@
       }
       return en ? 'Open Market Monitor for Bitcoin, gold, Brent oil and USD/EUR comparison.' : 'Otvorite Market Monitor za usporedbu Bitcoina, zlata, Brent nafte i USD/EUR.';
     }
-    if (/vijest|news|media|medij/.test(q)) return en ? 'Public business and technology news refresh hourly. Publications about GNK ASG, GNK DINAMO Ltd. or Nermin Sefić appear in the media section only after manual approval.' : 'Javne poslovne i tehnološke vijesti osvježavaju se svakog sata. Objave o GNK ASG, GNK DINAMO Ltd. ili Nerminu Sefiću u medijskoj rubrici prikazuju se samo nakon ručnog odobrenja.';
+    if (/vijest|news|media|medij/.test(q)) return en ? 'Public business and technology news refresh hourly. Public publications found for GNK ASG, GNK DINAMO Ltd. or Nermin Sefić are displayed automatically in the media section and can be removed through authorised control.' : 'Javne poslovne i tehnološke vijesti osvježavaju se svakog sata. Javne objave pronađene za GNK ASG, GNK DINAMO Ltd. ili Nermina Sefića automatski se prikazuju u medijskoj rubrici i mogu se ukloniti kroz ovlaštenu kontrolu.';
     if (/ai|desk|intelligence|umjet|tehnolog|software/.test(q)) return en ? 'Intelligence Desk explains public corporate indicators, market panels and technology topics, and offers public topic research links.' : 'Intelligence Desk pojašnjava javne korporativne pokazatelje, tržišne panele i tehnološke teme te nudi istraživanje javnih tema.';
     return en ? 'Open the full Intelligence Desk to explore this topic through portal data and public research tools.' : 'Otvorite puni Intelligence Desk kako biste temu istražili kroz podatke portala i javne alate pretrage.';
   }
