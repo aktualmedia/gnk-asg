@@ -1,0 +1,88 @@
+name: News Feed and Archive Refresh
+
+# Samostalan proces za vijesti.
+# data/news.json javno prikazuje najnovijih 500 vijesti.
+# data/news_archive.json trajno sprema sav stariji jedinstveni višak.
+# Proces je odvojen od tržišta i grafikona kako njihov kvar ne bi zaustavio vijesti.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/news-feed-archive-refresh.yml'
+      - 'scripts/update_feeds_v2.py'
+      - 'scripts/discover_corporate_media.py'
+      - 'data/news_config_v2.json'
+      - 'data/media_queries.json'
+      - 'data/media_removed.json'
+      - 'data/blocked_news.json'
+  schedule:
+    - cron: '2,17,32,47 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: news-feed-archive-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh-news-and-archive:
+    name: Refresh latest 500 news items and preserve overflow
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout current main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate news processors
+        run: python -m py_compile scripts/update_feeds_v2.py scripts/discover_corporate_media.py
+      - name: Refresh public 500-item list and archived overflow
+        run: python scripts/update_feeds_v2.py
+      - name: Refresh related corporate media discovery without blocking news
+        run: python scripts/discover_corporate_media.py || echo "Media discovery temporarily unavailable; continuing with news publication."
+      - name: Validate public limit and persistent archive output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          public = json.loads(Path('data/news.json').read_text(encoding='utf-8'))
+          archive = json.loads(Path('data/news_archive.json').read_text(encoding='utf-8'))
+          status = json.loads(Path('data/update_status.json').read_text(encoding='utf-8')).get('news', {})
+          assert isinstance(public, list) and len(public) <= 500, f'Public news count invalid: {len(public)}'
+          assert isinstance(archive, list), 'Archive output is not a list.'
+          assert status.get('public_items') == len(public), 'news.json count does not match status.'
+          assert status.get('archive_items') == len(archive), 'news_archive.json count does not match status.'
+          assert status.get('storage_policy') == 'public_latest_500_overflow_preserved_in_archive', 'Archive policy missing.'
+          print(f'Validated public={len(public)} archive={len(archive)}')
+          PY
+      - name: Publish refreshed news and archive without overwriting newer files
+        shell: bash
+        run: |
+          set -e
+          git config user.name "gnk-asg-news-bot"
+          git config user.email "actions@users.noreply.github.com"
+          rm -rf /tmp/gnk-news-output
+          mkdir -p /tmp/gnk-news-output
+          cp data/news.json data/news_archive.json data/update_status.json /tmp/gnk-news-output/
+          cp data/media_approved.json data/media_monitor_status.json /tmp/gnk-news-output/ 2>/dev/null || true
+          publish_news() {
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/gnk-news-output/*.json data/
+            git add data/news.json data/news_archive.json data/update_status.json
+            git add data/media_approved.json data/media_monitor_status.json 2>/dev/null || true
+            if git diff --cached --quiet; then
+              echo "No new public news or archive changes to publish."
+              return 0
+            fi
+            git commit -m "Automated news feed and archive refresh"
+            git push origin HEAD:main
+          }
+          publish_news || (sleep 8 && publish_news) || (sleep 15 && publish_news)
