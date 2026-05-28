@@ -2,25 +2,18 @@
   'use strict';
   if (window.GNK_SHARE_ROUTING_READY) return;
   window.GNK_SHARE_ROUTING_READY = true;
-  const REVISION = 'preview=20260527-unique04';
   const SECTIONS = {
     financials: '/podijeli/financije/',
-    grupa: '/podijeli/grupa/',
+    grupa: '/podijeli/grupa-kartica/',
     technology: '/podijeli/tehnologija/',
-    'digital-assets': '/podijeli/trzista/',
+    'digital-assets': '/podijeli/trzista-kartica/',
     news: '/podijeli/vijesti/',
     dokumenti: '/podijeli/dokumenti/'
   };
-  const versioned = path => {
-    const url = new URL(path, location.origin);
-    if (url.origin === location.origin && url.pathname.startsWith('/podijeli/') && !url.pathname.startsWith('/podijeli/vijest/')) {
-      url.search = REVISION;
-    }
-    return url.href;
-  };
+  const absolute = path => new URL(path, location.origin).href;
   function apply(control, title, destination) {
     if (!control || !destination) return;
-    const url = versioned(destination);
+    const url = absolute(destination);
     const text = encodeURIComponent((title || document.title || 'GNK ASG d.o.o.') + ' — ' + url);
     const linkedIn = control.querySelector('a[href*="linkedin.com/sharing/share-offsite"]');
     const whatsApp = control.querySelector('a[href*="wa.me"]');
