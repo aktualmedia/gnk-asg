@@ -60,9 +60,24 @@ jobs:
           test -f _site/nermin-sefic/index.html
           test -f _site/en/nermin-sefic/index.html
           test -f _site/sitemap.xml
+          test -f _site/robots.txt
           test -f _site/data/news.json
           test -f _site/data/news_archive.json
           test -f _site/data/macro_market.json
+      - name: Validate identity SEO publication content
+        run: |
+          set -e
+          grep -q 'Nermin Sefić' _site/nermin-sefic/index.html
+          grep -q 'Nermin Sefic' _site/nermin-sefic/index.html
+          grep -q 'Sefić Nermin' _site/nermin-sefic/index.html
+          grep -q 'Sefic Nermin' _site/nermin-sefic/index.html
+          grep -q 'profile:first_name' _site/nermin-sefic/index.html
+          grep -q 'profile:last_name' _site/en/nermin-sefic/index.html
+          grep -q 'https://gnk-asg.hr/nermin-sefic/' _site/sitemap.xml
+          grep -q 'https://gnk-asg.hr/en/nermin-sefic/' _site/sitemap.xml
+          grep -q 'Sitemap: https://gnk-asg.hr/sitemap.xml' _site/robots.txt
+          grep -q 'href="nermin-sefic/"' _site/index.html
+          grep -q '<a href="/nermin-sefic/">Nermin Sefić</a>' _site/financije/index.html
       - name: Upload public portal artifact
         uses: actions/upload-pages-artifact@v3
         with:
