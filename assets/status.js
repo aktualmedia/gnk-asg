@@ -16,8 +16,8 @@
       '.live-badge:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#b9c4d1}',
       '.live-badge.ok{border-color:#d8ebdf;color:#3c6753;background:#f7fbf8}',
       '.live-badge.ok:before{background:#26a269}',
-      '.live-badge.warning{border-color:#efe2bd;color:#725d28;background:#fffdf8}',
-      '.live-badge.warning:before{background:#d0a12e}',
+      '.live-badge.warning{border-color:#f0d2d1;color:#8d302e;background:#fff7f7}',
+      '.live-badge.warning:before{background:#cf3b37}',
       '.automation-status{font-weight:850;text-transform:uppercase;letter-spacing:.095em}',
       '@media(max-width:680px){.live-row{gap:6px;margin-top:13px}.live-badge{font-size:.57rem;min-height:25px;padding:0 8px}}'
     ].join('');
@@ -32,6 +32,10 @@
     node.classList.add(state);
   }
 
+  function marketComplete() {
+    return Boolean(marketData && marketData.status !== 'partial' && Array.isArray(marketData.errors) && marketData.errors.length === 0);
+  }
+
   function render() {
     const en = english();
     const news = newsData && newsData.news;
@@ -41,18 +45,17 @@
     }
     if (marketData && marketData.digital_assets) {
       const markets = marketData.digital_assets.coins || 0;
-      const marketText = en ? 'Digital Assets: ' + markets + ' assets · Updated: ' + dateLabel(marketData.updated_at) : 'Digitalna imovina: ' + markets + ' stavki · Ažurirano: ' + dateLabel(marketData.updated_at);
-      setBadge('marketBadge', marketText, minutesOld(marketData.updated_at) <= 20 ? 'ok' : 'warning');
+      const partial = !marketComplete();
+      const marketText = en ? 'Digital Assets: ' + markets + ' assets · Updated: ' + dateLabel(marketData.updated_at) + (partial ? ' · Partial refresh' : '') : 'Digitalna imovina: ' + markets + ' stavki · Ažurirano: ' + dateLabel(marketData.updated_at) + (partial ? ' · Nepotpuno osvježavanje' : '');
+      setBadge('marketBadge', marketText, minutesOld(marketData.updated_at) <= 20 && !partial ? 'ok' : 'warning');
     }
     const newsFresh = Boolean(news && minutesOld(news.updated_at) <= 95);
-    const marketFresh = Boolean(marketData && minutesOld(marketData.updated_at) <= 20);
+    const marketFresh = Boolean(marketData && minutesOld(marketData.updated_at) <= 20 && marketComplete());
     const referenceFresh = referenceData.length === 4 && referenceData.every(data => data && minutesOld(data.updated_at) <= 95);
     if (newsFresh && marketFresh && referenceFresh) {
       setBadge('automationBadge', en ? 'Automated updates active' : 'Automatsko ažuriranje aktivno', 'ok');
-    } else if (newsFresh && marketFresh) {
-      setBadge('automationBadge', en ? 'Reference update pending' : 'Referentno ažuriranje u tijeku', 'warning');
     } else {
-      setBadge('automationBadge', en ? 'Update verification' : 'Provjera ažuriranja', 'waiting');
+      setBadge('automationBadge', en ? 'Update incomplete or pending' : 'Ažuriranje nepotpuno ili u tijeku', 'warning');
     }
   }
 
