@@ -1,5 +1,71 @@
 [
   {
+    "id": "178ecf0fd28096be8d",
+    "title": "Dell shares jump 17% after server maker reports fastest sales growth since return to public market in 2018",
+    "url": "https://www.cnbc.com/2026/05/28/dell-q1-earnings-report-2027.html",
+    "summary": "Dell has gone from being a sleepy legacy tech company to a high-growth AI story, assembling servers packed with graphics processing units.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T20:44:54+00:00"
+  },
+  {
+    "id": "d98fc0a86690ed7786",
+    "title": "Okta tops first-quarter results on agentic AI demand",
+    "url": "https://www.cnbc.com/2026/05/28/okta-okta-earnings-q1-2027.html",
+    "summary": "CEO Todd McKinnon said Okta is \"playing a long game\" on AI and is allocating more resources to agentic tools.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T20:42:55+00:00"
+  },
+  {
+    "id": "73469b6c3fd93326ee",
+    "title": "Costco sales jump 11%, revenue tops Wall Street expectations",
+    "url": "https://www.cnbc.com/2026/05/28/costco-cost-q3-2026-earnings.html",
+    "summary": "Costco on Thursday reported an increase in net sales compared to the year-ago period, with revenue beating Wall Street estimates.",
+    "source": "CNBC Business",
+    "region": "CNBC Business",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-28T20:39:22+00:00"
+  },
+  {
+    "id": "a4f91e613bdaebbd12",
+    "title": "Bitcoin: Pompliano Predicts Rebound From AI Outperformance",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQVmx3TVNiam1zcG1ILTk3QTVSaXZDaXVIUzRTSXJTLWE5M2NOajYtRmNnRmJsZ1d0Q2pSakpNLS01Z2gtTVY5aEZaZ21SY2VLTGFCREt5U3B6VzNKajNwdVJtcXE4cDZKWUtTNU43Z1FSVjdrSHFXSFFtWE9fUnFMS19pTzFzdXI1QWRqMlNQdw?oc=5",
+    "summary": "Bitcoin: Pompliano Predicts Rebound From AI Outperformance blockchain.news",
+    "source": "blockchain.news",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-28T20:37:49+00:00"
+  },
+  {
+    "id": "d8d83cb5b3d62e0ae7",
+    "title": "Snowflake surges 36% for best day ever on AI frenzy, fueling software rally",
+    "url": "https://www.cnbc.com/2026/05/28/snowflake-snow-software-stock-rally.html",
+    "summary": "The Snowflake rally also lifted shares of ServiceNow, Oracle and Palantir, while Salesforce bucked the trend.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T20:37:19+00:00"
+  },
+  {
+    "id": "683a9293a838173a17",
+    "title": "AAVE Labs’ Subsidiary “Push” Gains FCA Registration for Cryptoasset Activities in the UK",
+    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9lZE9sc3VtekI5T2V6bmhkZlRBMDJPQk03NzgwbXdCQTFzMUhxYTBKRVdTNU5YWko2UXp3bkw0Tkp4VWJBS3lyU0tiSHBPN2tvS0U5UVNJS0JRR0xTRzJCZGllemJ6SnQyUTY1WHNtbHlsVldpNHN2WG9Zaw?oc=5",
+    "summary": "AAVE Labs’ Subsidiary “Push” Gains FCA Registration for Cryptoasset Activities in the UK FinanceFeeds",
+    "source": "FinanceFeeds",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-28T20:30:20+00:00"
+  },
+  {
     "id": "f417a206017cf0de3b",
     "title": "Slate Auto will announce pricing and take preorders for its EV on June 24",
     "url": "https://techcrunch.com/2026/05/28/slate-auto-will-announce-pricing-and-take-preorders-for-its-ev-on-june-24/",
@@ -42,39 +108,6 @@
     "group": "international",
     "category": "economy",
     "published_at": "2026-05-28T20:20:50+00:00"
-  },
-  {
-    "id": "db9751232ef57b1b0a",
-    "title": "Dell shares jump 19% after server maker reports fastest sales growth since return to public market in 2018",
-    "url": "https://www.cnbc.com/2026/05/28/dell-q1-earnings-report-2027.html",
-    "summary": "Dell has gone from being a sleepy legacy tech company to a high-growth AI story, assembling servers packed with graphics processing units.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T20:18:20+00:00"
-  },
-  {
-    "id": "d8d83cb5b3d62e0ae7",
-    "title": "Snowflake surges 36% for best day ever on AI frenzy, fueling software rally",
-    "url": "https://www.cnbc.com/2026/05/28/snowflake-snow-software-stock-rally.html",
-    "summary": "The Snowflake rally also lifted shares of ServiceNow, Oracle and Palantir, while Salesforce bucked the trend.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T20:12:28+00:00"
-  },
-  {
-    "id": "d98fc0a86690ed7786",
-    "title": "Okta tops first-quarter results on agentic AI demand",
-    "url": "https://www.cnbc.com/2026/05/28/okta-okta-earnings-q1-2027.html",
-    "summary": "CEO Todd McKinnon said Okta is \"playing a long game\" on AI and is allocating more resources to agentic tools.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T20:07:17+00:00"
   },
   {
     "id": "d9d8a2cd620cb55db5",
@@ -911,6 +944,17 @@
     "group": "mobilnost",
     "category": "automotive",
     "published_at": "2026-05-28T15:33:47+00:00"
+  },
+  {
+    "id": "86eef5282bce3e333d",
+    "title": "CLARITY Act: Bold Boost For Crypto Future 2026",
+    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBjNHVUQm80R3dWcTU1X3FwdzRpMVloRmtpbUktcVlqWFhDMlRjRnNFLXRyeUNPOWp6VWpuR3czZ3VTaTJLeC00clRmTmRnUXZVLTh5a2Q5YzJiUHpqeExDWnNIN3FnZGtESUc4S2xIVVI4d3lJYk4xM3hGYXpwZw?oc=5",
+    "summary": "CLARITY Act: Bold Boost For Crypto Future 2026 TronWeekly",
+    "source": "TronWeekly",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-28T15:30:00+00:00"
   },
   {
     "id": "07c9ad11ef56544671",
@@ -1769,6 +1813,17 @@
     "group": "hrvatska",
     "category": "economy",
     "published_at": "2026-05-28T11:04:19+00:00"
+  },
+  {
+    "id": "493d2dfc155347917b",
+    "title": "AI Agents: Building Enterprise Guardians",
+    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQRFlUZnNEdTF3RmtaYnFWaFRsekE2V0g2RDkzYmpiOTQ4dUJXTktfMDBtSjcxYmpCaEpHV0dybUUtNUthX3BWQ05PVFotYkZXSFhBNGxOd1Y2ZF9aRENUYlVVRkZUZU9uaEwtcC13YWZ5eEJYcFNRNnVSX0w4QVEzWVJaUld2eUY4ZEcwV1l4am1wS3N2YXNn?oc=5",
+    "summary": "AI Agents: Building Enterprise Guardians StartupHub.ai",
+    "source": "StartupHub.ai",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T11:02:13+00:00"
   },
   {
     "id": "6d7d763ab4fc381f2f",
@@ -4059,6 +4114,17 @@
     "published_at": "2026-05-25T07:00:00+00:00"
   },
   {
+    "id": "e759ae4e06de4ae550",
+    "title": "Fortinet Deepens Integration to Uniquely Secure Enterprise AI at Scale with NVIDIA",
+    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPbEpvNWRxcUpzRXNSTnlVYzVwMXNUX0Z2dzNuZEhfMTBVWTBvRUV6YTJIejdqTjFHbzVNNjV0TGo3Z0IwS3lmVFZtQWxSel9yTllFMVlHVXE2aVU0cmhXcDhjTFVKcllOYnZCVWExOVJHR1huZnJKQmVvUzZob2FUNVdxQ2JRRU5KdlR4RnkzalliS1cyMHA1RXk3UWNtSXEwRmp5X2t0eW0?oc=5",
+    "summary": "Fortinet Deepens Integration to Uniquely Secure Enterprise AI at Scale with NVIDIA IT Voice Media Pvt. Ltd.",
+    "source": "IT Voice Media Pvt. Ltd.",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-25T06:52:07+00:00"
+  },
+  {
     "id": "20dea913a0e3bacdee",
     "title": "Best AI ETFs To Invest In: A US Reference Guide",
     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOQUxuT2thS3pvMXVYbWdPQmNIRXQwTnRiMHdtRzJlYUU5aHFZalI2V09IcTd6Tk14SWx1MkpNN0gyVkxwdFdOVGtFdWJEOE5NWXhYUDBYM0JNNkM3OE5kVVQ5THFXYmlPUWdYYUtNOUdsbmt6Rnl2ZWZUb3VIYjc4a3oxaTBtXzU2RmRvQy1ESUJWR3RENjVV?oc=5",
@@ -4796,6 +4862,17 @@
     "published_at": "2026-05-22T09:23:09+00:00"
   },
   {
+    "id": "376ecb266aae80998e",
+    "title": "China to crack down on 'illegal' cross-border securities",
+    "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNeHpicXlfcW9NVGU3Wnl4c3lnNE9KekJ6TjRwZnFDT3MtOTJ3WWtHM2UzMHJ4TFpjLW5YaEEtYlVNX0V6Qm1laGFNcHdpcXNsY29IZ003SmJrVldSUmRQRG1YZVR3ZGtJdThFRE8yMktGXzJNZVI1U0wzRmFhOVBaQUdOQ3oyalRzYUlnQjlUVC1OUzJ3NDkxRnd4NDBBSVR0TmJUYzc4dXo4NUJRZzZERkROQVU?oc=5",
+    "summary": "China to crack down on 'illegal' cross-border securities Reuters",
+    "source": "Reuters",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-22T08:33:00+00:00"
+  },
+  {
     "id": "57389b9c1cf5f833af",
     "title": "7 Best Satellite Stocks for 2026 and How to Invest",
     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOUU0zRkdseTZYdEtvZi1NUEFHU0xtTHRTcEtham80MDRZUmFDUEFiT0tTVmpMU1RBOEowX01iQ2pEa05JdVQ4RnF2UGp2WmNqWGpmOU5jck1FY0J0cm5pVEl1aE1EeEZlUTJWZjc3TlZiUUpQVDlCd0NLY2VfRVowNmNqZVg4RXlCVE1xQzVZRkViQUZwb05DSDVha2txQmJQU2RJ?oc=5",
@@ -4873,17 +4950,6 @@
     "published_at": "2026-05-22T07:00:00+00:00"
   },
   {
-    "id": "cba99555cc857769ec",
-    "title": "Top 5 AI Stocks To Buy In India May 2026",
-    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNd25Nc2NpMTZTeHN1djNmQXF0d0RQN0NXazJDZ3Uxb0J0aGJYMEtMalJqOFBWbzgxdjZQWlRlVDhlbWdtRFg5QzdHbVFCM0REZW5kRzFmdUszNTBndzBhMC1Rd1JhcmxYWVhlRGV2UloyTGgtbG5VUVVkenZkMjdhSUg4di0?oc=5",
-    "summary": "Top 5 AI Stocks To Buy In India May 2026 Samco",
-    "source": "Samco",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-22T07:00:00+00:00"
-  },
-  {
     "id": "2372f2bf53018b868c",
     "title": "A massive $1 trillion hidden market is waiting to be unlocked in bitcoin, says new report",
     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9kS0ljRVo1ZUVNLXk0Qkd2dkl4V3ZjWGhlRDloa015OUE1aVhNUk9Eb1JEZkZ6U2pQRUE2WWhtVlF2T2pEWkU4NW0tdnhwTVkwTENOdllEdXdsclFkYmc?oc=5",
@@ -4892,6 +4958,17 @@
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
+    "published_at": "2026-05-22T07:00:00+00:00"
+  },
+  {
+    "id": "cba99555cc857769ec",
+    "title": "Top 5 AI Stocks To Buy In India May 2026",
+    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNd25Nc2NpMTZTeHN1djNmQXF0d0RQN0NXazJDZ3Uxb0J0aGJYMEtMalJqOFBWbzgxdjZQWlRlVDhlbWdtRFg5QzdHbVFCM0REZW5kRzFmdUszNTBndzBhMC1Rd1JhcmxYWVhlRGV2UloyTGgtbG5VUVVkenZkMjdhSUg4di0?oc=5",
+    "summary": "Top 5 AI Stocks To Buy In India May 2026 Samco",
+    "source": "Samco",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
     "published_at": "2026-05-22T07:00:00+00:00"
   },
   {
@@ -5421,82 +5498,5 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-21T06:15:48+00:00"
-  },
-  {
-    "id": "bbd1ac82e69136b9f9",
-    "title": "NSIA advances Nigeria’s digital future through strategic technology investments",
-    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOckM5Q2stcWxFeXliRnY4aTNRRkxFa3NFQWxQXzZ2ZGF2ZFQ1T3hzaERjeE5RREVUOUFTTzlrMWVIb0JETHo3aFlIWEljdVFxRXJSUEhJWGlkaFRjTFgwZzVEYmUwMVNvRGRnV3czdWJEakRZMjBzb1FKZGRMT0F0T19YLW9TUDJIREVIMEZFMmdRRk54bFZWOU9La25yMnVqM0k1OEF3U3RraHVL?oc=5",
-    "summary": "NSIA advances Nigeria’s digital future through strategic technology investments The Guardian Nigeria News",
-    "source": "The Guardian Nigeria News",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-21T06:15:00+00:00"
-  },
-  {
-    "id": "19bd8a6b6fa6b6ddf9",
-    "title": "Poznato koliko iznosi dnevnica vozača kamiona u Hrvatskoj, BiH, Sloveniji i u Austriji",
-    "url": "https://n1info.ba/vijesti/ekonomija/poznato-koliko-iznosi-dnevnica-vozaca-kamiona-u-hrvatskoj-bih-sloveniji-i-u-austriji/",
-    "summary": "U Hrvatskoj nedostaje više od tri tisuće vozača kamiona, a u udruzi Convoy napominju da se situacija pogoršava iz godine u godinu jer većina osposobljenih vozač",
-    "source": "N1 Bosna i Hercegovina",
-    "region": "BiH",
-    "group": "bih",
-    "category": "economy",
-    "published_at": "2026-05-21T05:53:00+00:00"
-  },
-  {
-    "id": "d6ed5d548dcb2931d2",
-    "title": "\"Za zeničku Željezaru biramo 'najmanje zlo'\"",
-    "url": "https://n1info.ba/vijesti/ekonomija/za-zenicku-zeljezaru-biramo-najmanje-zlo/",
-    "summary": "Gostujući na TVSA, federalni ministar trgovine Amir Hasičević komentarisao je aktuelnu problematiku u vezi s graničnim prijelazom Gradiška, raspodjelom prihoda",
-    "source": "N1 Bosna i Hercegovina",
-    "region": "BiH",
-    "group": "bih",
-    "category": "economy",
-    "published_at": "2026-05-21T05:19:00+00:00"
-  },
-  {
-    "id": "07090cca0bd1f25aba",
-    "title": "Qivalis Wins Major Banking Alliance to Boost Euro Stablecoin Adoption",
-    "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBvVUdHdW9uVV92a0NjWTZiUHZHbXNnbWVOMmtBbXJtQWhsWDNlU3ViZ0hXWU94N3pfdkxOcGxsQ29DdWZBd2NYcg?oc=5",
-    "summary": "Qivalis Wins Major Banking Alliance to Boost Euro Stablecoin Adoption MEXC",
-    "source": "MEXC",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-21T04:56:45+00:00"
-  },
-  {
-    "id": "df0941ed36c26c62d9",
-    "title": "Check Point Software Technologies Eyes Firewall Rebound After Sales Overhaul",
-    "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPSC1haG5VZ2VrTzdjclF3NHQ3VTNiWDJZQ3FJQzJRUlY1MzNqV3hzbmhTNzlkdERLVV9rRjdyQ0VBbVZkeWZQX1BrcS1reEZUVDZsVXZ4c05iMVhoeEk3YXZQU0hZVFRrQU1LVTMtTUQxTUFHSEJWQ0wyRFZPRVhRSUFSX3lSMC1DNmYxaDlpV2xWX2U4WTRFR2JtNF9yLWJTbVV4VFdiTjg5aDd5S2hjejRhMmdaWFVxal9hMG1sR08wNnVyWUdmZWpucldRNUVCNlhr?oc=5",
-    "summary": "Check Point Software Technologies Eyes Firewall Rebound After Sales Overhaul TradingView",
-    "source": "TradingView",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-21T03:03:00+00:00"
-  },
-  {
-    "id": "a8baca1a04e8c95093",
-    "title": "25 banks join Qivalis project to launch euro stablecoin",
-    "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNZFFYRG4yVnZNbC13elN2TWNrYklpMDdhTmJLcjVJN1RheS1feWQ1YjVvbXgtdHlRci1YTmNuMlo3YWFUS0dtc3M4ZlVFZzFCeUFnQmlXY3dwbE1QYm5KOWNQaHdxNnJyYnFmNmRVQXpXQ3BRTWVPY2pwd01hR3llUmdPUmlCbkZ2eU5uaFJzdVJmek9faDhUVUszaElwWXlmamhiSDNPQ0N6ZkFFbkJsYmVB?oc=5",
-    "summary": "25 banks join Qivalis project to launch euro stablecoin russpain.com",
-    "source": "russpain.com",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-21T01:17:08+00:00"
-  },
-  {
-    "id": "33e88c43f81ec30580",
-    "title": "AI mission will accelerate UP data center cluster: CM Yogi during review meeting",
-    "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOYl9YSTluRGxfYXpDYzZFaFdRSC1BZnlKTTRXWHo3Z2c4Rll0OWg3NjFrSV8wRkxWVVRrc2ExUlJTNTY1bmp5QXdHMmM2aHJ1LTNRNmdheHRNZ2h4VWtsZENCLUpFb1dBM2pkQjR5RTk3MWtFcUV4aEZRQVhhUDlfRUZFelZwYk5wSnVxbVFzV253aW9YREh6c2hpaTR5YmlVenJESnhCaWpUS19xZkNpZU51VmZubjJ5REItV0V0UnlQNzB5ejdSY3B5NjRTdHNCbWozLUxHcVliLXc?oc=5",
-    "summary": "AI mission will accelerate UP data center cluster: CM Yogi during review meeting ANI News",
-    "source": "ANI News",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-21T00:21:00+00:00"
   }
 ]
