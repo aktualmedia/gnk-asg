@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-28T20:01:07+00:00",
+  "updated_at": "2026-05-28T20:01:43+00:00",
   "cadence": "scheduled every five minutes",
   "asset": "Bitcoin",
   "source": "CoinGecko exchange ticker aggregation",
