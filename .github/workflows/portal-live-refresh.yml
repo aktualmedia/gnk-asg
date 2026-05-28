@@ -1,6 +1,7 @@
 name: Portal Live Data Refresh
 
-# Jedini glavni automatski proces javnih podataka portala.
+# Jedini glavni automatski proces javnih podataka portala nakon migracije arhive vijesti.
+# Stari zasebni workflowi ostaju samo za ručno rezervno pokretanje.
 # Tržišni podatci: svakih 5 minuta. Javnih 500 vijesti i arhiva viška: svakih 15 minuta.
 on:
   workflow_dispatch:
