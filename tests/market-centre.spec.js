@@ -73,13 +73,18 @@ for (const route of homepageRoutes) {
   });
 }
 
-test('početna stranica koristi zasebne LinkedIn URL-ove za kontrolirane sekcije', async ({ page }) => {
+test('početna stranica koristi trajne LinkedIn kartice za kontrolirane sekcije', async ({ page }) => {
   await page.goto('/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#digital-assets')).toBeVisible({ timeout: 15000 });
   await expect.poll(async () => page.evaluate(() => {
     const control = document.querySelector('#digital-assets .gnk-content-share');
     const link = control && control.querySelector('a[href*="linkedin.com/sharing/share-offsite"]');
-    return link ? decodeURIComponent(link.href).includes('/podijeli/trzista/?preview=20260527-unique04') : false;
+    return link ? decodeURIComponent(link.href).includes('/podijeli/trzista-kartica/') : false;
+  }), { timeout: 15000 }).toBe(true);
+  await expect.poll(async () => page.evaluate(() => {
+    const control = document.querySelector('#networkOverviewVisual .network-overview-share');
+    const link = control && control.querySelector('a[href*="linkedin.com/sharing/share-offsite"]');
+    return link ? decodeURIComponent(link.href).includes('/podijeli/grupa-kartica/') : false;
   }), { timeout: 15000 }).toBe(true);
   expect(await page.locator('a[href$="/trzista/"]').count()).toBeGreaterThan(0);
 });
