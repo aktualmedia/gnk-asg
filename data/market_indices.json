@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-28T19:46:44+00:00",
+  "updated_at": "2026-05-28T19:51:21+00:00",
   "cadence": "scheduled every five minutes",
   "source": "Public market quote feed",
   "indices": [
@@ -8,22 +8,22 @@
       "symbol": "^GSPC",
       "label": "S&P 500",
       "region": "SAD",
-      "current": 7566.5,
+      "current": 7563.83984375,
       "previous_close": 7432.97,
-      "change_percent": 1.8,
+      "change_percent": 1.76,
       "currency": "USD",
-      "market_time": 1779997604
+      "market_time": 1779997880
     },
     {
       "id": "nasdaq",
       "symbol": "^IXIC",
       "label": "Nasdaq Composite",
       "region": "SAD",
-      "current": 26930.744140625,
+      "current": 26909.412109375,
       "previous_close": 26270.36,
-      "change_percent": 2.51,
+      "change_percent": 2.43,
       "currency": "USD",
-      "market_time": 1779997602
+      "market_time": 1779997882
     },
     {
       "id": "stoxx50",
