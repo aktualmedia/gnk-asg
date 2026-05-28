@@ -1,5 +1,27 @@
 [
   {
+    "id": "bda40988384f63fa5a",
+    "title": "Gap cuts sales guidance after disappointing Old Navy performance",
+    "url": "https://www.cnbc.com/2026/05/28/gap-gap-earnings-q1-2026.html",
+    "summary": "Gap issued mixed results as sales at its largest brand, Old Navy, fell short of estimates.",
+    "source": "CNBC Business",
+    "region": "CNBC Business",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-28T20:21:42+00:00"
+  },
+  {
+    "id": "19700a6235c260dae6",
+    "title": "American Eagle's Aerie is booming, but its namesake brand is lagging despite Sydney Sweeney ads",
+    "url": "https://www.cnbc.com/2026/05/28/american-eagle-aeo-earnings-q1-2026.html",
+    "summary": "American Eagle beat Wall Street's expectations but sales at its namesake banner fell short of estimates after its latest Sydney Sweeney campaign.",
+    "source": "CNBC Business",
+    "region": "CNBC Business",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-28T20:20:50+00:00"
+  },
+  {
     "id": "db9751232ef57b1b0a",
     "title": "Dell shares jump 19% after server maker reports fastest sales growth since return to public market in 2018",
     "url": "https://www.cnbc.com/2026/05/28/dell-q1-earnings-report-2027.html",
@@ -8,7 +30,7 @@
     "region": "CNBC Technology",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-28T20:17:18+00:00"
+    "published_at": "2026-05-28T20:18:20+00:00"
   },
   {
     "id": "d8d83cb5b3d62e0ae7",
@@ -42,17 +64,6 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-28T20:06:07+00:00"
-  },
-  {
-    "id": "19700a6235c260dae6",
-    "title": "American Eagle's Aerie is booming, but its namesake brand is lagging despite Sydney Sweeney ads",
-    "url": "https://www.cnbc.com/2026/05/28/american-eagle-aeo-earnings-q1-2026.html",
-    "summary": "American Eagle beat Wall Street's expectations but sales at its namesake banner fell short of estimates after its latest Sydney Sweeney campaign.",
-    "source": "CNBC Business",
-    "region": "CNBC Business",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-28T20:05:49+00:00"
   },
   {
     "id": "4d3f807660fa63a22f",
@@ -2480,9 +2491,9 @@
     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PU3pBdGY0NWJMSWFUTFRDUGx3RklNQlNENWdlQjBiNG9meUo5andqSHFER0lkNlhEaFVwOXpLYWZseVJ1YVZsU2Q4RzBWT1RoeUhTM19YaFljM2ZHcm5yMHYxTlc?oc=5",
     "summary": "Crypto Market Recap: Bitcoin Price Dips as Geopolitical Tensions Ramp Up Investing News Network",
     "source": "Investing News Network",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
     "published_at": "2026-05-27T21:05:00+00:00"
   },
   {
@@ -3201,6 +3212,17 @@
     "published_at": "2026-05-27T07:22:16+00:00"
   },
   {
+    "id": "7769152f05f8340666",
+    "title": "AMD Stock Surges to $467 as Nvidia CEO Jensen Huang Signals Massive AI Demand Boost for Chipmaker",
+    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxObnIzMVJrOXlyS0VpdnpQdXhEVVk1U0ltdGRUM1NCdGVQREV3MTBNWmNGckQ4X1dUMkZ6UDNDaTluXzRTNU9ENlVkS3NqODJ6Nm1GX25qSVczbnJCSGt4d2pGdUM0aVZDZ2pnZnVUZE1CZ0xTQWVsVktMcUEtT2ZnN0g2QVYzelNiWVBRY1JhaF9fcWZ0a2tPTHh3LVdoSmZOUjJtNm1LS1VaVl9uOVJLS05KaWtYRm1LVFRCRg?oc=5",
+    "summary": "AMD Stock Surges to $467 as Nvidia CEO Jensen Huang Signals Massive AI Demand Boost for Chipmaker Meyka",
+    "source": "Meyka",
+    "region": "AI Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-27T06:08:26+00:00"
+  },
+  {
     "id": "4f1f141c79d309f0e2",
     "title": "Infineon Exhibits Semiconductor Solutions for Power Infrastructure, AI Data Centers, Robotics, and Electromobility at PCIM Europe 2026",
     "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPSmg3V2ViaFJvRmJhTkdtSW05T1JGdGppLVpla0pEMW4zdFkwTlMwU1N0aWx4WWVuX043RWx5S1NuRUpjUlcyYUhjV1ptTVUyS1IyU1R4V3VPZU13NlluZGwwQVlPc2hyMG1sV1dBUTdTTmF0c0NpSHAzMTh3LWI5YWdudnMtcDNLZzZwaWNudHdidlFYWGpFWXViYlpYTlVVX3BXUWowZnRGSC1vM3pFV0Nfd25wbGRRN1Jqd2FfZGRSdlc3RWNZODcyZmJwUjNzNm9KZGtCbHZOZjRycXNKTDBIVEVKZ0VOTFFv?oc=5",
@@ -3608,28 +3630,6 @@
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
-    "id": "bcd5fe0a8578929d94",
-    "title": "Top 10 Cryptos To Invest In May 2026",
-    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBYYmRHaGRpUVdmdUpka3VMbFI1bVRPSXUxb3RYZXhkYzd3enBvVk4wdWFqcXVqSmJTNExqZjdkWEtLZkl5Z2F1ZFdRZVhlRHBqQUVKTFNhb3BtaWZrSkVlaDBmdWRJRUk?oc=5",
-    "summary": "Top 10 Cryptos To Invest In May 2026 ZebPay",
-    "source": "ZebPay",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-26T07:00:00+00:00"
-  },
-  {
-    "id": "6b8433eecef3d93649",
-    "title": "What Is the CLARITY Act and What Does It Mean for Crypto?",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObzItX29GSllDNU1GUzJDdU9jV2MxRy0yVlZ2dXFfa0NUbmhSNjR4ZUpYcWZQdUZZeUswT3lKcFNSRE5yYlExMFhVeVMyZ0F1UTJPVmkxR2lLS3I3eFJBUVFBNHRMeW1tSTZPRzZIMWl4Ym00X2dGZEZDUkE4eFBuSkVfQ2hiV3ZhTm1jOUxJQVloUkRreTVPY295Ri03Sl96ZVE?oc=5",
-    "summary": "What Is the CLARITY Act and What Does It Mean for Crypto? Binance",
-    "source": "Binance",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-26T07:00:00+00:00"
-  },
-  {
     "id": "3271a51649c393a191",
     "title": "Get your portfolio’s passport stamped: Reasons to consider international investing",
     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5WNGlxUkFiaDBiOW4xNFdCdWtPTlJlazQwUUxhdDV6VVhKVzJHS3lBMURmNUdrdlZsbFpid21GSFNDZEN0MGtOMnRNZnZiLVhPczhpUjFibzdwRGFoZ21Ibjc5N1hCUk5zY3BiZzZDbw?oc=5",
@@ -3649,6 +3649,28 @@
     "region": "Cyber and Cloud",
     "group": "technology",
     "category": "technology",
+    "published_at": "2026-05-26T07:00:00+00:00"
+  },
+  {
+    "id": "bcd5fe0a8578929d94",
+    "title": "Top 10 Cryptos To Invest In May 2026",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBYYmRHaGRpUVdmdUpka3VMbFI1bVRPSXUxb3RYZXhkYzd3enBvVk4wdWFqcXVqSmJTNExqZjdkWEtLZkl5Z2F1ZFdRZVhlRHBqQUVKTFNhb3BtaWZrSkVlaDBmdWRJRUk?oc=5",
+    "summary": "Top 10 Cryptos To Invest In May 2026 ZebPay",
+    "source": "ZebPay",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-26T07:00:00+00:00"
+  },
+  {
+    "id": "6b8433eecef3d93649",
+    "title": "What Is the CLARITY Act and What Does It Mean for Crypto?",
+    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObzItX29GSllDNU1GUzJDdU9jV2MxRy0yVlZ2dXFfa0NUbmhSNjR4ZUpYcWZQdUZZeUswT3lKcFNSRE5yYlExMFhVeVMyZ0F1UTJPVmkxR2lLS3I3eFJBUVFBNHRMeW1tSTZPRzZIMWl4Ym00X2dGZEZDUkE4eFBuSkVfQ2hiV3ZhTm1jOUxJQVloUkRreTVPY295Ri03Sl96ZVE?oc=5",
+    "summary": "What Is the CLARITY Act and What Does It Mean for Crypto? Binance",
+    "source": "Binance",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
@@ -4046,6 +4068,17 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-24T23:25:12+00:00"
+  },
+  {
+    "id": "98955e00d800411edc",
+    "title": "Space rockets, satellites, data centers and Grok: What's the right S&P sector index for SpaceX?",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE4zMWo5VWx5d3F4M1NndGN5RXlEUzV2RURqTlhsLXd5T20zdnc1dWxiSlV2VWMwdTNBMmtLeGRZM2ZmX3kyU1FlcVJRbWlTY1hpQk9VWEI2Z2hZa0h0c2hybW4wTmJTMzdyX1dJ0gFwQVVfeXFMUFNiU1BsOV9EUDc0a3J5TnN4NzhHN1VrbnRLSVlyUEpZX2VXb2ZmZlRjVEp4NEpNY2VLQ2pvSlUwc2tIWUlHcGN4c0xqcUx1cEpmMWlOMDQzSndlT0g3b0hMQW10dWZMd0dxTERjeTF1dw?oc=5",
+    "summary": "Space rockets, satellites, data centers and Grok: What's the right S&P sector index for SpaceX? CNBC",
+    "source": "CNBC",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-24T20:19:04+00:00"
   },
   {
     "id": "7d0379b94143686832",
@@ -4763,6 +4796,17 @@
     "published_at": "2026-05-22T07:00:00+00:00"
   },
   {
+    "id": "d3eaa989c04e498aee",
+    "title": "10 Best Water Stocks To Buy Now | 2026 List Of All 43 | Profit From Clean Water",
+    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1PaUxCRTF6TDdIaFZFNk5xQ3dMZU4tRTZiZGxRNlZQRzR0TXByX1RMZ2ZfRlpIdEU4LWpPVHRUYUdaMGhfbGczMXNNTkhwaHJ0Rjk1dw?oc=5",
+    "summary": "10 Best Water Stocks To Buy Now | 2026 List Of All 43 | Profit From Clean Water Sure Dividend",
+    "source": "Sure Dividend",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-22T07:00:00+00:00"
+  },
+  {
     "id": "c53ce85319c248d091",
     "title": "4 strategies for investing in AI stocks",
     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1ISGY5bFI0ZFI1RVY1ZkxlaFVUWVdaczRDZF9SWTAzaDIzems2cXdLelVOVkt1dTdNUFg3Z0VqOHNCVkU3OXJXakk4d2VOT08wZVp0YkdlbkVsdjF0ZjRCQW5zUHdYZw?oc=5",
@@ -5454,49 +5498,5 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-20T17:04:39+00:00"
-  },
-  {
-    "id": "74934fb338964af4ef",
-    "title": "CME and Nasdaq to launch crypto index futures featuring BTC, ETH, SOL and XRP",
-    "url": "https://news.google.com/rss/articles/CBMi3AJBVV95cUxPaVNRZVljcjY4VmFMWmlJaWd5R195UE5jSzB3OHFEYk5tSEZuQzdBS1puc3ZmWWxSd18tOU9ySkNLQnhCYTJOZi02OXg2Q3VLM2lzM0xpOG1DQk42SVZrVEU3MDdaT2d3YTg3TERyd180blEteUc3VEt1UmJWSENwYllMNk4wb282THMyNkJZRmdDUWktVWwwWWZ2RTJjeUlzN0dibVVreFlZYmNGaWtVaDhNc0l0MDZPU1lSUnluc1hmVjFVeUZndzBHSWd3bWVwa1dDUldRUEE4cjgyQUdNQm5uQjUtbDhhLW1JZlpRa1QzZjN1aUJCdkhJemh5cFNLbnRLOEFGM0FEMnVVSk05TUxaZzRyN2VmNzBqOXNCdkdXN1JwdFh1WV9SdUpoWUxJS295WkJHS29JUl9ZeFJWT3ZIODlFMlIzbjd3UHYtQW5WdlNnLVNCSVFDTjE?oc=5",
-    "summary": "CME and Nasdaq to launch crypto index futures featuring BTC, ETH, SOL and XRP MSN",
-    "source": "MSN",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-20T16:23:16+00:00"
-  },
-  {
-    "id": "5a5bb9b0c811f4e4e9",
-    "title": "5 ETF Areas Trading at a 52-Week High",
-    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPZ2lZbDR3S3FnVjY0eTFFWTZwS2lrblJCSkdfbU1EM01QdUlIRl9ZNkxCU2lDOWZrTU5UaS1HT2M1UjlCbTJycmJ2T0pXdG5iUmRtNzZvaHNsQ3MzMGw5VGh1YXNyWVV0Rkt1UHdFb3UzUW9rVTFIdk0yTVhwYmZjdURvbjhMTWNkdmZQS21JUDR4TjRRaDZ0NQ?oc=5",
-    "summary": "5 ETF Areas Trading at a 52-Week High TradingView",
-    "source": "TradingView",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-20T16:00:00+00:00"
-  },
-  {
-    "id": "fd6460ee47a9f459dd",
-    "title": "Cisco Systems, Inc. stock (US17275R1023): insider sale follows solid earnings beat",
-    "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxONEh5aGlRcmVoZlVydHNHNXpMeU8wU00zOHpWcGhESk1jRXNsX0xaSVNJQzYwZVp3VjYxbDFsLXZhZF93Wk5GZnZuMTdYQVkxQkpRTGdtQ3Jhdld1N1FMNlNsMXRBckFoZE5RY0JaTllsTTBNY1JFV2dFVzBwT2J0YThnNFVFZ25MLTZWN0UtRHVmT3Y3NjBiOGw4YUNXQXRURFRsaGpVZ1o0aEFoaUd6MHJMUmRxcEdxWUZPaU9RYw?oc=5",
-    "summary": "Cisco Systems, Inc. stock (US17275R1023): insider sale follows solid earnings beat AD HOC NEWS",
-    "source": "AD HOC NEWS",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-20T15:24:57+00:00"
-  },
-  {
-    "id": "952e6fea657c6e5318",
-    "title": "U 7:00 otpuštanje: Meta zaključava laptope hiljada zaposlenih i šalje ih na ulicu",
-    "url": "https://n1info.ba/vijesti/ekonomija/u-700-otpustanje-meta-zakljucava-laptope-hiljada-zaposlenih-i-salje-ih-na-ulicu/",
-    "summary": "Tehnološki gigant Meta priprema se za jedno od svojih najvećih otpuštanja u posljednjih nekoliko godina, koje će pogoditi gotovo 8.000 zaposlenika (blizu 10% nj",
-    "source": "N1 Bosna i Hercegovina",
-    "region": "BiH",
-    "group": "bih",
-    "category": "economy",
-    "published_at": "2026-05-20T15:08:00+00:00"
   }
 ]
