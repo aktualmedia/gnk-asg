@@ -1,5 +1,27 @@
 [
   {
+    "id": "f417a206017cf0de3b",
+    "title": "Slate Auto will announce pricing and take preorders for its EV on June 24",
+    "url": "https://techcrunch.com/2026/05/28/slate-auto-will-announce-pricing-and-take-preorders-for-its-ev-on-june-24/",
+    "summary": "The Bezos-backed EV startup has yet to announce final pricing for its vehicle, which is supposed to start shipping by the end of this year.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T20:29:00+00:00"
+  },
+  {
+    "id": "cbed998506161093aa",
+    "title": "Anthropic tops OpenAI as most valuable AI startup, nears $1 trillion valuation in latest round",
+    "url": "https://www.cnbc.com/2026/05/28/anthropic-open-ai-startup-value.html",
+    "summary": "Anthropic is now the most valuable AI company in Silicon Valley after a new $65 billion funding round.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T20:28:55+00:00"
+  },
+  {
     "id": "441ce9e7a7f79689cf",
     "title": "Gap shares tumble 13% as retailer cuts sales guidance after disappointing Old Navy performance",
     "url": "https://www.cnbc.com/2026/05/28/gap-gap-earnings-q1-2026.html",
@@ -8,7 +30,7 @@
     "region": "CNBC Business",
     "group": "international",
     "category": "economy",
-    "published_at": "2026-05-28T20:25:40+00:00"
+    "published_at": "2026-05-28T20:26:53+00:00"
   },
   {
     "id": "19700a6235c260dae6",
@@ -396,17 +418,6 @@
     "published_at": "2026-05-28T19:09:36+00:00"
   },
   {
-    "id": "cbed998506161093aa",
-    "title": "Anthropic tops OpenAI as most valuable AI startup, nears $1 trillion valuation in latest round",
-    "url": "https://www.cnbc.com/2026/05/28/anthropic-open-ai-startup-value.html",
-    "summary": "Anthropic is now the most valuable AI company in Silicon Valley after a new $65 billion funding round.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T19:08:07+00:00"
-  },
-  {
     "id": "44590e53d39586c889",
     "title": "Hackers are trying to steal Signal users’ backups in new wave of phishing attacks",
     "url": "https://techcrunch.com/2026/05/28/hackers-are-trying-to-steal-signal-users-backups-in-new-wave-of-phishing-attacks/",
@@ -451,8 +462,8 @@
     "published_at": "2026-05-28T18:53:40+00:00"
   },
   {
-    "id": "6bcce544efda9e33e4",
-    "title": "Anthropic raises $65 Billion, nears $1T valuation ahead of IPO",
+    "id": "6da4f9c9eb053168e2",
+    "title": "Anthropic raises $65 billion, nears $1T valuation ahead of IPO",
     "url": "https://techcrunch.com/2026/05/28/anthropic-raises-65-billion-nears-1t-valuation-ahead-of-ipo/",
     "summary": "Anthropic has closed a $65 billion Series H round at a $965 billion post-money valuation, marking what could be the AI startup's final private fundraise before a highly anticipated IPO.",
     "source": "TechCrunch",
@@ -770,6 +781,17 @@
     "published_at": "2026-05-28T16:21:23+00:00"
   },
   {
+    "id": "b92bfbd0172f551841",
+    "title": "Prediction: Elon Musk’s SpaceX Will Buy Intel for $1 Trillion",
+    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNVkhydGFIZU1xc2VZRDVjY0sxZU1sMUMtSWp1b1hkb1o5c0c0TXhEbXozN2w0RVI5RXVSSXQ5Zll5dGxTWHZkSmtnZlAxNmk5dGY5SHhFbGJvdFJrTlNuSU9xSmZWQURIOUNiZGlFNFhYdTZESFBMRnp2MzJWRzlnS3VWZGo4R0dnck11NllTeDZ5cGY3Vk5lQi1QR0dnLWNhVVhCTQ?oc=5",
+    "summary": "Prediction: Elon Musk’s SpaceX Will Buy Intel for $1 Trillion 24/7 Wall St.",
+    "source": "24/7 Wall St.",
+    "region": "AI Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T16:16:32+00:00"
+  },
+  {
     "id": "353585a2fc4bbf6d32",
     "title": "Korean Companies Build Future Industry Foundations",
     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPRGlGQ2Ftd1ppdk5ZN2dQSUxnVE1vMHM1OFVPWHhxbWphX1Q2ajI0bjQ5bjJhTkNMcDBaUHN2ODRJZU5nS1A3VHYzVzE4SlVSbV9FTjhDVDhfS3dPTEZrNG1ObldsX0Qtb2pjd3QzNDRKR3VjMkVwLVc3LVpiVmZoNGxPV2NqbkFk?oc=5",
@@ -880,9 +902,9 @@
     "published_at": "2026-05-28T15:34:10+00:00"
   },
   {
-    "id": "6015ff001391e620d5",
+    "id": "74b20fab576d526476",
     "title": "Chery to Enter Japan Through an Autobacs Partnership",
-    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOSUlhU2g2S3o5NVowRDFqcVkyek5ETlNWQ1VTM0I5clJjbkotYUJub2l5M0JvOGxPaUdSQkRJSy1sZjBOTHFZeUI3RXA4a0F6bXZudGVYdmh1Uk9wYkZfZmN4SUpIV1Rwem8xT3hqMVZpdWFISzFNckIxV1l1dWdMZ1VNN2pWa2szNndqUk52RHMzQWtrbmt3OHVtX0PSAZwBQVVfeXFMTklJYVNoNkt6OTVaMEQxanFZMnpORE5TVkNVUzNCOXJSY25KLWFCbm9peTNCbzhsT2lHUkJESUstbGYwTkxxWXlCN0VwOGtBem12bnRlWHZodVJPcGJGX2ZjeElKSFdUcHpvMU94ajFWaXVhSEsxTXJCMVdZdXVnTGdVTTdqVmtrMzZ3alJOdkRzM0Fra25rdzh1bV9D?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOYnYyY1MycDlHdUNCTTNIWjBZUTl1YzlFVFh1Z0NWQ0dGbUxsRE05cmZDOHI4N1lpSV9HUjJlT3g1UEtxYWhEY0tleXZ3OGpvTlZiX0d0akh0ZWxJVDgzRTJ5T2pKWXNQc1h3V2E0eWF0djA0U3JzYVZnRUtvNzdtVDZzOFlPMjBOUEdlaS1Bc2UydVBQ0gGcAUFVX3lxTE5JSWFTaDZLejk1WjBEMWpxWTJ6TkROU1ZDVVMzQjlyUmNuSi1hQm5vaXkzQm84bE9pR1JCRElLLWxmME5McVl5QjdFcDhrQXptdm50ZVh2aHVST3BiRl9mY3hJSkhXVHB6bzFPeGoxVml1YUhLMU1yQjFXWXV1Z0xnVU03alZrazM2d2pSTnZEczNBa2tua3c4dW1fQw?oc=5",
     "summary": "Chery to Enter Japan Through an Autobacs Partnership CleanTechnica",
     "source": "CleanTechnica",
     "region": "Global Mobility",
@@ -2596,10 +2618,10 @@
     "published_at": "2026-05-27T18:08:37+00:00"
   },
   {
-    "id": "b1a0c68007599b4130",
-    "title": "Mastercard Secures New York BitLicense to Expand Stablecoin Payments",
-    "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBkRUlCN3ZaalI1S0wzUE9Xd1BVWTdpckxMSHVzWXBJeU1Ga2I2ampEVUpEZ3o4UTJHRkZuVGszTWtmTDEzd3BSVg?oc=5",
-    "summary": "Mastercard Secures New York BitLicense to Expand Stablecoin Payments MEXC",
+    "id": "dc342db6665187bf13",
+    "title": "SoFi Launches First U.S. Bank-Issued Stablecoin on Ethereum & Solana",
+    "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE0zSnlGSlJ4bHR0NkI5cndDM3BDZDJnb2d6QkF6ZVZjbG9tNlZuS0c5cWJrVWpKbzhVOW1HU0Y4a2Y4U3JjM0hJWg?oc=5",
+    "summary": "SoFi Launches First U.S. Bank-Issued Stablecoin on Ethereum & Solana MEXC",
     "source": "MEXC",
     "region": "Crypto Regulation",
     "group": "digital-assets",
@@ -2607,10 +2629,10 @@
     "published_at": "2026-05-27T18:07:21+00:00"
   },
   {
-    "id": "dc342db6665187bf13",
-    "title": "SoFi Launches First U.S. Bank-Issued Stablecoin on Ethereum & Solana",
-    "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE0zSnlGSlJ4bHR0NkI5cndDM3BDZDJnb2d6QkF6ZVZjbG9tNlZuS0c5cWJrVWpKbzhVOW1HU0Y4a2Y4U3JjM0hJWg?oc=5",
-    "summary": "SoFi Launches First U.S. Bank-Issued Stablecoin on Ethereum & Solana MEXC",
+    "id": "b1a0c68007599b4130",
+    "title": "Mastercard Secures New York BitLicense to Expand Stablecoin Payments",
+    "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBkRUlCN3ZaalI1S0wzUE9Xd1BVWTdpckxMSHVzWXBJeU1Ga2I2ampEVUpEZ3o4UTJHRkZuVGszTWtmTDEzd3BSVg?oc=5",
+    "summary": "Mastercard Secures New York BitLicense to Expand Stablecoin Payments MEXC",
     "source": "MEXC",
     "region": "Crypto Regulation",
     "group": "digital-assets",
@@ -3883,6 +3905,17 @@
     "published_at": "2026-05-25T14:00:55+00:00"
   },
   {
+    "id": "ca6332d4a7b6212795",
+    "title": "Georgia bets big on crypto, launching Tether-backed GEL₮ stablecoin",
+    "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQWFdaMWF1MjlkdXI1ZU1MZ0hqZlFBZlBsOExjTG1WcGlBTHpuZlN0ZHRlQTFQTDQ1VzBTMTVvaDktcWhUYmx4YzRVVWtTb2dISHNsX19YbXc0c01wc1Y0bWo5VU9FY2U4a29fSXhKNHpzUGtiRFhsZ2xUR2hVNU9TMDN2MUE5dXVkc1pv?oc=5",
+    "summary": "Georgia bets big on crypto, launching Tether-backed GEL₮ stablecoin Cryptopolitan",
+    "source": "Cryptopolitan",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-25T13:43:41+00:00"
+  },
+  {
     "id": "b5a5fe8464ef50cc08",
     "title": "CDW Corp. stock (US1258961002): steady after first-quarter earnings and leadership transition",
     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQODd4LUVQYlEzazRlNUE1b0VvTXBiUWNGUHk3dHRydndqU3I5SHdoZVpoQkpBRWdVYlJHTG00SmNYZGxGaHlVZUpXaTFPMlh2U3NpQXFIaDN5bVltbENRdUdsQ0pQN1VzRmdTVjhhZ0otS05BZnBpUllnLUFzYmxmMDBmYUx0N3I5VGViMkxGUzQ1ejQ2MEx2OW5jRkR5Z1BabUxERzU3ZDd1dS1kQjhCSWg0RS1RaFF3d1k2VEJWRVJ2Umlq?oc=5",
@@ -3927,6 +3960,17 @@
     "published_at": "2026-05-25T10:29:40+00:00"
   },
   {
+    "id": "b69676b82f5b2e328e",
+    "title": "Confluence 2027 to Unite Global Leaders in AI, Venture Capital and Healthcare Innovation in Silicon Valley",
+    "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOUXpDRm9nYjBSRE9fM2RWUXpad3dueW1pTnRxb0lkZGlabEZ1MjBjc05XU2RyY2lBYi1SbGw3bTJzQnJEaEVuUHBDYlEzSWxWbkxRRUZjdERIRlp4aUpQNUZGR2lGVF80Y0c1d1Zpem14bG53b3UzYTgxU3dXajlLTHZEMEw2c3VkXzh5bERzeWlDUHVEWExVZFUyeXVBVnl4bkZlTWp5RnJMSzhQTVZZQ255S2lrR3hHYkVSR0l0dmozLWpCU2tzZzJ3Y0VfckdZZkhmaW1WN0dUWmVEbVhhdnAwdWJDdDcwMGdYQg?oc=5",
+    "summary": "Confluence 2027 to Unite Global Leaders in AI, Venture Capital and Healthcare Innovation in Silicon Valley ANI News",
+    "source": "ANI News",
+    "region": "AI Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-25T09:42:00+00:00"
+  },
+  {
     "id": "89409ebe8bd15ed62c",
     "title": "Tether Unveils GEL₮ Stablecoin With Georgia Government",
     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1JYk8wQzZvZTRxTzhtY19vbW80c0hmOFFuNXhXN1dkRFVhajBWNC1sMmJiWG14V25LYXB0R3BuOWd3NG1pcHNDdHpRaERJaE9CTHpocFRCMFctM3RTb2dhdUFaQjlwQUNj?oc=5",
@@ -3958,17 +4002,6 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-25T08:24:34+00:00"
-  },
-  {
-    "id": "80fcf26c3d4eb1db75",
-    "title": "Confluence 2027 to Unite Global Leaders in AI, Venture Capital and Healthcare Innovation in Silicon Valley",
-    "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOSUxZVnJGck13d2ZjT18xeHZLUnk5cU44TWdQUlNGdWJ5VVFTV0plVk96Zkh1RWNCTktQQWwtQ19JLWMteHNLUlBibXZPLW5OYm43U0xxNEdZcjRnczZkczRLOGJ6UEZ2UUhMdVMxNEQ3b0R3c0Zhc0hPSUNaRG9QbzB3M0RyX2k3QjZCcERNR0tHVzFuU2RTV3ZZTm54eUY4ZlZfWi1kUnFwdG1KZnNxLUJldWZialY5TFhpWUFfT29zaWZtWmVIREptX21DZE9iQWpidi1uQzRVc3otcmlpdWxR?oc=5",
-    "summary": "Confluence 2027 to Unite Global Leaders in AI, Venture Capital and Healthcare Innovation in Silicon Valley malaysiasun.com",
-    "source": "malaysiasun.com",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-25T07:03:00+00:00"
   },
   {
     "id": "39e783956de7427309",
@@ -4598,6 +4631,17 @@
     "published_at": "2026-05-22T15:05:35+00:00"
   },
   {
+    "id": "55bcba1d9ccd2e30c5",
+    "title": "hep global GmbH wins financial investor FH Capital to strengthen US business",
+    "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNUU55clJxVXNVeXpXRzMtWXBIcklod2R1Uzcxc2pjMmstMy1mVVFfdGRXU2dQV1lxTlkzdjVWMm9PZE1XcnVQeXFxNjlVOUxENkFGeC1YUUthWXhVQ1I2U2hZZ1ljSUloZUdsd1hrODBqWUlKQ1JxOFlkLW0yQWhOOHZPY21XQ205ckU2NURIdzUxUmJQWGl3WjY2aENxbDctNl9mZWFZNlFJTzhBLTdiekUwNk5Hb19mOGQxSDY4Yk83cXJLRWpZWTB3?oc=5",
+    "summary": "hep global GmbH wins financial investor FH Capital to strengthen US business TradingView",
+    "source": "TradingView",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-22T15:05:03+00:00"
+  },
+  {
     "id": "a1506d9f62abdceed0",
     "title": "KEYS Q2 Earnings Beat on Communications, Industrial Segment Growth",
     "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPUXVXTE9YWGU2UVJ0Y0xhakhUMGNtWTFlRU02Ny14VnpKUnhmX0JfQjZkaVUxZGFDU19YU3REcVZ4N1hRdnlGTFYtQWRRM2M1WjZmbXdMWWZhRElWdHdXVUJMdFJOWmpvZE1CUUh3Q2NwbjE1Z0JjajYtSXRjTkVnbFJrbEd3R1NBY2dlU0ZZMXdSOVJfU25qcjM5MWVDRUNaQlB2a0M0NDVLQ0tETWZxdHN1MnVnalVVN0NLWm1fOEJQNXhOM25SLVdqTnRZSjlZWjM5b1hGOW1RWVMxbmVCeDNNOVo?oc=5",
@@ -4667,8 +4711,8 @@
     "id": "7b1422b322b94ee8d7",
     "title": "BYD Dual Mode Technology Officially Launched, Combining EV Efficiency and Hybrid Flexibility",
     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTFBia1NIZl83VlQyZTV1cG1Xb0FLOGxWQld1cXdmVzgxOTRRbXpabFVBYm1VNUFnaEpmY0NMMjNUejdkazZRRzJv?oc=5",
-    "summary": "BYD Dual Mode Technology Officially Launched, Combining EV Efficiency and Hybrid Flexibility VOI.id",
-    "source": "VOI.id",
+    "summary": "BYD Dual Mode Technology Officially Launched, Combining EV Efficiency and Hybrid Flexibility VOI.ID",
+    "source": "VOI.ID",
     "region": "Global Mobility",
     "group": "mobilnost",
     "category": "automotive",
@@ -4829,12 +4873,34 @@
     "published_at": "2026-05-22T07:00:00+00:00"
   },
   {
+    "id": "cba99555cc857769ec",
+    "title": "Top 5 AI Stocks To Buy In India May 2026",
+    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNd25Nc2NpMTZTeHN1djNmQXF0d0RQN0NXazJDZ3Uxb0J0aGJYMEtMalJqOFBWbzgxdjZQWlRlVDhlbWdtRFg5QzdHbVFCM0REZW5kRzFmdUszNTBndzBhMC1Rd1JhcmxYWVhlRGV2UloyTGgtbG5VUVVkenZkMjdhSUg4di0?oc=5",
+    "summary": "Top 5 AI Stocks To Buy In India May 2026 Samco",
+    "source": "Samco",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-22T07:00:00+00:00"
+  },
+  {
     "id": "2372f2bf53018b868c",
     "title": "A massive $1 trillion hidden market is waiting to be unlocked in bitcoin, says new report",
     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9kS0ljRVo1ZUVNLXk0Qkd2dkl4V3ZjWGhlRDloa015OUE1aVhNUk9Eb1JEZkZ6U2pQRUE2WWhtVlF2T2pEWkU4NW0tdnhwTVkwTENOdllEdXdsclFkYmc?oc=5",
     "summary": "A massive $1 trillion hidden market is waiting to be unlocked in bitcoin, says new report CoinDesk",
     "source": "CoinDesk",
     "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-22T07:00:00+00:00"
+  },
+  {
+    "id": "e07d1e1b153f2449e3",
+    "title": "UAE-backed DDSC stablecoin processes $30M institutional transaction",
+    "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdENsSTBKb041M1hwRmRjOGU1UGctV1NzMjQxcHFTT2VhcFROY0xSOGdnSEJCYUtMTXRZaU9McWl1ZkN0U0J6Q25tczRWdHpQRUFsMG5uZUlWUTAta2xXRnNlZEZUSUk1WUxOVlpSS2ZvMDZhMGRsYklrYU1RcF9MT2lYMUFtMGhaY213X3Jla1ZWNTF5YnFLNDUtZ1M5aDZsMWZmS3o0Y3psWXNMTjZQTnhfSmtDMWRMMk5hbnVtNWJGcnNneWpTbjJ3?oc=5",
+    "summary": "UAE-backed DDSC stablecoin processes $30M institutional transaction TradingView",
+    "source": "TradingView",
+    "region": "Crypto Regulation",
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-22T07:00:00+00:00"
@@ -4848,28 +4914,6 @@
     "region": "Global Markets",
     "group": "international",
     "category": "economy",
-    "published_at": "2026-05-22T07:00:00+00:00"
-  },
-  {
-    "id": "cba99555cc857769ec",
-    "title": "Top 5 AI Stocks To Buy In India May 2026",
-    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNd25Nc2NpMTZTeHN1djNmQXF0d0RQN0NXazJDZ3Uxb0J0aGJYMEtMalJqOFBWbzgxdjZQWlRlVDhlbWdtRFg5QzdHbVFCM0REZW5kRzFmdUszNTBndzBhMC1Rd1JhcmxYWVhlRGV2UloyTGgtbG5VUVVkenZkMjdhSUg4di0?oc=5",
-    "summary": "Top 5 AI Stocks To Buy In India May 2026 Samco",
-    "source": "Samco",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-22T07:00:00+00:00"
-  },
-  {
-    "id": "e07d1e1b153f2449e3",
-    "title": "UAE-backed DDSC stablecoin processes $30M institutional transaction",
-    "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdENsSTBKb041M1hwRmRjOGU1UGctV1NzMjQxcHFTT2VhcFROY0xSOGdnSEJCYUtMTXRZaU9McWl1ZkN0U0J6Q25tczRWdHpQRUFsMG5uZUlWUTAta2xXRnNlZEZUSUk1WUxOVlpSS2ZvMDZhMGRsYklrYU1RcF9MT2lYMUFtMGhaY213X3Jla1ZWNTF5YnFLNDUtZ1M5aDZsMWZmS3o0Y3psWXNMTjZQTnhfSmtDMWRMMk5hbnVtNWJGcnNneWpTbjJ3?oc=5",
-    "summary": "UAE-backed DDSC stablecoin processes $30M institutional transaction TradingView",
-    "source": "TradingView",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
     "published_at": "2026-05-22T07:00:00+00:00"
   },
   {
@@ -5324,6 +5368,28 @@
     "published_at": "2026-05-21T07:20:52+00:00"
   },
   {
+    "id": "a7a233f99aba1ac0a3",
+    "title": "Network jobs watch: Hiring, skills and certification trends",
+    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOUWZMWmp6UDBoVEtTWjd0NVdYdUJZMGFiWmMzaTl5blZ1NEJ6Ym9TbVNTdnVFVDdNbmdIbkcxOEh0REVRWXRIcC0zVEROSVhOcVRDUGk5em5oMHNHeDV1blVuakhrbkZtSUNaWXY0eTZuRVVPNHdmZkdtLWd5TlotTEZWb3ozOUVoVDFrNzYxZk85TU1ST1RfQUNuTy1zT1k5WmRkcGVGM3JneDQ?oc=5",
+    "summary": "Network jobs watch: Hiring, skills and certification trends Network World",
+    "source": "Network World",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-21T07:00:00+00:00"
+  },
+  {
+    "id": "7350f6c98f706769cd",
+    "title": "IT automation benefits: A strategic guide for IT leaders",
+    "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQblBULUZXQXluRlgwbndwVjF3XzNGbEFwMHZkQ09yYVZvSkJCY2xFR0VFLURSYXdxT0NQYkE2Mk4zWlFJT0UzeXprXzRlNW1Da1c0WE5XVGMwYktKUllOMl9CMzkxYm5vbWliSUZ1WEFPM0pqd3N4Z0ZBOWtyT0VhUnVENmRsMGlIRXVrbDNQYjRrVHdzR3oxVS1R?oc=5",
+    "summary": "IT automation benefits: A strategic guide for IT leaders TechTarget",
+    "source": "TechTarget",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-21T07:00:00+00:00"
+  },
+  {
     "id": "aeb05620d43ad7f4e7",
     "title": "Free Grants and Programs for Small Business",
     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPd1JjTnpZT2h6QW9CVUR3R2hwUWdpSS1yZ3FNcDVxckl3em8tM0hBSHFqLVdlSVgyRVNRRGludWt4MzRZdHRPd0N2Uk9kNWIxcTdQaS1vT1J1TEpyTWcyMFFxaHNuQVQwTEdrQ0t6TVBxMlRsaWFDYzRoQ3lLZE1jS0ExQ1Y2OUNocXQzLVhnMA?oc=5",
@@ -5346,26 +5412,15 @@
     "published_at": "2026-05-21T07:00:00+00:00"
   },
   {
-    "id": "a7a233f99aba1ac0a3",
-    "title": "Network jobs watch: Hiring, skills and certification trends",
-    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOUWZMWmp6UDBoVEtTWjd0NVdYdUJZMGFiWmMzaTl5blZ1NEJ6Ym9TbVNTdnVFVDdNbmdIbkcxOEh0REVRWXRIcC0zVEROSVhOcVRDUGk5em5oMHNHeDV1blVuakhrbkZtSUNaWXY0eTZuRVVPNHdmZkdtLWd5TlotTEZWb3ozOUVoVDFrNzYxZk85TU1ST1RfQUNuTy1zT1k5WmRkcGVGM3JneDQ?oc=5",
-    "summary": "Network jobs watch: Hiring, skills and certification trends Network World",
-    "source": "Network World",
-    "region": "Cyber and Cloud",
+    "id": "b5ec8fb72c88c47166",
+    "title": "Nvidia Expands Asia AI Push With Singapore Research Hub as City-State Bets on Robotics and Embodied AI",
+    "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOXzVxUkdvVHpMQUJVV2hmVlJhWHRUSUhVTGhfOUo4dFpydUxCSXM1akpTV25zeWR1NkpJOHdKT0wwdHV1RV9Db1d4aVBXX01zN29XOWhJS0hlUVdLVzBaQnJhZ3ByVFNndzlWZS11Nkdyc3pyMzhPVEFabnplMS0xREpEbGE5eUd4OXQ5SVhBSjZwS0oxcVVsellwOUM0eThxanFjSkswb0tKTEVrMm53Z1gwMHZseG5ERnpTSWZ5Y0ZOcHg5d2c?oc=5",
+    "summary": "Nvidia Expands Asia AI Push With Singapore Research Hub as City-State Bets on Robotics and Embodied AI Tekedia",
+    "source": "Tekedia",
+    "region": "AI Technology",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-21T07:00:00+00:00"
-  },
-  {
-    "id": "7350f6c98f706769cd",
-    "title": "IT automation benefits: A strategic guide for IT leaders",
-    "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQblBULUZXQXluRlgwbndwVjF3XzNGbEFwMHZkQ09yYVZvSkJCY2xFR0VFLURSYXdxT0NQYkE2Mk4zWlFJT0UzeXprXzRlNW1Da1c0WE5XVGMwYktKUllOMl9CMzkxYm5vbWliSUZ1WEFPM0pqd3N4Z0ZBOWtyT0VhUnVENmRsMGlIRXVrbDNQYjRrVHdzR3oxVS1R?oc=5",
-    "summary": "IT automation benefits: A strategic guide for IT leaders TechTarget",
-    "source": "TechTarget",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-21T07:00:00+00:00"
+    "published_at": "2026-05-21T06:15:48+00:00"
   },
   {
     "id": "bbd1ac82e69136b9f9",
@@ -5443,60 +5498,5 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-21T00:21:00+00:00"
-  },
-  {
-    "id": "cbd008f1d45cf38f7a",
-    "title": "Global Banking Annual Review 2026: Precision with speed",
-    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQOGMxZW9DUi1QOXoyd2N1Y3lnTTRBX25tanFkTFlNblVPSTU2YUhMOVBhbVc1em43bXNfRDlBWlpyeDRpOGh1djFGUGM1YW00a0RIRGYydHJJRGtlZGtKbURyTjIzd1N4OEZidTBET1ctVHJQUWxTZXBuQkZ2czFtakVjUHZDT05UNmpCYXlTOWFmOEo4Z3AwakFnY2Y?oc=5",
-    "summary": "Global Banking Annual Review 2026: Precision with speed McKinsey & Company",
-    "source": "McKinsey & Company",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-21T00:00:00+00:00"
-  },
-  {
-    "id": "b283691913a2d293d2",
-    "title": "Canada's Scotiabank Adds Multi-Crypto ETF via 3iQ",
-    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQWElRVHhnNzhrRi15bXdXTnRxUE9UWTNmbHNYd25seFBHcmlCbTdzYlZBV1N4QTJ6Vlh5QmNaWjBxVkFaUVluaDB4LU1TZGw2WE1OQzEwek5hclJGczU2ZUF2dk5ZQkdMcE42Q0JEWVNtY1AtcmxadGk4MXZGZ2VTOXo0OXRGTE85RWZVeG9CQmIzTnNI?oc=5",
-    "summary": "Canada's Scotiabank Adds Multi-Crypto ETF via 3iQ CoinMarketCap",
-    "source": "CoinMarketCap",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-20T21:45:22+00:00"
-  },
-  {
-    "id": "eee7652a1f26cabb85",
-    "title": "Today's Crypto News: CLARITY Act Faces 100+ Amendments",
-    "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPX3hncW9rOHEzdWhwRXlCWUN5bFc2Y1pzaEFQNkhkNlFwUkR4anV4QVZTWHdscmVqaEE5S2hLSHVFd2FYX0RWN0NNWVQ4U24wSldNVnVhdUpzU083UVlVXzNhWGUxNTlxamhha0c4WGNtSFVWWGZZZ2ZOd0ZvNGVFSA?oc=5",
-    "summary": "Today's Crypto News: CLARITY Act Faces 100+ Amendments Investing News Network",
-    "source": "Investing News Network",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-20T21:05:00+00:00"
-  },
-  {
-    "id": "f8fdf6d86197f6abf1",
-    "title": "5 ethical questions about artificial intelligence",
-    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5CbUw2T2NjWmF5R2c3Sm85ZWlYQ1ZnSExocUZWVFFWMlFFTDVpUXpBNk5wSDV6M3ljSXRyVXMyTGs5LTVlWk9ULS15a19FQkxWcXU4Y3JaVDZhUXdwTHFN?oc=5",
-    "summary": "5 ethical questions about artificial intelligence Britannica",
-    "source": "Britannica",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-20T20:41:00+00:00"
-  },
-  {
-    "id": "8552721dc567792725",
-    "title": "Alsea Renews Starbucks Deal Through 2046",
-    "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOaFUzWVg3am5PU0RLcEh4MDYycGJpRHJOWkRTUzNpSjdrblRSejNHMUpMUkRoTVljQkl2YVZNa1FnQXVqcTE4SXFHRlpGdmNVNnRhMkk0NDM5bFFPdEdLUnZFeWJEbFRSSVRSb3dKYlN3UDlEWU9VdzNvMm1HMVprUHZzbDZFdlBSR1p4V1RXd3RadEpfc2oyMTV3?oc=5",
-    "summary": "Alsea Renews Starbucks Deal Through 2046 Mexico Business News",
-    "source": "Mexico Business News",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-20T18:25:05+00:00"
   }
 ]
