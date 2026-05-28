@@ -19,6 +19,24 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://gnk-asg.hr/nermin-sefic/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://gnk-asg.hr/nermin-sefic/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gnk-asg.hr/en/nermin-sefic/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gnk-asg.hr/nermin-sefic/" />
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://gnk-asg.hr/en/nermin-sefic/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://gnk-asg.hr/nermin-sefic/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gnk-asg.hr/en/nermin-sefic/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gnk-asg.hr/nermin-sefic/" />
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://gnk-asg.hr/trzista/</loc>
     <xhtml:link rel="alternate" hreflang="hr" href="https://gnk-asg.hr/trzista/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://gnk-asg.hr/en/markets/" />
