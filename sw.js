@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v49-market-coverage-card05';
+const CACHE_NAME = 'gnk-asg-live-v50-news-archive-unified-refresh';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './intelligence-desk/', './instalacija/', './financije/', './registri/',
