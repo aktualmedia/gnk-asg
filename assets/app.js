@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260528-news-archive-unified-refresh05';
+  var VERSION = '20260528-news-archive-unified-refresh06';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -96,6 +96,23 @@ document.addEventListener('DOMContentLoaded', function () {
     return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   }
 
+  function alignNewsAutomationText() {
+    var head = document.querySelector('#news .section-head');
+    var loading = document.querySelector('#newsGrid .news-card p');
+    if (!head) return;
+    var eyebrow = head.querySelector('.eyebrow');
+    var paragraph = head.querySelector('p:not(.eyebrow)');
+    if (isEnglish()) {
+      if (eyebrow) eyebrow.textContent = 'Refresh every 15 minutes';
+      if (paragraph) paragraph.textContent = 'The public window displays up to the 500 newest business and technology news items. Older overflow remains preserved in archive storage. Publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić are displayed automatically and may be removed through authorised control.';
+      if (loading && /workflow|refresh/i.test(loading.textContent)) loading.textContent = 'The newest 500 public items refresh automatically; older overflow remains stored in the archive.';
+    } else {
+      if (eyebrow) eyebrow.textContent = 'Ažuriranje svakih 15 minuta';
+      if (paragraph) paragraph.textContent = 'Javni prozor prikazuje do 500 najnovijih poslovnih i tehnoloških vijesti. Stariji višak ostaje spremljen u arhivi. Objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću prikazuju se automatski i mogu se ukloniti kroz ovlaštenu kontrolu.';
+      if (loading && /workflow|osvjež/i.test(loading.textContent)) loading.textContent = 'Najnovijih 500 javnih stavki osvježava se automatski, a stariji višak ostaje spremljen u arhivi.';
+    }
+  }
+
   function removeCorporateInformationExternalAction(root) {
     var scope = root || document;
     Array.prototype.forEach.call(scope.querySelectorAll('.doc'), function (card) {
@@ -104,6 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
       Array.prototype.forEach.call(card.querySelectorAll('a:not(.wa):not(.in):not(.mail)'), function (link) { link.remove(); });
     });
   }
+  alignNewsAutomationText();
+  window.addEventListener('gnk-language-change', alignNewsAutomationText);
   removeCorporateInformationExternalAction(document);
   new MutationObserver(function () { removeCorporateInformationExternalAction(document); }).observe(document.body, { childList: true, subtree: true });
 
