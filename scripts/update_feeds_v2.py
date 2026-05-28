@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
-"""Refresh the rotating public news archive for the GNK ASG portal.
+"""Refresh public news and preserve the overflow archive for the GNK ASG portal.
 
-Policy:
-- fetch current public news candidates from configured feeds and searches;
-- merge new candidates with the previously published public archive;
-- remove blocked, invalid, expired and duplicate records;
-- publish only the 500 newest unique records, automatically deleting the oldest
-  records once the public archive exceeds that limit.
-
-This avoids losing still-relevant public articles merely because a source no
-longer returns them in its most recent RSS page.
+Public presentation policy:
+- data/news.json contains at most the 500 newest unique public articles;
+- data/news_archive.json stores all older unique articles removed from that
+  public window because newer articles entered above them;
+- overflow articles are archived, not deleted.
 """
 from __future__ import annotations
 
@@ -28,9 +24,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data'
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
-UA = 'GNK-ASG-News-Monitor/3.6'
+UA = 'GNK-ASG-News-Monitor/3.7'
 MAX_PUBLIC_ITEMS = 500
-DEFAULT_ARCHIVE_DAYS = 90
 DEFAULT_SOURCE_LIMIT = 60
 N1_ECONOMY = 'https://' + 'n1info.ba/vijesti/ekonomija/'
 N1_MONTHS = {'januar':1,'februar':2,'mart':3,'april':4,'maj':5,'juni':6,'juli':7,'august':8,'septembar':9,'oktobar':10,'novembar':11,'decembar':12}
@@ -128,14 +123,14 @@ def n1_bih_rows(cutoff, source_limit):
     return rows
 
 
-def gnews(q):
-    return 'https://news.google.com/rss/search?q=' + urllib.parse.quote(q) + '&hl=hr&gl=HR&ceid=HR:hr'
+def gnews(query):
+    return 'https://news.google.com/rss/search?q=' + urllib.parse.quote(query) + '&hl=hr&gl=HR&ceid=HR:hr'
 
 
 def blocked(row, rules):
     title = row.get('title', '').lower()
     url = row.get('url', '').lower()
-    return any(str(v).lower() in title for v in rules.get('title_terms', []) if v) or any(str(v).lower() in url for v in rules.get('urls', []) if v)
+    return any(str(term).lower() in title for term in rules.get('title_terms', []) if term) or any(str(value).lower() in url for value in rules.get('urls', []) if value)
 
 
 def normalized_title(value):
@@ -151,16 +146,32 @@ def canonical_url(value):
     return f'{host}{path}' if host and path else (value or '').strip().lower()
 
 
+def valid_saved_rows(rows):
+    valid = []
+    invalid = 0
+    if not isinstance(rows, list):
+        return valid, invalid
+    for row in rows:
+        if not isinstance(row, dict) or not row.get('title') or not row.get('url') or not parsedate(row.get('published_at', '')):
+            invalid += 1
+            continue
+        valid.append(row)
+    return valid, invalid
+
+
 def deduplicate(rows, rules):
     selected = []
     seen_ids, seen_urls, seen_signatures = set(), set(), set()
+    blocked_or_duplicate = 0
     for row in rows:
         if blocked(row, rules):
+            blocked_or_duplicate += 1
             continue
         identity = row.get('id', '')
         url_key = canonical_url(row.get('url', ''))
         signature = (row.get('group', ''), row.get('category', ''), normalized_title(row.get('title', '')))
         if identity in seen_ids or (url_key and url_key in seen_urls) or (signature[2] and signature in seen_signatures):
+            blocked_or_duplicate += 1
             continue
         selected.append(row)
         seen_ids.add(identity)
@@ -168,74 +179,59 @@ def deduplicate(rows, rules):
             seen_urls.add(url_key)
         if signature[2]:
             seen_signatures.add(signature)
-    return selected
-
-
-def valid_archive_rows(rows, cutoff):
-    valid = []
-    expired = 0
-    if not isinstance(rows, list):
-        return valid, expired
-    for row in rows:
-        if not isinstance(row, dict):
-            expired += 1
-            continue
-        date = parsedate(row.get('published_at', ''))
-        if not date or date < cutoff or not row.get('title') or not row.get('url'):
-            expired += 1
-            continue
-        valid.append(row)
-    return valid, expired
+    return selected, blocked_or_duplicate
 
 
 def update_news():
-    conf = read_json('news_config_v2.json', {'retention_days': 30, 'archive_days': DEFAULT_ARCHIVE_DAYS, 'max_items': MAX_PUBLIC_ITEMS, 'max_per_source': DEFAULT_SOURCE_LIMIT, 'sources': [], 'queries': []})
-    source_days = max(1, int(conf.get('retention_days', 30)))
-    archive_days = max(source_days, int(conf.get('archive_days', DEFAULT_ARCHIVE_DAYS)))
+    conf = read_json('news_config_v2.json', {'retention_days': 30, 'max_items': MAX_PUBLIC_ITEMS, 'max_per_source': DEFAULT_SOURCE_LIMIT, 'sources': [], 'queries': []})
+    fetch_days = max(1, int(conf.get('retention_days', 30)))
     source_limit = max(30, min(100, int(conf.get('max_per_source', DEFAULT_SOURCE_LIMIT))))
-    fetch_cutoff = NOW - dt.timedelta(days=source_days)
-    archive_cutoff = NOW - dt.timedelta(days=archive_days)
+    cutoff = NOW - dt.timedelta(days=fetch_days)
     rules = read_json('blocked_news.json', {'urls': [], 'title_terms': []})
     fetched, errors = [], []
     for src in conf.get('sources', []):
         try:
-            fetched.extend(rss_rows(fetch(src['url']), src['name'], src['group'], src['category'], fetch_cutoff, source_limit))
+            fetched.extend(rss_rows(fetch(src['url']), src['name'], src['group'], src['category'], cutoff, source_limit))
         except Exception as exc:
             errors.append({'source': src.get('name', 'RSS'), 'error': str(exc)[:80]})
     try:
-        fetched.extend(n1_bih_rows(fetch_cutoff, source_limit))
+        fetched.extend(n1_bih_rows(cutoff, source_limit))
     except Exception as exc:
         errors.append({'source': 'N1 Bosna i Hercegovina - Ekonomija', 'error': str(exc)[:80]})
     for src in conf.get('queries', []):
         try:
-            fetched.extend(rss_rows(fetch(gnews(src['q'])), src['name'], src['group'], src['category'], fetch_cutoff, source_limit))
+            fetched.extend(rss_rows(fetch(gnews(src['q'])), src['name'], src['group'], src['category'], cutoff, source_limit))
         except Exception as exc:
             errors.append({'source': src.get('name', 'Query'), 'error': str(exc)[:80]})
-    existing, expired_items = valid_archive_rows(read_json('news.json', []), archive_cutoff)
-    ordered_candidates = sorted(fetched + existing, key=lambda row: row.get('published_at', ''), reverse=True)
-    clean_items = deduplicate(ordered_candidates, rules)
-    configured_limit = int(conf.get('max_items', MAX_PUBLIC_ITEMS))
-    public_limit = min(MAX_PUBLIC_ITEMS, max(1, configured_limit))
-    selected = clean_items[:public_limit]
-    oldest_removed = max(0, len(clean_items) - len(selected))
-    save('news.json', selected)
+    prior_public, invalid_public = valid_saved_rows(read_json('news.json', []))
+    prior_archive, invalid_archive = valid_saved_rows(read_json('news_archive.json', []))
+    ordered_candidates = sorted(fetched + prior_public + prior_archive, key=lambda row: row.get('published_at', ''), reverse=True)
+    unique_items, removed_duplicates = deduplicate(ordered_candidates, rules)
+    public_limit = min(MAX_PUBLIC_ITEMS, max(1, int(conf.get('max_items', MAX_PUBLIC_ITEMS))))
+    public_items = unique_items[:public_limit]
+    archived_items = unique_items[public_limit:]
+    previous_archive_urls = {canonical_url(row.get('url', '')) for row in prior_archive}
+    newly_archived_items = sum(1 for row in archived_items if canonical_url(row.get('url', '')) not in previous_archive_urls)
+    save('news.json', public_items)
+    save('news_archive.json', archived_items)
     counts = {}
-    for row in selected:
+    for row in public_items:
         counts[row['group']] = counts.get(row['group'], 0) + 1
     return {
         'updated_at': NOW.isoformat(),
         'cadence': 'scheduled refresh',
-        'rotation_policy': 'newest_unique_items_retained_oldest_removed_after_limit',
-        'public_items': len(selected),
+        'storage_policy': 'public_latest_500_overflow_preserved_in_archive',
+        'public_items': len(public_items),
         'max_public_items': MAX_PUBLIC_ITEMS,
-        'archive_days': archive_days,
+        'archive_items': len(archived_items),
+        'newly_archived_items': newly_archived_items,
         'max_per_source': source_limit,
         'fetched_candidates': len(fetched),
-        'previous_archive_candidates': len(existing),
-        'expired_items_removed': expired_items,
-        'oldest_items_removed_after_limit': oldest_removed,
+        'previous_public_items': len(prior_public),
+        'previous_archive_items': len(prior_archive),
+        'invalid_saved_items_removed': invalid_public + invalid_archive,
+        'duplicates_or_blocked_removed': removed_duplicates,
         'by_group': counts,
-        'duplicates_or_blocked_removed': len(ordered_candidates) - len(clean_items),
         'errors': errors
     }
 
