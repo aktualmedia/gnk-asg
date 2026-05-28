@@ -1,8 +1,8 @@
 name: Portal Validation and Live Data Test
 
-# Validacija koda, javnih stranica i workflowa. Automatski podatkovni commitovi na main
-# ne pokreću cjeloviti browser test svakih pet minuta; podatci se provjeravaju kroz
-# vlastite generatore i ručno/PR validiranje kada se mijenja njihova logika.
+# Puna validacija funkcionalnog koda, javnih stranica i workflow logike.
+# Automatski commitovi generiranih podataka i previewa imaju vlastite procesore;
+# ne pokreću ponovno cjeloviti browser test portala.
 on:
   workflow_dispatch:
   pull_request:
@@ -68,10 +68,11 @@ permissions:
 
 concurrency:
   group: portal-validation-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   validate:
+    if: ${{ github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Automated ') }}
     name: Validate SEO networks markets news sharing and browser UX
     runs-on: ubuntu-latest
     timeout-minutes: 32
@@ -106,6 +107,7 @@ jobs:
           node --check assets/group-map-2d-geo.js
           node --check assets/group-location-insights.js
           node --check assets/group-overview-panel.js
+          node --check assets/group-market-coverage.js
           node --check assets/portal-layout.js
           node --check assets/market-centre-data.js
           node --check assets/market-constellation.js
@@ -113,9 +115,11 @@ jobs:
           node --check assets/market.js
           node --check assets/market-expansion.js
           node --check assets/news-live.js
+          node --check assets/desk-hybrid.js
           node --check sw.js
           node --check playwright.config.js
           node --check tests/market-centre.spec.js
+          node --check tests/desk-hybrid.spec.js
       - name: Validate Python syntax for automated processors
         run: |
           python -m py_compile scripts/update_feeds_v2.py scripts/generate_news_share_previews.py scripts/update_macro_data.py scripts/update_fast_market.py scripts/generate_daily_market_brief.py scripts/generate_social_preview.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
