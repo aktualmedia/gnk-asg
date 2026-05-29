@@ -114,6 +114,8 @@ jobs:
           node --check assets/market.js
           node --check assets/market-expansion.js
           node --check assets/news-live.js
+          node --check assets/status.js
+          node --check assets/hourly-data-disclosure.js
           node --check assets/desk-hybrid.js
           node --check sw.js
           node --check playwright.config.js
@@ -121,13 +123,15 @@ jobs:
           node --check tests/desk-hybrid.spec.js
       - name: Validate Python syntax for active processors
         run: |
-          python -m py_compile scripts/news_publication.py scripts/update_macro_data.py scripts/update_fast_market.py scripts/generate_daily_market_brief.py scripts/generate_social_preview.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
+          python -m py_compile scripts/news_publication.py scripts/update_macro_data.py scripts/update_fast_market.py scripts/update_reference_assets.py scripts/generate_daily_market_brief.py scripts/generate_social_preview.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
       - name: Validate committed portal structure and existing public datasets
         run: python scripts/validate_portal.py
       - name: Execute unified news publication processing
         run: python scripts/news_publication.py
       - name: Execute five-minute digital-asset stablecoin exchange and index retrieval
         run: python scripts/update_fast_market.py
+      - name: Execute stock-exchange and ASG Gold reference retrieval
+        run: python scripts/update_reference_assets.py
       - name: Execute live macro-market retrieval
         run: python scripts/update_macro_data.py
       - name: Generate daily professional market brief
