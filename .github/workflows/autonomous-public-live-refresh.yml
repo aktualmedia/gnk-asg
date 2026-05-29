@@ -14,6 +14,11 @@ on:
       - 'scripts/news_publication.py'
       - 'data/news_config_v2.json'
       - 'data/blocked_news.json'
+      - 'assets/app.js'
+      - 'assets/news-live.js'
+      - 'assets/hourly-data-disclosure.js'
+      - 'assets/status.js'
+      - 'sw.js'
   schedule:
     - cron: '7,22,37,52 * * * *'
 
