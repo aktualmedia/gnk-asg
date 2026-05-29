@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-05-28T17:53:55+00:00",
-  "reference_date": "2026-05-28",
+  "generated_at": "2026-05-29T18:15:51+00:00",
+  "reference_date": "2026-05-29",
   "status": "published",
   "title": "Dnevni tržišni osvrt — prethodna raspoloživa sesija",
   "title_en": "Daily Market Brief — Previous Available Session",
   "headline": "Pregled posljednje raspoložive tržišne sesije temeljen na javno dostupnim podatcima o indeksima, digitalnoj imovini i stablecoin odstupanjima.",
   "headline_en": "Review of the latest available market session based on publicly available index, digital-asset and stablecoin-deviation observations.",
   "summary": [
-    "Promatrani burzovni indeksi zabilježili su pretežno pozitivan raspored kretanja. Najjaču promjenu pokazao je Nasdaq Composite (+2.22%), dok je najslabiji rezultat imao FTSE 100 (-0.06%).",
-    "U promatranom skupu digitalne imovine XRP je imao najizraženiju 24-satnu promjenu (-1.01%), dok je ETH zabilježio najslabije kretanje (-3.14%).",
-    "Najveće promatrano stablecoin odstupanje od referentne valute zabilježeno je kod FDUSD (-0.2431%). To je tržišno opažanje, a ne procjena rezervi ili otkupivosti.",
-    "Bitcoin: -5.78% u sedmodnevnoj usporedbi; zlato: -0.47% u sedmodnevnoj usporedbi; Brent nafta: -17.66% u sedmodnevnoj usporedbi."
+    "Promatrani burzovni indeksi zabilježili su pretežno pozitivan raspored kretanja. Najjaču promjenu pokazao je Nasdaq Composite (+2.71%), dok je najslabiji rezultat imao FTSE 100 (-0.33%).",
+    "U promatranom skupu digitalne imovine ETH je imao najizraženiju 24-satnu promjenu (+1.41%), dok je XRP zabilježio najslabije kretanje (+0.54%).",
+    "Najveće promatrano stablecoin odstupanje od referentne valute zabilježeno je kod FDUSD (-0.2001%). To je tržišno opažanje, a ne procjena rezervi ili otkupivosti.",
+    "Bitcoin: -2.27% u sedmodnevnoj usporedbi; zlato: +2.14% u sedmodnevnoj usporedbi; Brent nafta: -18.83% u sedmodnevnoj usporedbi."
   ],
   "summary_en": [
-    "Observed equity indices showed a predominantly positive distribution of moves. Nasdaq Composite recorded the strongest change (+2.22%), while FTSE 100 was weakest (-0.06%).",
-    "Within the observed digital-asset set, XRP recorded the strongest 24-hour move (-1.01%), while ETH was weakest (-3.14%).",
-    "The largest observed stablecoin deviation from its reference currency was recorded for FDUSD (-0.2431%). This is a market observation, not a reserve or redemption assessment.",
-    "Bitcoin: -5.78% over the seven-day comparison; gold: -0.47% over the seven-day comparison; Brent crude: -17.66% over the seven-day comparison."
+    "Observed equity indices showed a predominantly positive distribution of moves. Nasdaq Composite recorded the strongest change (+2.71%), while FTSE 100 was weakest (-0.33%).",
+    "Within the observed digital-asset set, ETH recorded the strongest 24-hour move (+1.41%), while XRP was weakest (+0.54%).",
+    "The largest observed stablecoin deviation from its reference currency was recorded for FDUSD (-0.2001%). This is a market observation, not a reserve or redemption assessment.",
+    "Bitcoin: -2.27% over the seven-day comparison; gold: +2.14% over the seven-day comparison; Brent crude: -18.83% over the seven-day comparison."
   ],
   "risk_note": "Informativni analitički prikaz temeljen na javno dostupnim podatcima; nije investicijski savjet, preporuka ulaganja niti jamstvo budućeg kretanja.",
   "risk_note_en": "Informational analytical display based on publicly available data; it is not investment advice, an investment recommendation or a guarantee of future performance.",
