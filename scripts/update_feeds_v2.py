@@ -6,6 +6,12 @@ Public presentation policy:
 - data/news_archive.json stores all older unique articles removed from that
   public window because newer articles entered above them;
 - overflow articles are archived, not deleted.
+
+Reliability policy:
+- every remote request is time-bounded so one unavailable source cannot exhaust
+  the scheduled publication cycle;
+- HTML-detail discovery is bounded because RSS and Google News queries already
+  provide broad regional coverage.
 """
 from __future__ import annotations
 
@@ -24,9 +30,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data'
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
-UA = 'GNK-ASG-News-Monitor/3.7'
+UA = 'GNK-ASG-News-Monitor/3.8'
 MAX_PUBLIC_ITEMS = 500
 DEFAULT_SOURCE_LIMIT = 60
+REQUEST_TIMEOUT_SECONDS = 9
+N1_DETAIL_LIMIT = 8
 N1_ECONOMY = 'https://' + 'n1info.ba/vijesti/ekonomija/'
 N1_MONTHS = {'januar':1,'februar':2,'mart':3,'april':4,'maj':5,'juni':6,'juli':7,'august':8,'septembar':9,'oktobar':10,'novembar':11,'decembar':12}
 
@@ -44,7 +52,7 @@ def save(name, value):
 
 def fetch(url):
     req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept': 'text/html,application/xml,application/rss+xml,*/*'})
-    with urllib.request.urlopen(req, timeout=28) as reply:
+    with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT_SECONDS) as reply:
         return reply.read()
 
 
@@ -108,7 +116,7 @@ def n1_bih_rows(cutoff, source_limit):
         if url not in links:
             links.append(url)
     rows = []
-    for url in links[:source_limit]:
+    for url in links[:min(source_limit, N1_DETAIL_LIMIT)]:
         try:
             article = fetch(url)
             title = page_meta(article, 'og:title')
