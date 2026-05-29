@@ -1,7 +1,7 @@
 name: Automated Market Data Refresh
 
-# Odvojeni automatski ciklus tržišnih podataka.
-# Ne obrađuje vijesti i ne mijenja njihov status; javni deployment preuzima najnovije podatke u redovnom ciklusu portala.
+# Odvojeni automatski ciklus tržišnih i referentnih podataka.
+# Ne obrađuje vijesti niti mijenja njihov status.
 on:
   workflow_dispatch:
   push:
@@ -10,21 +10,25 @@ on:
     paths:
       - '.github/workflows/fast-market-update.yml'
       - 'scripts/update_fast_market.py'
+      - 'scripts/update_reference_assets.py'
+      - 'assets/market-expansion.js'
   schedule:
     - cron: '2-57/5 * * * *'
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
-  group: automated-fast-market-refresh-v1
+  group: automated-fast-market-refresh-v2
   cancel-in-progress: false
 
 jobs:
   refresh-market:
-    name: Refresh public market datasets only
+    name: Refresh public market and reference datasets
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - name: Checkout current main branch
         uses: actions/checkout@v4
@@ -34,39 +38,88 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate market processor
-        run: python -m py_compile scripts/update_fast_market.py
+      - name: Validate market processors
+        run: python -m py_compile scripts/update_fast_market.py scripts/update_reference_assets.py
       - name: Refresh fast-moving market datasets
         run: python scripts/update_fast_market.py
-      - name: Validate market status output
+      - name: Refresh stock-exchange and ASG gold reference datasets
+        run: python scripts/update_reference_assets.py
+      - name: Validate market output
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          status = json.loads(Path('data/fast_market_status.json').read_text(encoding='utf-8'))
-          assert not status.get('errors'), status
-          assert status.get('digital_assets', {}).get('coins', 0) >= 8, status
-          assert status.get('cadence') == 'scheduled every five minutes', status
-          print('Tržišni podaci spremni:', status.get('updated_at'))
+          fast = json.loads(Path('data/fast_market_status.json').read_text(encoding='utf-8'))
+          reference = json.loads(Path('data/reference_assets_status.json').read_text(encoding='utf-8'))
+          stocks = json.loads(Path('data/stock_exchanges.json').read_text(encoding='utf-8'))
+          gold = json.loads(Path('data/asg_gold_asset.json').read_text(encoding='utf-8'))
+          assert fast.get('digital_assets', {}).get('coins', 0) >= 8, fast
+          assert fast.get('cadence') == 'scheduled every five minutes', fast
+          assert reference.get('markets') == 4, reference
+          assert stocks.get('checked_at'), stocks
+          assert len(stocks.get('markets', [])) == 4, stocks
+          assert gold.get('checked_at'), gold
+          print('Tržišni skupovi spremni:', fast.get('updated_at'), reference.get('checked_at'))
           PY
-      - name: Commit market data without touching news
+      - name: Commit market and reference data without touching news
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "gnk-asg-market-bot"
           git config user.email "actions@users.noreply.github.com"
           rm -rf /tmp/gnk-market-output && mkdir -p /tmp/gnk-market-output
-          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-market-output/
+          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/stock_exchanges.json data/asg_gold_asset.json data/reference_assets_status.json /tmp/gnk-market-output/
           publish_market() {
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/gnk-market-output/*.json data/
-            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/stock_exchanges.json data/asg_gold_asset.json data/reference_assets_status.json
             if git diff --cached --quiet; then
               echo "Nema novih tržišnih promjena."
               return 0
             fi
-            git commit -m "Automated isolated market data refresh"
+            git commit -m "Automated market and reference assets refresh"
             git push origin HEAD:main
           }
           publish_market || (sleep 5 && publish_market) || (sleep 10 && publish_market)
+
+  deploy-market-update:
+    name: Deploy portal with current market references
+    needs: refresh-market
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout current published main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Prepare public build
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+          rsync -a --delete \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'scripts/' \
+            --exclude '_site/' \
+            --exclude '*.py' \
+            ./ _site/
+          test -f _site/data/stock_exchanges.json
+          test -f _site/data/asg_gold_asset.json
+          test -f _site/data/reference_assets_status.json
+          grep -q 'checked_at' _site/data/stock_exchanges.json
+      - name: Upload public portal artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy public portal
+        id: deployment
+        uses: actions/deploy-pages@v4
