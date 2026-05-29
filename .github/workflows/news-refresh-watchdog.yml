@@ -1,0 +1,102 @@
+name: News Refresh Watchdog
+
+# Sigurnosni rezervni proces: ako su javne vijesti starije od 20 minuta,
+# samostalno obnavlja najnovijih 500 stavki i sprema višak u arhivu.
+# Ako je glavni news workflow uredan, watchdog ne mijenja nikakve podatke.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/news-refresh-watchdog.yml'
+      - 'scripts/update_feeds_v2.py'
+  schedule:
+    - cron: '14,29,44,59 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: news-feed-archive-refresh
+  cancel-in-progress: false
+
+jobs:
+  recover-stale-news:
+    name: Recover stale public news feed only when overdue
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout current main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check whether public news update is overdue
+        id: stale
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          from pathlib import Path
+          due = True
+          age = None
+          try:
+              status = json.loads(Path('data/update_status.json').read_text(encoding='utf-8'))
+              raw = status.get('news', {}).get('updated_at')
+              last = dt.datetime.fromisoformat(raw.replace('Z', '+00:00'))
+              age = (dt.datetime.now(dt.timezone.utc) - last.astimezone(dt.timezone.utc)).total_seconds() / 60
+              due = age >= 20
+          except Exception:
+              due = True
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as handle:
+              handle.write(f"due={'true' if due else 'false'}\n")
+          print(f'News age in minutes: {age}; fallback refresh required: {due}')
+          PY
+      - name: Validate news processor
+        if: steps.stale.outputs.due == 'true'
+        run: python -m py_compile scripts/update_feeds_v2.py
+      - name: Recover public 500-item list and archived overflow
+        if: steps.stale.outputs.due == 'true'
+        run: python scripts/update_feeds_v2.py
+      - name: Validate recovered public limit and archive output
+        if: steps.stale.outputs.due == 'true'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          public = json.loads(Path('data/news.json').read_text(encoding='utf-8'))
+          archive = json.loads(Path('data/news_archive.json').read_text(encoding='utf-8'))
+          status = json.loads(Path('data/update_status.json').read_text(encoding='utf-8')).get('news', {})
+          assert len(public) <= 500, f'Public news count invalid: {len(public)}'
+          assert status.get('public_items') == len(public), 'Public status mismatch.'
+          assert status.get('archive_items') == len(archive), 'Archive status mismatch.'
+          print(f'Fallback validated public={len(public)} archive={len(archive)}')
+          PY
+      - name: Publish recovered news data only when refreshed
+        if: steps.stale.outputs.due == 'true'
+        shell: bash
+        run: |
+          set -e
+          git config user.name "gnk-asg-news-watchdog"
+          git config user.email "actions@users.noreply.github.com"
+          rm -rf /tmp/gnk-news-watchdog-output
+          mkdir -p /tmp/gnk-news-watchdog-output
+          cp data/news.json data/news_archive.json data/update_status.json /tmp/gnk-news-watchdog-output/
+          publish_recovery() {
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/gnk-news-watchdog-output/*.json data/
+            git add data/news.json data/news_archive.json data/update_status.json
+            if git diff --cached --quiet; then
+              echo "No recovered news changes to publish."
+              return 0
+            fi
+            git commit -m "Recover stale news feed and archive refresh"
+            git push origin HEAD:main
+          }
+          publish_recovery || (sleep 8 && publish_recovery) || (sleep 15 && publish_recovery)
