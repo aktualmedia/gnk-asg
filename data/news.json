@@ -1,5 +1,41 @@
 [
   {
+    "id": "97167ff491e80bf306",
+    "title": "SpaceX awarded $6.45B in Space Force contracts ahead of IPO",
+    "url": "https://techcrunch.com/2026/05/29/spacex-awarded-6-45b-in-space-force-contracts-ahead-of-ipo/",
+    "summary": "SpaceX already generated one-fifth of its 2025 revenue from government contracts, the company revealed in its IPO filing.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-29T22:21:38+00:00",
+    "share_url": "/podijeli/vijest/97167ff491e80bf306/"
+  },
+  {
+    "id": "d53a17b205c4e4a55e",
+    "title": "Jim Cramer says Dell’s blowout quarter sets up a crucial week for AI stocks",
+    "url": "https://www.cnbc.com/2026/05/29/jim-cramer-says-dells-blowout-quarter-sets-up-a-crucial-week-for-ai-stocks.html",
+    "summary": "CNBC’s Jim Cramer said Dell Technologies’ blockbuster quarter reignited enthusiasm around AI and data center stocks.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-29T22:18:08+00:00",
+    "share_url": "/podijeli/vijest/d53a17b205c4e4a55e/"
+  },
+  {
+    "id": "1e9439bd5ec91bfea3",
+    "title": "Coders are refusing to work without AI — and that could come back to bite them",
+    "url": "https://techcrunch.com/2026/05/29/coders-are-refusing-to-work-without-ai-and-that-could-come-back-to-bite-them/",
+    "summary": "While AI is helping coders produce code faster, it may not be producing better code, researchers warn. And that could cause problems down the road for them.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-29T22:14:22+00:00",
+    "share_url": "/podijeli/vijest/1e9439bd5ec91bfea3/"
+  },
+  {
     "id": "4d02be4b544f0c2b85",
     "title": "Software stocks wrap up best month since 2001 as talk of 'SaaSpocalypse' subsides",
     "url": "https://www.cnbc.com/2026/05/29/software-stocks-wrap-best-month-since-2001-as-talk-of-saaspocalypse-.html",
@@ -8,7 +44,7 @@
     "region": "CNBC Technology",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-29T21:04:21+00:00",
+    "published_at": "2026-05-29T21:14:04+00:00",
     "share_url": "/podijeli/vijest/4d02be4b544f0c2b85/"
   },
   {
@@ -444,16 +480,16 @@
     "share_url": "/podijeli/vijest/4cf510deacbfe7defb/"
   },
   {
-    "id": "04329f3d00d38e1795",
-    "title": "U.S. CFTC opens crypto 'perp' door with first approvals at Kalshi, Coinbase",
+    "id": "6bd5841c2e50f1d224",
+    "title": "U.S. CFTC opens crypto 'perp' door with first approval at regulated firm",
     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNQzF3QVRVU3Z5TnJXenI1V1k2ZlU2SVhhTjFmOFFkS3IxYXhKYXpySEk5TjV0T0E3T3VuRUcwQm9KUHJoejBWVWhtMmdxMHRtMTV1MmhrbW5mV1ljdzh6Q2RFQnlHZjlDUS1YTm1uM2l4Mjd1djN6bnljYVE4cVRkR0w2NExGU2NCSDJkRVMwbTJBTmNyWlNYVzIydy1uLTJrUTJOTjRtTHlsaU5qRVFMNzNR?oc=5",
-    "summary": "U.S. CFTC opens crypto 'perp' door with first approvals at Kalshi, Coinbase CoinDesk",
+    "summary": "U.S. CFTC opens crypto 'perp' door with first approval at regulated firm CoinDesk",
     "source": "CoinDesk",
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-29T17:27:06+00:00",
-    "share_url": "/podijeli/vijest/04329f3d00d38e1795/"
+    "share_url": "/podijeli/vijest/6bd5841c2e50f1d224/"
   },
   {
     "id": "a772b2178038c0fee9",
@@ -720,6 +756,18 @@
     "share_url": "/podijeli/vijest/59a045d3f7c8cfa68b/"
   },
   {
+    "id": "6f90a2a04a7a123f0a",
+    "title": "Bitcoin, Ethereum and the future of finance",
+    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5xUkp1WV81LTluSnBodWRQRGZUckJqclh4WHEtYjBRQU8xbF9QY1hsazNpUElpclJJSVNqMjhCSV8xWWJIVkRlaGNtRXE4V1d1TnVBUQ?oc=5",
+    "summary": "Bitcoin, Ethereum and the future of finance Crypto Briefing",
+    "source": "Crypto Briefing",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-29T14:59:49+00:00",
+    "share_url": "/podijeli/vijest/6f90a2a04a7a123f0a/"
+  },
+  {
     "id": "f12ccaed342ff98ae9",
     "title": "Artificial Intelligence (AI) Robots Market Size, Share & Growth Analysis Report, 2030",
     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNeU5ULVBRbEZCM01xUkJzQmxwQk1TWVBPZVZXelFJLXhxQ2NNTWZPTlFnYjh5SVNzTW1FSGRwdC1GSjhsWWxsMEhycWJCRzVuRXlfdXpxTEFoTW1WM3BZTzFKNDhFVlNfY0RBYXh1TlAtZUVLaHgyRVk5VDdsUUVNS1N3UlhVeWtYRVlnd1ZDdFhwczRvMUJqWmlnMA?oc=5",
@@ -900,6 +948,18 @@
     "share_url": "/podijeli/vijest/6e2ccadbbcba2c5d5d/"
   },
   {
+    "id": "cbf3c95ca0e0291feb",
+    "title": "U.S. CFTC opens crypto 'perp' door with first approvals at Kalshi, Coinbase",
+    "url": "https://www.coindesk.com/policy/2026/05/28/u-s-cftc-opens-crypto-perp-door-with-approval-of-first-regulated-firm",
+    "summary": "The Commodity Futures Trading Commission has now established a stance on how regulated U.S. firms can engage in crypto perpetual futures contracts.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-29T14:00:00+00:00",
+    "share_url": "/podijeli/vijest/cbf3c95ca0e0291feb/"
+  },
+  {
     "id": "b802a3149ad741590f",
     "title": "The Tech Download: How chip companies are looking to use light to solve this major AI bottleneck",
     "url": "https://www.cnbc.com/2026/05/29/tech-download-photonics-nvidia-ai-bottleneck.html",
@@ -908,8 +968,7 @@
     "region": "CNBC Technology",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-29T13:49:41+00:00",
-    "share_url": "/podijeli/vijest/b802a3149ad741590f/"
+    "published_at": "2026-05-29T13:49:41+00:00"
   },
   {
     "id": "6d7dcf049f151e3496",
@@ -920,8 +979,7 @@
     "region": "Global Mobility",
     "group": "mobilnost",
     "category": "automotive",
-    "published_at": "2026-05-29T13:43:36+00:00",
-    "share_url": "/podijeli/vijest/6d7dcf049f151e3496/"
+    "published_at": "2026-05-29T13:43:36+00:00"
   },
   {
     "id": "af367db13be3d681ee",
@@ -932,8 +990,7 @@
     "region": "Biznis.rs",
     "group": "srbija",
     "category": "economy",
-    "published_at": "2026-05-29T13:42:00+00:00",
-    "share_url": "/podijeli/vijest/af367db13be3d681ee/"
+    "published_at": "2026-05-29T13:42:00+00:00"
   },
   {
     "id": "faa403c69708b23da1",
@@ -944,8 +1001,7 @@
     "region": "AI Technology",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-29T13:41:00+00:00",
-    "share_url": "/podijeli/vijest/faa403c69708b23da1/"
+    "published_at": "2026-05-29T13:41:00+00:00"
   },
   {
     "id": "92cb6a712e20440e42",
@@ -1070,6 +1126,17 @@
     "region": "TechCrunch",
     "group": "technology",
     "category": "technology",
+    "published_at": "2026-05-29T13:00:00+00:00"
+  },
+  {
+    "id": "119e4a647e2b1abbd2",
+    "title": "Scotiabank to Acquire MapleMark Bank to Support Strategic Growth in Global Banking and Markets Business",
+    "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxPZ3BaM2d5YkR0bnh0MGdpOHQxeVdKS1RjNVoyNnlxenhTcHhXeUNiRWpUZl9jT1V4MS1pdXJFdkZfbFIxTDZ3MFoxSzhQMXdBQ3g3cUJBcllFTUVOenB6cGpuVWVDLUpiazBzTHNGUzBxQWl2a20zZ0hYN3AyTHRUMzhvUUxXcVhRX1ptSjVvcFJLN18tVDUxWjhQanBOdW1BNHpieFdGWG93NDEtZER4bk1DeTZ0eHBha1VtaWctcktGT0hZbVBTYmVUUFpEbEpEYUY1UVFNMnNpZkRYM0V1SFgwTmFTRzJIbDVjTkdBbnM?oc=5",
+    "summary": "Scotiabank to Acquire MapleMark Bank to Support Strategic Growth in Global Banking and Markets Business PR Newswire",
+    "source": "PR Newswire",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
     "published_at": "2026-05-29T13:00:00+00:00"
   },
   {
@@ -2178,6 +2245,17 @@
     "published_at": "2026-05-29T05:25:24+00:00"
   },
   {
+    "id": "e03a3101d08d511dbd",
+    "title": "SUPRA SAEINDIA 2026 enters vehicle build phase as 2,500 students race towards final showdown",
+    "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQVks2cFBPR0RnWTJFVXVuTHYyZzFJSFlHdUVERjlMTWlSODd6X05YWEcxSGZ5ZzlSUVVISm94d3hhNnBiU2lBOTh3NXZBR3hTLUczS1ZnQXR5SEJ1RHBuYXhvVkZrLTNkRHlISU1xR0RTWWI0MGZfd2lYcTMyclpTUWtGQVRoVU5mUmZaNGhHa3RmSlF2c0tCX1NndXJ1X0VYcDRlYzRpVTY0YVpQc1JrMzFjdmdISnNSejRWRlA1aWNnc0ZZV3QtaUhBeldUcE5hTTZ3SlpGR1pjM19vaTJKZkJvTU1yc0ZfTDZTVFF6SlY5djE2ejBTZEJ3RFFPZ9IB_gFBVV95cUxQVks2cFBPR0RnWTJFVXVuTHYyZzFJSFlHdUVERjlMTWlSODd6X05YWEcxSGZ5ZzlSUVVISm94d3hhNnBiU2lBOTh3NXZBR3hTLUczS1ZnQXR5SEJ1RHBuYXhvVkZrLTNkRHlISU1xR0RTWWI0MGZfd2lYcTMyclpTUWtGQVRoVU5mUmZaNGhHa3RmSlF2c0tCX1NndXJ1X0VYcDRlYzRpVTY0YVpQc1JrMzFjdmdISnNSejRWRlA1aWNnc0ZZV3QtaUhBeldUcE5hTTZ3SlpGR1pjM19vaTJKZkJvTU1yc0ZfTDZTVFF6SlY5djE2ejBTZEJ3RFFPZw?oc=5",
+    "summary": "SUPRA SAEINDIA 2026 enters vehicle build phase as 2,500 students race towards final showdown ET Auto",
+    "source": "ET Auto",
+    "region": "Global Mobility",
+    "group": "mobilnost",
+    "category": "automotive",
+    "published_at": "2026-05-29T05:02:47+00:00"
+  },
+  {
     "id": "65401f753e68a3eae8",
     "title": "XRP rebounds above $1.30 after volume surge, but bears still control the bigger picture",
     "url": "https://www.coindesk.com/markets/2026/05/29/xrp-rebounds-above-usd1-30-after-volume-surge-but-bears-still-control-the-bigger-picture",
@@ -2574,6 +2652,17 @@
     "published_at": "2026-05-28T20:29:00+00:00"
   },
   {
+    "id": "f056cd79d246bcd1b4",
+    "title": "NVIDIA Corporation (NVDA) Stock Price, News, Quote & History",
+    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBpVTJIYnhWcW1kNFFKTHNoajhPeE9zSW9lTElhZkZvcEo3MExtQnpIZjBRek95cWJ0XzRKMzBtMHh0Ty1SYVRESUxfRTJ4Zw?oc=5",
+    "summary": "NVIDIA Corporation (NVDA) Stock Price, News, Quote & History Yahoo Finance",
+    "source": "Yahoo Finance",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-28T20:27:45+00:00"
+  },
+  {
     "id": "4009cbf2015c57cf66",
     "title": "SoFi Technologies Launches First U.S. National Bank Stablecoin To Challenge Digital Finance Rivals",
     "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNek90bS1leUdLektsLXFCQkt2QVpPeHZFUHpFWE5PcXJ4QnhfYW12b2VXMXljZXlMaTFNSlVxZ0dYWENCNXBwam82QmpjVUJMd0VJeU9tOEo2VUxMb1BNUjZTajRET1lfbllKa3J3cHg5MlNMWFBJNl9JWXhxcm5vdHppZFpPb1VBcF8xc1hLcUZyZ3Q3cHF0aUk2ZGZrLVNLdzNQWjN5bzFBVUNTN1ZEcWtlQ2dVYXlKTWc0QmhXWXlyYndHY19kQkZtaE1Bc0NLYjNWblg4MnRxbHdPSkZR?oc=5",
@@ -2858,17 +2947,6 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-28T19:53:38+00:00"
-  },
-  {
-    "id": "f056cd79d246bcd1b4",
-    "title": "NVIDIA Corporation (NVDA) Stock Price, News, Quote & History",
-    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBpVTJIYnhWcW1kNFFKTHNoajhPeE9zSW9lTElhZkZvcEo3MExtQnpIZjBRek95cWJ0XzRKMzBtMHh0Ty1SYVRESUxfRTJ4Zw?oc=5",
-    "summary": "NVIDIA Corporation (NVDA) Stock Price, News, Quote & History Yahoo Finance",
-    "source": "Yahoo Finance",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-28T19:49:22+00:00"
   },
   {
     "id": "748a92e655da90656e",
@@ -5186,9 +5264,9 @@
     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PU3pBdGY0NWJMSWFUTFRDUGx3RklNQlNENWdlQjBiNG9meUo5andqSHFER0lkNlhEaFVwOXpLYWZseVJ1YVZsU2Q4RzBWT1RoeUhTM19YaFljM2ZHcm5yMHYxTlc?oc=5",
     "summary": "Crypto Market Recap: Bitcoin Price Dips as Geopolitical Tensions Ramp Up Investing News Network",
     "source": "Investing News Network",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
     "published_at": "2026-05-27T21:05:00+00:00"
   },
   {
@@ -5509,82 +5587,5 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-27T14:43:28+00:00"
-  },
-  {
-    "id": "c6dc96c49df93207d0",
-    "title": "The Evolution of EV Battery Technology and Its Benefits to the Automotive Industry",
-    "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPalp3TVRybGZRSElsRDBZV25IajNWVTRHTzVacEpvRU5lMHBwOGZzS3JTelEyUUZFd1B6VVBFX1BLblVJQ1ZNTElFZUhQR09tSkpGT3JYZGExbl9Ja3Y0V3EzNncwNUdQZU1PS05PRmVEUUt5aXV0UUxpRlY2Z09saVFWNFlsenRMMHRYVzI5YUJQaTF1eF9sQkdUZF9lMjVpOXJya0JSZFVQLVNzQWV4dVhYaW92ZDZPd0t4ODNEbWJIazA2bk1TOG5B?oc=5",
-    "summary": "The Evolution of EV Battery Technology and Its Benefits to the Automotive Industry Daily FT",
-    "source": "Daily FT",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-27T14:30:57+00:00"
-  },
-  {
-    "id": "a68722943341e697b4",
-    "title": "The Future of the Automotive Industry: Innovation, Sustainability, and Consumer Transformation",
-    "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPOXg3MWVRZklfQjg2RE5mQktWX2Etb243aVp0SDNzTll2UkFDNUN4SGhGQXRNc0tHZ0hkU0Z1T0hkV0UyNndwdk02MjYweFZSZ1NuOV9hQ1M5SGRyRlJGNnRmZVFLYWw4Z3M5VzZvSDdoMGtZS1BpUWx4dkxwRkFacDNGVTV2MkhqY3lUV0tLSHh0WmZrQ3V4WDFPTi0zaTJRNVN3bHdzbWVuWFE2LTZ4ZmZqUkswOFp4ZDlrcHViR1o2cmVvVjVuWVBZVzN6RVJPRm5YcDRpUVM?oc=5",
-    "summary": "The Future of the Automotive Industry: Innovation, Sustainability, and Consumer Transformation Daily FT",
-    "source": "Daily FT",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-27T14:30:36+00:00"
-  },
-  {
-    "id": "d2afb293916e381c39",
-    "title": "How Technology is Transforming the Global Automotive Industry",
-    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPYU54TWpNNmxDZWhtY3daUXRBSzlBdXluQTI5S0hIdW85RHphRkpmdl8zWjVoSFJVdFYzRVItVG5xeWw2RUV1Q1NrcEpqWnpiUHRLNXhQTWhBb0Z3VVIwcEprR0lJYXFYall5TTZyUHM4TjIwdDZuQjUxWndrVkJVQW8xTmFQTWZkZDB3akRUUUJwVU05cE9WZm0xdng1OEx3d0xvOHIzaGEwMXVG?oc=5",
-    "summary": "How Technology is Transforming the Global Automotive Industry Daily FT",
-    "source": "Daily FT",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-27T14:30:32+00:00"
-  },
-  {
-    "id": "4e3208a9ae8315c0f4",
-    "title": "Bitwise Buys Another $10M Worth of HYPE Tokens",
-    "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBkNnh1T3R1Rkl3aUlWaW4tTGpCNENUeHFJMFhXeEVpY2N1RkEySFpGcXFzV1l0SHR5RVYtY09KVS1zTGJmaFBqWQ?oc=5",
-    "summary": "Bitwise Buys Another $10M Worth of HYPE Tokens MEXC",
-    "source": "MEXC",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-27T14:26:15+00:00"
-  },
-  {
-    "id": "d2f39e9b8e5d16dfd1",
-    "title": "Raspisan tender za izvođenje radova na rekonstrukciji pijace Kalenić",
-    "url": "https://biznis.rs/vesti/srbija/raspisan-tender-za-izvodjenje-radova-na-rekonstrukciji-pijace-kalenic/",
-    "summary": "Posle više godina najava, Grad Beograd raspisao je tender za izvođenje radova na rekonstrukciji pijace Kalenić, koji uključuju natkrivanje pijace i dogradnju lokala. Za ovaj posao procenjena je vrednost od 2,36 milijardi dinara bez PDV-a, o",
-    "source": "Biznis.rs",
-    "region": "Biznis.rs",
-    "group": "srbija",
-    "category": "economy",
-    "published_at": "2026-05-27T14:22:00+00:00"
-  },
-  {
-    "id": "4f933d42736d520edf",
-    "title": "Mastercard Expands Stablecoin Strategy With NY BitLicense",
-    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1OQ3NCdzBPLUZNb1RUZnlLVk00X25wZ1lPQ01TRXJWdkZHcElhdERHWDVZcXJwMzFtUTJQTnBsZTZ0OUpWT2dmTVNmLVF2MzFwUjVwaGg2MWJ2WFFwVXlLUGdqd0JTTWFUSUNMVTdDc1VOUQ?oc=5",
-    "summary": "Mastercard Expands Stablecoin Strategy With NY BitLicense CoinLaw",
-    "source": "CoinLaw",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-27T14:07:35+00:00"
-  },
-  {
-    "id": "4fc5c01de1e5f29b3e",
-    "title": "Mastercard Secures New York BitLicense to Advance Stablecoin Payments",
-    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQQS1LbUthaTBSS3A2MEVRN1NpY3hoTnlRekFGU2RXUzBSdFVILTVrQWNaYXFUdHh2MGZTamRzT01waklYT1JyY0QxYi1OXzNGOW9CamNsaUVpUlBLT1hrdm1SeENrMkdoY05BbXFQVGFSVlBQUDllUE5fU1dRWnY4X3FpWWNhOTRJVnNhWGVLNEdGc0h1Y2s4?oc=5",
-    "summary": "Mastercard Secures New York BitLicense to Advance Stablecoin Payments DailyCoin",
-    "source": "DailyCoin",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-27T14:07:00+00:00"
   }
 ]
