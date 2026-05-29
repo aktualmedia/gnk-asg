@@ -1,31 +1,23 @@
 name: News Refresh Watchdog
 
-# Sigurnosni rezervni proces: ako su javne vijesti starije od 20 minuta,
-# samostalno obnavlja najnovijih 500 stavki i sprema višak u arhivu.
-# Ako je glavni news workflow uredan, watchdog ne mijenja nikakve podatke.
+# Ručni sigurnosni oporavak vijesti.
+# Redovito planirano osvježavanje provodi isključivo news-feed-archive-refresh.yml.
+# Time se izbjegavaju paralelni ciklusi nad istim datotekama i međusobno blokiranje objave.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/news-refresh-watchdog.yml'
-      - 'scripts/update_feeds_v2.py'
-  schedule:
-    - cron: '14,29,44,59 * * * *'
 
 permissions:
   contents: write
 
 concurrency:
-  group: news-feed-archive-refresh
+  group: news-feed-archive-refresh-v2
   cancel-in-progress: false
 
 jobs:
   recover-stale-news:
-    name: Recover stale public news feed only when overdue
+    name: Recover stale public news feed when manually requested
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 14
     steps:
       - name: Checkout current main branch
         uses: actions/checkout@v4
@@ -55,7 +47,7 @@ jobs:
               due = True
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as handle:
               handle.write(f"due={'true' if due else 'false'}\n")
-          print(f'News age in minutes: {age}; fallback refresh required: {due}')
+          print(f'News age in minutes: {age}; recovery required: {due}')
           PY
       - name: Validate news processor
         if: steps.stale.outputs.due == 'true'
@@ -72,10 +64,12 @@ jobs:
           public = json.loads(Path('data/news.json').read_text(encoding='utf-8'))
           archive = json.loads(Path('data/news_archive.json').read_text(encoding='utf-8'))
           status = json.loads(Path('data/update_status.json').read_text(encoding='utf-8')).get('news', {})
-          assert len(public) <= 500, f'Public news count invalid: {len(public)}'
+          assert isinstance(public, list) and len(public) <= 500, f'Public news count invalid: {len(public)}'
+          assert isinstance(archive, list), 'Archive output is not a list.'
           assert status.get('public_items') == len(public), 'Public status mismatch.'
           assert status.get('archive_items') == len(archive), 'Archive status mismatch.'
-          print(f'Fallback validated public={len(public)} archive={len(archive)}')
+          assert status.get('storage_policy') == 'public_latest_500_overflow_preserved_in_archive', 'Archive policy missing.'
+          print(f'Recovery validated public={len(public)} archive={len(archive)}')
           PY
       - name: Publish recovered news data only when refreshed
         if: steps.stale.outputs.due == 'true'
