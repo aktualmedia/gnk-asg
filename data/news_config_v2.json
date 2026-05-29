@@ -4,6 +4,7 @@
   "max_items": 500,
   "max_per_source": 60,
   "rotation_policy": "Nove vijesti ulaze prve; duplikati i blokirane objave se uklanjaju; javno se prikazuje najnovijih 500 stavki, a sve starije jedinstvene stavke premještaju se u trajno spremljenu arhivu viška bez brisanja.",
+  "automation_verification": "Provjera glavnog ciklusa osvježavanja nakon detektiranog zastarjelog statusa 29.05.2026.",
   "sources": [
     {"name":"Poslovni dnevnik","group":"hrvatska","category":"economy","url":"https://www.poslovni.hr/feed"},
     {"name":"Biznis.rs","group":"srbija","category":"economy","url":"https://biznis.rs/feed/"},
