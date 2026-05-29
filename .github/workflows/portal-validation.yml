@@ -1,8 +1,7 @@
 name: Portal Validation and Live Data Test
 
 # Puna validacija funkcionalnog koda, javnih stranica i workflow logike.
-# Automatski commitovi generiranih podataka i previewa imaju vlastite procesore;
-# ne pokreću ponovno cjeloviti browser test portala.
+# Jedinstveni news engine izvršava dohvat, arhivu i individualne share prikaze.
 on:
   workflow_dispatch:
   pull_request:
@@ -120,15 +119,13 @@ jobs:
           node --check playwright.config.js
           node --check tests/market-centre.spec.js
           node --check tests/desk-hybrid.spec.js
-      - name: Validate Python syntax for automated processors
+      - name: Validate Python syntax for active processors
         run: |
-          python -m py_compile scripts/update_feeds_v2.py scripts/generate_news_share_previews.py scripts/update_macro_data.py scripts/update_fast_market.py scripts/generate_daily_market_brief.py scripts/generate_social_preview.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
+          python -m py_compile scripts/news_publication.py scripts/update_macro_data.py scripts/update_fast_market.py scripts/generate_daily_market_brief.py scripts/generate_social_preview.py scripts/discover_corporate_media.py scripts/generate_seo.py scripts/manage_approved_media.py scripts/validate_portal.py
       - name: Validate committed portal structure and existing public datasets
         run: python scripts/validate_portal.py
-      - name: Execute hourly classified-news retrieval and per-item sharing generation
-        run: |
-          python scripts/update_feeds_v2.py
-          python scripts/generate_news_share_previews.py
+      - name: Execute unified news publication processing
+        run: python scripts/news_publication.py
       - name: Execute five-minute digital-asset stablecoin exchange and index retrieval
         run: python scripts/update_fast_market.py
       - name: Execute live macro-market retrieval
