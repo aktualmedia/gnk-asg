@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-29T20:55:54+00:00",
+  "updated_at": "2026-05-29T21:31:58+00:00",
   "cadence": "scheduled every five minutes",
   "source": "Public market quote feed",
   "indices": [
@@ -12,7 +12,7 @@
       "previous_close": 7445.72,
       "change_percent": 1.8,
       "currency": "USD",
-      "market_time": 1780086001
+      "market_time": 1780088617
     },
     {
       "id": "nasdaq",
@@ -23,7 +23,7 @@
       "previous_close": 26293.1,
       "change_percent": 2.58,
       "currency": "USD",
-      "market_time": 1780088151
+      "market_time": 1780089359
     },
     {
       "id": "stoxx50",
