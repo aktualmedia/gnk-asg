@@ -1,9 +1,9 @@
 name: News Feed and Archive Refresh
 
-# Samostalan proces za vijesti.
+# Kritični i samostalni proces za vijesti portala.
 # data/news.json javno prikazuje najnovijih 500 vijesti.
 # data/news_archive.json trajno sprema sav stariji jedinstveni višak.
-# Proces je odvojen od tržišta i grafikona kako njihov kvar ne bi zaustavio vijesti.
+# Nije vezan uz tržišta, grafikone, SEO niti medijski monitoring.
 on:
   workflow_dispatch:
   push:
@@ -12,26 +12,24 @@ on:
     paths:
       - '.github/workflows/news-feed-archive-refresh.yml'
       - 'scripts/update_feeds_v2.py'
-      - 'scripts/discover_corporate_media.py'
       - 'data/news_config_v2.json'
-      - 'data/media_queries.json'
       - 'data/media_removed.json'
       - 'data/blocked_news.json'
   schedule:
-    - cron: '2,17,32,47 * * * *'
+    - cron: '7,22,37,52 * * * *'
 
 permissions:
   contents: write
 
 concurrency:
   group: news-feed-archive-refresh
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   refresh-news-and-archive:
-    name: Refresh latest 500 news items and preserve overflow
+    name: Publish latest 500 news items and preserve overflow archive
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 12
     steps:
       - name: Checkout current main branch
         uses: actions/checkout@v4
@@ -41,12 +39,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate news processors
-        run: python -m py_compile scripts/update_feeds_v2.py scripts/discover_corporate_media.py
+      - name: Validate news processor
+        run: python -m py_compile scripts/update_feeds_v2.py
       - name: Refresh public 500-item list and archived overflow
         run: python scripts/update_feeds_v2.py
-      - name: Refresh related corporate media discovery without blocking news
-        run: python scripts/discover_corporate_media.py || echo "Media discovery temporarily unavailable; continuing with news publication."
       - name: Validate public limit and persistent archive output
         run: |
           python - <<'PY'
@@ -71,15 +67,13 @@ jobs:
           rm -rf /tmp/gnk-news-output
           mkdir -p /tmp/gnk-news-output
           cp data/news.json data/news_archive.json data/update_status.json /tmp/gnk-news-output/
-          cp data/media_approved.json data/media_monitor_status.json /tmp/gnk-news-output/ 2>/dev/null || true
           publish_news() {
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/gnk-news-output/*.json data/
             git add data/news.json data/news_archive.json data/update_status.json
-            git add data/media_approved.json data/media_monitor_status.json 2>/dev/null || true
             if git diff --cached --quiet; then
-              echo "No new public news or archive changes to publish."
+              echo "No generated news changes to publish."
               return 0
             fi
             git commit -m "Automated news feed and archive refresh"
