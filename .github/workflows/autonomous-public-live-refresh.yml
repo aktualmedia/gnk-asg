@@ -1,8 +1,8 @@
 name: Autonomous Public Live Refresh
 
 # Glavni automatski ciklus javnog portala.
-# Javni prozor sadrži do 500 najnovijih vijesti, a arhiva do 400 starijih stavki.
-# Dostupnost tržišnih izvora ne smije spriječiti objavu novih vijesti.
+# Javni prozor sadrži do 500 najnovijih vijesti, a aktivna arhiva do 400 starijih stavki.
+# Nova vijest mora se objaviti i ako pomoćni tržišni ili arhivski korak privremeno zakaže.
 on:
   workflow_dispatch:
   push:
@@ -49,30 +49,51 @@ jobs:
         run: python -m py_compile scripts/update_feeds_resilient.py scripts/trim_news_archive.py
       - name: Refresh newest public news items
         run: python scripts/update_feeds_resilient.py
-      - name: Bound archive to newest 400 displaced items
-        run: python scripts/trim_news_archive.py
+      - name: Bound active archive to newest 400 displaced items without blocking new publication
+        run: python scripts/trim_news_archive.py || echo "Archive maintenance unavailable in this cycle; final publication guard will normalize the active archive."
+      - name: Enforce public and archive windows before publication
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          from pathlib import Path
+          public_path = Path('data/news.json')
+          archive_path = Path('data/news_archive.json')
+          status_path = Path('data/update_status.json')
+          try:
+              public = json.loads(public_path.read_text(encoding='utf-8'))
+          except Exception:
+              public = []
+          try:
+              archive = json.loads(archive_path.read_text(encoding='utf-8'))
+          except Exception:
+              archive = []
+          public = [item for item in public if isinstance(item, dict)] if isinstance(public, list) else []
+          archive = [item for item in archive if isinstance(item, dict)] if isinstance(archive, list) else []
+          public.sort(key=lambda item: str(item.get('published_at', '')), reverse=True)
+          archive.sort(key=lambda item: str(item.get('published_at', '')), reverse=True)
+          public = public[:500]
+          archive = archive[:400]
+          public_path.write_text(json.dumps(public, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          archive_path.write_text(json.dumps(archive, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          try:
+              payload = json.loads(status_path.read_text(encoding='utf-8'))
+          except Exception:
+              payload = {}
+          news = payload.setdefault('news', {})
+          news['public_items'] = len(public)
+          news['max_public_items'] = 500
+          news['archive_items'] = len(archive)
+          news['max_archive_items'] = 400
+          news['storage_policy'] = 'public_latest_500_archive_latest_400_older_overflow_removed'
+          news['publication_guard_at'] = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
+          status_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(f'Ready for publication: public={len(public)}, archive={len(archive)}')
+          PY
       - name: Refresh core public market data without blocking refreshed news
         run: python scripts/update_fast_market.py || echo "Core market source temporarily unavailable; refreshed news continue to publication."
       - name: Refresh optional comparison chart without blocking publication
         run: python scripts/update_macro_data.py || echo "Optional comparison chart temporarily unavailable; refreshed news continue to publication."
-      - name: Confirm publication window and report output
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          public = json.loads(Path('data/news.json').read_text(encoding='utf-8'))
-          archive = json.loads(Path('data/news_archive.json').read_text(encoding='utf-8'))
-          status = json.loads(Path('data/update_status.json').read_text(encoding='utf-8')).get('news', {})
-          if len(public) > 500:
-              public = public[:500]
-              Path('data/news.json').write_text(json.dumps(public, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-              status['public_items'] = len(public)
-          if len(archive) > 400:
-              archive = archive[:400]
-              Path('data/news_archive.json').write_text(json.dumps(archive, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-              status['archive_items'] = len(archive)
-          print(f"Ready for publication: public={len(public)}, archive={len(archive)}")
-          PY
       - name: Commit refreshed data safely
         shell: bash
         run: |
