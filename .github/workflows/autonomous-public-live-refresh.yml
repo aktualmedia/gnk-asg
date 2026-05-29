@@ -5,6 +5,7 @@ name: Automated News Publication
 # Tržišni podaci nisu dio ovog ciklusa i ne mogu zaustaviti objavu vijesti.
 # Obrada vijesti i Pages deployment imaju odvojene redove izvođenja:
 # zastoj objave stranice ne smije blokirati sljedeći ciklus novih vijesti.
+# Ručni okidač ciklusa: 2026-05-30-001.
 
 on:
   workflow_dispatch:
