@@ -1,36 +1,23 @@
-name: Portal Live Data Refresh
+name: Manual Market Data Refresh
 
-# Primarni proces za aktualne tržišne podatke portala.
-# Vijesti redovno vodi zasebni resilient news proces.
-# Ako su vijesti zastarjele, ovaj češći ciklus pokreće brzi otporni oporavak,
-# ali ne dopušta da neuspjeh oporavka blokira tržišnu objavu.
+# Ručna rezerva za tržišne podatke.
+# Jedini redovni automatski ciklus je autonomous-public-live-refresh.yml,
+# koji osvježava vijesti, održava javnih 500 i arhivskih 400 stavki te objavljuje portal.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/portal-live-refresh.yml'
-      - 'scripts/update_fast_market.py'
-      - 'scripts/update_macro_data.py'
-      - 'scripts/update_feeds_resilient.py'
-  schedule:
-    - cron: '4,9,14,19,24,29,34,39,44,49,54,59 * * * *'
 
 permissions:
   contents: write
 
 concurrency:
-  group: portal-market-live-data-refresh-v5
+  group: manual-market-data-refresh
   cancel-in-progress: true
 
 jobs:
-  refresh-public-live-data:
-    name: Refresh market data and recover overdue news safely
+  refresh-public-market-data:
+    name: Manually refresh market data only
     runs-on: ubuntu-latest
     timeout-minutes: 8
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout current main branch
         uses: actions/checkout@v4
@@ -40,96 +27,23 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate required processors
-        run: python -m py_compile scripts/update_fast_market.py scripts/update_feeds_resilient.py
-      - name: Refresh required fast market datasets
+      - name: Validate market processor
+        run: python -m py_compile scripts/update_fast_market.py
+      - name: Refresh core market datasets
         run: python scripts/update_fast_market.py
-      - name: Refresh optional cross-asset chart without blocking core publication
-        run: python scripts/update_macro_data.py || echo "Optional cross-asset chart unavailable; publishing current core market status."
-      - name: Detect overdue news status
-        id: news
-        run: |
-          python - <<'PY' >> "$GITHUB_OUTPUT"
-          import json
-          from datetime import datetime, timezone
-          from pathlib import Path
-          try:
-              payload = json.loads(Path('data/update_status.json').read_text(encoding='utf-8'))
-              raw = payload.get('news', {}).get('updated_at')
-              stamp = datetime.fromisoformat(str(raw).replace('Z', '+00:00')).astimezone(timezone.utc)
-              age = (datetime.now(timezone.utc) - stamp).total_seconds() / 60
-          except Exception:
-              age = 999999
-          recover = age >= 18
-          print(f'recover={str(recover).lower()}')
-          print(f'age_minutes={age:.1f}')
-          PY
-      - name: Recover overdue news with resilient engine without blocking market publication
-        if: steps.news.outputs.recover == 'true'
-        shell: bash
-        run: |
-          echo "News overdue by ${{ steps.news.outputs.age_minutes }} minutes; attempting resilient recovery."
-          if python scripts/update_feeds_resilient.py; then
-            touch /tmp/gnk-news-recovered
-          else
-            echo "News recovery failed temporarily; core market publication continues."
-          fi
-      - name: Validate core market status before publication
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          status = json.loads(Path('data/fast_market_status.json').read_text(encoding='utf-8'))
-          assert status.get('status') == 'ok', status
-          assert isinstance(status.get('errors'), list) and not status.get('errors'), status
-          print('Core market refresh validated:', status.get('updated_at'))
-          PY
-      - name: Validate recovered news only when produced
-        if: steps.news.outputs.recover == 'true'
-        run: |
-          if [ -f /tmp/gnk-news-recovered ]; then
-            python - <<'PY'
-          import json
-          from pathlib import Path
-          public = json.loads(Path('data/news.json').read_text(encoding='utf-8'))
-          archive = json.loads(Path('data/news_archive.json').read_text(encoding='utf-8'))
-          news = json.loads(Path('data/update_status.json').read_text(encoding='utf-8'))['news']
-          assert len(public) <= 500
-          assert news.get('engine') == 'resilient_parallel_v4'
-          assert news.get('public_items') == len(public)
-          assert news.get('archive_items') == len(archive)
-          print(f'Fallback recovered public={len(public)}, archive={len(archive)}')
-          PY
-          fi
-      - name: Publish generated live data safely
-        shell: bash
+      - name: Refresh optional comparison chart without blocking core market output
+        run: python scripts/update_macro_data.py || echo "Optional comparison chart unavailable; publishing core market data."
+      - name: Publish market files only
         run: |
           set -e
-          git config user.name "gnk-asg-live-bot"
+          git config user.name "gnk-asg-market-bot"
           git config user.email "actions@users.noreply.github.com"
-          rm -rf /tmp/gnk-live-output
-          mkdir -p /tmp/gnk-live-output
-          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-live-output/
-          cp data/macro_market.json /tmp/gnk-live-output/ 2>/dev/null || true
-          if [ -f /tmp/gnk-news-recovered ]; then
-            cp data/news.json data/news_archive.json data/update_status.json /tmp/gnk-live-output/
+          git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+          git add data/macro_market.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No market changes to publish."
+            exit 0
           fi
-          publish_live() {
-            git fetch origin main
-            git reset --hard origin/main
-            cp /tmp/gnk-live-output/market.json /tmp/gnk-live-output/stablecoins.json /tmp/gnk-live-output/exchange_compare.json /tmp/gnk-live-output/market_indices.json /tmp/gnk-live-output/btc_chart.json /tmp/gnk-live-output/fast_market_status.json data/
-            cp /tmp/gnk-live-output/macro_market.json data/ 2>/dev/null || true
-            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
-            git add data/macro_market.json 2>/dev/null || true
-            if [ -f /tmp/gnk-news-recovered ]; then
-              cp /tmp/gnk-live-output/news.json /tmp/gnk-live-output/news_archive.json /tmp/gnk-live-output/update_status.json data/
-              git add data/news.json data/news_archive.json data/update_status.json
-            fi
-            if git diff --cached --quiet; then
-              echo "No new live data changes to publish."
-              return 0
-            fi
-            git commit -m "Automated live data refresh with resilient news guard"
-            git push origin HEAD:main
-          }
-          publish_live || (sleep 5 && publish_live) || (sleep 10 && publish_live)
+          git commit -m "Manual portal market refresh"
+          git pull --rebase origin main
+          git push origin HEAD:main
