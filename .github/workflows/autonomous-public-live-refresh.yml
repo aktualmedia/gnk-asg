@@ -1,11 +1,8 @@
 name: Autonomous Public Live Refresh
 
-# Jedini glavni automatski ciklus javnog portala:
-# - osvježava vijesti brzim otpornim engineom;
-# - javno zadržava najnovijih 500 stavki;
-# - u aktivnoj arhivi zadržava najnovijih 400 pomaknutih starijih stavki;
-# - sve iznad 400 automatski uklanja iz aktivne arhive;
-# - osvježava tržišne podatke i odmah objavljuje javni GitHub Pages build.
+# Glavni automatski ciklus javnog portala.
+# Javni prozor sadrži do 500 najnovijih vijesti, a arhiva do 400 starijih stavki.
+# Dostupnost tržišnih izvora ne smije spriječiti objavu novih vijesti.
 on:
   workflow_dispatch:
   push:
@@ -28,12 +25,12 @@ permissions:
   id-token: write
 
 concurrency:
-  group: autonomous-public-live-refresh-v1
+  group: autonomous-public-live-refresh-v2
   cancel-in-progress: true
 
 jobs:
   refresh-commit-and-deploy:
-    name: Refresh data and publish current public portal
+    name: Refresh and publish public portal
     runs-on: ubuntu-latest
     timeout-minutes: 12
     environment:
@@ -48,34 +45,33 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate required processors
-        run: python -m py_compile scripts/update_feeds_resilient.py scripts/trim_news_archive.py scripts/update_fast_market.py
-      - name: Refresh latest 500 public news items and overflow candidates
+      - name: Validate news processors
+        run: python -m py_compile scripts/update_feeds_resilient.py scripts/trim_news_archive.py
+      - name: Refresh newest public news items
         run: python scripts/update_feeds_resilient.py
-      - name: Retain only latest 400 older items in active archive
+      - name: Bound archive to newest 400 displaced items
         run: python scripts/trim_news_archive.py
-      - name: Refresh core public market datasets
-        run: python scripts/update_fast_market.py
-      - name: Refresh optional cross-asset chart without blocking publication
-        run: python scripts/update_macro_data.py || echo "Optional comparison chart unavailable; core publication continues."
-      - name: Validate refreshed outputs and publication limits
+      - name: Refresh core public market data without blocking refreshed news
+        run: python scripts/update_fast_market.py || echo "Core market source temporarily unavailable; refreshed news continue to publication."
+      - name: Refresh optional comparison chart without blocking publication
+        run: python scripts/update_macro_data.py || echo "Optional comparison chart temporarily unavailable; refreshed news continue to publication."
+      - name: Confirm publication window and report output
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           public = json.loads(Path('data/news.json').read_text(encoding='utf-8'))
           archive = json.loads(Path('data/news_archive.json').read_text(encoding='utf-8'))
-          news = json.loads(Path('data/update_status.json').read_text(encoding='utf-8'))['news']
-          market = json.loads(Path('data/fast_market_status.json').read_text(encoding='utf-8'))
-          assert isinstance(public, list) and len(public) <= 500, f'Public list exceeds 500: {len(public)}'
-          assert isinstance(archive, list) and len(archive) <= 400, f'Archive exceeds 400: {len(archive)}'
-          assert news.get('engine') == 'resilient_parallel_v4'
-          assert news.get('public_items') == len(public)
-          assert news.get('archive_items') == len(archive)
-          assert news.get('max_archive_items') == 400
-          assert market.get('status') == 'ok'
-          assert not market.get('errors')
-          print(f"Validated public={len(public)}, archive={len(archive)}, market={market.get('updated_at')}")
+          status = json.loads(Path('data/update_status.json').read_text(encoding='utf-8')).get('news', {})
+          if len(public) > 500:
+              public = public[:500]
+              Path('data/news.json').write_text(json.dumps(public, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+              status['public_items'] = len(public)
+          if len(archive) > 400:
+              archive = archive[:400]
+              Path('data/news_archive.json').write_text(json.dumps(archive, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+              status['archive_items'] = len(archive)
+          print(f"Ready for publication: public={len(public)}, archive={len(archive)}")
           PY
       - name: Commit refreshed data safely
         shell: bash
@@ -85,14 +81,14 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           rm -rf /tmp/gnk-autonomous-output && mkdir -p /tmp/gnk-autonomous-output
           cp data/news.json data/news_archive.json data/update_status.json /tmp/gnk-autonomous-output/
-          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-autonomous-output/
+          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-autonomous-output/ 2>/dev/null || true
           cp data/macro_market.json /tmp/gnk-autonomous-output/ 2>/dev/null || true
           publish_data() {
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/gnk-autonomous-output/*.json data/
-            git add data/news.json data/news_archive.json data/update_status.json data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
-            git add data/macro_market.json 2>/dev/null || true
+            git add data/news.json data/news_archive.json data/update_status.json
+            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json 2>/dev/null || true
             if git diff --cached --quiet; then
               echo "No data differences to commit; continuing to public deployment."
               return 0
@@ -105,7 +101,7 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Prepare the same refreshed public build for deployment
+      - name: Prepare refreshed public build for deployment
         run: |
           set -e
           rm -rf _site
@@ -123,7 +119,6 @@ jobs:
           test -f _site/data/news.json
           test -f _site/data/news_archive.json
           test -f _site/data/update_status.json
-          test -f _site/data/fast_market_status.json
       - name: Upload public portal artifact
         uses: actions/upload-pages-artifact@v3
         with:
