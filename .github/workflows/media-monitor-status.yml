@@ -1,7 +1,7 @@
-name: Manual Corporate Media Refresh Fallback
+name: Manual Corporate Media Refresh
 
-# Rezervni ručni postupak. Automatski raspored vodi .github/workflows/portal-live-refresh.yml.
-# Ovlašteno uklonjene poveznice ostaju isključene putem data/media_removed.json.
+# Kontrolirani ručni postupak za rubricu GNK ASG u medijima.
+# Javna rubrika prikazuje samo odobrene stavke, a uklonjene poveznice ostaju isključene putem data/media_removed.json.
 on:
   workflow_dispatch:
 
@@ -9,12 +9,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: manual-media-refresh-fallback
+  group: manual-media-controlled-publication
   cancel-in-progress: false
 
 jobs:
   publish-media:
-    name: Manually discover and publish corporate media items
+    name: Manually discover and publish controlled corporate media items
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -26,15 +26,15 @@ jobs:
           python-version: '3.12'
       - name: Discover public corporate media results
         run: python scripts/discover_corporate_media.py
-      - name: Publish media items and dedicated monitor status
+      - name: Publish approved media items and dedicated monitor status
         run: |
           set -e
           git config user.name "gnk-asg-media-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/media_approved.json data/media_monitor_status.json
           if git diff --cached --quiet; then
-            echo "No corporate media changes."
+            echo "No controlled media changes."
             exit 0
           fi
-          git commit -m "Manual corporate media publication update"
+          git commit -m "Manual controlled corporate media publication update"
           git push origin HEAD:main
