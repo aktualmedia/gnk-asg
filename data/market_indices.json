@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-29T14:33:50+00:00",
+  "updated_at": "2026-05-29T14:39:30+00:00",
   "cadence": "scheduled every five minutes",
   "source": "Public market quote feed",
   "indices": [
@@ -8,55 +8,55 @@
       "symbol": "^GSPC",
       "label": "S&P 500",
       "region": "SAD",
-      "current": 7583.08984375,
+      "current": 7575.31005859375,
       "previous_close": 7445.72,
-      "change_percent": 1.84,
+      "change_percent": 1.74,
       "currency": "USD",
-      "market_time": 1780065229
+      "market_time": 1780065569
     },
     {
       "id": "nasdaq",
       "symbol": "^IXIC",
       "label": "Nasdaq Composite",
       "region": "SAD",
-      "current": 26966.935546875,
+      "current": 26935.787109375,
       "previous_close": 26293.1,
-      "change_percent": 2.56,
+      "change_percent": 2.44,
       "currency": "USD",
-      "market_time": 1780065226
+      "market_time": 1780065569
     },
     {
       "id": "stoxx50",
       "symbol": "^STOXX50E",
       "label": "EURO STOXX 50",
       "region": "Europa",
-      "current": 6058.18994140625,
+      "current": 6063.43017578125,
       "previous_close": 6019.45,
-      "change_percent": 0.64,
+      "change_percent": 0.73,
       "currency": "EUR",
-      "market_time": 1780064325
+      "market_time": 1780064670
     },
     {
       "id": "dax",
       "symbol": "^GDAXI",
       "label": "DAX",
       "region": "Njemačka",
-      "current": 25056.669921875,
+      "current": 25084.080078125,
       "previous_close": 24888.56,
-      "change_percent": 0.68,
+      "change_percent": 0.79,
       "currency": "EUR",
-      "market_time": 1780064330
+      "market_time": 1780064670
     },
     {
       "id": "ftse",
       "symbol": "^FTSE",
       "label": "FTSE 100",
       "region": "UK",
-      "current": 10420.919921875,
+      "current": 10428.8603515625,
       "previous_close": 10443.5,
-      "change_percent": -0.22,
+      "change_percent": -0.14,
       "currency": "GBP",
-      "market_time": 1780064330
+      "market_time": 1780064670
     },
     {
       "id": "nikkei",
