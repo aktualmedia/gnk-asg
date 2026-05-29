@@ -40,12 +40,14 @@
   function render() {
     const en = english();
     const news = newsData && newsData.news;
-    const newsFresh = Boolean(news && minutesOld(news.updated_at) <= NEWS_MAX_AGE_MINUTES && Array.isArray(news.errors) && news.errors.length === 0);
+    const newsSourceIssues = news && Array.isArray(news.errors) ? news.errors.length : 0;
+    const newsFresh = Boolean(news && news.status === 'ok' && Number(news.public_items) > 0 && minutesOld(news.updated_at) <= NEWS_MAX_AGE_MINUTES);
     const storedMarketFresh = Boolean(marketData && minutesOld(marketData.updated_at) <= MARKET_MAX_AGE_MINUTES && storedMarketComplete());
     const appMarketFresh = Boolean(liveMarket && liveMarket.ok && minutesOld(liveMarket.updated_at) <= MARKET_MAX_AGE_MINUTES);
     const marketFresh = appMarketFresh || storedMarketFresh;
     if (news && news.public_items != null) {
-      const newsText = en ? 'Business News: ' + news.public_items + ' items · Updated: ' + dateLabel(news.updated_at) : 'Poslovne vijesti: ' + news.public_items + ' stavki · Ažurirano: ' + dateLabel(news.updated_at);
+      const sourceNote = newsSourceIssues ? (en ? ' · ' + newsSourceIssues + ' source temporarily unavailable' : ' · ' + newsSourceIssues + ' izvor privremeno nedostupan') : '';
+      const newsText = en ? 'Business News: ' + news.public_items + ' items · Updated: ' + dateLabel(news.updated_at) + sourceNote : 'Poslovne vijesti: ' + news.public_items + ' stavki · Ažurirano: ' + dateLabel(news.updated_at) + sourceNote;
       setBadge('newsBadge', newsText, newsFresh ? 'ok' : 'warning');
     }
     if (appMarketFresh) {
@@ -63,7 +65,7 @@
     } else if (!newsFresh && !marketFresh) {
       setBadge('automationBadge', en ? 'News and market updates delayed' : 'Kasne vijesti i tržišni podatci', 'warning');
     } else if (!newsFresh) {
-      setBadge('automationBadge', en ? 'News recovery in progress' : 'Oporavak vijesti u tijeku', 'warning');
+      setBadge('automationBadge', en ? 'News publication delayed' : 'Kasni objava vijesti', 'warning');
     } else {
       setBadge('automationBadge', en ? 'Market refresh in progress' : 'Osvježavanje tržišta u tijeku', 'warning');
     }
