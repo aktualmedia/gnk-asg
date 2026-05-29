@@ -2,9 +2,10 @@ name: Autonomous Public Live Refresh
 
 # Jedini glavni automatski ciklus javnog portala:
 # - osvježava vijesti brzim otpornim engineom;
-# - zadržava najnovijih 500 stavki i trajno sprema stariji višak u arhivu;
-# - osvježava tržišne podatke;
-# - iz istog ciklusa odmah objavljuje javni GitHub Pages build.
+# - javno zadržava najnovijih 500 stavki;
+# - u aktivnoj arhivi zadržava najnovijih 400 pomaknutih starijih stavki;
+# - sve iznad 400 automatski uklanja iz aktivne arhive;
+# - osvježava tržišne podatke i odmah objavljuje javni GitHub Pages build.
 on:
   workflow_dispatch:
   push:
@@ -13,6 +14,7 @@ on:
     paths:
       - '.github/workflows/autonomous-public-live-refresh.yml'
       - 'scripts/update_feeds_resilient.py'
+      - 'scripts/trim_news_archive.py'
       - 'scripts/update_fast_market.py'
       - 'scripts/update_macro_data.py'
       - 'data/news_config_v2.json'
@@ -47,14 +49,16 @@ jobs:
         with:
           python-version: '3.12'
       - name: Validate required processors
-        run: python -m py_compile scripts/update_feeds_resilient.py scripts/update_fast_market.py
-      - name: Refresh public news list and permanent overflow archive
+        run: python -m py_compile scripts/update_feeds_resilient.py scripts/trim_news_archive.py scripts/update_fast_market.py
+      - name: Refresh latest 500 public news items and overflow candidates
         run: python scripts/update_feeds_resilient.py
+      - name: Retain only latest 400 older items in active archive
+        run: python scripts/trim_news_archive.py
       - name: Refresh core public market datasets
         run: python scripts/update_fast_market.py
       - name: Refresh optional cross-asset chart without blocking publication
         run: python scripts/update_macro_data.py || echo "Optional comparison chart unavailable; core publication continues."
-      - name: Validate refreshed outputs
+      - name: Validate refreshed outputs and publication limits
         run: |
           python - <<'PY'
           import json
@@ -63,14 +67,15 @@ jobs:
           archive = json.loads(Path('data/news_archive.json').read_text(encoding='utf-8'))
           news = json.loads(Path('data/update_status.json').read_text(encoding='utf-8'))['news']
           market = json.loads(Path('data/fast_market_status.json').read_text(encoding='utf-8'))
-          assert isinstance(public, list) and len(public) <= 500
-          assert isinstance(archive, list)
+          assert isinstance(public, list) and len(public) <= 500, f'Public list exceeds 500: {len(public)}'
+          assert isinstance(archive, list) and len(archive) <= 400, f'Archive exceeds 400: {len(archive)}'
           assert news.get('engine') == 'resilient_parallel_v4'
           assert news.get('public_items') == len(public)
           assert news.get('archive_items') == len(archive)
+          assert news.get('max_archive_items') == 400
           assert market.get('status') == 'ok'
           assert not market.get('errors')
-          print(f"Validated news={len(public)}, archive={len(archive)}, market={market.get('updated_at')}")
+          print(f"Validated public={len(public)}, archive={len(archive)}, market={market.get('updated_at')}")
           PY
       - name: Commit refreshed data safely
         shell: bash
