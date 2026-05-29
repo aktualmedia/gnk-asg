@@ -58,26 +58,23 @@ def check_structure(seo: bool = False) -> None:
         'assets/market-constellation.js','assets/gnk-asg-social-card.svg','assets/favicon.svg','assets/app-icon-192.svg',
         'assets/app-icon-512.svg','assets/admin-status-only.js','data/group_network.json','data/group_network_geo.json',
         'data/media_approved.json','data/media_monitor_status.json','data/stablecoins.json','data/exchange_compare.json',
-        'data/market_indices.json','data/fast_market_status.json','data/daily_market_brief.json','scripts/update_feeds_v2.py',
-        'scripts/generate_news_share_previews.py','scripts/update_macro_data.py','scripts/update_fast_market.py',
-        'scripts/generate_daily_market_brief.py','scripts/generate_social_preview.py','scripts/discover_corporate_media.py',
-        'scripts/generate_seo.py','scripts/validate_portal.py','.github/workflows/hourly-data-update.yml',
-        '.github/workflows/fast-market-update.yml','.github/workflows/daily-market-brief.yml',
-        '.github/workflows/daily-seo-refresh.yml','.github/workflows/media-monitor-status.yml',
-        '.github/workflows/manage-approved-media.yml','.github/workflows/portal-validation.yml','podijeli/bpp/index.html'
+        'data/market_indices.json','data/fast_market_status.json','data/daily_market_brief.json','scripts/news_publication.py',
+        'scripts/update_macro_data.py','scripts/update_fast_market.py','scripts/generate_daily_market_brief.py','scripts/generate_social_preview.py',
+        'scripts/discover_corporate_media.py','scripts/generate_seo.py','scripts/validate_portal.py',
+        '.github/workflows/autonomous-public-live-refresh.yml','.github/workflows/fast-market-update.yml',
+        '.github/workflows/daily-market-brief.yml','.github/workflows/daily-seo-refresh.yml',
+        '.github/workflows/media-monitor-status.yml','.github/workflows/manage-approved-media.yml',
+        '.github/workflows/portal-validation.yml','podijeli/bpp/index.html'
     ]
     for path in required: needed(path)
     if seo:
         for image in ['assets/gnk-asg-social-card.png','assets/share-bpp.png','assets/share-financije.png','assets/share-grupa.png','assets/share-trzista.png','assets/share-tehnologija.png','assets/share-vijesti.png','assets/share-teme.png','assets/share-dokumenti.png']:
             needed(image)
-    for path in ['data/corporate_review_queue.json','data/corporate_review_decisions.json','.github/workflows/queue-item-action.yml','.github/workflows/review-queue-refresh.yml','scripts/apply_review_decision.py','assets/admin-console.js','.github/workflows/hourly-news-update.yml']:
+    obsolete = ['data/corporate_review_queue.json','data/corporate_review_decisions.json','.github/workflows/queue-item-action.yml','.github/workflows/review-queue-refresh.yml','scripts/apply_review_decision.py','assets/admin-console.js','.github/workflows/hourly-news-update.yml','.github/workflows/hourly-data-update.yml','.github/workflows/news-feed-archive-refresh.yml','scripts/update_feeds_v2.py','scripts/update_feeds_resilient.py','scripts/trim_news_archive.py','scripts/generate_news_share_previews.py']
+    for path in obsolete:
         if (ROOT / path).exists(): fail('Neželjeni ili duplicirani javni artefakt: ' + path)
         else: ok('Nije prisutno: ' + path)
-    app = (ROOT/'assets/app.js').read_text(encoding='utf-8')
-    nav = (ROOT/'assets/portal-navigation.js').read_text(encoding='utf-8')
-    lang = (ROOT/'assets/language-routing.js').read_text(encoding='utf-8')
-    mobile = (ROOT/'assets/mobile-navigation.js').read_text(encoding='utf-8')
-    sharing = (ROOT/'assets/site-share.js').read_text(encoding='utf-8')
+    app = (ROOT/'assets/app.js').read_text(encoding='utf-8'); nav = (ROOT/'assets/portal-navigation.js').read_text(encoding='utf-8'); lang = (ROOT/'assets/language-routing.js').read_text(encoding='utf-8'); mobile = (ROOT/'assets/mobile-navigation.js').read_text(encoding='utf-8'); sharing = (ROOT/'assets/site-share.js').read_text(encoding='utf-8')
     for name in ['group-globe-3d.js','network-motion.js','portal-layout.js','group-google-map.js','group-location-weather.js','bpp-public-card.js','share-routing-fix.js']:
         ok('Aplikacija učitava: ' + name) if name in app else fail('Aplikacija ne učitava: ' + name)
     if "'/trzista/'" in nav and "'/en/markets/'" in nav and '/webmail/' in nav and '/gnk-asg/' not in nav: ok('Glavna navigacija koristi rute vlastite domene')
@@ -97,20 +94,18 @@ def check_structure(seo: bool = False) -> None:
     else: fail('Admin nema očekivani sigurnosni/noindex model')
     if 'info@gnk-asg.hr' in webmail and 'noindex, nofollow, noarchive' in webmail and 'Aktivacija u pripremi' in webmail: ok('Webmail ulaz je pripremljen bez javnog prihvata zaporke')
     else: fail('Webmail ulaz nema očekivani sigurnosni model')
-    workflows = {p:(ROOT/p).read_text(encoding='utf-8') for p in ['.github/workflows/hourly-data-update.yml','.github/workflows/fast-market-update.yml','.github/workflows/daily-market-brief.yml']}
-    hourly = workflows['.github/workflows/hourly-data-update.yml']; fast = workflows['.github/workflows/fast-market-update.yml']
-    if "cron: '19 * * * *'" in hourly and 'data/market.json' not in hourly and 'update_fast_market.py' not in hourly and 'update_feeds_v2.py' in hourly and 'generate_news_share_previews.py' in hourly and 'data/update_status.json' in hourly: ok('Satni workflow izolirano obrađuje vijesti i individualne share previewe')
-    else: fail('Satni workflow nije izoliran ili nema individualne share previewe')
+    news_flow = (ROOT/'.github/workflows/autonomous-public-live-refresh.yml').read_text(encoding='utf-8'); fast = (ROOT/'.github/workflows/fast-market-update.yml').read_text(encoding='utf-8'); daily = (ROOT/'.github/workflows/daily-market-brief.yml').read_text(encoding='utf-8')
+    if "cron: '7,22,37,52 * * * *'" in news_flow and 'scripts/news_publication.py' in news_flow and 'update_fast_market.py' not in news_flow and 'cancel-in-progress: false' in news_flow: ok('Jedini automatski workflow izolirano obrađuje i objavljuje vijesti')
+    else: fail('Automatski workflow vijesti nije jedinstven ili nije izoliran')
     if "cron: '2-57/5 * * * *'" in fast and 'fast_market_status.json' in fast and 'update_status.json' not in fast and 'update_fast_market.py' in fast: ok('Petominutni tržišni workflow izoliran je i izvršava se izvan pune minute')
     else: fail('Petominutni tržišni workflow nije pravilno izoliran ili raspored nije usklađen')
-    if 'generate_daily_market_brief.py' in workflows['.github/workflows/daily-market-brief.yml']: ok('Dnevni tržišni osvrt ima workflow')
+    if 'generate_daily_market_brief.py' in daily: ok('Dnevni tržišni osvrt ima workflow')
     else: fail('Nedostaje workflow dnevnog osvrta')
 
 def check_seo() -> None:
     tokens = ['<title>','name="description"','name="robots"','rel="canonical"','property="og:title"','property="og:description"','property="og:url"','property="og:image"','property="og:image:type" content="image/png"','name="twitter:card"','name="twitter:image"','type="application/ld+json"','SEO:BEGIN generated by scripts/generate_seo.py']
     for file, page_url in PAGES:
-        page = (ROOT/file).read_text(encoding='utf-8'); missing = [token for token in tokens if token not in page]
-        expected_image = PAGE_IMAGES.get(file, DEFAULT_IMAGE)
+        page = (ROOT/file).read_text(encoding='utf-8'); missing = [token for token in tokens if token not in page]; expected_image = PAGE_IMAGES.get(file, DEFAULT_IMAGE)
         if missing: fail(f'SEO paket nije potpun za {file}: {missing}')
         elif f'href="{page_url}"' not in page or f'content="{page_url}"' not in page or expected_image not in page: fail('Canonical ili PNG social preview nije usklađen za ' + file)
         else: ok('Potpuni SEO paket: ' + file)
@@ -134,8 +129,8 @@ def check_network() -> None:
 
 def check_data(post_fetch: bool) -> None:
     news = load(DATA/'news.json'); market = load(DATA/'market.json') or {}; btc = load(DATA/'btc_chart.json') or {}; macro = load(DATA/'macro_market.json') or {}; stable = load(DATA/'stablecoins.json') or {}; exchanges = load(DATA/'exchange_compare.json') or {}; indices = load(DATA/'market_indices.json') or {}; fast = load(DATA/'fast_market_status.json') or {}; brief = load(DATA/'daily_market_brief.json') or {}; monitor = load(DATA/'media_monitor_status.json') or {}; hourly = load(DATA/'update_status.json') or {}
-    if isinstance(news,list) and 0 < len(news) <= 1000: ok(f'Vijesti su dostupne: {len(news)} stavki')
-    else: fail('Vijesti nedostaju ili prelaze limit')
+    if isinstance(news,list) and 0 < len(news) <= 500: ok(f'Vijesti su dostupne: {len(news)} stavki')
+    else: fail('Vijesti nedostaju ili prelaze javni limit')
     if isinstance(news,list) and any(item.get('share_url') for item in news[:80]): ok('Vijesti sadrže individualne share URL-ove')
     elif post_fetch: fail('Vijesti nemaju individualne share URL-ove')
     if len(market.get('coins',[])) >= 8: ok(f'Digital Assets sadrži {len(market.get("coins",[]))} valuta')
@@ -153,8 +148,9 @@ def check_data(post_fetch: bool) -> None:
         else: fail('Usporedba indeksa nema dovoljno tržišta')
         if not fast.get('errors') and fast.get('digital_assets',{}).get('coins',0) >= 8 and fast.get('cadence') == 'scheduled every five minutes': ok('Petominutni status potvrđuje tržišni dohvat')
         else: fail('Petominutni tržišni status sadrži pogrešku')
-        if 'market' not in hourly and hourly.get('news',{}).get('public_items',0) > 0: ok('Satni status potvrđuje odvojeni dohvat vijesti')
-        else: fail('Satni status nije odvojen od marketa ili vijesti nisu učitane')
+        news_status = hourly.get('news', {})
+        if 'market' not in hourly and news_status.get('engine') == 'single_publication_engine_v1' and news_status.get('public_items',0) > 0 and news_status.get('archive_items',0) <= 400: ok('Status potvrđuje jedinstveni odvojeni proces vijesti')
+        else: fail('Status vijesti nije iz novog jedinstvenog procesa')
         if brief.get('status') == 'published' and len(brief.get('summary',[])) >= 3 and len(brief.get('summary_en',[])) >= 3: ok('Dnevni stručni osvrt je objavljen dvojezično')
         else: fail('Dnevni stručni osvrt nije potpuno generiran')
         if not macro.get('errors'): ok('Makro tržišni dohvat nema pogrešaka')
