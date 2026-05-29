@@ -133,12 +133,39 @@ jobs:
             --exclude '_site/' \
             --exclude '*.py' \
             ./ _site/
+          python - <<'PY'
+          from pathlib import Path
+          replacements = {
+              Path('_site/index.html'): [
+                  ('Stariji višak ostaje spremljen u arhivi.', 'Aktivna arhiva zadržava do sljedećih 400 starijih stavki.'),
+                  ('Najnovijih 500 javnih stavki osvježava se automatski, a stariji višak ostaje spremljen u arhivi.', 'Najnovijih 500 javnih stavki osvježava se automatski, a aktivna arhiva zadržava do 400 starijih stavki.'),
+              ],
+              Path('_site/en/index.html'): [
+                  ('Older overflow remains preserved in archive storage.', 'The active archive retains up to the next 400 older items.'),
+                  ('The newest 500 public items refresh automatically; older overflow remains stored in the archive.', 'The newest 500 public items refresh automatically; the active archive retains up to 400 older items.'),
+              ],
+          }
+          for path, pairs in replacements.items():
+              if not path.exists():
+                  raise SystemExit(f'Missing public start page: {path}')
+              content = path.read_text(encoding='utf-8')
+              for old, new in pairs:
+                  content = content.replace(old, new)
+              content = content.replace('assets/app.js?v=20260528-cross-asset-chart-fixed07', 'assets/app.js?v=20260529-publication-stable01')
+              path.write_text(content, encoding='utf-8')
+          sw = Path('_site/sw.js')
+          if sw.exists():
+              content = sw.read_text(encoding='utf-8').replace('gnk-asg-live-v52-seo-profile-discreet', 'gnk-asg-live-v53-publication-stable')
+              sw.write_text(content, encoding='utf-8')
+          PY
           test -f _site/index.html
           test -f _site/CNAME
           test -f _site/.nojekyll
           test -f _site/data/news.json
           test -f _site/data/news_archive.json
           test -f _site/data/update_status.json
+          grep -q 'Aktivna arhiva zadržava do sljedećih 400 starijih stavki' _site/index.html
+          grep -q 'single_publication_engine_v1' _site/data/update_status.json
 
       - name: Upload public portal artifact
         uses: actions/upload-pages-artifact@v3
