@@ -3,6 +3,7 @@ name: Portal Live Data Refresh
 # Samostalan tržišni proces portala.
 # Vijesti i arhivu vodi isključivo .github/workflows/news-feed-archive-refresh.yml.
 # Osnovni tržišni status ne smije pasti zbog privremeno nedostupnog usporednog grafikona.
+# Pokrenuti ciklus ne prekida se prije objave ažuriranog tržišnog statusa.
 on:
   workflow_dispatch:
   push:
@@ -19,8 +20,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: portal-market-live-data-refresh
-  cancel-in-progress: true
+  group: portal-market-live-data-refresh-v2
+  cancel-in-progress: false
 
 jobs:
   refresh-public-market-data:

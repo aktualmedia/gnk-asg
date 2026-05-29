@@ -1,10 +1,9 @@
 name: News Feed and Archive Refresh
 
-# Kritični i samostalni proces za vijesti portala.
+# Jedini planirani proces za vijesti portala.
 # data/news.json javno prikazuje najnovijih 500 vijesti.
 # data/news_archive.json trajno sprema sav stariji jedinstveni višak.
-# Nije vezan uz tržišta, grafikone, SEO niti medijski monitoring.
-# Ponovna provjera aktivirana 29.05.2026. nakon oporavka procesa.
+# Proces je odvojen od tržišta, grafikona, SEO-a i medijskog monitoringa.
 on:
   workflow_dispatch:
   push:
@@ -23,14 +22,14 @@ permissions:
   contents: write
 
 concurrency:
-  group: news-feed-archive-refresh
-  cancel-in-progress: true
+  group: news-feed-archive-refresh-v2
+  cancel-in-progress: false
 
 jobs:
   refresh-news-and-archive:
     name: Publish latest 500 news items and preserve overflow archive
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 14
     steps:
       - name: Checkout current main branch
         uses: actions/checkout@v4
