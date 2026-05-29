@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v52-seo-profile-discreet';
+const CACHE_NAME = 'gnk-asg-live-v53-publication-stable';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './nermin-sefic/', './nermin-sefic/index.html', './en/nermin-sefic/', './en/nermin-sefic/index.html',
