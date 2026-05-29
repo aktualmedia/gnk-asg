@@ -1,0 +1,128 @@
+name: Autonomous Public Live Refresh
+
+# Jedini glavni automatski ciklus javnog portala:
+# - osvježava vijesti brzim otpornim engineom;
+# - zadržava najnovijih 500 stavki i trajno sprema stariji višak u arhivu;
+# - osvježava tržišne podatke;
+# - iz istog ciklusa odmah objavljuje javni GitHub Pages build.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/autonomous-public-live-refresh.yml'
+      - 'scripts/update_feeds_resilient.py'
+      - 'scripts/update_fast_market.py'
+      - 'scripts/update_macro_data.py'
+      - 'data/news_config_v2.json'
+      - 'data/blocked_news.json'
+  schedule:
+    - cron: '6,16,26,36,46,56 * * * *'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: autonomous-public-live-refresh-v1
+  cancel-in-progress: true
+
+jobs:
+  refresh-commit-and-deploy:
+    name: Refresh data and publish current public portal
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout current main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate required processors
+        run: python -m py_compile scripts/update_feeds_resilient.py scripts/update_fast_market.py
+      - name: Refresh public news list and permanent overflow archive
+        run: python scripts/update_feeds_resilient.py
+      - name: Refresh core public market datasets
+        run: python scripts/update_fast_market.py
+      - name: Refresh optional cross-asset chart without blocking publication
+        run: python scripts/update_macro_data.py || echo "Optional comparison chart unavailable; core publication continues."
+      - name: Validate refreshed outputs
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          public = json.loads(Path('data/news.json').read_text(encoding='utf-8'))
+          archive = json.loads(Path('data/news_archive.json').read_text(encoding='utf-8'))
+          news = json.loads(Path('data/update_status.json').read_text(encoding='utf-8'))['news']
+          market = json.loads(Path('data/fast_market_status.json').read_text(encoding='utf-8'))
+          assert isinstance(public, list) and len(public) <= 500
+          assert isinstance(archive, list)
+          assert news.get('engine') == 'resilient_parallel_v4'
+          assert news.get('public_items') == len(public)
+          assert news.get('archive_items') == len(archive)
+          assert market.get('status') == 'ok'
+          assert not market.get('errors')
+          print(f"Validated news={len(public)}, archive={len(archive)}, market={market.get('updated_at')}")
+          PY
+      - name: Commit refreshed data safely
+        shell: bash
+        run: |
+          set -e
+          git config user.name "gnk-asg-autonomous-bot"
+          git config user.email "actions@users.noreply.github.com"
+          rm -rf /tmp/gnk-autonomous-output && mkdir -p /tmp/gnk-autonomous-output
+          cp data/news.json data/news_archive.json data/update_status.json /tmp/gnk-autonomous-output/
+          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-autonomous-output/
+          cp data/macro_market.json /tmp/gnk-autonomous-output/ 2>/dev/null || true
+          publish_data() {
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/gnk-autonomous-output/*.json data/
+            git add data/news.json data/news_archive.json data/update_status.json data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+            git add data/macro_market.json 2>/dev/null || true
+            if git diff --cached --quiet; then
+              echo "No data differences to commit; continuing to public deployment."
+              return 0
+            fi
+            git commit -m "Automated autonomous public live refresh"
+            git push origin HEAD:main
+          }
+          publish_data || (sleep 5 && publish_data) || (sleep 10 && publish_data)
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Prepare the same refreshed public build for deployment
+        run: |
+          set -e
+          rm -rf _site
+          mkdir -p _site
+          rsync -a --delete \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'scripts/' \
+            --exclude '_site/' \
+            --exclude '*.py' \
+            ./ _site/
+          test -f _site/index.html
+          test -f _site/CNAME
+          test -f _site/.nojekyll
+          test -f _site/data/news.json
+          test -f _site/data/news_archive.json
+          test -f _site/data/update_status.json
+          test -f _site/data/fast_market_status.json
+      - name: Upload public portal artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy refreshed public portal
+        id: deployment
+        uses: actions/deploy-pages@v4
