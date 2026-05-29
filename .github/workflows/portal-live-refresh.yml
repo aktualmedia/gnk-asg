@@ -2,7 +2,7 @@ name: Portal Live Data Refresh
 
 # Samostalan tržišni proces portala.
 # Vijesti i arhivu vodi isključivo .github/workflows/news-feed-archive-refresh.yml.
-# Ova izolacija sprječava da kvar tržišta, grafikona ili objave blokira vijesti.
+# Osnovni tržišni status ne smije pasti zbog privremeno nedostupnog usporednog grafikona.
 on:
   workflow_dispatch:
   push:
@@ -13,20 +13,20 @@ on:
       - 'scripts/update_fast_market.py'
       - 'scripts/update_macro_data.py'
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '4,9,14,19,24,29,34,39,44,49,54,59 * * * *'
 
 permissions:
   contents: write
 
 concurrency:
   group: portal-market-live-data-refresh
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   refresh-public-market-data:
     name: Refresh and publish public market data
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 12
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
@@ -38,12 +38,14 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate market processors
-        run: python -m py_compile scripts/update_fast_market.py scripts/update_macro_data.py
-      - name: Refresh fast market datasets every cycle
+      - name: Validate required market processor
+        run: python -m py_compile scripts/update_fast_market.py
+      - name: Validate optional cross-asset processor without blocking live market status
+        run: python -m py_compile scripts/update_macro_data.py || echo "Optional cross-asset processor validation failed; base market refresh continues."
+      - name: Refresh required fast market datasets every cycle
         run: python scripts/update_fast_market.py
-      - name: Refresh cross-asset Bitcoin comparison graph every cycle
-        run: python scripts/update_macro_data.py
+      - name: Refresh optional Bitcoin comparison graph when external data is available
+        run: python scripts/update_macro_data.py || echo "Cross-asset comparison temporarily unavailable; publishing base market status regardless."
       - name: Publish generated market data without touching news archive
         shell: bash
         run: |
@@ -52,12 +54,14 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           rm -rf /tmp/gnk-market-output
           mkdir -p /tmp/gnk-market-output
-          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json /tmp/gnk-market-output/
+          cp data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json /tmp/gnk-market-output/
+          cp data/macro_market.json /tmp/gnk-market-output/ 2>/dev/null || true
           publish_market() {
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/gnk-market-output/*.json data/
-            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json data/macro_market.json
+            git add data/market.json data/stablecoins.json data/exchange_compare.json data/market_indices.json data/btc_chart.json data/fast_market_status.json
+            git add data/macro_market.json 2>/dev/null || true
             if git diff --cached --quiet; then
               echo "No new market changes to publish."
               return 0
