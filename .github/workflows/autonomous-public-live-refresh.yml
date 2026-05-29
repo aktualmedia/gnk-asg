@@ -3,6 +3,8 @@ name: Automated News Publication
 # Jedini redovni automatski proces javnih vijesti portala.
 # Jedna skripta obavlja dohvat, deduplikaciju, arhivu, share prikaze i status.
 # Tržišni podaci nisu dio ovog ciklusa i ne mogu zaustaviti objavu vijesti.
+# Obrada vijesti i Pages deployment imaju odvojene redove izvođenja:
+# zastoj objave stranice ne smije blokirati sljedeći ciklus novih vijesti.
 
 on:
   workflow_dispatch:
@@ -27,15 +29,14 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: automated-news-publication-stable-v1
-  cancel-in-progress: false
-
 jobs:
   process-and-commit-news:
     name: Process and commit public news
     runs-on: ubuntu-latest
     timeout-minutes: 12
+    concurrency:
+      group: automated-news-processing-stable-v2
+      cancel-in-progress: false
     steps:
       - name: Checkout current main branch
         uses: actions/checkout@v4
@@ -107,6 +108,9 @@ jobs:
     needs: process-and-commit-news
     runs-on: ubuntu-latest
     timeout-minutes: 8
+    concurrency:
+      group: portal-pages-news-deployment-v2
+      cancel-in-progress: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -151,11 +155,11 @@ jobs:
               content = path.read_text(encoding='utf-8')
               for old, new in pairs:
                   content = content.replace(old, new)
-              content = content.replace('assets/app.js?v=20260528-cross-asset-chart-fixed07', 'assets/app.js?v=20260529-publication-stable01')
+              content = content.replace('assets/app.js?v=20260528-cross-asset-chart-fixed07', 'assets/app.js?v=20260529-publication-stable02')
               path.write_text(content, encoding='utf-8')
           sw = Path('_site/sw.js')
           if sw.exists():
-              content = sw.read_text(encoding='utf-8').replace('gnk-asg-live-v52-seo-profile-discreet', 'gnk-asg-live-v53-publication-stable')
+              content = sw.read_text(encoding='utf-8').replace('gnk-asg-live-v52-seo-profile-discreet', 'gnk-asg-live-v54-news-processing-unblocked')
               sw.write_text(content, encoding='utf-8')
           PY
           test -f _site/index.html
