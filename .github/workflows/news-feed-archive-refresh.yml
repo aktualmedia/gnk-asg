@@ -1,22 +1,9 @@
-name: News Feed and Archive Refresh
+name: Manual News Feed and Archive Refresh
 
-# Jedini glavni planirani proces za vijesti portala.
-# data/news.json javno prikazuje najnovijih 500 vijesti.
-# data/news_archive.json trajno sprema sav stariji jedinstveni višak.
-# Obrada je paralelna i otporna na nedostupne pojedinačne izvore.
+# Ručna rezerva za dijagnostiku ili izvanredno osvježavanje.
+# Redovito automatsko osvježavanje vodi isključivo autonomous-public-live-refresh.yml.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/news-feed-archive-refresh.yml'
-      - 'scripts/update_feeds_resilient.py'
-      - 'data/news_config_v2.json'
-      - 'data/media_removed.json'
-      - 'data/blocked_news.json'
-  schedule:
-    - cron: '3,13,23,33,43,53 * * * *'
 
 permissions:
   contents: write
@@ -27,7 +14,7 @@ concurrency:
 
 jobs:
   refresh-news-and-archive:
-    name: Publish latest 500 news items and preserve overflow archive
+    name: Manually publish latest 500 news items and preserve overflow archive
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -51,33 +38,23 @@ jobs:
           public = json.loads(Path('data/news.json').read_text(encoding='utf-8'))
           archive = json.loads(Path('data/news_archive.json').read_text(encoding='utf-8'))
           status = json.loads(Path('data/update_status.json').read_text(encoding='utf-8')).get('news', {})
-          assert isinstance(public, list) and len(public) <= 500, f'Public news count invalid: {len(public)}'
-          assert isinstance(archive, list), 'Archive output is not a list.'
-          assert status.get('engine') == 'resilient_parallel_v4', 'Resilient engine was not used.'
-          assert status.get('public_items') == len(public), 'news.json count does not match status.'
-          assert status.get('archive_items') == len(archive), 'news_archive.json count does not match status.'
-          assert status.get('storage_policy') == 'public_latest_500_overflow_preserved_in_archive', 'Archive policy missing.'
-          print(f'Validated public={len(public)} archive={len(archive)} engine={status.get("engine")}')
+          assert isinstance(public, list) and len(public) <= 500
+          assert isinstance(archive, list)
+          assert status.get('engine') == 'resilient_parallel_v4'
+          assert status.get('public_items') == len(public)
+          assert status.get('archive_items') == len(archive)
+          print(f'Validated public={len(public)} archive={len(archive)}')
           PY
-      - name: Publish refreshed news and archive without overwriting newer files
-        shell: bash
+      - name: Publish refreshed news and archive
         run: |
           set -e
           git config user.name "gnk-asg-news-bot"
           git config user.email "actions@users.noreply.github.com"
-          rm -rf /tmp/gnk-news-output
-          mkdir -p /tmp/gnk-news-output
-          cp data/news.json data/news_archive.json data/update_status.json /tmp/gnk-news-output/
-          publish_news() {
-            git fetch origin main
-            git reset --hard origin/main
-            cp /tmp/gnk-news-output/*.json data/
-            git add data/news.json data/news_archive.json data/update_status.json
-            if git diff --cached --quiet; then
-              echo "No generated news changes to publish."
-              return 0
-            fi
-            git commit -m "Automated resilient news feed and archive refresh"
-            git push origin HEAD:main
-          }
-          publish_news || (sleep 5 && publish_news) || (sleep 10 && publish_news)
+          git add data/news.json data/news_archive.json data/update_status.json
+          if git diff --cached --quiet; then
+            echo "No generated news changes to publish."
+            exit 0
+          fi
+          git commit -m "Manual resilient news feed and archive refresh"
+          git pull --rebase origin main
+          git push origin HEAD:main
