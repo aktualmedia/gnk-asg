@@ -35,8 +35,8 @@
     const publicItems = news && Number.isFinite(Number(news.public_items)) ? Number(news.public_items) : 500;
     const archiveItems = news && Number.isFinite(Number(news.archive_items)) ? Number(news.archive_items) : 0;
     notice.textContent = isEnglish()
-      ? 'Public window: ' + publicItems + ' newest items · Preserved archive overflow: ' + archiveItems + ' items.'
-      : 'Javni prozor: ' + publicItems + ' najnovijih stavki · Spremljena arhiva viška: ' + archiveItems + ' stavki.';
+      ? 'Public window: ' + publicItems + ' newest items · Active archive: ' + archiveItems + ' older items (maximum 400).'
+      : 'Javni prozor: ' + publicItems + ' najnovijih stavki · Aktivna arhiva: ' + archiveItems + ' starijih stavki (najviše 400).';
   }
   function refresh() {
     reviseSources();
