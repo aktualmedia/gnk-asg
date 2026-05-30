@@ -1,11 +1,11 @@
-const CACHE_NAME = 'gnk-asg-live-v53-publication-stable';
+const CACHE_NAME = 'gnk-asg-live-v54-hourly-news-cache-fix';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './nermin-sefic/', './nermin-sefic/index.html', './en/nermin-sefic/', './en/nermin-sefic/index.html',
   './intelligence-desk/', './instalacija/', './financije/', './registri/',
   './trzista/', './trzista/index.html', './en/markets/', './en/markets/index.html',
   './en/finance/', './en/finance/index.html', './en/technology/', './en/technology/index.html',
-  './en/intelligence-desk/', './en/intelligence-desk/index.html', './en/registries/', './en/registries/index.html',
+  './en/intelligence-desk/', './en/registries/', './en/registries/index.html',
   './autorske-objave/', './podijeli/portal/', './podijeli/financije/', './podijeli/grupa/', './podijeli/trzista/', './podijeli/tehnologija/', './podijeli/vijesti/', './podijeli/dokumenti/', './podijeli/bpp/',
   './assets/style.css', './assets/advanced.css', './assets/header-premium.css', './assets/seo-profile-link.css',
   './assets/group-contrast.css', './assets/group-network.css', './assets/network-motion.css', './assets/group-globe-3d.css',
@@ -27,10 +27,8 @@ const STATIC_ASSETS = [
   './assets/group-clarity.js', './assets/public-sources.js', './assets/site-share.js', './assets/content-share.js', './assets/share-routing-fix.js', './assets/hourly-data-disclosure.js', './assets/portal-layout.js', './assets/public-tools.js',
   './assets/market-centre-data.js', './assets/market-constellation.js', './data/desk_public_config.json',
   './data/group_network.json', './data/group_network_geo.json', './data/group_location_facts.json',
-  './data/public_sources.json', './data/update_status.json', './data/open_data.json', './data/macro_market.json', './data/stock_exchanges.json', './data/asg_gold_asset.json',
-  './data/news.json', './data/news_archive.json', './data/media_approved.json', './data/media_monitor_status.json', './data/market.json', './data/btc_chart.json',
-  './data/stablecoins.json', './data/exchange_compare.json', './data/market_indices.json', './data/fast_market_status.json',
-  './data/daily_market_brief.json', './manifest.webmanifest', './robots.txt', './sitemap.xml', './google46686328e30c759f.html'
+  './data/public_sources.json', './data/open_data.json', './data/macro_market.json', './data/stock_exchanges.json', './data/asg_gold_asset.json',
+  './data/media_approved.json', './data/media_monitor_status.json', './data/daily_market_brief.json', './manifest.webmanifest', './robots.txt', './sitemap.xml', './google46686328e30c759f.html'
 ];
 self.addEventListener('install', event => {
   const requests = STATIC_ASSETS.map(asset => new Request(asset, { cache: 'reload' }));
@@ -49,6 +47,12 @@ self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   const sameOrigin = new URL(event.request.url).origin === self.location.origin;
   if (!sameOrigin) return;
+  const path = new URL(event.request.url).pathname;
+  const dynamicData = path.startsWith('/data/') || path === '/sw.js' || path.endsWith('/assets/status.js') || path.endsWith('/assets/app.js');
+  if (dynamicData) {
+    event.respondWith(fetch(event.request, { cache: 'no-store' }).catch(() => caches.match(event.request)));
+    return;
+  }
   event.respondWith(
     fetch(event.request, { cache: 'no-store' }).then(response => {
       if (response && response.ok) {
