@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260530-hourly-news-cache-fix01';
+  var VERSION = '20260530-insights-menu01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -97,6 +97,19 @@ document.addEventListener('DOMContentLoaded', function () {
     return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   }
 
+  function ensureInsightsNavigation() {
+    var menu = document.getElementById('navLinks');
+    if (!menu || menu.querySelector('a[href="/en/insights/"]')) return;
+    var link = document.createElement('a');
+    link.href = '/en/insights/';
+    link.textContent = 'Insights';
+    var desk = Array.prototype.find.call(menu.querySelectorAll('a'), function (item) {
+      return /Intelligence Desk/i.test(item.textContent || '');
+    });
+    if (desk) menu.insertBefore(link, desk);
+    else menu.appendChild(link);
+  }
+
   function alignNewsAutomationText() {
     var head = document.querySelector('#news .section-head');
     var loading = document.querySelector('#newsGrid .news-card p');
@@ -122,10 +135,11 @@ document.addEventListener('DOMContentLoaded', function () {
       Array.prototype.forEach.call(card.querySelectorAll('a:not(.wa):not(.in):not(.mail)'), function (link) { link.remove(); });
     });
   }
+  ensureInsightsNavigation();
   alignNewsAutomationText();
   window.addEventListener('gnk-language-change', alignNewsAutomationText);
   removeCorporateInformationExternalAction(document);
-  new MutationObserver(function () { removeCorporateInformationExternalAction(document); }).observe(document.body, { childList: true, subtree: true });
+  new MutationObserver(function () { removeCorporateInformationExternalAction(document); ensureInsightsNavigation(); }).observe(document.body, { childList: true, subtree: true });
 
   var menuButton = document.getElementById('menuToggle');
   var menu = document.getElementById('navLinks');
