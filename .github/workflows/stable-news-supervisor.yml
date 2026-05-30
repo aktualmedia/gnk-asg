@@ -1,5 +1,6 @@
 name: Stable News Supervisor
 
+# Test trigger: 2026-05-30-automation-test-001
 on:
   workflow_dispatch:
   push:
