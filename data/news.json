@@ -1,5 +1,53 @@
 [
   {
+    "id": "28c7d84b16d8206903",
+    "title": "Ameriku je dosad napad na Iran stajao više od 24 milijarde eura",
+    "url": "https://www.poslovni.hr/svijet/ameriku-je-dosad-napad-na-iran-stajao-vise-od-24-milijarde-eura-4539764",
+    "summary": "Trump je poručio da pregovori neće završiti dok se ne ispune svi uvjeti SAD-a.",
+    "source": "Poslovni dnevnik",
+    "region": "Poslovni dnevnik",
+    "group": "hrvatska",
+    "category": "economy",
+    "published_at": "2026-05-30T18:00:00+00:00",
+    "share_url": "/podijeli/vijest/28c7d84b16d8206903/"
+  },
+  {
+    "id": "55ffa748e24af769d9",
+    "title": "SEC sues Texas man over $12.3 million alleged crypto scheme built on fake AI trading bots",
+    "url": "https://www.coindesk.com/business/2026/05/30/sec-sues-texas-man-over-usd12-3-million-alleged-crypto-scheme-built-on-fake-ai-trading-bots",
+    "summary": "Fuller allegedly diverted $6.2 million for personal use and $5.5M for Ponzi-like payments; only 3% of funds went to crypto trading.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T17:27:34+00:00",
+    "share_url": "/podijeli/vijest/55ffa748e24af769d9/"
+  },
+  {
+    "id": "8b42f91c6c6dfc58c3",
+    "title": "Crypto Prices Today: Bitcoin Holds $73K Amid Institutional De-Risking While Altcoins Struggle",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPaFBIS0t3bE9TaTFjd2diTGk4MTVVVnQ5RjJkSlZtSTlFZTh4aUFTLWZIUXFZMjk1dWtnVlFyd3daUHRBbGRiRnJ1SERFV3lhWm9sdFFjaTV6NXNZM3ZUQ0VPVjE1TWVKZEpBZUlha1ZkVjB0dXE0NmtuMXo5Z1dySTRXM2h5SW9NbnlOYTVRRQ?oc=5",
+    "summary": "Crypto Prices Today: Bitcoin Holds $73K Amid Institutional De-Risking While Altcoins Struggle CryptoTicker",
+    "source": "CryptoTicker",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T17:16:18+00:00",
+    "share_url": "/podijeli/vijest/8b42f91c6c6dfc58c3/"
+  },
+  {
+    "id": "075ebda87ad1d52f73",
+    "title": "Institutional Investors Reduce Bitcoin ETF Holdings",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOT2hyeEMwV2ZkYVpiX254VDM3aHFHQlgzR0lzQi1mdFNfaTNtWFZNLWlMb09sTU9nRmFOcDVocjNiODliUGJGSWlnNTlIdXB0S1RJQklsTzZLUmpLM2Vpd0NKYmJoZVAwWHlQVi04T01vQk00RTd6YjFjZXJUSzVZd2FYSFctNG94Y2hRejlrbw?oc=5",
+    "summary": "Institutional Investors Reduce Bitcoin ETF Holdings Intellectia AI",
+    "source": "Intellectia AI",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T17:16:03+00:00",
+    "share_url": "/podijeli/vijest/075ebda87ad1d52f73/"
+  },
+  {
     "id": "6ae5c83840d3867159",
     "title": "Snap alums unveil Ghost Angels fund",
     "url": "https://techcrunch.com/2026/05/30/snap-alums-unveil-ghost-angels-fund/",
@@ -84,6 +132,18 @@
     "share_url": "/podijeli/vijest/a648c8c597d2ef975a/"
   },
   {
+    "id": "f268a133c660f23bb0",
+    "title": "XRP news: Ripple-linked ETFs drew inflows last week as bitcoin, ether funds lost $2 billion",
+    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPZFp3U1pTTjhSODFnb09tbTFac3RKVGNoMG9HUkMycUE4Y0NPZW94aFZZVmpKSE1NQlAtM2d3cXZVYUVOQUF1eW1hZGJxZXdBRWZOYk85TkpnNm9BMXMyU3Z0MUVudW1ZdkNvUDZXNElLTEpIejRkQ1N2eVdzaGpTbWF4Q1FkcnVuRDZadUduQ3MyOHBMMkZRbEtncDd5Mjg0OFVCTg?oc=5",
+    "summary": "XRP news: Ripple-linked ETFs drew inflows last week as bitcoin, ether funds lost $2 billion CoinDesk",
+    "source": "CoinDesk",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T15:12:58+00:00",
+    "share_url": "/podijeli/vijest/f268a133c660f23bb0/"
+  },
+  {
     "id": "931bd7a5ad053b0040",
     "title": "Wall Street’s trillion-dollar dilemma: Why AI-powered hackers are keeping big banks off the blockchain",
     "url": "https://www.coindesk.com/business/2026/05/28/defi-vulnerabilities-are-tradfi-biggest-blocker-as-protocols-hit-by-near-daily-exploits-certik",
@@ -94,18 +154,6 @@
     "category": "digital-assets",
     "published_at": "2026-05-30T15:00:00+00:00",
     "share_url": "/podijeli/vijest/931bd7a5ad053b0040/"
-  },
-  {
-    "id": "f268a133c660f23bb0",
-    "title": "XRP news: Ripple-linked ETFs drew inflows last week as bitcoin, ether funds lost $2 billion",
-    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPZFp3U1pTTjhSODFnb09tbTFac3RKVGNoMG9HUkMycUE4Y0NPZW94aFZZVmpKSE1NQlAtM2d3cXZVYUVOQUF1eW1hZGJxZXdBRWZOYk85TkpnNm9BMXMyU3Z0MUVudW1ZdkNvUDZXNElLTEpIejRkQ1N2eVdzaGpTbWF4Q1FkcnVuRDZadUduQ3MyOHBMMkZRbEtncDd5Mjg0OFVCTg?oc=5",
-    "summary": "XRP news: Ripple-linked ETFs drew inflows last week as bitcoin, ether funds lost $2 billion CoinDesk",
-    "source": "CoinDesk",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-30T15:00:00+00:00",
-    "share_url": "/podijeli/vijest/f268a133c660f23bb0/"
   },
   {
     "id": "de3b7ddf672d57aeb8",
@@ -216,30 +264,6 @@
     "share_url": "/podijeli/vijest/ee48232a6f21108202/"
   },
   {
-    "id": "9cccbcabbd2d5d96af",
-    "title": "When the market is bad, we build: Inside Binance’s bold 2030 master plan",
-    "url": "https://www.coindesk.com/business/2026/05/26/when-the-market-is-bad-we-build-inside-binance-s-bold-2030-master-plan",
-    "summary": "Established crypto firms will merge with traditional finance, but neither Wall Street bankers nor corporate giants will take over the crypto industry, said Binance’s Head of VIP and Institutional, Catherine Chen.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-30T13:00:00+00:00",
-    "share_url": "/podijeli/vijest/9cccbcabbd2d5d96af/"
-  },
-  {
-    "id": "051a9ccb3e9560516e",
-    "title": "Hyperliquid could become a ‘financial services juggernaut’ as DeFi expands, says Grayscale",
-    "url": "https://www.coindesk.com/business/2026/05/30/hyperliquid-could-become-a-financial-services-juggernaut-as-defi-expands-says-grayscale",
-    "summary": "The digital asset manager says Hyperliquid is emerging as a blockchain-based financial infrastructure platform with the potential to expand beyond crypto trading and challenge parts of traditional derivatives and exchange markets.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-30T13:00:00+00:00",
-    "share_url": "/podijeli/vijest/051a9ccb3e9560516e/"
-  },
-  {
     "id": "cd6e4a3743bdade59e",
     "title": "As the browser wars heat up, here are the hottest alternatives to Chrome and Safari in 2026",
     "url": "https://techcrunch.com/2026/05/30/as-the-browser-wars-heat-up-here-are-the-hottest-alternatives-to-chrome-and-safari-in-2026/",
@@ -274,6 +298,30 @@
     "category": "technology",
     "published_at": "2026-05-30T13:00:00+00:00",
     "share_url": "/podijeli/vijest/a36286313ae6ce1c23/"
+  },
+  {
+    "id": "9cccbcabbd2d5d96af",
+    "title": "When the market is bad, we build: Inside Binance’s bold 2030 master plan",
+    "url": "https://www.coindesk.com/business/2026/05/26/when-the-market-is-bad-we-build-inside-binance-s-bold-2030-master-plan",
+    "summary": "Established crypto firms will merge with traditional finance, but neither Wall Street bankers nor corporate giants will take over the crypto industry, said Binance’s Head of VIP and Institutional, Catherine Chen.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T13:00:00+00:00",
+    "share_url": "/podijeli/vijest/9cccbcabbd2d5d96af/"
+  },
+  {
+    "id": "051a9ccb3e9560516e",
+    "title": "Hyperliquid could become a ‘financial services juggernaut’ as DeFi expands, says Grayscale",
+    "url": "https://www.coindesk.com/business/2026/05/30/hyperliquid-could-become-a-financial-services-juggernaut-as-defi-expands-says-grayscale",
+    "summary": "The digital asset manager says Hyperliquid is emerging as a blockchain-based financial infrastructure platform with the potential to expand beyond crypto trading and challenge parts of traditional derivatives and exchange markets.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T13:00:00+00:00",
+    "share_url": "/podijeli/vijest/051a9ccb3e9560516e/"
   },
   {
     "id": "5a13a46e80bd79599e",
@@ -468,6 +516,18 @@
     "share_url": "/podijeli/vijest/dbcb872f4a67f67e5e/"
   },
   {
+    "id": "70f4255407670757c7",
+    "title": "CFTC Says Crypto Is Better Suited for 24/7 Trading Than Traditional Markets",
+    "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5YbnFIUnY1Y3FMM0RPcUNlcXpsX3ZsSC1oYVhQckpfbUFoNVdlRERsaWVRUDZNa0REUXhNUzR5dHdWbVhkSXBCRw?oc=5",
+    "summary": "CFTC Says Crypto Is Better Suited for 24/7 Trading Than Traditional Markets MEXC",
+    "source": "MEXC",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T09:59:50+00:00",
+    "share_url": "/podijeli/vijest/70f4255407670757c7/"
+  },
+  {
     "id": "d7cd86bd05b7fd2a66",
     "title": "Kako umjetna inteligencija mijenja svijet knjiga i publikacija… Problem je ozbiljan, posljedice opasne, no ima i benefita",
     "url": "https://www.poslovni.hr/sci-tech/kako-umjetna-inteligencija-mijenja-svijet-knjiga-i-publikacija-problem-je-ozbiljan-posljedice-opasne-no-ima-i-benefita-4538762",
@@ -478,6 +538,18 @@
     "category": "economy",
     "published_at": "2026-05-30T09:59:00+00:00",
     "share_url": "/podijeli/vijest/d7cd86bd05b7fd2a66/"
+  },
+  {
+    "id": "0b57589949fff5a1d6",
+    "title": "Bit Digital Expands Ethereum Holdings to 158,462 ETH After $20M Purchase",
+    "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE54MW96cjBiWjdHNDBVdzFxekhQMzltcmpSY3I1SkJGSXRsTHVvMzIyejkwbXpCUVJzMFBpWUNLMnNiZDRPc1B3?oc=5",
+    "summary": "Bit Digital Expands Ethereum Holdings to 158,462 ETH After $20M Purchase MEXC",
+    "source": "MEXC",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T09:53:42+00:00",
+    "share_url": "/podijeli/vijest/0b57589949fff5a1d6/"
   },
   {
     "id": "bbd9ee9d461bd55a39",
@@ -564,16 +636,16 @@
     "share_url": "/podijeli/vijest/6d6afea4ab0fc875bc/"
   },
   {
-    "id": "f323dbe1f86aa2212f",
+    "id": "26869ad23bd1a90809",
     "title": "Crypto News: Crypto and Stocks Are Moving in Opposite Directions — S&P 500 Hits Nine-Week Win Streak While Bitcoin and Ethereum Keep Falling",
-    "url": "https://news.google.com/rss/articles/CBMirwJBVV95cUxQLVA5VFV0cTNXSlBOaGNWZXdWd2Z3bXlqUXM3S3MyRl81UjNDYjVoS1AxQm1DSzhFZDZMd0pCUkxMYmNUSFh5YXl4ZFF0dEpfMXhEUUNHT3l3bGdqN3ZCYXpGdWdKaU8tcEw2enpoZ0ZWdl9yX2xZOFRqS1Q2YlJ5RzBkc2dSUW1pTUJDYlBGZWYwZkY3RFNJSFF6M1BwbXF4VmRLZ2RzRHBmVW01ckhkN1Nhekd4ZmlZUjlkVTlfV0FzWjZyY2JBWVBBWkdMUlFVVFllNU9FcWhTc1JXdmFPMDJqUUltdXNCTHNSMFNXNFVNTGEzdi1CVXM5YXZwZVAzdjZndDJCYldPNHFJNVh1T0o3aUhPVkNWNGI2NDl3VnVLWWtoTDVQM01GdURtS28?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMirwJBVV95cUxQb0lIOGVnZXFCcENKOElhUEpra1hqalA4cXpBdVc5U0NYZTBQM3BsR2lObkFETGROUWdjakc0TS1EaDFVVGh5NkZXcUxNSTE3UExxNUNadGlCSjQ5X2c2RkotZ3NLd3M4a1pOUlh5TWJkZ1JYbFBmblNWMDZXVEd2RVh4TXBZOWtnS015MTQxSkpIZUktNkd4MDFKQjFXWmlCSkdmcmxkZmFwYUNxV3pTX0hZS2tfQzZvdmRKblZzMXBrSlpvQjhXUmx3VnZNVWxEQW9adWhRUng0WXRBUzBuNlVyYUFlU0xrd0FOOGlnczhRbkFRUGR1d2hsUjI3ZmFBVk9LanA2MnNUWFdSellUT1YzdUVIb09ndE5fNElNY185TTJraTB6OXk3THRnNms?oc=5",
     "summary": "Crypto News: Crypto and Stocks Are Moving in Opposite Directions — S&P 500 Hits Nine-Week Win Streak While Bitcoin and Ethereum Keep Falling Binance",
     "source": "Binance",
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-30T08:34:28+00:00",
-    "share_url": "/podijeli/vijest/f323dbe1f86aa2212f/"
+    "share_url": "/podijeli/vijest/26869ad23bd1a90809/"
   },
   {
     "id": "5e8c850e81c9e6e17b",
@@ -797,7 +869,7 @@
     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQbWYxV1ZKYkdBTDd5WVNDYU9sRmdvUFk4NThRVFk1aS0tVE1JOC1pRkJUcHdlWk01SXp3dnJiMWRYX1pFbHRrMGZlSTNrS2ZBVDRZNnhrb2xUWDc3TndCZkotUkhyODlNSEgtcEJwT1JuUlVabUJ1UllJUlJIUmp6UmxPTG1GOTgzZGY2X2VB?oc=5",
     "summary": "Has XRP Finally Broken Free of Regulatory Shackles Kavout",
     "source": "Kavout",
-    "region": "Crypto Regulation",
+    "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-30T05:39:46+00:00",
@@ -896,8 +968,7 @@
     "region": "TechCrunch",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-30T02:00:00+00:00",
-    "share_url": "/podijeli/vijest/2519354328a0e7f9be/"
+    "published_at": "2026-05-30T02:00:00+00:00"
   },
   {
     "id": "dca6d9cd9bd44d8547",
@@ -908,8 +979,7 @@
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
-    "published_at": "2026-05-30T00:41:58+00:00",
-    "share_url": "/podijeli/vijest/dca6d9cd9bd44d8547/"
+    "published_at": "2026-05-30T00:41:58+00:00"
   },
   {
     "id": "f18a27e29994568e52",
@@ -920,8 +990,7 @@
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
-    "published_at": "2026-05-30T00:40:24+00:00",
-    "share_url": "/podijeli/vijest/f18a27e29994568e52/"
+    "published_at": "2026-05-30T00:40:24+00:00"
   },
   {
     "id": "4a842c6d1ddf593d39",
@@ -932,8 +1001,7 @@
     "region": "TechCrunch",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-30T00:39:13+00:00",
-    "share_url": "/podijeli/vijest/4a842c6d1ddf593d39/"
+    "published_at": "2026-05-30T00:39:13+00:00"
   },
   {
     "id": "1013aa2302546950d7",
@@ -944,8 +1012,7 @@
     "region": "Cyber and Cloud",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-30T00:03:00+00:00",
-    "share_url": "/podijeli/vijest/1013aa2302546950d7/"
+    "published_at": "2026-05-30T00:03:00+00:00"
   },
   {
     "id": "a927234ac4d361cfdc",
@@ -956,8 +1023,7 @@
     "region": "Crypto Regulation",
     "group": "digital-assets",
     "category": "digital-assets",
-    "published_at": "2026-05-29T23:30:00+00:00",
-    "share_url": "/podijeli/vijest/a927234ac4d361cfdc/"
+    "published_at": "2026-05-29T23:30:00+00:00"
   },
   {
     "id": "4030b392502108307d",
@@ -968,8 +1034,7 @@
     "region": "AI Technology",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-29T23:10:02+00:00",
-    "share_url": "/podijeli/vijest/4030b392502108307d/"
+    "published_at": "2026-05-29T23:10:02+00:00"
   },
   {
     "id": "4e7fbed51551a05ce3",
@@ -1078,9 +1143,9 @@
     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PU3pBdGY0NWJMSWFUTFRDUGx3RklNQlNENWdlQjBiNG9meUo5andqSHFER0lkNlhEaFVwOXpLYWZseVJ1YVZsU2Q4RzBWT1RoeUhTM19YaFljM2ZHcm5yMHYxTlc?oc=5",
     "summary": "Crypto Update: FalconX Eyes Wall Street with IPO Filing Investing News Network",
     "source": "Investing News Network",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
     "published_at": "2026-05-29T21:05:00+00:00"
   },
   {
@@ -1331,8 +1396,8 @@
     "id": "f9fa9de4ec0284d7d3",
     "title": "CME Group Launches 24/7 Crypto Futures Trading for BTC, ETH, and More",
     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE41VjNKOEFvOWRScW1yaDZHN21KdjJzM0sxeS1UX1BNVjYxejZicDFSZlAtYVVnbzhENU83bWtUZnlvbnQwRlBB?oc=5",
-    "summary": "CME Group Launches 24/7 Crypto Futures Trading for BTC, ETH, and More MEXC Exchange",
-    "source": "MEXC Exchange",
+    "summary": "CME Group Launches 24/7 Crypto Futures Trading for BTC, ETH, and More MEXC",
+    "source": "MEXC",
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
@@ -1965,17 +2030,6 @@
     "published_at": "2026-05-29T14:00:05+00:00"
   },
   {
-    "id": "6e2ccadbbcba2c5d5d",
-    "title": "What American crypto asset perpetuals mean for the future of crypto",
-    "url": "https://www.coindesk.com/opinion/2026/05/29/what-american-crypto-asset-perpetuals-mean-for-the-future-of-crypto",
-    "summary": "For years, one of the most significant crypto asset markets has existed entirely outside the United States. Today, that changes, explains CFTC Chairman Selig.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-29T14:00:00+00:00"
-  },
-  {
     "id": "236c3c03a9bff52d39",
     "title": "Final 24 hours to save up to $410 on your TechCrunch Disrupt 2026 ticket",
     "url": "https://techcrunch.com/2026/05/29/final-24-hours-to-save-up-to-410-on-your-techcrunch-disrupt-2026-ticket/",
@@ -1984,6 +2038,17 @@
     "region": "TechCrunch",
     "group": "technology",
     "category": "technology",
+    "published_at": "2026-05-29T14:00:00+00:00"
+  },
+  {
+    "id": "6e2ccadbbcba2c5d5d",
+    "title": "What American crypto asset perpetuals mean for the future of crypto",
+    "url": "https://www.coindesk.com/opinion/2026/05/29/what-american-crypto-asset-perpetuals-mean-for-the-future-of-crypto",
+    "summary": "For years, one of the most significant crypto asset markets has existed entirely outside the United States. Today, that changes, explains CFTC Chairman Selig.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
     "published_at": "2026-05-29T14:00:00+00:00"
   },
   {
@@ -5085,6 +5150,17 @@
     "published_at": "2026-05-28T13:21:14+00:00"
   },
   {
+    "id": "b9a4c6eb07f98cd7d3",
+    "title": "World's Growth Leaders of 2026",
+    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBGTEtyYVRaSUhVRHV4RUNxY1dfUlI2WGxoa3hMRUp1akVvNktwV2ExcXNQVmhORnc0bS1uUkRCSEw2bEt4TDVTLTJRVWZ6alhMVnFhUVlld1NBdms2eUR5TGtsbFJTSF9OMEpIQU9lLVoxOXc?oc=5",
+    "summary": "World's Growth Leaders of 2026 Time Magazine",
+    "source": "Time Magazine",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-28T13:21:11+00:00"
+  },
+  {
     "id": "8450f83bc4a39efe9b",
     "title": "Nemačka traži bližu ekonomsku saradnju sa Kinom",
     "url": "https://biznis.rs/vesti/svet/nemacka-trazi-blizu-ekonomsku-saradnju-sa-kinom/",
@@ -5534,82 +5610,5 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-28T10:47:22+00:00"
-  },
-  {
-    "id": "999ca81ea99c7f0ce7",
-    "title": "Crypto slides on Hormuz airstrikes as $897 million in long liquidations pile up",
-    "url": "https://www.coindesk.com/markets/2026/05/28/crypto-slides-on-hormuz-airstrikes-as-usd897-million-in-long-liquidations-pile-up",
-    "summary": "BTC dropped to its lowest since April 13 and ETH broke below $2,000 as U.S. airstrikes stoked inflation concerns, wiping out nearly $900 million in leveraged longs.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-28T10:44:52+00:00"
-  },
-  {
-    "id": "f005634debc46e7bf5",
-    "title": "Rising fuel prices driving demand for sub-₹15 lakh EVs: Shailesh Chandra",
-    "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNVzJFeG5GUTNvRWlMQnZqSU44QUx0SUtGQWYybGZUTW8xUlJaOTQtTUl6cVYxcW8wdHNoNUM3SnQ5T1gzcVg1VHJyQVVCMkU3LVhZaFBXbTFxUlh4M285MzBvQnVGa01WdWx4ZC02eEpFRFM0UjdEVTN2Q0N3VU1tVm4xeG8yUGo2Zk5TNWd5QUt5Wlp4djZkQTJtRmpiNkJySEhTMTNpcm1pYU0walN1Vl9kNmxMUVEwS0V5OVU0MnUxYXhqV3hhTlpGTlFPWEtER0wzelFaTFNxSzJ4cjNfU3h5bm55NVoxeENJdkhKa1ZFeXBsV1HSAfYBQVVfeXFMTVcyRXhuRlEzb0VpTEJ2aklOOEFMdElLRkFmMmxmVE1vMVJSWjk0LU1JenFWMXFvMHRzaDVDN0p0OU9YM3FYNVRyckFVQjJFNy1YWWhQV20xcVJYeDNvOTMwb0J1RmtNVnVseGQtNnhKRURTNFI3RFUzdkNDd1VNbVZuMXhvMlBqNmZOUzVneUFLeVpaeHY2ZEEybUZqYjZCckhIUzEzaXJtaWFNMGpTdVZfZDZsTFFRMEtFeTlVNDJ1MWF4ald4YU5aRk5RT1hLREdMM3pRWkxTcUsyeHIzX1N4eW5ueTVaMXhDSXZISmtWRXlwbFdR?oc=5",
-    "summary": "Rising fuel prices driving demand for sub-₹15 lakh EVs: Shailesh Chandra ET Auto",
-    "source": "ET Auto",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-28T10:44:32+00:00"
-  },
-  {
-    "id": "0407d7d39cd5b81989",
-    "title": "Data Center Logical Security Market to Expand at 11.6% CAGR",
-    "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOOFFlbzF3UzE5TUk4LVIybjZkcElsT2ZGbEdwYUN6Y21vOTRoSUtTRG1oMzhHdnUtYzZrNFV3cGJNVFdDN2Fpc1ZDMVVnYmtEVm9ONEpteDJ5akM1cGktV0cyeXpKM002NXU0cXB2aUh4RVdJeVVXNDc4cG9DVTUwRnVoVTV3ZTJWV3VWdlZmWXBvN0VfQk5mY09n?oc=5",
-    "summary": "Data Center Logical Security Market to Expand at 11.6% CAGR openPR.com",
-    "source": "openPR.com",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T10:38:57+00:00"
-  },
-  {
-    "id": "4c7759d9884f751016",
-    "title": "Ro Khanna is taking his economic message on the road. Will it lead to the White House?",
-    "url": "https://www.cnbc.com/2026/05/28/ro-khanna-2028-election-china-campaign-rust-belt-democrats-white-house.html",
-    "summary": "Rep. Ro Khanna wasn't in the Rust Belt to campaign. But he could be soon.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T10:30:01+00:00"
-  },
-  {
-    "id": "bea9680c30626de51a",
-    "title": "Merc obećao da će njegova vlada odlučno nastaviti reforme",
-    "url": "https://biznis.rs/vesti/merc-obecao-da-ce-njegova-vlada-odlucno-nastaviti-reforme/",
-    "summary": "Nemački kancelar Fridrih Merc (Friedrich Merz) obećao je da će vlada odlučno nastaviti reforme i odbacio bilo kakvu alternativu koaliciji demohrišćana i socijaldemokrata. „Nemačka ima snagu za novi početak, a ja sam rešen da uložim svu svoj",
-    "source": "Biznis.rs",
-    "region": "Biznis.rs",
-    "group": "srbija",
-    "category": "economy",
-    "published_at": "2026-05-28T10:27:00+00:00"
-  },
-  {
-    "id": "0d88d03d1c0fc90d14",
-    "title": "Može li Raiffeisen do Addika po diskontnoj ceni ili je realnije da obe ponude propadnu?",
-    "url": "https://biznis.rs/vesti/srbija/moze-li-raiffeisen-do-addika-po-diskontnoj-ceni-ili-je-realnije-da-obe-ponude-propadnu/",
-    "summary": "Situacija u procesu preuzimanja Addiko banke zahuktala se ovih dana jer je uprava banke preporučila akcionarima da prihvate ponudu Raiffeisen Bank International (RBI) iako je niža od konkurentske koju nudi slovenačka grupacija Nova Ljubljan",
-    "source": "Biznis.rs",
-    "region": "Biznis.rs",
-    "group": "srbija",
-    "category": "economy",
-    "published_at": "2026-05-28T10:06:08+00:00"
-  },
-  {
-    "id": "0016159fda997d06b4",
-    "title": "Climate tech companies are going public. What’s next?",
-    "url": "https://www.technologyreview.com/2026/05/28/1138067/climate-tech-ipos/",
-    "summary": "This year, there’s been a wave of notable energy companies going public via IPO in the US. The solar and battery company Solv Energy went public in February, to the tune of $6 billion. X-energy, which is building small modular nuclear react",
-    "source": "MIT Technology Review",
-    "region": "MIT Technology Review",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T10:00:00+00:00"
   }
 ]
