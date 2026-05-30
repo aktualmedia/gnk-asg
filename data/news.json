@@ -1,5 +1,53 @@
 [
   {
+    "id": "db274b5fec5d4794dc",
+    "title": "U.S. says it seized about $1 billion in Iranian crypto as pressure campaign expands",
+    "url": "https://www.coindesk.com/business/2026/05/30/u-s-says-it-seized-about-usd1-billion-in-iranian-crypto-as-pressure-campaign-expands",
+    "summary": "The seizure, falling under \"Operation Economic Fury,\" aims to restrict Iran's access to overseas revenue, banking networks, and crypto infrastructure.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T15:50:37+00:00",
+    "share_url": "/podijeli/vijest/db274b5fec5d4794dc/"
+  },
+  {
+    "id": "a648c8c597d2ef975a",
+    "title": "I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful",
+    "url": "https://techcrunch.com/2026/05/30/i-put-googles-24-7-ai-assistant-gemini-spark-to-work-and-its-actually-pretty-useful/",
+    "summary": "Gemini Spark helps automate everyday tasks, from inbox summaries to local event planning, but it’s unclear why Google made it a separate product.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-30T15:30:00+00:00",
+    "share_url": "/podijeli/vijest/a648c8c597d2ef975a/"
+  },
+  {
+    "id": "931bd7a5ad053b0040",
+    "title": "Wall Street’s trillion-dollar dilemma: Why AI-powered hackers are keeping big banks off the blockchain",
+    "url": "https://www.coindesk.com/business/2026/05/28/defi-vulnerabilities-are-tradfi-biggest-blocker-as-protocols-hit-by-near-daily-exploits-certik",
+    "summary": "CertiK CEO and co-founder Ronghui Gu says April was the worst month for DeFi in four years with exploits on 27 out of 30 days.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T15:00:00+00:00",
+    "share_url": "/podijeli/vijest/931bd7a5ad053b0040/"
+  },
+  {
+    "id": "f268a133c660f23bb0",
+    "title": "XRP news: Ripple-linked ETFs drew inflows last week as bitcoin, ether funds lost $2 billion",
+    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPZFp3U1pTTjhSODFnb09tbTFac3RKVGNoMG9HUkMycUE4Y0NPZW94aFZZVmpKSE1NQlAtM2d3cXZVYUVOQUF1eW1hZGJxZXdBRWZOYk85TkpnNm9BMXMyU3Z0MUVudW1ZdkNvUDZXNElLTEpIejRkQ1N2eVdzaGpTbWF4Q1FkcnVuRDZadUduQ3MyOHBMMkZRbEtncDd5Mjg0OFVCTg?oc=5",
+    "summary": "XRP news: Ripple-linked ETFs drew inflows last week as bitcoin, ether funds lost $2 billion CoinDesk",
+    "source": "CoinDesk",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T15:00:00+00:00",
+    "share_url": "/podijeli/vijest/f268a133c660f23bb0/"
+  },
+  {
     "id": "de3b7ddf672d57aeb8",
     "title": "The groupthink boom: what three top VCs really think about the AI frenzy",
     "url": "https://techcrunch.com/2026/05/30/the-groupthink-boom-what-three-top-vcs-really-think-about-the-ai-frenzy/",
@@ -82,6 +130,18 @@
     "category": "economy",
     "published_at": "2026-05-30T13:24:28+00:00",
     "share_url": "/podijeli/vijest/ee93ddde794c6e4119/"
+  },
+  {
+    "id": "18ca75ccc8aee11681",
+    "title": "Tether USAT Stablecoin Surges 540% in April to $140.9M",
+    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9RX2VLUE9rNmV1ckc3WXhTRl8tV3ByVmR1VzdPRUdMQzJFUmw1RXBmNXB0WWxJaWN4YU5BV3hmX3BJakNhdEdLQURjWG9hSjlUY2dRUlBlYU5JT2lvTWR2MjZFd1FLSW1kTzNXbmF6WGxPR1ltSGNGRjZ4dHFYaHM?oc=5",
+    "summary": "Tether USAT Stablecoin Surges 540% in April to $140.9M HOKANEWS.COM",
+    "source": "HOKANEWS.COM",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T13:11:00+00:00",
+    "share_url": "/podijeli/vijest/18ca75ccc8aee11681/"
   },
   {
     "id": "cd6e4a3743bdade59e",
@@ -908,8 +968,7 @@
     "region": "TechCrunch",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-29T22:14:22+00:00",
-    "share_url": "/podijeli/vijest/1e9439bd5ec91bfea3/"
+    "published_at": "2026-05-29T22:14:22+00:00"
   },
   {
     "id": "1ddbdd06e1570e5be3",
@@ -932,8 +991,7 @@
     "region": "CNBC Technology",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-29T21:14:04+00:00",
-    "share_url": "/podijeli/vijest/4d02be4b544f0c2b85/"
+    "published_at": "2026-05-29T21:14:04+00:00"
   },
   {
     "id": "80d340ac5b31094769",
@@ -941,11 +999,10 @@
     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PU3pBdGY0NWJMSWFUTFRDUGx3RklNQlNENWdlQjBiNG9meUo5andqSHFER0lkNlhEaFVwOXpLYWZseVJ1YVZsU2Q4RzBWT1RoeUhTM19YaFljM2ZHcm5yMHYxTlc?oc=5",
     "summary": "Crypto Update: FalconX Eyes Wall Street with IPO Filing Investing News Network",
     "source": "Investing News Network",
-    "region": "Digital Assets",
+    "region": "Crypto Regulation",
     "group": "digital-assets",
     "category": "digital-assets",
-    "published_at": "2026-05-29T21:05:00+00:00",
-    "share_url": "/podijeli/vijest/80d340ac5b31094769/"
+    "published_at": "2026-05-29T21:05:00+00:00"
   },
   {
     "id": "e99e6062bf289b042d",
@@ -4422,9 +4479,9 @@
     "published_at": "2026-05-28T15:34:10+00:00"
   },
   {
-    "id": "74b20fab576d526476",
+    "id": "6015ff001391e620d5",
     "title": "Chery to Enter Japan Through an Autobacs Partnership",
-    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOYnYyY1MycDlHdUNCTTNIWjBZUTl1YzlFVFh1Z0NWQ0dGbUxsRE05cmZDOHI4N1lpSV9HUjJlT3g1UEtxYWhEY0tleXZ3OGpvTlZiX0d0akh0ZWxJVDgzRTJ5T2pKWXNQc1h3V2E0eWF0djA0U3JzYVZnRUtvNzdtVDZzOFlPMjBOUEdlaS1Bc2UydVBQ0gGcAUFVX3lxTE5JSWFTaDZLejk1WjBEMWpxWTJ6TkROU1ZDVVMzQjlyUmNuSi1hQm5vaXkzQm84bE9pR1JCRElLLWxmME5McVl5QjdFcDhrQXptdm50ZVh2aHVST3BiRl9mY3hJSkhXVHB6bzFPeGoxVml1YUhLMU1yQjFXWXV1Z0xnVU03alZrazM2d2pSTnZEczNBa2tua3c4dW1fQw?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOSUlhU2g2S3o5NVowRDFqcVkyek5ETlNWQ1VTM0I5clJjbkotYUJub2l5M0JvOGxPaUdSQkRJSy1sZjBOTHFZeUI3RXA4a0F6bXZudGVYdmh1Uk9wYkZfZmN4SUpIV1Rwem8xT3hqMVZpdWFISzFNckIxV1l1dWdMZ1VNN2pWa2szNndqUk52RHMzQWtrbmt3OHVtX0PSAZwBQVVfeXFMTklJYVNoNkt6OTVaMEQxanFZMnpORE5TVkNVUzNCOXJSY25KLWFCbm9peTNCbzhsT2lHUkJESUstbGYwTkxxWXlCN0VwOGtBem12bnRlWHZodVJPcGJGX2ZjeElKSFdUcHpvMU94ajFWaXVhSEsxTXJCMVdZdXVnTGdVTTdqVmtrMzZ3alJOdkRzM0Fra25rdzh1bV9D?oc=5",
     "summary": "Chery to Enter Japan Through an Autobacs Partnership CleanTechnica",
     "source": "CleanTechnica",
     "region": "Global Mobility",
@@ -5553,60 +5610,5 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-28T09:30:56+00:00"
-  },
-  {
-    "id": "74ba34822ae8420158",
-    "title": "Narodna banka Srbije i Narodna banka Kine zaključile novi bilateralni svop aranžman",
-    "url": "https://biznis.rs/vesti/srbija/narodna-banka-srbije-i-narodna-banka-kine-zakljucile-novi-bilateralni-svop-aranzman/",
-    "summary": "Narodna banka Kine i Narodna banka Srbije zaključile su drugi valutni svop aranžman, kojim se omogućava razmena srpskog dinara i kineskog juana između dve centralne banke putem bilateralnih svop transakcija. Vrednost ovog svop aranžmana, za",
-    "source": "Biznis.rs",
-    "region": "Biznis.rs",
-    "group": "srbija",
-    "category": "economy",
-    "published_at": "2026-05-28T09:25:06+00:00"
-  },
-  {
-    "id": "9e8c5c72da03582f94",
-    "title": "Za osam godina u Srbiji nestalo 62.000 poljoprivrednih gazdinstava",
-    "url": "https://biznis.rs/vesti/srbija/za-osam-godina-u-srbiji-nestalo-62-000-poljoprivrednih-gazdinstava/",
-    "summary": "Više od pola miliona gazdinstava danas čini osnovu srpske poljoprivrede, ali broj ljudi i domaćinstava koja opstaju od proizvodnje hrane iz godine u godinu opada. Prema dostupnim podacima, u Srbiji trenutno postoji 508.365 poljoprivrednih g",
-    "source": "Biznis.rs",
-    "region": "Biznis.rs",
-    "group": "srbija",
-    "category": "economy",
-    "published_at": "2026-05-28T09:15:00+00:00"
-  },
-  {
-    "id": "7206787d186a53c201",
-    "title": "AI Adoption Creates Critical Cloud Security Gaps for Enterprises, New Check Point Report Shows",
-    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdlFNWHJTc20zLXpJV0d6M29Cb2xITGF6bVp0Y1JWeEtoaXpaYW02WEdPSWJPRnJhTUJxOXU2aFFLejJoT2ZaVF9acHk5RXJ0NDlwa3JnaG9HQzBDem41SzUzVVJvM0FOcDN5X0dSZWRrLVV6SzlNWVAxQVQ3YUdoQ1NSNzI5R2VWbWd3cWdVZGJWdDdoTGZxcTFHY0VvNjM5d2lRd3JvQS0wZmd5UlF6R3h3N2xybWM?oc=5",
-    "summary": "AI Adoption Creates Critical Cloud Security Gaps for Enterprises, New Check Point Report Shows IT Voice Media",
-    "source": "IT Voice Media",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T09:00:26+00:00"
-  },
-  {
-    "id": "08c70c330b428ef218",
-    "title": "White House reviews CFTC prediction-market rule as Trump backs federal control",
-    "url": "https://www.coindesk.com/policy/2026/05/28/white-house-reviews-cftc-prediction-market-rule-as-trump-backs-federal-control",
-    "summary": "The proposal could shape how Kalshi, Polymarket, and other event-contract platforms operate as states challenge the CFTC’s authority.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-28T08:57:26+00:00"
-  },
-  {
-    "id": "043098df0589d55152",
-    "title": "Mistral to explore designing own chips, CEO says, as it ramps up infrastructure build",
-    "url": "https://www.cnbc.com/2026/05/28/mistral-arthur-mensch-design-chips-ai-data-centers.html",
-    "summary": "Mistral's semiconductor ambitions underscore the French startup's bid to control more of its infrastructure as it competes with OpenAI and Anthropic.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T08:57:24+00:00"
   }
 ]
