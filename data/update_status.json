@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-05-30T07:44:27+00:00",
+  "updated_at": "2026-05-30T07:45:01+00:00",
   "news": {
-    "updated_at": "2026-05-30T07:44:24+00:00",
+    "updated_at": "2026-05-30T07:45:01+00:00",
     "status": "ok",
     "engine": "single_publication_engine_v1",
-    "cadence": "scheduled every one hour and twenty-one minutes",
+    "cadence": "scheduled every hour",
     "source_success_policy": "publish_when_at_least_80_percent_of_sources_are_synced",
     "source_success_threshold": 0.8,
     "source_success_ratio": 1.0,
@@ -17,9 +17,9 @@
     "max_public_items": 500,
     "archive_items": 400,
     "max_archive_items": 400,
-    "discarded_archive_overflow_items": 118,
-    "fetched_candidates": 523,
-    "duplicates_or_blocked_removed": 405,
+    "discarded_archive_overflow_items": 110,
+    "fetched_candidates": 519,
+    "duplicates_or_blocked_removed": 409,
     "request_timeout_seconds": 6,
     "network_workers": 12,
     "share_previews_ready": 80,
@@ -35,10 +35,11 @@
     },
     "errors": [],
     "preview_errors": [],
-    "checked_at": "2026-05-30T07:44:27+00:00",
-    "last_attempt_at": "2026-05-30T07:44:27+00:00",
+    "checked_at": "2026-05-30T07:45:01+00:00",
+    "last_attempt_at": "2026-05-30T07:45:01+00:00",
     "heartbeat_policy": "news_status_updates_on_every_automation_run",
     "stale_safe": true,
-    "last_successful_refresh_at": "2026-05-30T07:44:24+00:00"
+    "last_successful_refresh_at": "2026-05-30T07:45:01+00:00",
+    "data_status": "fresh_or_reference_checked"
   }
 }
