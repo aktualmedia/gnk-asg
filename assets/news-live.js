@@ -7,6 +7,7 @@
   let articles = [];
   let approvedMedia = [];
   let activeFilter = 'all';
+  const NEWS_VISIBLE_LIMIT = 500;
   const esc = (value) => String(value || '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const english = () => window.GNK_LANG && window.GNK_LANG.get() === 'en';
   function installTopicCalloutStyle() {
@@ -89,11 +90,11 @@
     }
     const selected = collection(filter).filter(fresh).sort((a,b) => stamp(b) - stamp(a));
     if (!selected.length) {
-      const monitorText = filter === 'mentions' ? (en ? 'There is currently no public publication displayed in this section.' : 'U ovoj rubrici trenutačno nema prikazane javne objave.') : (en ? 'The public window holds up to 500 newest news items and refreshes every 15 minutes; the active archive retains the next 400 older items.' : 'Javni prozor sadrži do 500 najnovijih vijesti i osvježava se svakih 15 minuta; aktivna arhiva zadržava sljedećih 400 starijih stavki.');
+      const monitorText = filter === 'mentions' ? (en ? 'There is currently no public publication displayed in this section.' : 'U ovoj rubrici trenutačno nema prikazane javne objave.') : (en ? 'The public window holds up to 500 newest news items and refreshes every hour; the active archive retains the next 400 older items.' : 'Javni prozor sadrži do 500 najnovijih vijesti i osvježava se svakih sat vremena; aktivna arhiva zadržava sljedećih 400 starijih stavki.');
       grid.innerHTML = '<article class="news-card"><span class="meta">' + (en ? 'PUBLIC MONITOR' : 'JAVNI PREGLED') + '</span><h3>' + (en ? 'No item in the selected section' : 'Nema stavke u odabranoj rubrici') + '</h3><p>' + monitorText + '</p></article>';
       return;
     }
-    grid.innerHTML = selected.slice(0, 15).map(renderCard).join('');
+    grid.innerHTML = selected.slice(0, NEWS_VISIBLE_LIMIT).map(renderCard).join('');
   }
   function bindTabs() {
     tabs.forEach((button) => {
