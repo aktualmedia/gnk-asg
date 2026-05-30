@@ -1,40 +1,66 @@
 {
   "company": "GNK ASG d.o.o.",
-  "email": "info@gnk-asg.hr",
+  "primary_form_email": "contact@gnk-asg.hr",
+  "general_email": "info@gnk-asg.hr",
+  "mail_provider": "Zoho Mail",
+  "security_notice_hr": "Nakon aktivacije Zoho Mail sustava, korisničko ime i lozinka unosit će se isključivo na službenoj sigurnoj Zoho prijavnoj stranici. GNK ASG portal neće tražiti niti pohranjivati zaporku e-pošte.",
+  "security_notice_en": "After activation of the Zoho Mail system, the username and password will be entered only on the official secure Zoho sign-in page. The GNK ASG portal will not request or store any email password.",
   "phone_display": "+385 91 610 4398",
   "phone_e164": "+385916104398",
   "whatsapp_url": "https://wa.me/385916104398",
-  "purpose": "official corporate contact and basic portal guidance",
+  "additional_contacts": [
+    {
+      "label": "USA fax",
+      "value": "+1 (303) 731-0028"
+    },
+    {
+      "label": "USA mobile",
+      "value": "+1 (970) 509-4044"
+    },
+    {
+      "label": "Croatia mobile",
+      "value": "+385 91 535 8365"
+    },
+    {
+      "label": "Slovenia contact",
+      "value": "+386 32 144 1786"
+    },
+    {
+      "label": "GNK ASG WhatsApp contact",
+      "value": "+385 91 610 4398"
+    }
+  ],
+  "purpose": "official corporate contact, web form routing, WhatsApp contact and basic portal guidance",
   "routing": [
     {
       "topic": "general_information",
       "label": "General company information",
-      "answer": "For general information about GNK ASG d.o.o., please use the public portal sections, GNK ASG Insights, or contact info@gnk-asg.hr."
+      "answer": "For general information about GNK ASG d.o.o., please use the public portal sections, GNK ASG Insights, or send a written inquiry to contact@gnk-asg.hr."
     },
     {
       "topic": "documents",
       "label": "Public documents and sources",
-      "answer": "For public documents and source references, please open the Documents and Sources sections on gnk-asg.hr. Formal requests should be sent to info@gnk-asg.hr."
+      "answer": "For public documents and source references, please open the Documents and Sources sections on gnk-asg.hr. Formal requests should be sent to contact@gnk-asg.hr."
     },
     {
       "topic": "business_cooperation",
       "label": "Business cooperation",
-      "answer": "For cooperation proposals, please send a short written summary, company details and contact information to info@gnk-asg.hr."
+      "answer": "For cooperation proposals, please send a short written summary, company details and contact information to contact@gnk-asg.hr."
     },
     {
       "topic": "media",
       "label": "Media inquiry",
-      "answer": "For media inquiries, please send the question, publication name, deadline and contact details to info@gnk-asg.hr."
+      "answer": "For media inquiries, please send the question, publication name, deadline and contact details to contact@gnk-asg.hr."
     },
     {
       "topic": "meeting",
       "label": "Meeting request",
-      "answer": "For meeting requests, please send the proposed topic, participants and preferred time window to info@gnk-asg.hr."
+      "answer": "For meeting requests, please send the proposed topic, participants and preferred time window to contact@gnk-asg.hr."
     },
     {
       "topic": "technical",
       "label": "Portal technical issue",
-      "answer": "For portal technical issues, please send a screenshot, device/browser information and a short description to info@gnk-asg.hr."
+      "answer": "For portal technical issues, please send a screenshot, device/browser information and a short description to contact@gnk-asg.hr."
     }
   ]
 }
