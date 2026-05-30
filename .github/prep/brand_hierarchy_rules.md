@@ -6,7 +6,7 @@ Status: locked preparation. This file is not part of the public portal build.
 
 1. Main story: GNK ASG.
 2. Group framework: GNK DINAMO Ltd.
-3. Supporting personal layer: Nermin Sefic as UBO, director, owner and author or approver of selected texts.
+3. Supporting personal layer: Nermin Sefic as owner of the whole group, UBO, director, owner and author or approver of selected texts.
 
 ## Homepage rule
 
@@ -18,6 +18,7 @@ The personal reference should be present but discreet.
 
 Use the personal reference where it is accurate and useful:
 
+- owner of the whole group context
 - UBO context
 - director context
 - owner context
@@ -48,4 +49,4 @@ Build visibility through useful corporate content, internal links, article pages
 
 ## Final intent
 
-The public should first understand GNK ASG and GNK DINAMO Ltd. The personal layer should add accountability, authorship and credibility without becoming the primary story.
+The public should first understand GNK ASG and GNK DINAMO Ltd. The personal layer should add accountability, group ownership, directorship, authorship and credibility without becoming the primary story.
