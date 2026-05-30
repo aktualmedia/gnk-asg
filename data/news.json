@@ -99,8 +99,8 @@
     "id": "784bcdcaddcf96b776",
     "title": "Nairobi set to host major automotive and industrial trade exhibitions",
     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPRjFONkgyZnp6VWNrQ2xNbTRGU2h4SXd0M19ZcjJNVHN2NmpzbUF1dGp2a0FEM1NlQndRTDNoNW9XLWwyemdVeUtnNnRCaExycmNVX3lFN3FNN0MwZDE4Ujg1Z29NeWNXM19ydDlUdkpadHJReWtGRFdjdHJTanhmaHBDX1BOOEVIOWxTZFRmQjlzU19MN1NmYlkydUhWeFdGVFB5aVlJaUlzQjRheUpLZUtvNjh2UQ?oc=5",
-    "summary": "Nairobi set to host major automotive and industrial trade exhibitions Capital FM Kenya",
-    "source": "Capital FM Kenya",
+    "summary": "Nairobi set to host major automotive and industrial trade exhibitions capitalfm.co.ke",
+    "source": "capitalfm.co.ke",
     "region": "Global Mobility",
     "group": "mobilnost",
     "category": "automotive",
@@ -456,18 +456,6 @@
     "share_url": "/podijeli/vijest/eadf6c995ffa008234/"
   },
   {
-    "id": "9e1c57da3e6df02286",
-    "title": "Meta has struggled at selling anything other than ads. Will AI be different?",
-    "url": "https://www.cnbc.com/2026/05/30/meta-struggled-selling-anything-other-than-ads-will-ai-be-different.html",
-    "summary": "Meta is making a major push to expand its business beyond online advertising, but past efforts show that success is far from guaranteed.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-30T12:00:01+00:00",
-    "share_url": "/podijeli/vijest/9e1c57da3e6df02286/"
-  },
-  {
     "id": "c93d69954ba36a101c",
     "title": "Will Gen Z be the generation to revive moviegoing?",
     "url": "https://www.cnbc.com/2026/05/30/gen-z-movie-theaters.html",
@@ -478,6 +466,18 @@
     "category": "economy",
     "published_at": "2026-05-30T12:00:01+00:00",
     "share_url": "/podijeli/vijest/c93d69954ba36a101c/"
+  },
+  {
+    "id": "9e1c57da3e6df02286",
+    "title": "Meta has struggled at selling anything other than ads. Will AI be different?",
+    "url": "https://www.cnbc.com/2026/05/30/meta-struggled-selling-anything-other-than-ads-will-ai-be-different.html",
+    "summary": "Meta is making a major push to expand its business beyond online advertising, but past efforts show that success is far from guaranteed.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-30T12:00:01+00:00",
+    "share_url": "/podijeli/vijest/9e1c57da3e6df02286/"
   },
   {
     "id": "64f818cc8ecf8e8332",
@@ -672,16 +672,16 @@
     "share_url": "/podijeli/vijest/6d6afea4ab0fc875bc/"
   },
   {
-    "id": "57c4bbc24453ba8949",
+    "id": "26869ad23bd1a90809",
     "title": "Crypto News: Crypto and Stocks Are Moving in Opposite Directions — S&P 500 Hits Nine-Week Win Streak While Bitcoin and Ethereum Keep Falling",
-    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5qU0xzLWdWZXlmUHhfeS0wMm9yZDF0aUNNaTFFbGRzU0hCa2hISkQ5LWZjTFg5UFpINzdnb1VsSGYwTjBzZ05IWUljVkx3dnJaOWxLdGJrU2hmTjExcTlSRHRfbnk?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMirwJBVV95cUxQb0lIOGVnZXFCcENKOElhUEpra1hqalA4cXpBdVc5U0NYZTBQM3BsR2lObkFETGROUWdjakc0TS1EaDFVVGh5NkZXcUxNSTE3UExxNUNadGlCSjQ5X2c2RkotZ3NLd3M4a1pOUlh5TWJkZ1JYbFBmblNWMDZXVEd2RVh4TXBZOWtnS015MTQxSkpIZUktNkd4MDFKQjFXWmlCSkdmcmxkZmFwYUNxV3pTX0hZS2tfQzZvdmRKblZzMXBrSlpvQjhXUmx3VnZNVWxEQW9adWhRUng0WXRBUzBuNlVyYUFlU0xrd0FOOGlnczhRbkFRUGR1d2hsUjI3ZmFBVk9LanA2MnNUWFdSellUT1YzdUVIb09ndE5fNElNY185TTJraTB6OXk3THRnNms?oc=5",
     "summary": "Crypto News: Crypto and Stocks Are Moving in Opposite Directions — S&P 500 Hits Nine-Week Win Streak While Bitcoin and Ethereum Keep Falling Binance",
     "source": "Binance",
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-30T08:34:28+00:00",
-    "share_url": "/podijeli/vijest/57c4bbc24453ba8949/"
+    "share_url": "/podijeli/vijest/26869ad23bd1a90809/"
   },
   {
     "id": "5e8c850e81c9e6e17b",
@@ -1176,9 +1176,9 @@
     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PU3pBdGY0NWJMSWFUTFRDUGx3RklNQlNENWdlQjBiNG9meUo5andqSHFER0lkNlhEaFVwOXpLYWZseVJ1YVZsU2Q4RzBWT1RoeUhTM19YaFljM2ZHcm5yMHYxTlc?oc=5",
     "summary": "Crypto Update: FalconX Eyes Wall Street with IPO Filing Investing News Network",
     "source": "Investing News Network",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
     "published_at": "2026-05-29T21:05:00+00:00"
   },
   {
