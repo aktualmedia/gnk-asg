@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-05-30T22:14:48+00:00",
+  "updated_at": "2026-05-30T22:16:03+00:00",
   "news": {
-    "updated_at": "2026-05-30T22:14:48+00:00",
+    "updated_at": "2026-05-30T22:16:03+00:00",
     "status": "ok",
     "engine": "single_publication_engine_v1",
     "cadence": "scheduled every one hour and twenty-one minutes",
@@ -24,12 +24,12 @@
     "network_workers": 12,
     "share_previews_ready": 80,
     "by_group": {
-      "digital-assets": 120,
-      "technology": 147,
+      "digital-assets": 119,
+      "technology": 145,
       "hrvatska": 117,
+      "international": 28,
       "mobilnost": 22,
       "srbija": 65,
-      "international": 25,
       "bih": 3,
       "sport": 1
     },
