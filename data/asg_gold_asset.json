@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-30T15:55:24+00:00",
+  "updated_at": "2026-05-30T18:17:27+00:00",
   "id": "asg-gold-reference",
   "name": "ASG Stable Coin",
   "ticker": "ASG",
@@ -21,11 +21,11 @@
   "change_30d_percent": -1.17,
   "reference_supply_value_usd": 14662347972.61,
   "price_source": "Public gold futures reference and EUR/USD market quote feed; verify at official market source",
-  "checked_at": "2026-05-30T15:55:24+00:00",
+  "checked_at": "2026-05-30T18:17:27+00:00",
   "status": "ok",
   "source_timestamp": "2026-05-29T04:00:00+00:00",
-  "last_successful_refresh_at": "2026-05-30T15:55:24+00:00",
-  "last_attempt_at": "2026-05-30T15:55:24+00:00",
+  "last_successful_refresh_at": "2026-05-30T18:17:27+00:00",
+  "last_attempt_at": "2026-05-30T18:17:27+00:00",
   "heartbeat_policy": "timestamp_updates_on_every_automation_run",
   "stale_safe": true,
   "data_status": "fresh_or_reference_checked"
