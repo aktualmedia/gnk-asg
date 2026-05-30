@@ -8,9 +8,9 @@ on:
         required: false
         default: ""
   schedule:
-    # Europe/Zagreb 07:00: 05:00 UTC ljeti, 06:00 UTC zimi
-    - cron: "0 5 * * *"
-    - cron: "0 6 * * *"
+    # Europe/Zagreb 09:00: 07:00 UTC ljeti, 08:00 UTC zimi
+    - cron: "0 7 * * *"
+    - cron: "0 8 * * *"
     # Europe/Zagreb 15:00: 13:00 UTC ljeti, 14:00 UTC zimi
     - cron: "0 13 * * *"
     - cron: "0 14 * * *"
