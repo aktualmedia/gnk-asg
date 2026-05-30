@@ -1,5 +1,17 @@
 [
   {
+    "id": "9b21b9150fec1aeb4e",
+    "title": "AltcoinDaily: Altcoin Season Starts With Ethereum Focus",
+    "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPUWZBeTlkS0l5QzJoWGJMTXNsT0tIajFTZzRvVHFkYlNka2hzUDFhczh2WDV6b0x1STdScWx5d1VUSWozRkxlRXpEa3RjWnNLQ1ZhU0xXVzdWcERPRGdNdzAzRlJEd3A5dDFnazJsaUtKQ3ZwMjU3QUhudVlOQzV5d2pFN0diVzBidXY4?oc=5",
+    "summary": "AltcoinDaily: Altcoin Season Starts With Ethereum Focus blockchain.news",
+    "source": "blockchain.news",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T22:14:04+00:00",
+    "share_url": "/podijeli/vijest/9b21b9150fec1aeb4e/"
+  },
+  {
     "id": "3a347932a80d14767f",
     "title": "SoftBank says it will invest up to €75 billion to build French data centers",
     "url": "https://techcrunch.com/2026/05/30/softbank-says-it-will-invest-up-to-e75-billion-to-build-french-data-centers/",
@@ -492,18 +504,6 @@
     "share_url": "/podijeli/vijest/eadf6c995ffa008234/"
   },
   {
-    "id": "9e1c57da3e6df02286",
-    "title": "Meta has struggled at selling anything other than ads. Will AI be different?",
-    "url": "https://www.cnbc.com/2026/05/30/meta-struggled-selling-anything-other-than-ads-will-ai-be-different.html",
-    "summary": "Meta is making a major push to expand its business beyond online advertising, but past efforts show that success is far from guaranteed.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-30T12:00:01+00:00",
-    "share_url": "/podijeli/vijest/9e1c57da3e6df02286/"
-  },
-  {
     "id": "c93d69954ba36a101c",
     "title": "Will Gen Z be the generation to revive moviegoing?",
     "url": "https://www.cnbc.com/2026/05/30/gen-z-movie-theaters.html",
@@ -514,6 +514,18 @@
     "category": "economy",
     "published_at": "2026-05-30T12:00:01+00:00",
     "share_url": "/podijeli/vijest/c93d69954ba36a101c/"
+  },
+  {
+    "id": "9e1c57da3e6df02286",
+    "title": "Meta has struggled at selling anything other than ads. Will AI be different?",
+    "url": "https://www.cnbc.com/2026/05/30/meta-struggled-selling-anything-other-than-ads-will-ai-be-different.html",
+    "summary": "Meta is making a major push to expand its business beyond online advertising, but past efforts show that success is far from guaranteed.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-30T12:00:01+00:00",
+    "share_url": "/podijeli/vijest/9e1c57da3e6df02286/"
   },
   {
     "id": "64f818cc8ecf8e8332",
@@ -956,8 +968,7 @@
     "region": "CoinDesk",
     "group": "digital-assets",
     "category": "digital-assets",
-    "published_at": "2026-05-30T05:27:39+00:00",
-    "share_url": "/podijeli/vijest/e176783ea27e0d881e/"
+    "published_at": "2026-05-30T05:27:39+00:00"
   },
   {
     "id": "8540394667692fd22f",
@@ -5600,16 +5611,5 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-28T11:29:06+00:00"
-  },
-  {
-    "id": "30cca0c71739645d51",
-    "title": "U.S.-Iran strikes rattle global markets, send bitcoin to 6-week low",
-    "url": "https://www.coindesk.com/daybook-us/2026/05/28/u-s-iran-strikes-rattle-global-markets-send-bitcoin-to-6-week-low",
-    "summary": "Your day-ahead look for May 28, 2026",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-28T11:28:08+00:00"
   }
 ]
