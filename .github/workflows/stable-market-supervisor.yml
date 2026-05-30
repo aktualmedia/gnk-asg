@@ -1,6 +1,6 @@
 name: Stable Market Supervisor
 
-# Test trigger: 2026-05-30-automation-test-001
+# Test trigger: 2026-05-30-automation-test-002
 on:
   workflow_dispatch:
   push:
@@ -54,3 +54,43 @@ jobs:
             git pull --rebase origin main || true
             git push origin HEAD:main
           fi
+
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    concurrency:
+      group: stable-pages-deploy
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Prepare public portal
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+          rsync -a --delete \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'scripts/' \
+            --exclude '_site/' \
+            --exclude '*.py' \
+            ./ _site/
+          test -f _site/data/exchange_compare.json
+          test -f _site/data/stock_exchanges.json
+          test -f _site/data/fast_market_status.json
+          grep -q 'checked_at' _site/data/exchange_compare.json
+          grep -q 'checked_at' _site/data/stock_exchanges.json
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
