@@ -624,6 +624,18 @@
     "share_url": "/podijeli/vijest/446d91bf116381ef0c/"
   },
   {
+    "id": "5421f088afb216fb05",
+    "title": "NetApp’s Dividend Spark Puts Cloud Data Growth In Focus",
+    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNanV4X19Vb0w4NTBLNDJqNHFUVzE5ZlFIOVBfUmtWTDlzZUdIUUhSMjdaWjVwNHowaG5RUVMtaGpRbGxEVXVRM3ZHT3A3cUFxbW1aQ29IX3FHVDlTQUJwY1hlNWlJRHo1VzQ0X2xFdnVTVWZra1ZZb2V2eWdGTVJEMXk4VVFLV2lvUkx0THBJYUxXVzRXRzQ1WUFpbEZuNjVPLWc?oc=5",
+    "summary": "NetApp’s Dividend Spark Puts Cloud Data Growth In Focus Kalkine Media",
+    "source": "Kalkine Media",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-29T17:56:00+00:00",
+    "share_url": "/podijeli/vijest/5421f088afb216fb05/"
+  },
+  {
     "id": "3c291ca0479cd39b79",
     "title": "Dell's earnings blowout makes clear now is not the time to go against the AI grain",
     "url": "https://www.cnbc.com/2026/05/29/dells-earnings-blowout-makes-clear-now-is-not-the-time-to-go-against-the-ai-grain.html",
@@ -956,8 +968,7 @@
     "region": "CoinDesk",
     "group": "digital-assets",
     "category": "digital-assets",
-    "published_at": "2026-05-29T15:14:55+00:00",
-    "share_url": "/podijeli/vijest/5b1ba71130edab5666/"
+    "published_at": "2026-05-29T15:14:55+00:00"
   },
   {
     "id": "59a045d3f7c8cfa68b",
@@ -1689,8 +1700,8 @@
     "id": "0fc8e5948b2125e5fa",
     "title": "SEC Chair Paul Atkins Says U.S. Is Delivering Long-Awaited Clarity to Crypto Markets",
     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE42Q3lBSVJfcHdfdWJfZGw3VlBodmhXVkdtTGhwbm9fZHRXMHJNVURpTUNCYXRNVHUwNUNfMWtRYVNpVnhkVElmcEZidG5zVW9vcld0YldadExWSU5neW5JbnZlNkF4MTI5SVJyOEg0bHdCTVBqOUxRTTNB?oc=5",
-    "summary": "SEC Chair Paul Atkins Says U.S. Is Delivering Long-Awaited Clarity to Crypto Markets HOKANEWS",
-    "source": "HOKANEWS",
+    "summary": "SEC Chair Paul Atkins Says U.S. Is Delivering Long-Awaited Clarity to Crypto Markets HOKANEWS.COM",
+    "source": "HOKANEWS.COM",
     "region": "Crypto Regulation",
     "group": "digital-assets",
     "category": "digital-assets",
@@ -2577,6 +2588,17 @@
     "published_at": "2026-05-29T02:24:00+00:00"
   },
   {
+    "id": "f056cd79d246bcd1b4",
+    "title": "NVIDIA Corporation (NVDA) Stock Price, News, Quote & History",
+    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBpVTJIYnhWcW1kNFFKTHNoajhPeE9zSW9lTElhZkZvcEo3MExtQnpIZjBRek95cWJ0XzRKMzBtMHh0Ty1SYVRESUxfRTJ4Zw?oc=5",
+    "summary": "NVIDIA Corporation (NVDA) Stock Price, News, Quote & History Yahoo Finance",
+    "source": "Yahoo Finance",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-29T01:45:56+00:00"
+  },
+  {
     "id": "708993d858a3576180",
     "title": "Blue Origin’s New Glenn rocket explodes during testing in Florida",
     "url": "https://techcrunch.com/2026/05/28/blue-origins-new-glenn-rocket-explodes-during-testing-in-florida/",
@@ -2597,17 +2619,6 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-29T01:12:32+00:00"
-  },
-  {
-    "id": "f056cd79d246bcd1b4",
-    "title": "NVIDIA Corporation (NVDA) Stock Price, News, Quote & History",
-    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBpVTJIYnhWcW1kNFFKTHNoajhPeE9zSW9lTElhZkZvcEo3MExtQnpIZjBRek95cWJ0XzRKMzBtMHh0Ty1SYVRESUxfRTJ4Zw?oc=5",
-    "summary": "NVIDIA Corporation (NVDA) Stock Price, News, Quote & History Yahoo Finance",
-    "source": "Yahoo Finance",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-29T01:12:10+00:00"
   },
   {
     "id": "d5d1e48db69fa513ef",
@@ -3306,8 +3317,8 @@
     "id": "24e79c292b4c05a97d",
     "title": "SREA Q1 2026 Earnings: EPS Falls Short of Estimates by 1.37% - Low Estimate Range",
     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNek1pM29HclhXMk1nakVtY2c0ekZsRUJCd0Fjb2I3XzRSMHNpN3drTndvYnhudjAwb18zc0o0NjVqNm5XckVYcXFuWDBDZEVpelhjV2p1Nk9jUVlJUUhwaE9jbkxzazYwVVBhOS1XREJWTUVRNUJib1p2VmV6bUlMX1gyUk5RTUNLTVBYWHpYX08xWXpQS2diT1pBWndwenN3SllIdi12emt3RmkyVHc?oc=5",
-    "summary": "SREA Q1 2026 Earnings: EPS Falls Short of Estimates by 1.37% - Low Estimate Range thelegaladvocate.com",
-    "source": "thelegaladvocate.com",
+    "summary": "SREA Q1 2026 Earnings: EPS Falls Short of Estimates by 1.37% - Low Estimate Range The Legal Advocate",
+    "source": "The Legal Advocate",
     "region": "Global Markets",
     "group": "international",
     "category": "economy",
@@ -5052,6 +5063,17 @@
     "published_at": "2026-05-28T07:19:00+00:00"
   },
   {
+    "id": "5f08d4989797c162f0",
+    "title": "SK Hynix Tops $1 Trillion Valuation as AI Memory Boom Reshapes Chip Market",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPLUZ2cFY5c0tBaFhHSl9lbUFOWTVyVlkxWGN2M2NpZ0ljd3VSd04yN09qZmQtbXY5bjltaUV5VEx0R1hHUlFobjd4Y3FHdGZMWV92U0NYNnNHc3Z2NGNuRGw3bllWZW51eU4tQUwwblc1WWFEN2U5NlpRQlBjUy1vUmlvd05aX2hpcVZLYy1yTQ?oc=5",
+    "summary": "SK Hynix Tops $1 Trillion Valuation as AI Memory Boom Reshapes Chip Market TechRepublic",
+    "source": "TechRepublic",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T07:17:13+00:00"
+  },
+  {
     "id": "102eadafc32a618e3b",
     "title": "Gucci ulazi u Formulu 1",
     "url": "https://biznis.rs/vesti/svet/gucci-ulazi-u-formulu-1/",
@@ -5567,27 +5589,5 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-27T19:47:09+00:00"
-  },
-  {
-    "id": "27565515c2da2632c0",
-    "title": "Three Software Growth Names At The Heart OF The AI Build-Out",
-    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOX2kxeGRPWDBEOWZoaENLN2JfbzFHdG1vWklYZkFwV00xbnVLRWRaZmNCczNNZWtjbF9vLWlEWlpUWGpJMzZTc0xfZmpCWXV6bFNIZ1VZa3FsTkc3dXpfa1NNMkZjSV80RHppWEJoUlg5cjBjOU1qeWRrTUVHT2ltbGxHdHN6QzV2VVI4ZFJVZ3ZoTW9GTWRKUVB6NFRzY1ZCdHJWSw?oc=5",
-    "summary": "Three Software Growth Names At The Heart OF The AI Build-Out Kalkine Media",
-    "source": "Kalkine Media",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-27T19:37:00+00:00"
-  },
-  {
-    "id": "2d3aabd539e0dd5dba",
-    "title": "THE AI GOLDRUSH: America’s New Economic Boom and the Question Facing Australia",
-    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOUlVRMVI0UFlpTHZ0dWg5SXlDVFU2TlVySFlNX2RVRC14MEJsVFBCVFJIcUxhbFI3TFhkeTRkcG42eUJpUXFEdlhWb282YWE4VnBKOEp2TWJ1SUUtbS1DdVRrN005SG81UzNDVTNjMEhOUjJzdFcyTVFVc2VFWU5tZWZ6RjkzNnc2NXVia1QzTDd5MzhJMzRtaDVQSnBlVjdNZk9TbURMdS1NakY1SHNXVDI3TFRucVE?oc=5",
-    "summary": "THE AI GOLDRUSH: America’s New Economic Boom and the Question Facing Australia The Times Australia",
-    "source": "The Times Australia",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-27T19:12:28+00:00"
   }
 ]
