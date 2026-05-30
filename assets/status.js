@@ -3,7 +3,7 @@
   let newsData = null;
   let marketData = null;
   let liveMarket = null;
-  const NEWS_MAX_AGE_MINUTES = 30;
+  const NEWS_MAX_AGE_MINUTES = 75;
   const MARKET_MAX_AGE_MINUTES = 20;
   const STATUS_POLL_INTERVAL_MS = 60000;
   const english = () => document.documentElement.lang === 'en' || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
