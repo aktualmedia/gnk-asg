@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260530-insights-menu01';
+  var VERSION = '20260531-news-security01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -118,11 +118,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var paragraph = head.querySelector('p:not(.eyebrow)');
     if (isEnglish()) {
       if (eyebrow) eyebrow.textContent = 'Refresh every hour';
-      if (paragraph) paragraph.textContent = 'The public window displays up to the 500 newest business and technology news items. The active archive retains up to the next 400 older items. Publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić are displayed automatically and may be removed through authorised control.';
+      if (paragraph) paragraph.textContent = 'The public window displays up to the 500 newest business and technology news items. The active archive retains up to the next 400 older items. Publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić are displayed automatically from public sources.';
       if (loading && /workflow|refresh/i.test(loading.textContent)) loading.textContent = 'The newest 500 public items refresh automatically every hour; the active archive retains up to 400 older items.';
     } else {
       if (eyebrow) eyebrow.textContent = 'Ažuriranje svakih sat vremena';
-      if (paragraph) paragraph.textContent = 'Javni prozor prikazuje do 500 najnovijih poslovnih i tehnoloških vijesti. Aktivna arhiva zadržava do sljedećih 400 starijih stavki. Objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću prikazuju se automatski i mogu se ukloniti kroz ovlaštenu kontrolu.';
+      if (paragraph) paragraph.textContent = 'Javni prozor prikazuje do 500 najnovijih poslovnih i tehnoloških vijesti. Aktivna arhiva zadržava do sljedećih 400 starijih stavki. Objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću prikazuju se automatski iz javnih izvora.';
       if (loading && /workflow|osvjež/i.test(loading.textContent)) loading.textContent = 'Najnovijih 500 javnih stavki osvježava se automatski svakih sat vremena, a aktivna arhiva zadržava do 400 starijih stavki.';
     }
   }
