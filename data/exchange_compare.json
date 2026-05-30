@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-29T21:33:05+00:00",
+  "updated_at": "2026-05-30T04:01:00+00:00",
   "cadence": "scheduled every five minutes",
   "asset": "Bitcoin",
   "source": "CoinGecko exchange ticker aggregation",
@@ -7,63 +7,69 @@
     {
       "exchange": "Binance",
       "pair": "BTC/USDT",
-      "last_usd": 73484,
-      "volume_usd": 1367002954,
+      "last_usd": 73436,
+      "volume_usd": 1329800485,
       "spread_percent": 0.010013,
       "trust_score": null,
-      "timestamp": "2026-05-29T21:33:01+00:00",
+      "timestamp": "2026-05-30T03:59:06+00:00",
       "trade_url": "https://www.binance.com/en/trade/BTC_USDT?ref=37754157"
-    },
-    {
-      "exchange": "Bybit",
-      "pair": "BTC/USDT",
-      "last_usd": 73480,
-      "volume_usd": 700374430,
-      "spread_percent": 0.010136,
-      "trust_score": null,
-      "timestamp": "2026-05-29T21:33:03+00:00",
-      "trade_url": "https://www.bybit.com/trade/spot/BTC/USDT"
     },
     {
       "exchange": "Coinbase Exchange",
       "pair": "BTC/USD",
-      "last_usd": 73441,
-      "volume_usd": 642151628,
+      "last_usd": 73429,
+      "volume_usd": 677613405,
       "spread_percent": 0.010014,
       "trust_score": null,
-      "timestamp": "2026-05-29T21:32:32+00:00",
+      "timestamp": "2026-05-30T03:59:32+00:00",
       "trade_url": "https://www.coinbase.com/advanced-trade/spot/BTC-USD"
+    },
+    {
+      "exchange": "Bybit",
+      "pair": "BTC/USDT",
+      "last_usd": 73446,
+      "volume_usd": 638968281,
+      "spread_percent": 0.010136,
+      "trust_score": null,
+      "timestamp": "2026-05-30T03:59:40+00:00",
+      "trade_url": "https://www.bybit.com/trade/spot/BTC/USDT"
     },
     {
       "exchange": "Crypto.com Exchange",
       "pair": "BTC/USD",
-      "last_usd": 73485,
-      "volume_usd": 601833641,
+      "last_usd": 73468,
+      "volume_usd": 576619592,
       "spread_percent": 0.010014,
       "trust_score": null,
-      "timestamp": "2026-05-29T21:33:02+00:00",
+      "timestamp": "2026-05-30T03:59:32+00:00",
       "trade_url": "https://crypto.com/exchange/trade/spot/BTC_USD"
     },
     {
       "exchange": "OKX",
       "pair": "BTC/USDT",
-      "last_usd": 73446,
-      "volume_usd": 445333044,
+      "last_usd": 73408,
+      "volume_usd": 486137779,
       "spread_percent": 0.010136,
       "trust_score": null,
-      "timestamp": "2026-05-29T21:32:32+00:00",
+      "timestamp": "2026-05-30T04:00:01+00:00",
       "trade_url": "https://www.okx.com/trade-spot/btc-usdt"
     },
     {
       "exchange": "Kraken",
       "pair": "XBT/USD",
-      "last_usd": 73398,
-      "volume_usd": 130141580,
+      "last_usd": 73429,
+      "volume_usd": 122150804,
       "spread_percent": 0.010136,
       "trust_score": null,
-      "timestamp": "2026-05-29T21:30:53+00:00",
+      "timestamp": "2026-05-30T04:00:07+00:00",
       "trade_url": "https://pro.kraken.com/app/trade/XBT-USD"
     }
   ],
-  "disclaimer": "Usporedni informativni prikaz javno dostupnih ticker podataka; nije preporuka burze niti usluga izvršenja naloga."
+  "disclaimer": "Usporedni informativni prikaz javno dostupnih ticker podataka; nije preporuka burze niti usluga izvršenja naloga.",
+  "checked_at": "2026-05-30T04:01:00+00:00",
+  "last_attempt_at": "2026-05-30T04:01:00+00:00",
+  "heartbeat_policy": "timestamp_updates_on_every_automation_run",
+  "stale_safe": true,
+  "last_successful_refresh_at": "2026-05-30T04:01:00+00:00",
+  "data_status": "fresh_or_reference_checked"
 }
