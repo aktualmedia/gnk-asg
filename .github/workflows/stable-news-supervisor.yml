@@ -1,5 +1,6 @@
 name: Stable News Supervisor
 
+# Hourly news refresh trigger: 2026-05-30-001
 on:
   workflow_dispatch:
   push:
@@ -11,24 +12,7 @@ on:
       - 'data/news_config_v2.json'
       - 'data/blocked_news.json'
   schedule:
-    - cron: '0 0 * * *'
-    - cron: '21 1 * * *'
-    - cron: '42 2 * * *'
-    - cron: '3 4 * * *'
-    - cron: '24 5 * * *'
-    - cron: '45 6 * * *'
-    - cron: '6 8 * * *'
-    - cron: '27 9 * * *'
-    - cron: '48 10 * * *'
-    - cron: '9 12 * * *'
-    - cron: '30 13 * * *'
-    - cron: '51 14 * * *'
-    - cron: '12 16 * * *'
-    - cron: '33 17 * * *'
-    - cron: '54 18 * * *'
-    - cron: '15 20 * * *'
-    - cron: '36 21 * * *'
-    - cron: '57 22 * * *'
+    - cron: '0 * * * *'
 
 permissions:
   contents: write
@@ -68,7 +52,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No news data changes."
           else
-            git commit -m "Stable news supervisor refresh"
+            git commit -m "Stable hourly news supervisor refresh"
             git pull --rebase origin main || true
             git push origin HEAD:main
           fi
