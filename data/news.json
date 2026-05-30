@@ -1,5 +1,29 @@
 [
   {
+    "id": "6ae5c83840d3867159",
+    "title": "Snap alums unveil Ghost Angels fund",
+    "url": "https://techcrunch.com/2026/05/30/snap-alums-unveil-ghost-angels-fund/",
+    "summary": "A group of 20 Snap alumni has come together to launch a fund called Ghost Angels to back the next generation of social media.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-30T17:00:00+00:00",
+    "share_url": "/podijeli/vijest/6ae5c83840d3867159/"
+  },
+  {
+    "id": "d07497d9a4055efc1f",
+    "title": "Pripazite: Iz ljekarna se povlači serija lijeka, može biti potencijalno opasan",
+    "url": "https://www.poslovni.hr/hrvatska/pripazite-iz-ljekarna-se-povlaci-serija-lijeka-moze-biti-potencijalno-opasan-4540667",
+    "summary": "Zdravstveni radnici dužni su HALMED-u prijaviti svaku nuspojavu i neispravnost.",
+    "source": "Poslovni dnevnik",
+    "region": "Poslovni dnevnik",
+    "group": "hrvatska",
+    "category": "economy",
+    "published_at": "2026-05-30T17:00:00+00:00",
+    "share_url": "/podijeli/vijest/d07497d9a4055efc1f/"
+  },
+  {
     "id": "784bcdcaddcf96b776",
     "title": "Nairobi set to host major automotive and industrial trade exhibitions",
     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPRjFONkgyZnp6VWNrQ2xNbTRGU2h4SXd0M19ZcjJNVHN2NmpzbUF1dGp2a0FEM1NlQndRTDNoNW9XLWwyemdVeUtnNnRCaExycmNVX3lFN3FNN0MwZDE4Ujg1Z29NeWNXM19ydDlUdkpadHJReWtGRFdjdHJTanhmaHBDX1BOOEVIOWxTZFRmQjlzU19MN1NmYlkydUhWeFdGVFB5aVlJaUlzQjRheUpLZUtvNjh2UQ?oc=5",
@@ -192,6 +216,30 @@
     "share_url": "/podijeli/vijest/ee48232a6f21108202/"
   },
   {
+    "id": "9cccbcabbd2d5d96af",
+    "title": "When the market is bad, we build: Inside Binance’s bold 2030 master plan",
+    "url": "https://www.coindesk.com/business/2026/05/26/when-the-market-is-bad-we-build-inside-binance-s-bold-2030-master-plan",
+    "summary": "Established crypto firms will merge with traditional finance, but neither Wall Street bankers nor corporate giants will take over the crypto industry, said Binance’s Head of VIP and Institutional, Catherine Chen.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T13:00:00+00:00",
+    "share_url": "/podijeli/vijest/9cccbcabbd2d5d96af/"
+  },
+  {
+    "id": "051a9ccb3e9560516e",
+    "title": "Hyperliquid could become a ‘financial services juggernaut’ as DeFi expands, says Grayscale",
+    "url": "https://www.coindesk.com/business/2026/05/30/hyperliquid-could-become-a-financial-services-juggernaut-as-defi-expands-says-grayscale",
+    "summary": "The digital asset manager says Hyperliquid is emerging as a blockchain-based financial infrastructure platform with the potential to expand beyond crypto trading and challenge parts of traditional derivatives and exchange markets.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T13:00:00+00:00",
+    "share_url": "/podijeli/vijest/051a9ccb3e9560516e/"
+  },
+  {
     "id": "cd6e4a3743bdade59e",
     "title": "As the browser wars heat up, here are the hottest alternatives to Chrome and Safari in 2026",
     "url": "https://techcrunch.com/2026/05/30/as-the-browser-wars-heat-up-here-are-the-hottest-alternatives-to-chrome-and-safari-in-2026/",
@@ -226,30 +274,6 @@
     "category": "technology",
     "published_at": "2026-05-30T13:00:00+00:00",
     "share_url": "/podijeli/vijest/a36286313ae6ce1c23/"
-  },
-  {
-    "id": "9cccbcabbd2d5d96af",
-    "title": "When the market is bad, we build: Inside Binance’s bold 2030 master plan",
-    "url": "https://www.coindesk.com/business/2026/05/26/when-the-market-is-bad-we-build-inside-binance-s-bold-2030-master-plan",
-    "summary": "Established crypto firms will merge with traditional finance, but neither Wall Street bankers nor corporate giants will take over the crypto industry, said Binance’s Head of VIP and Institutional, Catherine Chen.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-30T13:00:00+00:00",
-    "share_url": "/podijeli/vijest/9cccbcabbd2d5d96af/"
-  },
-  {
-    "id": "051a9ccb3e9560516e",
-    "title": "Hyperliquid could become a ‘financial services juggernaut’ as DeFi expands, says Grayscale",
-    "url": "https://www.coindesk.com/business/2026/05/30/hyperliquid-could-become-a-financial-services-juggernaut-as-defi-expands-says-grayscale",
-    "summary": "The digital asset manager says Hyperliquid is emerging as a blockchain-based financial infrastructure platform with the potential to expand beyond crypto trading and challenge parts of traditional derivatives and exchange markets.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-30T13:00:00+00:00",
-    "share_url": "/podijeli/vijest/051a9ccb3e9560516e/"
   },
   {
     "id": "5a13a46e80bd79599e",
@@ -300,6 +324,18 @@
     "share_url": "/podijeli/vijest/415f1be9cca01f17c6/"
   },
   {
+    "id": "0532e36bcdf90c84e8",
+    "title": "Circle Freezes $12.6M in Funds, Sparking Crypto Backlash",
+    "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQcDV1T2xuWVQxV25OQTdueGZVdy1iemd5dVFRMWVDekdVV2ZramozYmEyc0VxQ2JvM1ZVNmdhTm5GaGpXeng4TGdnaVJPR2FZbnc0OC1MOExXN0FSWTExUS05eVRNbXhDZW5KZ1NiWWgxOXJ6UUxHWnVHRmZTYk1oQg?oc=5",
+    "summary": "Circle Freezes $12.6M in Funds, Sparking Crypto Backlash HOKANEWS.COM",
+    "source": "HOKANEWS.COM",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T12:32:00+00:00",
+    "share_url": "/podijeli/vijest/0532e36bcdf90c84e8/"
+  },
+  {
     "id": "33aa7c6f2c09cef965",
     "title": "RZS: U Srbiji u aprilu 8,6 odsto više turista nego u isto vreme 2025.",
     "url": "https://biznis.rs/vesti/srbija/rzs-u-srbiji-u-aprilu-86-odsto-vise-turista-nego-u-isto-vreme-2025/",
@@ -336,18 +372,6 @@
     "share_url": "/podijeli/vijest/eadf6c995ffa008234/"
   },
   {
-    "id": "9e1c57da3e6df02286",
-    "title": "Meta has struggled at selling anything other than ads. Will AI be different?",
-    "url": "https://www.cnbc.com/2026/05/30/meta-struggled-selling-anything-other-than-ads-will-ai-be-different.html",
-    "summary": "Meta is making a major push to expand its business beyond online advertising, but past efforts show that success is far from guaranteed.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-30T12:00:01+00:00",
-    "share_url": "/podijeli/vijest/9e1c57da3e6df02286/"
-  },
-  {
     "id": "c93d69954ba36a101c",
     "title": "Will Gen Z be the generation to revive moviegoing?",
     "url": "https://www.cnbc.com/2026/05/30/gen-z-movie-theaters.html",
@@ -358,6 +382,18 @@
     "category": "economy",
     "published_at": "2026-05-30T12:00:01+00:00",
     "share_url": "/podijeli/vijest/c93d69954ba36a101c/"
+  },
+  {
+    "id": "9e1c57da3e6df02286",
+    "title": "Meta has struggled at selling anything other than ads. Will AI be different?",
+    "url": "https://www.cnbc.com/2026/05/30/meta-struggled-selling-anything-other-than-ads-will-ai-be-different.html",
+    "summary": "Meta is making a major push to expand its business beyond online advertising, but past efforts show that success is far from guaranteed.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-30T12:00:01+00:00",
+    "share_url": "/podijeli/vijest/9e1c57da3e6df02286/"
   },
   {
     "id": "64f818cc8ecf8e8332",
@@ -528,16 +564,16 @@
     "share_url": "/podijeli/vijest/6d6afea4ab0fc875bc/"
   },
   {
-    "id": "1c2f9f58a85ecd91e9",
+    "id": "f323dbe1f86aa2212f",
     "title": "Crypto News: Crypto and Stocks Are Moving in Opposite Directions — S&P 500 Hits Nine-Week Win Streak While Bitcoin and Ethereum Keep Falling",
-    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBLbkFpMlBFZl9wNXVWdnNqT0NUdW9CcGdKeGxYNF9objFYVTFNZDhkb3h3amhRMjhoNFo3X3NoR0oybks2WFhrT1FHRGQwVzVfbGYzbjBCSzdaMjA0VFZGSXoxNXNNMG0x?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMirwJBVV95cUxQLVA5VFV0cTNXSlBOaGNWZXdWd2Z3bXlqUXM3S3MyRl81UjNDYjVoS1AxQm1DSzhFZDZMd0pCUkxMYmNUSFh5YXl4ZFF0dEpfMXhEUUNHT3l3bGdqN3ZCYXpGdWdKaU8tcEw2enpoZ0ZWdl9yX2xZOFRqS1Q2YlJ5RzBkc2dSUW1pTUJDYlBGZWYwZkY3RFNJSFF6M1BwbXF4VmRLZ2RzRHBmVW01ckhkN1Nhekd4ZmlZUjlkVTlfV0FzWjZyY2JBWVBBWkdMUlFVVFllNU9FcWhTc1JXdmFPMDJqUUltdXNCTHNSMFNXNFVNTGEzdi1CVXM5YXZwZVAzdjZndDJCYldPNHFJNVh1T0o3aUhPVkNWNGI2NDl3VnVLWWtoTDVQM01GdURtS28?oc=5",
     "summary": "Crypto News: Crypto and Stocks Are Moving in Opposite Directions — S&P 500 Hits Nine-Week Win Streak While Bitcoin and Ethereum Keep Falling Binance",
     "source": "Binance",
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-30T08:34:28+00:00",
-    "share_url": "/podijeli/vijest/1c2f9f58a85ecd91e9/"
+    "share_url": "/podijeli/vijest/f323dbe1f86aa2212f/"
   },
   {
     "id": "5e8c850e81c9e6e17b",
@@ -761,7 +797,7 @@
     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQbWYxV1ZKYkdBTDd5WVNDYU9sRmdvUFk4NThRVFk1aS0tVE1JOC1pRkJUcHdlWk01SXp3dnJiMWRYX1pFbHRrMGZlSTNrS2ZBVDRZNnhrb2xUWDc3TndCZkotUkhyODlNSEgtcEJwT1JuUlVabUJ1UllJUlJIUmp6UmxPTG1GOTgzZGY2X2VB?oc=5",
     "summary": "Has XRP Finally Broken Free of Regulatory Shackles Kavout",
     "source": "Kavout",
-    "region": "Digital Assets",
+    "region": "Crypto Regulation",
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-30T05:39:46+00:00",
@@ -944,8 +980,7 @@
     "region": "CNBC Technology",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-29T23:06:37+00:00",
-    "share_url": "/podijeli/vijest/4e7fbed51551a05ce3/"
+    "published_at": "2026-05-29T23:06:37+00:00"
   },
   {
     "id": "38d5c92eb5fd2f0bd0",
@@ -1872,8 +1907,7 @@
     "region": "AI Technology",
     "group": "technology",
     "category": "technology",
-    "published_at": "2026-05-29T14:16:08+00:00",
-    "share_url": "/podijeli/vijest/9230566ed0b6ce9f6e/"
+    "published_at": "2026-05-29T14:16:08+00:00"
   },
   {
     "id": "b6c8a201ddc870bd5b",
@@ -1931,17 +1965,6 @@
     "published_at": "2026-05-29T14:00:05+00:00"
   },
   {
-    "id": "236c3c03a9bff52d39",
-    "title": "Final 24 hours to save up to $410 on your TechCrunch Disrupt 2026 ticket",
-    "url": "https://techcrunch.com/2026/05/29/final-24-hours-to-save-up-to-410-on-your-techcrunch-disrupt-2026-ticket/",
-    "summary": "You now have until tonight at 11:59 p.m. PT to lock in Early Bird savings of up to $410 for TechCrunch Disrupt 2026 before prices increase. Join 10,000+ tech leaders in October for one of the most anticipated tech events of the year. Regist",
-    "source": "TechCrunch",
-    "region": "TechCrunch",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-29T14:00:00+00:00"
-  },
-  {
     "id": "6e2ccadbbcba2c5d5d",
     "title": "What American crypto asset perpetuals mean for the future of crypto",
     "url": "https://www.coindesk.com/opinion/2026/05/29/what-american-crypto-asset-perpetuals-mean-for-the-future-of-crypto",
@@ -1950,6 +1973,17 @@
     "region": "CoinDesk",
     "group": "digital-assets",
     "category": "digital-assets",
+    "published_at": "2026-05-29T14:00:00+00:00"
+  },
+  {
+    "id": "236c3c03a9bff52d39",
+    "title": "Final 24 hours to save up to $410 on your TechCrunch Disrupt 2026 ticket",
+    "url": "https://techcrunch.com/2026/05/29/final-24-hours-to-save-up-to-410-on-your-techcrunch-disrupt-2026-ticket/",
+    "summary": "You now have until tonight at 11:59 p.m. PT to lock in Early Bird savings of up to $410 for TechCrunch Disrupt 2026 before prices increase. Join 10,000+ tech leaders in October for one of the most anticipated tech events of the year. Regist",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
     "published_at": "2026-05-29T14:00:00+00:00"
   },
   {
@@ -5577,38 +5611,5 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-28T10:00:00+00:00"
-  },
-  {
-    "id": "22ea244f5f1decc910",
-    "title": "Mastercard’s Crypto Push Accelerates After New York BitLicense Approval with Ripple Already in the Mix",
-    "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQaGVqSWd2OVpDVmxoQ0FDNW5RbXZ3X2VDcEFYejgwa29PYnJkX0FpVFc2Mzd6cG5KYm1RTXZSaTZ6bGx2aVQzNkZ1dHN2Mk1VamN4cDJIWl9aRFp6MUZJM2t6M29DOE5YQ3VIQlJwM1VrWmhVQUdPaDZoR1dsNVV4TDFWZVhVUjlXWlRnWW14MUdHZE5zQjkyOHd6SDJPZjdkYmxqcmI5VF9rMVpic09kZFhmdk0wZWJVRS0wdGVBeml0UzFLTDZSNUhmdw?oc=5",
-    "summary": "Mastercard’s Crypto Push Accelerates After New York BitLicense Approval with Ripple Already in the Mix Coinpaper",
-    "source": "Coinpaper",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-28T09:56:23+00:00"
-  },
-  {
-    "id": "27264387d913efeea7",
-    "title": "Extended-Range Electric Vehicles (EREVs) Market to Reach US$",
-    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPYUpOWnVWNHowZ054UGxqc2xRd3hrbXJhVzFYMWg1WWVjSDJ1cjFpUTJLZGxGMmk1TEEwTDNfVzFxckJweWRfSDV2QXRJN0hoUFVTOGVDX0hUOEo2aVRSZExYNGlhblNUZ29mbHFNUnNuSjBMV2RHU08tSFJXQ1VEbUhPc3hFdS1EMkVSSzZDaGVkZ2NRM09iQw?oc=5",
-    "summary": "Extended-Range Electric Vehicles (EREVs) Market to Reach US$ openPR.com",
-    "source": "openPR.com",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-28T09:53:11+00:00"
-  },
-  {
-    "id": "9cf85c4951b04c1b65",
-    "title": "The AI Hype Index: AI gets booed in graduation season",
-    "url": "https://www.technologyreview.com/2026/05/28/1138053/the-ai-hype-index-ai-gets-booed-in-graduation-season/",
-    "summary": "It is one thing to say AI will change the world. It is another to expect the class of 2026 to applaud it. In fact, when former Google CEO Eric Schmidt told University of Arizona graduates that their task is to help shape AI, he was met with",
-    "source": "MIT Technology Review",
-    "region": "MIT Technology Review",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T09:51:11+00:00"
   }
 ]
