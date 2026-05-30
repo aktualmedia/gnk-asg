@@ -1,6 +1,5 @@
 name: Stable News Supervisor
 
-# Test trigger: 2026-05-30-automation-test-001
 on:
   workflow_dispatch:
   push:
@@ -73,3 +72,29 @@ jobs:
             git pull --rebase origin main || true
             git push origin HEAD:main
           fi
+
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    concurrency:
+      group: stable-pages-deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Prepare public portal
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          rsync -a --delete --exclude '.git/' --exclude '.github/' --exclude 'scripts/' --exclude '_site/' --exclude '*.py' ./ _site/
+          test -f _site/data/news.json
+          test -f _site/data/update_status.json
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - uses: actions/deploy-pages@v4
