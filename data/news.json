@@ -528,18 +528,6 @@
     "share_url": "/podijeli/vijest/eadf6c995ffa008234/"
   },
   {
-    "id": "9e1c57da3e6df02286",
-    "title": "Meta has struggled at selling anything other than ads. Will AI be different?",
-    "url": "https://www.cnbc.com/2026/05/30/meta-struggled-selling-anything-other-than-ads-will-ai-be-different.html",
-    "summary": "Meta is making a major push to expand its business beyond online advertising, but past efforts show that success is far from guaranteed.",
-    "source": "CNBC Technology",
-    "region": "CNBC Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-30T12:00:01+00:00",
-    "share_url": "/podijeli/vijest/9e1c57da3e6df02286/"
-  },
-  {
     "id": "c93d69954ba36a101c",
     "title": "Will Gen Z be the generation to revive moviegoing?",
     "url": "https://www.cnbc.com/2026/05/30/gen-z-movie-theaters.html",
@@ -550,6 +538,18 @@
     "category": "economy",
     "published_at": "2026-05-30T12:00:01+00:00",
     "share_url": "/podijeli/vijest/c93d69954ba36a101c/"
+  },
+  {
+    "id": "9e1c57da3e6df02286",
+    "title": "Meta has struggled at selling anything other than ads. Will AI be different?",
+    "url": "https://www.cnbc.com/2026/05/30/meta-struggled-selling-anything-other-than-ads-will-ai-be-different.html",
+    "summary": "Meta is making a major push to expand its business beyond online advertising, but past efforts show that success is far from guaranteed.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-30T12:00:01+00:00",
+    "share_url": "/podijeli/vijest/9e1c57da3e6df02286/"
   },
   {
     "id": "64f818cc8ecf8e8332",
@@ -1082,6 +1082,17 @@
     "published_at": "2026-05-30T02:00:00+00:00"
   },
   {
+    "id": "13bedb6fe3d0f761ec",
+    "title": "Russia Bans Crypto Advertising: New 2026 Regulations for Bitcoin and Digital Assets",
+    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE56T3pyeXYzeVFIRGtqWC0ydXlQQW5nQm1qUUY0cHhvdjk1RGQ0VHZULXV4OVBfUTRxbVYycGw0UzhVRFBzcU5oaGFoYmRreHFVenZxRVdLSjhCbnR2SUdxNk130gFnQVVfeXFMTjZWQ1dKRlppTXo2YmlUWmQ2NUR4STBiT0N6TWEyTkRuV0NYUEw5VmFVWmV4RVR5bUdfOHlBRlhhQVEtQVFxb2ZwZkZBaWZGWVp3TjdEb1pkcW83bDFQRVFyT3drVUZOZw?oc=5",
+    "summary": "Russia Bans Crypto Advertising: New 2026 Regulations for Bitcoin and Digital Assets CoinIdol",
+    "source": "CoinIdol",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-30T01:32:00+00:00"
+  },
+  {
     "id": "dca6d9cd9bd44d8547",
     "title": "What Do Trump-Linked Crypto ETFs Mean for the Market",
     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOaTNVU251QS1WZDhWa3pKdEV5cXR0SVRvYkFCUVhocmpGdDNlUzE0RVR2LWRJT0JYVjFLVmdWclhEaW5JSlVUM3pSdS1iV0tTdjV0SGQ3VmZSaUl0c2dsVklja1hpMzlSQ3YxazBxb3J0MG9UX3E1bHhoalB1UHRWRGg4bERBNVNnRFhQM3hWalY?oc=5",
@@ -1254,9 +1265,9 @@
     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PU3pBdGY0NWJMSWFUTFRDUGx3RklNQlNENWdlQjBiNG9meUo5andqSHFER0lkNlhEaFVwOXpLYWZseVJ1YVZsU2Q4RzBWT1RoeUhTM19YaFljM2ZHcm5yMHYxTlc?oc=5",
     "summary": "Crypto Update: FalconX Eyes Wall Street with IPO Filing Investing News Network",
     "source": "Investing News Network",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
     "published_at": "2026-05-29T21:05:00+00:00"
   },
   {
@@ -5600,16 +5611,5 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-28T12:00:04+00:00"
-  },
-  {
-    "id": "88dc9dd7c2262eced0",
-    "title": "VanEck's tokenized fund lands on Euler as DeFi courts Wall Street institutions",
-    "url": "https://www.coindesk.com/business/2026/05/27/vaneck-s-tokenized-fund-lands-on-euler-as-defi-courts-wall-street-institutions",
-    "summary": "DeFi protocols are increasingly adapting to host regulated, tokenized assets as tokenization is projected to bring trillions of dollars onchain.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-28T11:58:47+00:00"
   }
 ]
