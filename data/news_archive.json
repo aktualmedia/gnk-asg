@@ -1,5 +1,49 @@
 [
   {
+    "id": "6d7d763ab4fc381f2f",
+    "title": "Godišnji izvoz u SAD iz EU opao za 30 odsto u prvom kvartalu 2026.",
+    "url": "https://biznis.rs/vesti/svet/godisnji-izvoz-u-sad-iz-eu-opao-za-30-odsto-u-prvom-kvartalu-2026/",
+    "summary": "Evropska unija je uvezla robu u vrednosti od 627,8 milijardi evra iz zemalja van EU, a izvezla 640,5 milijardi evra, u prvom kvartalu 2026. godine. U poređenju sa prethodnim kvartalom, uvoz je povećan za 1,7 odsto, a izvoz smanjen za 0,1 od",
+    "source": "Biznis.rs",
+    "region": "Biznis.rs",
+    "group": "srbija",
+    "category": "economy",
+    "published_at": "2026-05-28T10:58:09+00:00"
+  },
+  {
+    "id": "2957b13e4072b82fd7",
+    "title": "Samsung units to buy $408 million stake in South Korea’s biggest crypto exchange",
+    "url": "https://www.coindesk.com/business/2026/05/28/samsung-is-buying-a-usd446-million-stake-in-south-korea-s-biggest-crypto-exchange",
+    "summary": "Samsung Securities is set to take a 2% stake in Dunamu, worth over $200 million, from affiliates of technology conglomerate Kakao.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-28T10:55:19+00:00"
+  },
+  {
+    "id": "adf3714aecdd029852",
+    "title": "Standard Chartered backs $4,000 ether as retail piles into the sub-$2,000 drop",
+    "url": "https://www.coindesk.com/markets/2026/05/28/standard-chartered-backs-usd4-000-ether-as-retail-piles-into-the-sub-usd2-000-drop",
+    "summary": "The bank says onchain metrics will pull the price back up, just as Amazon's stock price recovered after 2001. A retail dip-buying frenzy and a record futures short build say the bottom isn't in yet.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-28T10:48:26+00:00"
+  },
+  {
+    "id": "bd098eb0834872f9d8",
+    "title": "Bitcoin’s famous CME gaps are about to disappear, though three remain unresolved",
+    "url": "https://www.coindesk.com/markets/2026/05/28/bitcoin-s-famous-cme-gaps-are-about-to-disappear-though-three-remain-unresolved",
+    "summary": "The launch of round-the-clock bitcoin futures trading eliminates the long-standing CME weekend gap and marks another step toward fully integrated institutional crypto markets.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-28T10:47:22+00:00"
+  },
+  {
     "id": "999ca81ea99c7f0ce7",
     "title": "Crypto slides on Hormuz airstrikes as $897 million in long liquidations pile up",
     "url": "https://www.coindesk.com/markets/2026/05/28/crypto-slides-on-hormuz-airstrikes-as-usd897-million-in-long-liquidations-pile-up",
@@ -1837,6 +1881,17 @@
     "published_at": "2026-05-27T07:22:16+00:00"
   },
   {
+    "id": "46fffe697178c8829f",
+    "title": "Global Mobility Call expands its ecosystem with new strategic partners to boost sustainable mobility",
+    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPRzhCaVp3Ui1jSUlRQTd1ZkpiZ0JPTmo0SHo3b2tlM0VqREdwRm0xMHlsWmxrenJzNTgydXpyZ1NZRFhRbUFpcV9mTDNmNmZiTFFla1RsRnQ5WXZXdEw1R3ppZDdqbG1teEVieDBsR0NlWUdzTEVCZHJUZzh3ZEVmc0pYSXN6QkU?oc=5",
+    "summary": "Global Mobility Call expands its ecosystem with new strategic partners to boost sustainable mobility Mobility Portal",
+    "source": "Mobility Portal",
+    "region": "Global Mobility",
+    "group": "mobilnost",
+    "category": "automotive",
+    "published_at": "2026-05-27T07:00:00+00:00"
+  },
+  {
     "id": "87a91282dd600d5a76",
     "title": "The Best-Performing Stocks in 2026 (By One-Year Returns)",
     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9HdVpjUG12Y21vQk1rOHRqNzRfQ052ZEstSnllLTBvbTV3VUdJTmdjQnBUQVd3Wkdqa2N3eVB3dGszTGdSeWpoamNETU5yR3paS1ZNYnlBdlh2SFh5eld5MHdkNnpRSWo0UTh6YUlVeXM2YlU?oc=5",
@@ -1889,17 +1944,6 @@
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
-    "published_at": "2026-05-27T07:00:00+00:00"
-  },
-  {
-    "id": "46fffe697178c8829f",
-    "title": "Global Mobility Call expands its ecosystem with new strategic partners to boost sustainable mobility",
-    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPRzhCaVp3Ui1jSUlRQTd1ZkpiZ0JPTmo0SHo3b2tlM0VqREdwRm0xMHlsWmxrenJzNTgydXpyZ1NZRFhRbUFpcV9mTDNmNmZiTFFla1RsRnQ5WXZXdEw1R3ppZDdqbG1teEVieDBsR0NlWUdzTEVCZHJUZzh3ZEVmc0pYSXN6QkU?oc=5",
-    "summary": "Global Mobility Call expands its ecosystem with new strategic partners to boost sustainable mobility Mobility Portal",
-    "source": "Mobility Portal",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
     "published_at": "2026-05-27T07:00:00+00:00"
   },
   {
@@ -2519,36 +2563,25 @@
     "published_at": "2026-05-26T07:32:28+00:00"
   },
   {
-    "id": "33f73bf2643b10302a",
-    "title": "What’s happening this week in economics?",
-    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNcV9VYnV0R0RPcWN0d2g1SHJIVlNmaVA1TV9nXzRKdVlFcWtSMjQ1T1B0djE4dDNRanZvSVFGX0ZBNUd6cnZkVnAtenFuMnFzdU9zYzg5cFdkTVRxU1F5YVVXVFhVWGdhd2RsTDBkNS1Xcm9ub1FnMFp5NnB3WVBYa3JJa1FVbG5IT0ZRRHphTUhtNThkenVJS1ZrdWNDdw?oc=5",
-    "summary": "What’s happening this week in economics? Deloitte",
-    "source": "Deloitte",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
+    "id": "bdc5d450e4940480ed",
+    "title": "Morgan Lewis Finance Partner: Digital Assets Are Driving Opportunity in France, IFLR",
+    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOaWk4N3VBSDJVbUlwcGxlTGQ2RlFmS1pjeTZYeTVVc3N2MkJTN0ZlU2ZHNFphWDRrbkpNTDg1SVI5dlpSZm9namRfRXhZcnFnUzBYdDNTaDVNaWtMTGZkeUxWZ041ei1ZRXJyVFl5MXFMcnVFVDRPU3M4STVxeEZPajE2aDBuaS16YjlXVllZaEkwdGMtdThpMVRwOWhweWdpa2w4VGpzQjJXUTE1YjRhS1ptYmxqZG1wZ2hWcGItNFc?oc=5",
+    "summary": "Morgan Lewis Finance Partner: Digital Assets Are Driving Opportunity in France, IFLR Morgan Lewis",
+    "source": "Morgan Lewis",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
-    "id": "7b537573b32897816c",
-    "title": "Weekly market commentary",
-    "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNUVRpWnpzel9vdWlfUTRyMGZwLVhXN2dmVDBNclBHRzhhNWx4MnVDSFBZNl8wZmxuZzlpZjZPTC0zMTZMRU9Udl9zWTB1X0FFR2ZBMGFQaWgydTVSY21qTzBkUWoyaTlGUHFJeVZybVZnb3d3YWoyRkZHeDVyLWszMmFPLUNZUmh0WUh3UG9ZejBFanRudmt5VV9YNmVSa1hmeWp2TE1CUWgtdw?oc=5",
-    "summary": "Weekly market commentary blackrock.com",
-    "source": "blackrock.com",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-26T07:00:00+00:00"
-  },
-  {
-    "id": "fd27c73424f32c56fd",
-    "title": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security",
-    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbFhBMC05dFFFcVdHVk9IY05zVllyZnBOOU9ZZmgzOEc0UTFRdWd1ZUtCbGV3WWQ3dzVjdUJTQldxTVpCTkhSN05hclpnX2xaOHBGWGpxdG1VNnpBdWNidFF3ekdOSnpsVW1oRHpEcFBTc0xvSl90c1JYQ2lIZVlpa1F2ZThvYnNNLW9MUDlTUUQzeFlKdGVwcUprb0w0d2RSbThkR1lGUFJidnlRaEt1RzQ2bGk4NkU?oc=5",
-    "summary": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security Dark Reading",
-    "source": "Dark Reading",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
+    "id": "6b8433eecef3d93649",
+    "title": "What Is the CLARITY Act and What Does It Mean for Crypto?",
+    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObzItX29GSllDNU1GUzJDdU9jV2MxRy0yVlZ2dXFfa0NUbmhSNjR4ZUpYcWZQdUZZeUswT3lKcFNSRE5yYlExMFhVeVMyZ0F1UTJPVmkxR2lLS3I3eFJBUVFBNHRMeW1tSTZPRzZIMWl4Ym00X2dGZEZDUkE4eFBuSkVfQ2hiV3ZhTm1jOUxJQVloUkRreTVPY295Ri03Sl96ZVE?oc=5",
+    "summary": "What Is the CLARITY Act and What Does It Mean for Crypto? Binance",
+    "source": "Binance",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
@@ -2574,25 +2607,25 @@
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
-    "id": "bdc5d450e4940480ed",
-    "title": "Morgan Lewis Finance Partner: Digital Assets Are Driving Opportunity in France, IFLR",
-    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOaWk4N3VBSDJVbUlwcGxlTGQ2RlFmS1pjeTZYeTVVc3N2MkJTN0ZlU2ZHNFphWDRrbkpNTDg1SVI5dlpSZm9namRfRXhZcnFnUzBYdDNTaDVNaWtMTGZkeUxWZ041ei1ZRXJyVFl5MXFMcnVFVDRPU3M4STVxeEZPajE2aDBuaS16YjlXVllZaEkwdGMtdThpMVRwOWhweWdpa2w4VGpzQjJXUTE1YjRhS1ptYmxqZG1wZ2hWcGItNFc?oc=5",
-    "summary": "Morgan Lewis Finance Partner: Digital Assets Are Driving Opportunity in France, IFLR Morgan Lewis",
-    "source": "Morgan Lewis",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
+    "id": "33f73bf2643b10302a",
+    "title": "What’s happening this week in economics?",
+    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNcV9VYnV0R0RPcWN0d2g1SHJIVlNmaVA1TV9nXzRKdVlFcWtSMjQ1T1B0djE4dDNRanZvSVFGX0ZBNUd6cnZkVnAtenFuMnFzdU9zYzg5cFdkTVRxU1F5YVVXVFhVWGdhd2RsTDBkNS1Xcm9ub1FnMFp5NnB3WVBYa3JJa1FVbG5IT0ZRRHphTUhtNThkenVJS1ZrdWNDdw?oc=5",
+    "summary": "What’s happening this week in economics? Deloitte",
+    "source": "Deloitte",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
-    "id": "6b8433eecef3d93649",
-    "title": "What Is the CLARITY Act and What Does It Mean for Crypto?",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObzItX29GSllDNU1GUzJDdU9jV2MxRy0yVlZ2dXFfa0NUbmhSNjR4ZUpYcWZQdUZZeUswT3lKcFNSRE5yYlExMFhVeVMyZ0F1UTJPVmkxR2lLS3I3eFJBUVFBNHRMeW1tSTZPRzZIMWl4Ym00X2dGZEZDUkE4eFBuSkVfQ2hiV3ZhTm1jOUxJQVloUkRreTVPY295Ri03Sl96ZVE?oc=5",
-    "summary": "What Is the CLARITY Act and What Does It Mean for Crypto? Binance",
-    "source": "Binance",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
+    "id": "7b537573b32897816c",
+    "title": "Weekly market commentary",
+    "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNUVRpWnpzel9vdWlfUTRyMGZwLVhXN2dmVDBNclBHRzhhNWx4MnVDSFBZNl8wZmxuZzlpZjZPTC0zMTZMRU9Udl9zWTB1X0FFR2ZBMGFQaWgydTVSY21qTzBkUWoyaTlGUHFJeVZybVZnb3d3YWoyRkZHeDVyLWszMmFPLUNZUmh0WUh3UG9ZejBFanRudmt5VV9YNmVSa1hmeWp2TE1CUWgtdw?oc=5",
+    "summary": "Weekly market commentary blackrock.com",
+    "source": "blackrock.com",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
@@ -2604,6 +2637,17 @@
     "region": "Global Markets",
     "group": "international",
     "category": "economy",
+    "published_at": "2026-05-26T07:00:00+00:00"
+  },
+  {
+    "id": "fd27c73424f32c56fd",
+    "title": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbFhBMC05dFFFcVdHVk9IY05zVllyZnBOOU9ZZmgzOEc0UTFRdWd1ZUtCbGV3WWQ3dzVjdUJTQldxTVpCTkhSN05hclpnX2xaOHBGWGpxdG1VNnpBdWNidFF3ekdOSnpsVW1oRHpEcFBTc0xvSl90c1JYQ2lIZVlpa1F2ZThvYnNNLW9MUDlTUUQzeFlKdGVwcUprb0w0d2RSbThkR1lGUFJidnlRaEt1RzQ2bGk4NkU?oc=5",
+    "summary": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security Dark Reading",
+    "source": "Dark Reading",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
@@ -3399,17 +3443,6 @@
     "published_at": "2026-05-24T08:50:10+00:00"
   },
   {
-    "id": "cb536bfe8d1f27f058",
-    "title": "BlackRock | Assets Under Management, History, & Influence | Britannica Money",
-    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9jZlFtQzNhR2xleWw2Q2wySEJDc3ZabzUwMDR6cVE3QUVfTmp3SHpZNHdMZlVKcU5CYTBJZG5VYUFTbUswSkNVZVd1ZjdURkFGVjlucV9hN0N6UQ?oc=5",
-    "summary": "BlackRock | Assets Under Management, History, & Influence | Britannica Money Britannica",
-    "source": "Britannica",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-24T07:00:00+00:00"
-  },
-  {
     "id": "fccfec7ca97c3f1fec",
     "title": "Oracle Corporation | History, Products, Cloud Computing, & AI | Britannica Money",
     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5oaWRXcU9fcDZkRjJZalRiVHd6Y1dfQmZVNW4tVkRsMUZKTmtUeGs2T3FLLWhrVGtUbTJtTHdKS0RraExsZUdhMjVLQk9CZXFldThfUTJubk1xRFVqdnZGaQ?oc=5",
@@ -3418,6 +3451,17 @@
     "region": "AI Technology",
     "group": "technology",
     "category": "technology",
+    "published_at": "2026-05-24T07:00:00+00:00"
+  },
+  {
+    "id": "cb536bfe8d1f27f058",
+    "title": "BlackRock | Assets Under Management, History, & Influence | Britannica Money",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9jZlFtQzNhR2xleWw2Q2wySEJDc3ZabzUwMDR6cVE3QUVfTmp3SHpZNHdMZlVKcU5CYTBJZG5VYUFTbUswSkNVZVd1ZjdURkFGVjlucV9hN0N6UQ?oc=5",
+    "summary": "BlackRock | Assets Under Management, History, & Influence | Britannica Money Britannica",
+    "source": "Britannica",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
     "published_at": "2026-05-24T07:00:00+00:00"
   },
   {
@@ -4323,28 +4367,6 @@
     "published_at": "2026-05-22T07:00:00+00:00"
   },
   {
-    "id": "cba99555cc857769ec",
-    "title": "Top 5 AI Stocks To Buy In India May 2026",
-    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNd25Nc2NpMTZTeHN1djNmQXF0d0RQN0NXazJDZ3Uxb0J0aGJYMEtMalJqOFBWbzgxdjZQWlRlVDhlbWdtRFg5QzdHbVFCM0REZW5kRzFmdUszNTBndzBhMC1Rd1JhcmxYWVhlRGV2UloyTGgtbG5VUVVkenZkMjdhSUg4di0?oc=5",
-    "summary": "Top 5 AI Stocks To Buy In India May 2026 Samco",
-    "source": "Samco",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-22T07:00:00+00:00"
-  },
-  {
-    "id": "7355b41d61e30a127f",
-    "title": "Robinhood's chief operating officer of crypto Tanya Denisova is leaving the firm",
-    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQVDFXUEg4N3IzNU00dC02TnJUR0ZyMy1sYjZPdVpOelVnR2lTZ0lrYTZtTzlNWDVkbU1pd1Q3MzNRUXNoOC1BeUFleDdtYjd1SWY0bFBQMVJWY1VNUm9QZkpGMkg4TnAzNHVzNlMteVlsejJza2dsMV9INGlYNHlIYXRxWWRqTWtDMllRMFFvRzh4My1sVVdlQ2wxNUlvUkd2Sy1GWXFuSTJFb015NUFHMGNNa0hxclVDQVNsSk5n?oc=5",
-    "summary": "Robinhood's chief operating officer of crypto Tanya Denisova is leaving the firm CoinDesk",
-    "source": "CoinDesk",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-22T07:00:00+00:00"
-  },
-  {
     "id": "d74ce855cae666dae9",
     "title": "Nigeria adopts new training manual for EV, CNG operations",
     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPQzRPcTllYjg0QjA3b1pmMXNRMDVpaFVmVlFyS3g4Q1pRd2lyaWY0N2pLSVpDeEx2TmRUUnlOWDVGcVljMmNVYnozT0VPZ0dReV9WSVVuSjhRMWFTSV9MZU9fbnVuMEdOdkh1M3FCWER0clZqaExNbWVENGtBSkxzYjFvckJHdXgwaTA5WmhCUk4wLUVSWFgwNmdZbEpsZjFIM3dQdHE4UTI?oc=5",
@@ -4372,28 +4394,6 @@
     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9ZMjFBVTdBN0xXeV9DYTE1NnlVNVZQal9EdVFlUW9ObHRacVRvTjBoRVZhVU5sdS1HV1lYUVJzZEY1MnowNzlNQjhVb0w0SWJCQm5Zbkhn?oc=5",
     "summary": "Ma Huateng | Biography, Tencent, & Facts | Britannica Money Britannica",
     "source": "Britannica",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-22T07:00:00+00:00"
-  },
-  {
-    "id": "f8fdf6d86197f6abf1",
-    "title": "5 ethical questions about artificial intelligence",
-    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5CbUw2T2NjWmF5R2c3Sm85ZWlYQ1ZnSExocUZWVFFWMlFFTDVpUXpBNk5wSDV6M3ljSXRyVXMyTGs5LTVlWk9ULS15a19FQkxWcXU4Y3JaVDZhUXdwTHFN?oc=5",
-    "summary": "5 ethical questions about artificial intelligence Britannica",
-    "source": "Britannica",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-22T07:00:00+00:00"
-  },
-  {
-    "id": "2e1c07f6994c2bad94",
-    "title": "How AI Is Transforming the Factory Floor",
-    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1NdjFZSnlPcW54Y3BlYXY5ZXlmZEVmM1V2dnlBTDZMSjJQUnpXZndEc3J2QjVwLWgyMjk0VERVN3ZmWGZDQldKSEZUSWZnODg2TW1lUjJyaV9wOGRtWC1Vel9sQWVhR2NjanExS0YwTElsMFU?oc=5",
-    "summary": "How AI Is Transforming the Factory Floor EE Times",
-    "source": "EE Times",
     "region": "AI Technology",
     "group": "technology",
     "category": "technology",
