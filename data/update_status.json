@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-05-30T19:59:54+00:00",
+  "updated_at": "2026-05-30T20:16:01+00:00",
   "news": {
-    "updated_at": "2026-05-30T19:59:54+00:00",
+    "updated_at": "2026-05-30T20:16:01+00:00",
     "status": "ok",
     "engine": "single_publication_engine_v1",
-    "cadence": "scheduled every hour",
+    "cadence": "scheduled every one hour and twenty-one minutes",
     "source_success_policy": "publish_when_at_least_80_percent_of_sources_are_synced",
     "source_success_threshold": 0.8,
     "source_success_ratio": 1.0,
@@ -17,29 +17,23 @@
     "max_public_items": 500,
     "archive_items": 400,
     "max_archive_items": 400,
-    "discarded_archive_overflow_items": 142,
-    "fetched_candidates": 524,
-    "duplicates_or_blocked_removed": 382,
+    "discarded_archive_overflow_items": 136,
+    "fetched_candidates": 511,
+    "duplicates_or_blocked_removed": 375,
     "request_timeout_seconds": 6,
     "network_workers": 12,
     "share_previews_ready": 80,
     "by_group": {
       "hrvatska": 118,
-      "technology": 147,
-      "digital-assets": 119,
-      "mobilnost": 21,
+      "technology": 146,
+      "digital-assets": 118,
+      "mobilnost": 22,
       "srbija": 66,
-      "international": 25,
+      "international": 26,
       "bih": 3,
       "sport": 1
     },
     "errors": [],
-    "preview_errors": [],
-    "checked_at": "2026-05-30T19:59:54+00:00",
-    "last_attempt_at": "2026-05-30T19:59:54+00:00",
-    "heartbeat_policy": "news_status_updates_on_every_automation_run",
-    "stale_safe": true,
-    "last_successful_refresh_at": "2026-05-30T19:59:54+00:00",
-    "data_status": "fresh_or_reference_checked"
+    "preview_errors": []
   }
 }
