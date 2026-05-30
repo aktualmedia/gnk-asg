@@ -28,18 +28,23 @@ def main() -> None:
     news = status.get("news") if isinstance(status.get("news"), dict) else {}
     previous_success = news.get("last_successful_refresh_at") or news.get("updated_at")
     public_items = news.get("public_items", 0)
+    previous_status = news.get("status") or "partial"
     news.update({
+        "updated_at": NOW,
         "checked_at": NOW,
         "last_attempt_at": NOW,
+        "cadence": "scheduled every hour",
         "heartbeat_policy": "news_status_updates_on_every_automation_run",
         "stale_safe": True,
         "public_items": public_items,
     })
-    if news.get("status") == "ok":
-        news["last_successful_refresh_at"] = news.get("updated_at") or NOW
+    if previous_status == "ok":
+        news["status"] = "ok"
+        news["last_successful_refresh_at"] = NOW
+        news["data_status"] = "fresh_or_reference_checked"
     else:
+        news["status"] = previous_status
         news["last_successful_refresh_at"] = previous_success
-        news["status"] = news.get("status") or "partial"
         news["data_status"] = "stale_previous_news_preserved"
     status["updated_at"] = NOW
     status["news"] = news
