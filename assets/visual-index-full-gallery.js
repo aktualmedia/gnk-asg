@@ -73,7 +73,7 @@
     const title = `GNK ASG ${set.label} ${String(number).padStart(2, '0')}`;
     return {
       id,
-      src: `/assets/seo-gallery/${set.folder}/${id}.jpg`,
+      src: `/assets/seo-gallery/${id}.jpg`,
       title,
       topic: set.topics,
       countries: set.countries,
