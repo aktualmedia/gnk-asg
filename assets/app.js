@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260531-menu-stable02';
+  var VERSION = '20260601-quality01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/portal-integration.css');
   style('/assets/seo-profile-link.css');
   style('/assets/menu-fix.css');
+  style('/assets/quality-patch.css');
   script('/assets/i18n.js');
   script('/assets/language-routing.js');
   script('/assets/portal-navigation.js');
@@ -89,9 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/group-clarity.js');
   script('/assets/public-sources.js');
   script('/assets/site-share.js');
-  script('/assets/content-share.js');
-  script('/assets/share-routing-fix.js');
-  script('/assets/share-permanent-cards.js');
   script('/assets/hourly-data-disclosure.js');
   script('/assets/portal-layout.js');
 
