@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260601-quality01';
+  var VERSION = '20260601-activity-model-fix01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/site-share.js');
   script('/assets/hourly-data-disclosure.js');
   script('/assets/portal-layout.js');
+  script('/assets/home-activity-model.js');
 
   function isEnglish() {
     return /\/en\/?$/.test(window.location.pathname) || /\/en\//.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
