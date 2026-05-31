@@ -1,18 +1,26 @@
 {
-  "updated_at": "2026-05-31",
+  "updated_at": "2026-06-01",
   "purpose": "Editorial queue for upcoming GNK ASG Intelligence Desk publications.",
+  "daily_schedule": {
+    "timezone": "Europe/Zagreb",
+    "times": ["09:00", "13:00", "19:00"],
+    "articles_per_day": 3,
+    "auto_publish": true
+  },
   "items": [
     {
       "id": "ai-infrastructure-europe-data-centres",
-      "status": "planned",
+      "status": "published",
       "priority": 1,
       "language": "en",
       "working_title": "AI Infrastructure in Europe: Data Centres, Energy and Digital Sovereignty",
       "category": "Technology and AI",
       "target_path": "/en/insights/2026/06/ai-infrastructure-europe-data-centres/",
+      "published_path": "/en/insights/2026/06/ai-infrastructure-europe-data-centres/",
+      "published_date": "2026-06-01",
       "image_required": true,
-      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "AI infrastructure", "data centres", "Europe", "digital sovereignty"],
-      "notes": "Business-intelligence article on AI infrastructure as industrial policy and corporate strategy. Verify current public sources before publishing."
+      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "Nermin Sefić", "AI infrastructure", "data centres", "Europe", "digital sovereignty"],
+      "notes": "Published as GNK ASG Business Intelligence article and entered into data/insights.json and sitemap.xml."
     },
     {
       "id": "corporate-portals-public-documents-ai",
@@ -23,7 +31,7 @@
       "category": "Corporate Transparency",
       "target_path": "/en/insights/2026/06/public-corporate-documents-ai-explanations/",
       "image_required": true,
-      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "corporate transparency", "public documents", "AI explanations", "business communication"],
+      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "Nermin Sefić", "corporate transparency", "public documents", "AI explanations", "business communication"],
       "notes": "Use GNK ASG portal logic: documents, financial data, badges, market panels, public sources and AI assistant."
     },
     {
@@ -35,7 +43,7 @@
       "category": "Sport Business",
       "target_path": "/en/insights/2026/06/sport-attention-market-media-tourism-data/",
       "image_required": true,
-      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "sport business", "attention economy", "media", "tourism", "data"],
+      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "Nermin Sefić", "sport business", "attention economy", "media", "tourism", "data"],
       "notes": "Connect sport, technology, media, tourism and corporate valuation without making unsupported club-specific claims."
     },
     {
@@ -47,7 +55,7 @@
       "category": "Digital Assets",
       "target_path": "/en/insights/2026/06/digital-assets-public-market-monitoring/",
       "image_required": true,
-      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "digital assets", "market monitoring", "corporate communication", "business intelligence"],
+      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "Nermin Sefić", "digital assets", "market monitoring", "corporate communication", "business intelligence"],
       "notes": "Explain market-monitor panels as information layer, not investment advice."
     }
   ]
