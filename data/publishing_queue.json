@@ -1,0 +1,54 @@
+{
+  "updated_at": "2026-05-31",
+  "purpose": "Editorial queue for upcoming GNK ASG Intelligence Desk publications.",
+  "items": [
+    {
+      "id": "ai-infrastructure-europe-data-centres",
+      "status": "planned",
+      "priority": 1,
+      "language": "en",
+      "working_title": "AI Infrastructure in Europe: Data Centres, Energy and Digital Sovereignty",
+      "category": "Technology and AI",
+      "target_path": "/en/insights/2026/06/ai-infrastructure-europe-data-centres/",
+      "image_required": true,
+      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "AI infrastructure", "data centres", "Europe", "digital sovereignty"],
+      "notes": "Business-intelligence article on AI infrastructure as industrial policy and corporate strategy. Verify current public sources before publishing."
+    },
+    {
+      "id": "corporate-portals-public-documents-ai",
+      "status": "planned",
+      "priority": 2,
+      "language": "en",
+      "working_title": "Why Public Corporate Documents Need Artificial Intelligence Explanations",
+      "category": "Corporate Transparency",
+      "target_path": "/en/insights/2026/06/public-corporate-documents-ai-explanations/",
+      "image_required": true,
+      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "corporate transparency", "public documents", "AI explanations", "business communication"],
+      "notes": "Use GNK ASG portal logic: documents, financial data, badges, market panels, public sources and AI assistant."
+    },
+    {
+      "id": "sports-business-attention-markets",
+      "status": "planned",
+      "priority": 3,
+      "language": "en",
+      "working_title": "Sport as an Attention Market: Media, Tourism, Data and Corporate Value",
+      "category": "Sport Business",
+      "target_path": "/en/insights/2026/06/sport-attention-market-media-tourism-data/",
+      "image_required": true,
+      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "sport business", "attention economy", "media", "tourism", "data"],
+      "notes": "Connect sport, technology, media, tourism and corporate valuation without making unsupported club-specific claims."
+    },
+    {
+      "id": "digital-assets-public-market-monitoring",
+      "status": "planned",
+      "priority": 4,
+      "language": "en",
+      "working_title": "Digital Assets and Public Market Monitoring in Corporate Communication",
+      "category": "Digital Assets",
+      "target_path": "/en/insights/2026/06/digital-assets-public-market-monitoring/",
+      "image_required": true,
+      "seo_focus": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "digital assets", "market monitoring", "corporate communication", "business intelligence"],
+      "notes": "Explain market-monitor panels as information layer, not investment advice."
+    }
+  ]
+}
