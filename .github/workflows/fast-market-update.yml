@@ -3,7 +3,7 @@ name: Automated Market Data Refresh
 # Odvojeni automatski ciklus tržišnih i referentnih podataka.
 # Ne obrađuje vijesti niti mijenja njihov status.
 # Stale-safe pravilo: vanjski feed smije pasti, ali javni monitori moraju dobiti novi checked_at.
-# Ručni okidač tržišnog ciklusa: 2026-05-31-001.
+# Ručni okidač tržišnog ciklusa: 2026-05-31-002.
 on:
   workflow_dispatch:
   push:
