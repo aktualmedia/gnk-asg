@@ -792,18 +792,6 @@
     "share_url": "/podijeli/vijest/eadf6c995ffa008234/"
   },
   {
-    "id": "c93d69954ba36a101c",
-    "title": "Will Gen Z be the generation to revive moviegoing?",
-    "url": "https://www.cnbc.com/2026/05/30/gen-z-movie-theaters.html",
-    "summary": "Gen Zers like affordable, social experiences and are driving demand for anime and video game titles at the theaters.",
-    "source": "CNBC Business",
-    "region": "CNBC Business",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-30T12:00:01+00:00",
-    "share_url": "/podijeli/vijest/c93d69954ba36a101c/"
-  },
-  {
     "id": "9e1c57da3e6df02286",
     "title": "Meta has struggled at selling anything other than ads. Will AI be different?",
     "url": "https://www.cnbc.com/2026/05/30/meta-struggled-selling-anything-other-than-ads-will-ai-be-different.html",
@@ -814,6 +802,18 @@
     "category": "technology",
     "published_at": "2026-05-30T12:00:01+00:00",
     "share_url": "/podijeli/vijest/9e1c57da3e6df02286/"
+  },
+  {
+    "id": "c93d69954ba36a101c",
+    "title": "Will Gen Z be the generation to revive moviegoing?",
+    "url": "https://www.cnbc.com/2026/05/30/gen-z-movie-theaters.html",
+    "summary": "Gen Zers like affordable, social experiences and are driving demand for anime and video game titles at the theaters.",
+    "source": "CNBC Business",
+    "region": "CNBC Business",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-30T12:00:01+00:00",
+    "share_url": "/podijeli/vijest/c93d69954ba36a101c/"
   },
   {
     "id": "64f818cc8ecf8e8332",
@@ -2239,6 +2239,17 @@
     "category": "economy",
     "published_at": "2026-05-29T15:10:00+00:00",
     "share_url": "/podijeli/vijest/59a045d3f7c8cfa68b/"
+  },
+  {
+    "id": "e752ceb3a76569b5a7",
+    "title": "Sky-High I.P.O. Pricing Isn’t Great for Real People",
+    "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOcjZxSTJ3UHdVM1pzZWVfZ2ZoT05GY2d0cFJqcm52aUlTYUN1Ri1iS2x3STh4c2pyRjdQbEk1bEZUUjNrQjExTnBOODlrMkRqR09SZ2c5MW44akNDdXdNSzU2SXY0YTRNR2wzaEU3TFFkSUpnSUFxOUhwZWVVOWh2cXF1d3l4eGM5eWRv?oc=5",
+    "summary": "Sky-High I.P.O. Pricing Isn’t Great for Real People The New York Times",
+    "source": "The New York Times",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-29T15:02:30+00:00"
   },
   {
     "id": "6f90a2a04a7a123f0a",
@@ -5484,10 +5495,10 @@
     "published_at": "2026-05-28T13:38:24+00:00"
   },
   {
-    "id": "802c2eb95760de04a9",
-    "title": "Asset manager Grayscale delays IPO plans as crypto listing boom loses steam",
+    "id": "e47d00880fe088303b",
+    "title": "Grayscale IPO delayed as crypto firms reassess public market plans",
     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPZzZhLWtWbnIwZ0xrVTd3ZzVnT0c5N3VEWUh0M2d6Y284ay1aMXhmN3F3Q2l6VEJ4SjEwUFlHWmR1X3hlSVp0WW5rQzlXZlZMYmdMU3JqdVlscWxSTTJEZDVlM3pxczFqS0kzdnF0WVBVOUFQYlVxRU1ZVlBfRTJtelZ3YmJERW1qT2ZGT3NidEk5ZTEtV3htVmdrQXdBNGQtV21vODFLdXdWQksybWtPZm1IUGctd3hkQXV3WA?oc=5",
-    "summary": "Asset manager Grayscale delays IPO plans as crypto listing boom loses steam CoinDesk",
+    "summary": "Grayscale IPO delayed as crypto firms reassess public market plans CoinDesk",
     "source": "CoinDesk",
     "region": "Digital Assets",
     "group": "digital-assets",
@@ -5603,16 +5614,5 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-28T13:12:41+00:00"
-  },
-  {
-    "id": "68b42143ba5ede2d40",
-    "title": "Ferrari CEO defends new Luce EV, saying customer interest is strong",
-    "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNS250dE95QkxzZ0F4Yk9SS0FDTFlVbVN4bU5zN1YzMWZJRjU0X3I1eThjNHRqTTMweVA5NnpBTGM3NmliOFpMbGZBa2RseXpCempfSzE3Rm5KWGkwU2MzZ0QtQmNzcTY5QXFfdG9hUklveHhJWlNITlJ4MTJTRUUzWER2NXpwZXR3OVNvRG9NOGlDWVpRZVVzMTFuOS1wYlpMZkh1RUVBX0d2eEZ5Z2Myc2JqVmluclc1TUZOM3NOcDd6cVZVS0JmUWZUTFpXWGJlWG1vOWRGNlc2bnVyc3fSAd4BQVVfeXFMTUtudHRPeUJMc2dBeGJPUktBQ0xZVW1TeG1OczdWMzFmSUY1NF9yNXk4YzR0ak0zMHlQOTZ6QUxjNzZpYjhaTGxmQWtkbHl6QnpqX0sxN0ZuSlhpMFNjM2dELUJjc3E2OUFxX3RvYVJJb3h4SVpTSE5SeDEyU0VFM1hEdjV6cGV0dzlTb0RvTThpQ1laUWVVczExbjktcGJaTGZIdUVFQV9HdnhGeWdjMnNialZpbnJXNU1GTjNzTnA3enFWVUtCZlFmVExaV1hiZVhtbzlkRjZXNm51cnN3?oc=5",
-    "summary": "Ferrari CEO defends new Luce EV, saying customer interest is strong ET Auto",
-    "source": "ET Auto",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-28T13:10:20+00:00"
   }
 ]
