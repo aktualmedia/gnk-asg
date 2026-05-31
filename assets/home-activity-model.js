@@ -1,9 +1,11 @@
 (() => {
   'use strict';
 
-  const BASE_COUNT = 6857;
-  const BASE_TIME = Date.parse('2026-05-31T18:45:00+02:00');
-  const REFRESH_KEY = 'gnk_asg_indicative_activity_refresh_bonus_v1';
+  const BASE_COUNT = 6887;
+  const BASE_TIME = Date.parse('2026-05-31T22:05:00+02:00');
+  const REFRESH_KEY = 'gnk_asg_indicative_activity_refresh_bonus_v2';
+  const LAST_TICK_KEY = 'gnk_asg_indicative_activity_last_tick_v2';
+  const VIEW_COOLDOWN_MS = 900;
 
   function isHome() {
     const path = location.pathname.replace(/\/+$/, '/');
@@ -14,24 +16,28 @@
     return /\/en\/?$/.test(location.pathname) || /\/en\//.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   }
 
-  function storageGet() {
+  function storageGet(key) {
     try {
-      return Math.max(0, Number(localStorage.getItem(REFRESH_KEY) || 0));
+      return Math.max(0, Number(localStorage.getItem(key) || 0));
     } catch (_) {
       return 0;
     }
   }
 
-  function storageSet(value) {
+  function storageSet(key, value) {
     try {
-      localStorage.setItem(REFRESH_KEY, String(Math.max(0, Number(value) || 0)));
+      localStorage.setItem(key, String(Math.max(0, Number(value) || 0)));
     } catch (_) {}
   }
 
-  function registerRefreshViewOnce() {
-    if (!isHome() || window.__gnkActivityRefreshRegistered) return;
-    window.__gnkActivityRefreshRegistered = true;
-    storageSet(storageGet() + 1);
+  function registerView(reason) {
+    if (!isHome()) return;
+    const now = Date.now();
+    const last = storageGet(LAST_TICK_KEY);
+    if (last && now - last < VIEW_COOLDOWN_MS) return;
+    storageSet(LAST_TICK_KEY, now);
+    storageSet(REFRESH_KEY, storageGet(REFRESH_KEY) + 1);
+    window.__gnkActivityLastReason = reason || 'load';
   }
 
   function zagrebHour(time) {
@@ -70,7 +76,7 @@
   }
 
   function activityValue() {
-    return BASE_COUNT + algorithmGrowth() + storageGet();
+    return BASE_COUNT + algorithmGrowth() + storageGet(REFRESH_KEY);
   }
 
   function ensureStyle() {
@@ -116,16 +122,36 @@
       anchor.insertAdjacentElement(anchor.classList && anchor.classList.contains('quick-data') ? 'afterend' : 'beforeend', box);
     }
 
-    box.innerHTML = '<div class="reader-icon">◎</div><div><small>' + (en ? 'Public activity model' : 'Javni model aktivnosti') + '</small><strong id="readerCounterValue">—</strong><span>' + (en ? 'Indicative display; not measured analytics.' : 'Indikativni prikaz; nije mjerena analitika.') + '</span></div>';
+    box.innerHTML = '<div class="reader-icon">◎</div><div><small>' + (en ? 'Public activity model' : 'Javni model aktivnosti') + '</small><strong id="readerCounterValue">—</strong><span>' + (en ? 'Indicative display; not measured analytics. Every refresh or app reopen adds one view.' : 'Indikativni prikaz; nije mjerena analitika. Svaki refresh ili ponovno otvaranje aplikacije dodaje jedan prikaz.') + '</span></div>';
     update();
   }
 
   function boot() {
-    registerRefreshViewOnce();
+    registerView('load');
     render();
     update();
-    window.setInterval(update, 60000);
+    window.setInterval(update, 15000);
   }
+
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted || document.visibilityState === 'visible') {
+      registerView('pageshow');
+      render();
+      update();
+    }
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') {
+      registerView('visible');
+      update();
+    }
+  });
+
+  window.addEventListener('focus', function () {
+    registerView('focus');
+    update();
+  });
 
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
   window.addEventListener('gnk-language-change', render);
