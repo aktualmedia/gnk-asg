@@ -1,5 +1,60 @@
 [
   {
+    "id": "ec6683033f71580541",
+    "title": "Oura is launching its smallest smart ring yet, shrinking wearable design by 40%",
+    "url": "https://www.cnbc.com/2026/05/28/oura-ring-smallest-wearable-health-fitness.html",
+    "summary": "Oura, the smart ring maker, is set to launch what it says will be the smallest smart ring available in the growing wearables market.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T16:03:18+00:00"
+  },
+  {
+    "id": "e74cfadd8b7256c60a",
+    "title": "What Mastercard's BitLicense Means for Its Digital Payments Future",
+    "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPcE9CMGNIakdfbXh6OXlxSDZjVHpFd0V4dWJmckRCRkFQYjVCcWNId3dRYU1Fa094eFNLTF96clNRaGNVY2NYSXdrb2hnSFJvcGx3NTBnT1NyZmtSVUduM2pKMXFhaXpEdzE5OUVXcjV2eHhDY0REX1V0b2ItYmZyTUNSYUlEbXhlU3F0WFdwbnFyMmpHYWZNX1lJcUdYMGFoTmlKNmxzdXkxQ3FnamxtQzBWMlVjYUxmbDFUbjZ1TQ?oc=5",
+    "summary": "What Mastercard's BitLicense Means for Its Digital Payments Future TradingView",
+    "source": "TradingView",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-28T16:00:00+00:00"
+  },
+  {
+    "id": "c796fc76d19afbaa15",
+    "title": "Waymo opens Ojai robotaxis to select riders as company aims to lower cost of fleet expansion",
+    "url": "https://www.cnbc.com/2026/05/28/waymo-opens-ojai-robotaxis-to-some-riders-aims-to-lower-cost-of-fleet.html",
+    "summary": "Alphabet's Waymo is adding new vehicles to its fleet of public robotaxis and is opening up its roomier Ojai vehicles to some riders.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T15:57:22+00:00"
+  },
+  {
+    "id": "667ce1f474e482cf81",
+    "title": "Jim Cramer says to buy these two stocks — including one with nearly 20% upside",
+    "url": "https://www.cnbc.com/2026/05/28/jim-cramer-says-to-buy-these-two-stocks-including-one-with-nearly-20percent-upside.html",
+    "summary": "The Investing Club holds its \"Morning Meeting\" every weekday at 10:20 a.m. ET.",
+    "source": "CNBC Technology",
+    "region": "CNBC Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T15:54:09+00:00"
+  },
+  {
+    "id": "9075bf4fd5effccbfe",
+    "title": "Većim ulaganjima u obujam i produktivnost ojačati poljoprivredu",
+    "url": "https://www.poslovni.hr/hrvatska/vecim-ulaganjima-u-obujam-i-produktivnost-ojacati-poljoprivredu-4540440",
+    "summary": "U Hrvatskoj je prisutan sve veći jaz između domaće proizvodnje i potreba tržišta, što rezultira povećanim uvozom hrane.",
+    "source": "Poslovni dnevnik",
+    "region": "Poslovni dnevnik",
+    "group": "hrvatska",
+    "category": "economy",
+    "published_at": "2026-05-28T15:53:00+00:00"
+  },
+  {
     "id": "cde63b069e26ab50c0",
     "title": "Lagard upozorila na smanjenu nezavisnost centralnih banaka",
     "url": "https://biznis.rs/vesti/lagard-upozorila-na-smanjenu-nezavisnost-centralnih-banaka/",
@@ -1248,8 +1303,8 @@
     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQaHBkV3MycEJSMjlheUxGOTdFbWNqODdrNzlrTXJjS3JCdTkwZDdfT2pUQjVrV2RCOXV0MUFaNGY2clJENzZXd0RzbXB2Zm5YblBZamluMXNaTWtObzdmS1N1VVFtR3gzZkZSUFJNeTVrdkpCRXdzeFpqMnJhMWo4OFpDQTd6NjkyUk95TklNLTdETkJJblg5QTVJY3NkbzduaWxZ?oc=5",
     "summary": "Slovenia issues 350 mln euro 7-year domestic bond amid strong demand SeeNews",
     "source": "SeeNews",
-    "region": "Slovenia Business English",
-    "group": "slovenija",
+    "region": "BiH SeeNews",
+    "group": "bih",
     "category": "economy",
     "published_at": "2026-05-28T09:27:55+00:00"
   },
@@ -1483,6 +1538,17 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-28T07:02:30+00:00"
+  },
+  {
+    "id": "b896716b8096584710",
+    "title": "Private equity: What is it, and can I invest in it?",
+    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5tTVgxejlJV1pwaDV0OFVCaThTTGYzeUFycFpMTDBpanA1N0NWQWpOUGdKbHlHd0VIbHFFek9YN2stY0dRbG02dXc1OW5kWG9pOWx5MTZZNC1WY0FPMUVMbnZoVTQ4UmhyVWFzbFBSd3ZYekU?oc=5",
+    "summary": "Private equity: What is it, and can I invest in it? Britannica",
+    "source": "Britannica",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-28T07:00:00+00:00"
   },
   {
     "id": "f2f049cf6758e24ffe",
@@ -2407,6 +2473,17 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-27T14:46:00+00:00"
+  },
+  {
+    "id": "48b8d1568762224dd7",
+    "title": "Falcon Finance Introduces Yield-Driven FUSD Stablecoin With Anchorage Digital",
+    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPYVg5dUpzOGhHcFFYZEc2cHF5TGtqb3R1dGgwaDNUNHVCZmhIanczZ2EwNFJWMDd6a2NPMHBITl9JQzBBdEY1YS14M3VRN3IxZnBqT3VYRjFESWFhdGw1NE5LRE5iUV83YVRnY2RFRDZSWl9pYXd6SkVPUXlXTWZaWG1yb25RVVBpRjhMYkdiNTNJQTF2Tkg4S0o3cnJNekhKZ3FQMGN5a25xN3NCaXc?oc=5",
+    "summary": "Falcon Finance Introduces Yield-Driven FUSD Stablecoin With Anchorage Digital BlockchainReporter",
+    "source": "BlockchainReporter",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-27T14:45:46+00:00"
   },
   {
     "id": "f913cacd6d66331367",
@@ -3355,6 +3432,17 @@
     "published_at": "2026-05-27T04:39:06+00:00"
   },
   {
+    "id": "a6a215baef675563b4",
+    "title": "Cyprus Business Now: India, KEO, state aid, CDB, Jumbo, RIF, startups, Oev",
+    "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQcDJxa3BMUnpCbWNIekV2VWRuU0t5YVFQVDloRjQwYXhrbGdmeVdKVmc4QmZkVzM1Vi1OMFVLeTNwMGtjZnQ4U2dxckwwekR6SnZEeEtBUVZYSFduNkJReldUZ3cyWVdzajlYc2VzOE40dmJnY2N2Umlpb0ZDV2drZ3UyVlVNVVh3YWthSDA3M01EeTBGVnNMM1Z5dw?oc=5",
+    "summary": "Cyprus Business Now: India, KEO, state aid, CDB, Jumbo, RIF, startups, Oev Cyprus Mail",
+    "source": "Cyprus Mail",
+    "region": "Bosnia Business English",
+    "group": "bih",
+    "category": "economy",
+    "published_at": "2026-05-27T04:30:00+00:00"
+  },
+  {
     "id": "c1f8e2af6a50c064a1",
     "title": "Stellantis to invest 1bn euros in French electric vehicle production, says Macron",
     "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNdk4wcHJmUlRydEw4ZlBsVnhZYUFuelNOdVFTZlpsWTZRbnlzYWZrQ1lHbzA0SzE4ZTV0X0c4M2I1ZlNVeW5lR1otc2s3WXNRcVI5ZXJrYVBmYnFLMlozeXpWSUx0M1pJcjNybjhoRjFRZHlrNXk5c3ZfVkdCYmU1Xy10VWdJRmpFUDh3N2xlaDlTVTRfa3dVbWxhaFEzRXlVWXU0d3J2SWJQdnpBVUJ6cUpxLV84b2pzSm1obTNoclRkUThHcXI0bVVNS2JvcGNLaC02T3FRZEVsWW43Q2JENkNKWVDSAeQBQVVfeXFMTXZOMHByZlJUcnRMOGZQbFZ4WWFBbnpTTnVRU2ZabFk2UW55c2Fma0NZR28wNEsxOGU1dF9HODNiNWZTVXluZUdaLXNrN1lzUXFSOWVya2FQZmJxSzJaM3l6VklMdDNaSXIzcm44aEYxUWR5azV5OXN2X1ZHQmJlNV8tdFVnSUZqRVA4dzdsZWg5U1U0X2t3VW1sYWhRM0V5VVl1NHdydkliUHZ6QVVCenFKcS1fOG9qc0ptaG0zaHJUZFE4R3FyNG1VTUtib3BjS2gtNk9xUWRFbFluN0NiRDZDSllQ?oc=5",
@@ -3551,17 +3639,6 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-26T18:59:28+00:00"
-  },
-  {
-    "id": "b896716b8096584710",
-    "title": "Private equity: What is it, and can I invest in it?",
-    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5tTVgxejlJV1pwaDV0OFVCaThTTGYzeUFycFpMTDBpanA1N0NWQWpOUGdKbHlHd0VIbHFFek9YN2stY0dRbG02dXc1OW5kWG9pOWx5MTZZNC1WY0FPMUVMbnZoVTQ4UmhyVWFzbFBSd3ZYekU?oc=5",
-    "summary": "Private equity: What is it, and can I invest in it? Britannica",
-    "source": "Britannica",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-26T18:50:00+00:00"
   },
   {
     "id": "50ef23e9cf678388ad",
@@ -4026,28 +4103,6 @@
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
-    "id": "3271a51649c393a191",
-    "title": "Get your portfolio’s passport stamped: Reasons to consider international investing",
-    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5WNGlxUkFiaDBiOW4xNFdCdWtPTlJlazQwUUxhdDV6VVhKVzJHS3lBMURmNUdrdlZsbFpid21GSFNDZEN0MGtOMnRNZnZiLVhPczhpUjFibzdwRGFoZ21Ibjc5N1hCUk5zY3BiZzZDbw?oc=5",
-    "summary": "Get your portfolio’s passport stamped: Reasons to consider international investing Britannica",
-    "source": "Britannica",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-26T07:00:00+00:00"
-  },
-  {
-    "id": "aada992181cdc9435c",
-    "title": "Data Center Switch Market Size, Share, Growth, Analysis, 2034",
-    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5JU0xIcEl6R1VIbVJ1c0pGYXI4TUczeHNVTVhtNWJMNjZBVnhqUkdKRm05R2c2SDZKejRkOTZwNXZGTkItdVhxUk1TTGZYeDlaZ0pXLUVLbWg4aFZRV1kwZUNaU0tpUlNIMzRrZA?oc=5",
-    "summary": "Data Center Switch Market Size, Share, Growth, Analysis, 2034 Straits Research",
-    "source": "Straits Research",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-26T07:00:00+00:00"
-  },
-  {
     "id": "fd27c73424f32c56fd",
     "title": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security",
     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbFhBMC05dFFFcVdHVk9IY05zVllyZnBOOU9ZZmgzOEc0UTFRdWd1ZUtCbGV3WWQ3dzVjdUJTQldxTVpCTkhSN05hclpnX2xaOHBGWGpxdG1VNnpBdWNidFF3ekdOSnpsVW1oRHpEcFBTc0xvSl90c1JYQ2lIZVlpa1F2ZThvYnNNLW9MUDlTUUQzeFlKdGVwcUprb0w0d2RSbThkR1lGUFJidnlRaEt1RzQ2bGk4NkU?oc=5",
@@ -4056,6 +4111,28 @@
     "region": "Cyber and Cloud",
     "group": "technology",
     "category": "technology",
+    "published_at": "2026-05-26T07:00:00+00:00"
+  },
+  {
+    "id": "63bb6323d0b37bde4f",
+    "title": "Top 10 Cryptos to Invest in May 2026",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBDOFMxclRyS2x5cXVpb0ljeVdnUFEtOWNUYk5GLXBYd3hUSFhTeWdJNGdnMHhMVURNVS03OGZldjVHUFAzSXU0WjRyT096V3ZIMDFLN1V4eDhmQ2lzeW5aYXJLNk80bVRYb0ww?oc=5",
+    "summary": "Top 10 Cryptos to Invest in May 2026 ZebPay",
+    "source": "ZebPay",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-26T07:00:00+00:00"
+  },
+  {
+    "id": "617c3ef375c4a7263f",
+    "title": "Top 16 Best Crypto to Buy Right Now (in May 2026)",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE03NURHMmdKY3BTcGdpYWNPcGw3T2Q0Ylc4V1lOZ3ZmcFRyVHZaZWZ0OFhJN0ZsYjhieTUza1A1cmVKX1NWa3pYV1Q5QXRDQ2tzN2JvRDlzclJoVkZCUmdsVEo1SzI5QnFU?oc=5",
+    "summary": "Top 16 Best Crypto to Buy Right Now (in May 2026) 99Bitcoins",
+    "source": "99Bitcoins",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
@@ -4081,25 +4158,25 @@
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
-    "id": "bcd5fe0a8578929d94",
-    "title": "Top 10 Cryptos To Invest In May 2026",
-    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBYYmRHaGRpUVdmdUpka3VMbFI1bVRPSXUxb3RYZXhkYzd3enBvVk4wdWFqcXVqSmJTNExqZjdkWEtLZkl5Z2F1ZFdRZVhlRHBqQUVKTFNhb3BtaWZrSkVlaDBmdWRJRUk?oc=5",
-    "summary": "Top 10 Cryptos To Invest In May 2026 ZebPay",
-    "source": "ZebPay",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
+    "id": "3271a51649c393a191",
+    "title": "Get your portfolio’s passport stamped: Reasons to consider international investing",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5WNGlxUkFiaDBiOW4xNFdCdWtPTlJlazQwUUxhdDV6VVhKVzJHS3lBMURmNUdrdlZsbFpid21GSFNDZEN0MGtOMnRNZnZiLVhPczhpUjFibzdwRGFoZ21Ibjc5N1hCUk5zY3BiZzZDbw?oc=5",
+    "summary": "Get your portfolio’s passport stamped: Reasons to consider international investing Britannica",
+    "source": "Britannica",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
-    "id": "617c3ef375c4a7263f",
-    "title": "Top 16 Best Crypto to Buy Right Now (in May 2026)",
-    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE03NURHMmdKY3BTcGdpYWNPcGw3T2Q0Ylc4V1lOZ3ZmcFRyVHZaZWZ0OFhJN0ZsYjhieTUza1A1cmVKX1NWa3pYV1Q5QXRDQ2tzN2JvRDlzclJoVkZCUmdsVEo1SzI5QnFU?oc=5",
-    "summary": "Top 16 Best Crypto to Buy Right Now (in May 2026) 99Bitcoins",
-    "source": "99Bitcoins",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
+    "id": "aada992181cdc9435c",
+    "title": "Data Center Switch Market Size, Share, Growth, Analysis, 2034",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5JU0xIcEl6R1VIbVJ1c0pGYXI4TUczeHNVTVhtNWJMNjZBVnhqUkdKRm05R2c2SDZKejRkOTZwNXZGTkItdVhxUk1TTGZYeDlaZ0pXLUVLbWg4aFZRV1kwZUNaU0tpUlNIMzRrZA?oc=5",
+    "summary": "Data Center Switch Market Size, Share, Growth, Analysis, 2034 Straits Research",
+    "source": "Straits Research",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
@@ -4321,82 +4398,5 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-25T17:57:34+00:00"
-  },
-  {
-    "id": "88f513c3828ad8d90e",
-    "title": "As America's Financial Markets Continue Rallying Higher, ELEKTROS Inc. Wishes All Penny Stock and Microcap Investors Around the World a Happy and Wonderful Memorial Day Holiday While Celebrating Strong Friday Momentum, Expanding Global Aware",
-    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNaXdzX08yTDNEa2VoZ0pWeHdKSTFsb2pVdEFsTW9McEdDMEdzdEg5em1FLTRmMVJHWTdramdjMG5VVUVnMlBMQlBmY29jUHVGOU5CQUpsWF9oV2tsblNaVklQTDc3Z09KajI3djBmUGIwYWowUzZxZUx2d0tjQzRZYWV3T2J4Sk5QUDNEbERYZC0xaFpId2NBeWhXbzFlQ0hEX0J2LXdfdGd3YXR4V3c?oc=5",
-    "summary": "As America's Financial Markets Continue Rallying Higher, ELEKTROS Inc. Wishes All Penny Stock and Microcap Investors Around the World a Happy and Wonderful Memorial Day Holiday While Celebrating Strong Friday Momentum, Expanding Global Awar",
-    "source": "Yahoo Finance",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-25T17:50:00+00:00"
-  },
-  {
-    "id": "b6fed2d1bcfa1a239f",
-    "title": "ELEKTROS sends EV patent cease-and-desist to major global automotive manufacturer",
-    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOYmduZDJIcTdrMmgyUDRTODFfTlI3eHo1dEJIaUpXaE95QUxaRHlTcEZNVjNGS0lfZmloazVoaDFRN3lCQjRuZnc0ZG00cjEtbHpBMFk1TzIydzEtVnd5Q0N6WllxUzQtOXVVMlVBcVRuSUlLQ3diclAyVG4xSS1NeWlTeGl2Um1XRW1Tb2sxU3ZMVTR4dk9XLXRfeUJ0WXpEdHhVSnZmM0QybjBNVFlhS3NaS3RvZE90OHpBWFg1RFU?oc=5",
-    "summary": "ELEKTROS sends EV patent cease-and-desist to major global automotive manufacturer Stock Titan",
-    "source": "Stock Titan",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-25T17:50:00+00:00"
-  },
-  {
-    "id": "a8804216dce34ff531",
-    "title": "Gigantski betonski blokovi, viši od 10-spratne zgrade, u Mediteranu: Za dolazak megabrodova od 400 metara",
-    "url": "https://n1info.ba/vijesti/ekonomija/gigantski-betonski-blokovi-visi-od-10-spratne-zgrade-u-mediteranu-za-dolazak-megabrodova-od-400-metara/",
-    "summary": "Masovni projekat predstavlja se kao više od gradnje. Mogao bi označiti pokušaj povratka izgubljenog pomorskog uticaja. Betonski blok viši od desetospratne zgrad",
-    "source": "N1 Bosna i Hercegovina",
-    "region": "BiH",
-    "group": "bih",
-    "category": "economy",
-    "published_at": "2026-05-25T17:25:00+00:00"
-  },
-  {
-    "id": "e9d906708b8c771a32",
-    "title": "BlockCon Punta Cana: The Global Business Retreat Where Web3, iGaming, and Finance Converge By Chainwire",
-    "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPWkQ4cW8yUXRvczRYWHU5Nnd5QTVyeEF2dWE4M0N1ZHZGMHpwRVJHY0NidGtDOGtoeEI5T19icEg3VnV1NkhPMG5EenZ0YURBdVNXOWNKU0xIdXNhemJad2Zpc2djQjItUVMzUXh0U29YRFo2Sm9CTzBnRFZHX3VHMnJlN1BDTUlIR2lodFNCZG5OaHpmSDh2RGhvTDdZekxxT2pra0t3LU9ad050QWFZbFhkUC1rNC1tUjBROW5EMERpX3lQOEtLNXJTb3dpZk9wdDJwODlNdlJHUWpXLVVZ?oc=5",
-    "summary": "BlockCon Punta Cana: The Global Business Retreat Where Web3, iGaming, and Finance Converge By Chainwire Investing.com",
-    "source": "Investing.com",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-25T17:19:36+00:00"
-  },
-  {
-    "id": "48247cc89552b6441b",
-    "title": "Confluence 2027 to Unite Global Leaders in AI, Venture Capital and Healthcare Innovation in Silicon Valley",
-    "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPVHllX2hZV3dudHg5RVo0UVFUdC0zYWJmbVZMZVdWTlFBeUhpLWpSVFlhR2h1WTFoMm5VT3NFYkpyLVROSkJodV80Z1JwcmxXTVcwMS0tVFk0a1hSbmtyV0dzT3BzeXdrcU4zSXhnQWtONHNkeTEzZnZOSTNudFMyRDM2ZVJWLTVxM1pSZmEtamJsd0w3UjF3Zm1STng0RUNxS29NR0swcmp1T0VfNldtRkRLbFZMclhiV2lnWGlHVjk0ekMxWldzWUtSbDQ0bDVyWUk5VXJSTER3R1NUS0xXWg?oc=5",
-    "summary": "Confluence 2027 to Unite Global Leaders in AI, Venture Capital and Healthcare Innovation in Silicon Valley India's News.Net",
-    "source": "India's News.Net",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-25T17:03:00+00:00"
-  },
-  {
-    "id": "42427529039d7b3ca6",
-    "title": "Stablecoin News: Tether to Launch GEL₮ Stablecoin as Georgian Government Grants Approval",
-    "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPOVZTNDNkbW5NeEFyN09DRmxNVGZQUVYwX1lwNWVUNWdWQkprTkNseUo4MkNXU2E4cVdwalVkdF9pNmRVaGREVGZUcXFKeUV2OWdvSFFhU0ROQk1TRlE3TmRPdjNMNkJPRjdhNjJ4TUZvTk1tcVpWZy01aGhMR2dVSGprMXJYVmNIZW9EVVg2VVh2UlZKdmx4eTQ4MHJVM0RqckJPblUweEhpWHplQ2ZqdXg2NVI1UE56ZjNHRjdhdU4yS29kbHYwRmt6SVRZS2FUSWwyS2VB0gHbAUFVX3lxTE9sazRReTJ4OWttN0xlYVc0ZUhHN1FPbW92NzhoVEQwMV94U3B4RG53MzZseWpRVUxlTUcwM2R0S0E1b2s4MFF1VWNUNThtVzlBeS16QzN2TGxaeFB2dkl5Snl2MklSbDQ2Y3ZGYTRoRTZkUlVhc0VoVlU5blFqamhWRXl6TC1LWUJPS0s0WFhqSUxzaXAzVFRmMlF2V2ZJZjNBc0JyWjBkcGhWOG9tOS14NUZuZEJGR3RHWFFyODQwQUM0aG9nUzk0bHJIUk9jbGtjLTNoVEtWdzNsdw?oc=5",
-    "summary": "Stablecoin News: Tether to Launch GEL₮ Stablecoin as Georgian Government Grants Approval The Coin Republic",
-    "source": "The Coin Republic",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-25T17:00:00+00:00"
-  },
-  {
-    "id": "33927fe3fe7943c9a7",
-    "title": "Tether Launches GEL Stablecoin With Georgia Backing",
-    "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE16M0hEeDlYQU5Xel9HaGh6Mnc2UGpzZnpVQ1dxdzEySlZ4R0pNcUpFdVZ6S2Y1aVE0MlpFTUJhajhoNkNCamV2SA?oc=5",
-    "summary": "Tether Launches GEL Stablecoin With Georgia Backing MEXC",
-    "source": "MEXC",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-25T16:55:10+00:00"
   }
 ]
