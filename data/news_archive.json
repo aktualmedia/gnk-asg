@@ -1,5 +1,49 @@
 [
   {
+    "id": "ee0b1a51aba3535dc7",
+    "title": "Sesame, the conversational AI startup from Oculus founders, launches its iOS app",
+    "url": "https://techcrunch.com/2026/05/28/sesame-the-conversational-ai-startup-from-oculus-founders-launches-its-ios-app/",
+    "summary": "Sesame’s new iOS app brings its conversational AI agents to the public, offering more natural back-and-forth interactions designed to feel less like traditional chatbots and more like talking to a person.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T15:35:43+00:00"
+  },
+  {
+    "id": "32a99975ee6ff5d50e",
+    "title": "Slate Auto will start taking orders for its low-cost EV on June 24",
+    "url": "https://techcrunch.com/2026/05/28/slate-auto-will-start-taking-orders-for-its-low-cost-ev-on-june-24/",
+    "summary": "The Bezos-backed EV startup has yet to announce final pricing for its vehicle, which is supposed to start shipping by the end of this year.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T15:34:10+00:00"
+  },
+  {
+    "id": "74b20fab576d526476",
+    "title": "Chery to Enter Japan Through an Autobacs Partnership",
+    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOYnYyY1MycDlHdUNCTTNIWjBZUTl1YzlFVFh1Z0NWQ0dGbUxsRE05cmZDOHI4N1lpSV9HUjJlT3g1UEtxYWhEY0tleXZ3OGpvTlZiX0d0akh0ZWxJVDgzRTJ5T2pKWXNQc1h3V2E0eWF0djA0U3JzYVZnRUtvNzdtVDZzOFlPMjBOUEdlaS1Bc2UydVBQ0gGcAUFVX3lxTE5JSWFTaDZLejk1WjBEMWpxWTJ6TkROU1ZDVVMzQjlyUmNuSi1hQm5vaXkzQm84bE9pR1JCRElLLWxmME5McVl5QjdFcDhrQXptdm50ZVh2aHVST3BiRl9mY3hJSkhXVHB6bzFPeGoxVml1YUhLMU1yQjFXWXV1Z0xnVU03alZrazM2d2pSTnZEczNBa2tua3c4dW1fQw?oc=5",
+    "summary": "Chery to Enter Japan Through an Autobacs Partnership CleanTechnica",
+    "source": "CleanTechnica",
+    "region": "Global Mobility",
+    "group": "mobilnost",
+    "category": "automotive",
+    "published_at": "2026-05-28T15:33:47+00:00"
+  },
+  {
+    "id": "86eef5282bce3e333d",
+    "title": "CLARITY Act: Bold Boost For Crypto Future 2026",
+    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBjNHVUQm80R3dWcTU1X3FwdzRpMVloRmtpbUktcVlqWFhDMlRjRnNFLXRyeUNPOWp6VWpuR3czZ3VTaTJLeC00clRmTmRnUXZVLTh5a2Q5YzJiUHpqeExDWnNIN3FnZGtESUc4S2xIVVI4d3lJYk4xM3hGYXpwZw?oc=5",
+    "summary": "CLARITY Act: Bold Boost For Crypto Future 2026 TronWeekly",
+    "source": "TronWeekly",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-28T15:30:00+00:00"
+  },
+  {
     "id": "07c9ad11ef56544671",
     "title": "Dell wins a $9.7 billion Pentagon software deal after donating to Trump accounts",
     "url": "https://www.cnbc.com/2026/05/27/dell-dod-pentagon-software-deal-digital-infrastructure-trump.html",
@@ -1353,6 +1397,17 @@
     "published_at": "2026-05-28T07:31:00+00:00"
   },
   {
+    "id": "d7f396a013ca756c3a",
+    "title": "EBRD supports digital and green transformation of SMEs in BiH",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPdWt2T2JJWC11NEtocDRSczRzOTRKUmdKbmg4bFhmVWNBWF9XNjhIbzdJOVMzUkFQMFJyM0FpUmJJaWtJZHk4NHJ4UC1sOXRPLVl1d0dzcHllZTM1TEtpcmVGcE83cEtQcjFITE56QmNLMXdfQW5POG5Gcnh5eE03a0ZpMWo4ckE3dnJUdjJSd0s5Z9IBkgFBVV95cUxPdWt2T2JJWC11NEtocDRSczRzOTRKUmdKbmg4bFhmVWNBWF9XNjhIbzdJOVMzUkFQMFJyM0FpUmJJaWtJZHk4NHJ4UC1sOXRPLVl1d0dzcHllZTM1TEtpcmVGcE83cEtQcjFITE56QmNLMXdfQW5POG5Gcnh5eE03a0ZpMWo4ckE3dnJUdjJSd0s5Zw?oc=5",
+    "summary": "EBRD supports digital and green transformation of SMEs in BiH Sarajevo Times",
+    "source": "Sarajevo Times",
+    "region": "Bosnia Business English",
+    "group": "bih",
+    "category": "economy",
+    "published_at": "2026-05-28T07:30:00+00:00"
+  },
+  {
     "id": "59792e2ca883fd4491",
     "title": "Vattenfall and Nscale sign renewable power deal for Norway AI data center",
     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPcmlvODl4X0lwV0JXVk1JdWo0eTRIT1lDM3lNS01fRnY3Z2ZqbG5naXlmSFl2VnRUNkZFdkJOcEt1Q0NPT2UwbV9XTjJocFNCRU9hTU1xNWZ5UVFqYnFDMzRGOGd5bTNTTWZWN192cVBaODJ1TU5aRUMxREFoRTcxcGxKak1sVTFaLTRMbWhuazBUWUM2?oc=5",
@@ -2618,6 +2673,17 @@
     "published_at": "2026-05-27T13:00:35+00:00"
   },
   {
+    "id": "e986a05396cf763a21",
+    "title": "Comment: Investors see looming systemic risk in rising inequality",
+    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxORlNpVHpQMVJaMi05TnZpRnlWWjVxcjBCeF91Ml9paFoyQl9STEtxdUwza1dMVjVHbXNXZVNVOF9id2V0aGkzdldvT0wzd0F1dW5tNTVhaTREM3l3eFoxRlpNZnZJa01sYndKUTk2SFl1bERTb1dsUGdkOU1MbHZmUk5TdksyXzR2cGRrcmllYXJQVzlUQ1VHS0FXenVrRUNhb1d5Tw?oc=5",
+    "summary": "Comment: Investors see looming systemic risk in rising inequality Responsible Investor",
+    "source": "Responsible Investor",
+    "region": "Bosnia Business English",
+    "group": "bih",
+    "category": "economy",
+    "published_at": "2026-05-27T12:57:58+00:00"
+  },
+  {
     "id": "73aaf3320d62c88535",
     "title": "Angela Merkel: Nadam se da će rat u Ukrajini biti završen za 10 godina",
     "url": "https://biznis.rs/vesti/angela-merkel-nadam-se-da-ce-rat-u-ukrajini-biti-zavrsen-za-10-godina/",
@@ -2871,6 +2937,17 @@
     "published_at": "2026-05-27T11:17:00+00:00"
   },
   {
+    "id": "a9a23e98436fc4ea53",
+    "title": "EBRD Grants €10 Million Loan To UniCredit Bank Mostar To Speed Up Digital And Green Upgrades For Bosnia And Herzegovina’s SMEs",
+    "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOTmV4TzMwbkY0Tmp0NWhpZmt2YWZNR1VGajJxM0dvT0k1dkowdmYxZ2FCcW9PeHhjT2VTQjdGYklmODRBWWZuM1FpRWdYaHRfZWJYNUF2Snk2QWh4Uzg5S3lKRzhROWpVSHh1SHFhVlM0a19PcmhJZDVGRWFoY2hXak9VUkdmYk9TTnotVE5mdkVtbDhvdkhVRGZhYjF1czEtemRNUm40a0phWGpfWE9jQ1JITU5BeUx1RzZSTHIwVGFCa0drRDhPMDVXaTlseFJGVzR4TEJiLTkxTVJ5aEZPUU1ra2R6R1Zpd0R2Y3NPYVZRYlc4?oc=5",
+    "summary": "EBRD Grants €10 Million Loan To UniCredit Bank Mostar To Speed Up Digital And Green Upgrades For Bosnia And Herzegovina’s SMEs SolarQuarter",
+    "source": "SolarQuarter",
+    "region": "Bosnia Business English",
+    "group": "bih",
+    "category": "economy",
+    "published_at": "2026-05-27T10:58:45+00:00"
+  },
+  {
     "id": "973c1366983b5b9118",
     "title": "Broj IKT stručnjaka u EU nastavlja da raste",
     "url": "https://biznis.rs/vesti/eu/broj-ikt-strucnjaka-u-eu-nastavlja-da-raste/",
@@ -3058,6 +3135,17 @@
     "published_at": "2026-05-27T07:00:00+00:00"
   },
   {
+    "id": "622b33a18ec63f8833",
+    "title": "California: A State Like No Other",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQTGRUREwxejM0VjUtc1YteGM5ZUk4bDhGdWxWWkl1YUxRcFREMDUzMENQdlJucU5aQzhpdE1LTzdwYWw2MjYtTnRVYUNtYjF1YVlpX21JaW9rcU5YRUI2cmhjNWR2Yk1QYzdFV2ZYY0Q0RVVmWDBrVHJkeHhqUUZOcWJPdnNnbmpOZnpHYmQ0MTMydw?oc=5",
+    "summary": "California: A State Like No Other blackrock.com",
+    "source": "blackrock.com",
+    "region": "Bosnia Business English",
+    "group": "bih",
+    "category": "economy",
+    "published_at": "2026-05-27T07:00:00+00:00"
+  },
+  {
     "id": "87a91282dd600d5a76",
     "title": "The Best-Performing Stocks in 2026 (By One-Year Returns)",
     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9HdVpjUG12Y21vQk1rOHRqNzRfQ052ZEstSnllLTBvbTV3VUdJTmdjQnBUQVd3Wkdqa2N3eVB3dGszTGdSeWpoamNETU5yR3paS1ZNYnlBdlh2SFh5eld5MHdkNnpRSWo0UTh6YUlVeXM2YlU?oc=5",
@@ -3179,17 +3267,6 @@
     "published_at": "2026-05-27T06:05:29+00:00"
   },
   {
-    "id": "be57b6a2ebfb56a950",
-    "title": "Applied Materials CTO sees potential to develop robotics ecosystem in Singapore",
-    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQREVOamFULVpfVUdndGhEQTNFUGlZS1VYOHFKd2JvU3dVNDZ4cnNhMnlDdzdLZDRpeXhRZWlUbXNpdnJ5SkZnYl9IVGdPcExnYW40ampOTEpYZkQydWFSQ2p4WjAwQzNBN01Ta2FoZTJzMG5ZTmRORnRYbTVDMXhaRDRNd1pIejFxSkxsNUZRVmotQktnc2ViLWFfNVg2bU1fYkNMMy00YjVkeUZLVlRkU1hXT2ZpNjA?oc=5",
-    "summary": "Applied Materials CTO sees potential to develop robotics ecosystem in Singapore The Business Times",
-    "source": "The Business Times",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-27T06:00:00+00:00"
-  },
-  {
     "id": "51f920ec93aaf64e86",
     "title": "Tide Crosses 2 Million Members Worldwide - Big Step Forward in Mission to Support and Grow Small Businesses",
     "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQNWY0Nl9NbkwwNU0xR1pkZUFaWklzbFpITnNHWW9Dd3d0MFVTQldFY0I2N1VBUm4wZy1rLWUtdlBkMXo5T2g5c3YxSXNPQUhSYTI2NlRYUnU3bmRxcVAyN0tkbkVJS2E4a0x2cml0YUJfU1V2cVdXdC03aWgtUHF0UTNYYVo2ODVsb1hfRWc0RzNjWnl3TmJJbjc3VExqRldWRnd6T0ltYUlhb1BWQk1oRzlnRW5qd21pNG0xWFczRGlNd2VHVEhKZHdicGFLVF9rZFB1a3NvYjBQM1hsbmQ3ekZLaVN0MXZFTHVPcXNKd29fenZyWXUw?oc=5",
@@ -3198,6 +3275,17 @@
     "region": "Global Markets",
     "group": "international",
     "category": "economy",
+    "published_at": "2026-05-27T06:00:00+00:00"
+  },
+  {
+    "id": "be57b6a2ebfb56a950",
+    "title": "Applied Materials CTO sees potential to develop robotics ecosystem in Singapore",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQREVOamFULVpfVUdndGhEQTNFUGlZS1VYOHFKd2JvU3dVNDZ4cnNhMnlDdzdLZDRpeXhRZWlUbXNpdnJ5SkZnYl9IVGdPcExnYW40ampOTEpYZkQydWFSQ2p4WjAwQzNBN01Ta2FoZTJzMG5ZTmRORnRYbTVDMXhaRDRNd1pIejFxSkxsNUZRVmotQktnc2ViLWFfNVg2bU1fYkNMMy00YjVkeUZLVlRkU1hXT2ZpNjA?oc=5",
+    "summary": "Applied Materials CTO sees potential to develop robotics ecosystem in Singapore The Business Times",
+    "source": "The Business Times",
+    "region": "AI Technology",
+    "group": "technology",
+    "category": "technology",
     "published_at": "2026-05-27T06:00:00+00:00"
   },
   {
@@ -3333,6 +3421,17 @@
     "published_at": "2026-05-26T22:34:00+00:00"
   },
   {
+    "id": "c9fea0a56e7424b612",
+    "title": "Digital Chamber Rejects Warren Claims on Crypto Trust Charters",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOUjJPZ3dHdVRzRVE4VTV3Rm1lMk9vam8wellkNG9TN2JBVzl2ZGxWdFhkRnkyWmc0TFgtTXZhYjhodDJfTFJxUkViSUg3M2F3aFd0SXphNDdkZ280V0pQRDlnNlJaUkxTOVlkNkRmVW4yZ1ZPLVVzN0dKQUVWNnJITXZOOXdKY3M2cTlmeXprRmstdw?oc=5",
+    "summary": "Digital Chamber Rejects Warren Claims on Crypto Trust Charters FinanceFeeds",
+    "source": "FinanceFeeds",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-26T22:14:44+00:00"
+  },
+  {
     "id": "8ef0d75e213f20839b",
     "title": "8 Viral AI Photo Editing Trends (and Prompts) for ChatGPT, Gemini, and More",
     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBTUmZSVVZNTldlNEFwUk14cDIyOGNmcjRLd3JEcFFpTTFjR25JTTBRSFRHcG40a1dJMVRhSHVLZnBsWUVhd2VJbGFjVlFaQURXTW9FR1ZoelFPSUZvNC1LT01YTmI1U0RPMWVPbkVyOEtBOWkxa3UzelBNSQ?oc=5",
@@ -3459,8 +3558,8 @@
     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPbzVtQXdadERidmFhRS1WWHV6Q0xwQ0JBXy1uQ1FUOWI1Y0Y3eDdlRmlvdm9FNWlxMGRQTzYyQjN3QlhhM0lJaGNobEpjSjROTjNlVlRReGNPM0p1bzhJMVVyeWt6eV9IVFJjWFhqcXZpSkJsZklJNktzSDFKLXpkdmpXWQ?oc=5",
     "summary": "The Ultimate Guide to Understanding Carbon Credits CarbonCredits.com",
     "source": "CarbonCredits.com",
-    "region": "Global Markets",
-    "group": "international",
+    "region": "Bosnia Business English",
+    "group": "bih",
     "category": "economy",
     "published_at": "2026-05-26T16:22:07+00:00"
   },
@@ -3850,6 +3949,17 @@
     "published_at": "2026-05-26T07:32:28+00:00"
   },
   {
+    "id": "7f96dc680079481713",
+    "title": "Small-Business Grants: Where to Find Free Funding",
+    "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9lSVhmRElUNDhnZEh6TGZ2SWl4TnBocDIwRWVMSl91NEQ0TkdYMFZYS2VnT1pkU0tMNXliQUhwTlFicEVYNjhtQ3AycGhpLVNoRi1URVdhRndUNkhxdHZ2Q3lLNGMzMDRnNDVxR0pFZTd2anJnQU5tNg?oc=5",
+    "summary": "Small-Business Grants: Where to Find Free Funding NerdWallet",
+    "source": "NerdWallet",
+    "region": "Bosnia Business English",
+    "group": "bih",
+    "category": "economy",
+    "published_at": "2026-05-26T07:00:00+00:00"
+  },
+  {
     "id": "33f73bf2643b10302a",
     "title": "What’s happening this week in economics?",
     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNcV9VYnV0R0RPcWN0d2g1SHJIVlNmaVA1TV9nXzRKdVlFcWtSMjQ1T1B0djE4dDNRanZvSVFGX0ZBNUd6cnZkVnAtenFuMnFzdU9zYzg5cFdkTVRxU1F5YVVXVFhVWGdhd2RsTDBkNS1Xcm9ub1FnMFp5NnB3WVBYa3JJa1FVbG5IT0ZRRHphTUhtNThkenVJS1ZrdWNDdw?oc=5",
@@ -3905,33 +4015,11 @@
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
-    "id": "fd27c73424f32c56fd",
-    "title": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security",
-    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbFhBMC05dFFFcVdHVk9IY05zVllyZnBOOU9ZZmgzOEc0UTFRdWd1ZUtCbGV3WWQ3dzVjdUJTQldxTVpCTkhSN05hclpnX2xaOHBGWGpxdG1VNnpBdWNidFF3ekdOSnpsVW1oRHpEcFBTc0xvSl90c1JYQ2lIZVlpa1F2ZThvYnNNLW9MUDlTUUQzeFlKdGVwcUprb0w0d2RSbThkR1lGUFJidnlRaEt1RzQ2bGk4NkU?oc=5",
-    "summary": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security Dark Reading",
-    "source": "Dark Reading",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-26T07:00:00+00:00"
-  },
-  {
     "id": "bdc5d450e4940480ed",
     "title": "Morgan Lewis Finance Partner: Digital Assets Are Driving Opportunity in France, IFLR",
     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOaWk4N3VBSDJVbUlwcGxlTGQ2RlFmS1pjeTZYeTVVc3N2MkJTN0ZlU2ZHNFphWDRrbkpNTDg1SVI5dlpSZm9namRfRXhZcnFnUzBYdDNTaDVNaWtMTGZkeUxWZ041ei1ZRXJyVFl5MXFMcnVFVDRPU3M4STVxeEZPajE2aDBuaS16YjlXVllZaEkwdGMtdThpMVRwOWhweWdpa2w4VGpzQjJXUTE1YjRhS1ptYmxqZG1wZ2hWcGItNFc?oc=5",
     "summary": "Morgan Lewis Finance Partner: Digital Assets Are Driving Opportunity in France, IFLR Morgan Lewis",
     "source": "Morgan Lewis",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-26T07:00:00+00:00"
-  },
-  {
-    "id": "6b8433eecef3d93649",
-    "title": "What Is the CLARITY Act and What Does It Mean for Crypto?",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObzItX29GSllDNU1GUzJDdU9jV2MxRy0yVlZ2dXFfa0NUbmhSNjR4ZUpYcWZQdUZZeUswT3lKcFNSRE5yYlExMFhVeVMyZ0F1UTJPVmkxR2lLS3I3eFJBUVFBNHRMeW1tSTZPRzZIMWl4Ym00X2dGZEZDUkE4eFBuSkVfQ2hiV3ZhTm1jOUxJQVloUkRreTVPY295Ri03Sl96ZVE?oc=5",
-    "summary": "What Is the CLARITY Act and What Does It Mean for Crypto? Binance",
-    "source": "Binance",
     "region": "Crypto Regulation",
     "group": "digital-assets",
     "category": "digital-assets",
@@ -3946,6 +4034,28 @@
     "region": "Cyber and Cloud",
     "group": "technology",
     "category": "technology",
+    "published_at": "2026-05-26T07:00:00+00:00"
+  },
+  {
+    "id": "fd27c73424f32c56fd",
+    "title": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbFhBMC05dFFFcVdHVk9IY05zVllyZnBOOU9ZZmgzOEc0UTFRdWd1ZUtCbGV3WWQ3dzVjdUJTQldxTVpCTkhSN05hclpnX2xaOHBGWGpxdG1VNnpBdWNidFF3ekdOSnpsVW1oRHpEcFBTc0xvSl90c1JYQ2lIZVlpa1F2ZThvYnNNLW9MUDlTUUQzeFlKdGVwcUprb0w0d2RSbThkR1lGUFJidnlRaEt1RzQ2bGk4NkU?oc=5",
+    "summary": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security Dark Reading",
+    "source": "Dark Reading",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-26T07:00:00+00:00"
+  },
+  {
+    "id": "6b8433eecef3d93649",
+    "title": "What Is the CLARITY Act and What Does It Mean for Crypto?",
+    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObzItX29GSllDNU1GUzJDdU9jV2MxRy0yVlZ2dXFfa0NUbmhSNjR4ZUpYcWZQdUZZeUswT3lKcFNSRE5yYlExMFhVeVMyZ0F1UTJPVmkxR2lLS3I3eFJBUVFBNHRMeW1tSTZPRzZIMWl4Ym00X2dGZEZDUkE4eFBuSkVfQ2hiV3ZhTm1jOUxJQVloUkRreTVPY295Ri03Sl96ZVE?oc=5",
+    "summary": "What Is the CLARITY Act and What Does It Mean for Crypto? Binance",
+    "source": "Binance",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
@@ -4035,6 +4145,17 @@
     "group": "bih",
     "category": "economy",
     "published_at": "2026-05-26T05:30:00+00:00"
+  },
+  {
+    "id": "34d96453f4dba97adb",
+    "title": "Croatia - Trade, Services, Finance",
+    "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE55Y2NxUXZvb3NWMG9FdXFQQTlJRk9kdk1ITV9IelZCTl9HN19lQWZnY0J4bF9ObUpfdXF3cm41ZHpzMDZoMTJQS2trdGFVN0U2bUVMQ3BmdVhhbC1IRUJqMm1TQ1BqYTRNNDZ5WC1rQXBZWE02WVE?oc=5",
+    "summary": "Croatia - Trade, Services, Finance Britannica",
+    "source": "Britannica",
+    "region": "Bosnia Business English",
+    "group": "bih",
+    "category": "economy",
+    "published_at": "2026-05-26T05:00:00+00:00"
   },
   {
     "id": "5d56e823e2222d1380",
@@ -4277,126 +4398,5 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-25T14:17:40+00:00"
-  },
-  {
-    "id": "70861240e21a960863",
-    "title": "Automotive Lighting Market Accelerates EV Innovation with Smart LED Adoption | CAGR 7.3% | Persistence Market Research",
-    "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQQkkzZUNmYjNpaDU3Ml9XNEdTQ1VQRkxlNkN0RDJ3Q3lJa2ExZy1mUGNvVzh2XzNBVVN1V1A3MWQxV3Z6Z1o5OU10UHkxM1hxd2wwTWNoc2dBQ3h5TUxJbE94cnpWSl9Oa2tKWE4tQVdTWXBBVGNnM2hiYnVsNkR5ZnFpUUJMd29UNXlIOXR5dkV6ejU2dFk3cHFWVVpwaldUR3JHWFktSDJuTHpGNjNoN0JuN0wyRm5IRy1ORWNYc1F6WHdnbW1JVkpLQUlCX1FBOUpmWld0V1NwTW1nbXBTcURHRWt1MGM2U0NWWHpBQXpDcWU5YkZkdHBZMGI0Ym9k?oc=5",
-    "summary": "Automotive Lighting Market Accelerates EV Innovation with Smart LED Adoption | CAGR 7.3% | Persistence Market Research PR Newswire",
-    "source": "PR Newswire",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-25T14:15:00+00:00"
-  },
-  {
-    "id": "45ff1b2ef381ef1b53",
-    "title": "Tether And The Government Of Georgia Announce GEL₮, The Official Stablecoin Of Georgia",
-    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNV01GLVJUaHF5Ym53eTJlMHZCU0todWtSQkRnUXU2b09qSWFzMm1UN0FHTEVyOUc5RXJ1TGZUVDJ3bmlHQ3JKWG1oNktDVVF4YVkzU05YaXJkOEgxNjJYTXkwcFlyQzFYUDlNd2JtMERsX2Zud1RHNVR6Y2dYN3JCTE5yY3M1dDJlOFZ0T2JaQkpEQUZZUXo0RnRsMlkwS21ETEV4N0l4TEJRMWtoRlp5ZWZCczhtTTg?oc=5",
-    "summary": "Tether And The Government Of Georgia Announce GEL₮, The Official Stablecoin Of Georgia BlockchainReporter",
-    "source": "BlockchainReporter",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-25T14:00:55+00:00"
-  },
-  {
-    "id": "ca6332d4a7b6212795",
-    "title": "Georgia bets big on crypto, launching Tether-backed GEL₮ stablecoin",
-    "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQWFdaMWF1MjlkdXI1ZU1MZ0hqZlFBZlBsOExjTG1WcGlBTHpuZlN0ZHRlQTFQTDQ1VzBTMTVvaDktcWhUYmx4YzRVVWtTb2dISHNsX19YbXc0c01wc1Y0bWo5VU9FY2U4a29fSXhKNHpzUGtiRFhsZ2xUR2hVNU9TMDN2MUE5dXVkc1pv?oc=5",
-    "summary": "Georgia bets big on crypto, launching Tether-backed GEL₮ stablecoin Cryptopolitan",
-    "source": "Cryptopolitan",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-25T13:43:41+00:00"
-  },
-  {
-    "id": "92e75e3b874c2b6695",
-    "title": "Why Are Investors Dumping Bitcoin For HYPE Coin ETFs So Fast?",
-    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNSm52dXI0VVBINVBGdWRxMTc4aGVrUmItUGJkb3BRa2dCZk45Q1dMb2J5V0FxaFEzcVlWaEx0aUJBU2pUX1VFbndCR0NReHQtbXh1aXFoSzFQME9qQ2dQSXJ4Si1uT2ttUWhJQWpQZ0lhaVZTd3JLV3RybjVkR3hvOXNxMExNdmhOMzdjVXJR?oc=5",
-    "summary": "Why Are Investors Dumping Bitcoin For HYPE Coin ETFs So Fast? Coinfomania",
-    "source": "Coinfomania",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-25T13:08:35+00:00"
-  },
-  {
-    "id": "b5a5fe8464ef50cc08",
-    "title": "CDW Corp. stock (US1258961002): steady after first-quarter earnings and leadership transition",
-    "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQODd4LUVQYlEzazRlNUE1b0VvTXBiUWNGUHk3dHRydndqU3I5SHdoZVpoQkpBRWdVYlJHTG00SmNYZGxGaHlVZUpXaTFPMlh2U3NpQXFIaDN5bVltbENRdUdsQ0pQN1VzRmdTVjhhZ0otS05BZnBpUllnLUFzYmxmMDBmYUx0N3I5VGViMkxGUzQ1ejQ2MEx2OW5jRkR5Z1BabUxERzU3ZDd1dS1kQjhCSWg0RS1RaFF3d1k2VEJWRVJ2Umlq?oc=5",
-    "summary": "CDW Corp. stock (US1258961002): steady after first-quarter earnings and leadership transition AD HOC NEWS",
-    "source": "AD HOC NEWS",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-25T11:48:00+00:00"
-  },
-  {
-    "id": "382002a7317833d583",
-    "title": "Embodied AI tests limits of current governance frameworks",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOZGYyM3UxdEVhLTl4b2FyNnFFc2JQTmZlNDdSNDE3cGlJT1BudFlVOUJFdmZCMDF3cnBGUk9KYk01bTI5Q1g3THZqZWVZcktDajBiUXU1bmRWN2tneUNFelpqS1M0U2Z6YVlldFdKeXlNVDBYN3p6OWZ2T0tzVnJESUJhOS15a0ppNjdOdi1Kek82RGNxRnRZbm9vSE90aUNRWVHSAVpBVV95cUxNQm1YcFkxSElsMllZaEV1V0RTWjcyNWxvMEpMZXEtal9SM0RpT3M2c1dDQklscGhyNVB6ZDFiQmYzczluWExKMk1WTlFGdUFPMEFBNXBBSmNnLUE?oc=5",
-    "summary": "Embodied AI tests limits of current governance frameworks MLex",
-    "source": "MLex",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-25T11:05:00+00:00"
-  },
-  {
-    "id": "bde4b13c2b3e512ef4",
-    "title": "Crypto Tax in India: Complete Guide to Tax Rules & Filing (2026)",
-    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1uLTVwZkVyNkhkeG5IcURLTkxUVXdwbVF5RzNiTjJtYlZDSWNMdUVUZGY4MndhQlBveVVMNW5CNjhEY3Q3cGhwM1NqMzkzY0VERTZCTHR3ZHFpdFlub082WWlJVHdCZ0FwOVZzUFlYdFQ?oc=5",
-    "summary": "Crypto Tax in India: Complete Guide to Tax Rules & Filing (2026) CoinDCX",
-    "source": "CoinDCX",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-25T11:00:00+00:00"
-  },
-  {
-    "id": "bdc14fab5e14f50fd2",
-    "title": "Business News",
-    "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxNSktrZk55WENONkxvaHpQejZvTXpESGppYVE4YXR4VDEtVlEzNklYUlE4djdTd1VGYjBpd1VLNlBtaFFVLXhWUVJIaFg0WGExazZ6ZE56cnU5bDFyRngtSFNtWFNWWWotNzJkNXNtTW80N0tkbWFWMG5yc3lpWWxrVWRYeGp6WXlDZ25nT3poUEhtWFZHUVQzN2lzbHF6VzZvelhUZWdBbERhM05RQWpCQlpuMXk4OXh3U0FIeWhGQUpXNjRpOE5xM3U0OGlTMk1SUDZJRDNZRjE0NlRubFl3VTRmRkRleFFQdWNHQzVIbWl4dGtuUDI2YnR4d1JVZ9IBgwJBVV95cUxPR29WYmhicE1IM2swek1RMVFNTThUYngyRjlvOWxFc3Fjc3R1M1RNMzVnV1VXRE9ZRVV3OUNWY2FUVER5VTdsX2ZhTkI1TzRXMnZ0RzJJdkpNTGpJMWhISnlLNVJraEh4UFpYQXcyQkJKRlgya19UR3JqUC1BUG1PMWRteEZwdGdDay1GZEdacGpza3RyenRkLUdqY2c1amQ1emg5TEVGb2x1dnBPU3NJYkZ3WTBJQklhV3B6Q3VJWUNIMmtpNHl6TlgwN3R1QVFXT01nbHdaQ0lIU2JPRHAwLXFzNng3Z3NkZklieVVibXBUVmx1RkdyVm1tLUZIU1VrejZF?oc=5",
-    "summary": "Business News LatestLY",
-    "source": "LatestLY",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-25T10:48:37+00:00"
-  },
-  {
-    "id": "c5d428669f0d20f767",
-    "title": "HARTRON opens admissions for AI, Cyber Security and Digital Marketing courses across; check details and d",
-    "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxOaVNFekR1c0E0a2FvTFh1bHlrdnJPTXdfUG9aMFVxRmk5bXpZUzdKRDU5TkdITmg4VzNfOVp2alJISHFhZjVVRkZNWGdNaGhOSERpRWFZbUgxUElPTUFFMW85Ry15LXNsU2x3SHFxN3V3TmFXT2JJd2IwZklQY2x3RUl2UDRwV3pObWo1TGJYd0VFdEROU0dGbnVPRzhBd2Z6TEhWT2VEUFprbnJaay1lZ2tRUGtISkJyT2l4cHk2R3dYVVVuNlNrZDNzenZKTUh2WkRyNk1hVmh0VW1LT2dxNVJKZU1hM1oyWGVkMzFBNnZZWlNhVVljTXVYc1JTZmc0RkNzLXQtVlNRRW5vLXdublN2Vl9XbjdQaFl4Zm5KYWLSAaYCQVVfeXFMUEVWdU5QRGVFVlRXTjBDYzdTc0JjUnhfbWJjY25xbDdOWGF3bG8wZ25OOHUtRnlEajdtbEJFZlREbW1xTzZROXpKcXNTY21wdEJZaVZGRFVYcnNPUEl2bkppN0FsSTJ1a2FQelEyYUcyb2NSSlJLdnVlWTcwRWktNXowelozWVJ2bnVScktrZnFxY0hYS3QxTmJ1ZTdYWExoLVpCZm84Y3lBbXItSG0xcmNZZmlVRTEwUnFpU3o0aDdrSC1sY2xocUdJSGlNTzVsWmx2dnlUcmtoR0ZZNWJGVXNHU1RBQlFxcGlUTWNVN25OeFAybTctNV81THBOc2hLQ3JTT2lodUxRMi1lTWl6TjBzY1dZcjZhM3FIQU5kbU8zejQxU1Fn?oc=5",
-    "summary": "HARTRON opens admissions for AI, Cyber Security and Digital Marketing courses across; check details and d The Times of India",
-    "source": "The Times of India",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-25T10:33:00+00:00"
-  },
-  {
-    "id": "2b6dbe4d8225cb2bd6",
-    "title": "Nvidia Stock: AI Boom, Semiconductor Leadership, and Long-Term Market Outlook",
-    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQN3BWXzJ4QXNLZHFqdDVMMWR0LVVPMUoydWp0STRYTW5SaDBrd1d6UkJ6TlB3Q2luS3dLb1FtMWhqWFlzRTRINXFGWExWSDJoQTJncmZkaUFFMGN0RmtPdW5pSmg3bE5Rc3o2UEY2UEtMRGhpTzZabjdMSGtkWTdwV3g0cGNzT3JGQkJYOVJvOEZ2SjZ1dWJOaGI0dTRXMHhBOGx3?oc=5",
-    "summary": "Nvidia Stock: AI Boom, Semiconductor Leadership, and Long-Term Market Outlook vocal.media",
-    "source": "vocal.media",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-25T10:29:40+00:00"
-  },
-  {
-    "id": "e535fd8313c9a81a94",
-    "title": "MAS to sell Romania open-air mall portfolio to AFI Europe",
-    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNQUd6bDdobEpSeURkb01YQVBoZUVCNC1SZzNHNVRuYklFck1qN2NqdzZKT1lmdUhaLUlYeGh0S3Fna01KZlNGbVU3cVM4d19Ma1lGMXVwSUpYaGF4QklkRWpTZ0ZZalVfQUFvUHRxVE1DOVpoVXY0amNVMzdwdTB4ODRsNlI4MV9LN3o2NlZra2Q2OUcx?oc=5",
-    "summary": "MAS to sell Romania open-air mall portfolio to AFI Europe SeeNews",
-    "source": "SeeNews",
-    "region": "BiH SeeNews",
-    "group": "bih",
-    "category": "economy",
-    "published_at": "2026-05-25T09:26:57+00:00"
   }
 ]
