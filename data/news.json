@@ -1,5 +1,17 @@
 [
   {
+    "id": "486babbdf7e53d9eb0",
+    "title": "TechCrunch Mobility: It doesn’t matter that people hate the Ferrari Luce",
+    "url": "https://techcrunch.com/2026/05/31/techcrunch-mobility-it-doesnt-matter-that-people-hate-the-ferrari-luce/",
+    "summary": "Welcome back to TechCrunch Mobility, your hub for the future of transportation and now, more than ever, how AI is playing a part.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-31T16:05:00+00:00",
+    "share_url": "/podijeli/vijest/486babbdf7e53d9eb0/"
+  },
+  {
     "id": "29ba94b175df5b5da7",
     "title": "Making sense of the debate over AI psychosis",
     "url": "https://techcrunch.com/2026/05/31/making-sense-of-the-debate-over-ai-psychosis/",
@@ -956,8 +968,7 @@
     "region": "CoinDesk",
     "group": "digital-assets",
     "category": "digital-assets",
-    "published_at": "2026-05-30T13:00:00+00:00",
-    "share_url": "/podijeli/vijest/051a9ccb3e9560516e/"
+    "published_at": "2026-05-30T13:00:00+00:00"
   },
   {
     "id": "5a13a46e80bd79599e",
@@ -1051,17 +1062,6 @@
     "published_at": "2026-05-30T12:01:00+00:00"
   },
   {
-    "id": "c93d69954ba36a101c",
-    "title": "Will Gen Z be the generation to revive moviegoing?",
-    "url": "https://www.cnbc.com/2026/05/30/gen-z-movie-theaters.html",
-    "summary": "Gen Zers like affordable, social experiences and are driving demand for anime and video game titles at the theaters.",
-    "source": "CNBC Business",
-    "region": "CNBC Business",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-30T12:00:01+00:00"
-  },
-  {
     "id": "9e1c57da3e6df02286",
     "title": "Meta has struggled at selling anything other than ads. Will AI be different?",
     "url": "https://www.cnbc.com/2026/05/30/meta-struggled-selling-anything-other-than-ads-will-ai-be-different.html",
@@ -1070,6 +1070,17 @@
     "region": "CNBC Technology",
     "group": "technology",
     "category": "technology",
+    "published_at": "2026-05-30T12:00:01+00:00"
+  },
+  {
+    "id": "c93d69954ba36a101c",
+    "title": "Will Gen Z be the generation to revive moviegoing?",
+    "url": "https://www.cnbc.com/2026/05/30/gen-z-movie-theaters.html",
+    "summary": "Gen Zers like affordable, social experiences and are driving demand for anime and video game titles at the theaters.",
+    "source": "CNBC Business",
+    "region": "CNBC Business",
+    "group": "international",
+    "category": "economy",
     "published_at": "2026-05-30T12:00:01+00:00"
   },
   {
@@ -2410,6 +2421,17 @@
     "group": "international",
     "category": "economy",
     "published_at": "2026-05-29T15:46:28+00:00"
+  },
+  {
+    "id": "3e2bcd5d5f4722f82b",
+    "title": "Meta Layoffs Leave Employees Wary Despite Zuckerberg’s Reassurance",
+    "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPTmNEQWhGTHA4OWp0YjNtYnRPaFNFRmthV1ZMQlljODdPQktpblhPN3VuMEhRckdTeDFzd0xwY1I0dUdKOGotdUdtbnIxVFBtRTFoVWtWVEZIeHJjeVVIMWpNOFV0REtZTUx6OTJWckk0Y05WcWJ5WGFJdXNTdWk0Sk9qcTdraTFfRW1VQg?oc=5",
+    "summary": "Meta Layoffs Leave Employees Wary Despite Zuckerberg’s Reassurance TechRepublic",
+    "source": "TechRepublic",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-29T15:43:06+00:00"
   },
   {
     "id": "31ab2f61eba69205f2",
@@ -5600,27 +5622,5 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-28T14:30:17+00:00"
-  },
-  {
-    "id": "e705b9310942392f52",
-    "title": "At TechCrunch Disrupt 2026: Databricks’ co-founder on what kills enterprise AI deals",
-    "url": "https://techcrunch.com/2026/05/28/techcrunch-disrupt-2026-databricks-co-founder-on-what-kills-enterprise-ai-deals/",
-    "summary": "Enterprise AI is entering a different phase now, one where enterprises are no longer evaluating whether AI is exciting. They are evaluating whether it is safe to deploy broadly.",
-    "source": "TechCrunch",
-    "region": "TechCrunch",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T14:30:00+00:00"
-  },
-  {
-    "id": "07da03028bce0f20c0",
-    "title": "Mimović obavestio ministarku Đedović Handanović da želi da kupi udeo u NIS-u",
-    "url": "https://biznis.rs/vesti/srbija/mimovic-obavestio-ministarku-djedovic-handanovic-da-zeli-da-kupi-udeo-u-nis-u/",
-    "summary": "Direktor i vlasnik kompanije KFT Senator Treasury G.T.7 Dva iz Subotice Ranko Mimović izjavio je da je danas pismeno obavestio ministarku rudarastva i energetike Srbije Dubravku Đedović Handanović da je zainteresovan za kupovinu većinskog r",
-    "source": "Biznis.rs",
-    "region": "Biznis.rs",
-    "group": "srbija",
-    "category": "economy",
-    "published_at": "2026-05-28T14:29:00+00:00"
   }
 ]

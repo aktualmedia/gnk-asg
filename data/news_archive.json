@@ -1,5 +1,27 @@
 [
   {
+    "id": "e705b9310942392f52",
+    "title": "At TechCrunch Disrupt 2026: Databricks’ co-founder on what kills enterprise AI deals",
+    "url": "https://techcrunch.com/2026/05/28/techcrunch-disrupt-2026-databricks-co-founder-on-what-kills-enterprise-ai-deals/",
+    "summary": "Enterprise AI is entering a different phase now, one where enterprises are no longer evaluating whether AI is exciting. They are evaluating whether it is safe to deploy broadly.",
+    "source": "TechCrunch",
+    "region": "TechCrunch",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-28T14:30:00+00:00"
+  },
+  {
+    "id": "07da03028bce0f20c0",
+    "title": "Mimović obavestio ministarku Đedović Handanović da želi da kupi udeo u NIS-u",
+    "url": "https://biznis.rs/vesti/srbija/mimovic-obavestio-ministarku-djedovic-handanovic-da-zeli-da-kupi-udeo-u-nis-u/",
+    "summary": "Direktor i vlasnik kompanije KFT Senator Treasury G.T.7 Dva iz Subotice Ranko Mimović izjavio je da je danas pismeno obavestio ministarku rudarastva i energetike Srbije Dubravku Đedović Handanović da je zainteresovan za kupovinu većinskog r",
+    "source": "Biznis.rs",
+    "region": "Biznis.rs",
+    "group": "srbija",
+    "category": "economy",
+    "published_at": "2026-05-28T14:29:00+00:00"
+  },
+  {
     "id": "46379b2dce51765d06",
     "title": "YouTube adds new podcast features, including an AI recommendation tool and ‘Auto speed’",
     "url": "https://techcrunch.com/2026/05/28/youtube-adds-new-podcast-features-including-an-ai-recommendation-tool-and-auto-speed/",
@@ -1320,6 +1342,17 @@
     "published_at": "2026-05-28T05:06:48+00:00"
   },
   {
+    "id": "c5a187d10ff1139847",
+    "title": "Banca Sella Becomes First Italian Bank Cleared for Crypto Services Under MiCA",
+    "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxORkc1ak94bDlJVTBaejMtWWJfUFFiY0dsckxPWVhaTlhVbUVXV3lMT05kYmJlX2tiNGhyT3NwYnNyU3pjeHZrSXFtb2dNZTBCNkh4eFZoWV9oS19iZzRnUERzRENrOUxQdk1RbXNGMk5tcC1OcFJSR2dpR0JTYkdsMlc3UEVBbFZhb1lWNWhsVmRPTkJUVThEdE44NXNDNGliUVBjU291ZlNhNEpOLWdPamlpZ3pveXVkcVlfTlB2LXdBYnA4NzQxdC1JYjI2R0RRLVc5anRLb2htbUZvTWU3US11Nld2RlZwR1ZvdnU5NnNIb2dDT0NubFl3aGJ4UzQ5?oc=5",
+    "summary": "Banca Sella Becomes First Italian Bank Cleared for Crypto Services Under MiCA Dailyhunt",
+    "source": "Dailyhunt",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-28T04:58:34+00:00"
+  },
+  {
     "id": "32ab534b9f90a02d78",
     "title": "AJP Focus: The day the market crowned memory — and why Korea must not mistake the jackpot for the journey",
     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBGWDM2b29ZNDBhQzVJNXVmZEVtVEpwZU1Oc3RDRjdKaEVvWkFMTnk0azhhQk9Uc2lPb0ltbC1mUU5FN3lXN01rNlB3WHVVeEtKQ3I2dmhiONIBV0FVX3lxTFBGWDM2b29ZNDBhQzVJNXVmZEVtVEpwZU1Oc3RDRjdKaEVvWkFMTnk0azhhQk9Uc2lPb0ltbC1mUU5FN3lXN01rNlB3WHVVeEtKQ3I2dmhiOA?oc=5",
@@ -1648,17 +1681,6 @@
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-27T21:04:59+00:00"
-  },
-  {
-    "id": "2fc4e8564844781782",
-    "title": "Banca Sella Becomes First Italian Bank Cleared for Crypto Services Under MiCA",
-    "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOOVhWNlVJSWdnOE1Pb21MNU04N09rLWlNanJRZmJXcEJvQnZYTEIxcXJnaHVBR2xUQnZROC1pa1BJZGJWRk9FSjlFcmx1VGRlQ0lKZFJEOUpoRGNySDVfb3dzSzN5cVZpejdwR3p3ZTdIVXlldk9fdFI5VUlNdkdOZm9aZkR0VVNqa0JVMmZkSUpEaVVSLWZiejVWTi1kX2JFNVdzOUdTTk1XRHY0SkxsLVYzUkRrY3loX3pydHJZZmhGdlXSAcMBQVVfeXFMTjlYVjZVSUlnZzhNT29tTDVNODdPay1pTWpyUWZiV3BCb0J2WExCMXFyZ2h1QUdsVEJ2UTgtaWtQSWRiVkZPRUo5RXJsdVRkZUNJSmRSRDlKaERjckg1X293c0szeXFWaXo3cEd6d2U3SFV5ZXZPX3RSOVVJTXZHTmZvWmZEdFVTamtCVTJmZElKRGlVUi1mYno1Vk4tZF9iRTVXczlHU05NV0R2NEpMbC1WM1JEa2N5aF96cnRyWWZoRnZV?oc=5",
-    "summary": "Banca Sella Becomes First Italian Bank Cleared for Crypto Services Under MiCA Analytics Insight",
-    "source": "Analytics Insight",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-27T20:42:08+00:00"
   },
   {
     "id": "fe8a062582f7a1e983",
@@ -2684,17 +2706,6 @@
     "published_at": "2026-05-27T07:00:00+00:00"
   },
   {
-    "id": "89f08c7a1379e8e101",
-    "title": "What Is a Crypto Wallet? A Beginner’s Guide to Storing Cryptocurrency Securely in 2026",
-    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBENXFtY191M2xfTVQ5VEQtQ0dJQUZDSUhSMGxDX0hKZGYyTDVfU2F6LUtxWXlmTWRXempGZGZSZGFXclBWZmdwYWtvVnhGQkxMLXZxcXkxLXZoSVViSWxrbw?oc=5",
-    "summary": "What Is a Crypto Wallet? A Beginner’s Guide to Storing Cryptocurrency Securely in 2026 KuCoin",
-    "source": "KuCoin",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-27T07:00:00+00:00"
-  },
-  {
     "id": "876671832ad7997371",
     "title": "Electric Vehicle Market Size, Share & Global Analysis, 2032",
     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPbDdPM0VwRXE3dDlfTTJFS3BVX2FmU0ZLWVVDR2JLcWk5UjVnUmJQaDJ2N2E1Z1VkMWdIUzdnWXVrSFc3cHBLWmhSb3dodGpOTlZzejhjaFRBcm5fRi1jMzhzTV9CcFRqVVRVUVdWUWliWkdiMXdzLXpFMWY3M1doOW1hTHBaUnlnYV81YmMyLTU?oc=5",
@@ -2706,14 +2717,14 @@
     "published_at": "2026-05-27T07:00:00+00:00"
   },
   {
-    "id": "784321058f5d8d0e8a",
-    "title": "Brokerages' forecasts for S&P 500, global GDP growth in 2026",
-    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNNWwxeTlDb09jdUdDU0xpSTlWYTFzNVh3aS1pbnAxQ0M0QTRjTTNFSUpKa194aE01Y2JmY1RudjZLcVFCSmMxc1dCRVFnZXJORUpLNHN2Q21DQTFfbmxrUGg5ZnBZak02YjRCeDBkUG91Qms4cTRRd0U2cy1kdTR0LVFxNFlLM2UzZGZZMkpaaFo4azREdFE1enlJNTY4aEZZQTB3X01neWRQcjJPOHRGUFRpM01Tb29nNXBJ?oc=5",
-    "summary": "Brokerages' forecasts for S&P 500, global GDP growth in 2026 Reuters",
-    "source": "Reuters",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
+    "id": "46fffe697178c8829f",
+    "title": "Global Mobility Call expands its ecosystem with new strategic partners to boost sustainable mobility",
+    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPRzhCaVp3Ui1jSUlRQTd1ZkpiZ0JPTmo0SHo3b2tlM0VqREdwRm0xMHlsWmxrenJzNTgydXpyZ1NZRFhRbUFpcV9mTDNmNmZiTFFla1RsRnQ5WXZXdEw1R3ppZDdqbG1teEVieDBsR0NlWUdzTEVCZHJUZzh3ZEVmc0pYSXN6QkU?oc=5",
+    "summary": "Global Mobility Call expands its ecosystem with new strategic partners to boost sustainable mobility Mobility Portal",
+    "source": "Mobility Portal",
+    "region": "Global Mobility",
+    "group": "mobilnost",
+    "category": "automotive",
     "published_at": "2026-05-27T07:00:00+00:00"
   },
   {
@@ -2728,14 +2739,25 @@
     "published_at": "2026-05-27T07:00:00+00:00"
   },
   {
-    "id": "46fffe697178c8829f",
-    "title": "Global Mobility Call expands its ecosystem with new strategic partners to boost sustainable mobility",
-    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPRzhCaVp3Ui1jSUlRQTd1ZkpiZ0JPTmo0SHo3b2tlM0VqREdwRm0xMHlsWmxrenJzNTgydXpyZ1NZRFhRbUFpcV9mTDNmNmZiTFFla1RsRnQ5WXZXdEw1R3ppZDdqbG1teEVieDBsR0NlWUdzTEVCZHJUZzh3ZEVmc0pYSXN6QkU?oc=5",
-    "summary": "Global Mobility Call expands its ecosystem with new strategic partners to boost sustainable mobility Mobility Portal",
-    "source": "Mobility Portal",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
+    "id": "89f08c7a1379e8e101",
+    "title": "What Is a Crypto Wallet? A Beginner’s Guide to Storing Cryptocurrency Securely in 2026",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBENXFtY191M2xfTVQ5VEQtQ0dJQUZDSUhSMGxDX0hKZGYyTDVfU2F6LUtxWXlmTWRXempGZGZSZGFXclBWZmdwYWtvVnhGQkxMLXZxcXkxLXZoSVViSWxrbw?oc=5",
+    "summary": "What Is a Crypto Wallet? A Beginner’s Guide to Storing Cryptocurrency Securely in 2026 KuCoin",
+    "source": "KuCoin",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-27T07:00:00+00:00"
+  },
+  {
+    "id": "784321058f5d8d0e8a",
+    "title": "Brokerages' forecasts for S&P 500, global GDP growth in 2026",
+    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNNWwxeTlDb09jdUdDU0xpSTlWYTFzNVh3aS1pbnAxQ0M0QTRjTTNFSUpKa194aE01Y2JmY1RudjZLcVFCSmMxc1dCRVFnZXJORUpLNHN2Q21DQTFfbmxrUGg5ZnBZak02YjRCeDBkUG91Qms4cTRRd0U2cy1kdTR0LVFxNFlLM2UzZGZZMkpaaFo4azREdFE1enlJNTY4aEZZQTB3X01neWRQcjJPOHRGUFRpM01Tb29nNXBJ?oc=5",
+    "summary": "Brokerages' forecasts for S&P 500, global GDP growth in 2026 Reuters",
+    "source": "Reuters",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
     "published_at": "2026-05-27T07:00:00+00:00"
   },
   {
@@ -3223,6 +3245,17 @@
     "published_at": "2026-05-26T11:27:55+00:00"
   },
   {
+    "id": "bbdd363be3982e3cfa",
+    "title": "Circle CEO Jeremy Allaire: Every financial institution must implement digital assets",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPR1MwT2E4bjhXa2VlcnpLd3lpeDUxR25ZZXIzWkVfYmhqdmJ1eEJFOHVpbi1iRE1SWDFLRTQ1NExHS1ZuTmM2cGlyNngwX2gySzFldjYzWGQwdHNUOUlhSGVpUHl1b1piQkRhNWpUT01TYm5EQlNMUWFXNUlYTW9rcjRyd2Ftd19zekRyaURDUk5Wdw?oc=5",
+    "summary": "Circle CEO Jeremy Allaire: Every financial institution must implement digital assets Crypto Briefing",
+    "source": "Crypto Briefing",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-26T11:12:36+00:00"
+  },
+  {
     "id": "4ee5a1895e2bb0fcc1",
     "title": "Digital Asset Funds See Second Straight Week of Outflows, Losing $1.47 Billion",
     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQNGJlZV96dlVaaFJyc29YaXNuZkNubnpHdGFUSVhaeWVHMWRyS3dZbXE3NW9YeXZYd3NQNzlOSlZHejQzMFlDdHNwM2ppUkJWMHNwVVV1TmxxbzNwRjlUelEtRW9kWkVHZnRwVGN3UUdwRzI2bzhXbllBU1paMld0TjRvQQ?oc=5",
@@ -3254,6 +3287,17 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-26T10:30:35+00:00"
+  },
+  {
+    "id": "f67f47c78a4737234f",
+    "title": "Infineon Showcases Semiconductor Solutions at PCIM Europe 2026 for Power, AI, Robotics & EVs",
+    "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQzlSSElPaWYxbl9wLURPZnVmZ3hYNzVRd1gxRGxZazA1U0EzYmM2NVBuX0p5UTJWcnhDdi1lbzJQajVReTZVWFYtMWNKNDFvNXhHTlU3NVJiN2p0MHVabTdBc3JMLTYyOVJpWjBOM1FHSU5NbWRWdDh3eWliOFNFRU9xeUhzMzRibldaNHh3T0NDalk4ZUtrc09ab3E5elJ3UFJTeHJsYy16bzY5Rmd3OUVCRHRCSmFN?oc=5",
+    "summary": "Infineon Showcases Semiconductor Solutions at PCIM Europe 2026 for Power, AI, Robotics & EVs Bisinfotech",
+    "source": "Bisinfotech",
+    "region": "AI Technology",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-26T10:08:59+00:00"
   },
   {
     "id": "ca537b89a30f75e07f",
@@ -3399,25 +3443,14 @@
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
-    "id": "aada992181cdc9435c",
-    "title": "Data Center Switch Market Size, Share, Growth, Analysis, 2034",
-    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5JU0xIcEl6R1VIbVJ1c0pGYXI4TUczeHNVTVhtNWJMNjZBVnhqUkdKRm05R2c2SDZKejRkOTZwNXZGTkItdVhxUk1TTGZYeDlaZ0pXLUVLbWg4aFZRV1kwZUNaU0tpUlNIMzRrZA?oc=5",
-    "summary": "Data Center Switch Market Size, Share, Growth, Analysis, 2034 Straits Research",
-    "source": "Straits Research",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-26T07:00:00+00:00"
-  },
-  {
-    "id": "fd27c73424f32c56fd",
-    "title": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security",
-    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbFhBMC05dFFFcVdHVk9IY05zVllyZnBOOU9ZZmgzOEc0UTFRdWd1ZUtCbGV3WWQ3dzVjdUJTQldxTVpCTkhSN05hclpnX2xaOHBGWGpxdG1VNnpBdWNidFF3ekdOSnpsVW1oRHpEcFBTc0xvSl90c1JYQ2lIZVlpa1F2ZThvYnNNLW9MUDlTUUQzeFlKdGVwcUprb0w0d2RSbThkR1lGUFJidnlRaEt1RzQ2bGk4NkU?oc=5",
-    "summary": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security Dark Reading",
-    "source": "Dark Reading",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
+    "id": "6b8433eecef3d93649",
+    "title": "What Is the CLARITY Act and What Does It Mean for Crypto?",
+    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObzItX29GSllDNU1GUzJDdU9jV2MxRy0yVlZ2dXFfa0NUbmhSNjR4ZUpYcWZQdUZZeUswT3lKcFNSRE5yYlExMFhVeVMyZ0F1UTJPVmkxR2lLS3I3eFJBUVFBNHRMeW1tSTZPRzZIMWl4Ym00X2dGZEZDUkE4eFBuSkVfQ2hiV3ZhTm1jOUxJQVloUkRreTVPY295Ri03Sl96ZVE?oc=5",
+    "summary": "What Is the CLARITY Act and What Does It Mean for Crypto? Binance",
+    "source": "Binance",
+    "region": "Digital Assets",
+    "group": "digital-assets",
+    "category": "digital-assets",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
@@ -3454,14 +3487,25 @@
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
-    "id": "6b8433eecef3d93649",
-    "title": "What Is the CLARITY Act and What Does It Mean for Crypto?",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObzItX29GSllDNU1GUzJDdU9jV2MxRy0yVlZ2dXFfa0NUbmhSNjR4ZUpYcWZQdUZZeUswT3lKcFNSRE5yYlExMFhVeVMyZ0F1UTJPVmkxR2lLS3I3eFJBUVFBNHRMeW1tSTZPRzZIMWl4Ym00X2dGZEZDUkE4eFBuSkVfQ2hiV3ZhTm1jOUxJQVloUkRreTVPY295Ri03Sl96ZVE?oc=5",
-    "summary": "What Is the CLARITY Act and What Does It Mean for Crypto? Binance",
-    "source": "Binance",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
+    "id": "fd27c73424f32c56fd",
+    "title": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbFhBMC05dFFFcVdHVk9IY05zVllyZnBOOU9ZZmgzOEc0UTFRdWd1ZUtCbGV3WWQ3dzVjdUJTQldxTVpCTkhSN05hclpnX2xaOHBGWGpxdG1VNnpBdWNidFF3ekdOSnpsVW1oRHpEcFBTc0xvSl90c1JYQ2lIZVlpa1F2ZThvYnNNLW9MUDlTUUQzeFlKdGVwcUprb0w0d2RSbThkR1lGUFJidnlRaEt1RzQ2bGk4NkU?oc=5",
+    "summary": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security Dark Reading",
+    "source": "Dark Reading",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-26T07:00:00+00:00"
+  },
+  {
+    "id": "aada992181cdc9435c",
+    "title": "Data Center Switch Market Size, Share, Growth, Analysis, 2034",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5JU0xIcEl6R1VIbVJ1c0pGYXI4TUczeHNVTVhtNWJMNjZBVnhqUkdKRm05R2c2SDZKejRkOTZwNXZGTkItdVhxUk1TTGZYeDlaZ0pXLUVLbWg4aFZRV1kwZUNaU0tpUlNIMzRrZA?oc=5",
+    "summary": "Data Center Switch Market Size, Share, Growth, Analysis, 2034 Straits Research",
+    "source": "Straits Research",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
@@ -3960,17 +4004,6 @@
     "published_at": "2026-05-25T07:22:54+00:00"
   },
   {
-    "id": "54927365948a983af2",
-    "title": "Complete Computer Courses List: Top Courses, After Class 12 & Beyond",
-    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE56eXpPeFhmM0doUW5jdzIzMXpMTFliQU5NdnE1amJpMEpMdXA4VW96ZjNxNkhUcy1QeFl0Ykx2SjdxeGdnd1NzdTIxTTJlektFRDdrV01Ia250Rm05OWRQOQ?oc=5",
-    "summary": "Complete Computer Courses List: Top Courses, After Class 12 & Beyond Jaro Education",
-    "source": "Jaro Education",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-25T07:00:00+00:00"
-  },
-  {
     "id": "803699ae584925c1bd",
     "title": "Best Artificial Intelligence (AI) Stocks to Buy Now May 2026",
     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5wSGYyaVJkMGxYb0VoVEV5Nl84Y1g3UmxvV2ZGZ1ZkUmZNTmZ0TzkxZS1fNUl4eU03V3hJM1ZrVWxOempfVGNJdGowX0x5UHRMTjhWYnhqT21QSTJiWHlodkRKVmpWYllwQUhOLUxKdjRodzAxeDgxTw?oc=5",
@@ -3998,6 +4031,17 @@
     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1zQnQ0YV8xTU1CcXFTZkV1Y1M4TlI3UFM1bzNjUXdjQ2VCakktNFNVbC1ZUlB2aGdWTHhsRmhSWWtYclV2b2RFRlJORXUwTEFucWFVaXJNRXZNX1hwZlo4bWN4ZTAxeWs?oc=5",
     "summary": "IT Outsourcing Market Size, Share, Growth, Analysis, Report, 2034 Straits Research",
     "source": "Straits Research",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-25T07:00:00+00:00"
+  },
+  {
+    "id": "54927365948a983af2",
+    "title": "Complete Computer Courses List: Top Courses, After Class 12 & Beyond",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE56eXpPeFhmM0doUW5jdzIzMXpMTFliQU5NdnE1amJpMEpMdXA4VW96ZjNxNkhUcy1QeFl0Ykx2SjdxeGdnd1NzdTIxTTJlektFRDdrV01Ia250Rm05OWRQOQ?oc=5",
+    "summary": "Complete Computer Courses List: Top Courses, After Class 12 & Beyond Jaro Education",
+    "source": "Jaro Education",
     "region": "Cyber and Cloud",
     "group": "technology",
     "category": "technology",
@@ -4354,49 +4398,5 @@
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-24T04:58:08+00:00"
-  },
-  {
-    "id": "93507ee2ea179e96ef",
-    "title": "Fortinet Sees AI Data Centers, OT Security and Sovereign SASE Fueling Pipeline",
-    "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPVVUtWFFWcUE0WWt1WERJSXZzSEpJNGIwSnNZaTRPdy1MV1hKczdOVHJDVWFmVHd2Y1lSUnlYSmpXNXc1RmVxTVFpWFQzeFMyTk56aTdCNHJOcXZESmtoMmtZb2RaTFZPQlc1VkJ4Y1J3ZTNMRGZXZzhZRWt2SmtGajJqNUhGNXRpMEVZXzNvclI2OHVhMDRIeFJUNVlVekpGN2JoTi05b1gxMlBWTTF1QmQwRTV6dFp4Q29zeUp0dnNKUnBkZ29JVmQ4U3cwTjFhTVIwSw?oc=5",
-    "summary": "Fortinet Sees AI Data Centers, OT Security and Sovereign SASE Fueling Pipeline TradingView",
-    "source": "TradingView",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-24T04:06:00+00:00"
-  },
-  {
-    "id": "595d265b224631159d",
-    "title": "MoneyFlare: AI Crypto Trading Bot Launched",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE15a2Y5aUdtRVA3V3hiV3dQRUpmckRUaFNHNzlRd2tIMVBJQXEzajAzZnJHNndmOXRsMi1KOTJZRjNJQ3k2c09yZ1ZCUmVnNEx2c05ob0xrRDUzaFdZRGt1VEZiZF9IRHpNMW1Makxn0gFzQVVfeXFMTnhvSktRN2FnTmo3UVQ1MVhuTTg3ZS0xb2RBR2VmME5MZjdha1Rhd1l3QnkwTS1CWWtXYU0xVnhFTEdCTE9Fd0NrYkFYemViSEdXZjZoUjVsai1CLVdHS0xKeVNQZU5NMkE2RElJcDB0c1hNbw?oc=5",
-    "summary": "MoneyFlare: AI Crypto Trading Bot Launched Pulse 2.0",
-    "source": "Pulse 2.0",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-24T02:47:59+00:00"
-  },
-  {
-    "id": "e591e4da29aeb4fc09",
-    "title": "XRP ETF Holdings Surge Past $1.13 Billion After New Institutional Buying Wave",
-    "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBDampqcktKM1NnRmVnQWJWWFExVjlyVm1xTkIyWWN5Nnd4Q1IxalJpSDBCeUF4Q0ZDVHdhd0dNQ3h4bWJoaGpua040TmZrRlVR?oc=5",
-    "summary": "XRP ETF Holdings Surge Past $1.13 Billion After New Institutional Buying Wave MEXC",
-    "source": "MEXC",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-24T01:44:13+00:00"
-  },
-  {
-    "id": "26852c99494106ca9f",
-    "title": "ELEKTROS Celebrates Strong Friday Momentum as U.S. Markets Continue Rallying to Historic Highs - Management Believes the Current Market Environment Resembles the Energy and Excitement of the Dot-Com Boom Era as More Penny Stock and Microca",
-    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNQmcxaVhhazhFUkQtMnZFTHJFQWpxWEtDbHhLdGEtRk1wOV9nNnFubk9FV0x6SHJ6WEYyMW1xd3E4cDZRVHdmMUFXNlZkV1NaSEwyVkJHZGVrVUdzdE1qWHEwYWVHRHNoTldBUmhvZmp3TE5BeW5aVDhhcjRMUU9OSThEckpTd2ZtcWZ3bXkzMnhPTC1CR29mVFdTclZVcllVTEg5VkgxX3BtWWs?oc=5",
-    "summary": "ELEKTROS Celebrates Strong Friday Momentum as U.S. Markets Continue Rallying to Historic Highs - Management Believes the Current Market Environment Resembles the Energy and Excitement of the Dot-Com Boom Era as More Penny Stock and Microca ",
-    "source": "Yahoo Finance",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-24T01:00:00+00:00"
   }
 ]
