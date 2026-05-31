@@ -45,6 +45,28 @@
     return String(value || '').replace(/[&<>\"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[character]));
   }
 
+  function injectStyle() {
+    if (document.getElementById('visualIndexFullGalleryStyle')) return;
+    const style = document.createElement('style');
+    style.id = 'visualIndexFullGalleryStyle';
+    style.textContent = `
+      .visual-image-missing{
+        min-height:168px;
+        padding:16px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:8px;
+        color:#d4af37;
+        background:linear-gradient(135deg,#07162d,#12345d);
+        word-break:break-word;
+      }
+      .visual-image-missing strong{color:#fff;font-size:.92rem;}
+      .visual-image-missing code{font-size:.76rem;color:#f8e7a1;line-height:1.45;}
+    `;
+    document.head.appendChild(style);
+  }
+
   function makeItem(set, number) {
     const padded = String(number).padStart(3, '0');
     const id = `gnk-asg-${set.slug}-${padded}`;
@@ -60,12 +82,21 @@
     };
   }
 
+  function missingImageMarkup(item) {
+    return `<div class="visual-image-missing"><strong>Slika nije učitana</strong><code>${escapeHtml(item.src)}</code></div>`;
+  }
+
   function card(item) {
     const node = document.createElement('article');
     node.className = 'item visual-set-item';
     node.dataset.visualSetItem = item.id;
     const tags = item.topic.slice(0, 4).map(topic => `<span>${escapeHtml(topic)}</span>`).join('');
-    node.innerHTML = `<img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.alt)}" loading="lazy"><div class="body"><h2>${escapeHtml(item.title)}</h2><p>${escapeHtml(item.description)}</p><div class="tags">${tags}</div></div>`;
+    const image = `<img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.alt)}" loading="lazy">`;
+    node.innerHTML = `${image}<div class="body"><h2>${escapeHtml(item.title)}</h2><p>${escapeHtml(item.description)}</p><div class="tags">${tags}</div></div>`;
+    const img = node.querySelector('img');
+    img.addEventListener('error', () => {
+      img.outerHTML = missingImageMarkup(item);
+    }, { once: true });
     return node;
   }
 
@@ -86,6 +117,7 @@
   }
 
   function mount() {
+    injectStyle();
     const grid = document.getElementById('visualGrid');
     if (!grid || grid.dataset.fullGalleryMounted === '1') return;
     grid.dataset.fullGalleryMounted = '1';
