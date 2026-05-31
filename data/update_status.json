@@ -1,7 +1,9 @@
 {
-  "updated_at": "2026-05-31T15:30:29+00:00",
+  "updated_at": "2026-05-31T15:56:00+00:00",
   "news": {
-    "updated_at": "2026-05-31T15:30:29+00:00",
+    "updated_at": "2026-05-31T15:56:00+00:00",
+    "checked_at": "2026-05-31T15:56:00+00:00",
+    "last_attempt_at": "2026-05-31T15:56:00+00:00",
     "status": "ok",
     "engine": "single_publication_engine_v1",
     "cadence": "scheduled every one hour and twenty-one minutes",
