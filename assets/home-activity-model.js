@@ -3,6 +3,7 @@
 
   const BASE_COUNT = 6857;
   const BASE_TIME = Date.parse('2026-05-31T18:45:00+02:00');
+  const REFRESH_KEY = 'gnk_asg_indicative_activity_refresh_bonus_v1';
 
   function isHome() {
     const path = location.pathname.replace(/\/+$/, '/');
@@ -11,6 +12,26 @@
 
   function isEnglish() {
     return /\/en\/?$/.test(location.pathname) || /\/en\//.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
+  }
+
+  function storageGet() {
+    try {
+      return Math.max(0, Number(localStorage.getItem(REFRESH_KEY) || 0));
+    } catch (_) {
+      return 0;
+    }
+  }
+
+  function storageSet(value) {
+    try {
+      localStorage.setItem(REFRESH_KEY, String(Math.max(0, Number(value) || 0)));
+    } catch (_) {}
+  }
+
+  function registerRefreshViewOnce() {
+    if (!isHome() || window.__gnkActivityRefreshRegistered) return;
+    window.__gnkActivityRefreshRegistered = true;
+    storageSet(storageGet() + 1);
   }
 
   function zagrebHour(time) {
@@ -31,13 +52,13 @@
     return 6;
   }
 
-  function activityValue() {
+  function algorithmGrowth() {
     const now = Date.now();
-    if (!BASE_TIME || now <= BASE_TIME) return BASE_COUNT;
+    if (!BASE_TIME || now <= BASE_TIME) return 0;
 
     const elapsed = now - BASE_TIME;
     const fullHours = Math.floor(elapsed / 3600000);
-    let total = BASE_COUNT;
+    let total = 0;
 
     for (let i = 1; i <= fullHours; i += 1) {
       total += growthForHour(zagrebHour(BASE_TIME + i * 3600000), i);
@@ -46,6 +67,10 @@
     const currentGrowth = growthForHour(zagrebHour(now), fullHours + 1);
     total += Math.floor(((elapsed % 3600000) / 3600000) * currentGrowth);
     return total;
+  }
+
+  function activityValue() {
+    return BASE_COUNT + algorithmGrowth() + storageGet();
   }
 
   function ensureStyle() {
@@ -91,11 +116,12 @@
       anchor.insertAdjacentElement(anchor.classList && anchor.classList.contains('quick-data') ? 'afterend' : 'beforeend', box);
     }
 
-    box.innerHTML = '<div class="reader-icon">◎</div><div><small>' + (en ? 'Public activity model' : 'Javni model aktivnosti') + '</small><strong id="readerCounterValue">—</strong><span>' + (en ? 'Indicative display; not measured analytics.' : 'Indikativni prikaz; nije mjerena analitika.') + '</span></div>';
+    box.innerHTML = '<div class="reader-icon">◎</div><div><small>' + (en ? 'Public activity model' : 'Javni model aktivnosti') + '</small><strong id="readerCounterValue">—</strong><span>' + (en ? 'Indicative display; not measured analytics. Refresh adds one view.' : 'Indikativni prikaz; nije mjerena analitika. Svako osvježavanje dodaje jedan prikaz.') + '</span></div>';
     update();
   }
 
   function boot() {
+    registerRefreshViewOnce();
     render();
     update();
     window.setInterval(update, 60000);
