@@ -23,7 +23,7 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://gnk-asg.hr/kontakt/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://gnk-asg.hr/en/contact/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gnk-asg.hr/kontakt/" />
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -32,8 +32,26 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://gnk-asg.hr/kontakt/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://gnk-asg.hr/en/contact/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gnk-asg.hr/kontakt/" />
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gnk-asg.hr/all-desk/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://gnk-asg.hr/all-desk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gnk-asg.hr/en/all-desk/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gnk-asg.hr/all-desk/" />
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gnk-asg.hr/en/all-desk/</loc>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://gnk-asg.hr/all-desk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gnk-asg.hr/en/all-desk/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gnk-asg.hr/all-desk/" />
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
@@ -172,40 +190,10 @@
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
-  <url>
-    <loc>https://gnk-asg.hr/en/insights/2026/06/oil-energy-prices-business-risk/</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://gnk-asg.hr/en/insights/2026/06/ai-infrastructure-europe-data-centres/</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://gnk-asg.hr/en/insights/2026/05/three-global-business-signals-2026-05-31/</loc>
-    <lastmod>2026-05-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://gnk-asg.hr/en/insights/2026/05/ai-corporate-portal-understanding/</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gnk-asg.hr/en/insights/2026/05/ai-governance-corporate-accountability/</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gnk-asg.hr/instalacija/</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <url><loc>https://gnk-asg.hr/en/insights/2026/06/oil-energy-prices-business-risk/</loc><lastmod>2026-06-01</lastmod><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://gnk-asg.hr/en/insights/2026/06/ai-infrastructure-europe-data-centres/</loc><lastmod>2026-06-01</lastmod><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://gnk-asg.hr/en/insights/2026/05/three-global-business-signals-2026-05-31/</loc><lastmod>2026-05-31</lastmod><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://gnk-asg.hr/en/insights/2026/05/ai-corporate-portal-understanding/</loc><lastmod>2026-05-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://gnk-asg.hr/en/insights/2026/05/ai-governance-corporate-accountability/</loc><lastmod>2026-05-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://gnk-asg.hr/instalacija/</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
