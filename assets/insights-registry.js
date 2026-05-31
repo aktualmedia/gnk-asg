@@ -2,7 +2,6 @@
   const grid = document.querySelector('[data-insights-grid]');
   if (!grid) return;
   const pageLang = document.documentElement.lang || 'en';
-  const fallbackText = pageLang.startsWith('hr') ? 'Otvori objavu →' : 'Open publication →';
   const latestAction = document.querySelector('[data-latest-insight]');
 
   function escapeHtml(value) {
@@ -10,9 +9,7 @@
   }
 
   function render(items) {
-    const published = items
-      .filter(item => item.status === 'published')
-      .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || String(a.title || '').localeCompare(String(b.title || '')));
+    const published = items.filter(item => item.status === 'published');
     if (!published.length) return;
     grid.innerHTML = published.map(item => {
       const small = [item.date, item.category].filter(Boolean).join(' · ');
