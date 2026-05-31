@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
-  const LIVE_VERSION = '20260601-visual-index01';
+  const LIVE_VERSION = '20260601-home-button01';
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname) || window.GNK_LANG?.get?.() === 'en';
   const copy = () => isEn() ? {
     title:'Downloads and snapshots', note:'Selected 2D / 3D point controls the map and local weather.', staticPdf:'Static PDF', mapPdf:'2D PDF', globePdf:'3D PDF', mapPng:'2D Image', globePng:'3D Image', busy:'Preparing…', missing:'Unavailable'
@@ -40,6 +40,9 @@
   function enableVisualIndexTools() {
     localScript('/assets/visual-gallery-picker.js');
     localScript('/assets/visual-gallery-link.js');
+  }
+  function enableFloatingHomeButton() {
+    localScript('/assets/floating-home-button.js');
   }
   async function export2d(button) {
     const done = temporary(button, copy().busy);
@@ -102,6 +105,7 @@
     return !!facts;
   }
   function init() {
+    enableFloatingHomeButton();
     enableHomepageActivityModel();
     enableSelectedLocationPanels();
     enableVisualIndexTools();
