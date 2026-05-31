@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-31T20:39:07+00:00",
+  "updated_at": "2026-05-31T20:39:09+00:00",
   "cadence": "scheduled every five minutes",
   "source": "CoinGecko public market data",
   "reference": "Observed market deviation from stated reference currency; not a reserve or redemption assessment.",
@@ -96,10 +96,10 @@
       "last_updated_at": 1780259942
     }
   ],
-  "checked_at": "2026-05-31T20:39:07+00:00",
-  "last_attempt_at": "2026-05-31T20:39:07+00:00",
+  "checked_at": "2026-05-31T20:39:09+00:00",
+  "last_attempt_at": "2026-05-31T20:39:09+00:00",
   "heartbeat_policy": "timestamp_updates_on_every_automation_run",
   "stale_safe": true,
-  "last_successful_refresh_at": "2026-05-31T20:39:07+00:00",
+  "last_successful_refresh_at": "2026-05-31T20:39:09+00:00",
   "data_status": "fresh_or_reference_checked"
 }
