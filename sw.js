@@ -1,13 +1,13 @@
-const CACHE_NAME = 'gnk-asg-live-v54-hourly-news-cache-fix';
+const CACHE_NAME = 'gnk-asg-live-v55-menu-navigation-fix';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './nermin-sefic/', './nermin-sefic/index.html', './en/nermin-sefic/', './en/nermin-sefic/index.html',
   './intelligence-desk/', './instalacija/', './financije/', './registri/',
   './trzista/', './trzista/index.html', './en/markets/', './en/markets/index.html',
   './en/finance/', './en/finance/index.html', './en/technology/', './en/technology/index.html',
-  './en/intelligence-desk/', './en/registries/', './en/registries/index.html',
+  './en/intelligence-desk/', './en/registries/', './en/registries/index.html', './insights-hr/', './en/insights/',
   './autorske-objave/', './podijeli/portal/', './podijeli/financije/', './podijeli/grupa/', './podijeli/trzista/', './podijeli/tehnologija/', './podijeli/vijesti/', './podijeli/dokumenti/', './podijeli/bpp/',
-  './assets/style.css', './assets/advanced.css', './assets/header-premium.css', './assets/seo-profile-link.css',
+  './assets/style.css', './assets/advanced.css', './assets/header-premium.css', './assets/menu-fix.css', './assets/seo-profile-link.css',
   './assets/group-contrast.css', './assets/group-network.css', './assets/network-motion.css', './assets/group-globe-3d.css',
   './assets/group-location-insights.css', './assets/group-map-2d-geo.css', './assets/group-google-map.css', './assets/group-location-weather.css', './assets/group-overview-panel.css', './assets/group-market-coverage.css', './assets/network-reading-layout.css', './assets/network-live-selection.css', './assets/portal-integration.css', './assets/portal-status.css', './assets/command-centre.css',
   './assets/bitcoin-chart.css', './assets/market-expansion.css', './assets/bpp-public-card.css', './assets/language.css',
@@ -48,7 +48,7 @@ self.addEventListener('fetch', event => {
   const sameOrigin = new URL(event.request.url).origin === self.location.origin;
   if (!sameOrigin) return;
   const path = new URL(event.request.url).pathname;
-  const dynamicData = path.startsWith('/data/') || path === '/sw.js' || path.endsWith('/assets/status.js') || path.endsWith('/assets/app.js');
+  const dynamicData = path.startsWith('/data/') || path === '/sw.js' || path.endsWith('/assets/status.js') || path.endsWith('/assets/app.js') || path.endsWith('/assets/portal-navigation.js') || path.endsWith('/assets/menu-fix.css');
   if (dynamicData) {
     event.respondWith(fetch(event.request, { cache: 'no-store' }).catch(() => caches.match(event.request)));
     return;
