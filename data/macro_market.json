@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-31T19:02:00+00:00",
+  "updated_at": "2026-05-31T20:39:17+00:00",
   "title": "BTC, zlato, Brent nafta i USD/EUR - statistička usporedba",
   "period": "posljednjih 30 dostupnih dnevnih tržišnih vrijednosti",
   "disclaimer": "Indikativni javni tržišni podatci; prikaz nije usluga trgovanja niti investicijski savjet.",
@@ -12,9 +12,9 @@
       "unit": "USD / BTC",
       "invert": false,
       "source": "CoinGecko public market data",
-      "current": 73514.33507118,
-      "change_7d_percent": -4.17,
-      "change_30d_percent": -5.92,
+      "current": 73588.94224486,
+      "change_7d_percent": -4.07,
+      "change_30d_percent": -5.82,
       "low_30d": 73370.36217241,
       "high_30d": 82025.58932287,
       "points": [
@@ -139,8 +139,8 @@
           73769.51621142
         ],
         [
-          1780254105000,
-          73514.33507118
+          1780259946000,
+          73588.94224486
         ]
       ],
       "indexed_points": [
@@ -265,8 +265,8 @@
           94.4089
         ],
         [
-          1780254105000,
-          94.0824
+          1780259946000,
+          94.1778
         ]
       ]
     },
@@ -647,9 +647,9 @@
       "unit": "EUR / USD",
       "invert": true,
       "source": "Public market quote feed",
-      "current": 0.85770001,
-      "change_7d_percent": -0.29,
-      "change_30d_percent": 0.5,
+      "current": 0.8581,
+      "change_7d_percent": -0.24,
+      "change_30d_percent": 0.55,
       "low_30d": 0.84890006,
       "high_30d": 0.86153998,
       "points": [
@@ -746,8 +746,8 @@
           0.85816005
         ],
         [
-          1780090190000,
-          0.85770001
+          1780259930000,
+          0.8581
         ]
       ],
       "indexed_points": [
@@ -844,15 +844,15 @@
           100.5578
         ],
         [
-          1780090190000,
-          100.5039
+          1780259930000,
+          100.5507
         ]
       ]
     }
   },
   "correlations": {
-    "btc_gold": 0.135,
-    "btc_oil": -0.067,
+    "btc_gold": 0.142,
+    "btc_oil": -0.069,
     "btc_usd": 0.048
   },
   "errors": []
