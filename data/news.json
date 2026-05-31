@@ -1,5 +1,17 @@
 [
   {
+    "id": "007ccb1b48eb0aed1a",
+    "title": "Povijesni projekt od 11 milijardi eura zauvijek će promijeniti europski promet, evo što nas čeka",
+    "url": "https://www.poslovni.hr/europska-unija/povijesni-projekt-od-11-milijardi-eura-zauvijek-ce-promijeniti-europski-promet-evo-sto-nas-ceka-4540694",
+    "summary": "Projekt je pokrenut 2007., ali su ga godinama usporavali ekološki protesti i složene procedure, naročito na talijanskoj strani granice.",
+    "source": "Poslovni dnevnik",
+    "region": "Poslovni dnevnik",
+    "group": "hrvatska",
+    "category": "economy",
+    "published_at": "2026-05-31T16:32:21+00:00",
+    "share_url": "/podijeli/vijest/007ccb1b48eb0aed1a/"
+  },
+  {
     "id": "486babbdf7e53d9eb0",
     "title": "TechCrunch Mobility: It doesn’t matter that people hate the Ferrari Luce",
     "url": "https://techcrunch.com/2026/05/31/techcrunch-mobility-it-doesnt-matter-that-people-hate-the-ferrari-luce/",
@@ -956,8 +968,7 @@
     "region": "CoinDesk",
     "group": "digital-assets",
     "category": "digital-assets",
-    "published_at": "2026-05-30T13:00:00+00:00",
-    "share_url": "/podijeli/vijest/9cccbcabbd2d5d96af/"
+    "published_at": "2026-05-30T13:00:00+00:00"
   },
   {
     "id": "051a9ccb3e9560516e",
@@ -1795,9 +1806,9 @@
     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PU3pBdGY0NWJMSWFUTFRDUGx3RklNQlNENWdlQjBiNG9meUo5andqSHFER0lkNlhEaFVwOXpLYWZseVJ1YVZsU2Q4RzBWT1RoeUhTM19YaFljM2ZHcm5yMHYxTlc?oc=5",
     "summary": "Crypto Update: FalconX Eyes Wall Street with IPO Filing Investing News Network",
     "source": "Investing News Network",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
     "published_at": "2026-05-29T21:05:00+00:00"
   },
   {
@@ -2421,6 +2432,17 @@
     "group": "international",
     "category": "economy",
     "published_at": "2026-05-29T15:46:28+00:00"
+  },
+  {
+    "id": "5f08d4989797c162f0",
+    "title": "SK Hynix Tops $1 Trillion Valuation as AI Memory Boom Reshapes Chip Market",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPLUZ2cFY5c0tBaFhHSl9lbUFOWTVyVlkxWGN2M2NpZ0ljd3VSd04yN09qZmQtbXY5bjltaUV5VEx0R1hHUlFobjd4Y3FHdGZMWV92U0NYNnNHc3Z2NGNuRGw3bllWZW51eU4tQUwwblc1WWFEN2U5NlpRQlBjUy1vUmlvd05aX2hpcVZLYy1yTQ?oc=5",
+    "summary": "SK Hynix Tops $1 Trillion Valuation as AI Memory Boom Reshapes Chip Market TechRepublic",
+    "source": "TechRepublic",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-29T15:45:06+00:00"
   },
   {
     "id": "3e2bcd5d5f4722f82b",
@@ -5600,27 +5622,5 @@
     "group": "international",
     "category": "economy",
     "published_at": "2026-05-28T14:43:47+00:00"
-  },
-  {
-    "id": "aff9ac05efb62ffb3a",
-    "title": "Rivian under investigation over rear suspension failures on R1 models",
-    "url": "https://techcrunch.com/2026/05/28/rivian-under-investigation-over-rear-suspension-failures-on-r1-models/",
-    "summary": "At least two owners have lost control of their vehicles after a critical suspension component broke. In both cases, the vehicles had been previously serviced.",
-    "source": "TechCrunch",
-    "region": "TechCrunch",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T14:41:56+00:00"
-  },
-  {
-    "id": "d6ffb01e9e03932a44",
-    "title": "RSI is the new AGI — and it’s just as hard to pin down",
-    "url": "https://techcrunch.com/2026/05/28/rsi-is-the-new-agi-and-its-just-as-hard-to-pin-down/",
-    "summary": "A new crop of AI labs are focused on recursive self-improvement — but the goal is proving elusive.",
-    "source": "TechCrunch",
-    "region": "TechCrunch",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T14:30:17+00:00"
   }
 ]
