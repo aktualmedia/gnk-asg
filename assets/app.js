@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260531-browser-data-refresh01';
+  var VERSION = '20260531-menu-insights-sync01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -95,20 +95,40 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/portal-layout.js');
 
   function isEnglish() {
-    return /\/en\/?$/.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
+    return /\/en\/?$/.test(window.location.pathname) || /\/en\//.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   }
 
   function ensureInsightsNavigation() {
     var menu = document.getElementById('navLinks');
-    if (!menu || menu.querySelector('a[href="/en/insights/"]')) return;
-    var link = document.createElement('a');
-    link.href = '/en/insights/';
-    link.textContent = 'Insights';
-    var desk = Array.prototype.find.call(menu.querySelectorAll('a'), function (item) {
-      return /Intelligence Desk/i.test(item.textContent || '');
+    if (!menu) return;
+    var en = isEnglish();
+    var existing = menu.querySelector('[data-insights-link]') || menu.querySelector('a[href="/en/insights/"]') || menu.querySelector('a[href="/insights-hr/"]');
+    if (!existing) {
+      existing = document.createElement('a');
+      existing.setAttribute('data-insights-link', '1');
+      var desk = Array.prototype.find.call(menu.querySelectorAll('a'), function (item) {
+        return /Intelligence Desk|AI asistent|Asistent/i.test(item.textContent || '');
+      });
+      if (desk) menu.insertBefore(existing, desk);
+      else menu.appendChild(existing);
+    }
+    existing.href = en ? '/en/insights/' : '/insights-hr/';
+    existing.textContent = en ? 'Insights' : 'Objave';
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
+      var text = (link.textContent || '').trim();
+      if (!en) {
+        if (text === 'Technology & AI') link.textContent = 'Tehnologija i AI';
+        if (text === 'Digital Assets') link.textContent = 'Digitalna imovina';
+        if (text === 'Business News') link.textContent = 'Poslovne vijesti';
+        if (text === 'Intelligence Desk') link.textContent = 'AI asistent';
+      } else {
+        if (text === 'Tehnologija i AI') link.textContent = 'Technology & AI';
+        if (text === 'Digitalna imovina') link.textContent = 'Digital Assets';
+        if (text === 'Poslovne vijesti') link.textContent = 'Business News';
+        if (text === 'AI asistent') link.textContent = 'Intelligence Desk';
+        if (text === 'Objave') link.textContent = 'Insights';
+      }
     });
-    if (desk) menu.insertBefore(link, desk);
-    else menu.appendChild(link);
   }
 
   function alignNewsAutomationText() {
@@ -138,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   ensureInsightsNavigation();
   alignNewsAutomationText();
-  window.addEventListener('gnk-language-change', alignNewsAutomationText);
+  window.addEventListener('gnk-language-change', function () { alignNewsAutomationText(); ensureInsightsNavigation(); });
   removeCorporateInformationExternalAction(document);
   new MutationObserver(function () { removeCorporateInformationExternalAction(document); ensureInsightsNavigation(); }).observe(document.body, { childList: true, subtree: true });
 
