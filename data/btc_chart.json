@@ -1,13 +1,9 @@
 {
-  "updated_at": "2026-05-31T19:36:40+00:00",
+  "updated_at": "2026-05-31T20:39:07+00:00",
   "currency": "EUR",
   "days": 7,
   "source": "CoinGecko public market data",
   "prices": [
-    [
-      1779652849632,
-      65848.43698036422
-    ],
     [
       1779656434977,
       65747.7888329526
@@ -677,14 +673,18 @@
       63042.19311712068
     ],
     [
-      1780256187000,
-      62936.48838189761
+      1780257643553,
+      62999.20100963064
+    ],
+    [
+      1780259945000,
+      63143.894249984616
     ]
   ],
-  "checked_at": "2026-05-31T19:36:40+00:00",
-  "last_attempt_at": "2026-05-31T19:36:40+00:00",
+  "checked_at": "2026-05-31T20:39:07+00:00",
+  "last_attempt_at": "2026-05-31T20:39:07+00:00",
   "heartbeat_policy": "timestamp_updates_on_every_automation_run",
   "stale_safe": true,
-  "last_successful_refresh_at": "2026-05-31T19:36:40+00:00",
+  "last_successful_refresh_at": "2026-05-31T20:39:07+00:00",
   "data_status": "fresh_or_reference_checked"
 }
