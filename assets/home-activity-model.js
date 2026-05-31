@@ -116,7 +116,7 @@
       anchor.insertAdjacentElement(anchor.classList && anchor.classList.contains('quick-data') ? 'afterend' : 'beforeend', box);
     }
 
-    box.innerHTML = '<div class="reader-icon">◎</div><div><small>' + (en ? 'Public activity model' : 'Javni model aktivnosti') + '</small><strong id="readerCounterValue">—</strong><span>' + (en ? 'Indicative display; not measured analytics. Refresh adds one view.' : 'Indikativni prikaz; nije mjerena analitika. Svako osvježavanje dodaje jedan prikaz.') + '</span></div>';
+    box.innerHTML = '<div class="reader-icon">◎</div><div><small>' + (en ? 'Public activity model' : 'Javni model aktivnosti') + '</small><strong id="readerCounterValue">—</strong><span>' + (en ? 'Indicative display; not measured analytics.' : 'Indikativni prikaz; nije mjerena analitika.') + '</span></div>';
     update();
   }
 
