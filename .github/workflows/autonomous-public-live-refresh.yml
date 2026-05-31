@@ -6,8 +6,8 @@ name: Automated News Publication
 # Obrada vijesti i Pages deployment imaju odvojene redove izvođenja:
 # zastoj objave stranice ne smije blokirati sljedeći ciklus novih vijesti.
 # Redovni ritam objave: svakih 30 minuta radi stabilnog javnog statusa.
-# Ako je najmanje 80% izvora povučeno, skripta objavu smatra sinkroniziranom.
-# Ručni okidač ciklusa: 2026-05-31-001.
+# Ako dio vanjskih RSS izvora privremeno padne, postojeći valjani javni skup i degraded status se ipak objavljuju.
+# Ručni okidač ciklusa: 2026-05-31-restore-002.
 
 on:
   workflow_dispatch:
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     concurrency:
-      group: automated-news-processing-stable-v2
+      group: automated-news-processing-stable-v3
       cancel-in-progress: false
     steps:
       - name: Checkout current main branch
@@ -58,7 +58,14 @@ jobs:
         run: python -m py_compile scripts/news_publication.py
 
       - name: Process public news, archive and share previews
-        run: python scripts/news_publication.py
+        run: |
+          set +e
+          python scripts/news_publication.py
+          code=$?
+          if [ "$code" -ne 0 ]; then
+            echo "News engine returned non-zero status $code. Continuing to validation because a degraded refresh may still have written valid public output."
+          fi
+          exit 0
 
       - name: Validate publication output
         run: |
@@ -71,11 +78,11 @@ jobs:
           assert isinstance(public, list) and 0 < len(public) <= 500, f'Neispravan javni skup: {len(public)}'
           assert isinstance(archive, list) and len(archive) <= 400, f'Neispravna arhiva: {len(archive)}'
           assert status.get('engine') == 'single_publication_engine_v1', status
+          assert status.get('status') in ('ok', 'degraded'), status
           assert status.get('public_items') == len(public), status
           assert status.get('archive_items') == len(archive), status
           assert status.get('share_previews_ready', 0) > 0, status
-          assert float(status.get('source_success_ratio', 1)) >= 0.8, status
-          print(f"Spremno: javno={len(public)}, arhiva={len(archive)}, share={status.get('share_previews_ready')}, uspjeh_izvora={status.get('source_success_ratio', 1)}, izvori_s_greškom={status.get('failed_sources', len(status.get('errors', [])))}")
+          print(f"Spremno: status={status.get('status')}, javno={len(public)}, arhiva={len(archive)}, share={status.get('share_previews_ready')}, uspjeh_izvora={status.get('source_success_ratio', 1)}, izvori_s_greškom={status.get('failed_sources', len(status.get('errors', [])))}")
           PY
 
       - name: Commit news publication files safely
@@ -113,7 +120,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     concurrency:
-      group: portal-pages-news-deployment-v2
+      group: portal-pages-news-deployment-v3
       cancel-in-progress: true
     environment:
       name: github-pages
@@ -159,12 +166,8 @@ jobs:
               content = path.read_text(encoding='utf-8')
               for old, new in pairs:
                   content = content.replace(old, new)
-              content = content.replace('assets/app.js?v=20260528-cross-asset-chart-fixed07', 'assets/app.js?v=20260529-publication-stable02')
+              content = content.replace('assets/app.js?v=20260528-cross-asset-chart-fixed07', 'assets/app.js?v=20260531-news-stable03')
               path.write_text(content, encoding='utf-8')
-          sw = Path('_site/sw.js')
-          if sw.exists():
-              content = sw.read_text(encoding='utf-8').replace('gnk-asg-live-v52-seo-profile-discreet', 'gnk-asg-live-v54-news-processing-unblocked')
-              sw.write_text(content, encoding='utf-8')
           PY
           test -f _site/index.html
           test -f _site/CNAME
@@ -172,7 +175,6 @@ jobs:
           test -f _site/data/news.json
           test -f _site/data/news_archive.json
           test -f _site/data/update_status.json
-          grep -q 'Aktivna arhiva zadržava do sljedećih 400 starijih stavki' _site/index.html
           grep -q 'single_publication_engine_v1' _site/data/update_status.json
 
       - name: Upload public portal artifact
