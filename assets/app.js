@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260531-news-security01';
+  var VERSION = '20260531-browser-data-refresh01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/language-routing.js');
   script('/assets/portal-navigation.js');
   script('/assets/status.js');
+  script('/assets/browser-data-refresh.js');
   script('/assets/market.js');
   script('/assets/live-market-pulse.js');
   script('/assets/bitcoin-chart.js');
