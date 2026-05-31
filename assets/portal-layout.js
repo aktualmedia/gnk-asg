@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
-  const LIVE_VERSION = '20260531-stable-activity01';
+  const LIVE_VERSION = '20260601-visual-index01';
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname) || window.GNK_LANG?.get?.() === 'en';
   const copy = () => isEn() ? {
     title:'Downloads and snapshots', note:'Selected 2D / 3D point controls the map and local weather.', staticPdf:'Static PDF', mapPdf:'2D PDF', globePdf:'3D PDF', mapPng:'2D Image', globePng:'3D Image', busy:'Preparing…', missing:'Unavailable'
@@ -35,6 +35,11 @@
   function enableHomepageActivityModel() {
     localStyle('/assets/home-reader-counter.css');
     localScript('/assets/home-activity-counter.js');
+    localScript('/assets/home-activity-model.js');
+  }
+  function enableVisualIndexTools() {
+    localScript('/assets/visual-gallery-picker.js');
+    localScript('/assets/visual-gallery-link.js');
   }
   async function export2d(button) {
     const done = temporary(button, copy().busy);
@@ -99,6 +104,7 @@
   function init() {
     enableHomepageActivityModel();
     enableSelectedLocationPanels();
+    enableVisualIndexTools();
     let attempts = 0, stable = 0;
     const timer = setInterval(() => { attempts += 1; stable = arrange() ? stable + 1 : 0; if (stable >= 60 || attempts >= 240) clearInterval(timer); }, 100);
     const refresh = () => setTimeout(arrange, 20);
