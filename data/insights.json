@@ -6,6 +6,23 @@
   "default_author": "GNK ASG Intelligence Desk",
   "items": [
     {
+      "id": "oil-energy-prices-business-risk-2026-06-01",
+      "status": "published",
+      "language": "en",
+      "date": "2026-06-01",
+      "category": "Energy and Commodities",
+      "title": "Oil, Energy Prices and Business Risk: Why Commodity Markets Still Drive Corporate Strategy",
+      "seo_title": "Oil, Energy Prices and Business Risk: Why Commodity Markets Still Drive Corporate Strategy | GNK ASG Insights",
+      "summary": "A GNK ASG Business Intelligence article on oil, energy prices, inflation, logistics and corporate strategy.",
+      "url": "/en/insights/2026/06/oil-energy-prices-business-risk/",
+      "canonical": "https://gnk-asg.hr/en/insights/2026/06/oil-energy-prices-business-risk/",
+      "image": "/assets/insight-oil-energy-prices-business-risk-2026-06-01.svg",
+      "og_image": "https://gnk-asg.hr/assets/insight-oil-energy-prices-business-risk-2026-06-01.svg",
+      "keywords": ["GNK ASG d.o.o.", "GNK DINAMO Ltd.", "Nermin Sefic", "Nermin Sefić", "GNK ASG Intelligence Desk", "oil prices", "energy prices", "commodities", "business risk", "corporate strategy", "inflation", "logistics"],
+      "linkedin_summary": "GNK ASG Intelligence Desk reviews why oil and energy prices remain core business signals for logistics, inflation, capital planning and corporate strategy.",
+      "facebook_summary": "New GNK ASG Business Intelligence article: oil, energy prices, commodities and business risk."
+    },
+    {
       "id": "ai-infrastructure-europe-data-centres-2026-06-01",
       "status": "published",
       "language": "en",
