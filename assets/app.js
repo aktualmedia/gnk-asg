@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260531-menu-insights-sync01';
+  var VERSION = '20260531-menu-stable02';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/group-mobile-accessible.css');
   style('/assets/portal-integration.css');
   style('/assets/seo-profile-link.css');
+  style('/assets/menu-fix.css');
   script('/assets/i18n.js');
   script('/assets/language-routing.js');
   script('/assets/portal-navigation.js');
@@ -98,35 +99,23 @@ document.addEventListener('DOMContentLoaded', function () {
     return /\/en\/?$/.test(window.location.pathname) || /\/en\//.test(window.location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   }
 
-  function ensureInsightsNavigation() {
+  function normaliseMenuLabels() {
     var menu = document.getElementById('navLinks');
-    if (!menu) return;
+    if (!menu || menu.dataset.menuStable === '1') return;
+    menu.dataset.menuStable = '1';
     var en = isEnglish();
-    var existing = menu.querySelector('[data-insights-link]') || menu.querySelector('a[href="/en/insights/"]') || menu.querySelector('a[href="/insights-hr/"]');
-    if (!existing) {
-      existing = document.createElement('a');
-      existing.setAttribute('data-insights-link', '1');
-      var desk = Array.prototype.find.call(menu.querySelectorAll('a'), function (item) {
-        return /Intelligence Desk|AI asistent|Asistent/i.test(item.textContent || '');
-      });
-      if (desk) menu.insertBefore(existing, desk);
-      else menu.appendChild(existing);
-    }
-    existing.href = en ? '/en/insights/' : '/insights-hr/';
-    existing.textContent = en ? 'Insights' : 'Objave';
     Array.prototype.forEach.call(menu.querySelectorAll('a'), function (link) {
+      var href = link.getAttribute('href') || '';
       var text = (link.textContent || '').trim();
+      if (href === '/en/insights/' || href === 'en/insights/' || href === '../../../../../en/insights/') link.textContent = en ? 'Insights' : 'Objave';
+      if (href === '/insights-hr/' || href === 'insights-hr/' || href === '../../insights-hr/') link.textContent = en ? 'HR archive' : 'Objave';
       if (!en) {
         if (text === 'Technology & AI') link.textContent = 'Tehnologija i AI';
-        if (text === 'Digital Assets') link.textContent = 'Digitalna imovina';
+        if (text === 'Digital Assets' || text === 'Market Monitor') link.textContent = 'Digitalna imovina';
         if (text === 'Business News') link.textContent = 'Poslovne vijesti';
         if (text === 'Intelligence Desk') link.textContent = 'AI asistent';
-      } else {
-        if (text === 'Tehnologija i AI') link.textContent = 'Technology & AI';
-        if (text === 'Digitalna imovina') link.textContent = 'Digital Assets';
-        if (text === 'Poslovne vijesti') link.textContent = 'Business News';
-        if (text === 'AI asistent') link.textContent = 'Intelligence Desk';
-        if (text === 'Objave') link.textContent = 'Insights';
+        if (text === 'Documents') link.textContent = 'Dokumenti';
+        if (text === 'Group') link.textContent = 'Grupa';
       }
     });
   }
@@ -156,11 +145,11 @@ document.addEventListener('DOMContentLoaded', function () {
       Array.prototype.forEach.call(card.querySelectorAll('a:not(.wa):not(.in):not(.mail)'), function (link) { link.remove(); });
     });
   }
-  ensureInsightsNavigation();
+  normaliseMenuLabels();
   alignNewsAutomationText();
-  window.addEventListener('gnk-language-change', function () { alignNewsAutomationText(); ensureInsightsNavigation(); });
+  window.addEventListener('gnk-language-change', function () { alignNewsAutomationText(); });
   removeCorporateInformationExternalAction(document);
-  new MutationObserver(function () { removeCorporateInformationExternalAction(document); ensureInsightsNavigation(); }).observe(document.body, { childList: true, subtree: true });
+  new MutationObserver(function () { removeCorporateInformationExternalAction(document); }).observe(document.body, { childList: true, subtree: true });
 
   var menuButton = document.getElementById('menuToggle');
   var menu = document.getElementById('navLinks');
