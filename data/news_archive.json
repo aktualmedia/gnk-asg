@@ -1,5 +1,38 @@
 [
   {
+    "id": "fd9b9f7f0ef964cfdd",
+    "title": "Grad Osijek preuzima obavljanje dimnjačarskih usluga od privatnog koncesionara",
+    "url": "https://www.poslovni.hr/hrvatska/grad-osijek-preuzima-obavljanje-dimnjacarskih-usluga-od-privatnog-koncesionara-4540419",
+    "summary": "Osječki gradonačelnik Ivan Radić ocijenio je kako se o radi bitnoj odluci za obavljanje dimnjačarskih usluga, za koje više neće biti nadležna privatna tvrtka, već gradska tvrtka \"Unikom\".",
+    "source": "Poslovni dnevnik",
+    "region": "Poslovni dnevnik",
+    "group": "hrvatska",
+    "category": "economy",
+    "published_at": "2026-05-28T13:28:00+00:00"
+  },
+  {
+    "id": "6d3835c805a6d7bf50",
+    "title": "Bit Digital bought $20 million ETH for first time since October before 15% plunge",
+    "url": "https://www.coindesk.com/business/2026/05/27/bit-digital-bought-usd20-million-eth-for-first-time-since-october-before-15-plunge",
+    "summary": "The firm said it purchased 8,568 ether on May 11 at an average price of $2,334. Since then, ETH broke below $2,000, leaving the firm sitting at a $3 million unrealized loss.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-28T13:27:32+00:00"
+  },
+  {
+    "id": "fc46a8192c8cc12d1e",
+    "title": "Vlada Srbije usvojila Uredbu o vanrednoj pomoći proizvođačima mleka u prahu",
+    "url": "https://biznis.rs/vesti/srbija/vlada-srbije-usvojila-uredbu-o-vanrednoj-pomoci-proizvodjacima-mleka-u-prahu/",
+    "summary": "Vlada Srbije je danas usvojila Uredbu o vanrednoj interventnoj meri podrške proizvođačima mleka u prahu, sa ciljem očuvanja stabilnosti tržišta mleka i mlečnih proizvoda i jačanja domaće mlekarske industrije. Uredbom je predviđena finansijs",
+    "source": "Biznis.rs",
+    "region": "Biznis.rs",
+    "group": "srbija",
+    "category": "economy",
+    "published_at": "2026-05-28T13:25:00+00:00"
+  },
+  {
     "id": "6c265d86175bb260eb",
     "title": "What's next as hot money cycle has gone from crypto to gold to AI to memory",
     "url": "https://www.coindesk.com/markets/2026/05/28/what-s-next-as-hot-money-cycle-has-gone-from-crypto-to-gold-to-ai-to-memory",
@@ -66,17 +99,6 @@
     "published_at": "2026-05-28T13:03:00+00:00"
   },
   {
-    "id": "e5aca5d75b786e8640",
-    "title": "MOVENSYS to Showcase Real-Time Physical AI Execution Technology at Intel Edge Solution Summit 2026",
-    "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOVldpcVVaekFLMVB1MzYydzBDZXdmYTVLdDZ0ajBUYVYtTUZwMnFzZkpwQmtZY0FXT295NV93eng0NE8ybGZmWnNmaWdtMXQ2Y3FlSGluZ1RvMkxYaU5zeEhTTjdKbS0zWC0yNDNqamVyOVZqNV9zcVlBN2dZVHJKdkxxUWRYR0R5a2NEeUxYQi1OTktLNnNHQVZ3TnpwcnJzWERvOVNVM1ExTlFWSHV2S1Q2dzBkYmZYbnNIQ01ScWM3eG03cDV4bXpEdEVWWFJLek1ub1VtLUg4Mi0zQTlhb2pDQVV5d2JySlBz?oc=5",
-    "summary": "MOVENSYS to Showcase Real-Time Physical AI Execution Technology at Intel Edge Solution Summit 2026 Business Wire",
-    "source": "Business Wire",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-28T13:00:00+00:00"
-  },
-  {
     "id": "32cbc99288c9c39963",
     "title": "XFUNDS and Keith Fitz-Gerald Launch The Must Have Portfolio® ETF, FITZ",
     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNRGJtYjNYZHRfa21WX0xjQ0lrWFUtd09LVHdsOE1JNjgwa3VHd2MzbmJ2MXd4TkhPMXVMa0VtaksxYUUybVphRFdTeGQwblN4VS1XS19rb2dvdUNYUW5LVWp5Mlo0VDlDeG1wUy1jVmgxNU9hLWlKaWY2Z0Z1ZXVzTE1IUkJOT2NGOE9ZODJpcllTLU1YQjNwR3R4MGoxdEp1YkRxbkZabkRHaGEwdWtGZnpObzkzc2lfcEVjMHdhUlBtakk?oc=5",
@@ -85,6 +107,17 @@
     "region": "Global Markets",
     "group": "international",
     "category": "economy",
+    "published_at": "2026-05-28T13:00:00+00:00"
+  },
+  {
+    "id": "e5aca5d75b786e8640",
+    "title": "MOVENSYS to Showcase Real-Time Physical AI Execution Technology at Intel Edge Solution Summit 2026",
+    "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOVldpcVVaekFLMVB1MzYydzBDZXdmYTVLdDZ0ajBUYVYtTUZwMnFzZkpwQmtZY0FXT295NV93eng0NE8ybGZmWnNmaWdtMXQ2Y3FlSGluZ1RvMkxYaU5zeEhTTjdKbS0zWC0yNDNqamVyOVZqNV9zcVlBN2dZVHJKdkxxUWRYR0R5a2NEeUxYQi1OTktLNnNHQVZ3TnpwcnJzWERvOVNVM1ExTlFWSHV2S1Q2dzBkYmZYbnNIQ01ScWM3eG03cDV4bXpEdEVWWFJLek1ub1VtLUg4Mi0zQTlhb2pDQVV5d2JySlBz?oc=5",
+    "summary": "MOVENSYS to Showcase Real-Time Physical AI Execution Technology at Intel Edge Solution Summit 2026 Business Wire",
+    "source": "Business Wire",
+    "region": "AI Technology",
+    "group": "technology",
+    "category": "technology",
     "published_at": "2026-05-28T13:00:00+00:00"
   },
   {
@@ -1826,6 +1859,17 @@
     "published_at": "2026-05-27T14:22:00+00:00"
   },
   {
+    "id": "a6080e5ce6ce1ca971",
+    "title": "Deutsche Börse Group",
+    "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBWeC1DYnRRTmRoa3JLV1FPeXlwZDJkcXVxNU5lcy1OcW1VQUNjX2M2eDlIQm10Ul82OHhaT0Vod0t0dTBDb2dmT2RiZ2xodm8?oc=5",
+    "summary": "Deutsche Börse Group Deutsche Börse Group",
+    "source": "Deutsche Börse Group",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-27T14:09:00+00:00"
+  },
+  {
     "id": "4f933d42736d520edf",
     "title": "Mastercard Expands Stablecoin Strategy With NY BitLicense",
     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1OQ3NCdzBPLUZNb1RUZnlLVk00X25wZ1lPQ01TRXJWdkZHcElhdERHWDVZcXJwMzFtUTJQTnBsZTZ0OUpWT2dmTVNmLVF2MzFwUjVwaGg2MWJ2WFFwVXlLUGdqd0JTTWFUSUNMVTdDc1VOUQ?oc=5",
@@ -2409,6 +2453,17 @@
     "published_at": "2026-05-27T07:00:00+00:00"
   },
   {
+    "id": "021d03a53b1c99066e",
+    "title": "Falcon Finance, SoFi unveil stablecoin products tied to banking infrastructure",
+    "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOTFRlWUFDd0pGNGlXZTNQQTFSM0gxOFVUS1FiRTRQYVZCbkZmQ0MwRzI0b1lqODFiTTUtUDA4alp2ZXd5QktsaFg3SmNqTmc2cDRWVXc3bS00bGN0a3BSN2cxOUdVYjVKZU9yUHphb00zRXFGX2FxMEJ5RTlsWWExUllSY3RpMkN5SUZueWtBSmlJNFdjck4yRm1wY2w3NkkzOXV6NUNaNjJUUXU3YUZZNmV6eEl0VTlzams1V2ZPc2dUUHo1V3NuU1piWTdjNXlwYXN6TE5GRzE?oc=5",
+    "summary": "Falcon Finance, SoFi unveil stablecoin products tied to banking infrastructure TradingView",
+    "source": "TradingView",
+    "region": "Crypto Regulation",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-27T07:00:00+00:00"
+  },
+  {
     "id": "876671832ad7997371",
     "title": "Electric Vehicle Market Size, Share & Global Analysis, 2032",
     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPbDdPM0VwRXE3dDlfTTJFS3BVX2FmU0ZLWVVDR2JLcWk5UjVnUmJQaDJ2N2E1Z1VkMWdIUzdnWXVrSFc3cHBLWmhSb3dodGpOTlZzejhjaFRBcm5fRi1jMzhzTV9CcFRqVVRVUVdWUWliWkdiMXdzLXpFMWY3M1doOW1hTHBaUnlnYV81YmMyLTU?oc=5",
@@ -2772,17 +2827,6 @@
     "published_at": "2026-05-26T16:05:00+00:00"
   },
   {
-    "id": "a6080e5ce6ce1ca971",
-    "title": "Deutsche Börse Group",
-    "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBWeC1DYnRRTmRoa3JLV1FPeXlwZDJkcXVxNU5lcy1OcW1VQUNjX2M2eDlIQm10Ul82OHhaT0Vod0t0dTBDb2dmT2RiZ2xodm8?oc=5",
-    "summary": "Deutsche Börse Group Deutsche Börse Group",
-    "source": "Deutsche Börse Group",
-    "region": "Global Markets",
-    "group": "international",
-    "category": "economy",
-    "published_at": "2026-05-26T15:50:00+00:00"
-  },
-  {
     "id": "5f70d4e954342c3b32",
     "title": "Morgan Lewis finance partner: digital assets are driving opportunity in France",
     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQaTJTU3FkWTVkLTdOTFl2cjhnTHNZaUt5TWwxak5PUF90a2taajhxdjdnT1AtaEpnVngtWUxLbGlROVRYeHNYOE5nckxKa0lqWHZtdjRNaTVvYmw2LWVnZFUxNnNzS1hRdUZCMFpvYUhpQVltYXN1YXhhNUNEeXlGNDhVWXpsSzlXaEx1QlBtTHhrWjI1Q0xxUkVsVVpoQV9GTmZpTlRaR19RdlkwN2xTanE5YlkxNjJaV3EzOUZRN0N2UkZ2MWl3OWYwQ18td1Q4UUE?oc=5",
@@ -3124,6 +3168,17 @@
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
+    "id": "fd27c73424f32c56fd",
+    "title": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbFhBMC05dFFFcVdHVk9IY05zVllyZnBOOU9ZZmgzOEc0UTFRdWd1ZUtCbGV3WWQ3dzVjdUJTQldxTVpCTkhSN05hclpnX2xaOHBGWGpxdG1VNnpBdWNidFF3ekdOSnpsVW1oRHpEcFBTc0xvSl90c1JYQ2lIZVlpa1F2ZThvYnNNLW9MUDlTUUQzeFlKdGVwcUprb0w0d2RSbThkR1lGUFJidnlRaEt1RzQ2bGk4NkU?oc=5",
+    "summary": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security Dark Reading",
+    "source": "Dark Reading",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-26T07:00:00+00:00"
+  },
+  {
     "id": "bcd5fe0a8578929d94",
     "title": "Top 10 Cryptos To Invest In May 2026",
     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBYYmRHaGRpUVdmdUpka3VMbFI1bVRPSXUxb3RYZXhkYzd3enBvVk4wdWFqcXVqSmJTNExqZjdkWEtLZkl5Z2F1ZFdRZVhlRHBqQUVKTFNhb3BtaWZrSkVlaDBmdWRJRUk?oc=5",
@@ -3143,17 +3198,6 @@
     "region": "Digital Assets",
     "group": "digital-assets",
     "category": "digital-assets",
-    "published_at": "2026-05-26T07:00:00+00:00"
-  },
-  {
-    "id": "fd27c73424f32c56fd",
-    "title": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security",
-    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbFhBMC05dFFFcVdHVk9IY05zVllyZnBOOU9ZZmgzOEc0UTFRdWd1ZUtCbGV3WWQ3dzVjdUJTQldxTVpCTkhSN05hclpnX2xaOHBGWGpxdG1VNnpBdWNidFF3ekdOSnpsVW1oRHpEcFBTc0xvSl90c1JYQ2lIZVlpa1F2ZThvYnNNLW9MUDlTUUQzeFlKdGVwcUprb0w0d2RSbThkR1lGUFJidnlRaEt1RzQ2bGk4NkU?oc=5",
-    "summary": "Cybersecurity Evolution: How We Went From Perimeter Defense to AI-Native Security Dark Reading",
-    "source": "Dark Reading",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
     "published_at": "2026-05-26T07:00:00+00:00"
   },
   {
@@ -3382,6 +3426,17 @@
     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNaXdzX08yTDNEa2VoZ0pWeHdKSTFsb2pVdEFsTW9McEdDMEdzdEg5em1FLTRmMVJHWTdramdjMG5VVUVnMlBMQlBmY29jUHVGOU5CQUpsWF9oV2tsblNaVklQTDc3Z09KajI3djBmUGIwYWowUzZxZUx2d0tjQzRZYWV3T2J4Sk5QUDNEbERYZC0xaFpId2NBeWhXbzFlQ0hEX0J2LXdfdGd3YXR4V3c?oc=5",
     "summary": "As America's Financial Markets Continue Rallying Higher, ELEKTROS Inc. Wishes All Penny Stock and Microcap Investors Around the World a Happy and Wonderful Memorial Day Holiday While Celebrating Strong Friday Momentum, Expanding Global Awar",
     "source": "Yahoo Finance",
+    "region": "Global Markets",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-25T17:50:00+00:00"
+  },
+  {
+    "id": "b6fed2d1bcfa1a239f",
+    "title": "ELEKTROS sends EV patent cease-and-desist to major global automotive manufacturer",
+    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOYmduZDJIcTdrMmgyUDRTODFfTlI3eHo1dEJIaUpXaE95QUxaRHlTcEZNVjNGS0lfZmloazVoaDFRN3lCQjRuZnc0ZG00cjEtbHpBMFk1TzIydzEtVnd5Q0N6WllxUzQtOXVVMlVBcVRuSUlLQ3diclAyVG4xSS1NeWlTeGl2Um1XRW1Tb2sxU3ZMVTR4dk9XLXRfeUJ0WXpEdHhVSnZmM0QybjBNVFlhS3NaS3RvZE90OHpBWFg1RFU?oc=5",
+    "summary": "ELEKTROS sends EV patent cease-and-desist to major global automotive manufacturer Stock Titan",
+    "source": "Stock Titan",
     "region": "Global Markets",
     "group": "international",
     "category": "economy",
@@ -3674,23 +3729,34 @@
     "published_at": "2026-05-25T07:22:54+00:00"
   },
   {
-    "id": "803699ae584925c1bd",
-    "title": "Best Artificial Intelligence (AI) Stocks to Buy Now May 2026",
-    "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5wSGYyaVJkMGxYb0VoVEV5Nl84Y1g3UmxvV2ZGZ1ZkUmZNTmZ0TzkxZS1fNUl4eU03V3hJM1ZrVWxOempfVGNJdGowX0x5UHRMTjhWYnhqT21QSTJiWHlodkRKVmpWYllwQUhOLUxKdjRodzAxeDgxTw?oc=5",
-    "summary": "Best Artificial Intelligence (AI) Stocks to Buy Now May 2026 Zacks Investment Research",
-    "source": "Zacks Investment Research",
-    "region": "AI Technology",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-25T07:00:00+00:00"
-  },
-  {
     "id": "770f4164dd65dc50b8",
     "title": "IT Outsourcing Market Size, Share, Growth, Analysis, Report, 2034",
     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1zQnQ0YV8xTU1CcXFTZkV1Y1M4TlI3UFM1bzNjUXdjQ2VCakktNFNVbC1ZUlB2aGdWTHhsRmhSWWtYclV2b2RFRlJORXUwTEFucWFVaXJNRXZNX1hwZlo4bWN4ZTAxeWs?oc=5",
     "summary": "IT Outsourcing Market Size, Share, Growth, Analysis, Report, 2034 Straits Research",
     "source": "Straits Research",
     "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-25T07:00:00+00:00"
+  },
+  {
+    "id": "54927365948a983af2",
+    "title": "Complete Computer Courses List: Top Courses, After Class 12 & Beyond",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE56eXpPeFhmM0doUW5jdzIzMXpMTFliQU5NdnE1amJpMEpMdXA4VW96ZjNxNkhUcy1QeFl0Ykx2SjdxeGdnd1NzdTIxTTJlektFRDdrV01Ia250Rm05OWRQOQ?oc=5",
+    "summary": "Complete Computer Courses List: Top Courses, After Class 12 & Beyond Jaro Education",
+    "source": "Jaro Education",
+    "region": "Cyber and Cloud",
+    "group": "technology",
+    "category": "technology",
+    "published_at": "2026-05-25T07:00:00+00:00"
+  },
+  {
+    "id": "803699ae584925c1bd",
+    "title": "Best Artificial Intelligence (AI) Stocks to Buy Now May 2026",
+    "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5wSGYyaVJkMGxYb0VoVEV5Nl84Y1g3UmxvV2ZGZ1ZkUmZNTmZ0TzkxZS1fNUl4eU03V3hJM1ZrVWxOempfVGNJdGowX0x5UHRMTjhWYnhqT21QSTJiWHlodkRKVmpWYllwQUhOLUxKdjRodzAxeDgxTw?oc=5",
+    "summary": "Best Artificial Intelligence (AI) Stocks to Buy Now May 2026 Zacks Investment Research",
+    "source": "Zacks Investment Research",
+    "region": "AI Technology",
     "group": "technology",
     "category": "technology",
     "published_at": "2026-05-25T07:00:00+00:00"
@@ -3704,17 +3770,6 @@
     "region": "Global Mobility",
     "group": "mobilnost",
     "category": "automotive",
-    "published_at": "2026-05-25T07:00:00+00:00"
-  },
-  {
-    "id": "54927365948a983af2",
-    "title": "Complete Computer Courses List: Top Courses, After Class 12 & Beyond",
-    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE56eXpPeFhmM0doUW5jdzIzMXpMTFliQU5NdnE1amJpMEpMdXA4VW96ZjNxNkhUcy1QeFl0Ykx2SjdxeGdnd1NzdTIxTTJlektFRDdrV01Ia250Rm05OWRQOQ?oc=5",
-    "summary": "Complete Computer Courses List: Top Courses, After Class 12 & Beyond Jaro Education",
-    "source": "Jaro Education",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
     "published_at": "2026-05-25T07:00:00+00:00"
   },
   {
@@ -4343,60 +4398,5 @@
     "group": "bih",
     "category": "economy",
     "published_at": "2026-05-23T08:47:00+00:00"
-  },
-  {
-    "id": "185961826578faeff3",
-    "title": "Cisco Systems stock (US17275R1023): Earnings update keeps investors focused on AI and networking dem",
-    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSVVKcE1GRUE5NGhxTVdFXzV1dDcwaTNLZWFmUy0wcnVVbmtDZkRkMkFvVWU1X0JIc3Y2WU1xc0E4ZDRSTzlsMVZKQW56bGltVksxdlZPSEQ4aVA4a01wWVA5Wm1ESjBocXpRbWFzbU5RVlVEX0ZXQmtldV91d3FQV0ktTzd3d1JfRERWVWtfOFZMeHI1THVzRlpLcVltcDh1UlFGUjlSNUpPOXpwQTlvR1pNcW53d2RkTFJCSUZGM20?oc=5",
-    "summary": "Cisco Systems stock (US17275R1023): Earnings update keeps investors focused on AI and networking dem AD HOC NEWS",
-    "source": "AD HOC NEWS",
-    "region": "Cyber and Cloud",
-    "group": "technology",
-    "category": "technology",
-    "published_at": "2026-05-23T06:58:36+00:00"
-  },
-  {
-    "id": "26878f122fecc93b94",
-    "title": "Standard Chartered Cuts XRP Price Target 65% To $2.80 As Crypto Market Tumbles",
-    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPNmxRVHNFN0pRTmlqaUd1eDNXRmQ2MWZDU1ZNaU9sOGhkV3RhTW84Z0ZWZkpXR0hnVWxZMEhrT0xjamJLR1p3U0F1RDhXTTVCVXRQdGppeXB1VnctUHloaDd2LUFnTHBGMzl0dTIzTElwRVhSWWVFQjFPQmNQRkJ1eGNtWjZ3RFRCUmJKQUhqUjU2U04tVFpDSkdzRjEwLXNDMUZlazMtVDg?oc=5",
-    "summary": "Standard Chartered Cuts XRP Price Target 65% To $2.80 As Crypto Market Tumbles Yellow.com",
-    "source": "Yellow.com",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-23T06:56:51+00:00"
-  },
-  {
-    "id": "3defa62cd88a2af0ed",
-    "title": "ECB Blocks Euro Stablecoin Push — Digital Dollarization Risk Grows",
-    "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQT3JTY0VPMUdJYmFjRy13aHg2OUhXZ1NiM0JaTFhRQnBlTkNRbnpfRzRfSE5OWjNtMHUxZHM0b1dJNUVyQmRNWVRzVHJKTVdZOUNMRGhWMl9sY1h5WFdneDA2OWswNUI1RzlMOTFaNEdrUC1lNUN2elJwWWhqVWcyZ0hoUHUyaFFyakRTblhsNmZJLWc?oc=5",
-    "summary": "ECB Blocks Euro Stablecoin Push — Digital Dollarization Risk Grows Coinfomania",
-    "source": "Coinfomania",
-    "region": "Crypto Regulation",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-23T06:12:20+00:00"
-  },
-  {
-    "id": "27e258300a6d71ddaa",
-    "title": "Research insight: China’s auto industry turns to robotaxis and AI at Beijing Auto Show",
-    "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZFFTXzlYU1RtX0FBcUVhQlhWTzR1VmNELU5UUVl3aHNKYjAza3ZaRUpvUUNFa25QXzNidGlCT3dXYWEyWk9vbmVpdEVHNElwU2RRYWVsY2lNZmp6WGpOMU5HR1pEYUhlTVNidHQ1X1VhM1pwYkZzZUFobnp2YjdkMUwxTk9XWE5kblhyNFRUemFQd1hUd0ZVSk9GUDBwdU10?oc=5",
-    "summary": "Research insight: China’s auto industry turns to robotaxis and AI at Beijing Auto Show digitimes",
-    "source": "digitimes",
-    "region": "Global Mobility",
-    "group": "mobilnost",
-    "category": "automotive",
-    "published_at": "2026-05-23T03:34:56+00:00"
-  },
-  {
-    "id": "7c2f7b3b545954aea4",
-    "title": "Crypto Market Today: Bitcoin Slips to $67,233 as XRP Falls Below $2, Ethereum Nears $1,975 | Trader",
-    "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNMGFvbmNMR2g2Q09idFJKYk5fRl8xTDZMbF9wUl9mSDFFd1dHdnB1VzR0WjBYb3R6bjZYYmlmZkJIQVJFZW82cldpR3hDQUJLczN6NDgzZ3lDa2pjdDh1cEEzMEUwTkF4bElpVDdZRjRvc2JlckdrVFVWa08zWkwzd0oxX1NCVHQ5S1h3UGdvaGs1VEVpb05xS3R2YVdVWnJqdjVQTm9sMDJGTmd3YXdlLV9R?oc=5",
-    "summary": "Crypto Market Today: Bitcoin Slips to $67,233 as XRP Falls Below $2, Ethereum Nears $1,975 | Trader vocal.media",
-    "source": "vocal.media",
-    "region": "Digital Assets",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-23T02:25:05+00:00"
   }
 ]

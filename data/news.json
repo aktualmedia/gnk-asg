@@ -1,5 +1,29 @@
 [
   {
+    "id": "e9eada37df9869ea7a",
+    "title": "Disney is poised to ramp its already booming advertising business. Rita Ferro is behind the push",
+    "url": "https://www.cnbc.com/2026/05/31/disney-advertising-rita-ferro.html",
+    "summary": "Disney is selling ads for the Super Bowl, Oscars and Grammys in 2027, all major advertising revenue drivers. Global ad president Rita Ferro is leading the charge.",
+    "source": "CNBC Business",
+    "region": "CNBC Business",
+    "group": "international",
+    "category": "economy",
+    "published_at": "2026-05-31T10:00:01+00:00",
+    "share_url": "/podijeli/vijest/e9eada37df9869ea7a/"
+  },
+  {
+    "id": "85dcea113c090dbe90",
+    "title": "Premium na Kvarneru: Jedan od najvećih turističkih projekata u regiji u posljednjih nekoliko godina",
+    "url": "https://www.poslovni.hr/hrvatska/premium-na-kvarneru-pristup-u-kojem-je-svaki-segment-guest-journeyja-pazljivo-razraden-4540399",
+    "summary": "U sklopu resorta će se otvoriti oko 250 radnih mjesta, kako u hotelskom operativnom dijelu, tako i u pratećim službama",
+    "source": "Poslovni dnevnik",
+    "region": "Poslovni dnevnik",
+    "group": "hrvatska",
+    "category": "economy",
+    "published_at": "2026-05-31T09:59:00+00:00",
+    "share_url": "/podijeli/vijest/85dcea113c090dbe90/"
+  },
+  {
     "id": "ce76e3f7d087f02894",
     "title": "Jedan data centar troši struju kao ceo Kragujevac – Da li Srbija ima dovoljno kapaciteta?",
     "url": "https://biznis.rs/novac/investicije/jedan-data-centar-trosi-struju-kao-ceo-kragujevac-da-li-srbija-ima-dovoljno-kapaciteta/",
@@ -1257,7 +1281,7 @@
     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQbWYxV1ZKYkdBTDd5WVNDYU9sRmdvUFk4NThRVFk1aS0tVE1JOC1pRkJUcHdlWk01SXp3dnJiMWRYX1pFbHRrMGZlSTNrS2ZBVDRZNnhrb2xUWDc3TndCZkotUkhyODlNSEgtcEJwT1JuUlVabUJ1UllJUlJIUmp6UmxPTG1GOTgzZGY2X2VB?oc=5",
     "summary": "Has XRP Finally Broken Free of Regulatory Shackles Kavout",
     "source": "Kavout",
-    "region": "Digital Assets",
+    "region": "Crypto Regulation",
     "group": "digital-assets",
     "category": "digital-assets",
     "published_at": "2026-05-30T05:39:46+00:00"
@@ -1973,10 +1997,10 @@
     "share_url": "/podijeli/vijest/4cf510deacbfe7defb/"
   },
   {
-    "id": "04329f3d00d38e1795",
-    "title": "U.S. CFTC opens crypto 'perp' door with first approvals at Kalshi, Coinbase",
+    "id": "6bd5841c2e50f1d224",
+    "title": "U.S. CFTC opens crypto 'perp' door with first approval at regulated firm",
     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNQzF3QVRVU3Z5TnJXenI1V1k2ZlU2SVhhTjFmOFFkS3IxYXhKYXpySEk5TjV0T0E3T3VuRUcwQm9KUHJoejBWVWhtMmdxMHRtMTV1MmhrbW5mV1ljdzh6Q2RFQnlHZjlDUS1YTm1uM2l4Mjd1djN6bnljYVE4cVRkR0w2NExGU2NCSDJkRVMwbTJBTmNyWlNYVzIydy1uLTJrUTJOTjRtTHlsaU5qRVFMNzNR?oc=5",
-    "summary": "U.S. CFTC opens crypto 'perp' door with first approvals at Kalshi, Coinbase CoinDesk",
+    "summary": "U.S. CFTC opens crypto 'perp' door with first approval at regulated firm CoinDesk",
     "source": "CoinDesk",
     "region": "Digital Assets",
     "group": "digital-assets",
@@ -2479,6 +2503,17 @@
     "title": "What American crypto asset perpetuals mean for the future of crypto",
     "url": "https://www.coindesk.com/opinion/2026/05/29/what-american-crypto-asset-perpetuals-mean-for-the-future-of-crypto",
     "summary": "For years, one of the most significant crypto asset markets has existed entirely outside the United States. Today, that changes, explains CFTC Chairman Selig.",
+    "source": "CoinDesk",
+    "region": "CoinDesk",
+    "group": "digital-assets",
+    "category": "digital-assets",
+    "published_at": "2026-05-29T14:00:00+00:00"
+  },
+  {
+    "id": "cbf3c95ca0e0291feb",
+    "title": "U.S. CFTC opens crypto 'perp' door with first approvals at Kalshi, Coinbase",
+    "url": "https://www.coindesk.com/policy/2026/05/28/u-s-cftc-opens-crypto-perp-door-with-approval-of-first-regulated-firm",
+    "summary": "The Commodity Futures Trading Commission has now established a stance on how regulated U.S. firms can engage in crypto perpetual futures contracts.",
     "source": "CoinDesk",
     "region": "CoinDesk",
     "group": "digital-assets",
@@ -5582,38 +5617,5 @@
     "group": "mobilnost",
     "category": "automotive",
     "published_at": "2026-05-28T13:29:56+00:00"
-  },
-  {
-    "id": "fd9b9f7f0ef964cfdd",
-    "title": "Grad Osijek preuzima obavljanje dimnjačarskih usluga od privatnog koncesionara",
-    "url": "https://www.poslovni.hr/hrvatska/grad-osijek-preuzima-obavljanje-dimnjacarskih-usluga-od-privatnog-koncesionara-4540419",
-    "summary": "Osječki gradonačelnik Ivan Radić ocijenio je kako se o radi bitnoj odluci za obavljanje dimnjačarskih usluga, za koje više neće biti nadležna privatna tvrtka, već gradska tvrtka \"Unikom\".",
-    "source": "Poslovni dnevnik",
-    "region": "Poslovni dnevnik",
-    "group": "hrvatska",
-    "category": "economy",
-    "published_at": "2026-05-28T13:28:00+00:00"
-  },
-  {
-    "id": "6d3835c805a6d7bf50",
-    "title": "Bit Digital bought $20 million ETH for first time since October before 15% plunge",
-    "url": "https://www.coindesk.com/business/2026/05/27/bit-digital-bought-usd20-million-eth-for-first-time-since-october-before-15-plunge",
-    "summary": "The firm said it purchased 8,568 ether on May 11 at an average price of $2,334. Since then, ETH broke below $2,000, leaving the firm sitting at a $3 million unrealized loss.",
-    "source": "CoinDesk",
-    "region": "CoinDesk",
-    "group": "digital-assets",
-    "category": "digital-assets",
-    "published_at": "2026-05-28T13:27:32+00:00"
-  },
-  {
-    "id": "fc46a8192c8cc12d1e",
-    "title": "Vlada Srbije usvojila Uredbu o vanrednoj pomoći proizvođačima mleka u prahu",
-    "url": "https://biznis.rs/vesti/srbija/vlada-srbije-usvojila-uredbu-o-vanrednoj-pomoci-proizvodjacima-mleka-u-prahu/",
-    "summary": "Vlada Srbije je danas usvojila Uredbu o vanrednoj interventnoj meri podrške proizvođačima mleka u prahu, sa ciljem očuvanja stabilnosti tržišta mleka i mlečnih proizvoda i jačanja domaće mlekarske industrije. Uredbom je predviđena finansijs",
-    "source": "Biznis.rs",
-    "region": "Biznis.rs",
-    "group": "srbija",
-    "category": "economy",
-    "published_at": "2026-05-28T13:25:00+00:00"
   }
 ]
