@@ -3,6 +3,7 @@
 
   const HOME_BUTTON_ID = 'gnkFloatingHomeButton';
   const STYLE_ID = 'gnkFloatingHomeButtonStyle';
+  const MOBILE_QUERY = '(max-width: 820px)';
 
   function isEnglishPage() {
     return document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname) || window.GNK_LANG?.get?.() === 'en';
@@ -14,6 +15,22 @@
 
   function label() {
     return isEnglishPage() ? 'Home' : 'Početna';
+  }
+
+  function isStandaloneApp() {
+    return window.matchMedia?.('(display-mode: standalone)')?.matches || window.navigator.standalone === true;
+  }
+
+  function isMobileScreen() {
+    return window.matchMedia?.(MOBILE_QUERY)?.matches || window.innerWidth <= 820;
+  }
+
+  function shouldHideHomeButton() {
+    return isMobileScreen() || isStandaloneApp();
+  }
+
+  function removeButton() {
+    document.getElementById(HOME_BUTTON_ID)?.remove();
   }
 
   function injectStyle() {
@@ -56,14 +73,8 @@
         stroke-linecap:round;
         stroke-linejoin:round;
       }
-      @media(max-width:720px){
-        .gnk-floating-home-button{
-          left:14px;
-          bottom:calc(14px + env(safe-area-inset-bottom,0px));
-          width:50px;
-          height:50px;
-          border-radius:17px;
-        }
+      @media(max-width:820px){
+        .gnk-floating-home-button{display:none!important;}
       }
       @media(min-width:1180px){
         .gnk-floating-home-button{left:22px;bottom:22px;}
@@ -73,6 +84,10 @@
   }
 
   function mount() {
+    if (shouldHideHomeButton()) {
+      removeButton();
+      return;
+    }
     injectStyle();
     let button = document.getElementById(HOME_BUTTON_ID);
     if (!button) {
@@ -89,4 +104,6 @@
 
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', mount) : mount();
   window.addEventListener('gnk-language-change', mount);
+  window.addEventListener('resize', mount);
+  window.matchMedia?.(MOBILE_QUERY)?.addEventListener?.('change', mount);
 })();
