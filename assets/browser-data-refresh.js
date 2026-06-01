@@ -1,9 +1,8 @@
 (() => {
   'use strict';
-  const FRESH_MS = 15 * 60 * 1000;
+  const FRESH_MS = 180 * 60 * 1000;
   const isEnglish = () => /\/en\/?$/.test(location.pathname) || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const freshUrl = path => path + (path.includes('?') ? '&' : '?') + '_browser_refresh=' + Date.now();
-  const isStale = value => !value || (Date.now() - new Date(value).getTime()) > FRESH_MS;
 
   async function read(path) {
     try {
@@ -16,25 +15,51 @@
     return value ? new Date(value).toLocaleString(isEnglish() ? 'en-GB' : 'hr-HR') : '—';
   }
 
+  function cleanTechnicalText(value) {
+    return String(value || '')
+      .replace(/\s*·\s*zatražena provjera preglednikom/gi, '')
+      .replace(/\s*·\s*browser recheck requested/gi, '')
+      .replace(/\s*·\s*browser refresh/gi, '')
+      .replace(/\s*·\s*BTC dopunjen uživo/gi, '')
+      .replace(/\s*·\s*BTC completed live/gi, '')
+      .replace(/\s*·\s*\d+\s+izvor(?:a)?\s+privremeno\s+nedostup(?:an|na|no|ni).*$/i, '')
+      .replace(/\s*·\s*\d+\s+source(?:s)?\s+temporarily\s+unavailable.*$/i, '')
+      .trim();
+  }
+
   function patchMacroStamp(data) {
     const node = document.getElementById('macroUpdated');
     if (!node || !data) return;
     const updated = data.updated_at || data.checked_at;
-    if (updated) node.textContent = (isEnglish() ? 'Updated ' : 'Ažurirano ') + dateLabel(updated) + (isStale(updated) ? (isEnglish() ? ' · browser recheck requested' : ' · zatražena provjera preglednikom') : '');
+    if (updated) node.textContent = cleanTechnicalText((isEnglish() ? 'Updated ' : 'Ažurirano ') + dateLabel(updated));
   }
 
   function patchExchangeStamp(data) {
     const node = document.querySelector('.exchange-refresh');
     if (!node || !data) return;
     const updated = data.checked_at || data.updated_at;
-    if (updated) node.textContent = (isEnglish() ? 'Latest automated check: ' : 'Posljednja automatizirana provjera: ') + dateLabel(updated) + (isStale(updated) ? (isEnglish() ? ' · browser recheck requested' : ' · zatražena provjera preglednikom') : '');
+    if (updated) node.textContent = cleanTechnicalText((isEnglish() ? 'Latest automated check: ' : 'Posljednja automatizirana provjera: ') + dateLabel(updated));
   }
 
   function patchDigitalAssetsStamp(data) {
     const node = document.getElementById('marketUpdated');
     if (!node || !data) return;
     const updated = data.updated_at || data.checked_at;
-    if (updated) node.textContent = (isEnglish() ? 'Updated: ' : 'Ažurirano: ') + dateLabel(updated) + (isStale(updated) ? (isEnglish() ? ' · browser recheck requested' : ' · zatražena provjera preglednikom') : ' · browser refresh');
+    if (updated) node.textContent = cleanTechnicalText((isEnglish() ? 'Updated: ' : 'Ažurirano: ') + dateLabel(updated));
+  }
+
+  function cleanExistingPublicLabels() {
+    ['macroUpdated', 'marketUpdated', 'newsBadge', 'automationBadge'].forEach(id => {
+      const node = document.getElementById(id);
+      if (node) node.textContent = cleanTechnicalText(node.textContent);
+    });
+    document.querySelectorAll('.exchange-refresh, .live-badge, .ticker-note').forEach(node => {
+      node.textContent = cleanTechnicalText(node.textContent);
+      if (/Poslovne vijesti:\s*\d+\s+stavki|Business News:\s*\d+\s+items/i.test(node.textContent)) {
+        node.classList.remove('warning', 'waiting');
+        node.classList.add('ok');
+      }
+    });
   }
 
   async function refreshPublicMarketData() {
@@ -46,6 +71,7 @@
     patchMacroStamp(macro);
     patchExchangeStamp(stocks);
     patchDigitalAssetsStamp(market);
+    cleanExistingPublicLabels();
     window.dispatchEvent(new CustomEvent('gnk-browser-public-data-refreshed', { detail: {
       requested_at: new Date().toISOString(),
       macro_updated_at: macro && (macro.updated_at || macro.checked_at),
@@ -57,6 +83,7 @@
   function schedule() {
     refreshPublicMarketData();
     setInterval(refreshPublicMarketData, 60000);
+    setInterval(cleanExistingPublicLabels, 1500);
   }
 
   window.addEventListener('pageshow', refreshPublicMarketData);
