@@ -14,17 +14,29 @@
     const css = document.createElement('link');
     css.rel = 'stylesheet';
     css.dataset.gnkShareStyle = '1';
-    css.href = ROOT + 'assets/site-share.css?v=20260601-fixed-reader01';
+    css.href = ROOT + 'assets/site-share.css?v=20260601-share-buttons01';
     document.head.appendChild(css);
   }
 
   const isEn = () => document.documentElement.lang === 'en' || /\/en(?:\/|$)/.test(location.pathname);
   const copy = () => isEn() ? {
     readers: 'Indicative readers',
-    note: 'Indicative public activity model; not measured analytics.'
+    note: 'Indicative public activity model; not measured analytics.',
+    share: 'Share publication',
+    linkedin: 'LinkedIn',
+    facebook: 'Facebook',
+    whatsapp: 'WhatsApp',
+    copyLink: 'Copy link',
+    copied: 'Copied'
   } : {
     readers: 'Indikativni čitatelji',
-    note: 'Indikativni javni model aktivnosti; nije mjerena analitika.'
+    note: 'Indikativni javni model aktivnosti; nije mjerena analitika.',
+    share: 'Podijeli objavu',
+    linkedin: 'LinkedIn',
+    facebook: 'Facebook',
+    whatsapp: 'WhatsApp',
+    copyLink: 'Kopiraj link',
+    copied: 'Kopirano'
   };
 
   function localHour(date) {
@@ -42,9 +54,7 @@
     try {
       const value = JSON.parse(localStorage.getItem(STATE_KEY) || 'null');
       return value && Number.isFinite(value.events) ? value : null;
-    } catch (error) {
-      return null;
-    }
+    } catch (error) { return null; }
   }
   function saveState(state) {
     try { localStorage.setItem(STATE_KEY, JSON.stringify(state)); } catch (error) {}
@@ -95,22 +105,96 @@
     host.innerHTML = markupText;
     return host.firstElementChild;
   }
-  function mount() {
-    startPageVisit();
-    document.querySelectorAll('.gnk-share-dock').forEach(node => node.remove());
+  function absoluteUrl(value) {
+    return new URL(value || location.href, location.origin).href;
+  }
+  function pageTitle() {
+    const og = document.querySelector('meta[property="og:title"]')?.content;
+    return og || document.querySelector('h1')?.textContent || document.title || 'GNK ASG';
+  }
+  function shareBlock(url, compact) {
+    const t = copy();
+    const abs = absoluteUrl(url);
+    const encoded = encodeURIComponent(abs);
+    const text = encodeURIComponent(pageTitle());
+    return '<div class="gnk-share-inline' + (compact ? ' compact' : '') + '" data-gnk-share-url="' + abs + '">' +
+      '<strong>' + t.share + '</strong>' +
+      '<a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=' + encoded + '">' + t.linkedin + '</a>' +
+      '<a target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=' + encoded + '">' + t.facebook + '</a>' +
+      '<a target="_blank" rel="noopener" href="https://api.whatsapp.com/send?text=' + text + '%20' + encoded + '">' + t.whatsapp + '</a>' +
+      '<button type="button" data-copy-share>' + t.copyLink + '</button>' +
+    '</div>';
+  }
+  async function copyToClipboard(button, url) {
+    const t = copy();
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch (_) {
+      const input = document.createElement('input');
+      input.value = url;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      input.remove();
+    }
+    const old = button.textContent;
+    button.textContent = t.copied;
+    button.classList.add('gnk-copy-ok');
+    setTimeout(() => { button.textContent = old; button.classList.remove('gnk-copy-ok'); }, 1400);
+  }
+  function bindShareButtons(root) {
+    (root || document).querySelectorAll('[data-copy-share]').forEach(button => {
+      if (button.dataset.bound === '1') return;
+      button.dataset.bound = '1';
+      button.addEventListener('click', () => {
+        const holder = button.closest('[data-gnk-share-url]');
+        copyToClipboard(button, holder?.dataset.gnkShareUrl || absoluteUrl(location.href));
+      });
+    });
+  }
+  function mountArticleShare() {
+    const article = document.querySelector('.article-card, .article-wrap');
+    if (!article || article.querySelector('.gnk-share-inline')) return;
+    const lead = article.querySelector('.article-lead, .article-subtitle, .byline, .article-meta');
+    const block = create(shareBlock(location.href, false));
+    if (lead) lead.insertAdjacentElement('afterend', block);
+    else article.insertAdjacentElement('afterbegin', block);
+    bindShareButtons(article);
+  }
+  function mountInsightCardShare() {
+    document.querySelectorAll('.insight-card').forEach(card => {
+      if (card.querySelector('.gnk-share-inline')) return;
+      const link = card.querySelector('a[href]');
+      if (!link) return;
+      card.appendChild(create(shareBlock(link.getAttribute('href'), true)));
+    });
+    bindShareButtons(document);
+  }
+  function mountReader() {
     const heroActions = document.querySelector('.hero-actions');
     const heroContainer = document.querySelector('.hero .container') || document.querySelector('.hero') || document.querySelector('main');
-    if (!document.querySelector('.gnk-reader-fixed')) {
+    if (!document.querySelector('.gnk-reader-fixed') && !document.body.classList.contains('insights-page')) {
       const panel = create(readerMarkup());
       if (heroActions) heroActions.insertAdjacentElement('afterend', panel);
       else if (heroContainer) heroContainer.insertAdjacentElement('afterbegin', panel);
     }
+  }
+  function mount() {
+    startPageVisit();
+    document.querySelectorAll('.gnk-share-dock').forEach(node => node.remove());
+    mountReader();
+    mountArticleShare();
+    mountInsightCardShare();
     refreshVisits();
     window.addEventListener('gnk-language-change', () => {
       const existing = document.querySelector('.gnk-reader-fixed');
       if (existing) existing.replaceWith(create(readerMarkup()));
+      document.querySelectorAll('.gnk-share-inline').forEach(node => node.remove());
+      mountArticleShare();
+      mountInsightCardShare();
       refreshVisits();
     });
+    window.setInterval(() => { mountInsightCardShare(); refreshVisits(); }, 3000);
     window.setInterval(refreshVisits, 60000);
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', mount) : mount();
