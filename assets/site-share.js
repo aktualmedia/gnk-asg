@@ -4,6 +4,7 @@
   window.GNK_SITE_SHARE_READY = true;
 
   const ROOT = '/';
+  const PUBLIC_ORIGIN = 'https://gnk-asg.hr';
   const COUNTER_START = new Date('2026-05-27T17:46:08+02:00');
   const COUNTER_BASE = 3056;
   const COUNTER_VERSION = 'v3056-20260527-174608';
@@ -14,7 +15,7 @@
     const css = document.createElement('link');
     css.rel = 'stylesheet';
     css.dataset.gnkShareStyle = '1';
-    css.href = ROOT + 'assets/site-share.css?v=20260601-share-buttons01';
+    css.href = ROOT + 'assets/site-share.css?v=20260601-share-buttons02';
     document.head.appendChild(css);
   }
 
@@ -105,8 +106,21 @@
     host.innerHTML = markupText;
     return host.firstElementChild;
   }
+  function publicPathFrom(value) {
+    const raw = value || document.querySelector('link[rel="canonical"]')?.href || location.href;
+    try {
+      const url = new URL(raw, location.href);
+      let path = url.pathname || '/';
+      if (url.hostname.endsWith('github.io')) path = path.replace(/^\/gnk-asg(?=\/|$)/, '') || '/';
+      return path + (url.search || '');
+    } catch (_) {
+      return String(raw).startsWith('/') ? String(raw) : '/' + String(raw);
+    }
+  }
   function absoluteUrl(value) {
-    return new URL(value || location.href, location.origin).href;
+    const canonical = document.querySelector('link[rel="canonical"]')?.href;
+    if (!value && canonical) return canonical;
+    return PUBLIC_ORIGIN + publicPathFrom(value);
   }
   function pageTitle() {
     const og = document.querySelector('meta[property="og:title"]')?.content;
@@ -156,7 +170,7 @@
     const article = document.querySelector('.article-card, .article-wrap');
     if (!article || article.querySelector('.gnk-share-inline')) return;
     const lead = article.querySelector('.article-lead, .article-subtitle, .byline, .article-meta');
-    const block = create(shareBlock(location.href, false));
+    const block = create(shareBlock(null, false));
     if (lead) lead.insertAdjacentElement('afterend', block);
     else article.insertAdjacentElement('afterbegin', block);
     bindShareButtons(article);
