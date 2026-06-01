@@ -1,6 +1,6 @@
 name: Refresh business news
 
-# Manual heartbeat: 2026-06-01T08:24Z
+# Public status cleaner added: 2026-06-01T08:50Z
 on:
   schedule:
     - cron: '*/30 * * * *'
@@ -8,6 +8,7 @@ on:
   push:
     paths:
       - 'scripts/refresh_news.py'
+      - 'scripts/clean_news_status.py'
       - '.github/workflows/refresh-news.yml'
 
 permissions:
@@ -32,6 +33,9 @@ jobs:
 
       - name: Refresh public business news
         run: python scripts/refresh_news.py
+
+      - name: Clean public news status
+        run: python scripts/clean_news_status.py
 
       - name: Commit refreshed news data
         run: |
