@@ -1,5 +1,6 @@
 name: Refresh business news
 
+# Manual heartbeat: 2026-06-01T08:24Z
 on:
   schedule:
     - cron: '*/30 * * * *'
