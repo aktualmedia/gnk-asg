@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GNK ASG Mail DNS Setup</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
+  <style>
+    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:980px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:20px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.panel{background:#fff;border:1px solid #dce5f0;border-radius:24px;padding:22px;margin:16px 0;box-shadow:0 16px 44px rgba(0,0,0,.18)}.btn{display:inline-block;border-radius:999px;padding:11px 15px;background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35);font-weight:900;text-decoration:none;margin:6px 6px 6px 0}.box{white-space:pre-wrap;background:#f7f9fc;border-radius:16px;padding:14px;color:#23364e;line-height:1.6;overflow:auto}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.item{border:1px solid #e5edf6;border-radius:18px;padding:14px;background:#fbfdff}.item h3{margin-top:0}.small{font-size:13px;color:#64748b;line-height:1.6}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="head"><p>GNK ASG Operator</p><h1>Mail DNS Setup</h1><p>Cloudflare DNS kontrolna lista za slanje mailova kao Nermin i IT asistent.</p><a class="btn" href="../dashboard/">Dashboard</a><a class="btn" href="../mail/">Mail centar</a></section>
+    <section class="panel"><h2>Identiteti pošiljatelja</h2><div class="grid"><div class="item"><h3>IT asistent</h3><p><strong>it@gnk-asg.hr</strong></p><p class="small">Automatski i opći odgovori, test i batch poruke nakon potvrde.</p></div><div class="item"><h3>Nermin Sefić</h3><p><strong>nermin@gnk-asg.hr</strong></p><p class="small">Osobni/poslovni identitet. Koristiti samo kad je adresa potvrđena kod providera.</p></div></div></section>
+    <section class="panel"><h2>Cloudflare DNS zapisi</h2><div class="box">1. U Cloudflare otvoriti DNS za gnk-asg.hr.
+2. Kod odabranog providera, Resend ili Brevo, dodati domenu gnk-asg.hr.
+3. Provider će dati DKIM CNAME/TXT zapise. Te vrijednosti treba kopirati točno, bez izmjene.
+4. Dodati ili provjeriti SPF TXT zapis. Ako već postoji SPF, ne dodavati drugi SPF, nego spojiti include vrijednosti u jedan TXT zapis.
+5. Dodati DMARC TXT zapis na _dmarc.gnk-asg.hr.
+6. Nakon propagacije provjeriti domain verification u provideru.
+7. Tek nakon toga slati s it@gnk-asg.hr i nermin@gnk-asg.hr.</div></section>
+    <section class="panel"><h2>Minimalni početni DNS obrazac</h2><div class="box">SPF primjer, prilagoditi provideru:
+Name: gnk-asg.hr
+Type: TXT
+Value: v=spf1 include:PROVIDER_INCLUDE ~all
+
+DMARC početni oprezni zapis:
+Name: _dmarc
+Type: TXT
+Value: v=DMARC1; p=none; rua=mailto:it@gnk-asg.hr; adkim=r; aspf=r
+
+DKIM:
+Provider daje 1 do 3 CNAME/TXT zapisa. Ne izmišljati vrijednosti; kopirati iz Resend/Brevo panela.</div><p class="small">Kad pošalješ screenshot ili vrijednosti iz providera, mogu ti ih pretvoriti u točne Cloudflare DNS zapise za kopiranje.</p></section>
+  </main>
+</body>
+</html>
