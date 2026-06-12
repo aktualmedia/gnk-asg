@@ -1,2 +1,1 @@
-triggered_at=2026-06-12T15:27:07Z
-reason=manual refresh for cross-asset monitor
+trigger=2026-06-13-refresh-macro-market
