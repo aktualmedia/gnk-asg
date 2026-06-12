@@ -24,6 +24,7 @@ STATUS_PATH = DATA / "fast_market_status.json"
 TIMEOUT = 15
 USER_AGENT = "GNK-ASG-MarketMonitor/2.1 (+https://gnk-asg.hr/)"
 CADENCE_LABEL = "scheduled every 30 minutes"
+# Manual refresh trigger: 2026-06-12T22:00:00+02:00
 
 COINS = {
     "bitcoin": "BTC",
