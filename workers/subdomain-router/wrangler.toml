@@ -1,0 +1,13 @@
+name = "gnk-asg-subdomain-router"
+main = "src/index.js"
+compatibility_date = "2026-06-12"
+
+# Optional routes after DNS/subdomains are ready:
+# routes = [
+#   { pattern = "front.gnk-asg.hr/*", zone_name = "gnk-asg.hr" },
+#   { pattern = "news.gnk-asg.hr/*", zone_name = "gnk-asg.hr" },
+#   { pattern = "admin.gnk-asg.hr/*", zone_name = "gnk-asg.hr" },
+#   { pattern = "backend.gnk-asg.hr/*", zone_name = "gnk-asg.hr" },
+#   { pattern = "app.gnk-asg.hr/*", zone_name = "gnk-asg.hr" },
+#   { pattern = "api.gnk-asg.hr/*", zone_name = "gnk-asg.hr" }
+# ]
