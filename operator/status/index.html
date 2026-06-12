@@ -29,29 +29,40 @@
     {id:'news',label:'Vijesti',url:'../../data/update_status.json'},
     {id:'daily',label:'Objave autora',url:'../../data/daily_insight_log.json'},
     {id:'mail',label:'Mail batch',url:'../../data/mail_batch_config.json'},
+    {id:'maillog',label:'Mail log schema',url:'../../data/mail_log_schema.json'},
     {id:'assistant',label:'IT asistent',url:'../../data/assistant_identity.json'},
     {id:'operator',label:'Operator moduli',url:'../../data/operator_modules.json'},
     {id:'pwa',label:'PWA / QR',url:'../../data/pwa_qr_config.json'},
     {id:'wa',label:'WhatsApp',url:'../../data/whatsapp_module_config.json'},
     {id:'image',label:'Image SEO',url:'../../data/image_seo_schema.json'},
+    {id:'imageindex',label:'Image index',url:'../../data/image_index.json'},
     {id:'docs',label:'Dokumenti',url:'../../data/document_library_schema.json'},
+    {id:'docindex',label:'Document index',url:'../../data/document_index.json'},
     {id:'upload',label:'Upload backend',url:'../../data/upload_backend_contract.json'},
+    {id:'summary',label:'Dnevni sažetak',url:'../../data/daily_operator_summary.json'},
+    {id:'summaryschema',label:'Sažetak schema',url:'../../data/daily_operator_summary_schema.json'},
     {id:'sitemap',label:'Sitemap',url:'../../sitemap.xml',text:true}
   ];
   async function loadOne(f){try{const r=await fetch(f.url+'?cb='+Date.now(),{cache:'no-store'}); const t=await r.text(); if(!r.ok)throw new Error('HTTP '+r.status); return {file:f,ok:true,data:f.text?t:JSON.parse(t)};}catch(e){return {file:f,ok:false,error:e.message};}}
+  function countItems(d){return Array.isArray(d.items)?d.items.length:0}
   function summarize(x){
     if(!x.ok)return {cls:'bad',state:'nedostupno',detail:x.error};
     const d=x.data;
     if(x.file.id==='news')return {cls:'ok',state:'dostupno',detail:'update_status.json učitan'};
     if(x.file.id==='daily'){const n=Array.isArray(d)?d.length:(Array.isArray(d.items)?d.items.length:0);return {cls:n?'ok':'warn',state:n?'aktivno':'bez zapisa',detail:'zapisa: '+n};}
     if(x.file.id==='mail')return {cls:d.mode==='send_via_authorized_endpoint'?'ok':'warn',state:d.mode||'učitano',detail:'limit: '+(d.max_recipients_per_batch||'n/a')};
+    if(x.file.id==='maillog')return {cls:'ok',state:'schema učitana',detail:'statusa: '+((d.status_values||[]).length)};
     if(x.file.id==='assistant')return {cls:'ok',state:d.assistant_name||'učitano',detail:d.recommended_address||''};
     if(x.file.id==='operator')return {cls:'ok',state:'moduli učitani',detail:'modula: '+((d.modules||[]).length)};
     if(x.file.id==='pwa')return {cls:'ok',state:'PWA konfiguracija',detail:(d.public_pwa&&d.public_pwa.path?d.public_pwa.path:'')+' / '+(d.operator_pwa&&d.operator_pwa.path?d.operator_pwa.path:'')};
     if(x.file.id==='wa')return {cls:'warn',state:d.status||'planirano',detail:'faza: '+((d.phases||[]).length)};
     if(x.file.id==='image')return {cls:'ok',state:'schema učitana',detail:'polja: '+((d.fields||[]).length)};
+    if(x.file.id==='imageindex')return {cls:'warn',state:'index spreman',detail:'slika: '+countItems(d)};
     if(x.file.id==='docs')return {cls:'ok',state:'schema učitana',detail:'polja: '+((d.fields||[]).length)};
+    if(x.file.id==='docindex')return {cls:'warn',state:'index spreman',detail:'dokumenata: '+countItems(d)};
     if(x.file.id==='upload')return {cls:'warn',state:'backend ugovor',detail:d.storage_target||'spremno za backend'};
+    if(x.file.id==='summary')return {cls:'warn',state:'sažetak spreman',detail:'next actions: '+((d.next_actions||[]).length)};
+    if(x.file.id==='summaryschema')return {cls:'ok',state:'schema učitana',detail:'sekcija: '+((d.sections||[]).length)};
     if(x.file.id==='sitemap')return {cls:x.data.includes('/app/')?'ok':'warn',state:'sitemap učitan',detail:x.data.includes('/app/')?'app/install/qr prisutni':'provjeri PWA URL-ove'};
     return {cls:'muted',state:'učitano',detail:''};
   }
