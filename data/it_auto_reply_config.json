@@ -1,0 +1,41 @@
+{
+  "version": "2026-06-12-it-auto-reply-config-01",
+  "module": "it_auto_reply",
+  "inbound_address": "it@gnk-asg.hr",
+  "notification_copy_address": "rht@gmx.com",
+  "reply_sender": "it@gnk-asg.hr",
+  "reply_sender_name": "IT – Osobni digitalni asistent",
+  "mode": "auto_reply_general_only",
+  "knowledge_sources": [
+    "data/assistant_identity.json",
+    "data/assistant_faq_mail.json",
+    "data/assistant_faq_contact.json",
+    "data/assistant_faq_whatsapp.json",
+    "data/smart_reply_policy.json",
+    "data/smart_reply_templates.json"
+  ],
+  "auto_reply_allowed_for": [
+    "receipt_acknowledgement",
+    "general_info",
+    "author_posts",
+    "market_data_note",
+    "contact_form_link",
+    "public_portal_navigation"
+  ],
+  "human_review_required_for": [
+    "legal_sensitive",
+    "financial_sensitive",
+    "media_sensitive",
+    "contractual_sensitive",
+    "personal_or_confidential",
+    "complaint_or_dispute",
+    "unknown"
+  ],
+  "default_public_links": {
+    "home": "https://gnk-asg.hr/",
+    "author_posts": "https://gnk-asg.hr/insights-hr/",
+    "contact": "https://gnk-asg.hr/kontakt/",
+    "legal": "https://gnk-asg.hr/legal.html"
+  },
+  "safety_statement": "Automatski se šalju samo opći informativni odgovori i potvrde primitka. Osjetljive teme idu na ljudski pregled."
+}
