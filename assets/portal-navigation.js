@@ -3,11 +3,11 @@
   const labels = () => isEnglish()
     ? {
         profile: 'Profile', finance: 'Financials', network: 'Network', markets: 'Markets',
-        insights: 'Insights', sources: 'Sources', contact: 'Contact', desk: 'AI Desk'
+        insights: 'Insights', sources: 'Sources', legal: 'Legal', contact: 'Contact', desk: 'AI Desk'
       }
     : {
         profile: 'Profil', finance: 'Financije', network: 'Mreža', markets: 'Tržišta',
-        insights: 'Objave', sources: 'Izvori', contact: 'Kontakt', desk: 'AI asistent'
+        insights: 'Objave', sources: 'Izvori', legal: 'Legal', contact: 'Kontakt', desk: 'AI asistent'
       };
 
   function render() {
@@ -26,6 +26,7 @@
     const marketUrl = en ? '/en/markets/' : '/trzista/';
     const insightsUrl = en ? '/en/insights/' : '/insights-hr/';
     const contactUrl = en ? '/en/contact/' : '/kontakt/';
+    const legalUrl = '/legal.html';
     const profileUrl = homeUrl + '#o-nama';
     const financeUrl = homeUrl + '#financials';
     const networkUrl = homeUrl + '#grupa';
@@ -38,6 +39,7 @@
       '<a href="' + marketUrl + '">' + t.markets + '</a>' +
       '<a href="' + insightsUrl + '">' + t.insights + '</a>' +
       '<a href="' + sourcesUrl + '">' + t.sources + '</a>' +
+      '<a href="' + legalUrl + '">' + t.legal + '</a>' +
       '<a href="' + contactUrl + '">' + t.contact + '</a>' +
       '<a class="desk-entry" href="' + deskUrl + '">✦ ' + t.desk + '</a>';
   }

@@ -9,8 +9,9 @@
 
   const WHATSAPP = 'https://wa.me/385916104398';
   const CONTACT = '/kontakt/';
-  const DESK = '#assistant';
-  const NEWS = '#news';
+  const DESK = '/#assistant';
+  const NEWS = '/#news';
+  const LEGAL = '/legal.html';
 
   const lang = () => ((window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en') || /\/en\/?$/.test(location.pathname)) ? 'en' : 'hr';
   const minutesOld = value => value ? Math.max(0, (Date.now() - new Date(value).getTime()) / 60000) : Infinity;
@@ -24,7 +25,7 @@
       intro: 'Brzi pomoćnik za portal, vijesti po zemljama, financije, tržišta, dokumente, kontakt i javne informacije. Za pitanja izvan portala AL otvara javnu web i news pretragu.',
       send: 'PITAJ',
       placeholder: 'Upišite pitanje, državu ili temu…',
-      chips: ['Vijesti po zemljama', 'Hrvatska', 'Slovenija', 'Srbija', 'BiH', 'Međunarodno', 'Financije', 'Digitalna imovina', 'AI i tehnologija', 'Kontakt'],
+      chips: ['Vijesti po zemljama', 'Hrvatska', 'Slovenija', 'Srbija', 'BiH', 'Međunarodno', 'Financije', 'Digitalna imovina', 'AI i tehnologija', 'Legal', 'Status podataka', 'Privatnost', 'Kontakt'],
       full: 'Puni AL',
       contact: 'Kontakt',
       whatsapp: 'WhatsApp',
@@ -43,7 +44,7 @@
       intro: 'Quick portal helper for country news, financials, markets, documents, contact and public information. For questions outside the portal, AL opens public web and news search.',
       send: 'ASK',
       placeholder: 'Enter a question, country or topic…',
-      chips: ['News by country', 'Croatia', 'Slovenia', 'Serbia', 'BiH', 'International', 'Financials', 'Digital assets', 'AI and technology', 'Contact'],
+      chips: ['News by country', 'Croatia', 'Slovenia', 'Serbia', 'BiH', 'International', 'Financials', 'Digital assets', 'AI and technology', 'Legal', 'Data status', 'Privacy', 'Contact'],
       full: 'Full AL',
       contact: 'Contact',
       whatsapp: 'WhatsApp',
@@ -177,11 +178,35 @@
       : 'Zadnje vidljive javne stavke za ' + groupLabel(group) + ':\n' + titles;
   }
 
+  function legalAnswer(question) {
+    const q = String(question || '').toLowerCase();
+    const en = lang() === 'en';
+    if (/privat|privacy|gdpr|osobn|personal/.test(q)) {
+      return en ? 'Privacy: GNK ASG d.o.o. is the controller for portal-related data. The portal may process technical access logs, security records, user-submitted contact data, cookie preferences and aggregated analytics where enabled. Users may request access, correction, deletion, restriction, portability, objection or withdrawal of consent where applicable. Open Legal > Privacy for the full note.' : 'Privatnost: GNK ASG d.o.o. je voditelj obrade za podatke povezane s portalom. Portal može obrađivati tehničke pristupne zapise, sigurnosne zapise, podatke koje korisnik sam dostavi, postavke kolačića i agregiranu analitiku ako je aktivirana. Korisnik može tražiti pristup, ispravak, brisanje, ograničenje, prenosivost, prigovor ili povlačenje privole gdje je primjenjivo. Otvorite Legal > Privatnost za puni tekst.';
+    }
+    if (/cookie|kolač|kolac/.test(q)) {
+      return en ? 'Cookies: the portal may use necessary cookies for security, availability and basic functionality. Functional or analytics cookies are used only where required for a feature or where a valid basis or consent exists. Marketing cookies are not a standard portal function.' : 'Kolačići: portal može koristiti nužne kolačiće za sigurnost, dostupnost i osnovni rad. Funkcionalni ili analitički kolačići koriste se samo kada su potrebni za funkciju ili kada postoji valjana osnova odnosno privola. Marketinški kolačići nisu standardna funkcija portala.';
+    }
+    if (/status|live|snapshot|delayed|fallback|izvor|source|ažur|azur|kasni|delay/.test(q)) {
+      return en ? 'Data status: LIVE means active source/API, SNAPSHOT means stored data cut, DELAYED means the expected refresh is late, and FALLBACK means the active source is unavailable and the last technical value is shown. Market and digital-asset data are informational only and not financial advice.' : 'Status podataka: LIVE znači aktivni izvor/API, SNAPSHOT znači spremljeni presjek, DELAYED znači da podatak kasni u odnosu na očekivani ritam, a FALLBACK znači da aktivni izvor nije dostupan pa se prikazuje zadnja tehnički raspoloživa vrijednost. Tržišni i digital-assets podatci su informativni i nisu financijski savjet.';
+    }
+    if (/uvjet|terms|odgovornost|disclaimer|pravna|legal|impressum|impresum/.test(q)) {
+      return en ? 'Legal: the portal legal page contains the imprint, privacy policy, cookie policy, terms of use, legal disclaimer, data/source status, AI disclaimer and accessibility statement. The content is informational and does not represent legal, tax, financial or investment advice. Open ' + LEGAL + ' for the full text.' : 'Legal: pravna stranica sadržava impresum, politiku privatnosti, politiku kolačića, uvjete korištenja, pravnu napomenu, status podataka i izvora, AI napomenu i izjavu o pristupačnosti. Sadržaj je informativan i ne predstavlja pravni, porezni, financijski ni investicijski savjet. Otvorite ' + LEGAL + ' za puni tekst.';
+    }
+    if (/ai napomena|al napomena|assistant disclaimer|operator|ovlast|admin/.test(q)) {
+      return en ? 'AI note: the public AL assistant is a helper for public portal information only. It has no administrative authority, cannot bind the company and does not replace human review for legal, financial, security, media or official decisions.' : 'AI napomena: javni AL asistent služi samo kao pomoćnik za javne informacije portala. Nema administratorske ovlasti, ne može preuzimati obveze u ime društva i ne zamjenjuje ljudsku provjeru za pravne, financijske, sigurnosne, medijske ili službene odluke.';
+    }
+    return en ? 'Open the Legal page for the full imprint, privacy, cookies, terms, data status, AI note and accessibility statement.' : 'Otvorite Legal stranicu za puni impresum, privatnost, kolačiće, uvjete, status podataka, AI napomenu i pristupačnost.';
+  }
+
   function answer(question) {
     const q = String(question || '').toLowerCase();
     const en = lang() === 'en';
     if (!q.trim()) return t().empty;
 
+    if (/legal|impressum|impresum|privat|privacy|gdpr|cookie|kolač|kolac|uvjet|terms|disclaimer|pravna|status|snapshot|fallback|delayed|live|pristupač|pristupac|accessibility/.test(q)) {
+      return legalAnswer(question);
+    }
     if (/vijest|news|držav|drzav|zemlj|country|region|hrvats|croatia|sloven|srb|serbia|bih|bosn|international|global|sport|technology|tehnolog|digital|crypto|mobilnost|mobility/.test(q)) {
       return newsAnswer(question);
     }
@@ -235,7 +260,7 @@
     if (!button || !panel) return;
     button.setAttribute('aria-label', c.aria);
     button.innerHTML = '<span class="ai-fab-mark">AL</span><span class="ai-fab-label">AL</span><span class="ai-fab-dot"></span>';
-    panel.innerHTML = '<div class="ai-mini-head"><div><small>' + c.subtitle + '</small><strong>' + c.title + '</strong></div><button type="button" class="ai-mini-close" aria-label="Close">×</button></div><div class="ai-mini-status"></div><div class="ai-mini-body"><p class="ai-mini-intro">' + c.intro + '</p><div class="ai-mini-chips">' + c.chips.map(item => '<button type="button">' + item + '</button>').join('') + '</div><div class="ai-mini-result" id="aiMiniResult"></div><form class="ai-mini-form"><input autocomplete="off" placeholder="' + c.placeholder + '"><button type="submit">' + c.send + '</button></form><div class="ai-mini-links"><a class="ai-full-link" href="' + DESK + '">' + c.full + '</a><a class="ai-research-link" id="aiWhatsAppLink" target="_blank" rel="noopener nofollow" href="' + WHATSAPP + '">' + c.whatsapp + '</a><a class="ai-research-link" href="' + CONTACT + '">' + c.contact + '</a><a class="ai-research-link" id="aiResearchLink" target="_blank" rel="noopener nofollow" href="https://news.google.com/">' + c.research + '</a><a class="ai-research-link" id="aiWebLink" target="_blank" rel="noopener nofollow" href="https://www.google.com/">' + c.web + '</a></div></div>';
+    panel.innerHTML = '<div class="ai-mini-head"><div><small>' + c.subtitle + '</small><strong>' + c.title + '</strong></div><button type="button" class="ai-mini-close" aria-label="Close">×</button></div><div class="ai-mini-status"></div><div class="ai-mini-body"><p class="ai-mini-intro">' + c.intro + '</p><div class="ai-mini-chips">' + c.chips.map(item => '<button type="button">' + item + '</button>').join('') + '</div><div class="ai-mini-result" id="aiMiniResult"></div><form class="ai-mini-form"><input autocomplete="off" placeholder="' + c.placeholder + '"><button type="submit">' + c.send + '</button></form><div class="ai-mini-links"><a class="ai-full-link" href="' + DESK + '">' + c.full + '</a><a class="ai-research-link" href="' + LEGAL + '">Legal</a><a class="ai-research-link" id="aiWhatsAppLink" target="_blank" rel="noopener nofollow" href="' + WHATSAPP + '">' + c.whatsapp + '</a><a class="ai-research-link" href="' + CONTACT + '">' + c.contact + '</a><a class="ai-research-link" id="aiResearchLink" target="_blank" rel="noopener nofollow" href="https://news.google.com/">' + c.research + '</a><a class="ai-research-link" id="aiWebLink" target="_blank" rel="noopener nofollow" href="https://www.google.com/">' + c.web + '</a></div></div>';
     panel.querySelector('.ai-mini-close').onclick = close;
     panel.querySelector('.ai-full-link').onclick = close;
     panel.querySelectorAll('.ai-mini-chips button').forEach(chip => chip.onclick = () => setResult(chip.textContent));
