@@ -56,6 +56,7 @@ jobs:
         run: |
           set -euo pipefail
           python scripts/publish_daily_insight.py
+          python scripts/ensure_daily_insight_min_words.py
 
       - name: Spremi promjene ako postoje
         id: commit
