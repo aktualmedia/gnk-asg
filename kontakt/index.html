@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Kontakt | GNK ASG d.o.o.</title>
-  <meta name="description" content="Službeni kontakt GNK ASG d.o.o., kontakt forma, e-mail adrese domene, WhatsApp i priprema komunikacijskog sustava IT – Osobni digitalni asistent.">
+  <meta name="description" content="Službeni kontakt GNK ASG d.o.o., kontakt forma, e-mail adrese domene, WhatsApp i komunikacijski sustav IT – Osobni digitalni asistent.">
   <meta name="keywords" content="GNK ASG d.o.o., GNK DINAMO Ltd., Nermin Sefić, kontakt, e-mail, WhatsApp, kontakt forma, IT osobni digitalni asistent, Zagreb">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <link rel="canonical" href="https://gnk-asg.hr/kontakt/">
   <link rel="alternate" hreflang="hr" href="https://gnk-asg.hr/kontakt/">
   <link rel="alternate" hreflang="en" href="https://gnk-asg.hr/en/contact/">
   <link rel="stylesheet" href="../assets/style.css?v=20260601-quality01">
-  <link rel="stylesheet" href="../assets/contact-form.css?v=20260612-contact01">
+  <link rel="stylesheet" href="../assets/contact-form.css?v=20260612-contact03">
   <link rel="icon" href="https://gnk-asg.hr/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Kontakt | GNK ASG d.o.o.">
   <meta property="og:description" content="Službeni kontakt GNK ASG d.o.o., kontakt forma, e-mail adrese domene i WhatsApp kanal.">
@@ -26,7 +26,7 @@
 <main class="contact-wrap" id="top"><div class="container"><article class="contact-card">
   <p class="eyebrow">Službeni kontakt</p>
   <h1>Kontakt GNK ASG d.o.o.</h1>
-  <p class="lead">Službeni kontakt kanali za javnu, poslovnu i međunarodnu komunikaciju. Kontakt forma i e-mail adrese domene pripremljene su za aktivaciju Cloudflare/Email sustava.</p>
+  <p class="lead">Službeni kontakt kanali za javnu, poslovnu i međunarodnu komunikaciju. Kontakt forma šalje upit kroz zaštićeni Cloudflare endpoint, a e-mail i WhatsApp ostaju kao dodatni kontakt kanali.</p>
   <div class="official-contact">
     <a href="tel:+385916104398"><strong>Hrvatska · tel / WhatsApp</strong><span>+385 91 610 4398</span></a>
     <a href="https://wa.me/385916104398?text=Pozdrav%2C%20kontaktiram%20GNK%20ASG%20d.o.o.%20putem%20portala%20u%20vezi%20teme%3A" target="_blank" rel="noopener"><strong>WhatsApp chat</strong><span>aktivni kanal</span></a>
@@ -43,9 +43,9 @@
   </div>
 
   <section class="contact-form-card" aria-labelledby="contactFormTitle">
-    <p class="eyebrow">Kontakt forma · priprema za /api/contact</p>
+    <p class="eyebrow">Kontakt forma · /api/contact</p>
     <h2 id="contactFormTitle">Pošaljite upit</h2>
-    <p>Do aktivacije server endpointa forma priprema sadržaj za e-mail ili WhatsApp. Nakon aktivacije Cloudflare Workera ista forma šalje upit kroz zaštićeni komunikacijski sustav.</p>
+    <p>Forma šalje upit kroz zaštićeni Cloudflare Worker endpoint i sprema ga u interni kontakt log. Za pravne, financijske, medijske i druge osjetljive teme odgovor daje ovlaštena osoba nakon provjere.</p>
     <form data-gnk-contact-form>
       <div class="contact-form-grid">
         <label>Ime i prezime / naziv *<input name="name" autocomplete="name" required></label>
@@ -58,23 +58,23 @@
         <label class="wide">Poruka *<textarea name="message" required></textarea></label>
       </div>
       <label class="contact-consent"><input type="checkbox" name="privacy_consent" required> <span>Potvrđujem da se uneseni podatci koriste radi zaprimanja i obrade ovog upita. Za pravne, financijske, osobne ili druge osjetljive teme odgovor daje ovlaštena osoba nakon provjere.</span></label>
-      <div class="contact-form-actions"><button type="submit">PRIPREMI UPIT</button><a data-mail-fallback href="mailto:info@gnk-asg.hr">Pošalji e-mail</a><a data-whatsapp-fallback href="https://wa.me/385916104398" target="_blank" rel="noopener">WhatsApp</a></div>
-      <div class="contact-form-status">Forma je spremna za unos. Server slanje će se uključiti nakon aktivacije Cloudflare endpointa.</div>
+      <div class="contact-form-actions"><button type="submit">POŠALJI KROZ PORTAL</button><a data-whatsapp-fallback href="https://wa.me/385916104398" target="_blank" rel="noopener">WhatsApp</a></div>
+      <div class="contact-form-status">Forma je spremna za unos. Kliknite “POŠALJI KROZ PORTAL” za slanje kroz zaštićeni kontakt endpoint.</div>
       <p class="contact-privacy-small">Poruka ne predstavlja automatsko prihvaćanje obveze, ponude ili pravnog odnosa. AL/AI sustav smije pripremiti nacrt odgovora, ali sadržajni odgovori za osjetljive teme traže ljudsku potvrdu.</p>
     </form>
   </section>
 
   <div class="mail-prep-grid">
-    <div class="mail-prep-card"><strong>Primanje e-mailova</strong><span>Cloudflare Email Routing / Email Worker</span></div>
-    <div class="mail-prep-card"><strong>Slanje e-mailova</strong><span>Resend ili Brevo nakon DNS verifikacije</span></div>
-    <div class="mail-prep-card"><strong>AL obrada</strong><span>čita samo odobreni inbox log i priprema nacrt</span></div>
+    <div class="mail-prep-card"><strong>Primanje e-mailova</strong><span>Cloudflare Email Routing aktivan</span></div>
+    <div class="mail-prep-card"><strong>Kontakt endpoint</strong><span>/api/contact aktivan kroz Cloudflare Worker</span></div>
+    <div class="mail-prep-card"><strong>AL obrada</strong><span>čita samo odobreni inbox/log i priprema nacrt</span></div>
     <div class="mail-prep-card"><strong>Sigurnosno pravilo</strong><span>automatski samo potvrda primitka</span></div>
   </div>
-  <div class="contact-note"><strong>Status:</strong> kontakt forma, e-mail adrese i WhatsApp kanal pripremljeni su za javni prikaz. Sljedeći korak je aktivacija Cloudflare Email Routinga, outbound slanja i /api/contact endpointa.</div>
+  <div class="contact-note"><strong>Status:</strong> kontakt forma, e-mail adrese, WhatsApp kanal i Cloudflare kontakt endpoint pripremljeni su za javni prikaz. Slanje kroz portal sprema upit u sigurni kontakt log.</div>
 </article></div></main>
 <a class="whatsapp-floating-contact" href="https://wa.me/385916104398?text=Pozdrav%2C%20kontaktiram%20GNK%20ASG%20d.o.o.%20putem%20portala%20u%20vezi%20teme%3A" target="_blank" rel="noopener">WhatsApp</a>
 <a class="float-home" href="#top" aria-label="Na početak" title="Na početak">⌂</a>
 <script src="../assets/app.js?v=20260612-contact01"></script>
-<script src="../assets/contact-form.js?v=20260612-contact01"></script>
+<script src="../assets/contact-form.js?v=20260612-contact03"></script>
 </body>
 </html>
