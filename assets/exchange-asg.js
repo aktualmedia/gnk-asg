@@ -10,6 +10,12 @@
   const usd = value => new Intl.NumberFormat(english() ? 'en-US' : 'hr-HR', {style:'currency', currency:'USD', maximumFractionDigits:2}).format(Number(value || 0));
   const pct = value => value == null ? '—' : `${Number(value) >= 0 ? '+' : ''}${Number(value).toFixed(2)}%`;
   const esc = value => String(value || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function dateLabel(value) {
+    if (!value) return text('SNAPSHOT · vrijeme izvora nije dostupno','SNAPSHOT · source time unavailable');
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return text('SNAPSHOT · vrijeme izvora nije dostupno','SNAPSHOT · source time unavailable');
+    return text('Provjera izvora: ', 'Source check: ') + d.toLocaleString(english() ? 'en-GB' : 'hr-HR');
+  }
   function goldValues() {
     const priceOz = Number(macro?.assets?.gold?.current || 0);
     const goldKg = priceOz * OUNCES_PER_KG;
@@ -39,7 +45,7 @@
   function renderExchange() {
     const panel = document.getElementById('exchangePanel');
     if (!panel || !exchange) return;
-    panel.innerHTML = `<div class="exchange-head"><div><span class="exchange-label">${text('BURZOVNI MONITOR','STOCK EXCHANGE MONITOR')}</span><h3>${text('Hrvatska i svjetska tržišta','Croatian and global markets')}</h3><p>${text('Zagrebačka burza te referentni indeksi dvaju vodećih američkih tržišta.','Zagreb Stock Exchange and reference indices of two leading US markets.')}</p></div><span class="exchange-refresh">${text('Brza provjera · 5 min','Fast check · 5 min')}</span></div><div class="exchange-grid">${(exchange.markets || []).map(marketCard).join('')}</div><p class="exchange-disclaimer">${esc(english() ? exchange.disclaimer_en : exchange.disclaimer_hr)}</p>`;
+    panel.innerHTML = `<div class="exchange-head"><div><span class="exchange-label">${text('BURZOVNI MONITOR','STOCK EXCHANGE MONITOR')}</span><h3>${text('Hrvatska i svjetska tržišta','Croatian and global markets')}</h3><p>${text('Zagrebačka burza te referentni indeksi dvaju vodećih američkih tržišta.','Zagreb Stock Exchange and reference indices of two leading US markets.')}</p></div><span class="exchange-refresh">${dateLabel(exchange.updated_at || exchange.checked_at)}</span></div><div class="exchange-grid">${(exchange.markets || []).map(marketCard).join('')}</div><p class="exchange-disclaimer">${esc(english() ? exchange.disclaimer_en : exchange.disclaimer_hr)}</p>`;
   }
   function renderAsg() {
     const panel = document.getElementById('asgPanel');
