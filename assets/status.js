@@ -4,9 +4,9 @@
   let marketStatus = null;
   let marketPublished = null;
   let liveMarket = null;
-  const NEWS_MAX_AGE_MINUTES = 75;
-  const MARKET_MAX_AGE_MINUTES = 20;
-  const STATUS_POLL_INTERVAL_MS = 60000;
+  const NEWS_MAX_AGE_MINUTES = 1140;
+  const MARKET_MAX_AGE_MINUTES = 45;
+  const STATUS_POLL_INTERVAL_MS = 300000;
   const english = () => document.documentElement.lang === 'en' || (window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en');
   const minutesOld = value => value ? Math.max(0, (Date.now() - new Date(value).getTime()) / 60000) : Infinity;
   const dateLabel = value => value ? new Date(value).toLocaleString(english() ? 'en-GB' : 'hr-HR') : (english() ? 'not available' : 'nije dostupno');
@@ -73,7 +73,8 @@
 
     if (news && news.public_items != null) {
       const sourceNote = newsSourceIssues ? (en ? ' · ' + newsSourceIssues + ' source temporarily unavailable' : ' · ' + newsSourceIssues + ' izvor privremeno nedostupan') : '';
-      const newsText = en ? 'Business News: ' + news.public_items + ' items · Updated: ' + dateLabel(news.updated_at) + sourceNote : 'Poslovne vijesti: ' + news.public_items + ' stavki · Ažurirano: ' + dateLabel(news.updated_at) + sourceNote;
+      const cadence = en ? ' · twice daily' : ' · 2x dnevno';
+      const newsText = en ? 'Business News: ' + news.public_items + ' items' + cadence + ' · Updated: ' + dateLabel(news.updated_at) + sourceNote : 'Poslovne vijesti: ' + news.public_items + ' stavki' + cadence + ' · Ažurirano: ' + dateLabel(news.updated_at) + sourceNote;
       setBadge('newsBadge', newsText, newsFresh ? 'ok' : 'warning');
     }
 
@@ -82,18 +83,18 @@
       const text = en ? 'Digital Assets: ' + coins + ' assets · Live: ' + dateLabel(liveMarket.updated_at) : 'Digitalna imovina: ' + coins + ' stavki · Uživo: ' + dateLabel(liveMarket.updated_at);
       setBadge('marketBadge', text, 'ok');
     } else if (storedMarket) {
-      const text = en ? 'Digital Assets: ' + storedMarket.coins + ' assets · Updated: ' + dateLabel(storedMarket.updated_at) : 'Digitalna imovina: ' + storedMarket.coins + ' stavki · Ažurirano: ' + dateLabel(storedMarket.updated_at);
+      const text = en ? 'Digital Assets: ' + storedMarket.coins + ' assets · Snapshot: ' + dateLabel(storedMarket.updated_at) : 'Digitalna imovina: ' + storedMarket.coins + ' stavki · Snapshot: ' + dateLabel(storedMarket.updated_at);
       setBadge('marketBadge', text, storedMarketFresh ? 'ok' : 'warning');
     }
 
     if (newsFresh && marketFresh) {
-      setBadge('automationBadge', en ? 'Automated updates active' : 'Automatsko ažuriranje aktivno', 'ok');
+      setBadge('automationBadge', en ? 'Public data status OK' : 'Status javnih podataka uredan', 'ok');
     } else if (!newsFresh && !marketFresh) {
-      setBadge('automationBadge', en ? 'News and market updates delayed' : 'Kasne vijesti i tržišni podatci', 'warning');
+      setBadge('automationBadge', en ? 'News and market data delayed' : 'Kasne vijesti i tržišni podatci', 'warning');
     } else if (!newsFresh) {
       setBadge('automationBadge', en ? 'News publication delayed' : 'Kasni objava vijesti', 'warning');
     } else {
-      setBadge('automationBadge', en ? 'Market data checked, waiting for live app refresh' : 'Tržišni podatci provjereni, čeka se prikaz uživo', storedMarketFresh ? 'ok' : 'warning');
+      setBadge('automationBadge', en ? 'Market data snapshot shown' : 'Prikazan tržišni snapshot', storedMarketFresh ? 'ok' : 'warning');
     }
   }
 
