@@ -64,7 +64,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add insights-hr data/daily_insight_log.json 2>/dev/null || true
+          git add insights-hr assets/insights/daily data/daily_insight_log.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "Nema novih dnevnih objava za spremanje."
