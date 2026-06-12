@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Status Center | GNK ASG d.o.o.</title>
+  <meta name="description" content="GNK ASG Status Center prikazuje javni status portala, kontakt forme, mail modula, vijesti, tržišnih podataka, AI asistenta i aplikacijskog sloja.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="https://gnk-asg.hr/status/">
+  <link rel="stylesheet" href="../assets/style.css?v=20260523-8">
+  <link rel="icon" href="https://gnk-asg.hr/favicon.svg" type="image/svg+xml" sizes="any">
+  <style>
+    body{background:#f7f9fc;color:#07162d}.status-hero{background:#07162d;color:#fff;padding:58px 0}.status-hero h1{font-family:Georgia,serif;font-weight:500;font-size:clamp(2.1rem,5vw,3.7rem);line-height:1.08;margin:10px 0}.status-hero p{color:#dbe7f5;max-width:780px}.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}.status-card{background:#fff;border:1px solid #dae2ee;border-radius:22px;padding:20px;box-shadow:0 10px 28px rgba(7,22,45,.06)}.status-card small{font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:#64748b}.status-card h2{font-family:Georgia,serif;font-weight:500;color:#07162d;margin:8px 0}.status-pill{display:inline-flex;align-items:center;border-radius:999px;padding:7px 10px;font-weight:900;font-size:.75rem;margin-top:8px}.ok{background:#eaf9f0;color:#14532d}.warn{background:#fff7ed;color:#7c2d12}.bad{background:#fee2e2;color:#7f1d1d}.muted{color:#64748b}.status-meta{font-size:.82rem;color:#64748b;line-height:1.5;margin-top:10px}.notice{background:#07162d;color:#fff;border-radius:24px;padding:24px;border:1px solid rgba(212,175,55,.45);margin:26px 0}.notice p{color:#dbe7f5}@media(max-width:900px){.status-grid{grid-template-columns:1fr}.status-hero{padding:38px 0}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"GNK ASG Status Center","url":"https://gnk-asg.hr/status/","description":"Javni status portala GNK ASG d.o.o. za kontakt, mail, vijesti, tržišne podatke, aplikaciju i AI asistenta.","publisher":{"@type":"Organization","name":"GNK ASG d.o.o.","url":"https://gnk-asg.hr/"}}</script>
+</head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="../"><img src="../assets/logo-gnk-asg.svg" alt="GNK ASG d.o.o."></a><nav class="nav-links"><a href="../">Početna</a><a href="../aplikacija/">Aplikacija</a><a href="../kontakt/">Kontakt</a><a href="../legal.html">Legal</a></nav></div></header>
+<main>
+<section class="status-hero"><div class="container"><p class="eyebrow">Status Center</p><h1>Status portala i javnih modula</h1><p>Ova stranica prikazuje javni tehnički status osnovnih funkcija portala: kontakt forma, mail obavijesti, poslovne vijesti, market data, burzovni monitor, AI pomoćnik, instalacija aplikacije i pravne informacije.</p></div></section>
+<section><div class="container"><div id="statusGrid" class="status-grid"><article class="status-card"><small>Sustav</small><h2>Učitavanje statusa</h2><span class="status-pill warn">PROVJERA</span><p class="status-meta">Čitam javne data datoteke i endpoint status.</p></article></div><div class="notice"><h2>Napomena</h2><p>Status je informativan. Tržišni podatci mogu biti LIVE, SNAPSHOT, DELAYED ili FALLBACK i ne predstavljaju financijski ili investicijski savjet. Administratorske funkcije nisu dio javnog statusa.</p></div></div></section>
+</main>
+<footer><div class="container"><p>© 2026 GNK ASG d.o.o. · <a href="../">Početna</a> · <a href="../kontakt/">Kontakt</a> · <a href="../legal.html">Legal</a></p></div></footer>
+<script>
+(function(){
+  const grid=document.getElementById('statusGrid');
+  const now=()=>Date.now();
+  const ageMin=v=>v?Math.max(0,(now()-new Date(v).getTime())/60000):Infinity;
+  const dt=v=>{try{return v?new Date(v).toLocaleString('hr-HR'):'nije dostupno'}catch(e){return 'nije dostupno'}};
+  async function read(url){try{const r=await fetch(url+(url.includes('?')?'&':'?')+'v='+Date.now(),{cache:'no-store'});if(!r.ok)return null;return await r.json()}catch(e){return null}}
+  function cls(status){return status==='OK'?'ok':status==='PAŽNJA'?'warn':'bad'}
+  function card(title,status,meta,detail){return '<article class="status-card"><small>GNK ASG</small><h2>'+title+'</h2><span class="status-pill '+cls(status)+'">'+status+'</span><p class="status-meta">'+meta+'</p><p class="status-meta">'+detail+'</p></article>'}
+  async function boot(){
+    const values=await Promise.all([read('/api/contact/status'),read('/data/news.json'),read('/data/market.json'),read('/data/macro_market.json'),read('/data/stock_exchanges.json'),read('/data/fast_market_status.json')]);
+    const contact=values[0],news=values[1],market=values[2],macro=values[3],stocks=values[4],fast=values[5];
+    const items=[];
+    items.push(card('Kontakt forma i mail',contact&&contact.ok?'OK':'PAŽNJA',contact?'Endpoint aktivan: '+(contact.mode||'active'):'Endpoint nije potvrđen','Zadnja provjera: '+new Date().toLocaleString('hr-HR')));
+    items.push(card('Poslovne vijesti',Array.isArray(news)&&news.length?'OK':'PAŽNJA',Array.isArray(news)?'Vidljivo stavki: '+news.length:'Datoteka vijesti nije učitana',Array.isArray(news)&&news[0]?'Zadnja stavka: '+(news[0].title||'bez naslova'):'Provjeriti /data/news.json'));
+    const mTime=(market&&(market.updated_at||market.checked_at))||(fast&&(fast.updated_at||fast.checked_at));
+    items.push(card('Digital Exchange Monitor',market?'OK':'PAŽNJA',market?'Status: '+(market.status||'public data'):'Market datoteka nije učitana','Ažuriranje/provjera: '+dt(mTime)));
+    items.push(card('Cross-Asset Monitor',macro?'OK':'PAŽNJA',macro?'Bitcoin · zlato · Brent · USD/EUR':'Macro market nije učitan','Ažuriranje/provjera: '+dt(macro&&(macro.updated_at||macro.checked_at))));
+    items.push(card('Burzovni monitor',stocks?'OK':'PAŽNJA',stocks?'Status: '+(stocks.data_status||stocks.status||'source check'):'Burzovni status nije učitan','Ažuriranje/provjera: '+dt(stocks&&(stocks.updated_at||stocks.checked_at))));
+    items.push(card('AI asistent i aplikacija','OK','Javni AI pomoćnik, kontakt, instalacija i legal informacije dostupni su iz portala.','Admin aplikacija je skrivena i nije javna funkcija.'));
+    grid.innerHTML=items.join('');
+  }
+  boot();
+})();
+</script>
+</body></html>
