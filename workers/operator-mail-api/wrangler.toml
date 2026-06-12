@@ -10,9 +10,11 @@ compatibility_date = "2026-06-12"
 # ]
 
 [vars]
-MAIL_FROM = "it@gnk-asg.hr"
-MAIL_FROM_NAME = "GNK ASG"
 OPERATOR_ALLOW_NO_ACCESS = "false"
+
+# Sender is selected by operator UI: it@gnk-asg.hr or info@gnk-asg.hr.
+# Do not set a fixed MAIL_FROM if both identities should be used.
+# MAIL_FROM_NAME may be handled by the Worker according to selected identity.
 
 # Secrets, set in Cloudflare / Wrangler, not in GitHub:
 # RESEND_API_KEY
