@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<title>GNK ASG News</title>
+<meta name="description" content="Samostalni brzi news sloj portala GNK ASG d.o.o.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{--navy:#07162d;--blue:#143b6d;--gold:#d4af37;--paper:#f7f9fc;--line:#dbe4ef;--muted:#64748b;--white:#fff;--ink:#07162d}*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}.container{width:min(1180px,calc(100% - 32px));margin:auto}.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy);font-weight:900}.brand img{height:42px;width:auto}.menu{display:flex;gap:12px;align-items:center}.menu a{text-decoration:none;color:var(--blue);font-size:13px;font-weight:900;text-transform:uppercase}.hero{padding:48px 0 30px;background:linear-gradient(135deg,#fff,#eef3f8);border-bottom:1px solid var(--line)}.eyebrow{color:#9a6b13;font-weight:900;text-transform:uppercase;letter-spacing:.18em;font-size:12px}.hero h1{font-family:Georgia,serif;font-size:clamp(40px,7vw,68px);font-weight:500;margin:10px 0;color:var(--navy)}.hero p{color:#435269;font-size:18px;max-width:760px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:11px 15px;text-decoration:none;font-weight:900;border:1px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer}.btn.ghost{background:#fff;color:var(--navy)}.status{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin:18px 0;color:#23364e;white-space:pre-wrap}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 46px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;min-height:190px;display:flex;flex-direction:column}.card small{display:block;color:#9a6b13;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.card h2{font-size:18px;color:var(--navy);margin:10px 0;line-height:1.28}.card p{color:var(--muted);font-size:14px;margin:0 0 12px}.card a{margin-top:auto;color:var(--blue);font-weight:900;text-decoration:none}.warn{background:#fff7db;border:1px solid #efdc9d;color:#5e4a18;border-radius:16px;padding:14px;margin:18px 0}footer{background:var(--navy);color:#dbe7f5;padding:30px 0}footer a{color:#dbe7f5;text-decoration:none;margin-right:14px}@media(max-width:900px){.grid{grid-template-columns:1fr}.menu{display:none}.brand img{height:34px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="container nav"><a class="brand" href="/news/"><img src="/assets/logo-gnk-asg.svg" alt="GNK ASG"><span>GNK ASG News</span></a><nav class="menu"><a href="/front/">Front</a><a href="/operator/app/">Admin</a><a href="/operator/api-check/">API Check</a></nav></div></header>
+<main>
+<section class="hero"><div class="container"><div class="eyebrow">Samostalni news sloj</div><h1>Poslovne vijesti</h1><p>Vijesti su izdvojene iz glavnog portala radi bržeg učitavanja. Ako podatkovni feed kasni, ova stranica se ipak učita i prikaže status.</p><div class="toolbar"><button class="btn" id="reload">Osvježi vijesti</button><a class="btn ghost" href="/operator/api-check/">Provjeri API</a><a class="btn ghost" href="/front/">Brzi front</a></div><div id="status" class="status">Učitavanje news feeda...</div></div></section>
+<section><div class="container"><div id="newsGrid" class="grid"><article class="card"><p>Učitavanje...</p></article></div></div></section>
+</main>
+<footer><div class="container"><a href="/front/">Front</a><a href="/operator/app/">Admin App</a><a href="/operator/frontend-health/">Frontend Health</a></div></footer>
+<script>
+(function(){
+const grid=document.getElementById('newsGrid');const status=document.getElementById('status');
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function load(){status.textContent='Učitavanje /data/news.json ...';grid.innerHTML='<article class="card"><p>Učitavanje...</p></article>';const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),5000);try{const r=await fetch('/data/news.json?cb='+Date.now(),{cache:'no-store',signal:ctrl.signal});clearTimeout(timer);if(!r.ok)throw new Error('HTTP '+r.status);const data=await r.json();const items=Array.isArray(data)?data:(data.items||data.news||[]);status.textContent='OK: učitano '+items.length+' stavki. Prikazuje se najviše 60.';if(!items.length)throw new Error('Feed je prazan');grid.innerHTML=items.slice(0,60).map(x=>{const title=x.title||x.name||'Bez naslova';const source=x.source||x.publisher||x.category||'NEWS';const summary=x.summary||x.description||x.excerpt||'';const url=x.url||x.link||'#';return '<article class="card"><small>'+esc(source)+'</small><h2>'+esc(title)+'</h2><p>'+esc(summary).slice(0,220)+'</p><a href="'+esc(url)+'" target="_blank" rel="noopener nofollow">Otvori izvor</a></article>';}).join('');}catch(e){clearTimeout(timer);status.textContent='News feed nije dostupan: '+e.message;grid.innerHTML='<article class="card"><small>STATUS</small><h2>News feed trenutačno nije dostupan</h2><p>Front, admin i API sloj ostaju dostupni. Provjeriti /operator/api-check/ i GitHub workflow za vijesti.</p><a href="/operator/api-check/">Provjeri API</a></article>';}}
+document.getElementById('reload').onclick=load;load();
+})();
+</script>
+</body>
+</html>
