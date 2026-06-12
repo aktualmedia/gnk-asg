@@ -1,9 +1,11 @@
 {
-  "version": "2026-06-12-cloudflare-mail-backend-01",
+  "version": "2026-06-12-cloudflare-mail-backend-02",
   "module": "cloudflare_mail_backend_setup",
-  "status": "function_code_added",
-  "function_path": "functions/api/operator/mail-batch/send.js",
-  "public_endpoint": "/api/operator/mail-batch/send",
+  "status": "send_and_log_functions_added",
+  "send_function_path": "functions/api/operator/mail-batch/send.js",
+  "log_function_path": "functions/api/operator/mail-log/list.js",
+  "send_endpoint": "/api/operator/mail-batch/send",
+  "log_endpoint": "/api/operator/mail-log/list",
   "cloudflare_requirements": [
     "Cloudflare Pages project connected to this repository or deployed with the functions directory",
     "Pages Functions enabled by Cloudflare Pages deployment",
@@ -23,5 +25,9 @@
     "MAIL_LOG_KV"
   ],
   "temporary_test_variable": "OPERATOR_ALLOW_NO_ACCESS=true can be used only for controlled testing and should not remain enabled in production.",
-  "next_check": "After Cloudflare deploy, open /api/operator/mail-batch/send with GET. Expected JSON: ok true, endpoint mail-batch-send."
+  "checks": [
+    "GET /api/operator/mail-batch/send returns endpoint mail-batch-send",
+    "GET /api/operator/mail-log/list returns endpoint mail-log-list",
+    "POST /api/operator/mail-batch/send writes to MAIL_LOG_KV when binding exists"
+  ]
 }
