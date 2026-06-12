@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-06-01T00:17:00+00:00",
-  "updated_at": "2026-06-01T00:17:00+00:00",
+  "checked_at": "2026-06-12T15:32:28+00:00",
+  "updated_at": "2026-06-12T15:32:28+00:00",
   "status": "ok",
-  "refresh_frequency": "Automated reference check on the five-minute market cycle",
-  "refresh_frequency_hr": "Automatska provjera u petominutnom tržišnom ciklusu",
-  "refresh_frequency_en": "Automated check in the five-minute market cycle",
+  "refresh_frequency": "Scheduled stock-exchange source check every 60 minutes",
+  "refresh_frequency_hr": "Planirana provjera burzovnih izvora svakih 60 minuta",
+  "refresh_frequency_en": "Scheduled stock-exchange source check every 60 minutes",
   "disclaimer_hr": "Informativni burzovni prikaz. Podatci mogu biti vremenski odgođeni; prije financijske odluke provjerite službeni izvor burze.",
   "disclaimer_en": "Informational stock-market display. Data may be delayed; verify the exchange official source before any financial decision.",
   "markets": [
@@ -15,14 +15,16 @@
       "symbol": "CBX",
       "region_hr": "Hrvatska",
       "region_en": "Croatia",
-      "status": "official_online",
+      "official_url": "https://zse.hr/hr/indeks/365?isin=HRZB00ICBEX6&tab=stock_info",
       "delay_hr": "Službeni ZSE prikaz · odgoda 15 min",
       "delay_en": "Official ZSE display · 15 min delay",
-      "official_url": "https://zse.hr/hr/indeks/365?isin=HRZB00ICBEX6&tab=stock_info",
+      "checked_at": "2026-06-12T15:32:28+00:00",
+      "status": "official_source_link",
       "value": null,
       "change_percent": null,
       "points": [],
-      "checked_at": "2026-06-01T00:17:00+00:00"
+      "source_timestamp": null,
+      "last_successful_refresh_at": "2026-06-01T00:17:00+00:00"
     },
     {
       "id": "crobex10",
@@ -31,14 +33,16 @@
       "symbol": "CROBEX10",
       "region_hr": "Hrvatska",
       "region_en": "Croatia",
-      "status": "official_online",
+      "official_url": "https://zse.hr/hr/burzovni-indeksi/38",
       "delay_hr": "Službeni ZSE online prikaz",
       "delay_en": "Official ZSE online display",
-      "official_url": "https://zse.hr/hr/burzovni-indeksi/38",
+      "checked_at": "2026-06-12T15:32:28+00:00",
+      "status": "official_source_link",
       "value": null,
       "change_percent": null,
       "points": [],
-      "checked_at": "2026-06-01T00:17:00+00:00"
+      "source_timestamp": null,
+      "last_successful_refresh_at": "2026-06-01T00:17:00+00:00"
     },
     {
       "id": "nyse",
@@ -47,46 +51,14 @@
       "symbol": "^NYA",
       "region_hr": "SAD",
       "region_en": "USA",
-      "status": "public_market_feed",
+      "official_url": "https://www.nyse.com/quote/index/NYA",
       "delay_hr": "Javni informativni indeksni podatak; vrijednost može biti odgođena",
       "delay_en": "Public informational index data; value may be delayed",
-      "official_url": "https://www.nyse.com/quote/index/NYA",
-      "checked_at": "2026-06-01T00:17:00+00:00",
-      "value": 23292.17,
-      "change_percent": 0.64,
+      "checked_at": "2026-06-12T15:32:28+00:00",
+      "status": "public_market_feed",
+      "value": 23627.51,
+      "change_percent": 2.66,
       "points": [
-        [
-          1777555800000,
-          23144.640625
-        ],
-        [
-          1777642200000,
-          23041.15039062
-        ],
-        [
-          1777901400000,
-          22893.4609375
-        ],
-        [
-          1777987800000,
-          23008.66992188
-        ],
-        [
-          1778074200000,
-          23284.390625
-        ],
-        [
-          1778160600000,
-          23011.31054688
-        ],
-        [
-          1778247000000,
-          22942.15039062
-        ],
-        [
-          1778506200000,
-          22970.76953125
-        ],
         [
           1778592600000,
           23015.33984375
@@ -97,7 +69,7 @@
         ],
         [
           1778765400000,
-          23101.84960938
+          23101.849609375
         ],
         [
           1778851800000,
@@ -109,15 +81,15 @@
         ],
         [
           1779197400000,
-          22797.66992188
+          22797.669921875
         ],
         [
           1779283800000,
-          23021.74023438
+          23021.740234375
         ],
         [
           1779370200000,
-          23127.68945312
+          23127.689453125
         ],
         [
           1779456600000,
@@ -133,16 +105,56 @@
         ],
         [
           1779975000000,
-          23302.25976562
+          23302.259765625
         ],
         [
           1780061400000,
-          23292.16992188
+          23292.169921875
+        ],
+        [
+          1780320600000,
+          23335.16015625
+        ],
+        [
+          1780407000000,
+          23480.919921875
+        ],
+        [
+          1780493400000,
+          23276.490234375
+        ],
+        [
+          1780579800000,
+          23572.76953125
+        ],
+        [
+          1780666200000,
+          23256.5
+        ],
+        [
+          1780925400000,
+          23224.19921875
+        ],
+        [
+          1781011800000,
+          23381.08984375
+        ],
+        [
+          1781098200000,
+          23080.830078125
+        ],
+        [
+          1781184600000,
+          23412.890625
+        ],
+        [
+          1781271000000,
+          23627.505859375
         ]
       ],
       "currency": "USD",
-      "source_timestamp": "2026-05-29T13:30:00+00:00",
-      "last_successful_refresh_at": "2026-06-01T00:17:00+00:00"
+      "source_timestamp": "2026-06-12T13:30:00+00:00",
+      "last_successful_refresh_at": "2026-06-12T15:32:28+00:00"
     },
     {
       "id": "nasdaq",
@@ -151,46 +163,14 @@
       "symbol": "^IXIC",
       "region_hr": "SAD",
       "region_en": "USA",
-      "status": "public_market_feed",
+      "official_url": "https://www.nasdaq.com/market-activity/index/comp",
       "delay_hr": "Javni informativni indeksni podatak; vrijednost može biti odgođena",
       "delay_en": "Public informational index data; value may be delayed",
-      "official_url": "https://www.nasdaq.com/market-activity/index/comp",
-      "checked_at": "2026-06-01T00:17:00+00:00",
-      "value": 26972.62,
-      "change_percent": 8.36,
+      "checked_at": "2026-06-12T15:32:28+00:00",
+      "status": "public_market_feed",
+      "value": 25962.05,
+      "change_percent": -0.48,
       "points": [
-        [
-          1777555800000,
-          24892.31054688
-        ],
-        [
-          1777642200000,
-          25114.43945312
-        ],
-        [
-          1777901400000,
-          25067.80078125
-        ],
-        [
-          1777987800000,
-          25326.13085938
-        ],
-        [
-          1778074200000,
-          25838.93945312
-        ],
-        [
-          1778160600000,
-          25806.19921875
-        ],
-        [
-          1778247000000,
-          26247.08007812
-        ],
-        [
-          1778506200000,
-          26274.13085938
-        ],
         [
           1778592600000,
           26088.19921875
@@ -201,7 +181,7 @@
         ],
         [
           1778765400000,
-          26635.22070312
+          26635.220703125
         ],
         [
           1778851800000,
@@ -221,11 +201,11 @@
         ],
         [
           1779370200000,
-          26293.09960938
+          26293.099609375
         ],
         [
           1779456600000,
-          26343.97070312
+          26343.970703125
         ],
         [
           1779802200000,
@@ -237,28 +217,61 @@
         ],
         [
           1779975000000,
-          26917.47070312
+          26917.470703125
         ],
         [
           1780061400000,
-          26972.61914062
+          26972.619140625
+        ],
+        [
+          1780320600000,
+          27086.810546875
+        ],
+        [
+          1780407000000,
+          27093.900390625
+        ],
+        [
+          1780493400000,
+          26853.98046875
+        ],
+        [
+          1780579800000,
+          26830.9609375
+        ],
+        [
+          1780666200000,
+          25709.4296875
+        ],
+        [
+          1780925400000,
+          25929.66015625
+        ],
+        [
+          1781011800000,
+          25678.8203125
+        ],
+        [
+          1781098200000,
+          25169.5
+        ],
+        [
+          1781184600000,
+          25809.66015625
+        ],
+        [
+          1781271000000,
+          25962.048828125
         ]
       ],
       "currency": "USD",
-      "source_timestamp": "2026-05-29T13:30:00+00:00",
-      "last_successful_refresh_at": "2026-06-01T00:17:00+00:00"
+      "source_timestamp": "2026-06-12T13:30:00+00:00",
+      "last_successful_refresh_at": "2026-06-12T15:32:28+00:00"
     }
   ],
   "errors": [],
-  "automated_sources": {
-    "nyse": "Public market chart feed; verify at NYSE official source",
-    "nasdaq": "Public market chart feed; verify at Nasdaq official source",
-    "crobex": "Official ZSE link only",
-    "crobex10": "Official ZSE link only"
-  },
-  "last_attempt_at": "2026-06-01T00:17:00+00:00",
-  "heartbeat_policy": "timestamp_updates_on_every_automation_run",
-  "stale_safe": true,
-  "last_successful_refresh_at": "2026-06-01T00:17:00+00:00",
-  "data_status": "fresh_or_reference_checked"
+  "last_attempt_at": "2026-06-12T15:32:28+00:00",
+  "last_successful_refresh_at": "2026-06-12T15:32:28+00:00",
+  "data_status": "fresh_public_feed_plus_official_links",
+  "runtime_seconds": 0.18
 }
