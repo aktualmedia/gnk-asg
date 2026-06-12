@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260612-frontend-stability-guard-01';
+  var VERSION = '20260612-frontend-stability-guard-02';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -18,7 +18,15 @@ document.addEventListener('DOMContentLoaded', function () {
   function script(path) {
     if (document.querySelector('script[src^="' + path + '"]')) return;
     var el = document.createElement('script');
-    el.src = path + '?v=' + VERSION; el.async = false; document.body.appendChild(el);
+    el.src = path + '?v=' + VERSION; el.async = false;
+    var heavy = /world-geography|group-network|network-motion|group-globe|group-map|group-location|group-google|group-overview|group-market|network-selection|network-search|group-mobile-accessible|group-clarity|group-map-pdf|group-globe-pdf/.test(path);
+    if (heavy) {
+      var load = function () { if (!document.querySelector('script[src^="' + path + '"]')) document.body.appendChild(el); };
+      if ('requestIdleCallback' in window) window.requestIdleCallback(load, { timeout: 2500 });
+      else window.setTimeout(load, 1200);
+      return;
+    }
+    document.body.appendChild(el);
   }
   style('/assets/fina-panel.css');
   style('/assets/advanced.css');
