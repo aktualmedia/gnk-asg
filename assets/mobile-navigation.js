@@ -8,29 +8,36 @@
       finance:'Financije', network:'Globalna mreža', technology:'Tehnologija i AI', markets:'Tržišta', news:'Vijesti', desk:'Intelligence Desk', registers:'Javni registri', documents:'Dokumenti', mail:'Webmail', install:'Instaliraj aplikaciju', control:'Upravljanje'
     };
   }
+  function directNavLinks(nav) {
+    return Array.prototype.filter.call(nav.children || [], child => child && child.tagName === 'A');
+  }
   function renderMenu() {
-    const nav = document.getElementById('navLinks');
-    if (!nav) return;
-    nav.querySelectorAll(':scope > a').forEach(link => link.classList.add('desktop-nav-link'));
-    let mobile = nav.querySelector('.mobile-menu-links');
-    if (!mobile) {
-      mobile = document.createElement('div');
-      mobile.className = 'mobile-menu-links';
-      nav.prepend(mobile);
+    try {
+      const nav = document.getElementById('navLinks');
+      if (!nav) return;
+      directNavLinks(nav).forEach(link => link.classList.add('desktop-nav-link'));
+      let mobile = nav.querySelector('.mobile-menu-links');
+      if (!mobile) {
+        mobile = document.createElement('div');
+        mobile.className = 'mobile-menu-links';
+        nav.prepend(mobile);
+      }
+      const t = labels();
+      mobile.innerHTML = '<a class="primary" href="#assistant">' + t.desk + '</a>' +
+        '<a href="#global-network">' + t.network + '</a>' +
+        '<a href="#financials">' + t.finance + '</a>' +
+        '<a href="#technology">' + t.technology + '</a>' +
+        '<a href="#digital-assets">' + t.markets + '</a>' +
+        '<a href="#news">' + t.news + '</a>' +
+        '<a href="#publicSources">' + t.registers + '</a>' +
+        '<a href="#dokumenti">' + t.documents + '</a>' +
+        '<a href="/webmail/">' + t.mail + '</a>' +
+        '<a href="/instalacija/">' + t.install + '</a>' +
+        '<a class="management-link" href="/operator/app/">' + t.control + '</a>';
+      mobile.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
+    } catch (error) {
+      window.GNK_FRONTEND_STATE && window.GNK_FRONTEND_STATE.errors && window.GNK_FRONTEND_STATE.errors.push({ type:'mobile-navigation', detail:String(error.message || error), at:new Date().toISOString() });
     }
-    const t = labels();
-    mobile.innerHTML = '<a class="primary" href="#assistant">' + t.desk + '</a>' +
-      '<a href="#global-network">' + t.network + '</a>' +
-      '<a href="#financials">' + t.finance + '</a>' +
-      '<a href="#technology">' + t.technology + '</a>' +
-      '<a href="#digital-assets">' + t.markets + '</a>' +
-      '<a href="#news">' + t.news + '</a>' +
-      '<a href="#publicSources">' + t.registers + '</a>' +
-      '<a href="#dokumenti">' + t.documents + '</a>' +
-      '<a href="/webmail/">' + t.mail + '</a>' +
-      '<a href="/instalacija/">' + t.install + '</a>' +
-      '<a class="management-link" href="/admin/">' + t.control + '</a>';
-    mobile.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
   }
   function removeLegacyFloatingHome() {
     document.querySelectorAll('.float-home, .mobile-home').forEach(home => home.remove());
