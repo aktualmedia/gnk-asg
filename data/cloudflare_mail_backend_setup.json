@@ -1,0 +1,27 @@
+{
+  "version": "2026-06-12-cloudflare-mail-backend-01",
+  "module": "cloudflare_mail_backend_setup",
+  "status": "function_code_added",
+  "function_path": "functions/api/operator/mail-batch/send.js",
+  "public_endpoint": "/api/operator/mail-batch/send",
+  "cloudflare_requirements": [
+    "Cloudflare Pages project connected to this repository or deployed with the functions directory",
+    "Pages Functions enabled by Cloudflare Pages deployment",
+    "Cloudflare Access recommended for /operator/* and /api/operator/*",
+    "one outbound mail provider secret configured",
+    "optional KV binding for official mail log"
+  ],
+  "required_secret_one_of": [
+    "RESEND_API_KEY",
+    "BREVO_API_KEY"
+  ],
+  "recommended_environment_variables": [
+    "MAIL_FROM",
+    "MAIL_FROM_NAME"
+  ],
+  "optional_bindings": [
+    "MAIL_LOG_KV"
+  ],
+  "temporary_test_variable": "OPERATOR_ALLOW_NO_ACCESS=true can be used only for controlled testing and should not remain enabled in production.",
+  "next_check": "After Cloudflare deploy, open /api/operator/mail-batch/send with GET. Expected JSON: ok true, endpoint mail-batch-send."
+}
