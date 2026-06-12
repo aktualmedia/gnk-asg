@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260613-market-visual-fix-01';
+  var VERSION = '20260613-fast-functions-no-design-01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -8,6 +8,17 @@ document.addEventListener('DOMContentLoaded', function () {
       if (typeof input === 'string' && input.indexOf('data/') === 0) input = '/' + input;
       return nativeFetch(input, init);
     };
+  }
+
+  function optimizeMedia() {
+    document.querySelectorAll('img').forEach(function (img, index) {
+      if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+      if (index > 1 && !img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+      if (index > 1 && !img.hasAttribute('fetchpriority')) img.setAttribute('fetchpriority', 'low');
+    });
+    document.querySelectorAll('iframe').forEach(function (frame) {
+      if (!frame.hasAttribute('loading')) frame.setAttribute('loading', 'lazy');
+    });
   }
 
   function style(path) {
@@ -27,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if ('requestIdleCallback' in window) window.requestIdleCallback(fn, {timeout: timeout || 2200});
     else window.setTimeout(fn, Math.min(timeout || 2200, 900));
   }
+
+  optimizeMedia();
 
   style('/assets/fina-panel.css');
   style('/assets/advanced.css');
@@ -80,9 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  script('/assets/i18n.js', function () {
-    script('/assets/language-routing.js');
-  });
+  script('/assets/i18n.js', function () { script('/assets/language-routing.js'); });
   script('/assets/portal-navigation.js');
   script('/assets/status.js');
   script('/assets/browser-data-refresh.js');
@@ -91,15 +102,19 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/bitcoin-chart.js');
   script('/assets/market-expansion.js');
   script('/assets/bpp-public-card.js');
-  script('/assets/news-live.js');
-  script('/assets/assistant.js');
-  script('/assets/inline-assistant.js');
-  script('/assets/intelligence-desk.js');
-  script('/assets/desk-hybrid.js');
-  script('/assets/desk-search.js');
-  script('/assets/mobile-app.js');
-  script('/assets/mobile-navigation.js');
-  script('/assets/floating-intelligence.js');
+
+  runIdle(function () {
+    script('/assets/news-live.js');
+    script('/assets/assistant.js');
+    script('/assets/inline-assistant.js');
+    script('/assets/intelligence-desk.js');
+    script('/assets/desk-hybrid.js');
+    script('/assets/desk-search.js');
+    script('/assets/mobile-app.js');
+    script('/assets/mobile-navigation.js');
+    script('/assets/floating-intelligence.js');
+  }, 2200);
+
   runIdle(function () {
     script('/assets/world-geography.js', function () {
       script('/assets/group-network.js', function () {
@@ -123,11 +138,14 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }, 1800);
-  script('/assets/public-sources.js');
-  script('/assets/site-share.js');
-  script('/assets/hourly-data-disclosure.js');
-  script('/assets/portal-layout.js');
-  script('/assets/home-activity-model.js');
+
+  runIdle(function () {
+    script('/assets/public-sources.js');
+    script('/assets/site-share.js');
+    script('/assets/hourly-data-disclosure.js');
+    script('/assets/portal-layout.js');
+    script('/assets/home-activity-model.js');
+  }, 2600);
 
   var dataDisclaimer = document.getElementById('dataDisclaimer');
   if (dataDisclaimer) dataDisclaimer.textContent = 'Podaci su informativni, mogu kasniti i nisu financijski savjet.';
