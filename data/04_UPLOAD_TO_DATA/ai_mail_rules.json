@@ -1,0 +1,21 @@
+{
+  "version": "2026-06-12",
+  "assistant": "IT – Osobni digitalni asistent",
+  "mode": "draft_only",
+  "safe_actions": [
+    "classify_message",
+    "prepare_reply_draft",
+    "prepare_generic_acknowledgement",
+    "route_to_human"
+  ],
+  "blocked_without_human_approval": [
+    "legal_advice",
+    "financial_advice",
+    "tax_advice",
+    "investment_advice",
+    "media_statement",
+    "official_company_commitment",
+    "court_or_dispute_response",
+    "personal_sensitive_data_response"
+  ]
+}
