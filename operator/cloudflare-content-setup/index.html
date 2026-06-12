@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>GNK ASG Cloudflare Content Setup</title>
+<link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
+<style>body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:980px;margin:auto;padding:36px 16px 80px}.head{color:#fff}.head h1{font-family:Georgia,serif;font-size:48px;font-weight:500;margin:8px 0}.head p{color:#dbe7f5}.panel{background:#fff;border:1px solid #dce5f0;border-radius:24px;padding:22px;margin:16px 0;box-shadow:0 16px 44px rgba(0,0,0,.18)}.btn{display:inline-block;border-radius:999px;padding:11px 15px;background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35);font-weight:900;text-decoration:none;margin:6px 6px 6px 0}.box{white-space:pre-wrap;background:#f7f9fc;border-radius:16px;padding:14px;color:#23364e;line-height:1.6;overflow:auto}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{border:1px solid #e5edf6;border-radius:18px;padding:14px;background:#fbfdff}.pill{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;text-transform:uppercase;background:#fef3c7;color:#92400e}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style>
+</head>
+<body><main class="wrap">
+<section class="head"><p>GNK ASG Admin App</p><h1>Cloudflare Content Setup</h1><p>Koraci za spajanje CONTENT_DRAFT_KV i Worker ruta za objave.</p><a class="btn" href="../app/">Admin App</a><a class="btn" href="../api-check/">API Check</a><a class="btn" href="../post-compose/">Post Composer</a></section>
+<section class="panel"><h2>1. KV namespace</h2><div class="box">Naziv: CONTENT_DRAFT_KV
+Svrha: spremanje draft/ready paketa iz Post Composer modula.
+
+Nakon kreiranja KV namespacea, spojiti binding u Worker:
+Binding name: CONTENT_DRAFT_KV
+Namespace: CONTENT_DRAFT_KV</div></section>
+<section class="panel"><h2>2. Worker</h2><div class="box">Worker name:
+gnk-asg-content-publish-api
+
+Izvorni kod u repozitoriju:
+workers/content-publish-api/src/index.js
+
+Wrangler konfiguracija:
+workers/content-publish-api/wrangler.toml</div></section>
+<section class="panel"><h2>3. Rute</h2><div class="box">Spojiti Worker na ove rute:
+
+gnk-asg.hr/api/operator/content/publish
+gnk-asg.hr/api/operator/content/list
+
+Preporuka:
+Zaštititi /api/operator/content/* kroz Cloudflare Access.</div></section>
+<section class="panel"><h2>4. Varijable</h2><div class="box">OPERATOR_ALLOW_NO_ACCESS=false
+
+Privremeno samo za kontrolirani test može biti:
+OPERATOR_ALLOW_NO_ACCESS=true
+
+Nakon testa vratiti na false.</div></section>
+<section class="panel"><h2>5. Test redoslijed</h2><div class="box">1. Otvori /operator/api-check/.
+2. Provjeri Content publish endpoint.
+3. Provjeri Content list endpoint.
+4. Ako je 401, ruta postoji ali traži autorizaciju.
+5. Ako je OK, otvori /operator/post-compose/.
+6. Upiši probnu objavu kao draft.
+7. Klikni Pošalji u backend.
+8. Otvori /operator/content-list/ i provjeri je li zapis spremljen.</div></section>
+<section class="panel"><h2>Napomena</h2><div class="box">Ovaj sloj u prvoj fazi ne mijenja javni statički portal. On sprema objave u backend KV kao draft ili ready zapis. Javno objavljivanje statičke stranice ostaje odvojeni zaštićeni deploy/write proces.</div></section>
+</main></body></html>
