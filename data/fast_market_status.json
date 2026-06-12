@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-01T09:00:06+00:00",
-  "cadence": "scheduled every five minutes",
+  "updated_at": "2026-06-12T09:13:35+00:00",
+  "cadence": "scheduled every 30 minutes",
   "status": "ok",
   "digital_assets": {
     "coins": 12,
@@ -10,13 +10,13 @@
   "exchanges": 6,
   "indices": 6,
   "errors": [],
-  "checked_at": "2026-06-01T09:00:06+00:00",
-  "last_attempt_at": "2026-06-01T09:00:06+00:00",
-  "heartbeat_policy": "timestamp_updates_on_every_automation_run",
+  "checked_at": "2026-06-12T09:13:35+00:00",
+  "last_attempt_at": "2026-06-12T09:13:35+00:00",
+  "heartbeat_policy": "timestamp_updates_on_every_market_automation_run",
   "stale_safe": true,
-  "last_successful_refresh_at": "2026-06-01T09:00:06+00:00",
+  "last_successful_refresh_at": "2026-06-12T09:13:35+00:00",
   "data_status": "fresh_or_reference_checked",
   "source_status": "ok",
   "internal_errors": [],
-  "runtime_seconds": 0.27
+  "runtime_seconds": 0.14
 }
