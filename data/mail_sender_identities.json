@@ -1,5 +1,5 @@
 {
-  "version": "2026-06-12-mail-sender-identities-01",
+  "version": "2026-06-12-mail-sender-identities-02",
   "domain": "gnk-asg.hr",
   "default_identity": "assistant",
   "identities": [
@@ -13,10 +13,10 @@
     {
       "id": "owner",
       "label": "Nermin Sefić",
-      "email": "nermin@gnk-asg.hr",
+      "email": "office@gnk-asg.hr",
       "sender_name": "Nermin Sefić",
-      "signature_hr": "Nermin Sefić\nGNK ASG d.o.o.\nhttps://gnk-asg.hr"
+      "signature_hr": "Nermin Sefić\nDirektor i UBO\nGNK ASG d.o.o.\nGNK DINAMO Ltd.\nhttps://gnk-asg.hr"
     }
   ],
-  "note": "Adrese moraju biti potvrđene kod outbound mail providera i DNS autentificirane kroz Cloudflare."
+  "note": "Adrese it@gnk-asg.hr i office@gnk-asg.hr moraju biti potvrđene kod outbound mail providera i DNS autentificirane kroz Cloudflare."
 }
