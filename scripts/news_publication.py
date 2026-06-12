@@ -27,13 +27,13 @@ IMAGES = ROOT / 'assets' / 'news-preview'
 SITE = 'https://gnk-asg.hr'
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
 UA = 'GNK-ASG-News-Publication/1.0'
-PUBLIC_LIMIT = 500
-ARCHIVE_LIMIT = 400
+PUBLIC_LIMIT = 100
+ARCHIVE_LIMIT = 500
 PREVIEW_LIMIT = 80
 TIMEOUT = 6
 WORKERS = 12
 MIN_SOURCE_SUCCESS_RATIO = 0.80
-CADENCE_LABEL = 'scheduled every one hour and twenty-one minutes'
+CADENCE_LABEL = 'scheduled twice daily at 09:00 and 16:00 Europe/Zagreb'
 
 
 def read_json(name, default):
@@ -250,9 +250,11 @@ def main():
         sorted(rows + old_public + old_archive, key=lambda row: str(row.get('published_at', '')), reverse=True),
         read_json('blocked_news.json', {'urls': [], 'title_terms': []}),
     )
-    public = all_rows[:min(PUBLIC_LIMIT, max(1, int(conf.get('max_items', PUBLIC_LIMIT))))]
+    public_limit = min(PUBLIC_LIMIT, max(1, int(conf.get('max_items', PUBLIC_LIMIT))))
+    archive_limit = max(1, int(conf.get('archive_limit', ARCHIVE_LIMIT)))
+    public = all_rows[:public_limit]
     overflow = all_rows[len(public):]
-    archive = overflow[:ARCHIVE_LIMIT]
+    archive = overflow[:archive_limit]
     made, preview_errors = previews(public)
     counts = {}
     for row in public:
@@ -266,19 +268,19 @@ def main():
         'status': status_value,
         'engine': 'single_publication_engine_v1',
         'cadence': CADENCE_LABEL,
-        'source_success_policy': 'publish_when_at_least_80_percent_of_sources_are_synced',
+        'source_success_policy': 'publish_valid_public_set_with_degraded_status_when_partial_sources_fail',
         'source_success_threshold': MIN_SOURCE_SUCCESS_RATIO,
         'source_success_ratio': source_success_ratio,
         'source_sync_status': source_sync_status,
         'configured_sources': configured_sources,
         'successful_sources': successful_sources,
         'failed_sources': failed_sources,
-        'storage_policy': 'public_latest_500_archive_latest_400_older_overflow_removed',
+        'storage_policy': 'public_latest_100_archive_latest_500_older_overflow_removed',
         'public_items': len(public),
-        'max_public_items': PUBLIC_LIMIT,
+        'max_public_items': public_limit,
         'archive_items': len(archive),
-        'max_archive_items': ARCHIVE_LIMIT,
-        'discarded_archive_overflow_items': max(0, len(overflow) - ARCHIVE_LIMIT),
+        'max_archive_items': archive_limit,
+        'discarded_archive_overflow_items': max(0, len(overflow) - archive_limit),
         'fetched_candidates': len(rows),
         'duplicates_or_blocked_removed': removed,
         'request_timeout_seconds': TIMEOUT,
