@@ -1,47 +1,42 @@
 {
-  "updated_at": "2026-06-12T09:33:04+00:00",
+  "updated_at": "2026-06-12T09:33:40+00:00",
   "news": {
-    "updated_at": "2026-06-12T09:32:51+00:00",
+    "updated_at": "2026-06-12T09:33:37+00:00",
     "status": "ok",
     "engine": "single_publication_engine_v1",
     "cadence": "scheduled every 30 minutes",
     "source_success_policy": "publish_valid_public_set_with_degraded_status_when_partial_sources_fail",
     "source_success_threshold": 0.8,
-    "source_success_ratio": 0.9778,
+    "source_success_ratio": 1.0,
     "source_sync_status": "complete_by_80_percent_rule",
     "configured_sources": 45,
-    "successful_sources": 44,
-    "failed_sources": 1,
+    "successful_sources": 45,
+    "failed_sources": 0,
     "storage_policy": "public_latest_500_archive_latest_400_older_overflow_removed",
     "public_items": 100,
     "max_public_items": 500,
     "archive_items": 400,
     "max_archive_items": 400,
-    "discarded_archive_overflow_items": 229,
-    "fetched_candidates": 480,
-    "duplicates_or_blocked_removed": 101,
+    "discarded_archive_overflow_items": 270,
+    "fetched_candidates": 531,
+    "duplicates_or_blocked_removed": 261,
     "request_timeout_seconds": 6,
     "network_workers": 12,
     "share_previews_ready": 80,
     "by_group": {
+      "srbija": 19,
       "hrvatska": 15,
-      "technology": 42,
+      "technology": 33,
       "economy": 3,
-      "srbija": 4,
-      "international": 17,
+      "international": 12,
       "slovenija": 1,
-      "digital-assets": 15,
+      "digital-assets": 14,
       "bih": 2,
       "mobilnost": 1
     },
-    "errors": [
-      {
-        "source": "Biznis.rs",
-        "error": "The read operation timed out"
-      }
-    ],
+    "errors": [],
     "preview_errors": [],
-    "checked_at": "2026-06-12T09:33:04+00:00",
-    "last_attempt_at": "2026-06-12T09:33:04+00:00"
+    "checked_at": "2026-06-12T09:33:40+00:00",
+    "last_attempt_at": "2026-06-12T09:33:40+00:00"
   }
 }
