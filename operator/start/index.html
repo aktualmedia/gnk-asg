@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
   <style>
-    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:1040px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:20px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{display:block;background:#fff;border:1px solid #dce5f0;border-radius:22px;padding:18px;box-shadow:0 16px 44px rgba(0,0,0,.18);color:#07162d;text-decoration:none}.card h2{font-size:19px;margin:0 0 8px}.card p{color:#52647b;line-height:1.55}.note{background:#fff;border-left:4px solid #ad7d20;border-radius:18px;padding:16px;margin-top:16px;color:#23364e;line-height:1.55}.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;text-transform:uppercase;margin-bottom:8px;background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35)}@media(max-width:900px){.grid{grid-template-columns:1fr}}
+    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:1040px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:20px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{display:block;background:#fff;border:1px solid #dce5f0;border-radius:22px;padding:18px;box-shadow:0 16px 44px rgba(0,0,0,.18);color:#07162d;text-decoration:none}.card h2{font-size:19px;margin:0 0 8px}.card p{color:#52647b;line-height:1.55}.card.primary{background:#fffaf0;border-color:rgba(180,126,30,.35)}.note{background:#fff;border-left:4px solid #ad7d20;border-radius:18px;padding:16px;margin-top:16px;color:#23364e;line-height:1.55}.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;text-transform:uppercase;margin-bottom:8px;background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35)}@media(max-width:900px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -18,7 +18,9 @@
       <p>Centralni pregled modula. Ova stranica je statična i ne izvršava radnje.</p>
     </section>
     <section class="grid">
+      <a class="card primary" href="../app/"><h2>Admin App</h2><p>Novi control center za mobitel i desktop.</p></a>
       <a class="card" href="../dashboard/"><h2>Dashboard</h2><p>Funkcionalni pregled statusa, modula i backlog-a.</p></a>
+      <a class="card" href="../post-compose/"><h2>Post Composer</h2><p>Priprema objava i SEO paketa.</p></a>
       <a class="card" href="../smart-replies/"><h2>Smart Replies</h2><p>Klasifikacija maila i nacrt odgovora bez slanja.</p></a>
       <a class="card" href="../inbound-mail/"><h2>Inbound Mail</h2><p>Status kopije/obavijesti za it@gnk-asg.hr.</p></a>
       <a class="card" href="../api-check/"><h2>API Check</h2><p>Provjera mail endpointa bez slanja.</p></a>
@@ -28,8 +30,6 @@
       <a class="card" href="../mail-setup/"><h2>Mail DNS Setup</h2><p>Cloudflare DNS kontrolna lista za slanje.</p></a>
       <a class="card" href="../mail/"><h2>Mail batch</h2><p>Napredna priprema i slanje paketa.</p></a>
       <a class="card" href="../status/"><h2>Status</h2><p>Read-only pregled stanja konfiguracija.</p></a>
-      <a class="card" href="../faq/"><h2>Znanje asistenta</h2><p>FAQ i pravila odgovora.</p></a>
-      <a class="card" href="../audio/"><h2>Glasovni modul</h2><p>Čitanje naglas i navigacija glasom.</p></a>
     </section>
     <section class="note">Zaštićene radnje ostaju kroz backend, potvrdu i zapis radnji. Kozmetika ide tek nakon funkcionalne stabilizacije.</section>
   </main>
