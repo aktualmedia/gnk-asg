@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 STATUS_PATH = ROOT / "data" / "update_status.json"
+# Manual refresh trigger: 2026-06-12T22:00:00+02:00
 
 
 def main() -> int:
