@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="theme-color" content="#07162d">
+  <title>GNK ASG Admin Install</title>
+  <link rel="manifest" href="/admin-mobile/manifest.webmanifest">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+  <style>
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#07162d;color:#fff}.wrap{max-width:860px;margin:auto;padding:28px}.hero{padding:30px 0}.hero h1{font-family:Georgia,serif;color:#d4af37;font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;margin:8px 0}.hero p{color:#dbe7f5;max-width:720px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:#fff;color:#07162d;border-radius:24px;padding:22px;border:1px solid rgba(212,175,55,.45)}.card h2{font-family:Georgia,serif;font-weight:500;color:#07162d}.card p,.card li{color:#64748b;line-height:1.55}.btn{display:inline-block;border-radius:999px;background:#d4af37;color:#07162d;text-decoration:none;font-weight:900;padding:12px 16px;margin-top:10px}.ghost{background:#143b6d;color:#fff}.warn{background:#fff7ed;color:#7c2d12;border-radius:16px;padding:12px;margin-top:12px}.qrbox{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center}.qrbox img{width:120px;height:120px;background:#fff;border-radius:14px;padding:8px}@media(max-width:720px){.grid,.qrbox{grid-template-columns:1fr}.wrap{padding:18px}.qrbox img{width:160px;height:160px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero"><p>PRIVATE · NOINDEX</p><h1>GNK ASG Admin aplikacija</h1><p>Ovo je skrivena instalacijska stranica za administratorsku mobilnu i desktop aplikaciju. Koristi se samo za ovlaštene osobe kojima je poveznica izravno dana.</p></section>
+    <section class="grid">
+      <article class="card"><h2>Admin mobile</h2><p>Za mobitel: otvorite ovu stranicu ili /admin-mobile/ u Chromeu ili Safariju, zatim dodajte aplikaciju na početni zaslon. Aplikacija traži lokalni PIN, a za stvarno slanje sadržaja koristi zaseban Cloudflare admin token.</p><a class="btn" href="/admin-mobile/">Otvori admin mobile</a></article>
+      <article class="card"><h2>Admin desktop</h2><p>Za računalo: otvorite /admin-mobile/ u Chromeu ili Edgeu i instalirajte kao desktop aplikaciju. Otvara se u zasebnom prozoru i služi za nacrte objava, tekstove, fotografije i budući media operator.</p><a class="btn ghost" href="/admin-mobile/manifest.webmanifest">Otvori manifest</a></article>
+    </section>
+    <section class="card" style="margin-top:16px"><h2>Skriveni QR za admin app</h2><div class="qrbox"><img src="/assets/install-mobile-qr.svg" alt="Privremeni QR za GNK ASG admin instalaciju"><div><p>Privremeno se koristi QR instalacijski tok dok se ne doda zasebni admin QR. Ova stranica i admin aplikacija ostaju noindex i nisu dio javnog menija.</p><p class="warn">Sigurnost: lokalni PIN nije dovoljan za objavu. Pravi administratorski token mora biti Cloudflare secret i ne smije se slati javno.</p></div></div></section>
+  </main>
+</body>
+</html>
