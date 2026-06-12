@@ -1,0 +1,74 @@
+{
+  "version": "2026-06-12-backend-iq200-01",
+  "portal": "GNK ASG d.o.o.",
+  "domain": "gnk-asg.hr",
+  "frontend_policy": {
+    "rule": "Ne mijenjati postojeće frontend funkcionalnosti u ovom ciklusu; dopuštene su samo kozmetičke i tekstualne usklade statusa.",
+    "protected_modules": [
+      "public homepage layout",
+      "contact form frontend",
+      "market monitor frontend",
+      "business news renderer",
+      "AI / Intelligence Desk public frontend",
+      "3D globe and visual network"
+    ]
+  },
+  "news_publication": {
+    "engine": "scripts/news_publication.py",
+    "workflow": ".github/workflows/business-news-twice-daily.yml",
+    "public_limit": 100,
+    "archive_limit": 500,
+    "schedule": "09:00 and 16:00 Europe/Zagreb",
+    "source_threshold": 0.8,
+    "fallback_policy": "If some sources fail but at least 80 percent are synchronized, publish valid public set with degraded status metadata."
+  },
+  "daily_insights": {
+    "engine": "scripts/publish_daily_insight.py",
+    "workflow": ".github/workflows/daily-insights.yml",
+    "mode": "automatic editorial insight generation",
+    "editorial_responsibility": "Nermin Sefić",
+    "publisher": "GNK ASG d.o.o.",
+    "public_content_framework": "GNK DINAMO Ltd."
+  },
+  "market_data": {
+    "fast_market_workflow": ".github/workflows/fast-market-update.yml",
+    "stored_snapshot": "data/market.json",
+    "status_file": "data/fast_market_status.json",
+    "display_rule": "Use live app data when available; otherwise show stored snapshot with clear status."
+  },
+  "contact": {
+    "frontend_status": "confirmed_working_by_owner",
+    "endpoint": "/api/contact",
+    "policy": "Contact form may receive inquiries; sensitive legal, financial, media or official responses require human review."
+  },
+  "mail_automation": {
+    "policy_file": "data/mail_automation_policy.json",
+    "default_mode": "draft_only",
+    "automatic_send_allowed": [
+      "generic_receipt_acknowledgement",
+      "technical_receipt_notice"
+    ],
+    "human_approval_required_for": [
+      "legal",
+      "financial",
+      "tax",
+      "investment",
+      "media_statement",
+      "court_or_criminal_matter",
+      "contractual_commitment",
+      "personal_sensitive_data",
+      "password_token_or_bank_data"
+    ]
+  },
+  "quality_gate": {
+    "required_before_public_change": [
+      "JSON files must parse",
+      "news public limit must stay at 100",
+      "archive limit must stay at or below 500",
+      "status cadence must match twice daily news policy",
+      "mail automation must remain draft_only unless explicitly approved",
+      "contact form must keep human approval rule for sensitive topics",
+      "no secrets may be committed"
+    ]
+  }
+}
