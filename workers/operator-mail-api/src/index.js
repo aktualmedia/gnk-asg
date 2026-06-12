@@ -1,5 +1,10 @@
 const MAX_RECIPIENTS = 30;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const ALLOWED_SENDERS = new Set(["it@gnk-asg.hr", "info@gnk-asg.hr"]);
+const SENDER_NAMES = {
+  "it@gnk-asg.hr": "IT – Osobni digitalni asistent",
+  "info@gnk-asg.hr": "Nermin Sefić"
+};
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data, null, 2), {
@@ -13,6 +18,18 @@ function json(data, status = 200) {
 
 function safeText(value, max = 5000) {
   return String(value || "").trim().slice(0, max);
+}
+
+function cleanSender(value) {
+  return safeText(value || envSafeDefaultSender(), 240).toLowerCase();
+}
+
+function senderName(sender) {
+  return SENDER_NAMES[sender] || "GNK ASG";
+}
+
+function resendFrom(sender) {
+  return `${senderName(sender)} <${sender}>`;
 }
 
 function getAccessIdentity(request, env) {
@@ -31,18 +48,20 @@ function validatePayload(payload) {
   const subject = safeText(payload.subject, 240);
   const body = safeText(payload.body, 20000);
   const footer = safeText(payload.footer, 5000);
-  const sender = safeText(payload.sender || envSafeDefaultSender(), 240);
+  const sender = cleanSender(payload.sender);
+  const identity = safeText(payload.identity || (sender === "info@gnk-asg.hr" ? "owner" : "assistant"), 80);
   const mode = safeText(payload.mode || "batch_send", 80);
   const campaign = safeText(payload.campaign || "", 240);
   const label = safeText(payload.label || "", 240);
   const problems = [];
   if (!sender || !EMAIL_RE.test(sender)) problems.push("Invalid sender.");
+  if (!ALLOWED_SENDERS.has(sender)) problems.push("Sender is not allowed for this endpoint.");
   if (!recipients.length) problems.push("No recipients.");
   if (recipients.length > MAX_RECIPIENTS) problems.push("Too many recipients. Maximum is 30.");
   if (invalid.length) problems.push("Invalid recipient address.");
   if (!subject) problems.push("Missing subject.");
   if (!body) problems.push("Missing body.");
-  return { ok: problems.length === 0, problems, data: { recipients, sender, subject, body, footer, mode, campaign, label } };
+  return { ok: problems.length === 0, problems, data: { recipients, sender, identity, subject, body, footer, mode, campaign, label } };
 }
 
 function envSafeDefaultSender() {
@@ -50,11 +69,10 @@ function envSafeDefaultSender() {
 }
 
 async function sendViaResend(env, data) {
-  const from = env.MAIL_FROM || data.sender;
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { "authorization": `Bearer ${env.RESEND_API_KEY}`, "content-type": "application/json" },
-    body: JSON.stringify({ from, to: data.recipients, subject: data.subject, text: `${data.body}\n\n${data.footer || ""}`.trim() })
+    body: JSON.stringify({ from: resendFrom(data.sender), to: data.recipients, subject: data.subject, text: `${data.body}\n\n${data.footer || ""}`.trim() })
   });
   const text = await response.text();
   let parsed = text;
@@ -63,12 +81,10 @@ async function sendViaResend(env, data) {
 }
 
 async function sendViaBrevo(env, data) {
-  const senderEmail = env.MAIL_FROM || data.sender;
-  const senderName = env.MAIL_FROM_NAME || "GNK ASG";
   const response = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: { "api-key": env.BREVO_API_KEY, "content-type": "application/json" },
-    body: JSON.stringify({ sender: { email: senderEmail, name: senderName }, to: data.recipients.map(email => ({ email })), subject: data.subject, textContent: `${data.body}\n\n${data.footer || ""}`.trim() })
+    body: JSON.stringify({ sender: { email: data.sender, name: senderName(data.sender) }, to: data.recipients.map(email => ({ email })), subject: data.subject, textContent: `${data.body}\n\n${data.footer || ""}`.trim() })
   });
   const text = await response.text();
   let parsed = text;
@@ -97,7 +113,7 @@ async function listLog(env, limit = 30) {
 }
 
 async function handleSend(request, env) {
-  if (request.method === "GET") return json({ ok: true, endpoint: "mail-batch-send", methods: ["GET", "POST", "OPTIONS"], max_recipients: MAX_RECIPIENTS });
+  if (request.method === "GET") return json({ ok: true, endpoint: "mail-batch-send", methods: ["GET", "POST", "OPTIONS"], max_recipients: MAX_RECIPIENTS, allowed_senders: [...ALLOWED_SENDERS] });
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: { "cache-control": "no-store" } });
   if (request.method !== "POST") return json({ ok: false, error: "Method not allowed" }, 405);
   const access = getAccessIdentity(request, env);
@@ -113,9 +129,9 @@ async function handleSend(request, env) {
   if (env.RESEND_API_KEY) sendResult = await sendViaResend(env, data);
   else if (env.BREVO_API_KEY) sendResult = await sendViaBrevo(env, data);
   else sendResult = { ok: false, provider: "none", status: 500, response: "No outbound mail provider configured." };
-  const entry = { id, created_at: createdAt, sent_at: sendResult.ok ? new Date().toISOString() : null, sender: data.sender, recipient_count: data.recipients.length, subject: data.subject, campaign: data.campaign, label: data.label, mode: data.mode, status: sendResult.ok ? (data.mode === "test_send" ? "test_sent" : "sent") : "failed", provider: sendResult.provider, provider_status: sendResult.status, operator: access.email || access.method, error_message: sendResult.ok ? "" : String(sendResult.response || "send failed").slice(0, 500) };
+  const entry = { id, created_at: createdAt, sent_at: sendResult.ok ? new Date().toISOString() : null, sender: data.sender, identity: data.identity, recipient_count: data.recipients.length, subject: data.subject, campaign: data.campaign, label: data.label, mode: data.mode, status: sendResult.ok ? (data.mode === "test_send" ? "test_sent" : "sent") : "failed", provider: sendResult.provider, provider_status: sendResult.status, operator: access.email || access.method, error_message: sendResult.ok ? "" : String(sendResult.response || "send failed").slice(0, 500) };
   const log = await writeLog(env, entry).catch(error => ({ ok: false, reason: error.message }));
-  return json({ ok: sendResult.ok, id, provider: sendResult.provider, provider_status: sendResult.status, recipient_count: data.recipients.length, log, response: sendResult.response }, sendResult.ok ? 200 : 502);
+  return json({ ok: sendResult.ok, id, sender: data.sender, identity: data.identity, provider: sendResult.provider, provider_status: sendResult.status, recipient_count: data.recipients.length, log, response: sendResult.response }, sendResult.ok ? 200 : 502);
 }
 
 async function handleLog(request, env) {
