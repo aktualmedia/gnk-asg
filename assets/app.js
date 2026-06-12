@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260612-journalist-finalize02';
+  var VERSION = '20260612-frontend-stability-guard-01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/seo-profile-link.css');
   style('/assets/menu-fix.css');
   style('/assets/quality-patch.css');
+  script('/assets/frontend-stability-guard.js');
   script('/assets/i18n.js');
   script('/assets/language-routing.js');
   script('/assets/portal-navigation.js');
@@ -154,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var menuButton = document.getElementById('menuToggle');
   var menu = document.getElementById('navLinks');
-  if (menuButton && menu) {
+  if (menuButton && menu && menuButton.dataset.gnkStableMenu !== '1') {
     menuButton.addEventListener('click', function () { menu.classList.toggle('open'); });
     document.addEventListener('click', function (event) {
       if (!menu.contains(event.target) && event.target !== menuButton) menu.classList.remove('open');
