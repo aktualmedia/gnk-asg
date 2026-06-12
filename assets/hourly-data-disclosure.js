@@ -12,11 +12,11 @@
     if (!section) return;
     section.querySelectorAll('strong, span, p').forEach(node => {
       const current = node.textContent.trim();
-      if (/^(Osvježava se svakih 5 minuta|Javni podatci generiraju se satno)$/.test(current)) {
-        node.textContent = 'Tržišta svakih 5 minuta · vijesti svakih 15 minuta';
+      if (/^(Osvježava se svakih 5 minuta|Javni podatci generiraju se satno|Tržišta svakih 5 minuta · vijesti svakih 15 minuta)$/.test(current)) {
+        node.textContent = 'Digital assets svakih 30 minuta · vijesti u 09:00 i 16:00';
       }
-      if (/^(Refreshes every 5 minutes|Public data generated hourly)$/.test(current)) {
-        node.textContent = 'Markets every 5 minutes · news every 15 minutes';
+      if (/^(Refreshes every 5 minutes|Public data generated hourly|Markets every 5 minutes · news every 15 minutes)$/.test(current)) {
+        node.textContent = 'Digital assets every 30 minutes · news at 09:00 and 16:00 Zagreb time';
       }
     });
   }
@@ -53,11 +53,13 @@
     }
     const data = await loadStatus();
     const news = data && data.news;
-    const publicItems = news && Number.isFinite(Number(news.public_items)) ? Number(news.public_items) : 500;
+    const publicItems = news && Number.isFinite(Number(news.public_items)) ? Number(news.public_items) : 100;
     const archiveItems = news && Number.isFinite(Number(news.archive_items)) ? Number(news.archive_items) : 0;
+    const maxArchive = news && Number.isFinite(Number(news.max_archive_items)) ? Number(news.max_archive_items) : 500;
+    const trimTo = news && Number.isFinite(Number(news.archive_trim_to_items)) ? Number(news.archive_trim_to_items) : 250;
     notice.textContent = isEnglish()
-      ? 'Public window: ' + publicItems + ' newest items · Active archive: ' + archiveItems + ' older items (maximum 400).'
-      : 'Javni prozor: ' + publicItems + ' najnovijih stavki · Aktivna arhiva: ' + archiveItems + ' starijih stavki (najviše 400).';
+      ? 'Public window: ' + publicItems + ' newest items · Old-news container: ' + archiveItems + ' older items (rotates at ' + maxArchive + ', keeps ' + trimTo + ').'
+      : 'Javni prozor: ' + publicItems + ' najnovijih stavki · Spremnik starih vijesti: ' + archiveItems + ' starijih stavki (rotira se na ' + maxArchive + ', zadržava ' + trimTo + ').';
     cleanNewsStatus();
   }
   function refresh() {
