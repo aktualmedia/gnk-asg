@@ -23,6 +23,7 @@ MACRO_PATH = DATA / "macro_market.json"
 STATUS_PATH = DATA / "fast_market_status.json"
 TIMEOUT = 12
 USER_AGENT = "GNK-ASG-MacroMarket/2.0 (+https://gnk-asg.hr/)"
+# Manual refresh trigger: 2026-06-12T22:00:00+02:00
 
 ASSETS = {
     "btc": {"symbol": "BTC-USD", "label": "Bitcoin", "ticker": "BTC", "unit": "USD / BTC", "source": "Yahoo Finance public chart", "invert": False},
