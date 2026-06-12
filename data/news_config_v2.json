@@ -4,9 +4,10 @@
   "max_items": 100,
   "max_per_source": 40,
   "archive_limit": 500,
-  "archive_trim_to": 250,
-  "rotation_policy": "Nove vijesti ulaze prve; duplikati i blokirane objave se uklanjaju; javno se prikazuje najnovijih 100 stavki; starije stavke ulaze u spremnik starih vijesti; kada spremnik dosegne 500 stavki zadržava se 250 najnovijih starih vijesti, a stariji višak se briše radi stabilnog rada objave.",
-  "automation_verification": "Jedinstveni proces scripts/news_publication.py mora poštovati javni limit 100, spremnik starih vijesti do 500 i rezanje na 250. Lider i The Guardian Business ne koriste se kao izravni izvori javnih poslovnih vijesti.",
+  "archive_trim_to": 500,
+  "refresh_policy": "Redovni javni ciklus poslovnih vijesti izvršava se dva puta dnevno: 09:00 i 16:00 po hrvatskom vremenu / Europe/Zagreb.",
+  "rotation_policy": "Nove vijesti ulaze prve; duplikati i blokirane objave se uklanjaju; javno se prikazuje najnovijih 100 stavki; starije stavke ulaze u spremnik starih vijesti; arhiva zadržava do 500 najnovijih starih vijesti, a stariji višak se briše radi stabilnog rada objave.",
+  "automation_verification": "Jedinstveni proces scripts/news_publication.py mora poštovati javni limit 100, spremnik starih vijesti do 500 i režim javnog osvježavanja dva puta dnevno, u 09:00 i 16:00 Europe/Zagreb. Lider i The Guardian Business ne koriste se kao izravni izvori javnih poslovnih vijesti.",
   "sources": [
     {"name":"Poslovni dnevnik","group":"hrvatska","category":"economy","url":"https://www.poslovni.hr/feed"},
     {"name":"Biznis.rs","group":"srbija","category":"economy","url":"https://biznis.rs/feed/"},
