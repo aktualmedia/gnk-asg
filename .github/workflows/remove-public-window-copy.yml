@@ -1,0 +1,50 @@
+name: Remove Public News Internal Copy
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/remove-public-window-copy.yml"
+      - ".github/remove-public-window-copy-trigger.txt"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove internal public-window wording
+        shell: python
+        run: |
+          from pathlib import Path
+          replacements = {
+            "Javni prozor prikazuje do 100 najnovijih poslovnih i tehnoloških vijesti iz hrvatskih, regionalnih i međunarodnih izvora. Starije stavke prelaze u spremnik starih vijesti, koji se automatski rotira kada dosegne 500 stavki tako da zadržava 250 najnovijih starih vijesti.": "Pregled odabranih poslovnih i tehnoloških vijesti iz hrvatskih, regionalnih i međunarodnih izvora.",
+            "Javni prozor prikazuje do 100 najnovijih poslovnih i tehnoloških vijesti. Starije stavke prelaze u spremnik starih vijesti, koji se automatski rotira kada dosegne 500 stavki tako da zadržava 250 najnovijih starih vijesti.": "Pregled odabranih poslovnih i tehnoloških vijesti iz hrvatskih, regionalnih i međunarodnih izvora.",
+            "Najnovijih 100 javnih stavki osvježava se u 09:00 i 16:00 po hrvatskom vremenu; starije stavke spremaju se i automatski rotiraju.": "Poslovne i tehnološke vijesti prikazuju se po uredničkom izboru portala.",
+            "The public window displays up to the 100 newest business and technology news items. Older items move into the old-news container, which rotates automatically when it reaches 500 items by keeping the newest 250 old items.": "Selected business and technology news from Croatian, regional and international sources.",
+            "The newest 100 public items refresh at 09:00 and 16:00 Europe/Zagreb; older items are stored and rotated automatically.": "Business and technology news are presented through the portal editorial selection."
+          }
+          files = [Path('index.html'), Path('assets/app.js'), Path('.github/workflows/apply-news-policy-copy.yml')]
+          for path in files:
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding='utf-8')
+              original = text
+              for old, new in replacements.items():
+                  text = text.replace(old, new)
+              if text != original:
+                  path.write_text(text, encoding='utf-8')
+      - name: Commit patch
+        shell: bash
+        run: |
+          git config user.name "gnk-asg-copy-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html assets/app.js .github/workflows/apply-news-policy-copy.yml
+          if git diff --cached --quiet; then
+            echo "No text changes."
+          else
+            git commit -m "Remove internal news archive wording from public copy"
+            git push
+          fi
