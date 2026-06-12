@@ -49,6 +49,28 @@ PAGES = [
         "changefreq": "daily",
         "lang": "hr",
     },
+    {
+        "path": "aplikacija/",
+        "file": "aplikacija/index.html",
+        "title": "GNK ASG aplikacija | Mobilna i desktop verzija | Funkcije za posjetitelje",
+        "description": "Javna mobilna i desktop GNK ASG aplikacija: tržišni monitori, poslovne vijesti, autorske objave, AI asistent, kontakt forma, WhatsApp kanal, legal informacije i instalacija.",
+        "keywords": "GNK ASG aplikacija, mobilna aplikacija, desktop aplikacija, instalacija, AI asistent, tržišni monitor, kontakt forma, WhatsApp kanal, poslovne vijesti, autorske objave, Nermin Sefić",
+        "type": "SoftwareApplication",
+        "priority": "0.8",
+        "changefreq": "weekly",
+        "lang": "hr",
+    },
+    {
+        "path": "status/",
+        "file": "status/index.html",
+        "title": "Status Center | GNK ASG d.o.o. | Portal, kontakt, mail, tržišta i AI",
+        "description": "GNK ASG Status Center prikazuje javni status portala, kontakt forme, mail modula, poslovnih vijesti, tržišnih podataka, AI asistenta i aplikacijskog sloja.",
+        "keywords": "GNK ASG status, status center, kontakt forma status, mail status, market data status, poslovne vijesti status, AI asistent status, LIVE SNAPSHOT DELAYED FALLBACK",
+        "type": "WebPage",
+        "priority": "0.8",
+        "changefreq": "daily",
+        "lang": "hr",
+    },
 ]
 
 
@@ -99,7 +121,7 @@ def seo_block(page: dict, matrix: dict) -> str:
         f'  <link rel="canonical" href="{u}">',
         f'  <meta property="og:title" content="{escape(page["title"])}">',
         f'  <meta property="og:description" content="{escape(page["description"])}">',
-        f'  <meta property="og:type" content="{("website" if page["type"] != "ContactPage" else "website")}">',
+        '  <meta property="og:type" content="website">',
         f'  <meta property="og:url" content="{u}">',
         '  <meta property="og:site_name" content="GNK ASG d.o.o. | GNK DINAMO Ltd. | Nermin Sefić">',
         '  <meta property="og:locale" content="hr_HR">',
