@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GNK ASG Command Center</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
+  <style>
+    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:960px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:20px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.panel{background:#fff;border:1px solid #dce5f0;border-radius:24px;padding:22px;margin:16px 0;box-shadow:0 16px 44px rgba(0,0,0,.18)}label{display:block;font-weight:900;margin:12px 0 7px}select,textarea,input{width:100%;box-sizing:border-box;border:1px solid #cbd5e1;border-radius:14px;padding:12px;font:inherit}textarea{min-height:120px}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.btn{display:inline-block;border:0;border-radius:999px;padding:11px 15px;background:#143b6d;color:#fff;font-weight:900;text-decoration:none;cursor:pointer;margin:8px 8px 8px 0}.ghost{background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35)}.box{white-space:pre-wrap;background:#f7f9fc;border-radius:16px;padding:14px;color:#23364e;line-height:1.6}.small{font-size:13px;color:#64748b;line-height:1.6}@media(max-width:800px){.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="head"><p>GNK ASG Operator</p><h1>Command Center</h1><p>Priprema operator naredbe kao JSON paket. Ova stranica ne izvršava naredbu.</p><a class="btn ghost" href="../start/">Operator start</a></section>
+    <section class="panel">
+      <div class="row"><div><label>Modul</label><select id="module"><option>mail</option><option>news</option><option>market</option><option>image</option><option>document</option><option>status</option><option>pwa</option><option>whatsapp</option></select></div><div><label>Prioritet</label><select id="priority"><option>normal</option><option>low</option><option>high</option></select></div></div>
+      <label>Kratka uputa</label><input id="title" placeholder="npr. pripremi test mail ili provjeri status vijesti">
+      <label>Detalji</label><textarea id="details" placeholder="Dodatne napomene za backend ili kasniji rad..."></textarea>
+      <button class="btn" id="make">Pripremi paket</button><button class="btn ghost" id="copy">Kopiraj paket</button>
+      <p class="small">Za slanje, objavu, upload ili rollback potrebna je potvrda kroz zaštićeni backend.</p>
+    </section>
+    <section class="panel"><h2>JSON paket</h2><div id="out" class="box">Nema paketa.</div></section>
+  </main>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  function make(){const p={version:'2026-06-12-command-package-01',created_at:new Date().toISOString(),module:$('module').value,priority:$('priority').value,title:$('title').value.trim(),details:$('details').value.trim(),mode:'prepare_only',requires_confirmation:true}; $('out').textContent=JSON.stringify(p,null,2);}
+  $('make').onclick=make;
+  $('copy').onclick=async()=>navigator.clipboard.writeText($('out').textContent);
+})();
+</script>
+</body>
+</html>
