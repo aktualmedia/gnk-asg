@@ -1,0 +1,29 @@
+name: Dnevne poslovne objave
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *"
+    - cron: "0 10 * * *"
+    - cron: "0 14 * * *"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python scripts/publish_daily_insight.py
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add insights-hr data/daily_insight_log.json assets/insights || true
+          git diff --cached --quiet || git commit -m "Dnevna poslovna objava"
+          git push || true
