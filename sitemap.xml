@@ -10,6 +10,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://gnk-asg.hr/legal.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://gnk-asg.hr/en/</loc>
     <xhtml:link rel="alternate" hreflang="hr" href="https://gnk-asg.hr/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://gnk-asg.hr/en/" />
