@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v55-menu-navigation-fix';
+const CACHE_NAME = 'gnk-asg-live-v56-news-policy-100-zagreb';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './nermin-sefic/', './nermin-sefic/index.html', './en/nermin-sefic/', './en/nermin-sefic/index.html',
@@ -48,7 +48,7 @@ self.addEventListener('fetch', event => {
   const sameOrigin = new URL(event.request.url).origin === self.location.origin;
   if (!sameOrigin) return;
   const path = new URL(event.request.url).pathname;
-  const dynamicData = path.startsWith('/data/') || path === '/sw.js' || path.endsWith('/assets/status.js') || path.endsWith('/assets/app.js') || path.endsWith('/assets/portal-navigation.js') || path.endsWith('/assets/menu-fix.css');
+  const dynamicData = path.startsWith('/data/') || path === '/sw.js' || path.endsWith('/assets/status.js') || path.endsWith('/assets/app.js') || path.endsWith('/assets/news-live.js') || path.endsWith('/assets/hourly-data-disclosure.js') || path.endsWith('/assets/portal-navigation.js') || path.endsWith('/assets/menu-fix.css');
   if (dynamicData) {
     event.respondWith(fetch(event.request, { cache: 'no-store' }).catch(() => caches.match(event.request)));
     return;
