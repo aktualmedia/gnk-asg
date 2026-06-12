@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260612-journalist-finalize01';
+  var VERSION = '20260612-journalist-finalize02';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/mobile-app.js');
   script('/assets/mobile-navigation.js');
   script('/assets/floating-intelligence.js');
+  script('/assets/ai-communication-upgrade.js');
   script('/assets/world-geography.js');
   script('/assets/group-network.js');
   script('/assets/network-motion.js');
