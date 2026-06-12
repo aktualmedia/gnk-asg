@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gnk-asg-live-v56-news-policy-100-zagreb';
+const CACHE_NAME = 'gnk-asg-live-v57-frontend-stability-guard';
 const STATIC_ASSETS = [
   './', './index.html', './en/', './en/index.html', './sadrzaj/', './teme/', './teme/index.html', './tehnologija/',
   './nermin-sefic/', './nermin-sefic/index.html', './en/nermin-sefic/', './en/nermin-sefic/index.html',
@@ -16,11 +16,11 @@ const STATIC_ASSETS = [
   './assets/market-centre.css', './assets/market-centre-panels.css',
   './assets/logo-gnk-asg.svg', './assets/asg-gold-coin.svg', './assets/gnk-asg-social-card.svg', './assets/gnk-asg-social-card.png', './assets/share-financije.png', './assets/share-grupa.png', './assets/share-trzista.png', './assets/share-bpp.png', './assets/share-tehnologija.png', './assets/share-vijesti.png', './assets/share-teme.png', './assets/share-dokumenti.png', './assets/gnk-global-static-overview-accurate.svg',
   './favicon.svg', './assets/favicon.svg', './assets/app-icon-192.svg', './assets/app-icon-512.svg',
-  './assets/app.js', './assets/i18n.js', './assets/language-routing.js', './assets/portal-navigation.js',
+  './assets/app.js', './assets/frontend-stability-guard.js', './assets/i18n.js', './assets/language-routing.js', './assets/portal-navigation.js',
   './assets/status.js', './assets/market.js', './assets/live-market-pulse.js', './assets/bitcoin-chart.js',
   './assets/market-expansion.js', './assets/bpp-public-card.js', './assets/news-live.js', './assets/assistant.js', './assets/inline-assistant.js',
   './assets/intelligence-desk.js', './assets/desk-hybrid.js', './assets/desk-search.js', './assets/mobile-app.js',
-  './assets/mobile-navigation.js', './assets/floating-intelligence.js', './assets/world-geography.js',
+  './assets/mobile-navigation.js', './assets/floating-intelligence.js', './assets/ai-communication-upgrade.js', './assets/world-geography.js',
   './assets/group-network.js', './assets/network-motion.js', './assets/group-globe-3d.js', './assets/group-map-2d-geo.js',
   './assets/group-location-insights.js', './assets/group-map-selection-bridge.js', './assets/group-google-map.js', './assets/group-location-weather.js', './assets/group-overview-panel.js', './assets/group-market-coverage.js', './assets/network-selection-sync.js', './assets/command-centre.js',
   './assets/network-search-3d.js', './assets/group-map-pdf.js', './assets/group-globe-pdf.js', './assets/group-mobile-accessible.js',
@@ -48,7 +48,7 @@ self.addEventListener('fetch', event => {
   const sameOrigin = new URL(event.request.url).origin === self.location.origin;
   if (!sameOrigin) return;
   const path = new URL(event.request.url).pathname;
-  const dynamicData = path.startsWith('/data/') || path === '/sw.js' || path.endsWith('/assets/status.js') || path.endsWith('/assets/app.js') || path.endsWith('/assets/news-live.js') || path.endsWith('/assets/hourly-data-disclosure.js') || path.endsWith('/assets/portal-navigation.js') || path.endsWith('/assets/menu-fix.css');
+  const dynamicData = path.startsWith('/data/') || path === '/sw.js' || path.endsWith('/assets/status.js') || path.endsWith('/assets/app.js') || path.endsWith('/assets/frontend-stability-guard.js') || path.endsWith('/assets/ai-communication-upgrade.js') || path.endsWith('/assets/news-live.js') || path.endsWith('/assets/hourly-data-disclosure.js') || path.endsWith('/assets/portal-navigation.js') || path.endsWith('/assets/mobile-navigation.js') || path.endsWith('/assets/menu-fix.css');
   if (dynamicData) {
     event.respondWith(fetch(event.request, { cache: 'no-store' }).catch(() => caches.match(event.request)));
     return;
