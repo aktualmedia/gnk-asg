@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-06-12T15:35:05+00:00",
-  "updated_at": "2026-06-12T15:35:05+00:00",
+  "checked_at": "2026-06-12T22:12:27+00:00",
+  "updated_at": "2026-06-12T22:12:27+00:00",
   "status": "ok",
   "refresh_frequency": "Scheduled stock-exchange source check every 60 minutes",
   "refresh_frequency_hr": "Planirana provjera burzovnih izvora svakih 60 minuta",
@@ -18,7 +18,7 @@
       "official_url": "https://zse.hr/hr/indeks/365?isin=HRZB00ICBEX6&tab=stock_info",
       "delay_hr": "Službeni ZSE prikaz · odgoda 15 min",
       "delay_en": "Official ZSE display · 15 min delay",
-      "checked_at": "2026-06-12T15:35:05+00:00",
+      "checked_at": "2026-06-12T22:12:27+00:00",
       "status": "official_source_link",
       "value": null,
       "change_percent": null,
@@ -36,7 +36,7 @@
       "official_url": "https://zse.hr/hr/burzovni-indeksi/38",
       "delay_hr": "Službeni ZSE online prikaz",
       "delay_en": "Official ZSE online display",
-      "checked_at": "2026-06-12T15:35:05+00:00",
+      "checked_at": "2026-06-12T22:12:27+00:00",
       "status": "official_source_link",
       "value": null,
       "change_percent": null,
@@ -54,15 +54,11 @@
       "official_url": "https://www.nyse.com/quote/index/NYA",
       "delay_hr": "Javni informativni indeksni podatak; vrijednost može biti odgođena",
       "delay_en": "Public informational index data; value may be delayed",
-      "checked_at": "2026-06-12T15:35:05+00:00",
+      "checked_at": "2026-06-12T22:12:27+00:00",
       "status": "public_market_feed",
-      "value": 23634.94,
-      "change_percent": 2.69,
+      "value": 23595.79,
+      "change_percent": 2.71,
       "points": [
-        [
-          1778592600000,
-          23015.33984375
-        ],
         [
           1778679000000,
           22973.55078125
@@ -149,12 +145,12 @@
         ],
         [
           1781271000000,
-          23634.943359375
+          23595.79296875
         ]
       ],
       "currency": "USD",
       "source_timestamp": "2026-06-12T13:30:00+00:00",
-      "last_successful_refresh_at": "2026-06-12T15:35:05+00:00"
+      "last_successful_refresh_at": "2026-06-12T22:12:27+00:00"
     },
     {
       "id": "nasdaq",
@@ -166,15 +162,11 @@
       "official_url": "https://www.nasdaq.com/market-activity/index/comp",
       "delay_hr": "Javni informativni indeksni podatak; vrijednost može biti odgođena",
       "delay_en": "Public informational index data; value may be delayed",
-      "checked_at": "2026-06-12T15:35:05+00:00",
+      "checked_at": "2026-06-12T22:12:27+00:00",
       "status": "public_market_feed",
-      "value": 25935.35,
-      "change_percent": -0.59,
+      "value": 25888.84,
+      "change_percent": -1.94,
       "points": [
-        [
-          1778592600000,
-          26088.19921875
-        ],
         [
           1778679000000,
           26402.33984375
@@ -261,17 +253,17 @@
         ],
         [
           1781271000000,
-          25935.353515625
+          25888.84375
         ]
       ],
       "currency": "USD",
       "source_timestamp": "2026-06-12T13:30:00+00:00",
-      "last_successful_refresh_at": "2026-06-12T15:35:05+00:00"
+      "last_successful_refresh_at": "2026-06-12T22:12:27+00:00"
     }
   ],
   "errors": [],
-  "last_attempt_at": "2026-06-12T15:35:05+00:00",
-  "last_successful_refresh_at": "2026-06-12T15:35:05+00:00",
+  "last_attempt_at": "2026-06-12T22:12:27+00:00",
+  "last_successful_refresh_at": "2026-06-12T22:12:27+00:00",
   "data_status": "fresh_public_feed_plus_official_links",
-  "runtime_seconds": 0.24
+  "runtime_seconds": 0.33
 }
