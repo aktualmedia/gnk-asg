@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-12T22:50:44+00:00",
+  "updated_at": "2026-06-12T22:51:52+00:00",
   "cadence": "scheduled every 5 minutes",
   "status": "ok",
   "digital_assets": {
@@ -21,5 +21,16 @@
   "data_status": "fresh_or_reference_checked",
   "source_status": "ok",
   "internal_errors": [],
-  "runtime_seconds": 0.23
+  "runtime_seconds": 0.23,
+  "macro_market": {
+    "updated_at": "2026-06-12T22:51:52+00:00",
+    "status": "ok",
+    "assets": 4,
+    "successful_assets": 4,
+    "configured_assets": 4,
+    "public_message_policy": "temporarily unavailable macro sources are skipped silently when a valid package exists",
+    "checked_at": "2026-06-12T22:51:52+00:00",
+    "last_attempt_at": "2026-06-12T22:51:52+00:00",
+    "last_successful_refresh_at": "2026-06-12T22:51:52+00:00"
+  }
 }
