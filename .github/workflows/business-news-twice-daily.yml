@@ -1,0 +1,91 @@
+name: Business News Twice Daily Refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Europe/Zagreb 09:00: 07:00 UTC ljeti, 08:00 UTC zimi
+    - cron: "0 7 * * *"
+    - cron: "0 8 * * *"
+    # Europe/Zagreb 16:00: 14:00 UTC ljeti, 15:00 UTC zimi
+    - cron: "0 14 * * *"
+    - cron: "0 15 * * *"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: gnk-asg-business-news-twice-daily
+  cancel-in-progress: false
+
+jobs:
+  refresh-news:
+    name: Refresh public business news data
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: Europe/Zagreb
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install preview image dependency
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Refresh public news data
+        run: python scripts/news_publication.py
+
+      - name: Commit refreshed news data if changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data/news.json data/news_archive.json data/update_status.json podijeli/vijest assets/news-preview || true
+          if git diff --cached --quiet; then
+            echo "No news data changes to commit."
+          else
+            git commit -m "Refresh public business news data"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+  deploy-pages:
+    name: Deploy portal after news refresh
+    needs: refresh-news
+    runs-on: ubuntu-latest
+    if: always()
+    concurrency:
+      group: gnk-asg-pages
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload portal artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+      - name: Deploy portal
+        id: deployment
+        uses: actions/deploy-pages@v4
