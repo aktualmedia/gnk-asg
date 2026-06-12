@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh GNK ASG public business news.
-
-This script is intentionally dependency-free. It reads public RSS feeds, merges
-new items with existing data/news.json and data/news_archive.json, keeps the
-latest 500 public cards and the next 400 archive cards, and writes a heartbeat
-status to data/update_status.json on every run.
-"""
+"""Refresh GNK ASG public business news."""
 
 from __future__ import annotations
 
@@ -16,8 +10,6 @@ import json
 import re
 import sys
 import time
-import urllib.error
-import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -29,64 +21,46 @@ NEWS_PATH = DATA / "news.json"
 ARCHIVE_PATH = DATA / "news_archive.json"
 STATUS_PATH = DATA / "update_status.json"
 
-PUBLIC_LIMIT = 500
-ARCHIVE_LIMIT = 400
+PUBLIC_LIMIT = 100
+ARCHIVE_LIMIT = 500
+ARCHIVE_TRIM_TO = 250
 TIMEOUT = 10
-USER_AGENT = "GNK-ASG-NewsMonitor/2.0 (+https://gnk-asg.hr/)"
+USER_AGENT = "GNK-ASG-NewsMonitor/3.0 (+https://gnk-asg.hr/)"
 
-# Public RSS sources and Google News RSS searches. No API keys required.
 SOURCES = [
-    # Croatia / business
     ("hrvatska", "economy", "Poslovni dnevnik", "https://www.poslovni.hr/feed"),
-    ("hrvatska", "economy", "Lider", "https://lidermedia.hr/rss"),
     ("hrvatska", "economy", "Hina", "https://www.hina.hr/rss"),
     ("hrvatska", "economy", "Google News HR Business", "https://news.google.com/rss/search?q=poslovanje+OR+ekonomija+OR+financije+Croatia&hl=hr&gl=HR&ceid=HR:hr"),
     ("hrvatska", "technology", "Google News HR Technology", "https://news.google.com/rss/search?q=tehnologija+OR+AI+OR+fintech+Croatia&hl=hr&gl=HR&ceid=HR:hr"),
-
-    # Region
     ("slovenija", "economy", "Google News Slovenia Business", "https://news.google.com/rss/search?q=Slovenija+gospodarstvo+OR+finance+OR+podjetja&hl=sl&gl=SI&ceid=SI:sl"),
     ("srbija", "economy", "Google News Serbia Business", "https://news.google.com/rss/search?q=Srbija+privreda+OR+ekonomija+OR+biznis&hl=sr&gl=RS&ceid=RS:sr"),
     ("bih", "economy", "Google News BiH Business", "https://news.google.com/rss/search?q=Bosna+Hercegovina+ekonomija+OR+biznis+OR+privreda&hl=bs&gl=BA&ceid=BA:bs"),
-
-    # International business and markets
     ("international", "economy", "Reuters Business", "https://news.google.com/rss/search?q=Reuters+business+markets+economy&hl=en&gl=US&ceid=US:en"),
     ("international", "economy", "AP Business", "https://news.google.com/rss/search?q=AP+business+economy+markets&hl=en&gl=US&ceid=US:en"),
     ("international", "economy", "CNBC", "https://www.cnbc.com/id/10001147/device/rss/rss.html"),
     ("international", "economy", "BBC Business", "https://feeds.bbci.co.uk/news/business/rss.xml"),
-    ("international", "economy", "The Guardian Business", "https://www.theguardian.com/uk/business/rss"),
-
-    # Technology / AI
     ("technology", "technology", "TechCrunch", "https://techcrunch.com/feed/"),
     ("technology", "technology", "The Verge", "https://www.theverge.com/rss/index.xml"),
     ("technology", "technology", "Wired", "https://www.wired.com/feed/rss"),
     ("technology", "technology", "Google News AI", "https://news.google.com/rss/search?q=artificial+intelligence+business+investment+technology&hl=en&gl=US&ceid=US:en"),
     ("technology", "technology", "Google News Data Centers", "https://news.google.com/rss/search?q=data+centers+AI+energy+business&hl=en&gl=US&ceid=US:en"),
-
-    # Digital assets / fintech / crypto
     ("digital-assets", "digital-assets", "CoinDesk", "https://www.coindesk.com/arc/outboundfeeds/rss/"),
     ("digital-assets", "digital-assets", "Cointelegraph", "https://cointelegraph.com/rss"),
     ("digital-assets", "digital-assets", "Google News Bitcoin", "https://news.google.com/rss/search?q=bitcoin+crypto+exchange+stablecoin+fintech+regulation&hl=en&gl=US&ceid=US:en"),
     ("digital-assets", "digital-assets", "Google News Stablecoin", "https://news.google.com/rss/search?q=stablecoin+regulation+central+bank+fintech&hl=en&gl=US&ceid=US:en"),
-
-    # Asia and Africa business coverage
     ("international", "economy", "Asia Business", "https://news.google.com/rss/search?q=Asia+business+investment+markets+technology&hl=en&gl=US&ceid=US:en"),
     ("international", "economy", "Africa Business", "https://news.google.com/rss/search?q=Africa+business+investment+markets+technology&hl=en&gl=US&ceid=US:en"),
     ("international", "economy", "UAE Business", "https://news.google.com/rss/search?q=UAE+Dubai+business+investment+fintech&hl=en&gl=AE&ceid=AE:en"),
     ("international", "economy", "India Business", "https://news.google.com/rss/search?q=India+business+fintech+technology+markets&hl=en&gl=IN&ceid=IN:en"),
     ("international", "economy", "Singapore Business", "https://news.google.com/rss/search?q=Singapore+business+fintech+markets+technology&hl=en&gl=SG&ceid=SG:en"),
     ("international", "economy", "Kenya Nigeria Ghana Business", "https://news.google.com/rss/search?q=Kenya+Nigeria+Ghana+business+fintech+technology&hl=en&gl=US&ceid=US:en"),
-
-    # Food, energy, oil, organic, sport tech
     ("economy", "economy", "Food Industry", "https://news.google.com/rss/search?q=food+industry+organic+products+edible+oil+protein+business&hl=en&gl=US&ceid=US:en"),
     ("economy", "economy", "Energy Oil", "https://news.google.com/rss/search?q=oil+energy+markets+business+investment&hl=en&gl=US&ceid=US:en"),
     ("sport", "technology", "Sports Performance Technology", "https://news.google.com/rss/search?q=sports+performance+tracking+wearables+analytics+technology&hl=en&gl=US&ceid=US:en"),
     ("mobilnost", "technology", "Mobility Technology", "https://news.google.com/rss/search?q=mobility+technology+electric+vehicles+markets&hl=en&gl=US&ceid=US:en"),
 ]
 
-BLOCKED_TITLE_PATTERNS = [
-    re.compile(r"\bhoroscope\b", re.I),
-    re.compile(r"\blottery\b", re.I),
-]
+BLOCKED_TITLE_PATTERNS = [re.compile(r"\bhoroscope\b", re.I), re.compile(r"\blottery\b", re.I)]
 
 
 def now_iso() -> str:
@@ -136,13 +110,28 @@ def fetch_url(url: str) -> bytes:
         return response.read()
 
 
+def make_record(title: str, url: str, summary: str, source: str, group: str, category: str, published_at: str):
+    title = clean_text(title)[:220]
+    summary = clean_text(summary)[:360]
+    uid = item_id(url, title)
+    return {
+        "id": uid,
+        "title": title,
+        "url": url.strip(),
+        "summary": summary or title,
+        "source": clean_text(source)[:80] or "Public RSS",
+        "region": clean_text(source)[:80] or group,
+        "group": group,
+        "category": category,
+        "published_at": published_at,
+        "share_url": f"/podijeli/vijest/{uid}/",
+    }
+
+
 def parse_feed(raw: bytes, group: str, category: str, default_source: str):
     root = ET.fromstring(raw)
-    channel_items = root.findall(".//item")
-    atom_items = root.findall("{http://www.w3.org/2005/Atom}entry")
     items = []
-
-    for node in channel_items:
+    for node in root.findall(".//item"):
         title = clean_text(node.findtext("title"))
         url = clean_text(node.findtext("link"))
         if not url:
@@ -154,8 +143,7 @@ def parse_feed(raw: bytes, group: str, category: str, default_source: str):
         source = clean_text(source_node.text if source_node is not None else "") or default_source
         if title and url:
             items.append(make_record(title, url, summary, source, group, category, pub))
-
-    for node in atom_items:
+    for node in root.findall("{http://www.w3.org/2005/Atom}entry"):
         title = clean_text(node.findtext("{http://www.w3.org/2005/Atom}title"))
         link = ""
         for link_node in node.findall("{http://www.w3.org/2005/Atom}link"):
@@ -168,26 +156,6 @@ def parse_feed(raw: bytes, group: str, category: str, default_source: str):
         if title and link:
             items.append(make_record(title, link, summary, default_source, group, category, pub))
     return items
-
-
-def make_record(title: str, url: str, summary: str, source: str, group: str, category: str, published_at: str):
-    title = clean_text(title)[:220]
-    summary = clean_text(summary)[:360]
-    url = url.strip()
-    # Google News sometimes wraps source links; keep the public URL, browser will resolve it.
-    uid = item_id(url, title)
-    return {
-        "id": uid,
-        "title": title,
-        "url": url,
-        "summary": summary or title,
-        "source": clean_text(source)[:80] or "Public RSS",
-        "region": clean_text(source)[:80] or group,
-        "group": group,
-        "category": category,
-        "published_at": published_at,
-        "share_url": f"/podijeli/vijest/{uid}/",
-    }
 
 
 def is_blocked(item) -> bool:
@@ -221,6 +189,16 @@ def merge_unique(*collections):
     return merged
 
 
+def rotate_archive(archive_candidates):
+    if len(archive_candidates) >= ARCHIVE_LIMIT:
+        archive = archive_candidates[:ARCHIVE_TRIM_TO]
+        pruned = max(0, len(archive_candidates) - len(archive))
+        return archive, pruned, True
+    archive = archive_candidates[:ARCHIVE_LIMIT]
+    pruned = max(0, len(archive_candidates) - len(archive))
+    return archive, pruned, False
+
+
 def main() -> int:
     DATA.mkdir(parents=True, exist_ok=True)
     fetched = []
@@ -230,18 +208,17 @@ def main() -> int:
 
     for group, category, source, url in SOURCES:
         try:
-            raw = fetch_url(url)
-            parsed = parse_feed(raw, group, category, source)
-            fetched.extend(parsed)
+            fetched.extend(parse_feed(fetch_url(url), group, category, source))
             success += 1
-        except (urllib.error.URLError, TimeoutError, ET.ParseError, Exception) as exc:
+        except Exception as exc:
             errors.append({"source": source, "group": group, "error": str(exc)[:180]})
 
     existing_public = read_json(NEWS_PATH, [])
     existing_archive = read_json(ARCHIVE_PATH, [])
     merged = merge_unique(fetched, existing_public, existing_archive)
     public = merged[:PUBLIC_LIMIT]
-    archive = merged[PUBLIC_LIMIT:PUBLIC_LIMIT + ARCHIVE_LIMIT]
+    archive_candidates = merged[PUBLIC_LIMIT:]
+    archive, archive_pruned_items, archive_rotated = rotate_archive(archive_candidates)
 
     write_json(NEWS_PATH, public)
     write_json(ARCHIVE_PATH, archive)
@@ -259,21 +236,25 @@ def main() -> int:
         "news": {
             "updated_at": ts,
             "status": status_name,
-            "engine": "github_actions_rss_refresh_v3_zagreb_schedule",
+            "engine": "github_actions_rss_refresh_v4_100_public_old_news_rotation",
             "cadence": "scheduled at 09:00 and 16:00 Europe/Zagreb plus manual workflow_dispatch",
             "source_success_policy": "publish_when_public_items_available_and_at_least_50_percent_sources_synced",
             "source_success_threshold": 0.5,
             "source_success_ratio": round(ratio, 3),
             "source_sync_status": "complete" if not errors else "partial_with_public_fallback",
             "configured_sources": len(SOURCES),
+            "removed_sources": ["Lider", "The Guardian Business"],
             "successful_sources": success,
             "failed_sources": len(errors),
-            "storage_policy": "public_latest_500_archive_latest_400_older_overflow_removed",
+            "storage_policy": "public_latest_100_old_news_container_until_500_then_keep_250_newest_old_items",
             "public_items": len(public),
             "max_public_items": PUBLIC_LIMIT,
             "archive_items": len(archive),
             "max_archive_items": ARCHIVE_LIMIT,
-            "discarded_archive_overflow_items": max(0, len(merged) - PUBLIC_LIMIT - ARCHIVE_LIMIT),
+            "archive_trim_to_items": ARCHIVE_TRIM_TO,
+            "archive_rotated": archive_rotated,
+            "archive_pruned_items": archive_pruned_items,
+            "archive_candidate_items_before_rotation": len(archive_candidates),
             "fetched_candidates": len(fetched),
             "duplicates_or_blocked_removed": max(0, len(fetched) + len(existing_public) + len(existing_archive) - len(merged)),
             "request_timeout_seconds": TIMEOUT,
@@ -292,7 +273,7 @@ def main() -> int:
         },
     })
     write_json(STATUS_PATH, status)
-    print(f"news refresh: status={status_name}, public={len(public)}, archive={len(archive)}, sources={success}/{len(SOURCES)}")
+    print(f"news refresh: status={status_name}, public={len(public)}, archive={len(archive)}, archive_rotated={archive_rotated}, archive_pruned={archive_pruned_items}, sources={success}/{len(SOURCES)}")
     if errors:
         print("source errors:")
         for error in errors[:10]:
