@@ -1,0 +1,70 @@
+name: Objavi tri dnevne autorske objave sada
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/triggers/publish-three-insights-now.txt'
+      - 'scripts/publish_three_insights_now.py'
+      - '.github/workflows/publish-three-insights-now.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: gnk-asg-publish-three-insights-now
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Objavi tri dnevne objave
+        run: python scripts/publish_three_insights_now.py
+      - name: Spremi objave
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add insights-hr assets/insights/daily data/daily_insight_log.json
+          if git diff --cached --quiet; then
+            echo "Nema novih objava za commit."
+          else
+            git commit -m "Objavi tri dnevne autorske objave"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+  deploy-pages:
+    needs: publish
+    runs-on: ubuntu-latest
+    if: always()
+    concurrency:
+      group: gnk-asg-pages
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
