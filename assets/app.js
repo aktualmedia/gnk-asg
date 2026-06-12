@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260601-activity-model-fix01';
+  var VERSION = '20260612-news-policy-100-zagreb01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -126,13 +126,13 @@ document.addEventListener('DOMContentLoaded', function () {
     var eyebrow = head.querySelector('.eyebrow');
     var paragraph = head.querySelector('p:not(.eyebrow)');
     if (isEnglish()) {
-      if (eyebrow) eyebrow.textContent = 'Refresh every hour';
-      if (paragraph) paragraph.textContent = 'The public window displays up to the 500 newest business and technology news items. The active archive retains up to the next 400 older items. Publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić are displayed automatically from public sources.';
-      if (loading && /workflow|refresh/i.test(loading.textContent)) loading.textContent = 'The newest 500 public items refresh automatically every hour; the active archive retains up to 400 older items.';
+      if (eyebrow) eyebrow.textContent = 'Refresh at 09:00 and 16:00 Zagreb time';
+      if (paragraph) paragraph.textContent = 'The public window displays up to the 100 newest business and technology news items. Older items move into the old-news container, which rotates automatically when it reaches 500 items by keeping the newest 250 old items.';
+      if (loading && /workflow|refresh|500|400/i.test(loading.textContent)) loading.textContent = 'The newest 100 public items refresh at 09:00 and 16:00 Europe/Zagreb; older items are stored and rotated automatically.';
     } else {
-      if (eyebrow) eyebrow.textContent = 'Ažuriranje svakih sat vremena';
-      if (paragraph) paragraph.textContent = 'Javni prozor prikazuje do 500 najnovijih poslovnih i tehnoloških vijesti. Aktivna arhiva zadržava do sljedećih 400 starijih stavki. Objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću prikazuju se automatski iz javnih izvora.';
-      if (loading && /workflow|osvjež/i.test(loading.textContent)) loading.textContent = 'Najnovijih 500 javnih stavki osvježava se automatski svakih sat vremena, a aktivna arhiva zadržava do 400 starijih stavki.';
+      if (eyebrow) eyebrow.textContent = 'Ažuriranje u 09:00 i 16:00 po hrvatskom vremenu';
+      if (paragraph) paragraph.textContent = 'Javni prozor prikazuje do 100 najnovijih poslovnih i tehnoloških vijesti. Starije stavke prelaze u spremnik starih vijesti, koji se automatski rotira kada dosegne 500 stavki tako da zadržava 250 najnovijih starih vijesti.';
+      if (loading && /workflow|osvjež|500|400/i.test(loading.textContent)) loading.textContent = 'Najnovijih 100 javnih stavki osvježava se u 09:00 i 16:00 po hrvatskom vremenu; starije stavke spremaju se i automatski rotiraju.';
     }
   }
 
