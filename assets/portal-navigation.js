@@ -27,7 +27,6 @@
     const insightsUrl = en ? '/en/insights/' : '/insights-hr/';
     const contactUrl = en ? '/en/contact/' : '/kontakt/';
     const legalUrl = '/legal.html';
-    const legalUrl = '/legal.html';
     const profileUrl = homeUrl + '#o-nama';
     const financeUrl = homeUrl + '#financials';
     const networkUrl = homeUrl + '#grupa';
