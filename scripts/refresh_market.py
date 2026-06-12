@@ -22,7 +22,8 @@ DATA = ROOT / "data"
 MARKET_PATH = DATA / "market.json"
 STATUS_PATH = DATA / "fast_market_status.json"
 TIMEOUT = 15
-USER_AGENT = "GNK-ASG-MarketMonitor/2.0 (+https://gnk-asg.hr/)"
+USER_AGENT = "GNK-ASG-MarketMonitor/2.1 (+https://gnk-asg.hr/)"
+CADENCE_LABEL = "scheduled every 30 minutes"
 
 COINS = {
     "bitcoin": "BTC",
@@ -111,7 +112,7 @@ def main() -> int:
         coins = build_market(raw)
         market = {
             "updated_at": ts,
-            "cadence": "scheduled every five minutes",
+            "cadence": CADENCE_LABEL,
             "source": "CoinGecko public market data",
             "status": "ok",
             "coins": coins,
@@ -121,7 +122,7 @@ def main() -> int:
         errors.append(str(exc)[:180])
         if market.get("coins"):
             market["updated_at"] = ts
-            market["cadence"] = "scheduled every five minutes"
+            market["cadence"] = CADENCE_LABEL
             market["status"] = "ok"
             market["source"] = market.get("source") or "CoinGecko public market data"
             market["public_message_policy"] = "previous valid package retained when source is temporarily unavailable"
@@ -134,7 +135,7 @@ def main() -> int:
     stable_count = sum(1 for item in market.get("coins", []) if item.get("id") in STABLECOINS)
     status = {
         "updated_at": ts,
-        "cadence": "scheduled every five minutes",
+        "cadence": CADENCE_LABEL,
         "status": "ok" if coins_count else "failed",
         "digital_assets": {
             "coins": coins_count,
@@ -146,7 +147,7 @@ def main() -> int:
         "errors": [],
         "checked_at": ts,
         "last_attempt_at": ts,
-        "heartbeat_policy": "timestamp_updates_on_every_automation_run",
+        "heartbeat_policy": "timestamp_updates_on_every_market_automation_run",
         "stale_safe": True,
         "last_successful_refresh_at": ts,
         "data_status": "fresh_or_reference_checked",
