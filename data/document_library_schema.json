@@ -1,0 +1,32 @@
+{
+  "version": "2026-06-12-document-library-schema-01",
+  "module": "document_library_preparation",
+  "purpose": "Priprema metapodataka za dokumente prije javne objave ili internog označavanja.",
+  "fields": [
+    "file_name",
+    "title_hr",
+    "description_hr",
+    "category",
+    "date",
+    "issuer",
+    "public_status",
+    "target_page",
+    "keywords"
+  ],
+  "categories": [
+    "corporate",
+    "finance",
+    "legal",
+    "reports",
+    "media",
+    "technical",
+    "other"
+  ],
+  "public_status_values": [
+    "draft",
+    "internal",
+    "ready",
+    "published"
+  ],
+  "operator_page": "/operator/documents/"
+}
