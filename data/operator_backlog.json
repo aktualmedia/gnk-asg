@@ -1,0 +1,63 @@
+{
+  "version": "2026-06-12-operator-backlog-01",
+  "project": "GNK ASG Operator functional backlog",
+  "principle": "Funkcionalni sloj prije kozmetike. Svaka izvršna radnja ide kroz backend, potvrdu i zapis radnje.",
+  "items": [
+    {
+      "id": "backend-mail-log",
+      "priority": "high",
+      "title": "Službeni backend log mail paketa",
+      "status": "planned",
+      "note": "Frontend ima lokalnu povijest; službeni zapis treba biti na backendu."
+    },
+    {
+      "id": "image-r2-upload",
+      "priority": "high",
+      "title": "Upload slika u R2",
+      "status": "planned",
+      "note": "Image SEO priprema postoji; treba stvarni upload endpoint."
+    },
+    {
+      "id": "document-library-ui",
+      "priority": "high",
+      "title": "Document Library operator UI",
+      "status": "partly_planned",
+      "note": "Schema postoji; HTML forma se trenutno blokira i treba je izvesti drugim putem."
+    },
+    {
+      "id": "command-execution-backend",
+      "priority": "medium",
+      "title": "Command Center backend",
+      "status": "planned",
+      "note": "Command Center sada priprema JSON paket; kasnije backend izvršava dopuštene naredbe."
+    },
+    {
+      "id": "whatsapp-inbox",
+      "priority": "medium",
+      "title": "WhatsApp inbox",
+      "status": "planned",
+      "note": "WhatsApp Prep postoji; kasnije dodati zaprimanje i prikaz poruka."
+    },
+    {
+      "id": "audio-mail-summary",
+      "priority": "medium",
+      "title": "Audio čitanje mail sažetka",
+      "status": "planned",
+      "note": "Audio Operator postoji; treba backend sažetak inboxa."
+    },
+    {
+      "id": "daily-owner-summary",
+      "priority": "medium",
+      "title": "Dnevni operativni sažetak",
+      "status": "planned",
+      "note": "Sažetak objava, vijesti, tržišta, mailova i grešaka."
+    },
+    {
+      "id": "media-kit-cosmetics",
+      "priority": "later",
+      "title": "Media kit, logo i boje",
+      "status": "later",
+      "note": "Raditi tek nakon funkcionalne stabilizacije."
+    }
+  ]
+}
