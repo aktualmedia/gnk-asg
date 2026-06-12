@@ -1,8 +1,7 @@
 name: Deploy Public Portal to GitHub Pages
 
 # Izričita objava aktualnog sadržaja grane main na javnu domenu gnk-asg.hr.
-# Objavljuje i commitove koje izrađuju SEO, news, watchdog i market botovi, jer se
-# automatizirani commit iz drugog workflowa ne smije oslanjati samo na novi push okidač.
+# Objavljuje i commitove koje izrađuju SEO, news, watchdog i market botovi.
 on:
   workflow_dispatch:
   push:
@@ -15,6 +14,11 @@ on:
       - News Refresh Watchdog
       - Refresh SEO Metadata and Sitemap
       - Patch Static Portal Copy and Loader
+      - Refresh business news
+      - Refresh digital assets market
+      - Refresh macro market panel
+      - Manual Corporate Media Refresh
+      - Manage Corporate Media Visibility
     types:
       - completed
 
