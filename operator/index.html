@@ -15,19 +15,21 @@
     <section class="op-head">
       <span class="op-pill">Operator preview</span>
       <h1>GNK ASG Operator</h1>
-      <p>Stabilna početna operator zona. Tri dnevne autorske objave rade automatski odvojeno od admina.</p>
+      <p>Odvojena operator zona za backend, admin, osvježavanja, status, objave, mail i kontrolu modula. Javni front ostaje odvojen i brz.</p>
     </section>
     <section class="op-grid" aria-label="Operator moduli">
-      <a class="op-card" href="mail/"><h2>Mail centar</h2><p>Priprema, validacija i slanje mail paketa kroz autorizirani endpoint.</p></a>
+      <a class="op-card" href="app/"><h2>Admin App</h2><p>Glavni operativni centar za mail, objave, status i kontrole.</p></a>
+      <a class="op-card" href="refresh-center/"><h2>Refresh Center</h2><p>Odvojena kontrola news, market, macro i deploy refresh slojeva.</p></a>
+      <a class="op-card" href="../status-lite/"><h2>Status Lite</h2><p>Brza provjera svih javnih JSON feedova i modula.</p></a>
+      <a class="op-card" href="mail/"><h2>Mail centar</h2><p>Priprema, validacija i slanje mail paketa kroz autorizirani sloj.</p></a>
       <a class="op-card" href="status/"><h2>Status dashboard</h2><p>Read-only pregled vijesti, objava, maila, PWA, sitemap i komunikacijskih modula.</p></a>
-      <article class="op-card"><h2>Tekstovi i objave</h2><p>Uređivanje sadržaja koji nije dio automatskih dnevnih objava.</p></article>
-      <article class="op-card"><h2>Fotografije i SEO galerija</h2><p>Priprema slike, alt teksta, opisa i SEO oznaka.</p></article>
-      <article class="op-card"><h2>Dokumenti</h2><p>Javna biblioteka dokumenata i poveznica za preuzimanje.</p></article>
-      <article class="op-card"><h2>Vijesti</h2><p>Pregled osvježavanja poslovnih vijesti.</p></article>
-      <article class="op-card"><h2>Tržišta</h2><p>Pregled tržišnih podataka i statusa.</p></article>
-      <article class="op-card"><h2>Command Center</h2><p>Planirano mjesto za sigurne operativne naredbe.</p></article>
-      <article class="op-card"><h2>Backup i rollback</h2><p>Planiran pregled kopija i povratnih točaka.</p></article>
-      <article class="op-card"><h2>PWA i WhatsApp</h2><p>Planirani mobilni i komunikacijski slojevi.</p></article>
+      <a class="op-card" href="../backend/"><h2>Backend Gateway</h2><p>Ulaz prema backend modulima i tehničkim kontrolama.</p></a>
+      <a class="op-card" href="../news/"><h2>Vijesti</h2><p>Samostalni news sloj i fallback prikaz vijesti.</p></a>
+      <a class="op-card" href="../market/"><h2>Tržišta</h2><p>Market Intelligence, digital assets i macro market.</p></a>
+      <a class="op-card" href="content-list/"><h2>Content List</h2><p>Pregled draft/ready sadržaja.</p></a>
+      <a class="op-card" href="frontend-health/"><h2>Frontend Health</h2><p>Provjera menija, JS-a, cachea i učitavanja fronta.</p></a>
+      <a class="op-card" href="cloudflare-content-setup/"><h2>Cloudflare Setup</h2><p>Worker, KV i route priprema za cloud sloj.</p></a>
+      <a class="op-card" href="../webmail/"><h2>Webmail priprema</h2><p>Zoho/webmail i sigurnosna pravila pošte.</p></a>
     </section>
     <section class="op-note"><strong>Sigurnosno pravilo:</strong> izvršne funkcije smiju raditi samo kroz zaštićeni backend i zapis radnji.</section>
   </main>
