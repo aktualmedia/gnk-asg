@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260612-public-copy-clean01';
+  var VERSION = '20260612-journalist-finalize01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
   script('/assets/market-expansion.js');
   script('/assets/bpp-public-card.js');
   script('/assets/news-live.js');
+  script('/assets/finalize-journalist-alignment.js');
   script('/assets/assistant.js');
   script('/assets/inline-assistant.js');
   script('/assets/intelligence-desk.js');
@@ -126,13 +127,13 @@ document.addEventListener('DOMContentLoaded', function () {
     var eyebrow = head.querySelector('.eyebrow');
     var paragraph = head.querySelector('p:not(.eyebrow)');
     if (isEnglish()) {
-      if (eyebrow) eyebrow.textContent = 'Business and technology news';
-      if (paragraph) paragraph.textContent = 'Selected business and technology news from Croatian, regional and international sources.';
-      if (loading && /workflow|refresh|500|400|100/i.test(loading.textContent)) loading.textContent = 'Business and technology news are presented through the portal editorial selection.';
+      if (eyebrow) eyebrow.textContent = 'News refresh at 09:00 and 16:00 Europe/Zagreb';
+      if (paragraph) paragraph.textContent = 'Selected business and technology news from Croatian, regional and international sources. The public window shows up to 100 current items and is refreshed twice daily.';
+      if (loading && /workflow|refresh|500|400|100|preparation|scheduled/i.test(loading.textContent)) loading.textContent = 'Business and technology news are loading from the public portal data file.';
     } else {
-      if (eyebrow) eyebrow.textContent = 'Poslovne i tehnološke vijesti';
-      if (paragraph) paragraph.textContent = 'Pregled odabranih poslovnih i tehnoloških vijesti iz hrvatskih, regionalnih i međunarodnih izvora.';
-      if (loading && /workflow|osvjež|500|400|100|rotir/i.test(loading.textContent)) loading.textContent = 'Poslovne i tehnološke vijesti prikazuju se po uredničkom izboru portala.';
+      if (eyebrow) eyebrow.textContent = 'Ažuriranje u 09:00 i 16:00 po hrvatskom vremenu';
+      if (paragraph) paragraph.textContent = 'Pregled odabranih poslovnih i tehnoloških vijesti iz hrvatskih, regionalnih i međunarodnih izvora. Javno se prikazuje do 100 aktualnih stavki, uz dva redovna dnevna osvježenja.';
+      if (loading && /workflow|osvjež|500|400|100|rotir|priprem/i.test(loading.textContent)) loading.textContent = 'Poslovne i tehnološke vijesti učitavaju se iz javne podatkovne datoteke portala.';
     }
   }
 
