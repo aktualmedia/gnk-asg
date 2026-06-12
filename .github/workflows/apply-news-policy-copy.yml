@@ -59,3 +59,4 @@ jobs:
             git commit -m "Apply current news policy to static homepage copy"
             git push origin HEAD:main
           fi
+# Trigger: 2026-06-12T22:45:00+02:00
