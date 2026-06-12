@@ -1,9 +1,11 @@
 name: Refresh business news
 
-# Public status cleaner added: 2026-06-01T08:50Z
+# Scheduled refresh aligned to Croatia time: 09:00 and 16:00 Europe/Zagreb.
+# GitHub cron is UTC, so the four UTC slots cover CET/CEST; the guard below
+# allows the job to write data only when the current Zagreb hour is 09 or 16.
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 7,8,14,15 * * *'
   workflow_dispatch:
   push:
     paths:
@@ -31,13 +33,38 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Check Zagreb scheduled window
+        id: zagreb_gate
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "run_refresh=true" >> "$GITHUB_OUTPUT"
+            echo "Manual/push run: refresh allowed."
+            exit 0
+          fi
+
+          ZAGREB_HOUR="$(TZ=Europe/Zagreb date +%H)"
+          ZAGREB_TIME="$(TZ=Europe/Zagreb date '+%Y-%m-%d %H:%M:%S %Z')"
+          echo "Zagreb time: ${ZAGREB_TIME}"
+
+          if [ "$ZAGREB_HOUR" = "09" ] || [ "$ZAGREB_HOUR" = "16" ]; then
+            echo "run_refresh=true" >> "$GITHUB_OUTPUT"
+            echo "Scheduled refresh window: allowed."
+          else
+            echo "run_refresh=false" >> "$GITHUB_OUTPUT"
+            echo "Scheduled refresh window: skipped."
+          fi
+
       - name: Refresh public business news
+        if: steps.zagreb_gate.outputs.run_refresh == 'true'
         run: python scripts/refresh_news.py
 
       - name: Clean public news status
+        if: steps.zagreb_gate.outputs.run_refresh == 'true'
         run: python scripts/clean_news_status.py
 
       - name: Commit refreshed news data
+        if: steps.zagreb_gate.outputs.run_refresh == 'true'
         run: |
           git config user.name "gnk-asg-news-bot"
           git config user.email "actions@users.noreply.github.com"
