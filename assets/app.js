@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260613-stable-backup-restore-01';
+  var VERSION = '20260613-network-fullwidth-fix-01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/header-premium.css');
   style('/assets/group-contrast.css');
   style('/assets/group-network.css');
+  style('/assets/network-fullwidth-fix.css');
   style('/assets/network-motion.css');
   style('/assets/group-globe-3d.css');
   style('/assets/group-location-insights.css');
