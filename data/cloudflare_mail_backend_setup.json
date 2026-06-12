@@ -1,14 +1,21 @@
 {
-  "version": "2026-06-12-cloudflare-mail-backend-02",
+  "version": "2026-06-12-cloudflare-mail-backend-03",
   "module": "cloudflare_mail_backend_setup",
-  "status": "send_and_log_functions_added",
-  "send_function_path": "functions/api/operator/mail-batch/send.js",
-  "log_function_path": "functions/api/operator/mail-log/list.js",
+  "status": "pages_functions_and_worker_code_added",
+  "preferred_runtime": "cloudflare_workers",
+  "pages_function_paths": [
+    "functions/api/operator/mail-batch/send.js",
+    "functions/api/operator/mail-log/list.js"
+  ],
+  "worker_paths": [
+    "workers/operator-mail-api/src/index.js",
+    "workers/operator-mail-api/wrangler.toml",
+    "workers/operator-mail-api/README.md"
+  ],
   "send_endpoint": "/api/operator/mail-batch/send",
   "log_endpoint": "/api/operator/mail-log/list",
   "cloudflare_requirements": [
-    "Cloudflare Pages project connected to this repository or deployed with the functions directory",
-    "Pages Functions enabled by Cloudflare Pages deployment",
+    "Cloudflare Worker route or Pages Function route active for /api/operator/*",
     "Cloudflare Access recommended for /operator/* and /api/operator/*",
     "one outbound mail provider secret configured",
     "optional KV binding for official mail log"
