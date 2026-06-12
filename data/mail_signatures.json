@@ -1,0 +1,35 @@
+{
+  "version": "2026-06-12",
+  "status": "prepared",
+  "domain": "gnk-asg.hr",
+  "company": "GNK ASG d.o.o.",
+  "official_signature_hr": {
+    "name": "Nermin Sefić",
+    "title": "Direktor / zakonski zastupnik",
+    "company": "GNK ASG d.o.o.",
+    "address": "Zagrebačka cesta 130, Zagreb",
+    "oib": "75227917632",
+    "mbs": "081512375",
+    "email": "info@gnk-asg.hr",
+    "web": "https://gnk-asg.hr",
+    "text": "Srdačan pozdrav,\n\nNermin Sefić\nDirektor / zakonski zastupnik\nGNK ASG d.o.o.\nZagrebačka cesta 130, Zagreb\nOIB: 75227917632\nMBS: 081512375\n\nE-mail: info@gnk-asg.hr\nWeb: https://gnk-asg.hr\n\nGNK ASG d.o.o. · GNK DINAMO Ltd. · poslovna, tehnološka i sportska infrastruktura"
+  },
+  "ai_signature_hr": {
+    "name": "IT – Osobni digitalni asistent",
+    "company": "GNK ASG d.o.o.",
+    "web": "https://gnk-asg.hr",
+    "text": "Srdačan pozdrav,\n\nIT – Osobni digitalni asistent\nza GNK ASG d.o.o.\n\nOva poruka može sadržavati automatizirano pripremljen tekst ili tehničku potvrdu primitka. Sadržaj koji se odnosi na pravna, financijska, porezna, ugovorna, medijska, osobna ili druga osjetljiva pitanja podliježe ljudskoj provjeri i odobrenju ovlaštene osobe.\n\nGNK ASG d.o.o.\nhttps://gnk-asg.hr"
+  },
+  "sending_policy": {
+    "one_recipient_per_email": true,
+    "cc_bcc_mass_send": false,
+    "human_approval_required": true,
+    "sensitive_topics_draft_only": true,
+    "allowed_sender_addresses": [
+      "no-reply@gnk-asg.hr",
+      "it@gnk-asg.hr",
+      "assistant@gnk-asg.hr",
+      "info@gnk-asg.hr"
+    ]
+  }
+}
