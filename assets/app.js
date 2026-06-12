@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260613-network-fullwidth-fix-01';
+  var VERSION = '20260613-market-visual-fix-01';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
   style('/assets/network-reading-layout.css');
   style('/assets/bitcoin-chart.css');
   style('/assets/market-expansion.css');
+  style('/assets/market-visual-fix.css');
   style('/assets/bpp-public-card.css');
   style('/assets/language.css');
   style('/assets/intelligence-desk.css');
