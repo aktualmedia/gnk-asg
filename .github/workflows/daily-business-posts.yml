@@ -15,12 +15,21 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      TZ: Europe/Zagreb
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: python scripts/publish_daily_insight.py
+      - name: Publish mapped slot
+        shell: bash
+        run: |
+          HOUR=$(TZ=Europe/Zagreb date +%H)
+          if [ "$HOUR" = "08" ]; then export DAILY_INSIGHT_SLOT=morning; fi
+          if [ "$HOUR" = "12" ]; then export DAILY_INSIGHT_SLOT=afternoon; fi
+          if [ "$HOUR" = "16" ]; then export DAILY_INSIGHT_SLOT=evening; fi
+          python scripts/publish_daily_insight.py
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
