@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-12T09:27:21+00:00",
+  "updated_at": "2026-06-12T10:34:23+00:00",
   "title": "BTC, zlato, Brent nafta i USD/EUR - statistička usporedba",
   "period": "posljednjih 30 dostupnih dnevnih tržišnih vrijednosti",
   "disclaimer": "Indikativni javni tržišni podatci; prikaz nije usluga trgovanja niti investicijski savjet.",
@@ -12,9 +12,9 @@
       "unit": "USD / BTC",
       "invert": false,
       "source": "Yahoo Finance public chart",
-      "current": 63664.0390625,
-      "change_7d_percent": 4.5,
-      "change_30d_percent": -19.69,
+      "current": 63630.94140625,
+      "change_7d_percent": 4.45,
+      "change_30d_percent": -19.74,
       "low_30d": 60867.4140625,
       "high_30d": 81051.25,
       "points": [
@@ -140,7 +140,7 @@
         ],
         [
           1781222400000,
-          63664.0390625
+          63630.94140625
         ]
       ],
       "indexed_points": [
@@ -266,7 +266,7 @@
         ],
         [
           1781222400000,
-          80.31
+          80.26
         ]
       ]
     },
@@ -277,9 +277,9 @@
       "unit": "USD / oz",
       "invert": false,
       "source": "Yahoo Finance public chart",
-      "current": 4246.29980469,
-      "change_7d_percent": -4.29,
-      "change_30d_percent": -9.22,
+      "current": 4235.89990234,
+      "change_7d_percent": -4.53,
+      "change_30d_percent": -9.44,
       "low_30d": 4090.30004883,
       "high_30d": 4697.70019531,
       "points": [
@@ -373,7 +373,7 @@
         ],
         [
           1781236800000,
-          4246.2998046875
+          4235.89990234375
         ]
       ],
       "indexed_points": [
@@ -467,7 +467,7 @@
         ],
         [
           1781236800000,
-          90.78
+          90.56
         ]
       ]
     },
@@ -478,10 +478,10 @@
       "unit": "USD / barrel",
       "invert": false,
       "source": "Yahoo Finance public chart",
-      "current": 86.37999725,
-      "change_7d_percent": -11.69,
-      "change_30d_percent": -19.85,
-      "low_30d": 86.37999725,
+      "current": 87.11000061,
+      "change_7d_percent": -10.94,
+      "change_30d_percent": -19.17,
+      "low_30d": 87.11000061,
       "high_30d": 112.09999847,
       "points": [
         [
@@ -574,7 +574,7 @@
         ],
         [
           1781236800000,
-          86.37999725341797
+          87.11000061035156
         ]
       ],
       "indexed_points": [
@@ -668,7 +668,7 @@
         ],
         [
           1781236800000,
-          80.15
+          80.83
         ]
       ]
     },
@@ -679,9 +679,9 @@
       "unit": "EUR / USD",
       "invert": true,
       "source": "Yahoo Finance public chart, inverted EURUSD",
-      "current": 0.86260007,
-      "change_7d_percent": 0.25,
-      "change_30d_percent": 1.61,
+      "current": 0.86340001,
+      "change_7d_percent": 0.35,
+      "change_30d_percent": 1.71,
       "low_30d": 0.84890006,
       "high_30d": 0.86785999,
       "points": [
@@ -778,8 +778,8 @@
           0.8668800089616578
         ],
         [
-          1781256430000,
-          0.8626000715285075
+          1781260446000,
+          0.8634000097161485
         ]
       ],
       "indexed_points": [
@@ -876,20 +876,20 @@
           102.12
         ],
         [
-          1781256430000,
-          101.61
+          1781260446000,
+          101.71
         ]
       ]
     }
   },
   "correlations": {
-    "btc_gold": -0.216,
-    "btc_oil": -0.127,
-    "btc_usd": 0.115
+    "btc_gold": -0.226,
+    "btc_oil": -0.122,
+    "btc_usd": 0.126
   },
   "status": "ok",
   "successful_assets": 4,
   "configured_assets": 4,
   "skipped_assets_private": [],
-  "runtime_seconds": 0.17
+  "runtime_seconds": 0.28
 }
