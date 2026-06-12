@@ -1,0 +1,29 @@
+{
+  "version": "2026-06-12-mail-batch-01",
+  "module": "mail_batch_composer",
+  "mode": "prepare_validate_save",
+  "max_recipients_per_batch": 30,
+  "default_sender": "it@gnk-asg.hr",
+  "assistant_signature_source": "data/assistant_identity.json",
+  "allowed_current_actions": [
+    "prepare_draft",
+    "validate_recipients",
+    "save_local_package",
+    "export_json_package"
+  ],
+  "locked_until_backend": [
+    "send_batch",
+    "send_scheduled_batch",
+    "upload_attachments",
+    "import_address_book"
+  ],
+  "future_backend_requirements": [
+    "Cloudflare protected endpoint",
+    "Resend or Brevo outbound provider",
+    "owner confirmation before send",
+    "send log",
+    "rate limit",
+    "unsubscribe or legal footer when applicable"
+  ],
+  "operator_page": "/operator/mail/"
+}
