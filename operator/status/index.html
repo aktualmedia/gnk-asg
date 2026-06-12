@@ -16,7 +16,7 @@
       <p>GNK ASG Operator</p>
       <h1>Status dashboard</h1>
       <p>Read-only pregled ključnih modula portala. Ova stranica samo čita javne i konfiguracijske datoteke; ne izvršava radnje.</p>
-      <a class="btn" href="../">Natrag na operator</a>
+      <a class="btn" href="../start/">Operator start</a>
       <button class="btn" id="reload">Osvježi status</button>
     </section>
     <section class="grid" id="cards" aria-label="Status moduli"></section>
@@ -33,9 +33,11 @@
     {id:'operator',label:'Operator moduli',url:'../../data/operator_modules.json'},
     {id:'pwa',label:'PWA / QR',url:'../../data/pwa_qr_config.json'},
     {id:'wa',label:'WhatsApp',url:'../../data/whatsapp_module_config.json'},
+    {id:'image',label:'Image SEO',url:'../../data/image_seo_schema.json'},
+    {id:'docs',label:'Dokumenti',url:'../../data/document_library_schema.json'},
+    {id:'upload',label:'Upload backend',url:'../../data/upload_backend_contract.json'},
     {id:'sitemap',label:'Sitemap',url:'../../sitemap.xml',text:true}
   ];
-  function ageLabel(ts){if(!ts)return 'nema vremena'; const d=new Date(ts); if(isNaN(d))return String(ts); const m=Math.round((Date.now()-d.getTime())/60000); if(m<60)return m+' min'; if(m<1440)return Math.round(m/60)+' h'; return Math.round(m/1440)+' d';}
   async function loadOne(f){try{const r=await fetch(f.url+'?cb='+Date.now(),{cache:'no-store'}); const t=await r.text(); if(!r.ok)throw new Error('HTTP '+r.status); return {file:f,ok:true,data:f.text?t:JSON.parse(t)};}catch(e){return {file:f,ok:false,error:e.message};}}
   function summarize(x){
     if(!x.ok)return {cls:'bad',state:'nedostupno',detail:x.error};
@@ -47,6 +49,9 @@
     if(x.file.id==='operator')return {cls:'ok',state:'moduli učitani',detail:'modula: '+((d.modules||[]).length)};
     if(x.file.id==='pwa')return {cls:'ok',state:'PWA konfiguracija',detail:(d.public_pwa&&d.public_pwa.path?d.public_pwa.path:'')+' / '+(d.operator_pwa&&d.operator_pwa.path?d.operator_pwa.path:'')};
     if(x.file.id==='wa')return {cls:'warn',state:d.status||'planirano',detail:'faza: '+((d.phases||[]).length)};
+    if(x.file.id==='image')return {cls:'ok',state:'schema učitana',detail:'polja: '+((d.fields||[]).length)};
+    if(x.file.id==='docs')return {cls:'ok',state:'schema učitana',detail:'polja: '+((d.fields||[]).length)};
+    if(x.file.id==='upload')return {cls:'warn',state:'backend ugovor',detail:d.storage_target||'spremno za backend'};
     if(x.file.id==='sitemap')return {cls:x.data.includes('/app/')?'ok':'warn',state:'sitemap učitan',detail:x.data.includes('/app/')?'app/install/qr prisutni':'provjeri PWA URL-ove'};
     return {cls:'muted',state:'učitano',detail:''};
   }
