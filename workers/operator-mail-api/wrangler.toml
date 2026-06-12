@@ -1,0 +1,24 @@
+name = "gnk-asg-operator-mail-api"
+main = "src/index.js"
+compatibility_date = "2026-06-12"
+
+# Production routes should be enabled only after review in Cloudflare.
+# Example:
+# routes = [
+#   { pattern = "gnk-asg.hr/api/operator/mail-batch/send", zone_name = "gnk-asg.hr" },
+#   { pattern = "gnk-asg.hr/api/operator/mail-log/list", zone_name = "gnk-asg.hr" }
+# ]
+
+[vars]
+MAIL_FROM = "it@gnk-asg.hr"
+MAIL_FROM_NAME = "GNK ASG"
+OPERATOR_ALLOW_NO_ACCESS = "false"
+
+# Secrets, set in Cloudflare / Wrangler, not in GitHub:
+# RESEND_API_KEY
+# BREVO_API_KEY
+
+# Optional KV binding for official mail log:
+# [[kv_namespaces]]
+# binding = "MAIL_LOG_KV"
+# id = "REPLACE_WITH_KV_NAMESPACE_ID"
