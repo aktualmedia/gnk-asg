@@ -1,4 +1,5 @@
 const MAP = [
+  { host: 'business.gnk-asg.hr', prefix: '/business' },
   { host: 'front.gnk-asg.hr', prefix: '/front' },
   { host: 'news.gnk-asg.hr', prefix: '/news' },
   { host: 'admin.gnk-asg.hr', prefix: '/operator/app' },
