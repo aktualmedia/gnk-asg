@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GNK ASG Audio Operator</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
+  <style>
+    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:900px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:20px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.panel{background:#fff;border:1px solid #dce5f0;border-radius:24px;padding:22px;margin:16px 0;box-shadow:0 16px 44px rgba(0,0,0,.18)}button,a.btn{display:inline-block;border:0;border-radius:999px;padding:11px 15px;background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35);font-weight:900;text-decoration:none;cursor:pointer;margin:6px 6px 6px 0}.primary{background:#143b6d;color:#fff}.danger{background:#7f1d1d;color:#fff}.box{white-space:pre-wrap;background:#f7f9fc;border-radius:16px;padding:14px;color:#23364e;line-height:1.6}textarea{width:100%;box-sizing:border-box;min-height:150px;border:1px solid #cbd5e1;border-radius:14px;padding:12px;font:inherit}.small{font-size:13px;color:#64748b;line-height:1.6}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="head">
+      <p>GNK ASG Operator</p>
+      <h1>Audio Operator</h1>
+      <p>Glasovne upute i čitanje naglas u operator zoni. Funkcije se pokreću ručno u pregledniku.</p>
+      <a class="btn" href="../">Natrag na operator</a>
+    </section>
+    <section class="panel">
+      <h2>Glasovne upute</h2>
+      <p class="small">Podržano ovisi o pregledniku. Preporuka: Chrome ili Edge.</p>
+      <button class="primary" id="listen">Slušaj naredbu</button><button class="danger" id="stopListen">Stani</button>
+      <div id="heard" class="box">Naredba nije pokrenuta.</div>
+    </section>
+    <section class="panel">
+      <h2>Čitanje naglas</h2>
+      <textarea id="readText">GNK ASG Operator je spreman. Možete otvoriti mail centar, status dashboard ili FAQ modul.</textarea>
+      <br><button class="primary" id="speak">Čitaj naglas</button><button class="danger" id="stopSpeak">Zaustavi čitanje</button>
+    </section>
+    <section class="panel">
+      <h2>Brze naredbe</h2>
+      <button data-go="../mail/">Otvori mail</button><button data-go="../status/">Otvori status</button><button data-go="../faq/">Otvori FAQ</button><button data-say="Status dashboard čita konfiguracije i javne podatke, bez izvršavanja radnji.">Čitaj status opis</button>
+    </section>
+    <section class="panel"><h2>Pravila</h2><div class="box">Audio sloj smije otvoriti module, pročitati tekst i pomoći u navigaciji. Za slanje, objavu, brisanje, upload ili rollback i dalje je potrebna potvrda u sučelju i zaštićeni backend.</div></section>
+  </main>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  function say(t){speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); u.lang='hr-HR'; speechSynthesis.speak(u)}
+  function route(t){const s=t.toLowerCase(); if(s.includes('mail')) location.href='../mail/'; else if(s.includes('status')) location.href='../status/'; else if(s.includes('faq')||s.includes('trening')) location.href='../faq/'; else if(s.includes('čitaj')||s.includes('citaj')) say($('readText').value); else if(s.includes('stani')) speechSynthesis.cancel(); else say('Naredba nije prepoznata. Možete reći otvori mail, otvori status, otvori FAQ ili čitaj tekst.');}
+  $('speak').onclick=()=>say($('readText').value);
+  $('stopSpeak').onclick=()=>speechSynthesis.cancel();
+  document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>location.href=b.getAttribute('data-go'));
+  document.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>say(b.getAttribute('data-say')));
+  let rec=null;
+  $('listen').onclick=function(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition; if(!SR){$('heard').textContent='Preglednik ne podržava prepoznavanje govora.';return;} rec=new SR(); rec.lang='hr-HR'; rec.interimResults=false; rec.maxAlternatives=1; rec.onresult=e=>{const t=e.results[0][0].transcript; $('heard').textContent='Prepoznato: '+t; route(t)}; rec.onerror=e=>{$('heard').textContent='Greška: '+e.error}; rec.start(); $('heard').textContent='Slušam...';};
+  $('stopListen').onclick=function(){if(rec)rec.stop(); $('heard').textContent='Slušanje zaustavljeno.'};
+})();
+</script>
+</body>
+</html>
