@@ -1,11 +1,11 @@
 {
   "updated_at": "2026-06-12T09:33:04+00:00",
   "news": {
-    "updated_at": "2026-06-12T09:33:04+00:00",
+    "updated_at": "2026-06-12T09:32:51+00:00",
     "status": "ok",
     "engine": "single_publication_engine_v1",
-    "cadence": "scheduled every hour",
-    "source_success_policy": "publish_when_at_least_80_percent_of_sources_are_synced",
+    "cadence": "scheduled every 30 minutes",
+    "source_success_policy": "publish_valid_public_set_with_degraded_status_when_partial_sources_fail",
     "source_success_threshold": 0.8,
     "source_success_ratio": 0.9778,
     "source_sync_status": "complete_by_80_percent_rule",
@@ -17,9 +17,9 @@
     "max_public_items": 500,
     "archive_items": 400,
     "max_archive_items": 400,
-    "discarded_archive_overflow_items": 226,
-    "fetched_candidates": 478,
-    "duplicates_or_blocked_removed": 102,
+    "discarded_archive_overflow_items": 229,
+    "fetched_candidates": 480,
+    "duplicates_or_blocked_removed": 101,
     "request_timeout_seconds": 6,
     "network_workers": 12,
     "share_previews_ready": 80,
@@ -30,9 +30,9 @@
       "srbija": 4,
       "international": 17,
       "slovenija": 1,
-      "digital-assets": 14,
-      "mobilnost": 2,
-      "bih": 2
+      "digital-assets": 15,
+      "bih": 2,
+      "mobilnost": 1
     },
     "errors": [
       {
@@ -42,10 +42,6 @@
     ],
     "preview_errors": [],
     "checked_at": "2026-06-12T09:33:04+00:00",
-    "last_attempt_at": "2026-06-12T09:33:04+00:00",
-    "heartbeat_policy": "news_status_updates_on_every_automation_run",
-    "stale_safe": true,
-    "last_successful_refresh_at": "2026-06-12T09:33:04+00:00",
-    "data_status": "fresh_or_reference_checked"
+    "last_attempt_at": "2026-06-12T09:33:04+00:00"
   }
 }
