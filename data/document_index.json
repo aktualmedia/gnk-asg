@@ -1,0 +1,7 @@
+{
+  "version": "2026-06-12-document-index-01",
+  "module": "document_index",
+  "updated_at": "2026-06-12T00:00:00+02:00",
+  "items": [],
+  "note": "Backend dokument modul kasnije dodaje dokumente, metapodatke i javne ili interne URL-ove."
+}
