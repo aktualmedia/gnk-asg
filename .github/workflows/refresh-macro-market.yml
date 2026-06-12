@@ -8,6 +8,7 @@ on:
     paths:
       - 'scripts/refresh_macro_market.py'
       - '.github/workflows/refresh-macro-market.yml'
+      - '.github/triggers/refresh-macro-market-now.txt'
 
 permissions:
   contents: write
@@ -41,5 +42,6 @@ jobs:
             echo "No macro market data changes to commit."
           else
             git commit -m "Refresh macro market data"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
