@@ -1,9 +1,18 @@
 {
-  "version": "2026-06-12",
+  "version": "2026-06-12-mail-style-v2",
   "status": "prepared",
   "domain": "gnk-asg.hr",
   "company": "GNK ASG d.o.o.",
+  "brand": {
+    "primary": "#07162d",
+    "secondary": "#143b6d",
+    "gold": "#d4af37",
+    "paper": "#f7f9fc",
+    "text": "#23364e",
+    "muted": "#64748b"
+  },
   "official_signature_hr": {
+    "language": "hr",
     "name": "Nermin Sefić",
     "title": "Direktor / zakonski zastupnik",
     "company": "GNK ASG d.o.o.",
@@ -12,19 +21,46 @@
     "mbs": "081512375",
     "email": "info@gnk-asg.hr",
     "web": "https://gnk-asg.hr",
-    "text": "Srdačan pozdrav,\n\nNermin Sefić\nDirektor / zakonski zastupnik\nGNK ASG d.o.o.\nZagrebačka cesta 130, Zagreb\nOIB: 75227917632\nMBS: 081512375\n\nE-mail: info@gnk-asg.hr\nWeb: https://gnk-asg.hr\n\nGNK ASG d.o.o. · GNK DINAMO Ltd. · poslovna, tehnološka i sportska infrastruktura"
+    "tagline": "poslovna, tehnološka i sportska infrastruktura",
+    "text": "Srdačan pozdrav,\n\nNermin Sefić\nDirektor / zakonski zastupnik\nGNK ASG d.o.o.\nZagrebačka cesta 130, Zagreb\nOIB: 75227917632\nMBS: 081512375\n\nE-mail: info@gnk-asg.hr\nWeb: https://gnk-asg.hr\n\nGNK ASG d.o.o. · GNK DINAMO Ltd. · poslovna, tehnološka i sportska infrastruktura",
+    "html": "<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%;max-width:620px;border-collapse:separate;border-spacing:0;margin-top:24px;font-family:Arial,Helvetica,sans-serif;\"><tr><td style=\"padding:18px 20px;border-radius:18px;background:#07162d;border:1px solid rgba(212,175,55,.55);\"><div style=\"font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#d4af37;font-weight:700;\">GNK ASG d.o.o.</div><div style=\"font-size:22px;line-height:1.25;color:#ffffff;font-weight:700;margin-top:6px;\">Nermin Sefić</div><div style=\"font-size:14px;line-height:1.6;color:#dbe7f5;margin-top:4px;\">Direktor / zakonski zastupnik</div><div style=\"height:1px;background:linear-gradient(90deg,#d4af37,rgba(212,175,55,0));margin:14px 0;\"></div><div style=\"font-size:13px;line-height:1.7;color:#dbe7f5;\"><strong style=\"color:#ffffff;\">Sjedište:</strong> Zagrebačka cesta 130, Zagreb<br><strong style=\"color:#ffffff;\">OIB:</strong> 75227917632 · <strong style=\"color:#ffffff;\">MBS:</strong> 081512375<br><strong style=\"color:#ffffff;\">E-mail:</strong> info@gnk-asg.hr · <strong style=\"color:#ffffff;\">Web:</strong> https://gnk-asg.hr</div><div style=\"font-size:12px;line-height:1.6;color:#d4af37;margin-top:12px;\">GNK ASG d.o.o. · GNK DINAMO Ltd. · poslovna, tehnološka i sportska infrastruktura</div></td></tr></table>"
+  },
+  "official_signature_en": {
+    "language": "en",
+    "name": "Nermin Sefić",
+    "title": "Director / Legal Representative",
+    "company": "GNK ASG d.o.o.",
+    "address": "Zagrebačka cesta 130, Zagreb, Croatia",
+    "oib": "75227917632",
+    "mbs": "081512375",
+    "email": "info@gnk-asg.hr",
+    "web": "https://gnk-asg.hr",
+    "tagline": "business, technology and sports infrastructure",
+    "text": "Kind regards,\n\nNermin Sefić\nDirector / Legal Representative\nGNK ASG d.o.o.\nZagrebačka cesta 130, Zagreb, Croatia\nCompany ID / OIB: 75227917632\nCourt Registry No. / MBS: 081512375\n\nE-mail: info@gnk-asg.hr\nWeb: https://gnk-asg.hr\n\nGNK ASG d.o.o. · GNK DINAMO Ltd. · business, technology and sports infrastructure",
+    "html": "<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%;max-width:620px;border-collapse:separate;border-spacing:0;margin-top:24px;font-family:Arial,Helvetica,sans-serif;\"><tr><td style=\"padding:18px 20px;border-radius:18px;background:#07162d;border:1px solid rgba(212,175,55,.55);\"><div style=\"font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#d4af37;font-weight:700;\">GNK ASG d.o.o.</div><div style=\"font-size:22px;line-height:1.25;color:#ffffff;font-weight:700;margin-top:6px;\">Nermin Sefić</div><div style=\"font-size:14px;line-height:1.6;color:#dbe7f5;margin-top:4px;\">Director / Legal Representative</div><div style=\"height:1px;background:linear-gradient(90deg,#d4af37,rgba(212,175,55,0));margin:14px 0;\"></div><div style=\"font-size:13px;line-height:1.7;color:#dbe7f5;\"><strong style=\"color:#ffffff;\">Registered office:</strong> Zagrebačka cesta 130, Zagreb, Croatia<br><strong style=\"color:#ffffff;\">OIB:</strong> 75227917632 · <strong style=\"color:#ffffff;\">MBS:</strong> 081512375<br><strong style=\"color:#ffffff;\">E-mail:</strong> info@gnk-asg.hr · <strong style=\"color:#ffffff;\">Web:</strong> https://gnk-asg.hr</div><div style=\"font-size:12px;line-height:1.6;color:#d4af37;margin-top:12px;\">GNK ASG d.o.o. · GNK DINAMO Ltd. · business, technology and sports infrastructure</div></td></tr></table>"
   },
   "ai_signature_hr": {
+    "language": "hr",
     "name": "IT – Osobni digitalni asistent",
     "company": "GNK ASG d.o.o.",
     "web": "https://gnk-asg.hr",
-    "text": "Srdačan pozdrav,\n\nIT – Osobni digitalni asistent\nza GNK ASG d.o.o.\n\nOva poruka može sadržavati automatizirano pripremljen tekst ili tehničku potvrdu primitka. Sadržaj koji se odnosi na pravna, financijska, porezna, ugovorna, medijska, osobna ili druga osjetljiva pitanja podliježe ljudskoj provjeri i odobrenju ovlaštene osobe.\n\nGNK ASG d.o.o.\nhttps://gnk-asg.hr"
+    "text": "Srdačan pozdrav,\n\nIT – Osobni digitalni asistent\nza GNK ASG d.o.o.\n\nOva poruka može sadržavati automatizirano pripremljen tekst ili tehničku potvrdu primitka. Sadržaj koji se odnosi na pravna, financijska, porezna, ugovorna, medijska, osobna ili druga osjetljiva pitanja podliježe ljudskoj provjeri i odobrenju ovlaštene osobe.\n\nGNK ASG d.o.o.\nhttps://gnk-asg.hr",
+    "html": "<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%;max-width:620px;border-collapse:separate;border-spacing:0;margin-top:24px;font-family:Arial,Helvetica,sans-serif;\"><tr><td style=\"padding:18px 20px;border-radius:18px;background:#0b2748;border:1px solid rgba(212,175,55,.45);\"><div style=\"font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#d4af37;font-weight:700;\">IT · GNK ASG</div><div style=\"font-size:21px;line-height:1.25;color:#ffffff;font-weight:700;margin-top:6px;\">IT – Osobni digitalni asistent</div><div style=\"font-size:13px;line-height:1.7;color:#dbe7f5;margin-top:10px;\">Ova poruka može sadržavati automatizirano pripremljen tekst ili tehničku potvrdu primitka. Pravna, financijska, porezna, ugovorna, medijska, osobna i druga osjetljiva pitanja podliježu ljudskoj provjeri i odobrenju ovlaštene osobe.</div><div style=\"height:1px;background:linear-gradient(90deg,#d4af37,rgba(212,175,55,0));margin:14px 0;\"></div><div style=\"font-size:13px;line-height:1.7;color:#dbe7f5;\"><strong style=\"color:#ffffff;\">GNK ASG d.o.o.</strong><br>https://gnk-asg.hr</div></td></tr></table>"
+  },
+  "ai_signature_en": {
+    "language": "en",
+    "name": "IT – Personal Digital Assistant",
+    "company": "GNK ASG d.o.o.",
+    "web": "https://gnk-asg.hr",
+    "text": "Kind regards,\n\nIT – Personal Digital Assistant\nfor GNK ASG d.o.o.\n\nThis message may contain automatically prepared text or a technical acknowledgement. Content relating to legal, financial, tax, contractual, media, personal or other sensitive matters is subject to human review and approval by an authorised person.\n\nGNK ASG d.o.o.\nhttps://gnk-asg.hr",
+    "html": "<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%;max-width:620px;border-collapse:separate;border-spacing:0;margin-top:24px;font-family:Arial,Helvetica,sans-serif;\"><tr><td style=\"padding:18px 20px;border-radius:18px;background:#0b2748;border:1px solid rgba(212,175,55,.45);\"><div style=\"font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#d4af37;font-weight:700;\">IT · GNK ASG</div><div style=\"font-size:21px;line-height:1.25;color:#ffffff;font-weight:700;margin-top:6px;\">IT – Personal Digital Assistant</div><div style=\"font-size:13px;line-height:1.7;color:#dbe7f5;margin-top:10px;\">This message may contain automatically prepared text or a technical acknowledgement. Legal, financial, tax, contractual, media, personal and other sensitive matters are subject to human review and approval by an authorised person.</div><div style=\"height:1px;background:linear-gradient(90deg,#d4af37,rgba(212,175,55,0));margin:14px 0;\"></div><div style=\"font-size:13px;line-height:1.7;color:#dbe7f5;\"><strong style=\"color:#ffffff;\">GNK ASG d.o.o.</strong><br>https://gnk-asg.hr</div></td></tr></table>"
   },
   "sending_policy": {
     "one_recipient_per_email": true,
     "cc_bcc_mass_send": false,
     "human_approval_required": true,
     "sensitive_topics_draft_only": true,
+    "default_rate_limit_seconds_between_messages": 120,
     "allowed_sender_addresses": [
       "no-reply@gnk-asg.hr",
       "it@gnk-asg.hr",
