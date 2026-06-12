@@ -32,3 +32,5 @@ Important public pages:
 - https://gnk-asg.hr/kontakt/
 - https://gnk-asg.hr/legal.html
 - https://gnk-asg.hr/insights-hr/
+- https://gnk-asg.hr/aplikacija/
+- https://gnk-asg.hr/status/
