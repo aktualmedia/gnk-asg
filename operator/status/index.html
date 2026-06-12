@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GNK ASG Operator Status</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
+  <style>
+    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:1080px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:20px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:#fff;border:1px solid #dce5f0;border-radius:22px;padding:18px;box-shadow:0 16px 44px rgba(0,0,0,.18)}.card h2{font-size:19px;margin:0 0 8px}.card p{margin:0;color:#52647b;line-height:1.55}.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;text-transform:uppercase;margin-bottom:8px}.ok{background:#dcfce7;color:#166534}.warn{background:#fef3c7;color:#92400e}.bad{background:#fee2e2;color:#991b1b}.muted{background:#eef2f7;color:#475569}.status{white-space:pre-wrap;background:#fff;border:1px solid #dce5f0;border-radius:22px;padding:18px;margin-top:16px;color:#23364e}.btn{display:inline-block;margin-top:14px;border:0;border-radius:999px;padding:11px 15px;background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35);font-weight:900;text-decoration:none;cursor:pointer}@media(max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="head">
+      <p>GNK ASG Operator</p>
+      <h1>Status dashboard</h1>
+      <p>Read-only pregled ključnih modula portala. Ova stranica samo čita javne i konfiguracijske datoteke; ne izvršava radnje.</p>
+      <a class="btn" href="../">Natrag na operator</a>
+      <button class="btn" id="reload">Osvježi status</button>
+    </section>
+    <section class="grid" id="cards" aria-label="Status moduli"></section>
+    <section class="status" id="raw">Učitavanje statusa...</section>
+  </main>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const files=[
+    {id:'news',label:'Vijesti',url:'../../data/update_status.json'},
+    {id:'daily',label:'Objave autora',url:'../../data/daily_insight_log.json'},
+    {id:'mail',label:'Mail batch',url:'../../data/mail_batch_config.json'},
+    {id:'assistant',label:'IT asistent',url:'../../data/assistant_identity.json'},
+    {id:'operator',label:'Operator moduli',url:'../../data/operator_modules.json'},
+    {id:'pwa',label:'PWA / QR',url:'../../data/pwa_qr_config.json'},
+    {id:'wa',label:'WhatsApp',url:'../../data/whatsapp_module_config.json'},
+    {id:'sitemap',label:'Sitemap',url:'../../sitemap.xml',text:true}
+  ];
+  function ageLabel(ts){if(!ts)return 'nema vremena'; const d=new Date(ts); if(isNaN(d))return String(ts); const m=Math.round((Date.now()-d.getTime())/60000); if(m<60)return m+' min'; if(m<1440)return Math.round(m/60)+' h'; return Math.round(m/1440)+' d';}
+  async function loadOne(f){try{const r=await fetch(f.url+'?cb='+Date.now(),{cache:'no-store'}); const t=await r.text(); if(!r.ok)throw new Error('HTTP '+r.status); return {file:f,ok:true,data:f.text?t:JSON.parse(t)};}catch(e){return {file:f,ok:false,error:e.message};}}
+  function summarize(x){
+    if(!x.ok)return {cls:'bad',state:'nedostupno',detail:x.error};
+    const d=x.data;
+    if(x.file.id==='news')return {cls:'ok',state:'dostupno',detail:'update_status.json učitan'};
+    if(x.file.id==='daily'){const n=Array.isArray(d)?d.length:(Array.isArray(d.items)?d.items.length:0);return {cls:n?'ok':'warn',state:n?'aktivno':'bez zapisa',detail:'zapisa: '+n};}
+    if(x.file.id==='mail')return {cls:d.mode==='send_via_authorized_endpoint'?'ok':'warn',state:d.mode||'učitano',detail:'limit: '+(d.max_recipients_per_batch||'n/a')};
+    if(x.file.id==='assistant')return {cls:'ok',state:d.assistant_name||'učitano',detail:d.recommended_address||''};
+    if(x.file.id==='operator')return {cls:'ok',state:'moduli učitani',detail:'modula: '+((d.modules||[]).length)};
+    if(x.file.id==='pwa')return {cls:'ok',state:'PWA konfiguracija',detail:(d.public_pwa&&d.public_pwa.path?d.public_pwa.path:'')+' / '+(d.operator_pwa&&d.operator_pwa.path?d.operator_pwa.path:'')};
+    if(x.file.id==='wa')return {cls:'warn',state:d.status||'planirano',detail:'faza: '+((d.phases||[]).length)};
+    if(x.file.id==='sitemap')return {cls:x.data.includes('/app/')?'ok':'warn',state:'sitemap učitan',detail:x.data.includes('/app/')?'app/install/qr prisutni':'provjeri PWA URL-ove'};
+    return {cls:'muted',state:'učitano',detail:''};
+  }
+  async function run(){
+    $('cards').innerHTML=''; $('raw').textContent='Učitavanje...';
+    const results=await Promise.all(files.map(loadOne));
+    $('cards').innerHTML=results.map(x=>{const s=summarize(x);return '<article class="card"><span class="pill '+s.cls+'">'+s.state+'</span><h2>'+x.file.label+'</h2><p>'+s.detail+'</p></article>';}).join('');
+    const ok=results.filter(x=>x.ok).length;
+    $('raw').textContent='Pregled: '+ok+' / '+results.length+' datoteka dostupno\nAžurirano lokalno: '+new Date().toLocaleString('hr-HR')+'\n\n'+results.map(x=>x.file.label+': '+(x.ok?'OK':'GREŠKA - '+x.error)).join('\n');
+  }
+  $('reload').onclick=run; run();
+})();
+</script>
+</body>
+</html>
