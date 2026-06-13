@@ -1,0 +1,30 @@
+{
+  "status": "preview",
+  "robots": "noindex,nofollow until approval",
+  "updated_at": "2026-06-13T00:00:00+02:00",
+  "recommended_subdomain": "media.gnk-asg.hr",
+  "author": "Nermin Sefić",
+  "entities": [
+    {
+      "name": "GNK ASG d.o.o.",
+      "type": "Croatian company",
+      "url": "/media-kit/gnk-asg/",
+      "downloads": [
+        "/media-kit/downloads/gnk-asg-fact-sheet-hr.md",
+        "/media-kit/downloads/gnk-asg-boilerplate-hr.txt",
+        "/assets/logo-gnk-asg.svg"
+      ],
+      "keywords": ["GNK ASG d.o.o.", "GNK ASG", "Nermin Sefić", "korporativni portal", "financije", "tehnologija", "AI"]
+    },
+    {
+      "name": "GNK DINAMO Ltd.",
+      "type": "US company / group framework",
+      "url": "/media-kit/gnk-dinamo-ltd/",
+      "downloads": [
+        "/media-kit/downloads/gnk-dinamo-ltd-fact-sheet-hr.md",
+        "/media-kit/downloads/gnk-dinamo-ltd-boilerplate-hr.txt"
+      ],
+      "keywords": ["GNK DINAMO Ltd.", "GNK DINAMO Ltd. grupa", "Boulder Colorado", "Nermin Sefić", "grupni okvir"]
+    }
+  ]
+}
