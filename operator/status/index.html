@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>GNK ASG Operator Status</title>
   <meta name="robots" content="noindex,nofollow">
-  <link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
+  <link rel="stylesheet" href="../../assets/style.css?v=20260613-operator-status-02">
   <style>
-    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:1080px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:20px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:#fff;border:1px solid #dce5f0;border-radius:22px;padding:18px;box-shadow:0 16px 44px rgba(0,0,0,.18)}.card h2{font-size:19px;margin:0 0 8px}.card p{margin:0;color:#52647b;line-height:1.55}.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;text-transform:uppercase;margin-bottom:8px}.ok{background:#dcfce7;color:#166534}.warn{background:#fef3c7;color:#92400e}.bad{background:#fee2e2;color:#991b1b}.muted{background:#eef2f7;color:#475569}.status{white-space:pre-wrap;background:#fff;border:1px solid #dce5f0;border-radius:22px;padding:18px;margin-top:16px;color:#23364e}.btn{display:inline-block;margin-top:14px;border:0;border-radius:999px;padding:11px 15px;background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35);font-weight:900;text-decoration:none;cursor:pointer}@media(max-width:900px){.grid{grid-template-columns:1fr}}
+    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:1120px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:20px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:#fff;border:1px solid #dce5f0;border-radius:22px;padding:18px;box-shadow:0 16px 44px rgba(0,0,0,.18)}.card h2{font-size:19px;margin:0 0 8px}.card p{margin:0;color:#52647b;line-height:1.55}.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;text-transform:uppercase;margin-bottom:8px}.ok{background:#dcfce7;color:#166534}.warn{background:#fef3c7;color:#92400e}.bad{background:#fee2e2;color:#991b1b}.muted{background:#eef2f7;color:#475569}.status{white-space:pre-wrap;background:#fff;border:1px solid #dce5f0;border-radius:22px;padding:18px;margin-top:16px;color:#23364e;max-height:520px;overflow:auto}.btn{display:inline-block;margin-top:14px;border:0;border-radius:999px;padding:11px 15px;background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35);font-weight:900;text-decoration:none;cursor:pointer}@media(max-width:900px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -15,8 +15,10 @@
     <section class="head">
       <p>GNK ASG Operator</p>
       <h1>Status dashboard</h1>
-      <p>Read-only pregled ključnih modula portala. Ova stranica samo čita javne i konfiguracijske datoteke; ne izvršava radnje.</p>
+      <p>Read-only pregled aktivnih front, backend, news, market, mail i dokument modula. Stranica samo čita javne i konfiguracijske datoteke.</p>
       <a class="btn" href="../start/">Operator start</a>
+      <a class="btn" href="../frontend-health/">Frontend Health</a>
+      <a class="btn" href="../../status-lite/">Status Lite</a>
       <button class="btn" id="reload">Osvježi status</button>
     </section>
     <section class="grid" id="cards" aria-label="Status moduli"></section>
@@ -26,44 +28,42 @@
 (function(){
   const $=id=>document.getElementById(id);
   const files=[
+    {id:'public_status',label:'Public status',url:'../../data/status.json'},
     {id:'news',label:'Vijesti',url:'../../data/update_status.json'},
-    {id:'daily',label:'Objave autora',url:'../../data/daily_insight_log.json'},
-    {id:'mail',label:'Mail batch',url:'../../data/mail_batch_config.json'},
-    {id:'maillog',label:'Mail log schema',url:'../../data/mail_log_schema.json'},
-    {id:'assistant',label:'IT asistent',url:'../../data/assistant_identity.json'},
-    {id:'operator',label:'Operator moduli',url:'../../data/operator_modules.json'},
-    {id:'pwa',label:'PWA / QR',url:'../../data/pwa_qr_config.json'},
-    {id:'wa',label:'WhatsApp',url:'../../data/whatsapp_module_config.json'},
-    {id:'image',label:'Image SEO',url:'../../data/image_seo_schema.json'},
-    {id:'imageindex',label:'Image index',url:'../../data/image_index.json'},
-    {id:'docs',label:'Dokumenti',url:'../../data/document_library_schema.json'},
-    {id:'docindex',label:'Document index',url:'../../data/document_index.json'},
-    {id:'upload',label:'Upload backend',url:'../../data/upload_backend_contract.json'},
-    {id:'summary',label:'Dnevni sažetak',url:'../../data/daily_operator_summary.json'},
-    {id:'summaryschema',label:'Sažetak schema',url:'../../data/daily_operator_summary_schema.json'},
+    {id:'newsfeed',label:'News feed',url:'../../data/news.json'},
+    {id:'marketstatus',label:'Market status',url:'../../data/fast_market_status.json'},
+    {id:'marketfeed',label:'Market feed',url:'../../data/market.json'},
+    {id:'macro',label:'Macro market',url:'../../data/macro_market.json'},
+    {id:'exchanges',label:'Burze',url:'../../data/stock_exchanges.json'},
+    {id:'admin',label:'Admin manifest',url:'../../data/admin_app_manifest.json'},
+    {id:'backend',label:'Backend manifest',url:'../../data/backend_operations_manifest.json'},
+    {id:'contact',label:'Kontakt kanali',url:'../../data/contact_channels.json'},
+    {id:'mailids',label:'Mail identities',url:'../../data/mail_sender_identities.json'},
+    {id:'mailpolicy',label:'Mail policy',url:'../../data/mail_automation_policy.json'},
+    {id:'docs',label:'Document index',url:'../../data/document_index.json'},
+    {id:'images',label:'Image index',url:'../../data/image_index.json'},
     {id:'sitemap',label:'Sitemap',url:'../../sitemap.xml',text:true}
   ];
-  async function loadOne(f){try{const r=await fetch(f.url+'?cb='+Date.now(),{cache:'no-store'}); const t=await r.text(); if(!r.ok)throw new Error('HTTP '+r.status); return {file:f,ok:true,data:f.text?t:JSON.parse(t)};}catch(e){return {file:f,ok:false,error:e.message};}}
-  function countItems(d){return Array.isArray(d.items)?d.items.length:0}
+  async function loadOne(f){const c=new AbortController();const timer=setTimeout(()=>c.abort(),4500);try{const r=await fetch(f.url+'?cb='+Date.now(),{cache:'no-store',signal:c.signal}); const t=await r.text(); clearTimeout(timer); if(!r.ok)throw new Error('HTTP '+r.status); return {file:f,ok:true,data:f.text?t:JSON.parse(t),bytes:t.length};}catch(e){clearTimeout(timer);return {file:f,ok:false,error:e.message};}}
+  function countItems(d){if(Array.isArray(d))return d.length;if(Array.isArray(d.items))return d.items.length;if(Array.isArray(d.coins))return d.coins.length;if(Array.isArray(d.markets))return d.markets.length;if(d.news&&d.news.public_items!=null)return d.news.public_items;return 0}
   function summarize(x){
     if(!x.ok)return {cls:'bad',state:'nedostupno',detail:x.error};
     const d=x.data;
-    if(x.file.id==='news')return {cls:'ok',state:'dostupno',detail:'update_status.json učitan'};
-    if(x.file.id==='daily'){const n=Array.isArray(d)?d.length:(Array.isArray(d.items)?d.items.length:0);return {cls:n?'ok':'warn',state:n?'aktivno':'bez zapisa',detail:'zapisa: '+n};}
-    if(x.file.id==='mail')return {cls:d.mode==='send_via_authorized_endpoint'?'ok':'warn',state:d.mode||'učitano',detail:'limit: '+(d.max_recipients_per_batch||'n/a')};
-    if(x.file.id==='maillog')return {cls:'ok',state:'schema učitana',detail:'statusa: '+((d.status_values||[]).length)};
-    if(x.file.id==='assistant')return {cls:'ok',state:d.assistant_name||'učitano',detail:d.recommended_address||''};
-    if(x.file.id==='operator')return {cls:'ok',state:'moduli učitani',detail:'modula: '+((d.modules||[]).length)};
-    if(x.file.id==='pwa')return {cls:'ok',state:'PWA konfiguracija',detail:(d.public_pwa&&d.public_pwa.path?d.public_pwa.path:'')+' / '+(d.operator_pwa&&d.operator_pwa.path?d.operator_pwa.path:'')};
-    if(x.file.id==='wa')return {cls:'warn',state:d.status||'planirano',detail:'faza: '+((d.phases||[]).length)};
-    if(x.file.id==='image')return {cls:'ok',state:'schema učitana',detail:'polja: '+((d.fields||[]).length)};
-    if(x.file.id==='imageindex')return {cls:'warn',state:'index spreman',detail:'slika: '+countItems(d)};
-    if(x.file.id==='docs')return {cls:'ok',state:'schema učitana',detail:'polja: '+((d.fields||[]).length)};
-    if(x.file.id==='docindex')return {cls:'warn',state:'index spreman',detail:'dokumenata: '+countItems(d)};
-    if(x.file.id==='upload')return {cls:'warn',state:'backend ugovor',detail:d.storage_target||'spremno za backend'};
-    if(x.file.id==='summary')return {cls:'warn',state:'sažetak spreman',detail:'next actions: '+((d.next_actions||[]).length)};
-    if(x.file.id==='summaryschema')return {cls:'ok',state:'schema učitana',detail:'sekcija: '+((d.sections||[]).length)};
-    if(x.file.id==='sitemap')return {cls:x.data.includes('/app/')?'ok':'warn',state:'sitemap učitan',detail:x.data.includes('/app/')?'app/install/qr prisutni':'provjeri PWA URL-ove'};
+    if(x.file.id==='public_status')return {cls:d.status==='ok'?'ok':'warn',state:d.status||'učitano',detail:(d.frontend&&d.frontend.script_version)||'status učitan'};
+    if(x.file.id==='news')return {cls:d.news&&d.news.status==='ok'?'ok':'warn',state:d.news?d.news.status:'učitano',detail:'stavki: '+(d.news&&d.news.public_items!=null?d.news.public_items:'n/a')};
+    if(x.file.id==='newsfeed')return {cls:countItems(d)?'ok':'warn',state:'feed',detail:'stavki: '+countItems(d)};
+    if(x.file.id==='marketstatus')return {cls:d.status==='ok'?'ok':'warn',state:d.status||'učitano',detail:'digital assets: '+(d.digital_assets&&d.digital_assets.coins?d.digital_assets.coins:'n/a')};
+    if(x.file.id==='marketfeed')return {cls:countItems(d)?'ok':'warn',state:'feed',detail:'instrumenata: '+countItems(d)};
+    if(x.file.id==='macro')return {cls:d.status==='ok'?'ok':'warn',state:d.status||'učitano',detail:'assets: '+(d.assets?Object.keys(d.assets).length:'n/a')};
+    if(x.file.id==='exchanges')return {cls:d.status==='ok'?'ok':'warn',state:d.status||'učitano',detail:'burzi/indeksa: '+countItems(d)};
+    if(x.file.id==='admin')return {cls:'ok',state:d.status||'manifest',detail:'sekcija: '+((d.sections||[]).length)};
+    if(x.file.id==='backend')return {cls:'ok',state:d.version||'manifest',detail:'quality gate: '+((d.quality_gate&&d.quality_gate.required_before_public_change)||[]).length};
+    if(x.file.id==='contact')return {cls:'ok',state:'kontakt',detail:'kanala: '+((d.planned_mailboxes||[]).length)+' · WhatsApp: '+(d.whatsapp_url?'da':'ne')};
+    if(x.file.id==='mailids')return {cls:'ok',state:'identiteti',detail:'pošiljatelja: '+((d.identities||[]).length)};
+    if(x.file.id==='mailpolicy')return {cls:d.default_mode==='draft_only'?'ok':'warn',state:d.default_mode||'policy',detail:'human review rules'};
+    if(x.file.id==='docs')return {cls:countItems(d)?'ok':'warn',state:'dokumenti',detail:'dokumenata: '+countItems(d)};
+    if(x.file.id==='images')return {cls:'warn',state:'image index',detail:'slika: '+countItems(d)};
+    if(x.file.id==='sitemap')return {cls:x.data.includes('/insights-hr/')?'ok':'warn',state:'sitemap',detail:'bytes: '+x.bytes};
     return {cls:'muted',state:'učitano',detail:''};
   }
   async function run(){
