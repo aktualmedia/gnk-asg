@@ -1,9 +1,9 @@
 {
-  "version": "2026-06-12-backend-iq200-01",
+  "version": "2026-06-13-front-back-audit-02",
   "portal": "GNK ASG d.o.o.",
   "domain": "gnk-asg.hr",
   "frontend_policy": {
-    "rule": "Ne mijenjati postojeće frontend funkcionalnosti u ovom ciklusu; dopuštene su samo kozmetičke i tekstualne usklade statusa.",
+    "rule": "Ne mijenjati postojeći vizualni identitet; dopuštene su funkcionalne korekcije koje ubrzavaju ili stabiliziraju front.",
     "protected_modules": [
       "public homepage layout",
       "contact form frontend",
@@ -11,7 +11,13 @@
       "business news renderer",
       "AI / Intelligence Desk public frontend",
       "3D globe and visual network"
-    ]
+    ],
+    "active_frontend_guards": [
+      "/assets/frontend-stability-guard.js",
+      "/assets/mobile-stability.css",
+      "/assets/quality-patch.css"
+    ],
+    "performance_rule": "Snapshot data must render before external live API attempts; heavy visual modules stay deferred through app.js idle loading."
   },
   "news_publication": {
     "engine": "scripts/news_publication.py",
@@ -19,6 +25,7 @@
     "public_limit": 100,
     "archive_limit": 500,
     "schedule": "09:00 and 16:00 Europe/Zagreb",
+    "local_time_gate": true,
     "source_threshold": 0.8,
     "fallback_policy": "If some sources fail but at least 80 percent are synchronized, publish valid public set with degraded status metadata."
   },
@@ -34,7 +41,16 @@
     "fast_market_workflow": ".github/workflows/fast-market-update.yml",
     "stored_snapshot": "data/market.json",
     "status_file": "data/fast_market_status.json",
-    "display_rule": "Use live app data when available; otherwise show stored snapshot with clear status."
+    "frontend_module": "assets/market.js",
+    "pulse_module": "assets/live-market-pulse.js",
+    "display_rule": "Use stored snapshot first with clear status; attempt browser live data second without blocking initial render."
+  },
+  "operator": {
+    "gateway": "/backend/",
+    "status_lite": "/status-lite/",
+    "frontend_health": "/operator/frontend-health/",
+    "api_check": "/operator/api-check/",
+    "subdomain_router": "workers/subdomain-router/src/index.js"
   },
   "contact": {
     "frontend_status": "confirmed_working_by_owner",
@@ -66,6 +82,8 @@
       "news public limit must stay at 100",
       "archive limit must stay at or below 500",
       "status cadence must match twice daily news policy",
+      "market module must support marketGrid and coinGrid",
+      "news module must support data-category and data-filter",
       "mail automation must remain draft_only unless explicitly approved",
       "contact form must keep human approval rule for sensitive topics",
       "no secrets may be committed"
