@@ -1,5 +1,5 @@
 {
-  "version": "2026-06-13-v1",
+  "version": "2026-06-13-v2",
   "candidate": "/home-candidate/",
   "public_routes": [
     "/front/",
@@ -29,6 +29,8 @@
   ],
   "operator_routes": [
     "/operator/app/",
+    "/operator/start/",
+    "/operator/release-check/",
     "/operator/frontend-health/",
     "/operator/api-check/",
     "/backend/",
