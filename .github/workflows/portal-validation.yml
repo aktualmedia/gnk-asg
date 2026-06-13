@@ -82,8 +82,8 @@ jobs:
           grep -q "ai-communication-upgrade.js" assets/app.js
           grep -q "marketGrid" assets/market.js
           grep -q "coinGrid" assets/market.js
-          grep -q "data.category" assets/news-live.js
-          grep -q "data.filter" assets/news-live.js
+          grep -q "dataset.category" assets/news-live.js
+          grep -q "dataset.filter" assets/news-live.js
           grep -q "Europe/Zagreb" .github/workflows/business-news-twice-daily.yml
           grep -q "steps.window.outputs.run" .github/workflows/business-news-twice-daily.yml
           grep -q "noindex,nofollow" operator/frontend-health/index.html
