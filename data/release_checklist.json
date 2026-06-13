@@ -1,5 +1,5 @@
 {
-  "version": "2026-06-13-v4",
+  "version": "2026-06-13-v5",
   "candidate": "/home-candidate/",
   "public_routes": [
     "/front/",
@@ -8,6 +8,8 @@
     "/en/news/",
     "/media-kit/",
     "/en/media-kit/",
+    "/design-system/",
+    "/en/design-system/",
     "/gnk-dinamo-ltd-media-kit/",
     "/en/gnk-dinamo-ltd-media-kit/",
     "/downloads/",
@@ -24,6 +26,8 @@
     "/data/release_checklist.json",
     "/data/automation_status.json",
     "/data/route_map.json",
+    "/data/homepage_switch_plan.json",
+    "/data/design_system_manifest.json",
     "/data/redesign_manifest.json",
     "/data/brand_identity.json",
     "/data/company_locations.json",
@@ -39,6 +43,7 @@
     "/operator/start/",
     "/operator/release-check/",
     "/operator/route-map/",
+    "/operator/homepage-switch/",
     "/operator/frontend-health/",
     "/operator/api-check/",
     "/backend/",
@@ -52,7 +57,8 @@
     "structured hubs for documents and locations",
     "snapshot-first market data",
     "HR and EN corporate routes",
-    "route map before homepage switch"
+    "route map before homepage switch",
+    "homepage switch plan before production replacement"
   ],
   "status": "ready"
 }
