@@ -1,7 +1,7 @@
 # GNK ASG Release Checklist
 
 Date: 2026-06-13
-Version: v3
+Version: v5
 
 ## Candidate
 
@@ -16,6 +16,7 @@ Version: v3
 - `/assistant/`
 - `/documentation/`
 - `/media-kit/`
+- `/design-system/`
 - `/gnk-dinamo-ltd-media-kit/`
 
 ## EN routes
@@ -27,6 +28,7 @@ Version: v3
 - `/en/assistant/`
 - `/en/documentation/`
 - `/en/media-kit/`
+- `/en/design-system/`
 - `/en/gnk-dinamo-ltd-media-kit/`
 
 ## Data routes
@@ -35,6 +37,8 @@ Version: v3
 - `/data/release_checklist.json`
 - `/data/automation_status.json`
 - `/data/route_map.json`
+- `/data/homepage_switch_plan.json`
+- `/data/design_system_manifest.json`
 - `/data/redesign_manifest.json`
 - `/data/brand_identity.json`
 - `/data/company_locations.json`
@@ -49,6 +53,7 @@ Version: v3
 - `/operator/app/`
 - `/operator/release-check/`
 - `/operator/route-map/`
+- `/operator/homepage-switch/`
 - `/operator/frontend-health/`
 - `/operator/api-check/`
 
@@ -60,4 +65,10 @@ Version: v3
 
 ## Rule
 
-Production homepage stays unchanged until the candidate, route map, release check and frontend health are stable.
+Production homepage stays unchanged until the candidate, route map, homepage switch plan, release check and frontend health are stable.
+
+## Rollback reference
+
+Current production `index.html` SHA before switch:
+
+`4804eb83923c7a42e1a0b4c8889d63113dc50b7a`
