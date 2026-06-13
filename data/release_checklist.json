@@ -1,0 +1,46 @@
+{
+  "version": "2026-06-13-v1",
+  "candidate": "/home-candidate/",
+  "public_routes": [
+    "/front/",
+    "/en/front/",
+    "/news/",
+    "/en/news/",
+    "/media-kit/",
+    "/gnk-dinamo-ltd-media-kit/",
+    "/downloads/",
+    "/en/downloads/",
+    "/locations/",
+    "/en/locations/",
+    "/assistant/",
+    "/documentation/"
+  ],
+  "data_routes": [
+    "/data/status.json",
+    "/data/redesign_manifest.json",
+    "/data/brand_identity.json",
+    "/data/company_locations.json",
+    "/data/gnk_dinamo_ltd_media_kit.json",
+    "/data/ai_assistant_public_model.json",
+    "/data/news.json",
+    "/data/market.json",
+    "/sitemap.xml",
+    "/sitemap-corporate.xml"
+  ],
+  "operator_routes": [
+    "/operator/app/",
+    "/operator/frontend-health/",
+    "/operator/api-check/",
+    "/backend/",
+    "/status-lite/"
+  ],
+  "design_rules": [
+    "GNK ASG brand tokens",
+    "SVG logo assets",
+    "light first render",
+    "separate news layer",
+    "structured hubs for documents and locations",
+    "snapshot-first market data"
+  ],
+  "status": "ready"
+}
