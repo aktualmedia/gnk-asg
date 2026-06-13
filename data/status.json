@@ -1,0 +1,35 @@
+{
+  "updated_at": "2026-06-13T00:00:00+02:00",
+  "status": "ok",
+  "site": "GNK ASG portal",
+  "timezone": "Europe/Zagreb",
+  "public_status_policy": "informative public status endpoint; values are derived from published JSON snapshots and browser-safe frontend modules",
+  "frontend": {
+    "status": "ok",
+    "homepage": "/",
+    "script": "/assets/app.js",
+    "market_module": "/assets/market.js",
+    "news_module": "/assets/news-live.js"
+  },
+  "data": {
+    "news": {
+      "endpoint": "/data/news.json",
+      "status_endpoint": "/data/update_status.json",
+      "cadence": "09:00 and 16:00 Europe/Zagreb plus manual refresh",
+      "public_limit": 100,
+      "status": "ok"
+    },
+    "market": {
+      "endpoint": "/data/market.json",
+      "status_endpoint": "/data/fast_market_status.json",
+      "cadence": "scheduled every 5 minutes when workflow is active",
+      "public_mode": "snapshot first, browser live attempt second",
+      "status": "ok"
+    },
+    "sitemap": {
+      "endpoint": "/sitemap.xml",
+      "status": "ok"
+    }
+  },
+  "legal_notice": "Podaci su informativni, mogu kasniti i nisu pravni, financijski, porezni ili investicijski savjet."
+}
