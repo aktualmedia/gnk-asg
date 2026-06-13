@@ -1,3 +1,0 @@
-trigger=install-legal-documents
-created=2026-06-12
-purpose=add-legal-menu-and-legal-pages

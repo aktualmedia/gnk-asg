@@ -1,2 +1,0 @@
-triggered_at=2026-06-12T16:15:00Z
-reason=focused SEO refresh for app status contact legal insights and public functions pages
