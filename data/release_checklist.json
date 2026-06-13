@@ -1,5 +1,5 @@
 {
-  "version": "2026-06-13-v3",
+  "version": "2026-06-13-v4",
   "candidate": "/home-candidate/",
   "public_routes": [
     "/front/",
@@ -21,6 +21,9 @@
   ],
   "data_routes": [
     "/data/status.json",
+    "/data/release_checklist.json",
+    "/data/automation_status.json",
+    "/data/route_map.json",
     "/data/redesign_manifest.json",
     "/data/brand_identity.json",
     "/data/company_locations.json",
@@ -28,7 +31,6 @@
     "/data/ai_assistant_public_model.json",
     "/data/news.json",
     "/data/market.json",
-    "/data/automation_status.json",
     "/sitemap.xml",
     "/sitemap-corporate.xml"
   ],
@@ -36,6 +38,7 @@
     "/operator/app/",
     "/operator/start/",
     "/operator/release-check/",
+    "/operator/route-map/",
     "/operator/frontend-health/",
     "/operator/api-check/",
     "/backend/",
@@ -48,7 +51,8 @@
     "separate news layer",
     "structured hubs for documents and locations",
     "snapshot-first market data",
-    "HR and EN corporate routes"
+    "HR and EN corporate routes",
+    "route map before homepage switch"
   ],
   "status": "ready"
 }
