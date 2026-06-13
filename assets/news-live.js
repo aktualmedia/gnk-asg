@@ -10,7 +10,7 @@
     if (q('#gnk-final-fix-style')) return;
     const s = document.createElement('style');
     s.id = 'gnk-final-fix-style';
-    s.textContent = '.news-card{min-height:0!important}.news-card.no-image{background:#fff!important;color:#102033!important;padding:18px!important}.news-card.no-image h3{color:#07162d!important;font-size:1rem}.news-card.no-image p{color:#5f7086!important;font-size:.82rem}.doc{position:relative}.doc .doc-link{display:inline-flex;margin-top:12px;border:1px solid rgba(212,175,55,.45);border-radius:999px;padding:8px 12px;background:#fffaf0;color:#07162d!important;font-weight:900;text-decoration:none}.snapshot-label{display:inline-flex;margin-top:8px;border:1px solid rgba(212,175,55,.42);border-radius:999px;padding:4px 8px;color:#e7c75f;font-size:.58rem;font-weight:900}.future-confirmation-note{margin-top:20px;padding:15px 17px;border:1px solid rgba(212,175,55,.32);border-radius:16px;background:rgba(255,255,255,.08);color:#f2e6c8;font-size:.88rem;line-height:1.5}.ai-fab{border:2px solid #d4af37!important}.ai-fab-mark{color:#fff!important}';
+    s.textContent = '.news-card{min-height:0!important}.news-card.no-image{background:#fff!important;color:#102033!important;padding:18px!important}.news-card.no-image h3{color:#07162d!important;font-size:1rem}.news-card.no-image p{color:#5f7086!important;font-size:.82rem}.news-card.auto-editor{border:1px solid rgba(212,175,55,.42)!important;background:linear-gradient(180deg,#fff,#fffaf0)!important}.doc{position:relative}.doc .doc-link{display:inline-flex;margin-top:12px;border:1px solid rgba(212,175,55,.45);border-radius:999px;padding:8px 12px;background:#fffaf0;color:#07162d!important;font-weight:900;text-decoration:none}.snapshot-label{display:inline-flex;margin-top:8px;border:1px solid rgba(212,175,55,.42);border-radius:999px;padding:4px 8px;color:#e7c75f;font-size:.58rem;font-weight:900}.future-confirmation-note{margin-top:20px;padding:15px 17px;border:1px solid rgba(212,175,55,.32);border-radius:16px;background:rgba(255,255,255,.08);color:#f2e6c8;font-size:.88rem;line-height:1.5}.ai-fab{border:2px solid #d4af37!important}.ai-fab-mark{color:#fff!important}';
     document.head.appendChild(s);
   }
   function money(value, code) {
@@ -58,20 +58,30 @@
     const result = q('#convertResult'); const amount = Number(q('#convertAmount')?.value || 1); const selected = q('#convertCoin')?.value || 'bitcoin'; const coin = coins.find(c => c.id === selected) || coins[0]; if (result && coin) result.textContent = money(amount * Number((coin.prices || {})[cur] || 0), cur);
   }
   function addNewsCard(grid, item) {
-    const card = node('article', 'news-card no-image');
-    card.appendChild(node('span', 'meta', clean(item.source || item.category || item.group || 'NEWS')));
+    const card = node('article', 'news-card no-image' + (item.type === 'auto-editor' ? ' auto-editor' : ''));
+    const metaText = item.type === 'auto-editor' ? 'AUTO EDITOR · PUBLISHED · SNAPSHOT' : clean(item.source || item.category || item.group || 'NEWS');
+    card.appendChild(node('span', 'meta', metaText));
     card.appendChild(node('h3', '', clean(item.title || 'Business News')));
-    card.appendChild(node('p', '', clean(item.summary || (en() ? 'Open the source for the full publication.' : 'Otvorite izvor za cjelovitu objavu.'))));
-    const a = node('a', '', en() ? 'OPEN SOURCE →' : 'OTVORI IZVOR →'); a.target = '_blank'; a.rel = 'noopener nofollow'; a.href = item.url || item.share_url || '#'; card.appendChild(a);
+    card.appendChild(node('p', '', clean(item.summary || item.seo_description || (en() ? 'Open the source for the full publication.' : 'Otvorite izvor za cjelovitu objavu.'))));
+    const a = node('a', '', item.type === 'auto-editor' ? (en() ? 'READ ARTICLE →' : 'PROČITAJ OBJAVU →') : (en() ? 'OPEN SOURCE →' : 'OTVORI IZVOR →'));
+    a.target = item.type === 'auto-editor' ? '_self' : '_blank';
+    a.rel = item.type === 'auto-editor' ? 'bookmark' : 'noopener nofollow';
+    a.href = item.canonical || item.url || item.share_url || '#';
+    card.appendChild(a);
     grid.appendChild(card);
   }
   async function news(filter) {
     const grid = q('#newsGrid'); if (!grid) return;
     const data = await read('/data/news.json') || await read('data/news.json');
-    const items = Array.isArray(data) ? data : [];
+    const auto = await read('/data/auto_editor_posts.json') || await read('data/auto_editor_posts.json');
+    const base = Array.isArray(data) ? data : [];
+    const posts = Array.isArray(auto) ? auto.filter(p => p && p.status === 'published') : [];
     const active = filter || q('#newsTabs button.active')?.dataset.filter || 'all';
     if (active === 'fina') return;
-    const selected = items.filter(i => active === 'all' || String((i.group || '') + ' ' + (i.category || '') + ' ' + (i.region || '')).toLowerCase().includes(active)).slice(0, 24);
+    let selected = [];
+    if (active === 'all' || active === 'technology' || active === 'economy' || active === 'digital-assets') selected = selected.concat(posts);
+    selected = selected.concat(base.filter(i => active === 'all' || String((i.group || '') + ' ' + (i.category || '') + ' ' + (i.region || '')).toLowerCase().includes(active)));
+    selected = selected.slice(0, 24);
     grid.textContent = '';
     if (!selected.length) { grid.appendChild(node('article', 'news-card no-image', en() ? 'No public item in selected section.' : 'Nema javne stavke u odabranoj rubrici.')); return; }
     selected.forEach(item => addNewsCard(grid, item));
