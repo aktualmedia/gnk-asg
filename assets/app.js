@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var VERSION = '20260613-audit-fixes-01';
+  var VERSION = '20260613-front-back-audit-02';
 
   var nativeFetch = window.fetch && window.fetch.bind(window);
   if (nativeFetch && !window.__gnkRootDataFetch) {
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     else window.setTimeout(fn, Math.min(timeout || 2200, 900));
   }
 
+  script('/assets/frontend-stability-guard.js');
   optimizeMedia();
 
   style('/assets/fina-panel.css');
@@ -77,13 +78,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var menuToggle = document.getElementById('menuToggle');
   var navLinks = document.getElementById('navLinks');
-  if (menuToggle && navLinks) {
+  if (menuToggle && navLinks && !menuToggle.dataset.gnkMenuBaseBound) {
+    menuToggle.dataset.gnkMenuBaseBound = '1';
     menuToggle.addEventListener('click', function () { navLinks.classList.toggle('open'); });
     document.addEventListener('click', function (event) {
       if (!navLinks.contains(event.target) && event.target !== menuToggle) navLinks.classList.remove('open');
     });
   }
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    if (anchor.dataset.gnkSmoothBound === '1') return;
+    anchor.dataset.gnkSmoothBound = '1';
     anchor.addEventListener('click', function (event) {
       var target = document.querySelector(anchor.getAttribute('href'));
       if (!target) return;
@@ -113,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
     script('/assets/mobile-app.js');
     script('/assets/mobile-navigation.js');
     script('/assets/floating-intelligence.js');
+    script('/assets/ai-communication-upgrade.js');
   }, 2200);
 
   runIdle(function () {
