@@ -11,6 +11,7 @@ on:
     paths:
       - 'data/**'
       - 'scripts/**'
+      - 'workers/**'
       - '.github/workflows/**'
       - 'kontakt/**'
       - 'backend/**'
@@ -88,6 +89,8 @@ jobs:
           grep -q "steps.window.outputs.run" .github/workflows/business-news-twice-daily.yml
           grep -q "noindex,nofollow" operator/frontend-health/index.html
           grep -q "noindex,nofollow" status-lite/index.html
+          grep -q "__health" workers/subdomain-router/src/index.js
+          grep -q "no-store" workers/subdomain-router/src/index.js
 
       - name: Validate Python syntax
         shell: bash
@@ -116,4 +119,5 @@ jobs:
           node --check assets/live-market-pulse.js
           node --check assets/frontend-stability-guard.js
           node --check assets/ai-communication-upgrade.js
+          node --check workers/subdomain-router/src/index.js
           node --check sw.js
