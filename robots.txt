@@ -3,7 +3,5 @@ Allow: /
 Disallow: /admin/
 Disallow: /webmail/
 Disallow: /podijeli/
-Disallow: /home-candidate/
 
 Sitemap: https://gnk-asg.hr/sitemap.xml
-Sitemap: https://gnk-asg.hr/sitemap-corporate.xml
