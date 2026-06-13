@@ -13,7 +13,8 @@
       "canonical": "https://gnk-asg.hr/insights-hr/daily/2026-06-12-morning-spacex-s-gwynne-shotwell-says-ipo-is-one-small-step-in-very-futuristic-j/",
       "image": "https://gnk-asg.hr/assets/insights/daily/2026-06-12-morning-spacex-s-gwynne-shotwell-says-ipo-is-one-small-step-in-very-futuristic-j.svg",
       "editorial_responsibility": "Nermin Sefić",
-      "editorial_responsibility_ascii": "Nermin Sefic"
+      "editorial_responsibility_ascii": "Nermin Sefic",
+      "hidden": true
     },
     {
       "date": "2026-06-12",
@@ -28,7 +29,8 @@
       "canonical": "https://gnk-asg.hr/insights-hr/daily/2026-06-12-afternoon-amazons-echo-hub-gets-a-customizable-new-look-and-rings-ai-features/",
       "image": "https://gnk-asg.hr/assets/insights/daily/2026-06-12-afternoon-amazons-echo-hub-gets-a-customizable-new-look-and-rings-ai-features.svg",
       "editorial_responsibility": "Nermin Sefić",
-      "editorial_responsibility_ascii": "Nermin Sefic"
+      "editorial_responsibility_ascii": "Nermin Sefic",
+      "hidden": true
     },
     {
       "date": "2026-06-12",
@@ -43,8 +45,69 @@
       "canonical": "https://gnk-asg.hr/insights-hr/daily/2026-06-12-evening-logitechs-awesome-mx-master-3s-mouse-drops-to-under-100/",
       "image": "https://gnk-asg.hr/assets/insights/daily/2026-06-12-evening-logitechs-awesome-mx-master-3s-mouse-drops-to-under-100.svg",
       "editorial_responsibility": "Nermin Sefić",
+      "editorial_responsibility_ascii": "Nermin Sefic",
+      "hidden": true
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "morning-business",
+      "slot_label": "Jutarnja objava",
+      "title": "Kapital, likvidnost i reputacija: zašto se moderna tvrtka više ne vodi samo kroz bilancu",
+      "summary": "Autorski poslovni osvrt Nermina Sefića o kapitalu, likvidnosti, reputaciji i tehnologiji kao zajedničkoj osnovi moderne korporativne otpornosti.",
+      "source": "GNK ASG autorski osvrt",
+      "url": "https://gnk-asg.hr/insights-hr/daily/2026-06-12-kapital-likvidnost-reputacija-tehnologija/",
+      "category": "Gospodarstvo i kapital",
+      "local_url": "daily/2026-06-12-kapital-likvidnost-reputacija-tehnologija/",
+      "canonical": "https://gnk-asg.hr/insights-hr/daily/2026-06-12-kapital-likvidnost-reputacija-tehnologija/",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80",
+      "editorial_responsibility": "Nermin Sefić",
+      "editorial_responsibility_ascii": "Nermin Sefic"
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "midday-business",
+      "slot_label": "Podnevna objava",
+      "title": "Lanci opskrbe više nisu samo logistika: postaju test poslovne sigurnosti i upravljačke ozbiljnosti",
+      "summary": "Autorski osvrt Nermina Sefića o lancima opskrbe, poslovnoj sigurnosti, regionalnom tržištu i upravljanju rizikom u gospodarstvu.",
+      "source": "GNK ASG autorski osvrt",
+      "url": "https://gnk-asg.hr/insights-hr/daily/2026-06-12-lanci-opskrbe-poslovna-sigurnost/",
+      "category": "Business i lanci opskrbe",
+      "local_url": "daily/2026-06-12-lanci-opskrbe-poslovna-sigurnost/",
+      "canonical": "https://gnk-asg.hr/insights-hr/daily/2026-06-12-lanci-opskrbe-poslovna-sigurnost/",
+      "image": "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1600&q=80",
+      "editorial_responsibility": "Nermin Sefić",
+      "editorial_responsibility_ascii": "Nermin Sefic"
+    },
+    {
+      "date": "2026-06-12",
+      "slot": "afternoon-business",
+      "slot_label": "Popodnevna objava",
+      "title": "Digitalna imovina i poslovni podaci: nova infrastruktura povjerenja za korporativne portale",
+      "summary": "Autorski tekst Nermina Sefića o digitalnoj imovini, poslovnim podacima, AI asistentima, transparentnosti i novoj infrastrukturi povjerenja.",
+      "source": "GNK ASG autorski osvrt",
+      "url": "https://gnk-asg.hr/insights-hr/daily/2026-06-12-digitalna-imovina-podaci-povjerenje/",
+      "category": "Digitalna imovina i poslovni podaci",
+      "local_url": "daily/2026-06-12-digitalna-imovina-podaci-povjerenje/",
+      "canonical": "https://gnk-asg.hr/insights-hr/daily/2026-06-12-digitalna-imovina-podaci-povjerenje/",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
+      "editorial_responsibility": "Nermin Sefić",
+      "editorial_responsibility_ascii": "Nermin Sefic"
+    },
+    {
+      "date": "2026-06-13",
+      "slot": "manual-business",
+      "slot_label": "Nova objava",
+      "title": "Kamatne stope, likvidnost i disciplina kapitala: zašto je 2026. godina test poslovne otpornosti",
+      "summary": "Autorski poslovno-ekonomski osvrt Nermina Sefića o kamatnim stopama, likvidnosti, disciplini kapitala i poslovnoj otpornosti u promjenjivom tržišnom okruženju.",
+      "source": "GNK ASG autorski osvrt",
+      "url": "https://gnk-asg.hr/insights-hr/daily/2026-06-13-kamatne-stope-likvidnost-disciplina-kapitala/",
+      "category": "Gospodarstvo i kapital",
+      "local_url": "daily/2026-06-13-kamatne-stope-likvidnost-disciplina-kapitala/",
+      "canonical": "https://gnk-asg.hr/insights-hr/daily/2026-06-13-kamatne-stope-likvidnost-disciplina-kapitala/",
+      "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80",
+      "editorial_responsibility": "Nermin Sefić",
       "editorial_responsibility_ascii": "Nermin Sefic"
     }
   ],
-  "updated_at": "2026-06-12T17:30:09.875809+02:00"
+  "updated_at": "2026-06-13T10:10:00+02:00"
 }
