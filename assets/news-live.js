@@ -1,126 +1,99 @@
 (() => {
   'use strict';
-  const grid = document.getElementById('newsGrid');
-  const tabsHost = document.getElementById('newsTabs');
-  if (!grid) return;
-  let tabs = Array.from(document.querySelectorAll('#newsTabs button'));
-  let articles = [];
-  let approvedMedia = [];
-  let activeFilter = 'all';
-  const NEWS_VISIBLE_LIMIT = 100;
-  const esc = (value) => String(value || '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const english = () => window.GNK_LANG && window.GNK_LANG.get() === 'en';
-  function installTopicCalloutStyle() {
-    if (document.getElementById('topicMonitorCalloutStyle')) return;
-    const style = document.createElement('style');
-    style.id = 'topicMonitorCalloutStyle';
-    style.textContent = '.topic-monitor-link{display:block;margin:4px 0 25px;padding:0}.topic-monitor-link a{position:relative;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 22px 18px 20px;border:1px solid rgba(212,175,55,.36);border-radius:18px;background:linear-gradient(122deg,#07162d 0%,#102e53 73%,#173e70 100%);box-shadow:0 13px 30px rgba(7,22,45,.12);text-decoration:none;overflow:hidden}.topic-monitor-link a:after{content:"";position:absolute;right:-50px;top:-62px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.18),transparent 67%)}.topic-monitor-copy{position:relative;z-index:1;display:flex;align-items:center;gap:15px}.topic-monitor-icon{width:45px;height:45px;flex:0 0 45px;display:grid;place-items:center;border-radius:13px;background:rgba(212,175,55,.13);border:1px solid rgba(212,175,55,.32);color:#e4c159;font-size:1.25rem}.topic-monitor-text small{display:block;color:#d4af37;font-size:.59rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:5px}.topic-monitor-text strong{display:block;color:#fff;font-size:1.02rem;line-height:1.25}.topic-monitor-text span{display:block;color:#aebdd1;font-size:.77rem;margin-top:4px}.topic-monitor-action{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border:1px solid rgba(212,175,55,.5);border-radius:999px;padding:10px 14px;color:#f0cc62;font-size:.68rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase;transition:.18s}.topic-monitor-link a:hover{border-color:rgba(212,175,55,.68);transform:translateY(-1px)}.topic-monitor-link a:hover .topic-monitor-action{background:#d4af37;color:#07162d}@media(max-width:680px){.topic-monitor-link a{display:block;padding:16px}.topic-monitor-copy{align-items:flex-start}.topic-monitor-action{margin-top:15px;margin-left:60px}.topic-monitor-text strong{font-size:.92rem}.topic-monitor-text span{font-size:.7rem}}';
-    document.head.appendChild(style);
+  const q = (s, r = document) => r.querySelector(s);
+  const qa = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const en = () => window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en';
+  const loc = () => en() ? 'en-GB' : 'hr-HR';
+  const read = async (path) => { try { const r = await fetch(path + '?v=' + Date.now(), { cache:'no-store' }); return r.ok ? r.json() : null; } catch { return null; } };
+  const clean = (value) => String(value || '');
+  function style() {
+    if (q('#gnk-final-fix-style')) return;
+    const s = document.createElement('style');
+    s.id = 'gnk-final-fix-style';
+    s.textContent = '.news-card{min-height:0!important}.news-card.no-image{background:#fff!important;color:#102033!important;padding:18px!important}.news-card.no-image h3{color:#07162d!important;font-size:1rem}.news-card.no-image p{color:#5f7086!important;font-size:.82rem}.doc{position:relative}.doc .doc-link{display:inline-flex;margin-top:12px;border:1px solid rgba(212,175,55,.45);border-radius:999px;padding:8px 12px;background:#fffaf0;color:#07162d!important;font-weight:900;text-decoration:none}.snapshot-label{display:inline-flex;margin-top:8px;border:1px solid rgba(212,175,55,.42);border-radius:999px;padding:4px 8px;color:#e7c75f;font-size:.58rem;font-weight:900}.future-confirmation-note{margin-top:20px;padding:15px 17px;border:1px solid rgba(212,175,55,.32);border-radius:16px;background:rgba(255,255,255,.08);color:#f2e6c8;font-size:.88rem;line-height:1.5}.ai-fab{border:2px solid #d4af37!important}.ai-fab-mark{color:#fff!important}';
+    document.head.appendChild(s);
   }
-  function calloutMarkup() {
-    const en = english();
-    return '<a href="/teme/" aria-label="' + (en ? 'Open thematic monitoring' : 'Otvori tematski monitoring') + '"><span class="topic-monitor-copy"><span class="topic-monitor-icon" aria-hidden="true">◎</span><span class="topic-monitor-text"><small>' + (en ? 'THEMATIC MONITORING' : 'TEMATSKI MONITORING') + '</small><strong>' + (en ? 'Economy, sport, mobility and technology' : 'Ekonomija, sport, mobilnost i tehnologija') + '</strong><span>' + (en ? 'Live public-topic hub and verified sources' : 'Aktualne teme i provjerljivi javni izvori') + '</span></span></span><span class="topic-monitor-action">' + (en ? 'OPEN HUB' : 'OTVORI CENTAR') + ' →</span></a>';
+  function money(value, code) {
+    const n = Number(value || 0);
+    const digits = code === 'jpy' ? 0 : Math.abs(n) < 1 ? 5 : 2;
+    try { return new Intl.NumberFormat(loc(), { style:'currency', currency:code.toUpperCase(), maximumFractionDigits:digits }).format(n); } catch { return String(n); }
   }
-  function ensureTopicControls() {
-    if (!tabsHost || tabsHost.dataset.topicsReady) return;
-    const mention = tabsHost.querySelector('[data-filter="mentions"]');
-    const entries = [
-      { filter:'economy', hr:'Ekonomija', en:'Economy' },
-      { filter:'sport', hr:'Sport', en:'Sport' },
-      { filter:'mobilnost', hr:'Mobilnost', en:'Mobility' }
-    ];
-    entries.forEach((entry) => {
-      if (tabsHost.querySelector('[data-filter="' + entry.filter + '"]')) return;
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.dataset.filter = entry.filter;
-      button.dataset.hr = entry.hr;
-      button.dataset.en = entry.en;
-      button.textContent = english() ? entry.en : entry.hr;
-      tabsHost.insertBefore(button, mention || null);
+  function dlabel(value) { const d = new Date(value || ''); return isNaN(d) ? '—' : d.toLocaleString(loc()); }
+  function node(tag, cls, text) { const el = document.createElement(tag); if (cls) el.className = cls; if (text != null) el.textContent = text; return el; }
+  function patchGroup() {
+    const g = q('#grupa'); if (!g || g.dataset.fixedFuture === '1') return;
+    const walker = document.createTreeWalker(g, NodeFilter.SHOW_TEXT);
+    let t; while ((t = walker.nextNode())) {
+      t.nodeValue = t.nodeValue
+        .replace('33 postojeća društva i 12 planiranih pozicija', '33 postojeća društva, 12 planiranih pozicija i 2 buduće pozicije u potvrdi')
+        .replace('33 postojeća društva · +12 planiranih pozicija', '33 postojeća društva · +12 planiranih · +2 u potvrdi')
+        .replace('12 Planirano 2026.', '14 Buduće pozicije')
+        .replace('45 Ciljani prikaz nakon širenja', '47 Ciljani prikaz nakon potvrde');
+    }
+    const note = node('div', 'future-confirmation-note', en() ? '12 locations are planned from the data layer; 2 additional future positions are pending confirmation.' : '12 lokacija je planirano iz podatkovnog sloja, a 2 dodatne buduće pozicije vode se kao lokacije u potvrdi.');
+    (q('.container', g) || g).appendChild(note);
+    g.dataset.fixedFuture = '1';
+  }
+  async function market() {
+    const grid = q('#coinGrid'); if (!grid) return;
+    const data = await read('/data/market.json') || await read('data/market.json');
+    const coins = Array.isArray(data && data.coins) ? data.coins : [];
+    const cur = (q('#currency')?.value || 'eur').toLowerCase();
+    grid.textContent = '';
+    if (!coins.length) { grid.appendChild(node('article', 'coin', en() ? 'Market snapshot unavailable · FALLBACK' : 'Market snapshot nedostupan · FALLBACK')); return; }
+    coins.slice(0, 12).forEach(c => {
+      const card = node('article', 'coin');
+      const top = node('div', 'coin-top');
+      top.appendChild(node('strong', '', clean(c.symbol)));
+      top.appendChild(node('small', '', clean(c.id)));
+      card.appendChild(top);
+      card.appendChild(node('div', 'price', money((c.prices || {})[cur], cur)));
+      const ch = Number((c.changes_24h || {})[cur] || 0);
+      card.appendChild(node('div', 'change ' + (ch >= 0 ? 'positive' : 'negative'), (ch >= 0 ? '+' : '') + ch.toFixed(2) + '% / 24 h'));
+      card.appendChild(node('small', 'snapshot-label', 'SNAPSHOT'));
+      grid.appendChild(card);
     });
-    const section = grid.closest('#news .container') || grid.parentElement;
-    if (section && !section.querySelector('.topic-monitor-link')) {
-      installTopicCalloutStyle();
-      const note = document.createElement('div');
-      note.className = 'topic-monitor-link';
-      note.innerHTML = calloutMarkup();
-      tabsHost.after(note);
-    }
-    tabsHost.dataset.topicsReady = '1';
-    tabs = Array.from(tabsHost.querySelectorAll('button'));
-    bindTabs();
+    const stamp = q('#marketUpdated'); if (stamp) stamp.textContent = (en() ? 'Updated: ' : 'Ažurirano: ') + dlabel(data.updated_at || data.checked_at) + ' · SNAPSHOT';
+    const ticker = q('#ticker'); if (ticker) { ticker.textContent = ''; coins.slice(0, 4).forEach(c => ticker.appendChild(node('span', '', clean(c.symbol) + ' ' + money((c.prices || {})[cur], cur)))); ticker.appendChild(node('span', '', 'GNK ASG MARKET SNAPSHOT')); }
+    const result = q('#convertResult'); const amount = Number(q('#convertAmount')?.value || 1); const selected = q('#convertCoin')?.value || 'bitcoin'; const coin = coins.find(c => c.id === selected) || coins[0]; if (result && coin) result.textContent = money(amount * Number((coin.prices || {})[cur] || 0), cur);
   }
-  function updateLabels() {
-    tabs.forEach((button) => { if (button.dataset.hr) button.textContent = english() ? button.dataset.en : button.dataset.hr; });
-    const link = document.querySelector('.topic-monitor-link');
-    if (link) link.innerHTML = calloutMarkup();
+  function addNewsCard(grid, item) {
+    const card = node('article', 'news-card no-image');
+    card.appendChild(node('span', 'meta', clean(item.source || item.category || item.group || 'NEWS')));
+    card.appendChild(node('h3', '', clean(item.title || 'Business News')));
+    card.appendChild(node('p', '', clean(item.summary || (en() ? 'Open the source for the full publication.' : 'Otvorite izvor za cjelovitu objavu.'))));
+    const a = node('a', '', en() ? 'OPEN SOURCE →' : 'OTVORI IZVOR →'); a.target = '_blank'; a.rel = 'noopener nofollow'; a.href = item.url || item.share_url || '#'; card.appendChild(a);
+    grid.appendChild(card);
   }
-  function stamp(item) {
-    const raw = item.published_at || item.date || '';
-    const time = Date.parse(raw);
-    return Number.isFinite(time) ? time : 0;
+  async function news(filter) {
+    const grid = q('#newsGrid'); if (!grid) return;
+    const data = await read('/data/news.json') || await read('data/news.json');
+    const items = Array.isArray(data) ? data : [];
+    const active = filter || q('#newsTabs button.active')?.dataset.filter || 'all';
+    if (active === 'fina') return;
+    const selected = items.filter(i => active === 'all' || String((i.group || '') + ' ' + (i.category || '') + ' ' + (i.region || '')).toLowerCase().includes(active)).slice(0, 24);
+    grid.textContent = '';
+    if (!selected.length) { grid.appendChild(node('article', 'news-card no-image', en() ? 'No public item in selected section.' : 'Nema javne stavke u odabranoj rubrici.')); return; }
+    selected.forEach(item => addNewsCard(grid, item));
   }
-  function fresh(item) {
-    const days = item.group === 'mentions' ? 3650 : 30;
-    return stamp(item) > Date.now() - (days * 24 * 60 * 60 * 1000);
-  }
-  function renderCard(item) {
-    const en = english();
-    const isMention = item.group === 'mentions';
-    const type = isMention ? ' is-mention' : item.category === 'technology' ? ' is-tech' : item.category === 'digital-assets' ? ' is-assets' : item.category === 'automotive' ? ' is-tech' : '';
-    const label = isMention ? (en ? 'GNK ASG IN THE MEDIA' : 'GNK ASG U MEDIJIMA') : (item.source || item.category || 'BUSINESS NEWS');
-    const date = stamp(item) ? new Date(stamp(item)).toLocaleDateString(en ? 'en-GB' : 'hr-HR') : '';
-    const summary = item.summary || (en ? 'Open the source for the full publication.' : 'Otvorite izvor za cjelovitu objavu.');
-    const open = en ? 'OPEN SOURCE →' : 'OTVORI IZVOR →';
-    const share = item.share_url ? ' data-share-url="' + esc(item.share_url) + '"' : '';
-    return '<article class="news-card' + type + '"' + share + '><span class="meta">' + esc(label) + (date ? ' · ' + esc(date) : '') + '</span><h3>' + esc(item.title) + '</h3><p>' + esc(summary) + '</p><a target="_blank" rel="noopener nofollow" href="' + esc(item.url) + '">' + open + '</a></article>';
-  }
-  function collection(filter) {
-    if (filter === 'mentions') return approvedMedia;
-    if (filter === 'all') return articles.concat(approvedMedia);
-    return articles.filter((item) => String(item.group || '').toLowerCase().includes(filter) || String(item.category || '').toLowerCase().includes(filter));
-  }
-  function render(filter) {
-    activeFilter = filter;
-    const en = english();
-    if (filter === 'fina') {
-      grid.innerHTML = '<article class="news-card"><span class="meta">FINA / RGFI</span><h3>' + (en ? 'Official Public Information' : 'Službene javne informacije') + '</h3><p>' + (en ? 'FINA and RGFI sources are shown in the official public-information panel.' : 'FINA i RGFI izvori prikazuju se u službenom panelu javnih informacija.') + '</p><a target="_blank" rel="noopener nofollow" href="https://rgfi.fina.hr/JavnaObjava-web/">' + (en ? 'OPEN PUBLIC DISCLOSURE →' : 'OTVORI JAVNU OBJAVU →') + '</a></article>';
-      return;
-    }
-    const selected = collection(filter).filter(fresh).sort((a,b) => stamp(b) - stamp(a));
-    if (!selected.length) {
-      const monitorText = filter === 'mentions' ? (en ? 'There is currently no public publication displayed in this section.' : 'U ovoj rubrici trenutačno nema prikazane javne objave.') : (en ? 'The public window holds up to 100 newest news items and refreshes at 09:00 and 16:00 Europe/Zagreb; the old-news container is rotated automatically.' : 'Javni prozor sadrži do 100 najnovijih vijesti i osvježava se u 09:00 i 16:00 po hrvatskom vremenu; spremnik starih vijesti rotira se automatski.');
-      grid.innerHTML = '<article class="news-card"><span class="meta">' + (en ? 'PUBLIC MONITOR' : 'JAVNI PREGLED') + '</span><h3>' + (en ? 'No item in the selected section' : 'Nema stavke u odabranoj rubrici') + '</h3><p>' + monitorText + '</p></article>';
-      return;
-    }
-    grid.innerHTML = selected.slice(0, NEWS_VISIBLE_LIMIT).map(renderCard).join('');
-  }
-  function bindTabs() {
-    tabs.forEach((button) => {
-      if (button.dataset.newsBound) return;
-      button.dataset.newsBound = '1';
-      button.addEventListener('click', () => {
-        tabs.forEach((entry) => entry.classList.remove('active'));
-        button.classList.add('active');
-        render(button.dataset.filter || 'all');
-      });
+  function docs() {
+    qa('#dokumenti .doc').forEach(card => {
+      const title = (q('h3', card)?.textContent || '').toLowerCase();
+      if (card.querySelector('a')) return;
+      const a = node('a', 'doc-link', 'OTVORI PDF →'); a.target = '_blank'; a.rel = 'noopener';
+      if (title.includes('revizor') || title.includes('financijski')) a.href = '/documents/GNK_ASG_Izvjesce_neovisnog_revizora_i_financijski_izvjestaji_2025.pdf';
+      else if (title.includes('consolidated') || title.includes('dinamo')) a.href = '/documents/GNK_DINAMO_Ltd_Colorado_Filing_Consolidated_Financial_Statements_2025.pdf';
+      else return;
+      card.appendChild(a);
     });
   }
-  async function load() {
-    try {
-      const responses = await Promise.all([
-        fetch('data/news.json?v=' + Date.now(), {cache:'no-store'}),
-        fetch('data/media_approved.json?v=' + Date.now(), {cache:'no-store'})
-      ]);
-      articles = responses[0].ok ? await responses[0].json() : [];
-      approvedMedia = responses[1].ok ? await responses[1].json() : [];
-      approvedMedia = approvedMedia.map(item => Object.assign({}, item, {group:'mentions', category:'mentions'}));
-    } catch (error) { articles = []; approvedMedia = []; }
-    render(activeFilter);
+  function bind() {
+    qa('#newsTabs button').forEach(b => { if (!b.dataset.fixBound) { b.dataset.fixBound = '1'; b.addEventListener('click', () => { qa('#newsTabs button').forEach(x => x.classList.remove('active')); b.classList.add('active'); news(b.dataset.filter || 'all'); }); }});
+    ['currency','convertAmount','convertCoin'].forEach(id => { const el = document.getElementById(id); if (el && !el.dataset.fixBound) { el.dataset.fixBound = '1'; el.addEventListener(id === 'convertAmount' ? 'input' : 'change', market); } });
   }
-  ensureTopicControls();
-  bindTabs();
-  window.addEventListener('gnk-language-change', () => { updateLabels(); render(activeFilter); });
-  load();
+  function ai() { let kept = false; qa('.ai-fab,.float-chat-trigger,#aiFab').forEach(el => { if (!kept && (el.id === 'aiFab' || el.classList.contains('ai-fab'))) { kept = true; return; } if (el.classList.contains('float-chat-trigger')) el.style.display = 'none'; }); }
+  function run() { style(); patchGroup(); docs(); bind(); ai(); market(); news(); }
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
+  window.addEventListener('gnk-language-change', run);
+  setTimeout(run, 800); setTimeout(run, 1800); setInterval(() => { market(); news(); docs(); ai(); }, 60000);
 })();
