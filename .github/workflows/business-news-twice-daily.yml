@@ -34,18 +34,46 @@ jobs:
           persist-credentials: true
           fetch-depth: 0
 
+      - name: Check Europe/Zagreb publication window
+        id: window
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "reason=manual workflow_dispatch" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          LOCAL_HOUR="$(TZ=Europe/Zagreb date +%H)"
+          LOCAL_MINUTE="$(TZ=Europe/Zagreb date +%M)"
+          if { [ "$LOCAL_HOUR" = "09" ] || [ "$LOCAL_HOUR" = "16" ]; } && [ "$LOCAL_MINUTE" = "00" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "reason=scheduled Europe/Zagreb ${LOCAL_HOUR}:${LOCAL_MINUTE}" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "reason=outside Europe/Zagreb publication window: ${LOCAL_HOUR}:${LOCAL_MINUTE}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Stop outside local publication window
+        if: steps.window.outputs.run != 'true'
+        run: echo "Skipped news refresh: ${{ steps.window.outputs.reason }}"
+
       - name: Set up Python
+        if: steps.window.outputs.run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install preview image dependency
+        if: steps.window.outputs.run == 'true'
         run: python -m pip install --disable-pip-version-check pillow
 
       - name: Refresh public news data
+        if: steps.window.outputs.run == 'true'
         run: python scripts/news_publication.py
 
       - name: Commit refreshed news data if changed
+        if: steps.window.outputs.run == 'true'
         shell: bash
         run: |
           set -euo pipefail
