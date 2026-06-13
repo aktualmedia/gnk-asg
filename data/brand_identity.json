@@ -1,0 +1,41 @@
+{
+  "brand": "GNK ASG",
+  "meaning": "Global Network Kapital - Advanced Sports & Governance",
+  "version": "2026-06-13-brand-v1",
+  "positioning": "Corporate intelligence, strategic capital, advanced sport, technology and governance.",
+  "colors": {
+    "midnight_navy": "#0B1D34",
+    "deep_space": "#07162D",
+    "royal_blue": "#1547A0",
+    "premium_gold": "#D4AF37",
+    "gold_dark": "#AD7D20",
+    "silver": "#C7CCD3",
+    "mist": "#EEF3F8",
+    "white": "#FFFFFF",
+    "ink": "#12233D"
+  },
+  "typography": {
+    "primary": "Montserrat / Inter / system sans-serif",
+    "secondary": "Source Sans 3 / Arial / system sans-serif",
+    "note": "Do not bundle font files; use system fallback or approved webfont loading later."
+  },
+  "logo_files": {
+    "primary": "/assets/brand/gnk-asg-logo-primary.svg",
+    "dark": "/assets/brand/gnk-asg-logo-dark.svg",
+    "light": "/assets/brand/gnk-asg-logo-light.svg",
+    "mark": "/assets/brand/gnk-asg-mark.svg"
+  },
+  "download_page": "/media-kit/",
+  "news_migration": {
+    "target_subdomain": "news.gnk-asg.hr",
+    "target_path": "/news/",
+    "rule": "News should be structurally separated from the main homepage to keep the corporate front fast."
+  },
+  "design_rules": [
+    "Preserve portal functions; redesign information architecture and UI hierarchy.",
+    "Use snapshot-first data rendering and lazy-load heavy visual modules.",
+    "Use smaller standardized cards; remove oversized blocks from homepage.",
+    "Keep documents, PDFs and legal/financial material available through structured download hubs.",
+    "Use the new brand palette and logo system consistently across pages."
+  ]
+}
