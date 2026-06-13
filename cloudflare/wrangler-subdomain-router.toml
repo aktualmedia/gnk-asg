@@ -1,0 +1,13 @@
+name = "gnk-asg-subdomain-router"
+main = "cloudflare/worker-subdomain-router.js"
+compatibility_date = "2026-06-13"
+workers_dev = false
+
+routes = [
+  { pattern = "media.gnk-asg.hr/*", zone_name = "gnk-asg.hr" },
+  { pattern = "news.gnk-asg.hr/*", zone_name = "gnk-asg.hr" },
+  { pattern = "status.gnk-asg.hr/*", zone_name = "gnk-asg.hr" },
+  { pattern = "operator.gnk-asg.hr/*", zone_name = "gnk-asg.hr" },
+  { pattern = "data.gnk-asg.hr/*", zone_name = "gnk-asg.hr" },
+  { pattern = "assistant.gnk-asg.hr/*", zone_name = "gnk-asg.hr" }
+]
