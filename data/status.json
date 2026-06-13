@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-13T00:00:00+02:00",
+  "updated_at": "2026-06-13T08:40:00+02:00",
   "status": "ok",
   "site": "GNK ASG portal",
   "timezone": "Europe/Zagreb",
@@ -8,8 +8,13 @@
     "status": "ok",
     "homepage": "/",
     "script": "/assets/app.js",
+    "script_version": "20260613-front-back-audit-02",
+    "stability_guard": "/assets/frontend-stability-guard.js",
+    "ai_communication_upgrade": "/assets/ai-communication-upgrade.js",
     "market_module": "/assets/market.js",
-    "news_module": "/assets/news-live.js"
+    "news_module": "/assets/news-live.js",
+    "live_market_pulse": "/assets/live-market-pulse.js",
+    "service_worker": "/sw.js"
   },
   "data": {
     "news": {
@@ -26,10 +31,29 @@
       "public_mode": "snapshot first, browser live attempt second",
       "status": "ok"
     },
+    "macro_market": {
+      "endpoint": "/data/macro_market.json",
+      "status": "ok"
+    },
+    "stock_exchanges": {
+      "endpoint": "/data/stock_exchanges.json",
+      "status": "ok"
+    },
     "sitemap": {
       "endpoint": "/sitemap.xml",
       "status": "ok"
     }
+  },
+  "operator": {
+    "status_lite": "/status-lite/",
+    "frontend_health": "/operator/frontend-health/",
+    "api_check": "/operator/api-check/",
+    "backend_gateway": "/backend/"
+  },
+  "workflow_policy": {
+    "business_news": "scheduled workflow is gated to exact Europe/Zagreb 09:00 and 16:00 windows; workflow_dispatch remains allowed",
+    "no_secrets_in_frontend": true,
+    "protected_api_expected_status": "401/403/405 may be valid for unauthenticated operator checks"
   },
   "legal_notice": "Podaci su informativni, mogu kasniti i nisu pravni, financijski, porezni ili investicijski savjet."
 }
