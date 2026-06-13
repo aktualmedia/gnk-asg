@@ -1,5 +1,5 @@
 {
-  "version": "2026-06-13-v2",
+  "version": "2026-06-13-v3",
   "candidate": "/home-candidate/",
   "public_routes": [
     "/front/",
@@ -7,13 +7,17 @@
     "/news/",
     "/en/news/",
     "/media-kit/",
+    "/en/media-kit/",
     "/gnk-dinamo-ltd-media-kit/",
+    "/en/gnk-dinamo-ltd-media-kit/",
     "/downloads/",
     "/en/downloads/",
     "/locations/",
     "/en/locations/",
     "/assistant/",
-    "/documentation/"
+    "/en/assistant/",
+    "/documentation/",
+    "/en/documentation/"
   ],
   "data_routes": [
     "/data/status.json",
@@ -24,6 +28,7 @@
     "/data/ai_assistant_public_model.json",
     "/data/news.json",
     "/data/market.json",
+    "/data/automation_status.json",
     "/sitemap.xml",
     "/sitemap-corporate.xml"
   ],
@@ -42,7 +47,8 @@
     "light first render",
     "separate news layer",
     "structured hubs for documents and locations",
-    "snapshot-first market data"
+    "snapshot-first market data",
+    "HR and EN corporate routes"
   ],
   "status": "ready"
 }
