@@ -1,0 +1,77 @@
+name: Auto Editor Publish
+
+# Automatska objava informativnih Auto Editor tekstova.
+# Workflow se pokreće s default grane, ali objavljuje u aktivni web branch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: 'manual slot: morning | midday | evening | auto'
+        required: false
+        default: 'auto'
+      force:
+        description: 'force publish outside scheduled local time'
+        required: false
+        default: 'false'
+  schedule:
+    - cron: '30 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-editor-publish-live-branch
+  cancel-in-progress: false
+
+jobs:
+  publish-auto-editor:
+    name: Publish Auto Editor article to live branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout live web branch
+        uses: actions/checkout@v4
+        with:
+          ref: backup-2026-06-12-stable-after-worker-routes
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate published Auto Editor article
+        env:
+          AUTO_EDITOR_SLOT: ${{ github.event.inputs.slot || 'auto' }}
+          AUTO_EDITOR_FORCE: ${{ github.event.inputs.force || 'false' }}
+        run: python scripts/auto_editor_publish.py
+
+      - name: Validate Auto Editor output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          posts = json.loads(Path('data/auto_editor_posts.json').read_text(encoding='utf-8'))
+          status = json.loads(Path('data/auto_editor_status.json').read_text(encoding='utf-8'))
+          assert isinstance(posts, list), 'auto_editor_posts.json must be a list'
+          assert isinstance(status, dict), 'auto_editor_status.json must be an object'
+          for post in posts[:5]:
+              assert post.get('status') == 'published', 'post must be published'
+              assert post.get('title'), 'post missing title'
+              assert post.get('body'), 'post missing body'
+              assert post.get('canonical'), 'post missing canonical'
+          print('Auto Editor validation OK')
+          PY
+
+      - name: Commit publication to live branch
+        run: |
+          git config user.name "GNK ASG Auto Editor"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/auto_editor_posts.json data/auto_editor_status.json
+          if git diff --cached --quiet; then
+            echo "No Auto Editor publication changes."
+          else
+            git commit -m "Publish Auto Editor article"
+            git push origin HEAD:backup-2026-06-12-stable-after-worker-routes
+          fi
