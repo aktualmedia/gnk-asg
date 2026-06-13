@@ -1,10 +1,18 @@
 {
   "engine": "auto_editor_publish_v1",
-  "status": "initialized",
+  "status": "ok",
   "mode": "published",
   "timezone": "Europe/Zagreb",
-  "schedule_local": ["09:30", "13:30", "18:30"],
-  "last_run_at": null,
-  "last_published_at": null,
-  "last_action": "initialized"
+  "schedule_local": [
+    "09:30",
+    "13:30",
+    "18:30"
+  ],
+  "last_run_at": "2026-06-13T18:29:22+02:00",
+  "last_published_at": "2026-06-13T18:29:22+02:00",
+  "last_action": "published",
+  "last_slot": "morning",
+  "last_post_id": "auto-editor-2026-06-13-morning",
+  "last_title": "Jutarnji poslovni i tržišni pregled — 13.06.2026.",
+  "post_count": 1
 }
