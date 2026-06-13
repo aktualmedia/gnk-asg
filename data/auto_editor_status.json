@@ -1,0 +1,10 @@
+{
+  "engine": "auto_editor_publish_v1",
+  "status": "initialized",
+  "mode": "published",
+  "timezone": "Europe/Zagreb",
+  "schedule_local": ["09:30", "13:30", "18:30"],
+  "last_run_at": null,
+  "last_published_at": null,
+  "last_action": "initialized"
+}
