@@ -12,9 +12,16 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: gnk-asg-daily-business-posts
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     env:
       TZ: Europe/Zagreb
     steps:
@@ -33,9 +40,19 @@ jobs:
           python scripts/publish_daily_insight.py
           python scripts/ensure_daily_insight_min_words.py
           python scripts/sync_daily_author_indexes.py
-      - run: |
+      - name: Commit daily post changes
+        run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add insights-hr data/daily_insight_log.json assets/insights sitemap.xml || true
           git diff --cached --quiet || git commit -m "Dnevna poslovna objava"
           git push || true
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
