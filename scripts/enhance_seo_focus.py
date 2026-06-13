@@ -11,66 +11,18 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://gnk-asg.hr/"
 TODAY = datetime.now(timezone.utc).date().isoformat()
 MATRIX_PATH = ROOT / "data" / "seo_focus_matrix.json"
+DAILY_LOG_PATH = ROOT / "data" / "daily_insight_log.json"
 SITEMAP_PATH = ROOT / "sitemap.xml"
 ROBOTS_PATH = ROOT / "robots.txt"
 LLMS_PATH = ROOT / "llms.txt"
 
 PAGES = [
-    {
-        "path": "kontakt/",
-        "file": "kontakt/index.html",
-        "title": "Kontakt | GNK ASG d.o.o. | Nermin Sefić | IT osobni digitalni asistent",
-        "description": "Službena kontakt stranica GNK ASG d.o.o.: kontakt forma, info@gnk-asg.hr, IT osobni digitalni asistent, WhatsApp kanal i službena poslovna komunikacija.",
-        "keywords": "kontakt GNK ASG, GNK ASG kontakt, info@gnk-asg.hr, contact@gnk-asg.hr, IT osobni digitalni asistent, assistant@gnk-asg.hr, Nermin Sefić, Nermin Sefic, službena komunikacija, poslovni upit",
-        "type": "ContactPage",
-        "priority": "0.8",
-        "changefreq": "weekly",
-        "lang": "hr",
-    },
-    {
-        "path": "legal.html",
-        "file": "legal.html",
-        "title": "Legal | Impresum, privatnost i uvjeti korištenja | GNK ASG d.o.o.",
-        "description": "Pravna dokumentacija portala GNK ASG d.o.o.: impresum, politika privatnosti, kolačići, uvjeti korištenja, pravna napomena, status podataka i AI napomena.",
-        "keywords": "GNK ASG legal, GNK ASG impresum, politika privatnosti, kolačići, uvjeti korištenja, pravna napomena, status podataka, AI napomena, GDPR, GNK ASG d.o.o.",
-        "type": "WebPage",
-        "priority": "0.7",
-        "changefreq": "monthly",
-        "lang": "hr",
-    },
-    {
-        "path": "insights-hr/",
-        "file": "insights-hr/index.html",
-        "title": "Objave autora | GNK ASG Intelligence Desk | Nermin Sefić",
-        "description": "Arhiva autorskih dnevnih objava GNK ASG Intelligence Desk: poslovne teme, tehnologija, tržišta, AI, javne informacije i urednička odgovornost Nermina Sefića.",
-        "keywords": "GNK ASG Intelligence Desk, autorske objave, dnevne objave, Nermin Sefić, Nermin Sefic, GNK ASG d.o.o., GNK DINAMO Ltd., poslovne teme, tržišta, AI, tehnologija",
-        "type": "CollectionPage",
-        "priority": "0.9",
-        "changefreq": "daily",
-        "lang": "hr",
-    },
-    {
-        "path": "aplikacija/",
-        "file": "aplikacija/index.html",
-        "title": "GNK ASG aplikacija | Mobilna i desktop verzija | Funkcije za posjetitelje",
-        "description": "Javna mobilna i desktop GNK ASG aplikacija: tržišni monitori, poslovne vijesti, autorske objave, AI asistent, kontakt forma, WhatsApp kanal, legal informacije i instalacija.",
-        "keywords": "GNK ASG aplikacija, mobilna aplikacija, desktop aplikacija, instalacija, AI asistent, tržišni monitor, kontakt forma, WhatsApp kanal, poslovne vijesti, autorske objave, Nermin Sefić",
-        "type": "SoftwareApplication",
-        "priority": "0.8",
-        "changefreq": "weekly",
-        "lang": "hr",
-    },
-    {
-        "path": "status/",
-        "file": "status/index.html",
-        "title": "Status Center | GNK ASG d.o.o. | Portal, kontakt, mail, tržišta i AI",
-        "description": "GNK ASG Status Center prikazuje javni status portala, kontakt forme, mail modula, poslovnih vijesti, tržišnih podataka, AI asistenta i aplikacijskog sloja.",
-        "keywords": "GNK ASG status, status center, kontakt forma status, mail status, market data status, poslovne vijesti status, AI asistent status, LIVE SNAPSHOT DELAYED FALLBACK",
-        "type": "WebPage",
-        "priority": "0.8",
-        "changefreq": "daily",
-        "lang": "hr",
-    },
+    {"path": "kontakt/", "file": "kontakt/index.html", "title": "Kontakt | GNK ASG d.o.o. | Nermin Sefić | IT osobni digitalni asistent", "description": "Službena kontakt stranica GNK ASG d.o.o.: kontakt forma, info@gnk-asg.hr, IT osobni digitalni asistent, WhatsApp kanal i službena poslovna komunikacija.", "keywords": "kontakt GNK ASG, GNK ASG kontakt, info@gnk-asg.hr, contact@gnk-asg.hr, IT osobni digitalni asistent, assistant@gnk-asg.hr, Nermin Sefić, Nermin Sefic, službena komunikacija, poslovni upit", "type": "ContactPage", "priority": "0.8", "changefreq": "weekly", "lang": "hr"},
+    {"path": "legal.html", "file": "legal.html", "title": "Legal | Impresum, privatnost i uvjeti korištenja | GNK ASG d.o.o.", "description": "Pravna dokumentacija portala GNK ASG d.o.o.: impresum, politika privatnosti, kolačići, uvjeti korištenja, pravna napomena, status podataka i AI napomena.", "keywords": "GNK ASG legal, GNK ASG impresum, politika privatnosti, kolačići, uvjeti korištenja, pravna napomena, status podataka, AI napomena, GDPR, GNK ASG d.o.o.", "type": "WebPage", "priority": "0.7", "changefreq": "monthly", "lang": "hr"},
+    {"path": "insights-hr/", "file": "insights-hr/index.html", "title": "Objave autora | GNK ASG Intelligence Desk | Nermin Sefić", "description": "Arhiva autorskih dnevnih objava GNK ASG Intelligence Desk: poslovne teme, tehnologija, tržišta, AI, javne informacije i urednička odgovornost Nermina Sefića.", "keywords": "GNK ASG Intelligence Desk, autorske objave, dnevne objave, Nermin Sefić, Nermin Sefic, GNK ASG d.o.o., GNK DINAMO Ltd., poslovne teme, tržišta, AI, tehnologija", "type": "CollectionPage", "priority": "0.9", "changefreq": "daily", "lang": "hr"},
+    {"path": "insights-hr/daily/", "file": "insights-hr/daily/index.html", "title": "Dnevne poslovne objave | GNK ASG | Nermin Sefić", "description": "Dnevne autorske poslovne i ekonomske objave autora Nermina Sefića s vlastitim URL-om, slikom, canonical URL-om i strukturiranim podacima.", "keywords": "GNK ASG Intelligence Desk, dnevne objave, poslovne objave, Nermin Sefić, Nermin Sefic, GNK ASG d.o.o., GNK DINAMO Ltd., gospodarstvo, tržišta, kapital", "type": "CollectionPage", "priority": "0.9", "changefreq": "daily", "lang": "hr"},
+    {"path": "aplikacija/", "file": "aplikacija/index.html", "title": "GNK ASG aplikacija | Mobilna i desktop verzija | Funkcije za posjetitelje", "description": "Javna mobilna i desktop GNK ASG aplikacija: tržišni monitori, poslovne vijesti, autorske objave, AI asistent, kontakt forma, WhatsApp kanal, legal informacije i instalacija.", "keywords": "GNK ASG aplikacija, mobilna aplikacija, desktop aplikacija, instalacija, AI asistent, tržišni monitor, kontakt forma, WhatsApp kanal, poslovne vijesti, autorske objave, Nermin Sefić", "type": "SoftwareApplication", "priority": "0.8", "changefreq": "weekly", "lang": "hr"},
+    {"path": "status/", "file": "status/index.html", "title": "Status Center | GNK ASG d.o.o. | Portal, kontakt, mail, tržišta i AI", "description": "GNK ASG Status Center prikazuje javni status portala, kontakt forme, mail modula, poslovnih vijesti, tržišnih podataka, AI asistenta i aplikacijskog sloja.", "keywords": "GNK ASG status, status center, kontakt forma status, mail status, market data status, poslovne vijesti status, AI asistent status, LIVE SNAPSHOT DELAYED FALLBACK", "type": "WebPage", "priority": "0.8", "changefreq": "daily", "lang": "hr"},
 ]
 
 
@@ -79,6 +31,28 @@ def load_matrix() -> dict:
         return json.loads(MATRIX_PATH.read_text(encoding="utf-8"))
     except Exception:
         return {}
+
+
+def load_daily_log() -> dict:
+    try:
+        data = json.loads(DAILY_LOG_PATH.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {"published": []}
+    except Exception:
+        return {"published": []}
+
+
+def visible_daily_entries() -> list[dict]:
+    items = []
+    for entry in load_daily_log().get("published", []):
+        if not isinstance(entry, dict) or entry.get("hidden"):
+            continue
+        local_url = str(entry.get("local_url") or "").strip()
+        if not local_url:
+            continue
+        if not local_url.startswith("daily/"):
+            continue
+        items.append({"path": "insights-hr/" + local_url, "priority": "0.8", "changefreq": "monthly"})
+    return items
 
 
 def page_url(page: dict) -> str:
@@ -92,26 +66,12 @@ def focus_schema(page: dict, matrix: dict) -> dict:
         {"@type": "Organization", "name": "GNK DINAMO Ltd.", "url": SITE},
         {"@type": "Person", "name": "Nermin Sefić", "alternateName": ["Nermin Sefic", "Sefić Nermin", "Sefic Nermin"], "jobTitle": "Direktor / zakonski zastupnik / UBO", "worksFor": {"@type": "Organization", "name": "GNK ASG d.o.o."}},
     ]
-    return {
-        "@context": "https://schema.org",
-        "@type": page["type"],
-        "@id": u + "#focused-seo",
-        "url": u,
-        "name": page["title"],
-        "description": page["description"],
-        "keywords": page["keywords"],
-        "inLanguage": page["lang"],
-        "isPartOf": {"@type": "WebSite", "name": "GNK ASG d.o.o. | GNK DINAMO Ltd. | Nermin Sefić", "url": SITE},
-        "about": about_entities,
-        "mentions": about_entities,
-        "mainEntity": about_entities[2] if "nermin" in page["keywords"].lower() or page["path"] == "insights-hr/" else about_entities[0],
-        "knowsAbout": (matrix.get("core_topics_hr") or [])[:18],
-    }
+    return {"@context": "https://schema.org", "@type": page["type"], "@id": u + "#focused-seo", "url": u, "name": page["title"], "description": page["description"], "keywords": page["keywords"], "inLanguage": page["lang"], "isPartOf": {"@type": "WebSite", "name": "GNK ASG d.o.o. | GNK DINAMO Ltd. | Nermin Sefić", "url": SITE}, "about": about_entities, "mentions": about_entities, "mainEntity": about_entities[2] if "nermin" in page["keywords"].lower() or page["path"].startswith("insights-hr") else about_entities[0], "knowsAbout": (matrix.get("core_topics_hr") or [])[:18]}
 
 
 def seo_block(page: dict, matrix: dict) -> str:
     u = page_url(page)
-    schema = json.dumps(focus_schema(page, matrix), ensure_ascii=False, separators=(",", ":"))
+    schema = json.dumps(focus_schema(page, matrix), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     return "\n".join([
         "<!-- SEO:FOCUS:BEGIN generated by scripts/enhance_seo_focus.py -->",
         f'  <meta name="keywords" content="{escape(page["keywords"])}">',
@@ -140,8 +100,7 @@ def enhance_page(page: dict, matrix: dict) -> None:
         return
     content = path.read_text(encoding="utf-8")
     content = re.sub(r"\s*<!-- SEO:FOCUS:BEGIN generated by scripts/enhance_seo_focus\.py -->.*?<!-- SEO:FOCUS:END -->\s*", "\n", content, flags=re.S)
-    if re.search(r"<title>.*?</title>", content, flags=re.S):
-        content = re.sub(r"<title>.*?</title>", "<title>" + page["title"] + "</title>", content, count=1, flags=re.S)
+    content = re.sub(r"<title>.*?</title>", "<title>" + page["title"] + "</title>", content, count=1, flags=re.S)
     if re.search(r'<meta\s+name="description"\s+content="[^"]*"\s*/?>', content):
         content = re.sub(r'<meta\s+name="description"\s+content="[^"]*"\s*/?>', '<meta name="description" content="' + page["description"] + '">', content, count=1)
     else:
@@ -151,23 +110,15 @@ def enhance_page(page: dict, matrix: dict) -> None:
 
 
 def sitemap_entries() -> str:
-    existing_daily = []
-    daily_root = ROOT / "insights-hr" / "daily"
-    if daily_root.exists():
-        for item in sorted(daily_root.iterdir()):
-            if item.is_dir() and (item / "index.html").exists():
-                existing_daily.append({"path": "insights-hr/daily/" + item.name + "/", "priority": "0.8", "changefreq": "monthly"})
-    all_pages = PAGES + existing_daily
+    all_pages = PAGES + visible_daily_entries()
     entries = []
+    seen = set()
     for page in all_pages:
-        entries.append("\n".join([
-            "  <url>",
-            "    <loc>" + escape(SITE + page["path"]) + "</loc>",
-            "    <lastmod>" + TODAY + "</lastmod>",
-            "    <changefreq>" + page.get("changefreq", "monthly") + "</changefreq>",
-            "    <priority>" + page.get("priority", "0.7") + "</priority>",
-            "  </url>",
-        ]))
+        url = SITE + page["path"]
+        if url in seen:
+            continue
+        seen.add(url)
+        entries.append("\n".join(["  <url>", "    <loc>" + escape(url) + "</loc>", "    <lastmod>" + TODAY + "</lastmod>", "    <changefreq>" + page.get("changefreq", "monthly") + "</changefreq>", "    <priority>" + page.get("priority", "0.7") + "</priority>", "  </url>"]))
     return "\n".join(entries)
 
 
@@ -177,7 +128,10 @@ def update_sitemap() -> None:
     content = SITEMAP_PATH.read_text(encoding="utf-8")
     content = re.sub(r"\s*<!-- SEO:FOCUS:SITEMAP:BEGIN -->.*?<!-- SEO:FOCUS:SITEMAP:END -->\s*", "\n", content, flags=re.S)
     insert = "<!-- SEO:FOCUS:SITEMAP:BEGIN -->\n" + sitemap_entries() + "\n<!-- SEO:FOCUS:SITEMAP:END -->\n"
-    content = content.replace("</urlset>", insert + "</urlset>", 1)
+    if "</urlset>" in content:
+        content = content.replace("</urlset>", insert + "</urlset>", 1)
+    else:
+        content = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + insert + "</urlset>\n"
     SITEMAP_PATH.write_text(content, encoding="utf-8")
 
 
@@ -189,23 +143,13 @@ def update_robots() -> None:
 
 
 def write_llms(matrix: dict) -> None:
-    lines = [
-        "# GNK ASG d.o.o. — public AI/search context",
-        "",
-        "Official site: https://gnk-asg.hr/",
-        "Company: GNK ASG d.o.o.",
-        "Registered office: Zagrebačka cesta 130, Zagreb, Croatia",
-        "OIB: 75227917632",
-        "MBS: 081512375",
-        "Director / legal representative / UBO: Nermin Sefić (Nermin Sefic)",
-        "Associated public framework: GNK DINAMO Ltd.",
-        "",
-        "Primary topics:",
-    ]
+    lines = ["# GNK ASG d.o.o. — public AI/search context", "", "Official site: https://gnk-asg.hr/", "Company: GNK ASG d.o.o.", "Registered office: Zagrebačka cesta 130, Zagreb, Croatia", "OIB: 75227917632", "MBS: 081512375", "Director / legal representative / UBO: Nermin Sefić (Nermin Sefic)", "Associated public framework: GNK DINAMO Ltd.", "", "Primary topics:"]
     for item in matrix.get("core_topics_en") or []:
         lines.append("- " + item)
     lines += ["", "Important public pages:"]
     for page in PAGES:
+        lines.append("- " + SITE + page["path"])
+    for page in visible_daily_entries()[:10]:
         lines.append("- " + SITE + page["path"])
     LLMS_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
