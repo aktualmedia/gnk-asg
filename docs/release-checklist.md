@@ -1,6 +1,7 @@
 # GNK ASG Release Checklist
 
 Date: 2026-06-13
+Version: v3
 
 ## Candidate
 
@@ -23,12 +24,17 @@ Date: 2026-06-13
 - `/en/news/`
 - `/en/downloads/`
 - `/en/locations/`
+- `/en/assistant/`
+- `/en/documentation/`
+- `/en/media-kit/`
+- `/en/gnk-dinamo-ltd-media-kit/`
 
 ## Data routes
 
 - `/data/status.json`
 - `/data/release_checklist.json`
 - `/data/automation_status.json`
+- `/data/route_map.json`
 - `/data/redesign_manifest.json`
 - `/data/brand_identity.json`
 - `/data/company_locations.json`
@@ -42,6 +48,7 @@ Date: 2026-06-13
 - `/operator/start/`
 - `/operator/app/`
 - `/operator/release-check/`
+- `/operator/route-map/`
 - `/operator/frontend-health/`
 - `/operator/api-check/`
 
@@ -53,4 +60,4 @@ Date: 2026-06-13
 
 ## Rule
 
-Production homepage stays unchanged until the candidate and checks are stable.
+Production homepage stays unchanged until the candidate, route map, release check and frontend health are stable.
