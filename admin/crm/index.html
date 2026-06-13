@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="hr">
+<head><meta name="description" content="CRM, inbox, ticketing i lead pipeline model GNK ASG portala."><meta name="google-site-verification" content="google46686328e30c759f.html">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin CRM | GNK ASG V14</title>
+<link rel="stylesheet" href="../../assets/style.css?v=v19">
+</head>
+<body class="shell"><a class="back" href="../../admin/">← Natrag</a><main class="panel">
+<h1>Admin CRM Workspace</h1>
+<p>Radni prostor za upite, tickete, leadove, draft odgovore, approval i audit događaje.</p>
+<div class="notice"><strong>Sigurnost:</strong> ova stranica priprema payload; stvarno spremanje i slanje ide kroz Worker i token.</div>
+<div class="toolbar"><select id="crmFilter"><option value="all">Svi upiti</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select><input id="crmSearch" placeholder="Pretraži inquiry..." style="flex:1;border:1px solid #d9e3ef;border-radius:14px;padding:10px"></div>
+<div class="inbox"><aside><h2>Inbox / tickets</h2><div id="inquiryList" class="list"></div></aside><section><div id="inquiryDetail" class="tile">Odaberi inquiry.</div><h2>CRM event</h2><form id="crmEventForm" class="form"><select name="event"><option>classified</option><option>draft_generated</option><option>approval_requested</option><option>sent</option><option>closed</option><option>exported</option><option>deleted</option></select><textarea name="note" rows="5" placeholder="Bilješka / odluka..."></textarea><button>Pripremi CRM event payload</button></form><pre id="crmOutput" class="console"></pre></section></div>
+</main><script src="../../assets/crm.js?v=v19" defer></script></body></html>

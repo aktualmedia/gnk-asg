@@ -1,0 +1,2356 @@
+{
+  "version": "v19-final-free-ai-agent-tested",
+  "created_at": "2026-06-13T12:41:32+00:00",
+  "upload_rule": "GitHub web upload friendly: fewer than 99 files in this ZIP/folder.",
+  "company": {
+    "name": "GNK ASG d.o.o.",
+    "seat": "Zagrebačka cesta 130, Zagreb",
+    "oib": "75227917632",
+    "mbs": "081512375",
+    "founded": "12. svibnja 2023.",
+    "activity": "Sportske djelatnosti, NKD 93.19.0",
+    "director": "Nermin Sefić",
+    "ubo": "Nermin Sefić",
+    "member": "Sports Performance Tracking d.o.o., Beograd"
+  },
+  "parent_company": {
+    "entity": "GNK DINAMO Ltd.",
+    "city": "Boulder",
+    "state": "Colorado",
+    "country": "USA",
+    "role": "Parent company / central corporate coordination"
+  },
+  "operating_company": {
+    "entity": "GNK ASG d.o.o.",
+    "city": "Zagreb",
+    "country": "Croatia",
+    "role": "Corporate and operational base"
+  },
+  "group": {
+    "existing_total_companies": 33,
+    "planned_2026_locations": 12,
+    "expanded_total": 45,
+    "notice_hr": "Vizualni i korporativni prikaz. Službeni registracijski status pojedinog društva potvrđuje se u mjerodavnom javnom registru."
+  },
+  "locations": {
+    "existing": [
+      [
+        "Zagreb",
+        "Croatia",
+        "Europe",
+        "GNK ASG d.o.o. / corporate and operational base"
+      ],
+      [
+        "Ljubljana",
+        "Slovenia",
+        "Europe",
+        "Group company / regional position"
+      ],
+      [
+        "Budapest",
+        "Hungary",
+        "Europe",
+        "Group company / regional position"
+      ],
+      [
+        "Belgrade",
+        "Serbia",
+        "Europe",
+        "Multiple group companies / operational cluster"
+      ],
+      [
+        "Vancouver",
+        "Canada",
+        "North America",
+        "Group company"
+      ],
+      [
+        "Toronto",
+        "Canada",
+        "North America",
+        "Group company"
+      ],
+      [
+        "Mexico City",
+        "Mexico",
+        "North America",
+        "Group company"
+      ],
+      [
+        "Panama City",
+        "Panama",
+        "North America",
+        "Group company"
+      ],
+      [
+        "Bogotá",
+        "Colombia",
+        "South America",
+        "Group company"
+      ],
+      [
+        "Lima",
+        "Peru",
+        "South America",
+        "Group company"
+      ],
+      [
+        "Santiago",
+        "Chile",
+        "South America",
+        "Group company"
+      ],
+      [
+        "São Paulo",
+        "Brazil",
+        "South America",
+        "Group company"
+      ],
+      [
+        "Buenos Aires",
+        "Argentina",
+        "South America",
+        "Group company"
+      ],
+      [
+        "Dubai",
+        "United Arab Emirates",
+        "Asia",
+        "Group company"
+      ],
+      [
+        "Mumbai",
+        "India",
+        "Asia",
+        "Group company"
+      ],
+      [
+        "Singapore",
+        "Singapore",
+        "Asia",
+        "Group company"
+      ],
+      [
+        "Jakarta",
+        "Indonesia",
+        "Asia",
+        "Group company"
+      ],
+      [
+        "Beijing",
+        "China",
+        "Asia",
+        "Group company"
+      ],
+      [
+        "Seoul",
+        "South Korea",
+        "Asia",
+        "Group company"
+      ],
+      [
+        "Tokyo",
+        "Japan",
+        "Asia",
+        "Group company"
+      ],
+      [
+        "Kuala Lumpur",
+        "Malaysia",
+        "Asia",
+        "Group company"
+      ],
+      [
+        "Hong Kong",
+        "Hong Kong",
+        "Asia",
+        "Group company"
+      ],
+      [
+        "Casablanca",
+        "Morocco",
+        "Africa",
+        "Group company"
+      ],
+      [
+        "Lagos",
+        "Nigeria",
+        "Africa",
+        "Group company"
+      ],
+      [
+        "Nairobi",
+        "Kenya",
+        "Africa",
+        "Group company"
+      ],
+      [
+        "Johannesburg",
+        "South Africa",
+        "Africa",
+        "Group company"
+      ],
+      [
+        "Cape Town",
+        "South Africa",
+        "Africa",
+        "Group company"
+      ],
+      [
+        "Sydney",
+        "Australia",
+        "Oceania",
+        "Group company"
+      ],
+      [
+        "Auckland",
+        "New Zealand",
+        "Oceania",
+        "Group company"
+      ]
+    ],
+    "planned_2026": [
+      [
+        "San José",
+        "Costa Rica",
+        "North America"
+      ],
+      [
+        "Quito",
+        "Ecuador",
+        "South America"
+      ],
+      [
+        "Montevideo",
+        "Uruguay",
+        "South America"
+      ],
+      [
+        "Doha",
+        "Qatar",
+        "Asia"
+      ],
+      [
+        "Bangkok",
+        "Thailand",
+        "Asia"
+      ],
+      [
+        "Manila",
+        "Philippines",
+        "Asia"
+      ],
+      [
+        "Ho Chi Minh City",
+        "Vietnam",
+        "Asia"
+      ],
+      [
+        "Accra",
+        "Ghana",
+        "Africa"
+      ],
+      [
+        "Kigali",
+        "Rwanda",
+        "Africa"
+      ],
+      [
+        "Port Louis",
+        "Mauritius",
+        "Africa"
+      ],
+      [
+        "Dar es Salaam",
+        "Tanzania",
+        "Africa"
+      ],
+      [
+        "Perth",
+        "Australia",
+        "Oceania"
+      ]
+    ]
+  },
+  "channels": {
+    "email_addresses": [
+      "assistant@gnk-asg.hr",
+      "it@gnk-asg.hr",
+      "status@gnk-asg.hr",
+      "media@gnk-asg.hr",
+      "legal@gnk-asg.hr"
+    ],
+    "whatsapp_public": "https://wa.me/385915358365",
+    "phone": "0915358365"
+  },
+  "public_agent": {
+    "mode": "free_local_agent_v19",
+    "knowledge_file": "data/agent-knowledge.json",
+    "allowed": [
+      "answer from public site knowledge",
+      "search local pages and JSON",
+      "explain modules",
+      "route to contact/legal/investor/SEO/gallery",
+      "general safe fallback",
+      "remember user questions locally"
+    ],
+    "blocked": [
+      "legal advice",
+      "financial/investment advice",
+      "sending email or WhatsApp",
+      "admin actions",
+      "secrets/tokens/DNS/root deploy"
+    ]
+  },
+  "private_agent": {
+    "mode": "authorized ops agent",
+    "requires": [
+      "OPERATOR_TOKEN for execution",
+      "confirmation for high-risk",
+      "send confirmation for outbound"
+    ],
+    "can_prepare": [
+      "command JSON",
+      "mail draft",
+      "WhatsApp draft",
+      "status check",
+      "deploy preview",
+      "refresh workflows"
+    ]
+  },
+  "mailops": {
+    "flow": "Email Routing -> Worker -> classify -> D1/KV inbox -> draft -> approval -> server-side send",
+    "classes": [
+      "general",
+      "command",
+      "media",
+      "legal",
+      "finance",
+      "technical",
+      "documents",
+      "spam"
+    ],
+    "risks": [
+      "low",
+      "medium",
+      "high",
+      "critical"
+    ],
+    "manual_required": [
+      "media",
+      "legal",
+      "finance",
+      "external send",
+      "attachments",
+      "binding statements"
+    ]
+  },
+  "whatsapp": {
+    "public_link": "https://wa.me/385915358365",
+    "automation": "Official WhatsApp Business Cloud API only",
+    "warning": "Do not use unofficial private WhatsApp automation."
+  },
+  "safety": {
+    "no_frontend_secrets": true,
+    "high_risk_confirmation": "ODOBRAVAM VISOKI RIZIK",
+    "send_confirmation": "ODOBRAVAM SLANJE",
+    "critical_blocked": [
+      "change_secret",
+      "delete_file",
+      "change_dns"
+    ]
+  },
+  "features": [
+    {
+      "id": "F001",
+      "category": "Performance",
+      "name": "0 frameworka",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F002",
+      "category": "Performance",
+      "name": "jedan CSS",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F003",
+      "category": "Performance",
+      "name": "jedan JS",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F004",
+      "category": "Performance",
+      "name": "lazy JSON",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F005",
+      "category": "Performance",
+      "name": "static-first",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F006",
+      "category": "Performance",
+      "name": "cache static assets",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F007",
+      "category": "Performance",
+      "name": "no-store status",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F008",
+      "category": "Performance",
+      "name": "mobile-first",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F009",
+      "category": "Performance",
+      "name": "deferred scripts",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F010",
+      "category": "Performance",
+      "name": "compact DOM",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F011",
+      "category": "Portal",
+      "name": "premium hero",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F012",
+      "category": "Portal",
+      "name": "globus",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F013",
+      "category": "Portal",
+      "name": "80 lampica",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F014",
+      "category": "Portal",
+      "name": "quick command",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F015",
+      "category": "Portal",
+      "name": "profile cards",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F016",
+      "category": "Portal",
+      "name": "parent company",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F017",
+      "category": "Portal",
+      "name": "global locations",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F018",
+      "category": "Portal",
+      "name": "market monitor",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F019",
+      "category": "Portal",
+      "name": "business news",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F020",
+      "category": "Portal",
+      "name": "documents",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F021",
+      "category": "Agents",
+      "name": "free public AI",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F022",
+      "category": "Agents",
+      "name": "private ops agent",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F023",
+      "category": "Agents",
+      "name": "local knowledge retrieval",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F024",
+      "category": "Agents",
+      "name": "FAQ mode",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F025",
+      "category": "Agents",
+      "name": "source-aware answers",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F026",
+      "category": "Agents",
+      "name": "public restrictions",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F027",
+      "category": "Agents",
+      "name": "command JSON",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F028",
+      "category": "Agents",
+      "name": "mail draft",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F029",
+      "category": "Agents",
+      "name": "WhatsApp draft",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F030",
+      "category": "Agents",
+      "name": "fallback answer",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F031",
+      "category": "MailOps",
+      "name": "inbound email",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F032",
+      "category": "MailOps",
+      "name": "automatic reading envelope",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F033",
+      "category": "MailOps",
+      "name": "classification",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F034",
+      "category": "MailOps",
+      "name": "risk tags",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F035",
+      "category": "MailOps",
+      "name": "draft replies",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F036",
+      "category": "MailOps",
+      "name": "mail-to-command",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F037",
+      "category": "MailOps",
+      "name": "outbound approval",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F038",
+      "category": "MailOps",
+      "name": "sender allowlist hook",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F039",
+      "category": "MailOps",
+      "name": "spam quarantine",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F040",
+      "category": "MailOps",
+      "name": "D1/KV inbox",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F041",
+      "category": "WhatsApp",
+      "name": "wa.me link",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F042",
+      "category": "WhatsApp",
+      "name": "Business API webhook",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F043",
+      "category": "WhatsApp",
+      "name": "send endpoint stub",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F044",
+      "category": "WhatsApp",
+      "name": "draft replies",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F045",
+      "category": "WhatsApp",
+      "name": "approval gate",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F046",
+      "category": "WhatsApp",
+      "name": "message log",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F047",
+      "category": "WhatsApp",
+      "name": "template hook",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F048",
+      "category": "WhatsApp",
+      "name": "sender context",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F049",
+      "category": "WhatsApp",
+      "name": "risk classification",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F050",
+      "category": "WhatsApp",
+      "name": "no unofficial automation",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F051",
+      "category": "Admin",
+      "name": "admin hub",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F052",
+      "category": "Admin",
+      "name": "command center",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F053",
+      "category": "Admin",
+      "name": "dry run",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F054",
+      "category": "Admin",
+      "name": "risk scoring",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F055",
+      "category": "Admin",
+      "name": "status check",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F056",
+      "category": "Admin",
+      "name": "deploy preview",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F057",
+      "category": "Admin",
+      "name": "rollback plan",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F058",
+      "category": "Admin",
+      "name": "audit model",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F059",
+      "category": "Admin",
+      "name": "release checklist",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F060",
+      "category": "Admin",
+      "name": "operator policy",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F061",
+      "category": "Backend",
+      "name": "Cloudflare Worker router",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F062",
+      "category": "Backend",
+      "name": "/command",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F063",
+      "category": "Backend",
+      "name": "/contact",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F064",
+      "category": "Backend",
+      "name": "/email-inbound",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F065",
+      "category": "Backend",
+      "name": "/email-send",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F066",
+      "category": "Backend",
+      "name": "/public-chat",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F067",
+      "category": "Backend",
+      "name": "/private-chat",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F068",
+      "category": "Backend",
+      "name": "/whatsapp-webhook",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F069",
+      "category": "Backend",
+      "name": "/whatsapp-send",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F070",
+      "category": "Backend",
+      "name": "/__health",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F071",
+      "category": "Storage",
+      "name": "D1 schema",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F072",
+      "category": "Storage",
+      "name": "KV command log",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F073",
+      "category": "Storage",
+      "name": "KV contact inbox",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F074",
+      "category": "Storage",
+      "name": "KV mail inbox",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F075",
+      "category": "Storage",
+      "name": "R2 backup hook",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F076",
+      "category": "Storage",
+      "name": "document chunks hook",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F077",
+      "category": "Storage",
+      "name": "assistant query log",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F078",
+      "category": "Storage",
+      "name": "mail drafts",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F079",
+      "category": "Storage",
+      "name": "WhatsApp messages",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F080",
+      "category": "Storage",
+      "name": "release logs",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F081",
+      "category": "SEO/Legal",
+      "name": "legal page",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F082",
+      "category": "SEO/Legal",
+      "name": "privacy notice",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F083",
+      "category": "SEO/Legal",
+      "name": "AI disclaimer",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F084",
+      "category": "SEO/Legal",
+      "name": "financial disclaimer",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F085",
+      "category": "SEO/Legal",
+      "name": "sitemap",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F086",
+      "category": "SEO/Legal",
+      "name": "robots",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F087",
+      "category": "SEO/Legal",
+      "name": "schema plan",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F088",
+      "category": "SEO/Legal",
+      "name": "document index",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F089",
+      "category": "SEO/Legal",
+      "name": "registry notice",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F090",
+      "category": "SEO/Legal",
+      "name": "status transparency",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F091",
+      "category": "Automation",
+      "name": "status_check",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F092",
+      "category": "Automation",
+      "name": "refresh_news",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F093",
+      "category": "Automation",
+      "name": "refresh_market",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F094",
+      "category": "Automation",
+      "name": "classify_inbox",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F095",
+      "category": "Automation",
+      "name": "prepare_draft_reply",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F096",
+      "category": "Automation",
+      "name": "prepare_whatsapp_draft",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F097",
+      "category": "Automation",
+      "name": "deploy_preview",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F098",
+      "category": "Automation",
+      "name": "rebuild_documents",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F099",
+      "category": "Automation",
+      "name": "daily brief hook",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F100",
+      "category": "Automation",
+      "name": "SEO autopilot hook",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F101",
+      "category": "Extra",
+      "name": "Croatian diacritics",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F102",
+      "category": "Extra",
+      "name": "UTF-8 enforced",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F103",
+      "category": "Extra",
+      "name": "GitHub upload <99 files",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F104",
+      "category": "Extra",
+      "name": "preview-first",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F105",
+      "category": "Extra",
+      "name": "production lock",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F106",
+      "category": "Extra",
+      "name": "manual high-risk gate",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F107",
+      "category": "Extra",
+      "name": "send confirmation",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F108",
+      "category": "Extra",
+      "name": "turnstile hook",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F109",
+      "category": "Extra",
+      "name": "observability",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F110",
+      "category": "Extra",
+      "name": "error-safe render",
+      "status": "included",
+      "load": "lazy/config/no-framework"
+    },
+    {
+      "id": "F111",
+      "category": "Investor",
+      "name": "Investor hub",
+      "status": "included",
+      "load": "lazy/page"
+    },
+    {
+      "id": "F112",
+      "category": "Investor",
+      "name": "Due diligence index",
+      "status": "included",
+      "load": "data/app-data"
+    },
+    {
+      "id": "F113",
+      "category": "Investor",
+      "name": "Data room structure",
+      "status": "included",
+      "load": "data/app-data"
+    },
+    {
+      "id": "F114",
+      "category": "Investor",
+      "name": "Investor FAQ",
+      "status": "included",
+      "load": "data/app-data"
+    },
+    {
+      "id": "F115",
+      "category": "Investor",
+      "name": "Risk register",
+      "status": "included",
+      "load": "data/app-data"
+    },
+    {
+      "id": "F116",
+      "category": "Investor",
+      "name": "Investment roadmap",
+      "status": "included",
+      "load": "data/app-data"
+    },
+    {
+      "id": "F117",
+      "category": "Investor",
+      "name": "Evidence policy",
+      "status": "included",
+      "load": "data/app-data"
+    },
+    {
+      "id": "F118",
+      "category": "Investor",
+      "name": "Investor command drafts",
+      "status": "included",
+      "load": "private-agent"
+    },
+    {
+      "id": "F119",
+      "category": "Investor",
+      "name": "NDA/data-room hook",
+      "status": "included",
+      "load": "backend-ready"
+    },
+    {
+      "id": "F120",
+      "category": "Investor",
+      "name": "Investor safety wording",
+      "status": "included",
+      "load": "public-page"
+    },
+    {
+      "id": "F121",
+      "category": "App/PWA",
+      "name": "Guest install page",
+      "status": "included",
+      "load": "page/install"
+    },
+    {
+      "id": "F122",
+      "category": "App/PWA",
+      "name": "QR code install",
+      "status": "included",
+      "load": "asset/svg"
+    },
+    {
+      "id": "F123",
+      "category": "App/PWA",
+      "name": "Admin mobile app hub",
+      "status": "included",
+      "load": "page/app/admin"
+    },
+    {
+      "id": "F124",
+      "category": "App/PWA",
+      "name": "Desktop admin app workspace",
+      "status": "included",
+      "load": "page/desktop"
+    },
+    {
+      "id": "F125",
+      "category": "App/PWA",
+      "name": "Downloads hub",
+      "status": "included",
+      "load": "page/downloads"
+    },
+    {
+      "id": "F126",
+      "category": "App/PWA",
+      "name": "PWA install prompt helper",
+      "status": "included",
+      "load": "assets/install.js"
+    },
+    {
+      "id": "F127",
+      "category": "App/PWA",
+      "name": "Public guest restrictions",
+      "status": "included",
+      "load": "data policy"
+    },
+    {
+      "id": "F128",
+      "category": "App/PWA",
+      "name": "Admin install restrictions",
+      "status": "included",
+      "load": "data policy"
+    },
+    {
+      "id": "F129",
+      "category": "App/PWA",
+      "name": "Root/preview install URL policy",
+      "status": "included",
+      "load": "data policy"
+    },
+    {
+      "id": "F130",
+      "category": "App/PWA",
+      "name": "QR on homepage",
+      "status": "included",
+      "load": "homepage card"
+    },
+    {
+      "id": "F131",
+      "category": "Contact/Mail",
+      "name": "Contact list page",
+      "status": "included",
+      "load": "page/contact-list"
+    },
+    {
+      "id": "F132",
+      "category": "Contact/Mail",
+      "name": "Recipient selector",
+      "status": "included",
+      "load": "kontakt/contact-form"
+    },
+    {
+      "id": "F133",
+      "category": "Contact/Mail",
+      "name": "Mailto direct fallback",
+      "status": "included",
+      "load": "frontend"
+    },
+    {
+      "id": "F134",
+      "category": "Contact/Mail",
+      "name": "Server-side contact-send endpoint",
+      "status": "included",
+      "load": "backend"
+    },
+    {
+      "id": "F135",
+      "category": "Contact/Mail",
+      "name": "Auto-ack reply templates",
+      "status": "included",
+      "load": "data/contacts.json"
+    },
+    {
+      "id": "F136",
+      "category": "Contact/Mail",
+      "name": "Contact routing by topic",
+      "status": "included",
+      "load": "data/contacts.json"
+    },
+    {
+      "id": "F137",
+      "category": "Contact/Mail",
+      "name": "Investor contact routing",
+      "status": "included",
+      "load": "contact-list"
+    },
+    {
+      "id": "F138",
+      "category": "Contact/Mail",
+      "name": "Media/legal manual approval policy",
+      "status": "included",
+      "load": "policy"
+    },
+    {
+      "id": "F139",
+      "category": "Contact/Mail",
+      "name": "Copyable message payload",
+      "status": "included",
+      "load": "frontend"
+    },
+    {
+      "id": "F140",
+      "category": "Contact/Mail",
+      "name": "Admin contact inbox hook",
+      "status": "included",
+      "load": "backend/KV"
+    },
+    {
+      "id": "F141",
+      "category": "CRM",
+      "name": "Public CRM overview",
+      "status": "included",
+      "load": "page/crm"
+    },
+    {
+      "id": "F142",
+      "category": "CRM",
+      "name": "Admin CRM workspace",
+      "status": "included",
+      "load": "page/admin/crm"
+    },
+    {
+      "id": "F143",
+      "category": "CRM",
+      "name": "Inquiry statuses",
+      "status": "included",
+      "load": "data/crm.json"
+    },
+    {
+      "id": "F144",
+      "category": "CRM",
+      "name": "Ticket priorities",
+      "status": "included",
+      "load": "data/crm.json"
+    },
+    {
+      "id": "F145",
+      "category": "CRM",
+      "name": "Lead pipeline",
+      "status": "included",
+      "load": "data/crm.json"
+    },
+    {
+      "id": "F146",
+      "category": "CRM",
+      "name": "SLA rules",
+      "status": "included",
+      "load": "data/crm.json"
+    },
+    {
+      "id": "F147",
+      "category": "CRM",
+      "name": "Response templates",
+      "status": "included",
+      "load": "data/crm.json"
+    },
+    {
+      "id": "F148",
+      "category": "CRM",
+      "name": "Consent and privacy controls",
+      "status": "included",
+      "load": "data/crm.json"
+    },
+    {
+      "id": "F149",
+      "category": "CRM",
+      "name": "Audit events",
+      "status": "included",
+      "load": "backend-ready"
+    },
+    {
+      "id": "F150",
+      "category": "CRM",
+      "name": "CRM event endpoint",
+      "status": "included",
+      "load": "backend/worker"
+    },
+    {
+      "id": "F151",
+      "category": "Autopost",
+      "name": "Auto Editor 3x daily",
+      "status": "included",
+      "load": "data/autopost.json"
+    },
+    {
+      "id": "F152",
+      "category": "Autopost",
+      "name": "Text-to-image prompt workflow",
+      "status": "included",
+      "load": "data/autopost.json"
+    },
+    {
+      "id": "F153",
+      "category": "Autopost",
+      "name": "Gallery manifest",
+      "status": "included",
+      "load": "data/gallery.json"
+    },
+    {
+      "id": "F154",
+      "category": "Autopost",
+      "name": "Article SEO/index queue",
+      "status": "included",
+      "load": "data/seo-index.json"
+    },
+    {
+      "id": "F155",
+      "category": "SEO/Indexing",
+      "name": "SEO control center",
+      "status": "included",
+      "load": "page/seo"
+    },
+    {
+      "id": "F156",
+      "category": "SEO/Indexing",
+      "name": "Google indexing package",
+      "status": "included",
+      "load": "page/google-indexing"
+    },
+    {
+      "id": "F157",
+      "category": "SEO/Indexing",
+      "name": "Global google verification placeholder",
+      "status": "included",
+      "load": "head meta"
+    },
+    {
+      "id": "F158",
+      "category": "SEO/Indexing",
+      "name": "Profiles for better indexing",
+      "status": "included",
+      "load": "page/profiles"
+    },
+    {
+      "id": "F159",
+      "category": "SEO/Indexing",
+      "name": "Structured article/gallery schema plan",
+      "status": "included",
+      "load": "data/seo-index.json"
+    },
+    {
+      "id": "F160",
+      "category": "Autopost",
+      "name": "Autopost backend events",
+      "status": "included",
+      "load": "backend/worker"
+    },
+    {
+      "id": "F161",
+      "category": "Fast SEO",
+      "name": "Category discovery page",
+      "status": "included",
+      "load": "lazy/discovery"
+    },
+    {
+      "id": "F162",
+      "category": "Fast SEO",
+      "name": "Tag discovery page",
+      "status": "included",
+      "load": "lazy/discovery"
+    },
+    {
+      "id": "F163",
+      "category": "Fast SEO",
+      "name": "Article archive",
+      "status": "included",
+      "load": "lazy/discovery"
+    },
+    {
+      "id": "F164",
+      "category": "Fast SEO",
+      "name": "Local search",
+      "status": "included",
+      "load": "lazy/discovery"
+    },
+    {
+      "id": "F165",
+      "category": "Fast SEO",
+      "name": "Related content matrix",
+      "status": "included",
+      "load": "data/related-content.json"
+    },
+    {
+      "id": "F166",
+      "category": "Fast SEO",
+      "name": "News sitemap",
+      "status": "included",
+      "load": "news-sitemap.xml"
+    },
+    {
+      "id": "F167",
+      "category": "Performance",
+      "name": "Performance budget",
+      "status": "included",
+      "load": "data/performance-budget.json"
+    },
+    {
+      "id": "F168",
+      "category": "Schema",
+      "name": "Breadcrumb schema for articles",
+      "status": "included",
+      "load": "inline-jsonld"
+    },
+    {
+      "id": "F169",
+      "category": "Schema",
+      "name": "Organization schema for articles",
+      "status": "included",
+      "load": "inline-jsonld"
+    },
+    {
+      "id": "F170",
+      "category": "SEO",
+      "name": "Internal linking mesh",
+      "status": "included",
+      "load": "static-links"
+    },
+    {
+      "id": "F171",
+      "category": "Autopilot",
+      "name": "Autopilot 99% control center",
+      "status": "included",
+      "load": "page/autopilot"
+    },
+    {
+      "id": "F172",
+      "category": "Autopilot",
+      "name": "Autonomy levels A0-A4",
+      "status": "included",
+      "load": "data/autopilot-control.json"
+    },
+    {
+      "id": "F173",
+      "category": "Autopilot",
+      "name": "Protected actions matrix",
+      "status": "included",
+      "load": "data/autopilot-control.json"
+    },
+    {
+      "id": "F174",
+      "category": "Autopilot",
+      "name": "Readiness score model",
+      "status": "included",
+      "load": "assets/autopilot.js"
+    },
+    {
+      "id": "F175",
+      "category": "Brand",
+      "name": "Brand / Žig Lab",
+      "status": "included",
+      "load": "page/brand-lab"
+    },
+    {
+      "id": "F176",
+      "category": "Brand",
+      "name": "Current vs final mark candidates",
+      "status": "included",
+      "load": "data/autopilot-control.json"
+    },
+    {
+      "id": "F177",
+      "category": "Brand",
+      "name": "Visual/logo/PWA/favicon checklist",
+      "status": "included",
+      "load": "data/autopilot-control.json"
+    },
+    {
+      "id": "F178",
+      "category": "Brand",
+      "name": "SEO/OpenGraph brand check",
+      "status": "included",
+      "load": "data/autopilot-control.json"
+    },
+    {
+      "id": "F179",
+      "category": "Brand",
+      "name": "Trademark sensitivity note",
+      "status": "included",
+      "load": "brand-lab"
+    },
+    {
+      "id": "F180",
+      "category": "Performance",
+      "name": "V18 below 99-file cap",
+      "status": "included",
+      "load": "package"
+    },
+    {
+      "id": "F181",
+      "category": "AI Agent",
+      "name": "Strong free local public AI agent",
+      "status": "included",
+      "load": "data/agent-knowledge.json + assets/page.js"
+    }
+  ],
+  "knowledge": [
+    {
+      "topic": "besplatni javni AI",
+      "answer": "Javni agent radi besplatno: koristi lokalnu knowledge bazu i javne JSON podatke portala, bez plaćenog API-ja."
+    },
+    {
+      "topic": "privatni agent",
+      "answer": "Privatni agent priprema command JSON, mail draftove i WhatsApp draftove. Izvršenje traži backend token i sigurnosne potvrde."
+    },
+    {
+      "topic": "mail automatizacija",
+      "answer": "MailOps prima, čita, klasificira i priprema draft odgovore. Stvarno slanje ide samo server-side i uz odobrenje."
+    },
+    {
+      "topic": "WhatsApp",
+      "answer": "Javni WhatsApp link je https://wa.me/385915358365. Automatizacija ide samo preko službenog WhatsApp Business Cloud API-ja."
+    },
+    {
+      "topic": "parent company",
+      "answer": "Parent company je GNK DINAMO Ltd., Boulder, Colorado, USA. Operating company je GNK ASG d.o.o., Zagreb."
+    },
+    {
+      "topic": "statusi",
+      "answer": "LIVE znači svjež izvor, SNAPSHOT zadnji objavljeni paket, DELAYED kašnjenje, FALLBACK rezervni prikaz."
+    },
+    {
+      "topic": "self test",
+      "answer": "V10 ima self-test stranicu koja provjerava glavnu data datoteku, agent stranice, MailOps, admin, command, status, legal i broj datoteka."
+    },
+    {
+      "topic": "upload",
+      "answer": "V10 je napravljen za jednostavan GitHub web upload cijelog foldera zavrsni-model-v19-final-free-ai-agent-tested, s manje od 99 datoteka."
+    },
+    {
+      "topic": "produkcija",
+      "answer": "Produkcija se ne mijenja dok preview ne prođe self-test i dok se ne napravi backup root-a."
+    },
+    {
+      "topic": "investitor",
+      "answer": "V11 ima investor hub: data room index, due diligence mapu, FAQ, risk register i roadmap. Povjerljivi dokumenti ne smiju se javno objavljivati bez odobrenja."
+    },
+    {
+      "topic": "data room",
+      "answer": "Data room je pripremljen kao struktura: corporate, registry, ownership, audit/finance, contracts/IP, technology, legal risk, investment thesis i roadmap."
+    },
+    {
+      "topic": "due diligence",
+      "answer": "Due diligence u V11 služi kao kontrolna mapa. Svaka brojka ili tvrdnja mora imati dokument, izvor i status provjere."
+    },
+    {
+      "topic": "qr kod",
+      "answer": "V12 dodaje QR kod za instalaciju aplikacije. Gosti skeniraju QR i otvaraju instalacijsku stranicu /install/."
+    },
+    {
+      "topic": "mobilna aplikacija",
+      "answer": "V12 ima javnu guest PWA instalaciju i posebni admin mobile PWA hub na /app/admin/."
+    },
+    {
+      "topic": "desktop aplikacija",
+      "answer": "V12 ima desktop/admin workspace na /desktop/ koji se može instalirati kroz Chrome/Edge kao PWA aplikacija."
+    },
+    {
+      "topic": "downloads",
+      "answer": "V12 ima downloads hub s manifestom, QR kodom, backend datotekama, dokumentacijom i validation reportom."
+    },
+    {
+      "topic": "kontakt lista",
+      "answer": "V13 ima kontakt listu na /contact-list/ s javnim adresama, temama, rizikom i routing pravilima."
+    },
+    {
+      "topic": "direktno slanje forme",
+      "answer": "V13 kontakt forma može odmah otvoriti mailto poruku korisniku. Za stvarno server-side slanje potreban je Cloudflare Worker /contact-send i Resend/Brevo secret."
+    },
+    {
+      "topic": "automatski odgovor",
+      "answer": "V13 ima auto-ack predloške prema riziku upita. Stvarno slanje potvrde ide server-side kad je mail provider spojen."
+    },
+    {
+      "topic": "crm",
+      "answer": "V14 dodaje mini-CRM: upiti, ticketi, leadovi, statusi, prioriteti, predlošci, SLA pravila, GDPR kontrole i audit događaji."
+    },
+    {
+      "topic": "ticket",
+      "answer": "V14 ima ticket/inquiry statuse: new, triaged, draft_prepared, waiting_approval, answered, closed i spam."
+    },
+    {
+      "topic": "lead",
+      "answer": "V14 ima investitorski lead pipeline: new_lead, qualified, nda_needed, data_room, meeting, proposal, closed_won i closed_lost."
+    },
+    {
+      "topic": "auto editor",
+      "answer": "V15 dodaje Auto Editor 3 puta dnevno: odabir teme, izrada teksta, SEO/meta, image prompt, galerija i indeksiranje."
+    },
+    {
+      "topic": "galerija",
+      "answer": "V15 ima galeriju s manifestom slika i metapodacima, te pripremljenim image promptovima po članku."
+    },
+    {
+      "topic": "google indexing",
+      "answer": "V15 ima Google indexing paket: robots, sitemap, verification placeholder, indexing checklist i SEO centar. Pravi verification kod treba zamijeniti placeholder google46686328e30c759f.html."
+    },
+    {
+      "topic": "seo",
+      "answer": "V15 dodaje SEO control center, article/gallery index, profile pages i meta/schema plan za bolje indeksiranje."
+    },
+    {
+      "topic": "news index",
+      "answer": "V16 dodaje posebne article/news stranice s vlastitim meta poljima, JSON-LD i povezanom galerijom."
+    },
+    {
+      "topic": "indeksirana galerija",
+      "answer": "V16 dodaje indeksiranu galeriju s posebnim detail stranicama za svaki vizual, alt tekstom, captionom i image sitemapom."
+    },
+    {
+      "topic": "image sitemap",
+      "answer": "V16 dodaje image-sitemap.xml i data/image-sitemap.json za galerijske resurse."
+    },
+    {
+      "topic": "kategorije",
+      "answer": "V17 dodaje kategorije za bolje interno povezivanje i indeksiranje sadržaja."
+    },
+    {
+      "topic": "tagovi",
+      "answer": "V17 dodaje tagove koji povezuju članke, galerije, profile i dokumente."
+    },
+    {
+      "topic": "pretraga",
+      "answer": "V17 ima brzu lokalnu pretragu preko JSON datoteka, bez servera i bez usporavanja naslovnice."
+    },
+    {
+      "topic": "brzina",
+      "answer": "V17 uvodi performance budget: nema frameworka, jedan glavni CSS, mali JS moduli samo na stranicama gdje trebaju."
+    },
+    {
+      "topic": "autopilot",
+      "answer": "V18 dodaje Autopilot 99% centar: rutinske radnje se pripremaju ili izvode automatski, dok rizične radnje ostaju pod ručnom potvrdom."
+    },
+    {
+      "topic": "žig",
+      "answer": "V18 dodaje Brand / Žig Lab za funkcionalno, vizualno i SEO testiranje sadašnjeg ili konačnog znaka. To nije pravna provjera žiga."
+    },
+    {
+      "topic": "brand lab",
+      "answer": "Brand Lab testira čitljivost, kontrast, favicon/PWA ikonu, SEO naziv, OpenGraph i osjetljivost wording-a."
+    },
+    {
+      "topic": "besplatni ai agent",
+      "answer": "V19 ima besplatnog lokalnog AI agenta koji radi bez plaćenog API-ja. Čita data/agent-knowledge.json, lokalne JSON podatke i sadržaj portala."
+    },
+    {
+      "topic": "free agent",
+      "answer": "Free agent radi lokalno u pregledniku: pretražuje bazu portala, daje sigurni fallback i pamti upite lokalno u localStorage."
+    },
+    {
+      "topic": "trening agenta",
+      "answer": "Agent je istreniran kroz lokalnu knowledge bazu generiranu iz stranica, članaka, JSON podataka, kontakata, legal/SEO/autopilot i CRM modula."
+    }
+  ],
+  "documents": [
+    {
+      "id": "legal",
+      "title": "Legal / Privacy / Terms",
+      "url": "legal/",
+      "category": "legal"
+    },
+    {
+      "id": "locations",
+      "title": "Globalne lokacije i parent company",
+      "url": "locations/",
+      "category": "group"
+    },
+    {
+      "id": "mailops",
+      "title": "MailOps i komunikacijska automatizacija",
+      "url": "mail/",
+      "category": "communication"
+    },
+    {
+      "id": "backend",
+      "title": "Backend router i automation",
+      "url": "docs/backend-router.md",
+      "category": "technical"
+    },
+    {
+      "id": "release",
+      "title": "Upload i release checklist",
+      "url": "docs/upload-release.md",
+      "category": "release"
+    },
+    {
+      "id": "investor",
+      "title": "Investor hub",
+      "url": "investor/",
+      "category": "investor"
+    },
+    {
+      "id": "investor-readiness",
+      "title": "Investor readiness checklist",
+      "url": "docs/investor-readiness.md",
+      "category": "investor"
+    },
+    {
+      "id": "data-room",
+      "title": "Data room index",
+      "url": "docs/data-room-index.md",
+      "category": "investor"
+    },
+    {
+      "id": "install",
+      "title": "Install app / QR page",
+      "url": "install/",
+      "category": "app"
+    },
+    {
+      "id": "admin-mobile",
+      "title": "Admin mobile app",
+      "url": "app/admin/",
+      "category": "app"
+    },
+    {
+      "id": "desktop-admin",
+      "title": "Desktop admin app",
+      "url": "desktop/",
+      "category": "app"
+    },
+    {
+      "id": "downloads",
+      "title": "Downloads hub",
+      "url": "downloads/",
+      "category": "app"
+    },
+    {
+      "id": "contacts",
+      "title": "Contact list and routing",
+      "url": "contact-list/",
+      "category": "contact"
+    },
+    {
+      "id": "contact-routing",
+      "title": "Contact mail routing documentation",
+      "url": "docs/contact-mail-routing.md",
+      "category": "contact"
+    },
+    {
+      "id": "crm",
+      "title": "CRM / Inbox / Ticketing",
+      "url": "crm/",
+      "category": "crm"
+    },
+    {
+      "id": "admin-crm",
+      "title": "Admin CRM workspace",
+      "url": "admin/crm/",
+      "category": "crm"
+    },
+    {
+      "id": "crm-docs",
+      "title": "CRM workflow documentation",
+      "url": "docs/crm-inbox-ticketing.md",
+      "category": "crm"
+    },
+    {
+      "id": "editor",
+      "title": "Auto Editor 3x daily",
+      "url": "editor/",
+      "category": "autopost"
+    },
+    {
+      "id": "gallery",
+      "title": "Gallery and image manifest",
+      "url": "gallery/",
+      "category": "autopost"
+    },
+    {
+      "id": "profiles",
+      "title": "Profiles / indexing pages",
+      "url": "profiles/",
+      "category": "seo"
+    },
+    {
+      "id": "seo",
+      "title": "SEO control center",
+      "url": "seo/",
+      "category": "seo"
+    },
+    {
+      "id": "google-indexing",
+      "title": "Google indexing package",
+      "url": "google-indexing/",
+      "category": "seo"
+    },
+    {
+      "id": "news",
+      "title": "News index",
+      "url": "news/",
+      "category": "seo"
+    },
+    {
+      "id": "authors",
+      "title": "Author hub",
+      "url": "authors/",
+      "category": "seo"
+    },
+    {
+      "id": "categories",
+      "title": "Category discovery",
+      "url": "categories/",
+      "category": "seo"
+    },
+    {
+      "id": "tags",
+      "title": "Tag discovery",
+      "url": "tags/",
+      "category": "seo"
+    },
+    {
+      "id": "archive",
+      "title": "Article archive",
+      "url": "archive/",
+      "category": "seo"
+    },
+    {
+      "id": "search",
+      "title": "Local search",
+      "url": "search/",
+      "category": "seo"
+    },
+    {
+      "id": "v19-docs",
+      "title": "Fast SEO discovery docs",
+      "url": "docs/v19-fast-seo-discovery.md",
+      "category": "seo"
+    },
+    {
+      "id": "autopilot",
+      "title": "Autopilot 99% control center",
+      "url": "autopilot/",
+      "category": "autopilot"
+    },
+    {
+      "id": "brand-lab",
+      "title": "Brand / Žig Lab",
+      "url": "brand-lab/",
+      "category": "brand"
+    }
+  ],
+  "demo_news": [
+    {
+      "id": "news-v19",
+      "title": "GNK ASG Završni model V18 spreman za GitHub preview",
+      "summary": "Kompaktni upload-ready paket s manje od 99 datoteka, backend routerom, javnim besplatnim AI agentom, privatnim agentom, MailOps i WhatsApp API pripremom.",
+      "source": "GNK ASG",
+      "category": "technology",
+      "published_at": "2026-06-13T10:31:39+00:00",
+      "url": "#"
+    }
+  ],
+  "demo_market": {
+    "updated_at": "2026-06-13T10:31:39+00:00",
+    "status": "preview",
+    "coins": [
+      {
+        "id": "bitcoin",
+        "symbol": "BTC",
+        "prices": {
+          "eur": 0,
+          "usd": 0,
+          "gbp": 0,
+          "chf": 0,
+          "jpy": 0
+        },
+        "changes_24h": {
+          "eur": 0,
+          "usd": 0,
+          "gbp": 0,
+          "chf": 0,
+          "jpy": 0
+        }
+      },
+      {
+        "id": "ethereum",
+        "symbol": "ETH",
+        "prices": {
+          "eur": 0,
+          "usd": 0,
+          "gbp": 0,
+          "chf": 0,
+          "jpy": 0
+        },
+        "changes_24h": {
+          "eur": 0,
+          "usd": 0,
+          "gbp": 0,
+          "chf": 0,
+          "jpy": 0
+        }
+      },
+      {
+        "id": "euro-coin",
+        "symbol": "EURC",
+        "prices": {
+          "eur": 1,
+          "usd": 1.08,
+          "gbp": 0.86,
+          "chf": 0.96,
+          "jpy": 169
+        },
+        "changes_24h": {
+          "eur": 0,
+          "usd": 0,
+          "gbp": 0,
+          "chf": 0,
+          "jpy": 0
+        }
+      }
+    ],
+    "macro": {
+      "btc": {
+        "ticker": "BTC",
+        "current": 0,
+        "change_30d_percent": 0
+      },
+      "gold": {
+        "ticker": "XAU",
+        "current": 0,
+        "change_30d_percent": 0
+      },
+      "oil": {
+        "ticker": "BRENT",
+        "current": 0,
+        "change_30d_percent": 0
+      },
+      "usd": {
+        "ticker": "USD/EUR",
+        "current": 0,
+        "change_30d_percent": 0
+      }
+    }
+  },
+  "v19_upgrade": {
+    "summary": "Replaces weak public agent with a stronger free local browser agent trained on the site pages, JSON data, articles, legal/contact/SEO/autopilot modules and local query memory.",
+    "agent_mode": "free local, no paid API",
+    "new_data": "data/agent-knowledge.json",
+    "updated_pages": [
+      "agents/public/index.html",
+      "index.html"
+    ],
+    "updated_js": "assets/page.js"
+  },
+  "deployment": {
+    "preview_folder": "zavrsni-model-v19-final-free-ai-agent-tested",
+    "preview_url": "https://gnk-asg.hr/zavrsni-model-v19-final-free-ai-agent-tested/",
+    "production_rule": "If installed as root, autopost, gallery and indexing URLs become /editor/, /gallery/, /profiles/, /seo/ and /google-indexing/.",
+    "github_upload_limit_strategy": "Compact package; file count under 99."
+  },
+  "backend_router": {
+    "endpoints": [
+      "/__health",
+      "/config",
+      "/command",
+      "/contact",
+      "/email-inbound",
+      "/email-send",
+      "/public-chat",
+      "/private-chat",
+      "/whatsapp-webhook",
+      "/whatsapp-send"
+    ],
+    "required_secrets": [
+      "OPERATOR_TOKEN"
+    ],
+    "optional_secrets": [
+      "GITHUB_TOKEN",
+      "GITHUB_REPO",
+      "RESEND_API_KEY or BREVO_API_KEY",
+      "WHATSAPP_TOKEN",
+      "WHATSAPP_PHONE_NUMBER_ID",
+      "OPENAI_API_KEY only optional for private agent"
+    ],
+    "storage": [
+      "KV COMMAND_LOG",
+      "KV CONTACT_INBOX",
+      "KV MAIL_INBOX",
+      "D1 DB",
+      "R2 backups optional"
+    ]
+  },
+  "investor_package": {
+    "version": "v19-investor-ready",
+    "status": "draft/investor-ready framework",
+    "purpose": "Prepare GNK ASG public investor-facing hub and private due-diligence structure without exposing confidential files.",
+    "public_positioning": [
+      "GNK ASG d.o.o. as Croatian operating company and corporate portal layer.",
+      "GNK DINAMO Ltd., Boulder, Colorado, USA as parent company / central corporate coordination layer.",
+      "Group display: 33 existing companies and 12 planned 2026 positions, with registry verification notice.",
+      "Business/technology/sport/AI/communication portal infrastructure as scalable public platform."
+    ],
+    "must_verify_before_public_claim": [
+      "financial figures",
+      "audit report excerpts",
+      "number of employees",
+      "ownership chain details beyond public profile",
+      "valuation claims",
+      "investment return projections",
+      "signed contracts",
+      "regulatory status"
+    ],
+    "data_room_sections": [
+      "Corporate profile",
+      "Registry extracts",
+      "Ownership / UBO",
+      "Audit and financial reports",
+      "Tax/accounting status",
+      "Group network and locations",
+      "Contracts and IP",
+      "Technology architecture",
+      "Cloudflare/GitHub/portal status",
+      "Legal / disputes / risk",
+      "Media kit",
+      "Investment thesis",
+      "Use of funds",
+      "Roadmap",
+      "Management Q&A"
+    ],
+    "investor_faq": [
+      {
+        "q": "What is GNK ASG?",
+        "a": "GNK ASG d.o.o. is presented as Croatian operating company and corporate/technology portal layer. Public profile data must be verified through registry and company documentation."
+      },
+      {
+        "q": "Who is the parent company?",
+        "a": "GNK DINAMO Ltd., Boulder, Colorado, USA is used in this portal model as parent company / central corporate coordination layer."
+      },
+      {
+        "q": "How many group companies are shown?",
+        "a": "The group display shows 33 existing companies and 12 planned 2026 positions; official status of each entity must be confirmed in relevant registries."
+      },
+      {
+        "q": "Are market/crypto figures investment advice?",
+        "a": "No. Market and digital asset information is informational only and not financial or investment advice."
+      },
+      {
+        "q": "Can investors access documents?",
+        "a": "The V11 package prepares a data room index. Actual confidential files should be shared only under appropriate approval/NDA process."
+      }
+    ],
+    "risk_register": [
+      {
+        "risk": "Unverified financial/public claims",
+        "level": "high",
+        "mitigation": "Only publish figures backed by audit/report/source document."
+      },
+      {
+        "risk": "Trademark/name dispute sensitivity",
+        "level": "high",
+        "mitigation": "Use controlled legal wording and avoid prejudicial statements."
+      },
+      {
+        "risk": "Mail/WhatsApp automation misuse",
+        "level": "medium",
+        "mitigation": "Draft-only for sensitive outbound communication; require approval."
+      },
+      {
+        "risk": "Outdated market data",
+        "level": "medium",
+        "mitigation": "Use LIVE/SNAPSHOT/DELAYED/FALLBACK status labels."
+      },
+      {
+        "risk": "Secrets in frontend",
+        "level": "critical",
+        "mitigation": "All secrets remain server-side only."
+      }
+    ],
+    "roadmap": [
+      {
+        "phase": "V11 preview",
+        "goal": "Public investor hub and due-diligence index."
+      },
+      {
+        "phase": "Data room",
+        "goal": "Attach verified documents and document metadata."
+      },
+      {
+        "phase": "Backend",
+        "goal": "Cloudflare Worker + D1/KV/R2 controlled private access."
+      },
+      {
+        "phase": "Investor workflow",
+        "goal": "NDA, investor request form, controlled Q&A, audit trail."
+      },
+      {
+        "phase": "Production",
+        "goal": "Root promotion only after preview test, backup and approval."
+      }
+    ]
+  },
+  "app_install": {
+    "guest": {
+      "url": "/install/",
+      "mode": "PWA install for public visitors",
+      "allowed": [
+        "public portal",
+        "public free AI",
+        "contact",
+        "WhatsApp link",
+        "investor public hub",
+        "documents"
+      ],
+      "blocked": [
+        "admin",
+        "private agent",
+        "command execution",
+        "mail inbox",
+        "backend secrets"
+      ]
+    },
+    "admin_mobile": {
+      "url": "/app/admin/",
+      "mode": "mobile admin PWA hub",
+      "features": [
+        "private agent",
+        "MailOps",
+        "command center",
+        "status",
+        "self-test",
+        "investor hub",
+        "communication hub",
+        "WhatsApp draft",
+        "deployment guide"
+      ],
+      "execution": "draft/command only until backend token is connected"
+    },
+    "desktop_admin": {
+      "url": "/desktop/",
+      "mode": "desktop/admin app-like workspace",
+      "features": [
+        "wide admin dashboard",
+        "command builder",
+        "mail drafts",
+        "investor package",
+        "self-test",
+        "release checklist",
+        "backend endpoints"
+      ],
+      "install": "Chrome/Edge Install app from address bar or browser menu"
+    },
+    "downloads": {
+      "url": "/downloads/",
+      "items": [
+        "manifest.webmanifest",
+        "QR code SVG",
+        "release docs",
+        "backend schema",
+        "worker file",
+        "validation report"
+      ]
+    }
+  },
+  "contact_routing": {
+    "contacts_file": "data/contacts.json",
+    "public_page": "contact-list/",
+    "form_page": "kontakt/",
+    "static_mode": "mailto fallback opens the visitor's e-mail client",
+    "server_mode": "Worker /contact-send sends via Resend/Brevo when configured",
+    "auto_reply": "ack templates by risk class; actual sending server-side only"
+  },
+  "crm": {
+    "file": "data/crm.json",
+    "public_page": "crm/",
+    "admin_page": "admin/crm/",
+    "backend_endpoint": "/crm-event",
+    "models": [
+      "inquiries",
+      "tickets",
+      "leads",
+      "templates",
+      "audit_events",
+      "privacy_controls"
+    ]
+  },
+  "autopost": {
+    "runs_per_day": 3,
+    "schedule_local": "09:00, 13:00, 18:00 Europe/Zagreb",
+    "workflow": "topic selection -> draft -> seo/meta -> image prompt -> gallery asset -> article json -> sitemap/meta update -> indexing queue",
+    "sources": [
+      "existing user texts / documents",
+      "public RSS/business sources when enabled"
+    ],
+    "publish_modes": [
+      "draft",
+      "auto_after_rules"
+    ],
+    "image_policy": "Generate article hero image and gallery image prompt from text; save metadata and gallery manifest.",
+    "queue_files": [
+      "data/autopost.json",
+      "data/gallery.json",
+      "data/seo-index.json",
+      "data/google-indexing.json"
+    ]
+  },
+  "google_indexing": {
+    "verification_placeholder": "REPLACED",
+    "verification_meta_name": "google-site-verification",
+    "global_head_hook": "installed on all HTML pages in this package",
+    "sitemap": "sitemap.xml",
+    "robots": "robots.txt",
+    "indexing_package": "google-indexing/",
+    "note": "Google HTML verification file is included at root of this package.",
+    "verification_file": "google46686328e30c759f.html",
+    "verification_content": "google-site-verification: google46686328e30c759f.html"
+  },
+  "final_package": {
+    "name": "zavrsni-model-v19-final-free-ai-agent-tested",
+    "zip": "gnk-asg-zavrsni-model-v19-final-free-ai-agent-tested.zip",
+    "google_verification_file": "google46686328e30c759f.html",
+    "google_placeholder_replaced": true,
+    "validation_report_removed_to_keep_under_99_files": true
+  },
+  "v19_final_patch": {
+    "summary": "Final patch: stronger legal/GDPR wording and meta descriptions on all HTML pages.",
+    "legal_gdpr_strengthened": true,
+    "meta_descriptions_completed": true,
+    "file_count_kept_under_99": true
+  }
+}

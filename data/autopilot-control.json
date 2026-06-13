@@ -1,0 +1,166 @@
+{
+  "version": "v19-autopilot-brand-lab",
+  "created_at": "2026-06-13T12:16:30+00:00",
+  "goal": "99% routine portal operations self-running after backend secrets/workers are configured, with manual approval for legal, finance, sending, root deploy, rollback and trademark clearance.",
+  "autonomy_levels": [
+    {
+      "level": "A0",
+      "name": "Display only",
+      "description": "Public/static display."
+    },
+    {
+      "level": "A1",
+      "name": "Auto-draft",
+      "description": "System prepares draft, payload, queue or checklist."
+    },
+    {
+      "level": "A2",
+      "name": "Auto-run safe",
+      "description": "Safe routine operation can run automatically when backend is configured."
+    },
+    {
+      "level": "A3",
+      "name": "Approval required",
+      "description": "Sensitive action needs explicit approval."
+    },
+    {
+      "level": "A4",
+      "name": "Manual/blocked",
+      "description": "Legal/financial/irreversible action remains manual."
+    }
+  ],
+  "autopilot_modules": [
+    {
+      "id": "auto-editor",
+      "name": "Auto Editor 3x daily",
+      "autonomy": "A2",
+      "status": "ready-workflow",
+      "does": "Topic, article draft, SEO/meta, image prompt, gallery record and indexing queue.",
+      "approval": "manual for legal/finance/sensitive claims"
+    },
+    {
+      "id": "gallery",
+      "name": "Indexed Gallery",
+      "autonomy": "A2",
+      "status": "ready",
+      "does": "Alt, caption, credit, prompt, detail page and image sitemap.",
+      "approval": "manual for final brand/logo assets"
+    },
+    {
+      "id": "seo",
+      "name": "SEO/meta/schema",
+      "autonomy": "A2",
+      "status": "ready",
+      "does": "Meta, schema, internal links, sitemap, image sitemap and news sitemap.",
+      "approval": "manual for Google verification replacement"
+    },
+    {
+      "id": "crm",
+      "name": "CRM / Inbox / Ticketing",
+      "autonomy": "A2",
+      "status": "ready-workflow",
+      "does": "Inquiry, ticket, lead, response template and audit event.",
+      "approval": "manual for media/legal/investor outbound"
+    },
+    {
+      "id": "mailops",
+      "name": "MailOps",
+      "autonomy": "A1/A2",
+      "status": "backend-ready",
+      "does": "Read envelope, classify, auto-ack draft, route and ticket.",
+      "approval": "manual for sensitive external send"
+    },
+    {
+      "id": "whatsapp",
+      "name": "WhatsApp Business API",
+      "autonomy": "A1/A2",
+      "status": "backend-ready",
+      "does": "Webhook, draft, routing and approved send.",
+      "approval": "official Business API only"
+    },
+    {
+      "id": "market-news",
+      "name": "Market/news refresh",
+      "autonomy": "A2",
+      "status": "ready-workflow",
+      "does": "Refresh, timestamp, fallback and LIVE/SNAPSHOT/DELAYED/FALLBACK status.",
+      "approval": "manual if source conflict"
+    },
+    {
+      "id": "self-test",
+      "name": "Self-test / release guard",
+      "autonomy": "A2",
+      "status": "ready",
+      "does": "Checks pages, JSON, JS, sitemap, performance budget and files <99.",
+      "approval": "root promotion manual"
+    },
+    {
+      "id": "backup",
+      "name": "Backup / rollback guard",
+      "autonomy": "A1",
+      "status": "planned-backend",
+      "does": "Prepare backup snapshot and rollback payload.",
+      "approval": "rollback/root replace manual"
+    },
+    {
+      "id": "brand-lab",
+      "name": "Brand / Žig Lab",
+      "autonomy": "A1",
+      "status": "ready-lab",
+      "does": "Functional, visual and SEO test for current/final mark.",
+      "approval": "formal legal/trademark clearance manual"
+    }
+  ],
+  "protected_actions": [
+    "root promotion",
+    "rollback",
+    "delete files",
+    "change secrets/tokens",
+    "change DNS/domain",
+    "send external legal/media/finance/investor messages",
+    "final trademark/legal clearance"
+  ],
+  "brand_lab": {
+    "purpose": "Test current or final sign/mark before production and before formal legal/trademark clearance.",
+    "candidates": [
+      {
+        "id": "current-wordmark",
+        "name": "GNK ASG current wordmark",
+        "type": "word mark / portal identity",
+        "status": "test"
+      },
+      {
+        "id": "final-corporate-mark",
+        "name": "GNK ASG final corporate mark",
+        "type": "final brand candidate",
+        "status": "to-be-approved"
+      },
+      {
+        "id": "group-reference",
+        "name": "GNK DINAMO Ltd. group reference",
+        "type": "group reference wording",
+        "status": "use carefully"
+      }
+    ],
+    "tests": [
+      "desktop header readability",
+      "mobile header readability",
+      "favicon/PWA icon recognition",
+      "dark background contrast",
+      "light card contrast",
+      "SEO title clarity",
+      "OpenGraph title clarity",
+      "not confusing public user about official club relationship",
+      "supports investor/profile/gallery pages",
+      "legal/trademark sensitivity wording"
+    ],
+    "legal_note": "Functional/visual/SEO test only. Formal trademark check requires current DZIV/EUIPO/registry review."
+  },
+  "readiness_score_model": {
+    "functional_weight": 40,
+    "seo_weight": 25,
+    "performance_weight": 20,
+    "brand_weight": 15,
+    "target": "99% routine automation after backend secrets and workers are configured"
+  }
+}

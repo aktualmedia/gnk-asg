@@ -1,0 +1,29 @@
+name = "gnk-asg-v19-final"
+main = "worker.js"
+compatibility_date = "2026-06-13"
+
+# Server-side secrets:
+# OPERATOR_TOKEN
+# GITHUB_TOKEN
+# GITHUB_REPO=aktualmedia/gnk-asg
+# RESEND_API_KEY or BREVO_API_KEY
+# WHATSAPP_TOKEN
+# WHATSAPP_PHONE_NUMBER_ID
+# OPENAI_API_KEY optional only for private/advanced AI
+
+[[kv_namespaces]]
+binding = "COMMAND_LOG"
+id = "REPLACE_WITH_KV_ID"
+
+[[kv_namespaces]]
+binding = "CONTACT_INBOX"
+id = "REPLACE_WITH_KV_ID"
+
+[[kv_namespaces]]
+binding = "MAIL_INBOX"
+id = "REPLACE_WITH_KV_ID"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "gnk_asg_portal"
+database_id = "REPLACE_WITH_D1_ID"

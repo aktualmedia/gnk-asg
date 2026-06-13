@@ -1,1 +1,0 @@
-/* GNK ASG front preview */

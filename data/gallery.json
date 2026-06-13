@@ -1,0 +1,42 @@
+{
+  "version": "v19-gallery",
+  "created_at": "2026-06-13T12:08:21+00:00",
+  "items": [
+    {
+      "id": "gal-001",
+      "slug": "market-brief-btc",
+      "title": "Market Brief · Bitcoin i digitalna imovina",
+      "status": "indexed-ready",
+      "image_prompt": "Premium editorial hero image about Bitcoin, digital assets and corporate market intelligence, dark blue and gold palette, clean dashboard feel.",
+      "alt": "Ilustracija za tržišni pregled Bitcoina i digitalne imovine.",
+      "caption": "Vizual za tržišni pregled digitalne imovine.",
+      "credit": "GNK ASG Auto Editor",
+      "image": "../assets/market-brief-btc.svg",
+      "detail_url": "../gallery/market-brief-btc/"
+    },
+    {
+      "id": "gal-002",
+      "slug": "ai-technology-note",
+      "title": "Technology & AI analiza",
+      "status": "indexed-ready",
+      "image_prompt": "Elegant technology illustration showing AI, data flow, dashboards and global network, premium corporate style.",
+      "alt": "Ilustracija za analizu umjetne inteligencije i tehnologije.",
+      "caption": "Vizual za Technology & AI modul.",
+      "credit": "GNK ASG Auto Editor",
+      "image": "../assets/ai-technology-note.svg",
+      "detail_url": "../gallery/ai-technology-note/"
+    },
+    {
+      "id": "gal-003",
+      "slug": "investor-brief-global-network",
+      "title": "Investor brief i globalna mreža",
+      "status": "indexed-ready",
+      "image_prompt": "Corporate investor hero image with global network map, abstract skyline and finance motifs, blue-gold professional look.",
+      "alt": "Ilustracija za investitorski pregled i globalnu mrežu.",
+      "caption": "Vizual za investor brief.",
+      "credit": "GNK ASG Auto Editor",
+      "image": "../assets/investor-brief-global-network.svg",
+      "detail_url": "../gallery/investor-brief-global-network/"
+    }
+  ]
+}

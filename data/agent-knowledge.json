@@ -1,0 +1,517 @@
+{
+  "version": "v19-final-free-ai-agent-tested",
+  "created_at": "2026-06-13T12:39:14+00:00",
+  "mode": "free_local_browser_agent",
+  "description": "Besplatni lokalni agent bez plaćenog API-ja. Odgovara iz lokalne knowledge baze, JSON podataka, HTML stranica i lokalne memorije upita u pregledniku.",
+  "limits": [
+    "Nije pravi LLM i nema live internet.",
+    "Ne daje pravni, financijski ni investicijski savjet.",
+    "Ne šalje mail/WhatsApp i ne izvodi admin naredbe.",
+    "Za backend izvršenje trebaju Cloudflare Worker, secrets i autorizacija."
+  ],
+  "capabilities": [
+    "Odgovori o GNK ASG portalu",
+    "Pretraga lokalne baze znanja",
+    "Sažimanje pronađenih modula",
+    "Usmjeravanje na prave linkove",
+    "Opći fallback odgovori",
+    "Lokalno pamćenje upita u localStorage",
+    "Kontakt/legal/SEO/autopilot/investor/galerija odgovori"
+  ],
+  "qa": [
+    {
+      "q": [
+        "što je gnk asg",
+        "tko je gnk asg",
+        "o portalu"
+      ],
+      "a": "GNK ASG d.o.o. je korporativni portal i poslovni identitet povezan s tehnologijom, AI, digitalnom imovinom, sportom, financijama i upravljanjem, u okviru međunarodne strukture GNK DINAMO Ltd. grupe."
+    },
+    {
+      "q": [
+        "kontakt",
+        "mail",
+        "email",
+        "pošalji upit"
+      ],
+      "a": "Za kontakt koristi /kontakt/ ili /contact-list/. Javni kontakti uključuju info@gnk-asg.hr, assistant@gnk-asg.hr, it@gnk-asg.hr, media@gnk-asg.hr, legal@gnk-asg.hr i investor@gnk-asg.hr. Medijski, pravni i investitorski upiti traže ručni pregled."
+    },
+    {
+      "q": [
+        "legal",
+        "pravni",
+        "privatnost",
+        "gdpr",
+        "uvjeti"
+      ],
+      "a": "Legal stranica nalazi se na /legal/. Portal ima informativni karakter, a odgovori agenta ne predstavljaju pravni, financijski ili investicijski savjet. Za pravne upite koristi legal@gnk-asg.hr."
+    },
+    {
+      "q": [
+        "vijesti",
+        "news",
+        "članci",
+        "auto editor"
+      ],
+      "a": "Vijesti i članci su u /news/, a Auto Editor model je u /editor/. Sustav je pripremljen za 3 objave dnevno: 09:00, 13:00 i 18:00 Europe/Zagreb."
+    },
+    {
+      "q": [
+        "galerija",
+        "slike",
+        "fotografije",
+        "image"
+      ],
+      "a": "Galerija je na /gallery/. Svaki vizual ima zasebnu indeksabilnu stranicu, alt tekst, caption, credit, prompt i povezan članak. Postoji i image-sitemap.xml."
+    },
+    {
+      "q": [
+        "seo",
+        "google",
+        "indeksiranje",
+        "sitemap"
+      ],
+      "a": "SEO centar je na /seo/, Google paket na /google-indexing/. U paketu postoje sitemap.xml, image-sitemap.xml, news-sitemap.xml i Google verification datoteka google46686328e30c759f.html."
+    },
+    {
+      "q": [
+        "autopilot",
+        "99",
+        "automatika",
+        "samostalno"
+      ],
+      "a": "Autopilot je na /autopilot/. Cilj je da rutinske operacije rade same ili kao draft/payload, dok root deploy, rollback, brisanje, secrets, DNS i slanje osjetljivih poruka ostaju pod ručnom potvrdom."
+    },
+    {
+      "q": [
+        "žig",
+        "zig",
+        "brand",
+        "logo",
+        "znak"
+      ],
+      "a": "Brand / Žig Lab je na /brand-lab/. To je funkcionalni, vizualni i SEO test sadašnjeg ili konačnog znaka. Nije formalna pravna provjera žiga; za to treba zasebna DZIV/EUIPO/registri provjera."
+    },
+    {
+      "q": [
+        "investor",
+        "ulaganje",
+        "data room",
+        "investitor"
+      ],
+      "a": "Investor hub je na /investor/. Investitorski i data room upiti idu kroz kontrolirani postupak i ručni pregled prije slanja osjetljivih podataka."
+    },
+    {
+      "q": [
+        "whatsapp",
+        "wa"
+      ],
+      "a": "Portal ima WhatsApp link i pripremu za WhatsApp Business API. Stvarno automatsko slanje zahtijeva službeni Business API i odobrenje za osjetljive poruke."
+    },
+    {
+      "q": [
+        "općenito",
+        "opcenito",
+        "generalno",
+        "objasni mi"
+      ],
+      "a": "Mogu općenito objasniti javne informacije s portala, usmjeriti te na pravu stranicu, sažeti modul, pronaći kontakt, objasniti SEO/autopilot/galeriju i pripremiti siguran odgovor. Za činjenice izvan portala nemam live internet u ovoj besplatnoj lokalnoj verziji."
+    },
+    {
+      "q": [
+        "gdpr",
+        "obrada osobnih podataka",
+        "privatnost",
+        "osobni podaci"
+      ],
+      "a": "Legal stranica sadrži pojačani Privacy/GDPR tekst: podaci iz kontakt forme, e-maila i javnih kanala obrađuju se radi odgovora na upit, evidencije komunikacije, sigurnosti i legitimnih poslovnih interesa. Za pitanja privatnosti koristi legal@gnk-asg.hr."
+    }
+  ],
+  "documents": [
+    {
+      "id": "admin-crm-index",
+      "type": "page",
+      "title": "Admin CRM | GNK ASG V14",
+      "url": "admin/crm/",
+      "text": "Admin CRM | GNK ASG V14 ← Natrag Admin CRM Workspace Radni prostor za upite, tickete, leadove, draft odgovore, approval i audit događaje. Sigurnost: ova stranica priprema payload; stvarno spremanje i slanje ide kroz Worker i token. Svi upiti Low Medium High Inbox / tickets Odaberi inquiry. CRM event classified draft_generated approval_requested sent closed exported deleted Pripremi CRM event payload"
+    },
+    {
+      "id": "admin-index",
+      "type": "page",
+      "title": "Admin | GNK ASG V9",
+      "url": "admin/",
+      "text": "Admin | GNK ASG V9 ← Natrag Admin Autopilot Command builder, dry-run, status i release kontrola. News refresh_news Workflow hook. Market refresh_market Workflow hook. Mail classify_inbox MailOps. Deploy deploy_preview Preview-first. Editor Auto Editor 3x daily workflow. Gallery Galerija Image manifest. SEO SEO control Index queue. Google Indexing Verification and URLs. News Članci News index. Authors Author hub Autori i profili. Otvori Admin CRM workspace Command builder status_check refresh_news refresh_market classify_inbox prepare_draft_reply prepare_whatsapp_draft deploy_preview promote_to_root rollback_root Izradi command JSON"
+    },
+    {
+      "id": "agents-private-index",
+      "type": "page",
+      "title": "Privatni agent | GNK ASG V9",
+      "url": "agents/private/",
+      "text": "Privatni agent | GNK ASG V9 ← Natrag Privatni operativni agent Priprema command JSON, mail draft i WhatsApp draft. Izvršenje traži backend token i sigurnosne potvrde. Ne šalje automatski. Za slanje maila/WhatsAppa treba potvrda: ODOBRAVAM SLANJE. Privatni agent spreman. Napiši: pripremi mail, pripremi WhatsApp, osvježi vijesti, osvježi market, deploy preview. Pripremi"
+    },
+    {
+      "id": "agents-public-index",
+      "type": "page",
+      "title": "Javni besplatni AI | GNK ASG V9",
+      "url": "agents/public/",
+      "text": "Javni besplatni AI | GNK ASG V9 ← Natrag Javni besplatni AI agent Radi bez plaćenog API-ja: lokalna knowledge baza + javni JSON podaci. Ograničenje: ne šalje mail/WhatsApp, ne izvodi admin naredbe i ne daje pravni/financijski savjet. Pozdrav. Pitaj me za GNK ASG, parent company, dokumente, mail, WhatsApp ili status. Pošalji Funkcije"
+    },
+    {
+      "id": "app-admin-index",
+      "type": "page",
+      "title": "Admin Mobile App | GNK ASG V12",
+      "url": "app/admin/",
+      "text": "Admin Mobile App | GNK ASG V12 ← Natrag Admin Mobile App Mobilni admin hub sa svim ključnim funkcijama. Stvarno izvršenje ide tek kroz backend token i sigurnosne potvrde. Private Privatni agent Command, mail i WhatsApp draft. Command Command centar Dry-run i JSON naredbe. Status Status centar Provjera modula. Check Self-test Provjera paketa. MailOps Mail Inbox, draft, klasifikacija. Comms Communication Mail, WhatsApp, agenti. Investor Investor hub Data room i FAQ. Files Downloads QR, manifest, backend, docs. Editor Auto Editor 3x daily workflow. Gallery Galerija Image manifest. SEO SEO control Index queue. Google Indexing Verification and URLs. News Članci News index. Authors Author hub Autori i profili. Ovo je admin PWA hub. Ako ga instaliraš na mobitel, ponaša se kao aplikacija."
+    },
+    {
+      "id": "app-index",
+      "type": "page",
+      "title": "Mobilni PWA | GNK ASG V9",
+      "url": "app/",
+      "text": "Mobilni PWA | GNK ASG V9 ← Natrag Mobilni GNK ASG PWA Brzi mobilni hub za portal, javni AI, privatni agent, mail, status i admin. Free AI Javni agent Bez API troška. Private Privatni agent Command/draft. Mail MailOps Inbox/draft. Status Provjera Endpointi."
+    },
+    {
+      "id": "archive-index",
+      "type": "page",
+      "title": "Archive | GNK ASG V17",
+      "url": "archive/",
+      "text": "Archive | GNK ASG V17 ← Natrag Article archive Arhiva svih članaka, spremna za kasniji automatski rast Auto Editora."
+    },
+    {
+      "id": "authors-index",
+      "type": "page",
+      "title": "Autori | GNK ASG V16",
+      "url": "authors/",
+      "text": "Autori | GNK ASG V16 ← Natrag Author hub Autor Nermin Sefić Profil, članci i povezani sadržaj."
+    },
+    {
+      "id": "authors-nermin-sefic-index",
+      "type": "page",
+      "title": "Nermin Sefić | Author hub",
+      "url": "authors/nermin-sefic/",
+      "text": "Nermin Sefić | Author hub ← Natrag Nermin Sefić · Author hub Autor hub za bolje povezivanje profila, članaka i galerijskih resursa. Digital assets Tržišni pregled: Bitcoin i digitalna imovina Sažeti pregled digitalne imovine, tržišnih trendova i informativnih signala za portal GNK ASG. Technology Technology & AI: podatci, automatizacija i portal Kako GNK ASG koristi AI, automatizaciju i strukturirane podatke za portal, sadržaj i komunikaciju. Investor Investor brief: globalna mreža i korporativna struktura Primjer investitorskog članka koji povezuje GNK ASG, GNK DINAMO Ltd. grupu i rast portala. Profilna stranica"
+    },
+    {
+      "id": "autopilot-index",
+      "type": "page",
+      "title": "Autopilot 99% | GNK ASG V18",
+      "url": "autopilot/",
+      "text": "Autopilot 99% | GNK ASG V18 ← Natrag Autopilot 99% Kontrolni centar za rutinsku automatiku. Cilj: 99% rutinskih operacija radi samostalno, a rizične radnje ostaju pod potvrdom. Root deploy, rollback, brisanje, secrets, DNS, pravni/financijski/medijski outbound i konačni žig ostaju ručni. Autonomy levels Autopilot modules Readiness payload"
+    },
+    {
+      "id": "brand-lab-index",
+      "type": "page",
+      "title": "Brand / Žig Lab | GNK ASG V18",
+      "url": "brand-lab/",
+      "text": "Brand / Žig Lab | GNK ASG V18 ← Natrag Brand / Žig Lab Test sadašnjeg ili konačnog žiga/znaka: čitljivost, kontrast, favicon/PWA ikona, SEO naziv, OpenGraph i pravila uporabe. Važno: ovo je funkcionalni, vizualni i SEO test. Nije pravno mišljenje ni formalna provjera žiga; za to ide zasebna DZIV/EUIPO/registri provjera. Kandidati Testovi Brand lab payload"
+    },
+    {
+      "id": "categories-index",
+      "type": "page",
+      "title": "Kategorije | GNK ASG V17",
+      "url": "categories/",
+      "text": "Kategorije | GNK ASG V17 ← Natrag Kategorije sadržaja Brze kategorijske stranice za bolje interno povezivanje i indeksiranje. Related matrix"
+    },
+    {
+      "id": "communication-index",
+      "type": "page",
+      "title": "Communication Autopilot | GNK ASG V9",
+      "url": "communication/",
+      "text": "Communication Autopilot | GNK ASG V9 ← Natrag Communication Autopilot Javni AI, privatni agent, MailOps, WhatsApp, kontakt i command automatizacija. Free AI Javni agent Bez API troška. Private Privatni agent Command/draft. MailOps Mail Čita, klasificira, draft. WhatsApp WA link Business API za automatiku."
+    },
+    {
+      "id": "contact-list-index",
+      "type": "page",
+      "title": "Kontakt lista | GNK ASG V13",
+      "url": "contact-list/",
+      "text": "Kontakt lista | GNK ASG V13 ← Natrag Kontakt lista i mail routing Javne kontakt adrese, routing po temi, rizik komunikacije i auto-ack pravila. Statički način rada odmah otvara mailto poruku. Server-side slanje se aktivira kroz Cloudflare Worker i Resend/Brevo secret. Svi rizici Low Medium High Auto-ack predlošci"
+    },
+    {
+      "id": "crm-index",
+      "type": "page",
+      "title": "CRM / Inbox / Ticketing | GNK ASG V14",
+      "url": "crm/",
+      "text": "CRM / Inbox / Ticketing | GNK ASG V14 ← Natrag CRM / Inbox / Ticketing Javni pregled CRM logike: kako portal zaprima upite, pretvara ih u ticket, priprema draft i čuva audit trag. Javna stranica prikazuje model. Stvarni inbox i osobni podaci idu samo kroz backend/admin režim. Statusi upita Lead pipeline SLA pravila Predlošci odgovora"
+    },
+    {
+      "id": "desktop-index",
+      "type": "page",
+      "title": "Desktop Admin App | GNK ASG V12",
+      "url": "desktop/",
+      "text": "Desktop Admin App | GNK ASG V12 ← Natrag Desktop Admin App Radni prostor za računalo: admin, privatni agent, MailOps, investor, backend, release i status. Admin Admin hub Command builder. Private Privatni agent Operativni draft. MailOps Mail Inbox i outbound draft. Investor Investor Data room i risk. Status Status Provjera. Test Self-test Readiness. Release Upload GitHub vodič. Files Downloads Datoteke. Editor Auto Editor 3x daily workflow. Gallery Galerija Image manifest. SEO SEO control Index queue. Google Indexing Verification and URLs. News Članci News index. Authors Author hub Autori i profili. Instalacija na računalo Otvori ovu stranicu u Chromeu ili Edgeu. Klikni ikonu instalacije u adresnoj traci ili izbornik → Install app. Dodaj prečac na desktop/taskbar. Instaliraj desktop aplikaciju"
+    },
+    {
+      "id": "downloads-index",
+      "type": "page",
+      "title": "Downloads | GNK ASG V12",
+      "url": "downloads/",
+      "text": "Downloads | GNK ASG V12 ← Natrag Downloads hub Javne i administratorske datoteke koje se mogu skinuti sa stranice. PWA Manifest manifest.webmanifest QR QR kod Instalacija aplikacije Icon App ikona SVG ikona Release Upload vodič Markdown dokument Backend Worker Cloudflare Worker Database D1 schema SQL schema Google Verification google46686328e30c759f.html Data App data Javni data registry Style CSS Vizualni sloj Contacts Kontakt lista contacts.json Mail Routing docs Contact mail routing CRM CRM JSON crm.json CRM CRM docs Workflow dokumentacija Auto Autopost JSON autopost.json Gallery Gallery JSON gallery.json SEO SEO index seo-index.json Google Indexing JSON google-indexing.json Docs Autopost docs SEO/indexing workflow Docs Google indexing docs Verification package News News JSON news.json Image Image sitemap JSON image-sitemap.json XML Image sitemap image-sitemap.xml Docs News/Gallery docs Indexing documentation SEO Taxonomy JSON categories/tags SEO Related JSON related-content.json Speed Performance budget performance-budget.json XML News sitemap news-sitemap.xml Docs V17 SEO docs fast discovery Autopilot Autopilot JSON autopilot-control.json Admin i backend datoteke ne sadrže tajne ključeve. Secrets se unose samo server-side."
+    },
+    {
+      "id": "editor-index",
+      "type": "page",
+      "title": "Auto Editor | GNK ASG V15",
+      "url": "editor/",
+      "text": "Auto Editor | GNK ASG V15 ← Natrag Auto Editor · 3 puta dnevno Ovdje je prikazan automatski urednički model: 09:00, 13:00 i 18:00 po Zagrebu. Svaki ciklus može iz teksta ili izvora pripremiti članak, SEO/meta, image prompt i galerijski unos. Za automatsku objavu treba backend scheduler/cron. U ovoj verziji sve je spremno kao workflow i dokumentirani payload. Urednički workflow Predlošci sadržaja Autopost command"
+    },
+    {
+      "id": "features-index",
+      "type": "page",
+      "title": "100+ funkcionalnosti | GNK ASG V9",
+      "url": "features/",
+      "text": "100+ funkcionalnosti | GNK ASG V9 ← Natrag 100+ funkcionalnosti Učitava se samo ovdje; glavna stranica ostaje brza. Sve Učitavanje..."
+    },
+    {
+      "id": "gallery-ai-technology-note-index",
+      "type": "page",
+      "title": "Technology & AI analiza | Galerija GNK ASG",
+      "url": "gallery/ai-technology-note/",
+      "text": "Technology & AI analiza | Galerija GNK ASG ← Natrag Technology & AI analiza Alt: Ilustracija za analizu umjetne inteligencije i tehnologije. Caption: Vizual za Technology & AI modul. Credit: GNK ASG Auto Editor Prompt: Elegant technology illustration showing AI, data flow, dashboards and global network, premium corporate style. Povezani članak Google indexing Kategorije Tagovi Image sitemap"
+    },
+    {
+      "id": "gallery-index",
+      "type": "page",
+      "title": "Galerija fotografija | GNK ASG V16",
+      "url": "gallery/",
+      "text": "Galerija fotografija | GNK ASG V16 ← Natrag Galerija fotografija Indeksirana galerija s posebnim stranicama za svaki vizual, alt tekstom, captionom, creditom i povezanim člankom. Image manifest"
+    },
+    {
+      "id": "gallery-investor-brief-global-network-index",
+      "type": "page",
+      "title": "Investor brief i globalna mreža | Galerija GNK ASG",
+      "url": "gallery/investor-brief-global-network/",
+      "text": "Investor brief i globalna mreža | Galerija GNK ASG ← Natrag Investor brief i globalna mreža Alt: Ilustracija za investitorski pregled i globalnu mrežu. Caption: Vizual za investor brief. Credit: GNK ASG Auto Editor Prompt: Corporate investor hero image with global network map, abstract skyline and finance motifs, blue-gold professional look. Povezani članak Google indexing Kategorije Tagovi Image sitemap"
+    },
+    {
+      "id": "gallery-market-brief-btc-index",
+      "type": "page",
+      "title": "Market Brief · Bitcoin i digitalna imovina | Galerija GNK ASG",
+      "url": "gallery/market-brief-btc/",
+      "text": "Market Brief · Bitcoin i digitalna imovina | Galerija GNK ASG ← Natrag Market Brief · Bitcoin i digitalna imovina Alt: Ilustracija za tržišni pregled Bitcoina i digitalne imovine. Caption: Vizual za tržišni pregled digitalne imovine. Credit: GNK ASG Auto Editor Prompt: Premium editorial hero image about Bitcoin, digital assets and corporate market intelligence, dark blue and gold palette, clean dashboard feel. Povezani članak Google indexing Kategorije Tagovi Image sitemap"
+    },
+    {
+      "id": "google-indexing-index",
+      "type": "page",
+      "title": "Google Indexing | GNK ASG V15",
+      "url": "google-indexing/",
+      "text": "Google Indexing | GNK ASG V15 ← Natrag Google Indexing paket Pripremljen paket za Search Console, robots, sitemap, verification i prioritetne URL-ove. Važno: u ovoj okolini nisam mogao pouzdano izvući postojeći Google verification kod iz live izvornog HTML-a. Zato je na svim stranicama ugrađen placeholder google46686328e30c759f.html . Prije produkcije samo zamijeni placeholder postojećim kodom iz live stranice. Koraci Priority URLs Head hook"
+    },
+    {
+      "id": "index",
+      "type": "page",
+      "title": "GNK ASG d.o.o. | Završni model V18 IQ200 Autopilot Brand Lab",
+      "url": "",
+      "text": "GNK ASG d.o.o. | Završni model V18 IQ200 Autopilot Brand Lab GNK GNK ASG V18 IQ200 Autopilot Brand Lab ☰ Profil Global Ops Javni AI Privatni Autopilot Žig Lab Search Kategorije Tagovi Arhiva News Autori Editor Galerija SEO CRM Kontakt Kontakti Install Investor Mail Comms Admin Self-test Upload final · upload-ready · backend · mail · WhatsApp · agents 1000× bolja, a jednostavna za podići. Jedan kompaktni GitHub upload paket s manje od 99 datoteka: brza stranica, javni besplatni AI, privatni operativni agent, MailOps, WhatsApp API priprema, backend router, admin, status, globalna mreža i automatizacija. Zagreb < 99 datoteka autopilot 99% brand lab local search categories tags news pages indexed gallery auto editor 3x google indexing crm inbox contact routing QR install admin app investor-ready self-test ready 0 frameworka free public AI Worker-ready Otvori Javni besplatni AI Privatni agent MailOps Command Sustav: provjera Vijesti: provjera Market: provjera Mail: provjera 80 status lampica · premium network monitor Korporativni profil GNK ASG d.o.o. + GNK DINAMO Ltd. Čist javni profil s parent company slojem i kontroliranim javnim informacijama. Globalna mreža Parent company, Zagreb baza i 45 pozicija prikaza 33 postojeća društva u grupnom prikazu, 12 planiranih lokacija za 2026. i jasna registracijska napomena. Otvori sve lokacije Market Intelligence Digital assets, BTC, zlato, Brent, USD/EUR Brz snapshot prikaz s poštenim statusima LIVE/SNAPSHOT/DELAYED/FALLBACK. EUR USD GBP C"
+    },
+    {
+      "id": "install-index",
+      "type": "page",
+      "title": "Instaliraj GNK ASG aplikaciju | V12",
+      "url": "install/",
+      "text": "Instaliraj GNK ASG aplikaciju | V12 ← Natrag Instaliraj GNK ASG aplikaciju Gosti skeniraju QR kod ili otvaraju ovu stranicu i instaliraju javnu PWA aplikaciju na mobitel ili računalo. Guest install QR kod za brzu instalaciju Javna aplikacija uključuje portal, javni besplatni AI, kontakt, WhatsApp link, investor hub i javne dokumente. URL: https://gnk-asg.hr/install/ Instalacija kroz preglednik Ako gumb nije aktivan: Android/Chrome → Add to Home screen. iPhone/Safari → Share → Add to Home Screen. Desktop Chrome/Edge → Install app. Što dobiva gost Public Portal Brzi javni pregled. AI Besplatni agent Radi iz lokalne baze bez API troška. Kontakt Mail/WA Kontakt forma i WhatsApp link. Investor Javni hub Javni investicijski pregled. Instalacija Otvori ovu stranicu na mobitelu ili skeniraj QR kod. Na Androidu odaberi “Add to Home screen” ili “Install app”. Na iPhoneu otvori Share i zatim “Add to Home Screen”. Na računalu u Chrome/Edge klikni ikonu instalacije u adresnoj traci."
+    },
+    {
+      "id": "investor-index",
+      "type": "page",
+      "title": "Investor hub | GNK ASG V11",
+      "url": "investor/",
+      "text": "Investor hub | GNK ASG V11 ← Natrag Investor hub — GNK ASG V11 Javni investicijski pregled i struktura za privatni data room. Ova stranica ne objavljuje povjerljive dokumente ni neprovjerene brojke. Pravilo: svaka financijska, vlasnička, ugovorna ili tržišna tvrdnja mora imati dokument, izvor i status provjere prije javne uporabe. Investment thesis Platform Portal + backend Brza javna stranica, admin, AI, MailOps i communication layer. Group layer Parent + operating company GNK DINAMO Ltd. Boulder + GNK ASG d.o.o. Zagreb. Automation Command-ready Chat → command → Worker → GitHub/Cloudflare workflow. Data room sekcije Investor FAQ Risk register Roadmap Investor command draft prepare_investor_brief prepare_data_room_index prepare_investor_reply prepare_nda_request Izradi investor command JSON"
+    },
+    {
+      "id": "kontakt-index",
+      "type": "page",
+      "title": "Kontakt | GNK ASG V13",
+      "url": "kontakt/",
+      "text": "Kontakt | GNK ASG V13 ← Natrag Kontakt GNK ASG Odaberi primatelja, napiši poruku i pošalji upit. Forma ima tri načina: mailto odmah, server-side send kad backend bude spojen, ili kopiranje payload-a. Radi odmah: gumb “Otvori mail za slanje” koristi mailto i otvara e-mail klijent korisnika. Za automatsko server-side slanje: treba spojiti Worker + Resend/Brevo secret. Primatelj / odjel Ime / društvo E-mail pošiljatelja Telefon Predmet Poruka Prihvaćam obradu podataka radi odgovora. Otvori mail za slanje Pošalji preko portala Kopiraj payload Pregled poruke / auto-ack WhatsApp Kontakt lista"
+    },
+    {
+      "id": "legal-index",
+      "type": "page",
+      "title": "Legal | GNK ASG V9",
+      "url": "legal/",
+      "text": "Legal | GNK ASG V9 ← Natrag Legal / Privacy / AI / Status Portal je javni informativni korporativni portal GNK ASG d.o.o. Sadržaj ne predstavlja pravni, porezni, računovodstveni, financijski, investicijski, brokerski, kripto, platni ili drugi profesionalni savjet. Impresum GNK ASG d.o.o., Zagrebačka cesta 130, Zagreb, OIB 75227917632, MBS 081512375. Direktor i UBO: Nermin Sefić. AI i podaci Javni AI agent radi iz javnih podataka. Statusi podataka: LIVE, SNAPSHOT, DELAYED, FALLBACK."
+    },
+    {
+      "id": "locations-index",
+      "type": "page",
+      "title": "Globalna mreža | GNK ASG V9",
+      "url": "locations/",
+      "text": "Globalna mreža | GNK ASG V9 ← Natrag Globalna mreža Parent company, operating company, postojeće i planirane lokacije. Postojeće lokacije Planirane 2026."
+    },
+    {
+      "id": "mail-index",
+      "type": "page",
+      "title": "MailOps | GNK ASG V9",
+      "url": "mail/",
+      "text": "MailOps | GNK ASG V9 ← Natrag MailOps V9 Prima, automatski čita envelope, klasificira, označava rizik, priprema draft i mail-to-command. Stvarno slanje ide samo server-side preko Resend/Brevo i uz potvrdu. Inbox preview Odaberi poruku. Compose Draft only Ručna potvrda Sigurna potvrda primitka Pripremi outbound payload"
+    },
+    {
+      "id": "news-ai-technology-note-index",
+      "type": "page",
+      "title": "Technology & AI: podatci, automatizacija i portal | GNK ASG V16",
+      "url": "news/ai-technology-note/",
+      "text": "Technology & AI: podatci, automatizacija i portal | GNK ASG V16 ← Natrag Technology & AI: podatci, automatizacija i portal Kako GNK ASG koristi AI, automatizaciju i strukturirane podatke za portal, sadržaj i komunikaciju. Kategorija: Technology · Autor: Nermin Sefić Technology & AI sekcija u ovom modelu pokazuje kako portal može objediniti javni AI, privatni operativni agent, kontakt routing, CRM i autopost logiku bez teških frameworka. Svaki članak može imati vlastitu stranicu, povezanu galerijsku sliku i strukturirane podatke za bolje indeksiranje. To je važno jer se time portal ne oslanja samo na naslovnicu, nego stvara cijelu mrežu indeksiranih stranica: članke, profile, galeriju i tematske hubove. Takva struktura povećava preglednost i dugoročno pomaže pretraživačima razumjeti sadržajne cjeline. Otvori galerijski zapis SEO centar Kategorije Tagovi Arhiva Pretraga"
+    },
+    {
+      "id": "news-index",
+      "type": "page",
+      "title": "News | GNK ASG V16",
+      "url": "news/",
+      "text": "News | GNK ASG V16 ← Natrag News index Indeks članaka pripremljenih za bolje indeksiranje, povezan s galerijom i SEO centrom. Digital assets Tržišni pregled: Bitcoin i digitalna imovina Sažeti pregled digitalne imovine, tržišnih trendova i informativnih signala za portal GNK ASG. Technology Technology & AI: podatci, automatizacija i portal Kako GNK ASG koristi AI, automatizaciju i strukturirane podatke za portal, sadržaj i komunikaciju. Investor Investor brief: globalna mreža i korporativna struktura Primjer investitorskog članka koji povezuje GNK ASG, GNK DINAMO Ltd. grupu i rast portala."
+    },
+    {
+      "id": "news-investor-brief-global-network-index",
+      "type": "page",
+      "title": "Investor brief: globalna mreža i korporativna struktura | GNK ASG V16",
+      "url": "news/investor-brief-global-network/",
+      "text": "Investor brief: globalna mreža i korporativna struktura | GNK ASG V16 ← Natrag Investor brief: globalna mreža i korporativna struktura Primjer investitorskog članka koji povezuje GNK ASG, GNK DINAMO Ltd. grupu i rast portala. Kategorija: Investor · Autor: Nermin Sefić Investor sadržaj u V16 modelu nije samo jedna statička stranica, nego dio šire indeksacijske strategije. Uz investor hub nastaje i poseban članak, galerijski asset i dodatne poveznice prema profilnim i dokumentacijskim stranicama. Time se jača i javna čitljivost, ali i urednost materijala za potencijalne upite. Ovakav pristup omogućuje da se svaka važna tema predstavi kao zasebna cjelina s vlastitim SEO naslovom, sažetkom, ključnim riječima i slikom. Otvori galerijski zapis SEO centar Kategorije Tagovi Arhiva Pretraga"
+    },
+    {
+      "id": "news-market-brief-btc-index",
+      "type": "page",
+      "title": "Tržišni pregled: Bitcoin i digitalna imovina | GNK ASG V16",
+      "url": "news/market-brief-btc/",
+      "text": "Tržišni pregled: Bitcoin i digitalna imovina | GNK ASG V16 ← Natrag Tržišni pregled: Bitcoin i digitalna imovina Sažeti pregled digitalne imovine, tržišnih trendova i informativnih signala za portal GNK ASG. Kategorija: Digital assets · Autor: Nermin Sefić GNK ASG kroz svoj Auto Editor i Market Intelligence sloj priprema strukturirane članke koji spajaju tržišni pregled, jasan sažetak i urednički ton primjeren korporativnom portalu. Ovaj primjer članka prikazuje kako se iz dnevne teme može stvoriti indeksiran sadržaj sa SEO poljima, galerijskim vizualom i jasnim informativnim okvirom. Fokus je na Bitcoinu, digitalnoj imovini i javno dostupnim tržišnim signalima, uz stalnu napomenu da sadržaj nije financijski savjet. Uz članak se čuva i pripadajući vizual, alt tekst, caption i struktura za kasnije JSON-LD označavanje. Time se jedan sadržajni ciklus zatvara kao kompletan paket: tekst, slika, meta polja, galerijski zapis i indeksacijska logika. Otvori galerijski zapis SEO centar Kategorije Tagovi Arhiva Pretraga"
+    },
+    {
+      "id": "operator-command-index",
+      "type": "page",
+      "title": "Command centar | GNK ASG V9",
+      "url": "operator/command/",
+      "text": "Command centar | GNK ASG V9 ← Natrag Command centar Zalijepi command JSON iz chata i napravi dry-run provjeru. Dry-run"
+    },
+    {
+      "id": "operator-status-index",
+      "type": "page",
+      "title": "Status | GNK ASG V9",
+      "url": "operator/status/",
+      "text": "Status | GNK ASG V9 ← Natrag Status centar Provjera glavne data datoteke, modula i upload spremnosti."
+    },
+    {
+      "id": "profiles-index",
+      "type": "page",
+      "title": "Profiles | GNK ASG V15",
+      "url": "profiles/",
+      "text": "Profiles | GNK ASG V15 ← Natrag Profiles / indexing pages Zasebne profilne stranice pomažu indeksiranju važnih entiteta, osoba i organizacijskih čvorova. ProfilePage Nermin Sefić Profilna stranica za bolje indeksiranje. Entity GNK ASG / GNK DINAMO Ltd. Investor i korporativna struktura. Media Gallery assets ImageObject i galerijski manifest."
+    },
+    {
+      "id": "profiles-nermin-sefic-index",
+      "type": "page",
+      "title": "Nermin Sefić | GNK ASG V15",
+      "url": "profiles/nermin-sefic/",
+      "text": "Nermin Sefić | GNK ASG V15 ← Natrag Nermin Sefić Profilna stranica pripremljena za bolje indeksiranje i povezivanje javnih podataka, korporativnog profila i dokumentacijskih čvorišta. Uloga Direktor / UBO GNK ASG d.o.o. Poveznice GNK ASG i GNK DINAMO Ltd. Korporativni i investor sloj. SEO ProfilePage Pripremljeno za structured data logiku. Naslovnica Investor"
+    },
+    {
+      "id": "search-index",
+      "type": "page",
+      "title": "Search | GNK ASG V17",
+      "url": "search/",
+      "text": "Search | GNK ASG V17 ← Natrag Brza lokalna pretraga Pretraga radi lokalno preko JSON datoteka, bez servera i bez usporavanja naslovnice."
+    },
+    {
+      "id": "self-test-index",
+      "type": "page",
+      "title": "Self-test | GNK ASG V10",
+      "url": "self-test/",
+      "text": "Self-test | GNK ASG V10 ← Natrag V10 Self-test Ova stranica provjerava je li paket spreman za GitHub preview. Ne dira produkciju i ne šalje ništa van. Pravilo: ako self-test ne prođe, ne promovirati na root. Pokrećem provjeru..."
+    },
+    {
+      "id": "seo-index",
+      "type": "page",
+      "title": "SEO Control Center | GNK ASG V15",
+      "url": "seo/",
+      "text": "SEO Control Center | GNK ASG V15 ← Natrag SEO Control Center Centralni pregled meta logike, schema plana, članka, galerije, profila i prioriteta za indeksiranje. Schema plan Index queue SEO payload"
+    },
+    {
+      "id": "tags-index",
+      "type": "page",
+      "title": "Tagovi | GNK ASG V17",
+      "url": "tags/",
+      "text": "Tagovi | GNK ASG V17 ← Natrag Tagovi Tagovi povezuju članke, galeriju, profile i dokumente. Performance rules"
+    },
+    {
+      "id": "upload-index",
+      "type": "page",
+      "title": "Upload guide | GNK ASG V10",
+      "url": "upload/",
+      "text": "Upload guide | GNK ASG V10 ← Natrag GitHub upload — V10 Ovo je jednostavni vodič za dizanje V10 previewa bez rušenja stare stranice. Ne dirati root. Upload ide kao folder zavrsni-model-v19-final-free-ai-agent-tested/ . 1 Raspakiraj ZIP Dobiješ folder zavrsni-model-v19-final-free-ai-agent-tested. 2 GitHub upload Repo aktualmedia/gnk-asg → Add file → Upload files. 3 Commit Commit message: Add GNK ASG V10 production-ready preview. 4 Otvori preview https://gnk-asg.hr/zavrsni-model-v19-final-free-ai-agent-tested/ 5 Self-test Otvori /self-test/ i provjeri prolaz. 6 Tek onda root Backup starog, pa promotion ako sve radi. Upload paket Folder: zavrsni-model-v19-final-free-ai-agent-tested/ Broj datoteka: manje od 99 Način: preview-first Produkcija: zaključana do odobrenja"
+    },
+    {
+      "id": "data-app-data",
+      "type": "json",
+      "title": "data/app-data.json",
+      "url": "data/app-data.json",
+      "text": "{\"version\": \"v19-local-free-ai-agent\", \"created_at\": \"2026-06-13T12:22:46+00:00\", \"upload_rule\": \"GitHub web upload friendly: fewer than 99 files in this ZIP/folder.\", \"company\": {\"name\": \"GNK ASG d.o.o.\", \"seat\": \"Zagrebačka cesta 130, Zagreb\", \"oib\": \"75227917632\", \"mbs\": \"081512375\", \"founded\": \"12. svibnja 2023.\", \"activity\": \"Sportske djelatnosti, NKD 93.19.0\", \"director\": \"Nermin Sefić\", \"ubo\": \"Nermin Sefić\", \"member\": \"Sports Performance Tracking d.o.o., Beograd\"}, \"parent_company\": {\"entity\": \"GNK DINAMO Ltd.\", \"city\": \"Boulder\", \"state\": \"Colorado\", \"country\": \"USA\", \"role\": \"Parent company / central corporate coordination\"}, \"operating_company\": {\"entity\": \"GNK ASG d.o.o.\", \"city\": \"Zagreb\", \"country\": \"Croatia\", \"role\": \"Corporate and operational base\"}, \"group\": {\"existing_total_companies\": 33, \"planned_2026_locations\": 12, \"expanded_total\": 45, \"notice_hr\": \"Vizualni i korporativni prikaz. Službeni registracijski status pojedinog društva potvrđuje se u mjerodavnom javnom registru.\"}, \"locations\": {\"existing\": [[\"Zagreb\", \"Croatia\", \"Europe\", \"GNK ASG d.o.o. / corporate and operational base\"], [\"Ljubljana\", \"Slovenia\", \"Europe\", \"Group company / regional position\"], [\"Budapest\", \"Hungary\", \"Europe\", \"Group company / regional position\"], [\"Belgrade\", \"Serbia\", \"Europe\", \"Multiple group companies / operational cluster\"], [\"Vancouver\", \"Canada\", \"North America\", \"Group company\"], [\"Toronto\", \"Canada\", \"North America\", \"Group company\"], [\"Mexico City\", \"Mexico\", \"North America\", \"Group company\"], [\"Panama City\", \"Panama\", \"North America\", \"Group company\"], [\"Bogotá\", \"Colombia\", \"South America\", \"Group company\"], [\"Lima\", \"Peru\", \"South America\", \"Group company\"], [\"Santiago\", \"Chile\", \"South America\", \"Group company\"], [\"São Paulo\", \"Brazil\", \"South America\", "
+    },
+    {
+      "id": "data-autopilot-control",
+      "type": "json",
+      "title": "data/autopilot-control.json",
+      "url": "data/autopilot-control.json",
+      "text": "{\"version\": \"v19-autopilot-brand-lab\", \"created_at\": \"2026-06-13T12:16:30+00:00\", \"goal\": \"99% routine portal operations self-running after backend secrets/workers are configured, with manual approval for legal, finance, sending, root deploy, rollback and trademark clearance.\", \"autonomy_levels\": [{\"level\": \"A0\", \"name\": \"Display only\", \"description\": \"Public/static display.\"}, {\"level\": \"A1\", \"name\": \"Auto-draft\", \"description\": \"System prepares draft, payload, queue or checklist.\"}, {\"level\": \"A2\", \"name\": \"Auto-run safe\", \"description\": \"Safe routine operation can run automatically when backend is configured.\"}, {\"level\": \"A3\", \"name\": \"Approval required\", \"description\": \"Sensitive action needs explicit approval.\"}, {\"level\": \"A4\", \"name\": \"Manual/blocked\", \"description\": \"Legal/financial/irreversible action remains manual.\"}], \"autopilot_modules\": [{\"id\": \"auto-editor\", \"name\": \"Auto Editor 3x daily\", \"autonomy\": \"A2\", \"status\": \"ready-workflow\", \"does\": \"Topic, article draft, SEO/meta, image prompt, gallery record and indexing queue.\", \"approval\": \"manual for legal/finance/sensitive claims\"}, {\"id\": \"gallery\", \"name\": \"Indexed Gallery\", \"autonomy\": \"A2\", \"status\": \"ready\", \"does\": \"Alt, caption, credit, prompt, detail page and image sitemap.\", \"approval\": \"manual for final brand/logo assets\"}, {\"id\": \"seo\", \"name\": \"SEO/meta/schema\", \"autonomy\": \"A2\", \"status\": \"ready\", \"does\": \"Meta, schema, internal links, sitemap, image sitemap and news sitemap.\", \"approval\": \"manual for Google verification replacement\"}, {\"id\": \"crm\", \"name\": \"CRM / Inbox / Ticketing\", \"autonomy\": \"A2\", \"status\": \"ready-workflow\", \"does\": \"Inquiry, ticket, lead, response template and audit event.\", \"approval\": \"manual for media/legal/investor outbound\"}, {\"id\": \"mailops\", \"name\": \"MailOps\", \"au"
+    },
+    {
+      "id": "data-news",
+      "type": "json",
+      "title": "data/news.json",
+      "url": "data/news.json",
+      "text": "{\"version\": \"v19-news\", \"created_at\": \"2026-06-13T12:11:20+00:00\", \"items\": [{\"slug\": \"market-brief-btc\", \"title\": \"Tržišni pregled: Bitcoin i digitalna imovina\", \"summary\": \"Sažeti pregled digitalne imovine, tržišnih trendova i informativnih signala za portal GNK ASG.\", \"body\": \"GNK ASG kroz svoj Auto Editor i Market Intelligence sloj priprema strukturirane članke koji spajaju tržišni pregled, jasan sažetak i urednički ton primjeren korporativnom portalu. Ovaj primjer članka prikazuje kako se iz dnevne teme može stvoriti indeksiran sadržaj sa SEO poljima, galerijskim vizualom i jasnim informativnim okvirom. Fokus je na Bitcoinu, digitalnoj imovini i javno dostupnim tržišnim signalima, uz stalnu napomenu da sadržaj nije financijski savjet. Uz članak se čuva i pripadajući vizual, alt tekst, caption i struktura za kasnije JSON-LD označavanje. Time se jedan sadržajni ciklus zatvara kao kompletan paket: tekst, slika, meta polja, galerijski zapis i indeksacijska logika.\", \"category\": \"Digital assets\", \"author\": \"Nermin Sefić\", \"published_at\": \"2026-06-13T12:11:20+00:00\", \"image\": \"../assets/market-brief-btc.svg\", \"image_alt\": \"Vizual za tržišni pregled Bitcoina i digitalne imovine.\", \"meta_description\": \"Primjer tržišnog članka o Bitcoinu i digitalnoj imovini za GNK ASG portal.\", \"keywords\": [\"bitcoin\", \"digitalna imovina\", \"tržišni pregled\", \"GNK ASG\"]}, {\"slug\": \"ai-technology-note\", \"title\": \"Technology & AI: podatci, automatizacija i portal\", \"summary\": \"Kako GNK ASG koristi AI, automatizaciju i strukturirane podatke za portal, sadržaj i komunikaciju.\", \"body\": \"Technology & AI sekcija u ovom modelu pokazuje kako portal može objediniti javni AI, privatni operativni agent, kontakt routing, CRM i autopost logiku bez teških frameworka. Svaki članak može imati vlastitu stran"
+    },
+    {
+      "id": "data-gallery",
+      "type": "json",
+      "title": "data/gallery.json",
+      "url": "data/gallery.json",
+      "text": "{\"version\": \"v19-gallery\", \"created_at\": \"2026-06-13T12:08:21+00:00\", \"items\": [{\"id\": \"gal-001\", \"slug\": \"market-brief-btc\", \"title\": \"Market Brief · Bitcoin i digitalna imovina\", \"status\": \"indexed-ready\", \"image_prompt\": \"Premium editorial hero image about Bitcoin, digital assets and corporate market intelligence, dark blue and gold palette, clean dashboard feel.\", \"alt\": \"Ilustracija za tržišni pregled Bitcoina i digitalne imovine.\", \"caption\": \"Vizual za tržišni pregled digitalne imovine.\", \"credit\": \"GNK ASG Auto Editor\", \"image\": \"../assets/market-brief-btc.svg\", \"detail_url\": \"../gallery/market-brief-btc/\"}, {\"id\": \"gal-002\", \"slug\": \"ai-technology-note\", \"title\": \"Technology & AI analiza\", \"status\": \"indexed-ready\", \"image_prompt\": \"Elegant technology illustration showing AI, data flow, dashboards and global network, premium corporate style.\", \"alt\": \"Ilustracija za analizu umjetne inteligencije i tehnologije.\", \"caption\": \"Vizual za Technology & AI modul.\", \"credit\": \"GNK ASG Auto Editor\", \"image\": \"../assets/ai-technology-note.svg\", \"detail_url\": \"../gallery/ai-technology-note/\"}, {\"id\": \"gal-003\", \"slug\": \"investor-brief-global-network\", \"title\": \"Investor brief i globalna mreža\", \"status\": \"indexed-ready\", \"image_prompt\": \"Corporate investor hero image with global network map, abstract skyline and finance motifs, blue-gold professional look.\", \"alt\": \"Ilustracija za investitorski pregled i globalnu mrežu.\", \"caption\": \"Vizual za investor brief.\", \"credit\": \"GNK ASG Auto Editor\", \"image\": \"../assets/investor-brief-global-network.svg\", \"detail_url\": \"../gallery/investor-brief-global-network/\"}]}"
+    },
+    {
+      "id": "data-contacts",
+      "type": "json",
+      "title": "data/contacts.json",
+      "url": "data/contacts.json",
+      "text": "{\"version\": \"v19-contact-routing\", \"created_at\": \"2026-06-13T12:01:43+00:00\", \"default_sender_name\": \"GNK ASG portal\", \"public_notice\": \"Kontakt forma može odmah otvoriti mailto poruku u korisnikovom mail klijentu. Pravo server-side slanje zahtijeva Cloudflare Worker i Resend/Brevo secret.\", \"contacts\": [{\"id\": \"general\", \"label\": \"Opći upiti\", \"email\": \"info@gnk-asg.hr\", \"public\": true, \"risk\": \"low\", \"auto_ack\": true, \"topics\": [\"opći upit\", \"kontakt\", \"informacije\"]}, {\"id\": \"assistant\", \"label\": \"IT – Osobni digitalni asistent\", \"email\": \"assistant@gnk-asg.hr\", \"public\": true, \"risk\": \"low\", \"auto_ack\": true, \"topics\": [\"AI pomoćnik\", \"pitanja\", \"portal\"]}, {\"id\": \"technical\", \"label\": \"Tehnička podrška / portal\", \"email\": \"it@gnk-asg.hr\", \"public\": true, \"risk\": \"medium\", \"auto_ack\": true, \"topics\": [\"portal\", \"bug\", \"tehnički upit\", \"admin\"]}, {\"id\": \"media\", \"label\": \"Medijski upiti\", \"email\": \"media@gnk-asg.hr\", \"public\": true, \"risk\": \"high\", \"auto_ack\": true, \"manual_required\": true, \"topics\": [\"mediji\", \"novinar\", \"komentar\", \"izjava\"]}, {\"id\": \"legal\", \"label\": \"Legal / pravni upiti\", \"email\": \"legal@gnk-asg.hr\", \"public\": true, \"risk\": \"high\", \"auto_ack\": true, \"manual_required\": true, \"topics\": [\"pravno\", \"odvjetnik\", \"sud\", \"opomena\"]}, {\"id\": \"investor\", \"label\": \"Investor relations\", \"email\": \"investor@gnk-asg.hr\", \"public\": true, \"risk\": \"high\", \"auto_ack\": true, \"manual_required\": true, \"topics\": [\"investitor\", \"ulaganje\", \"data room\", \"NDA\"]}, {\"id\": \"status\", \"label\": \"Status / command intake\", \"email\": \"status@gnk-asg.hr\", \"public\": false, \"risk\": \"medium\", \"auto_ack\": false, \"topics\": [\"status\", \"command\", \"refresh\"]}], \"auto_replies\": {\"low\": \"Poštovani, zaprimili smo Vaš upit preko GNK ASG portala. Odgovorit ćemo nakon provjere. S poštovanjem, I"
+    },
+    {
+      "id": "data-crm",
+      "type": "json",
+      "title": "data/crm.json",
+      "url": "data/crm.json",
+      "text": "{\"version\": \"v19-crm-inbox-ticketing\", \"created_at\": \"2026-06-13T12:03:39+00:00\", \"purpose\": \"Mini CRM layer for GNK ASG portal: contacts, inquiries, tickets, leads, templates, consent, audit and workflow.\", \"inquiry_statuses\": [\"new\", \"triaged\", \"draft_prepared\", \"waiting_approval\", \"answered\", \"closed\", \"spam\"], \"ticket_priorities\": [\"low\", \"medium\", \"high\", \"critical\"], \"lead_stages\": [\"new_lead\", \"qualified\", \"nda_needed\", \"data_room\", \"meeting\", \"proposal\", \"closed_won\", \"closed_lost\"], \"pipelines\": [{\"id\": \"general\", \"name\": \"Opći upiti\", \"default_owner\": \"assistant\"}, {\"id\": \"technical\", \"name\": \"Tehnički / portal\", \"default_owner\": \"it\"}, {\"id\": \"media\", \"name\": \"Mediji\", \"default_owner\": \"manual_review\"}, {\"id\": \"legal\", \"name\": \"Legal\", \"default_owner\": \"manual_review\"}, {\"id\": \"investor\", \"name\": \"Investor relations\", \"default_owner\": \"manual_review\"}], \"sla_rules\": [{\"risk\": \"low\", \"first_response\": \"24h\", \"mode\": \"auto_ack_allowed\"}, {\"risk\": \"medium\", \"first_response\": \"12h\", \"mode\": \"draft_then_review\"}, {\"risk\": \"high\", \"first_response\": \"same_business_day\", \"mode\": \"manual_review_required\"}, {\"risk\": \"critical\", \"first_response\": \"immediate_review\", \"mode\": \"quarantine_or_escalate\"}], \"response_templates\": [{\"id\": \"ack_general\", \"name\": \"Potvrda primitka - opći upit\", \"risk\": \"low\", \"body\": \"Poštovani, zaprimili smo Vaš upit preko GNK ASG portala. Odgovorit ćemo nakon provjere. S poštovanjem, IT – Osobni digitalni asistent.\"}, {\"id\": \"ack_technical\", \"name\": \"Potvrda primitka - tehnički upit\", \"risk\": \"medium\", \"body\": \"Poštovani, zaprimili smo tehnički upit i proslijedili ga na provjeru. S poštovanjem, IT – Osobni digitalni asistent.\"}, {\"id\": \"ack_media\", \"name\": \"Potvrda primitka - medijski upit\", \"risk\": \"high\", \"body\": \"Poštovani, zaprimili smo med"
+    },
+    {
+      "id": "data-seo-index",
+      "type": "json",
+      "title": "data/seo-index.json",
+      "url": "data/seo-index.json",
+      "text": "{\"version\": \"v19-seo-index\", \"created_at\": \"2026-06-13T12:08:21+00:00\", \"default_meta\": {\"meta_title\": \"GNK ASG d.o.o. | GNK DINAMO Ltd. grupa | Portal\", \"meta_description\": \"Korporativni portal GNK ASG d.o.o. i GNK DINAMO Ltd. grupe: tehnologija, AI, digitalna imovina, dokumenti, investor hub i poslovne informacije.\", \"keywords\": [\"GNK ASG\", \"GNK DINAMO Ltd.\", \"Nermin Sefić\", \"technology\", \"AI\", \"digital assets\", \"investor hub\", \"corporate portal\"], \"robots\": \"index,follow,max-image-preview:large\", \"twitter_card\": \"summary_large_image\"}, \"schema_plan\": [\"Organization\", \"WebSite\", \"WebPage\", \"Article\", \"CollectionPage\", \"ImageObject\", \"BreadcrumbList\", \"ProfilePage\"], \"article_index\": [{\"slug\": \"market-brief-btc\", \"type\": \"Article\", \"status\": \"planned\"}, {\"slug\": \"ai-technology-note\", \"type\": \"Article\", \"status\": \"planned\"}, {\"slug\": \"investor-brief-global-network\", \"type\": \"Article\", \"status\": \"planned\"}], \"gallery_index\": [{\"slug\": \"market-brief-btc\", \"image\": \"gal-001\"}, {\"slug\": \"ai-technology-note\", \"image\": \"gal-002\"}, {\"slug\": \"investor-brief-global-network\", \"image\": \"gal-003\"}], \"profiles\": [\"profiles/index.html\", \"profiles/nermin-sefic/index.html\"]}"
+    },
+    {
+      "id": "data-google-indexing",
+      "type": "json",
+      "title": "data/google-indexing.json",
+      "url": "data/google-indexing.json",
+      "text": "{\"version\": \"v19-google-indexing\", \"created_at\": \"2026-06-13T12:08:21+00:00\", \"verification_meta_name\": \"google-site-verification\", \"verification_content\": \"google46686328e30c759f.html\", \"analytics_tag_placeholder\": \"__OPTIONAL_GTAG_OR_GTM_CODE__\", \"required_steps\": [\"Upload the package so the Google verification HTML file is available at site root.\", \"Verify that /google46686328e30c759f.html opens and shows: google-site-verification: google46686328e30c759f.html\", \"Submit sitemap.xml, image-sitemap.xml and news-sitemap.xml in Google Search Console.\", \"Check canonical and structured data on priority pages.\"], \"priority_urls\": [\"/\", \"/gallery/\", \"/editor/\", \"/profiles/nermin-sefic/\", \"/investor/\", \"/kontakt/\"], \"head_hook\": \"<meta name=\\\"google-site-verification\\\" content=\\\"google46686328e30c759f.html\\\">\", \"verification_file\": \"google46686328e30c759f.html\", \"verification_file_content\": \"google-site-verification: google46686328e30c759f.html\"}"
+    },
+    {
+      "id": "data-taxonomy",
+      "type": "json",
+      "title": "data/taxonomy.json",
+      "url": "data/taxonomy.json",
+      "text": "{\"version\": \"v19-taxonomy\", \"created_at\": \"2026-06-13T12:13:30+00:00\", \"categories\": [{\"id\": \"digital-assets\", \"label\": \"Digital Assets\", \"description\": \"Bitcoin, digitalna imovina, tržišni pregled i market intelligence.\", \"url\": \"categories/#digital-assets\"}, {\"id\": \"technology\", \"label\": \"Technology & AI\", \"description\": \"AI, automatizacija, portal, agenti i podaci.\", \"url\": \"categories/#technology\"}, {\"id\": \"investor\", \"label\": \"Investor\", \"description\": \"Investor hub, data room, globalna mreža i korporativna struktura.\", \"url\": \"categories/#investor\"}], \"tags\": [{\"id\": \"gnk-asg\", \"label\": \"GNK ASG\", \"url\": \"tags/#gnk-asg\"}, {\"id\": \"gnk-dinamo-ltd\", \"label\": \"GNK DINAMO Ltd.\", \"url\": \"tags/#gnk-dinamo-ltd\"}, {\"id\": \"nermin-sefic\", \"label\": \"Nermin Sefić\", \"url\": \"tags/#nermin-sefic\"}, {\"id\": \"ai\", \"label\": \"AI\", \"url\": \"tags/#ai\"}, {\"id\": \"digital-assets\", \"label\": \"Digitalna imovina\", \"url\": \"tags/#digital-assets\"}, {\"id\": \"investor-relations\", \"label\": \"Investor relations\", \"url\": \"tags/#investor-relations\"}, {\"id\": \"mailops\", \"label\": \"MailOps\", \"url\": \"tags/#mailops\"}, {\"id\": \"crm\", \"label\": \"CRM\", \"url\": \"tags/#crm\"}], \"mappings\": {\"market-brief-btc\": {\"category\": \"digital-assets\", \"tags\": [\"gnk-asg\", \"digital-assets\"]}, \"ai-technology-note\": {\"category\": \"technology\", \"tags\": [\"gnk-asg\", \"ai\", \"mailops\", \"crm\"]}, \"investor-brief-global-network\": {\"category\": \"investor\", \"tags\": [\"gnk-asg\", \"gnk-dinamo-ltd\", \"nermin-sefic\", \"investor-relations\"]}}}"
+    },
+    {
+      "id": "data-related-content",
+      "type": "json",
+      "title": "data/related-content.json",
+      "url": "data/related-content.json",
+      "text": "{\"version\": \"v19-related-content\", \"created_at\": \"2026-06-13T12:13:30+00:00\", \"items\": {\"market-brief-btc\": [\"ai-technology-note\", \"investor-brief-global-network\"], \"ai-technology-note\": [\"market-brief-btc\", \"investor-brief-global-network\"], \"investor-brief-global-network\": [\"ai-technology-note\", \"market-brief-btc\"]}, \"static_related_pages\": [{\"from\": \"investor/\", \"to\": [\"news/investor-brief-global-network/\", \"gallery/investor-brief-global-network/\", \"profiles/nermin-sefic/\"]}, {\"from\": \"crm/\", \"to\": [\"kontakt/\", \"mail/\", \"admin/crm/\"]}, {\"from\": \"seo/\", \"to\": [\"news/\", \"gallery/\", \"google-indexing/\", \"image-sitemap.xml\"]}]}"
+    },
+    {
+      "id": "data-performance-budget",
+      "type": "json",
+      "title": "data/performance-budget.json",
+      "url": "data/performance-budget.json",
+      "text": "{\"version\": \"v19-performance-budget\", \"created_at\": \"2026-06-13T12:13:30+00:00\", \"rules\": [\"No external framework.\", \"One main CSS file.\", \"Small JS modules loaded only on relevant pages.\", \"SVG images instead of heavy raster placeholders.\", \"Data-driven pages render from small JSON files.\", \"No frontend secrets.\", \"Lazy discovery pages: categories, tags, archive and search load only when opened.\", \"Keep total package below GitHub 99-file upload comfort limit.\"], \"budgets\": {\"total_files_max\": 99, \"initial_home_js_files\": 1, \"initial_home_css_files\": 1, \"home_external_dependencies\": 0, \"critical_pages_should_open_static\": true, \"json_files_are_cacheable\": true}, \"fast_ideas_added\": [\"taxonomy pages\", \"tag pages\", \"archive page\", \"client-side search over local JSON\", \"related content registry\", \"news sitemap\", \"performance budget\", \"internal linking matrix\"]}"
+    }
+  ]
+}

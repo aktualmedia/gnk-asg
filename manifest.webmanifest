@@ -1,23 +1,40 @@
 {
-  "id": "/",
-  "name": "GNK ASG d.o.o. — Corporate Technology Portal",
+  "name": "GNK ASG V12 App Install Admin",
   "short_name": "GNK ASG",
-  "description": "Korporativni i tehnološki portal GNK ASG d.o.o. — financije, umjetna inteligencija, tržišni pokazatelji i poslovne vijesti.",
-  "lang": "hr-HR",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/zavrsni-model-v19-final-free-ai-agent-tested/",
+  "scope": "/zavrsni-model-v19-final-free-ai-agent-tested/",
   "display": "standalone",
-  "orientation": "portrait-primary",
-  "background_color": "#f7f9fc",
+  "background_color": "#07162d",
   "theme_color": "#07162d",
-  "categories": ["business", "finance", "productivity", "news"],
+  "description": "GNK ASG portal, public AI, admin app, MailOps, investor hub and communication automation.",
   "icons": [
-    {"src": "assets/app-icon-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any maskable"},
-    {"src": "assets/app-icon-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable"}
+    {
+      "src": "assets/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
   ],
   "shortcuts": [
-    {"name": "Intelligence Desk", "short_name": "AI Desk", "url": "/#assistant", "icons": [{"src":"assets/app-icon-192.svg", "sizes":"192x192", "type":"image/svg+xml"}]},
-    {"name": "Market Monitor", "short_name": "Markets", "url": "/#digital-assets", "icons": [{"src":"assets/app-icon-192.svg", "sizes":"192x192", "type":"image/svg+xml"}]},
-    {"name": "Business News", "short_name": "News", "url": "/#news", "icons": [{"src":"assets/app-icon-192.svg", "sizes":"192x192", "type":"image/svg+xml"}]}
+    {
+      "name": "Javni AI",
+      "url": "agents/public/",
+      "description": "Besplatni javni AI agent"
+    },
+    {
+      "name": "Admin",
+      "url": "app/admin/",
+      "description": "Admin mobile hub"
+    },
+    {
+      "name": "MailOps",
+      "url": "mail/",
+      "description": "MailOps inbox/draft"
+    },
+    {
+      "name": "Install",
+      "url": "install/",
+      "description": "Instalacija aplikacije i QR kod"
+    }
   ]
 }

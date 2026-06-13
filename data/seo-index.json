@@ -1,0 +1,65 @@
+{
+  "version": "v19-seo-index",
+  "created_at": "2026-06-13T12:08:21+00:00",
+  "default_meta": {
+    "meta_title": "GNK ASG d.o.o. | GNK DINAMO Ltd. grupa | Portal",
+    "meta_description": "Korporativni portal GNK ASG d.o.o. i GNK DINAMO Ltd. grupe: tehnologija, AI, digitalna imovina, dokumenti, investor hub i poslovne informacije.",
+    "keywords": [
+      "GNK ASG",
+      "GNK DINAMO Ltd.",
+      "Nermin Sefić",
+      "technology",
+      "AI",
+      "digital assets",
+      "investor hub",
+      "corporate portal"
+    ],
+    "robots": "index,follow,max-image-preview:large",
+    "twitter_card": "summary_large_image"
+  },
+  "schema_plan": [
+    "Organization",
+    "WebSite",
+    "WebPage",
+    "Article",
+    "CollectionPage",
+    "ImageObject",
+    "BreadcrumbList",
+    "ProfilePage"
+  ],
+  "article_index": [
+    {
+      "slug": "market-brief-btc",
+      "type": "Article",
+      "status": "planned"
+    },
+    {
+      "slug": "ai-technology-note",
+      "type": "Article",
+      "status": "planned"
+    },
+    {
+      "slug": "investor-brief-global-network",
+      "type": "Article",
+      "status": "planned"
+    }
+  ],
+  "gallery_index": [
+    {
+      "slug": "market-brief-btc",
+      "image": "gal-001"
+    },
+    {
+      "slug": "ai-technology-note",
+      "image": "gal-002"
+    },
+    {
+      "slug": "investor-brief-global-network",
+      "image": "gal-003"
+    }
+  ],
+  "profiles": [
+    "profiles/index.html",
+    "profiles/nermin-sefic/index.html"
+  ]
+}

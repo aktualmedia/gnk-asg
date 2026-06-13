@@ -1,7 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /webmail/
-Disallow: /podijeli/
+Sitemap: https://gnk-asg.hr/zavrsni-model-v19-final-free-ai-agent-tested/sitemap.xml
 
-Sitemap: https://gnk-asg.hr/sitemap.xml
+# V15 indexing package enabled
+
+Sitemap: https://gnk-asg.hr/zavrsni-model-v19-final-free-ai-agent-tested/image-sitemap.xml
+
+Sitemap: https://gnk-asg.hr/zavrsni-model-v19-final-free-ai-agent-tested/news-sitemap.xml

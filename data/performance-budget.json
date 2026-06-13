@@ -1,0 +1,32 @@
+{
+  "version": "v19-performance-budget",
+  "created_at": "2026-06-13T12:13:30+00:00",
+  "rules": [
+    "No external framework.",
+    "One main CSS file.",
+    "Small JS modules loaded only on relevant pages.",
+    "SVG images instead of heavy raster placeholders.",
+    "Data-driven pages render from small JSON files.",
+    "No frontend secrets.",
+    "Lazy discovery pages: categories, tags, archive and search load only when opened.",
+    "Keep total package below GitHub 99-file upload comfort limit."
+  ],
+  "budgets": {
+    "total_files_max": 99,
+    "initial_home_js_files": 1,
+    "initial_home_css_files": 1,
+    "home_external_dependencies": 0,
+    "critical_pages_should_open_static": true,
+    "json_files_are_cacheable": true
+  },
+  "fast_ideas_added": [
+    "taxonomy pages",
+    "tag pages",
+    "archive page",
+    "client-side search over local JSON",
+    "related content registry",
+    "news sitemap",
+    "performance budget",
+    "internal linking matrix"
+  ]
+}

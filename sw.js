@@ -1,4 +1,1 @@
-const CACHE_NAME = 'gnk-asg-20260613-corporate-redesign-03';
-self.addEventListener('install',event=>{event.waitUntil(self.skipWaiting())});
-self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
-self.addEventListener('fetch',event=>{if(event.request.method!=='GET')return;event.respondWith(fetch(event.request,{cache:'no-store'}).catch(()=>caches.match(event.request)))})
+const CACHE='gnk-asg-v19';self.addEventListener('install',e=>e.waitUntil(self.skipWaiting()));self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.map(k=>caches.delete(k)))).then(()=>self.clients.claim())));self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);const noStore=u.pathname.includes('/data/')||u.pathname.includes('/operator/');e.respondWith(fetch(e.request,{cache:noStore?'no-store':'default'}).catch(()=>caches.match(e.request)))})
