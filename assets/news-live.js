@@ -3,13 +3,16 @@
   const grid = document.getElementById('newsGrid');
   const tabsHost = document.getElementById('newsTabs');
   if (!grid) return;
+
   let tabs = Array.from(document.querySelectorAll('#newsTabs button'));
   let articles = [];
   let approvedMedia = [];
   let activeFilter = 'all';
   const NEWS_VISIBLE_LIMIT = 100;
   const esc = (value) => String(value || '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const english = () => window.GNK_LANG && window.GNK_LANG.get() === 'en';
+  const english = () => window.GNK_LANG && window.GNK_LANG.get && window.GNK_LANG.get() === 'en';
+  const filterOf = (button) => button.dataset.filter || button.dataset.category || 'all';
+
   function installTopicCalloutStyle() {
     if (document.getElementById('topicMonitorCalloutStyle')) return;
     const style = document.createElement('style');
@@ -17,13 +20,18 @@
     style.textContent = '.topic-monitor-link{display:block;margin:4px 0 25px;padding:0}.topic-monitor-link a{position:relative;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 22px 18px 20px;border:1px solid rgba(212,175,55,.36);border-radius:18px;background:linear-gradient(122deg,#07162d 0%,#102e53 73%,#173e70 100%);box-shadow:0 13px 30px rgba(7,22,45,.12);text-decoration:none;overflow:hidden}.topic-monitor-link a:after{content:"";position:absolute;right:-50px;top:-62px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.18),transparent 67%)}.topic-monitor-copy{position:relative;z-index:1;display:flex;align-items:center;gap:15px}.topic-monitor-icon{width:45px;height:45px;flex:0 0 45px;display:grid;place-items:center;border-radius:13px;background:rgba(212,175,55,.13);border:1px solid rgba(212,175,55,.32);color:#e4c159;font-size:1.25rem}.topic-monitor-text small{display:block;color:#d4af37;font-size:.59rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:5px}.topic-monitor-text strong{display:block;color:#fff;font-size:1.02rem;line-height:1.25}.topic-monitor-text span{display:block;color:#aebdd1;font-size:.77rem;margin-top:4px}.topic-monitor-action{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border:1px solid rgba(212,175,55,.5);border-radius:999px;padding:10px 14px;color:#f0cc62;font-size:.68rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase;transition:.18s}.topic-monitor-link a:hover{border-color:rgba(212,175,55,.68);transform:translateY(-1px)}.topic-monitor-link a:hover .topic-monitor-action{background:#d4af37;color:#07162d}@media(max-width:680px){.topic-monitor-link a{display:block;padding:16px}.topic-monitor-copy{align-items:flex-start}.topic-monitor-action{margin-top:15px;margin-left:60px}.topic-monitor-text strong{font-size:.92rem}.topic-monitor-text span{font-size:.7rem}}';
     document.head.appendChild(style);
   }
+
   function calloutMarkup() {
     const en = english();
     return '<a href="/teme/" aria-label="' + (en ? 'Open thematic monitoring' : 'Otvori tematski monitoring') + '"><span class="topic-monitor-copy"><span class="topic-monitor-icon" aria-hidden="true">◎</span><span class="topic-monitor-text"><small>' + (en ? 'THEMATIC MONITORING' : 'TEMATSKI MONITORING') + '</small><strong>' + (en ? 'Economy, sport, mobility and technology' : 'Ekonomija, sport, mobilnost i tehnologija') + '</strong><span>' + (en ? 'Live public-topic hub and verified sources' : 'Aktualne teme i provjerljivi javni izvori') + '</span></span></span><span class="topic-monitor-action">' + (en ? 'OPEN HUB' : 'OTVORI CENTAR') + ' →</span></a>';
   }
+
   function ensureTopicControls() {
     if (!tabsHost || tabsHost.dataset.topicsReady) return;
-    const mention = tabsHost.querySelector('[data-filter="mentions"]');
+    tabsHost.querySelectorAll('button').forEach((button) => {
+      if (!button.dataset.filter && button.dataset.category) button.dataset.filter = button.dataset.category;
+    });
+    const mention = tabsHost.querySelector('[data-filter="mentions"], [data-category="mentions"]');
     const entries = [
       { filter:'economy', hr:'Ekonomija', en:'Economy' },
       { filter:'sport', hr:'Sport', en:'Sport' },
@@ -34,6 +42,7 @@
       const button = document.createElement('button');
       button.type = 'button';
       button.dataset.filter = entry.filter;
+      button.dataset.category = entry.filter;
       button.dataset.hr = entry.hr;
       button.dataset.en = entry.en;
       button.textContent = english() ? entry.en : entry.hr;
@@ -51,20 +60,24 @@
     tabs = Array.from(tabsHost.querySelectorAll('button'));
     bindTabs();
   }
+
   function updateLabels() {
     tabs.forEach((button) => { if (button.dataset.hr) button.textContent = english() ? button.dataset.en : button.dataset.hr; });
     const link = document.querySelector('.topic-monitor-link');
     if (link) link.innerHTML = calloutMarkup();
   }
+
   function stamp(item) {
     const raw = item.published_at || item.date || '';
     const time = Date.parse(raw);
     return Number.isFinite(time) ? time : 0;
   }
+
   function fresh(item) {
     const days = item.group === 'mentions' ? 3650 : 30;
     return stamp(item) > Date.now() - (days * 24 * 60 * 60 * 1000);
   }
+
   function renderCard(item) {
     const en = english();
     const isMention = item.group === 'mentions';
@@ -76,11 +89,13 @@
     const share = item.share_url ? ' data-share-url="' + esc(item.share_url) + '"' : '';
     return '<article class="news-card' + type + '"' + share + '><span class="meta">' + esc(label) + (date ? ' · ' + esc(date) : '') + '</span><h3>' + esc(item.title) + '</h3><p>' + esc(summary) + '</p><a target="_blank" rel="noopener nofollow" href="' + esc(item.url) + '">' + open + '</a></article>';
   }
+
   function collection(filter) {
     if (filter === 'mentions') return approvedMedia;
     if (filter === 'all') return articles.concat(approvedMedia);
     return articles.filter((item) => String(item.group || '').toLowerCase().includes(filter) || String(item.category || '').toLowerCase().includes(filter));
   }
+
   function render(filter) {
     activeFilter = filter;
     const en = english();
@@ -96,6 +111,7 @@
     }
     grid.innerHTML = selected.slice(0, NEWS_VISIBLE_LIMIT).map(renderCard).join('');
   }
+
   function bindTabs() {
     tabs.forEach((button) => {
       if (button.dataset.newsBound) return;
@@ -103,15 +119,16 @@
       button.addEventListener('click', () => {
         tabs.forEach((entry) => entry.classList.remove('active'));
         button.classList.add('active');
-        render(button.dataset.filter || 'all');
+        render(filterOf(button));
       });
     });
   }
+
   async function load() {
     try {
       const responses = await Promise.all([
-        fetch('data/news.json?v=' + Date.now(), {cache:'no-store'}),
-        fetch('data/media_approved.json?v=' + Date.now(), {cache:'no-store'})
+        fetch('/data/news.json?v=' + Date.now(), {cache:'no-store'}),
+        fetch('/data/media_approved.json?v=' + Date.now(), {cache:'no-store'})
       ]);
       articles = responses[0].ok ? await responses[0].json() : [];
       approvedMedia = responses[1].ok ? await responses[1].json() : [];
@@ -119,6 +136,7 @@
     } catch (error) { articles = []; approvedMedia = []; }
     render(activeFilter);
   }
+
   ensureTopicControls();
   bindTabs();
   window.addEventListener('gnk-language-change', () => { updateLabels(); render(activeFilter); });
