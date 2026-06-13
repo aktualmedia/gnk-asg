@@ -13,13 +13,22 @@ on:
       - 'scripts/**'
       - '.github/workflows/**'
       - 'kontakt/**'
+      - 'backend/**'
+      - 'status-lite/**'
+      - 'operator/**'
       - 'assets/contact-form.js'
       - 'assets/status.js'
       - 'assets/app.js'
+      - 'assets/frontend-stability-guard.js'
+      - 'assets/ai-communication-upgrade.js'
+      - 'assets/news-live.js'
+      - 'assets/market.js'
+      - 'assets/live-market-pulse.js'
       - 'assets/finalize-journalist-alignment.js'
       - 'sitemap.xml'
       - 'visual-sitemap.xml'
       - 'robots.txt'
+      - 'sw.js'
 
 permissions:
   contents: read
@@ -46,14 +55,39 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python -m json.tool data/status.json >/dev/null
           python -m json.tool data/news_config_v2.json >/dev/null
           python -m json.tool data/news.json >/dev/null
           python -m json.tool data/news_archive.json >/dev/null
           python -m json.tool data/update_status.json >/dev/null
           python -m json.tool data/market.json >/dev/null
           python -m json.tool data/fast_market_status.json >/dev/null
+          python -m json.tool data/macro_market.json >/dev/null
+          python -m json.tool data/stablecoins.json >/dev/null
+          python -m json.tool data/stock_exchanges.json >/dev/null
+          python -m json.tool data/market_indices.json >/dev/null
           python -m json.tool data/backend_operations_manifest.json >/dev/null
+          python -m json.tool data/admin_app_manifest.json >/dev/null
+          python -m json.tool data/contact_channels.json >/dev/null
+          python -m json.tool data/document_index.json >/dev/null
+          python -m json.tool data/image_index.json >/dev/null
           python -m json.tool data/mail_automation_policy.json >/dev/null
+
+      - name: Validate portal policy expectations
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q "front-back-audit-02" assets/app.js
+          grep -q "frontend-stability-guard.js" assets/app.js
+          grep -q "ai-communication-upgrade.js" assets/app.js
+          grep -q "marketGrid" assets/market.js
+          grep -q "coinGrid" assets/market.js
+          grep -q "data.category" assets/news-live.js
+          grep -q "data.filter" assets/news-live.js
+          grep -q "Europe/Zagreb" .github/workflows/business-news-twice-daily.yml
+          grep -q "steps.window.outputs.run" .github/workflows/business-news-twice-daily.yml
+          grep -q "noindex,nofollow" operator/frontend-health/index.html
+          grep -q "noindex,nofollow" status-lite/index.html
 
       - name: Validate Python syntax
         shell: bash
@@ -79,4 +113,7 @@ jobs:
           node --check assets/finalize-journalist-alignment.js
           node --check assets/news-live.js
           node --check assets/market.js
+          node --check assets/live-market-pulse.js
+          node --check assets/frontend-stability-guard.js
+          node --check assets/ai-communication-upgrade.js
           node --check sw.js
