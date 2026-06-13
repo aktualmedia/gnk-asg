@@ -93,7 +93,7 @@ def render_collection(entries: list[dict], daily: bool) -> str:
         "mainEntity": {"@type": "ItemList", "itemListElement": item_list},
         "about": [{"@type": "Organization", "name": PUBLISHER}, {"@type": "Organization", "name": FRAMEWORK}, {"@type": "Person", "name": EDITOR, "alternateName": [EDITOR_ASCII, "Sefić Nermin", "Sefic Nermin"]}],
     }
-    schema_json = html.escape(json.dumps(schema, ensure_ascii=False), quote=False)
+    schema_json = json.dumps(schema, ensure_ascii=False).replace("</", "<\\/")
     eyebrow = "Dnevne objave" if daily else "Objave autora"
     headline = "Dnevne poslovne objave." if daily else "Najnovije autorske poslovne objave."
     return f'''<!doctype html>
