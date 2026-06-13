@@ -1,0 +1,33 @@
+{
+  "version": "2026-06-13-v1",
+  "brand": "GNK ASG",
+  "meaning": "Global Network Kapital - Advanced Sports & Governance",
+  "core_assets": {
+    "tokens": "/assets/brand/brand-tokens.css",
+    "logo_primary": "/assets/brand/gnk-asg-logo-primary.svg",
+    "logo_dark": "/assets/brand/gnk-asg-logo-dark.svg",
+    "logo_light": "/assets/brand/gnk-asg-logo-light.svg",
+    "mark": "/assets/brand/gnk-asg-mark.svg"
+  },
+  "visual_principles": [
+    "premium corporate navy and gold identity",
+    "fast first render",
+    "clean hierarchy",
+    "small modular cards",
+    "separate heavy data layers",
+    "HR and EN corporate consistency"
+  ],
+  "page_patterns": [
+    "dark hero with logo",
+    "white modular cards",
+    "gold tags",
+    "snapshot-first data panels",
+    "operator read-only control cards",
+    "structured documentation and download hubs"
+  ],
+  "public_pages": [
+    "/design-system/",
+    "/en/design-system/"
+  ],
+  "status": "ready"
+}

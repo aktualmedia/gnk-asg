@@ -1,0 +1,72 @@
+{
+  "version": "2026-06-12-operator-modules-01",
+  "project": "GNK ASG Operator modules",
+  "note": "Tri dnevne objave rade automatski bez admina. Operator moduli služe za ostale funkcije portala.",
+  "modules": [
+    {
+      "id": "mail_center",
+      "name_hr": "Mail centar",
+      "description_hr": "Pregled upita, opći odgovori i nacrti odgovora."
+    },
+    {
+      "id": "content_editor",
+      "name_hr": "Tekstovi i objave",
+      "description_hr": "Dodavanje i uređivanje tekstova koji nisu automatske dnevne objave."
+    },
+    {
+      "id": "image_library",
+      "name_hr": "Fotografije i SEO galerija",
+      "description_hr": "Upload fotografija, alt tekst, caption, opis i SEO oznake."
+    },
+    {
+      "id": "document_library",
+      "name_hr": "Dokumenti",
+      "description_hr": "Dodavanje i označavanje javnih dokumenata."
+    },
+    {
+      "id": "news_control",
+      "name_hr": "Vijesti",
+      "description_hr": "Pregled statusa vijesti i ručno pokretanje osvježavanja."
+    },
+    {
+      "id": "market_control",
+      "name_hr": "Tržišta",
+      "description_hr": "Pregled statusa tržišnih i digitalnih podataka."
+    },
+    {
+      "id": "command_center",
+      "name_hr": "Command Center",
+      "description_hr": "Jedno polje za sigurne operativne naredbe portalu."
+    },
+    {
+      "id": "health_score",
+      "name_hr": "Health score portala",
+      "description_hr": "Jedan pregled funkcionalnog stanja portala."
+    },
+    {
+      "id": "backup_rollback",
+      "name_hr": "Backup i rollback",
+      "description_hr": "Pregled sigurnosnih kopija i povratnih točaka."
+    },
+    {
+      "id": "daily_report",
+      "name_hr": "Dnevni izvještaj",
+      "description_hr": "Večernji pregled objava, vijesti, tržišta, kontakata i grešaka."
+    },
+    {
+      "id": "pwa_apps",
+      "name_hr": "PWA aplikacije",
+      "description_hr": "Javna i operator mobilna aplikacija."
+    },
+    {
+      "id": "qr_install",
+      "name_hr": "QR instalacija",
+      "description_hr": "QR kod i ručni link za instalacijsku stranicu."
+    },
+    {
+      "id": "whatsapp_layer",
+      "name_hr": "WhatsApp sloj",
+      "description_hr": "Buduća automatizirana komunikacija za opće upite."
+    }
+  ]
+}

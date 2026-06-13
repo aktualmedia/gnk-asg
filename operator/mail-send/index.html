@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>GNK ASG Send Mail</title>
+<link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
+<style>body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:880px;margin:auto;padding:36px 16px 80px}.head{color:#fff}.head h1{font-family:Georgia,serif;font-size:48px;font-weight:500;margin:8px 0}.head p{color:#dbe7f5}.panel{background:#fff;border:1px solid #dce5f0;border-radius:24px;padding:22px;margin:16px 0;box-shadow:0 16px 44px rgba(0,0,0,.18)}label{display:block;font-weight:900;margin:12px 0 7px}input,textarea,select{width:100%;box-sizing:border-box;border:1px solid #cbd5e1;border-radius:14px;padding:12px;font:inherit}textarea{min-height:120px}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.btn{display:inline-block;border:0;border-radius:999px;padding:12px 16px;font-weight:900;cursor:pointer;text-decoration:none;margin:8px 8px 8px 0}.blue{background:#143b6d;color:#fff}.green{background:#166534;color:#fff}.ghost{background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35)}.box{white-space:pre-wrap;background:#f7f9fc;border-radius:16px;padding:14px;color:#23364e;line-height:1.6}.small{font-size:13px;color:#64748b}@media(max-width:800px){.row{grid-template-columns:1fr}}</style>
+</head>
+<body><main class="wrap">
+<section class="head"><p>GNK ASG Operator</p><h1>Send Mail</h1><p>Jednostavno sučelje za slanje kao IT asistent ili Nermin putem postojeće kontakt adrese. Backend mora biti autoriziran kroz Cloudflare.</p><a class="btn ghost" href="../dashboard/">Dashboard</a><a class="btn ghost" href="../mail-setup/">DNS setup</a></section>
+<section class="panel">
+<div class="row"><div><label>Pošiljatelj</label><select id="identity"><option value="it@gnk-asg.hr">IT – Osobni digitalni asistent</option><option value="info@gnk-asg.hr">Nermin Sefić / info@gnk-asg.hr</option></select></div><div><label>Test primatelj</label><input id="test" value="beckuphome@gmail.com"></div></div>
+<label>Primatelji, najviše 30</label><textarea id="to" placeholder="mail1@domena.hr&#10;mail2@domena.hr"></textarea>
+<label>Predmet</label><input id="subject" placeholder="Predmet poruke">
+<label>Poruka</label><textarea id="body" placeholder="Poštovani, ..."></textarea>
+<label>Potpis</label><textarea id="footer"></textarea>
+<button class="btn blue" id="prepare">Validiraj</button><button class="btn ghost" id="sendTest">Pošalji test</button><button class="btn green" id="sendAll">Pošalji svima</button>
+<p class="small">Slanje ide na /api/operator/mail-batch/send. API ključevi nisu u ovoj stranici.</p>
+</section>
+<section class="panel"><h2>Status</h2><div id="out" class="box">Spremno.</div></section>
+</main><script>
+(function(){
+const $=id=>document.getElementById(id);const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;const sig={"it@gnk-asg.hr":"IT – Osobni digitalni asistent\nGNK ASG d.o.o.\nhttps://gnk-asg.hr\nE-mail: it@gnk-asg.hr\n\nOva poruka je informativna.","info@gnk-asg.hr":"Nermin Sefić\nDirektor i UBO\nGNK ASG d.o.o.\nGNK DINAMO Ltd.\nE-mail: info@gnk-asg.hr\nhttps://gnk-asg.hr"};
+function apply(){ $('footer').value=sig[$('identity').value]||''; }
+function recipients(test){return test?[$('test').value.trim()]:[...new Set($('to').value.split(/[\n,;]+/).map(x=>x.trim().toLowerCase()).filter(Boolean))]}
+function pack(test){const list=recipients(test);const problems=[];if(!list.length)problems.push('Nema primatelja.');if(list.length>30)problems.push('Previše primatelja.');if(list.some(x=>!re.test(x)))problems.push('Neispravna adresa.');if(!$('subject').value.trim())problems.push('Nedostaje predmet.');if(!$('body').value.trim())problems.push('Nedostaje poruka.');const p={version:'2026-06-12-send-mail-ui-02',created_at:new Date().toISOString(),identity:$('identity').value==='info@gnk-asg.hr'?'owner':'assistant',sender:$('identity').value,recipients:list,subject:$('subject').value.trim(),body:$('body').value.trim(),footer:$('footer').value.trim(),mode:test?'test_send':'batch_send',validation:{ok:!problems.length,problems}};return p;}
+function show(p){$('out').textContent=JSON.stringify(p,null,2)}
+async function post(test){const p=pack(test);show(p);if(!p.validation.ok)return;if(!confirm('Potvrdi slanje kao '+p.sender+' na '+p.recipients.length+' adresa.'))return;const r=await fetch('/api/operator/mail-batch/send',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});$('out').textContent='HTTP '+r.status+'\n\n'+await r.text();}
+$('identity').onchange=apply;$('prepare').onclick=()=>show(pack(false));$('sendTest').onclick=()=>post(true);$('sendAll').onclick=()=>post(false);apply();
+})();
+</script></body></html>

@@ -1,0 +1,36 @@
+{
+  "version": "2026-06-12-smart-reply-templates-01",
+  "module": "smart_reply_templates",
+  "templates": [
+    {
+      "id": "receipt_acknowledgement",
+      "label": "Potvrda primitka",
+      "review_required": false,
+      "body_hr": "Poštovani,\n\nzahvaljujemo na poruci. Vaš upit je zaprimljen. Ako se radi o općem informativnom upitu, odgovor ćemo pripremiti na temelju javno dostupnih informacija portala GNK ASG. Ako se radi o pravnoj, financijskoj, ugovornoj, medijskoj ili drugoj osjetljivoj temi, poruka ide na pregled ovlaštene osobe.\n\nIT – Osobni digitalni asistent\nGNK ASG d.o.o.\nhttps://gnk-asg.hr"
+    },
+    {
+      "id": "author_posts_link",
+      "label": "Objave autora",
+      "review_required": false,
+      "body_hr": "Poštovani,\n\nobjave autora dostupne su na stranici:\nhttps://gnk-asg.hr/insights-hr/\n\nZa dodatne informacije možete poslati precizniji upit putem kontakt forme.\n\nIT – Osobni digitalni asistent\nGNK ASG d.o.o.\nhttps://gnk-asg.hr"
+    },
+    {
+      "id": "contact_form_link",
+      "label": "Uputa na kontakt formu",
+      "review_required": false,
+      "body_hr": "Poštovani,\n\nza urednu evidenciju i obradu upita molimo da poruku pošaljete putem kontakt forme na portalu GNK ASG. Time se osigurava da upit bude pravilno evidentiran i proslijeđen odgovarajućoj osobi ako je potreban dodatni pregled.\n\nIT – Osobni digitalni asistent\nGNK ASG d.o.o.\nhttps://gnk-asg.hr"
+    },
+    {
+      "id": "market_data_note",
+      "label": "Tržišni podaci",
+      "review_required": false,
+      "body_hr": "Poštovani,\n\ntržišni i digitalni podaci na portalu GNK ASG prikazuju se informativno. Mogu biti označeni kao live, snapshot, delayed ili fallback, ovisno o dostupnosti izvora i trenutnom statusu ažuriranja. Ti podaci nisu financijski, investicijski, porezni ili pravni savjet.\n\nIT – Osobni digitalni asistent\nGNK ASG d.o.o.\nhttps://gnk-asg.hr"
+    },
+    {
+      "id": "human_review_required",
+      "label": "Potreban ljudski pregled",
+      "review_required": true,
+      "body_hr": "Poštovani,\n\nzahvaljujemo na poruci. Ovaj upit traži pregled ovlaštene osobe jer može sadržavati pravna, financijska, ugovorna, medijska, osobna ili druga osjetljiva pitanja. Zbog toga nećemo davati automatski sadržajni odgovor prije provjere.\n\nIT – Osobni digitalni asistent\nGNK ASG d.o.o.\nhttps://gnk-asg.hr"
+    }
+  ]
+}

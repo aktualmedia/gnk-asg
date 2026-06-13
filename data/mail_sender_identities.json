@@ -1,0 +1,22 @@
+{
+  "version": "2026-06-12-mail-sender-identities-03",
+  "domain": "gnk-asg.hr",
+  "default_identity": "assistant",
+  "identities": [
+    {
+      "id": "assistant",
+      "label": "IT – Osobni digitalni asistent",
+      "email": "it@gnk-asg.hr",
+      "sender_name": "IT – Osobni digitalni asistent",
+      "signature_hr": "IT – Osobni digitalni asistent\nGNK ASG d.o.o.\nKorporativni portal: https://gnk-asg.hr\nE-mail: it@gnk-asg.hr\n\nOva poruka je informativna. Za službene i osjetljive teme odgovor daje ovlaštena osoba nakon pregleda."
+    },
+    {
+      "id": "owner",
+      "label": "Nermin Sefić",
+      "email": "info@gnk-asg.hr",
+      "sender_name": "Nermin Sefić",
+      "signature_hr": "Nermin Sefić\nDirektor i UBO\nGNK ASG d.o.o.\nGNK DINAMO Ltd.\nE-mail: info@gnk-asg.hr\nhttps://gnk-asg.hr"
+    }
+  ],
+  "note": "Adresa info@gnk-asg.hr već je korištena kao fallback adresa u kontakt formi. Adrese it@gnk-asg.hr i info@gnk-asg.hr moraju biti potvrđene kod outbound mail providera i DNS autentificirane kroz Cloudflare."
+}

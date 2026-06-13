@@ -1,0 +1,27 @@
+{
+  "version": "2026-06-12-mail-log-schema-01",
+  "module": "mail_log",
+  "purpose": "Službeni backend zapis mail paketa i test slanja.",
+  "fields": [
+    "id",
+    "created_at",
+    "sent_at",
+    "sender",
+    "recipient_count",
+    "subject",
+    "campaign",
+    "mode",
+    "status",
+    "provider_message_id",
+    "error_message"
+  ],
+  "status_values": [
+    "prepared",
+    "test_sent",
+    "sent",
+    "failed",
+    "cancelled"
+  ],
+  "storage_target": "backend database or KV/D1",
+  "operator_page": "/operator/mail/"
+}

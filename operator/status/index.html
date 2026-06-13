@@ -1,4 +1,80 @@
-<!doctype html><html lang="hr"><head><meta name="description" content="Status | GNK ASG V9 — GNK ASG korporativni portal, tehnologija, AI, digitalna imovina, dokumenti i poslovne informacije."><meta name="google-site-verification" content="google46686328e30c759f.html"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Status | GNK ASG V9</title><link rel="stylesheet" href="../../assets/style.css?v=v19"></head>
-<body class="shell"><a class="back" href="../../">← Natrag</a><main class="panel">
-<h1>Status centar</h1><p>Provjera glavne data datoteke, modula i upload spremnosti.</p><div id="statusGrid" class="grid three"></div><pre id="statusOutput" class="console"></pre>
-</main><script src="../../assets/page.js?v=v19" defer></script></body></html>
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GNK ASG Operator Status</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="../../assets/style.css?v=20260613-operator-status-02">
+  <style>
+    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:1120px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:20px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:#fff;border:1px solid #dce5f0;border-radius:22px;padding:18px;box-shadow:0 16px 44px rgba(0,0,0,.18)}.card h2{font-size:19px;margin:0 0 8px}.card p{margin:0;color:#52647b;line-height:1.55}.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;text-transform:uppercase;margin-bottom:8px}.ok{background:#dcfce7;color:#166534}.warn{background:#fef3c7;color:#92400e}.bad{background:#fee2e2;color:#991b1b}.muted{background:#eef2f7;color:#475569}.status{white-space:pre-wrap;background:#fff;border:1px solid #dce5f0;border-radius:22px;padding:18px;margin-top:16px;color:#23364e;max-height:520px;overflow:auto}.btn{display:inline-block;margin-top:14px;border:0;border-radius:999px;padding:11px 15px;background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35);font-weight:900;text-decoration:none;cursor:pointer}@media(max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="head">
+      <p>GNK ASG Operator</p>
+      <h1>Status dashboard</h1>
+      <p>Read-only pregled aktivnih front, backend, news, market, mail i dokument modula. Stranica samo čita javne i konfiguracijske datoteke.</p>
+      <a class="btn" href="../start/">Operator start</a>
+      <a class="btn" href="../frontend-health/">Frontend Health</a>
+      <a class="btn" href="../../status-lite/">Status Lite</a>
+      <button class="btn" id="reload">Osvježi status</button>
+    </section>
+    <section class="grid" id="cards" aria-label="Status moduli"></section>
+    <section class="status" id="raw">Učitavanje statusa...</section>
+  </main>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const files=[
+    {id:'public_status',label:'Public status',url:'../../data/status.json'},
+    {id:'news',label:'Vijesti',url:'../../data/update_status.json'},
+    {id:'newsfeed',label:'News feed',url:'../../data/news.json'},
+    {id:'marketstatus',label:'Market status',url:'../../data/fast_market_status.json'},
+    {id:'marketfeed',label:'Market feed',url:'../../data/market.json'},
+    {id:'macro',label:'Macro market',url:'../../data/macro_market.json'},
+    {id:'exchanges',label:'Burze',url:'../../data/stock_exchanges.json'},
+    {id:'admin',label:'Admin manifest',url:'../../data/admin_app_manifest.json'},
+    {id:'backend',label:'Backend manifest',url:'../../data/backend_operations_manifest.json'},
+    {id:'contact',label:'Kontakt kanali',url:'../../data/contact_channels.json'},
+    {id:'mailids',label:'Mail identities',url:'../../data/mail_sender_identities.json'},
+    {id:'mailpolicy',label:'Mail policy',url:'../../data/mail_automation_policy.json'},
+    {id:'docs',label:'Document index',url:'../../data/document_index.json'},
+    {id:'images',label:'Image index',url:'../../data/image_index.json'},
+    {id:'sitemap',label:'Sitemap',url:'../../sitemap.xml',text:true}
+  ];
+  async function loadOne(f){const c=new AbortController();const timer=setTimeout(()=>c.abort(),4500);try{const r=await fetch(f.url+'?cb='+Date.now(),{cache:'no-store',signal:c.signal}); const t=await r.text(); clearTimeout(timer); if(!r.ok)throw new Error('HTTP '+r.status); return {file:f,ok:true,data:f.text?t:JSON.parse(t),bytes:t.length};}catch(e){clearTimeout(timer);return {file:f,ok:false,error:e.message};}}
+  function countItems(d){if(Array.isArray(d))return d.length;if(Array.isArray(d.items))return d.items.length;if(Array.isArray(d.coins))return d.coins.length;if(Array.isArray(d.markets))return d.markets.length;if(d.news&&d.news.public_items!=null)return d.news.public_items;return 0}
+  function summarize(x){
+    if(!x.ok)return {cls:'bad',state:'nedostupno',detail:x.error};
+    const d=x.data;
+    if(x.file.id==='public_status')return {cls:d.status==='ok'?'ok':'warn',state:d.status||'učitano',detail:(d.frontend&&d.frontend.script_version)||'status učitan'};
+    if(x.file.id==='news')return {cls:d.news&&d.news.status==='ok'?'ok':'warn',state:d.news?d.news.status:'učitano',detail:'stavki: '+(d.news&&d.news.public_items!=null?d.news.public_items:'n/a')};
+    if(x.file.id==='newsfeed')return {cls:countItems(d)?'ok':'warn',state:'feed',detail:'stavki: '+countItems(d)};
+    if(x.file.id==='marketstatus')return {cls:d.status==='ok'?'ok':'warn',state:d.status||'učitano',detail:'digital assets: '+(d.digital_assets&&d.digital_assets.coins?d.digital_assets.coins:'n/a')};
+    if(x.file.id==='marketfeed')return {cls:countItems(d)?'ok':'warn',state:'feed',detail:'instrumenata: '+countItems(d)};
+    if(x.file.id==='macro')return {cls:d.status==='ok'?'ok':'warn',state:d.status||'učitano',detail:'assets: '+(d.assets?Object.keys(d.assets).length:'n/a')};
+    if(x.file.id==='exchanges')return {cls:d.status==='ok'?'ok':'warn',state:d.status||'učitano',detail:'burzi/indeksa: '+countItems(d)};
+    if(x.file.id==='admin')return {cls:'ok',state:d.status||'manifest',detail:'sekcija: '+((d.sections||[]).length)};
+    if(x.file.id==='backend')return {cls:'ok',state:d.version||'manifest',detail:'quality gate: '+((d.quality_gate&&d.quality_gate.required_before_public_change)||[]).length};
+    if(x.file.id==='contact')return {cls:'ok',state:'kontakt',detail:'kanala: '+((d.planned_mailboxes||[]).length)+' · WhatsApp: '+(d.whatsapp_url?'da':'ne')};
+    if(x.file.id==='mailids')return {cls:'ok',state:'identiteti',detail:'pošiljatelja: '+((d.identities||[]).length)};
+    if(x.file.id==='mailpolicy')return {cls:d.default_mode==='draft_only'?'ok':'warn',state:d.default_mode||'policy',detail:'human review rules'};
+    if(x.file.id==='docs')return {cls:countItems(d)?'ok':'warn',state:'dokumenti',detail:'dokumenata: '+countItems(d)};
+    if(x.file.id==='images')return {cls:'warn',state:'image index',detail:'slika: '+countItems(d)};
+    if(x.file.id==='sitemap')return {cls:x.data.includes('/insights-hr/')?'ok':'warn',state:'sitemap',detail:'bytes: '+x.bytes};
+    return {cls:'muted',state:'učitano',detail:''};
+  }
+  async function run(){
+    $('cards').innerHTML=''; $('raw').textContent='Učitavanje...';
+    const results=await Promise.all(files.map(loadOne));
+    $('cards').innerHTML=results.map(x=>{const s=summarize(x);return '<article class="card"><span class="pill '+s.cls+'">'+s.state+'</span><h2>'+x.file.label+'</h2><p>'+s.detail+'</p></article>';}).join('');
+    const ok=results.filter(x=>x.ok).length;
+    $('raw').textContent='Pregled: '+ok+' / '+results.length+' datoteka dostupno\nAžurirano lokalno: '+new Date().toLocaleString('hr-HR')+'\n\n'+results.map(x=>x.file.label+': '+(x.ok?'OK':'GREŠKA - '+x.error)).join('\n');
+  }
+  $('reload').onclick=run; run();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+/* GNK ASG market visual contrast fix */
+#digital-assets,
+.market,
+section[id*="market"],
+section[id*="digital"] {
+  --btc-blue: #006cff;
+  --gold-line: #d79b14;
+  --brent-green: #00a86b;
+  --usd-purple: #6d5dfc;
+  --danger-red: #b4233a;
+  --success-green: #008f5a;
+  --market-ink: #07162d;
+  --market-muted: #475569;
+}
+
+#digital-assets .section-head h2,
+.market .section-head h2,
+section[id*="market"] .section-head h2,
+section[id*="digital"] .section-head h2 {
+  color: #07162d !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,.55) !important;
+}
+
+#digital-assets .section-head p,
+.market .section-head p,
+section[id*="market"] .section-head p,
+section[id*="digital"] .section-head p {
+  color: #23364e !important;
+  font-weight: 650 !important;
+}
+
+#digital-assets .market-card,
+#digital-assets .asset-card,
+#digital-assets .monitor-card,
+#digital-assets .kpi,
+.market .market-card,
+.market .asset-card,
+.market .monitor-card,
+.market .kpi,
+section[id*="market"] .market-card,
+section[id*="market"] .asset-card,
+section[id*="market"] .monitor-card,
+section[id*="market"] .kpi,
+section[id*="digital"] .market-card,
+section[id*="digital"] .asset-card,
+section[id*="digital"] .monitor-card,
+section[id*="digital"] .kpi {
+  background: rgba(255,255,255,.98) !important;
+  border: 1px solid rgba(7,22,45,.14) !important;
+  box-shadow: 0 16px 38px rgba(7,22,45,.10) !important;
+  color: #07162d !important;
+}
+
+#digital-assets strong,
+#digital-assets b,
+.market strong,
+.market b,
+section[id*="market"] strong,
+section[id*="market"] b,
+section[id*="digital"] strong,
+section[id*="digital"] b {
+  color: #07162d !important;
+  font-weight: 900 !important;
+}
+
+#digital-assets small,
+#digital-assets span,
+.market small,
+.market span,
+section[id*="market"] small,
+section[id*="market"] span,
+section[id*="digital"] small,
+section[id*="digital"] span {
+  color: #475569 !important;
+}
+
+#digital-assets .negative,
+#digital-assets [class*="down"],
+.market .negative,
+.market [class*="down"],
+section[id*="market"] .negative,
+section[id*="market"] [class*="down"],
+section[id*="digital"] .negative,
+section[id*="digital"] [class*="down"] {
+  color: var(--danger-red) !important;
+  font-weight: 900 !important;
+}
+
+#digital-assets .positive,
+#digital-assets [class*="up"],
+.market .positive,
+.market [class*="up"],
+section[id*="market"] .positive,
+section[id*="market"] [class*="up"],
+section[id*="digital"] .positive,
+section[id*="digital"] [class*="up"] {
+  color: var(--success-green) !important;
+  font-weight: 900 !important;
+}
+
+#digital-assets canvas,
+.market canvas,
+section[id*="market"] canvas,
+section[id*="digital"] canvas,
+#digital-assets svg,
+.market svg,
+section[id*="market"] svg,
+section[id*="digital"] svg {
+  filter: saturate(1.45) contrast(1.18) brightness(1.03) !important;
+}
+
+#digital-assets .chart,
+#digital-assets .chart-box,
+#digital-assets .chart-panel,
+#digital-assets .market-chart,
+#digital-assets [class*="chart"],
+.market .chart,
+.market .chart-box,
+.market .chart-panel,
+.market .market-chart,
+.market [class*="chart"],
+section[id*="market"] [class*="chart"],
+section[id*="digital"] [class*="chart"] {
+  background: linear-gradient(135deg, rgba(12,26,48,.92), rgba(28,42,68,.86)) !important;
+  border: 1px solid rgba(212,175,55,.28) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 20px 50px rgba(7,22,45,.18) !important;
+}
+
+#digital-assets .legend,
+.market .legend,
+section[id*="market"] .legend,
+section[id*="digital"] .legend {
+  color: #07162d !important;
+  font-weight: 800 !important;
+}
+
+#digital-assets .legend i,
+.market .legend i,
+section[id*="market"] .legend i,
+section[id*="digital"] .legend i {
+  opacity: 1 !important;
+  transform: scale(1.15) !important;
+}
+
+#digital-assets path[stroke],
+.market path[stroke],
+section[id*="market"] path[stroke],
+section[id*="digital"] path[stroke] {
+  stroke-width: 3.2 !important;
+  opacity: 1 !important;
+}
+
+#digital-assets .btc,
+#digital-assets [class*="bitcoin"],
+.market .btc,
+.market [class*="bitcoin"] { color: var(--btc-blue) !important; }
+#digital-assets .gold,
+#digital-assets [class*="gold"],
+.market .gold,
+.market [class*="gold"] { color: var(--gold-line) !important; }
+#digital-assets .brent,
+#digital-assets [class*="brent"],
+.market .brent,
+.market [class*="brent"] { color: var(--brent-green) !important; }
+#digital-assets .usd,
+#digital-assets [class*="usd"],
+.market .usd,
+.market [class*="usd"] { color: var(--usd-purple) !important; }
+
+#digital-assets button,
+.market button,
+section[id*="market"] button,
+section[id*="digital"] button {
+  border-color: rgba(173,125,32,.42) !important;
+  color: #07162d !important;
+  font-weight: 900 !important;
+}
+
+#digital-assets button.active,
+#digital-assets button[aria-pressed="true"],
+.market button.active,
+.market button[aria-pressed="true"],
+section[id*="market"] button.active,
+section[id*="market"] button[aria-pressed="true"],
+section[id*="digital"] button.active,
+section[id*="digital"] button[aria-pressed="true"] {
+  background: #d4af37 !important;
+  color: #07162d !important;
+  border-color: #d4af37 !important;
+}
+
+@media (max-width: 900px) {
+  #digital-assets .chart,
+  #digital-assets .chart-box,
+  #digital-assets .chart-panel,
+  #digital-assets .market-chart,
+  #digital-assets [class*="chart"],
+  .market [class*="chart"],
+  section[id*="market"] [class*="chart"],
+  section[id*="digital"] [class*="chart"] {
+    min-height: 320px !important;
+  }
+}

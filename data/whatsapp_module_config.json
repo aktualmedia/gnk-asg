@@ -1,0 +1,35 @@
+{
+  "version": "2026-06-12-whatsapp-module-01",
+  "module": "WhatsApp komunikacijski sloj",
+  "status": "planirano za kasniju fazu",
+  "phases": [
+    {
+      "id": "wa_button",
+      "name_hr": "Javni WhatsApp gumb",
+      "description_hr": "Brzi prijelaz posjetitelja na WhatsApp razgovor."
+    },
+    {
+      "id": "wa_operator_inbox",
+      "name_hr": "Operator inbox",
+      "description_hr": "Pregled zaprimljenih poruka u operator zoni."
+    },
+    {
+      "id": "wa_suggested_replies",
+      "name_hr": "Predloženi odgovori",
+      "description_hr": "Priprema općih predložaka odgovora za česte upite."
+    },
+    {
+      "id": "wa_business_api",
+      "name_hr": "WhatsApp Business API",
+      "description_hr": "Napredna integracija u kasnijoj fazi razvoja."
+    }
+  ],
+  "standard_replies": [
+    "Potvrda primitka poruke.",
+    "Link na kontakt formu.",
+    "Link na objave autora.",
+    "Link na javne informacije portala.",
+    "Link na pravne napomene portala."
+  ],
+  "signature": "IT – Osobni digitalni asistent | GNK ASG d.o.o."
+}

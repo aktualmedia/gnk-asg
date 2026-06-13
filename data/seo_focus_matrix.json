@@ -1,0 +1,79 @@
+{
+  "version": "2026-06-12-seo-focus-v1",
+  "status": "active",
+  "primary_entities": [
+    "GNK ASG d.o.o.",
+    "GNK ASG",
+    "GNK DINAMO Ltd.",
+    "GNK DINAMO Ltd. Group",
+    "Nermin Sefić",
+    "Nermin Sefic",
+    "Sefić Nermin",
+    "Sefic Nermin"
+  ],
+  "company_identifiers": [
+    "OIB 75227917632",
+    "MBS 081512375",
+    "Zagrebačka cesta 130, Zagreb",
+    "sportske djelatnosti NKD 93.19.0",
+    "direktor Nermin Sefić",
+    "stvarni vlasnik UBO Nermin Sefić"
+  ],
+  "core_topics_hr": [
+    "korporativni portal",
+    "poslovna dokumentacija",
+    "financijski pokazatelji",
+    "revizorsko izvješće",
+    "GNK ASG Intelligence Desk",
+    "digitalna infrastruktura",
+    "umjetna inteligencija",
+    "AI asistent",
+    "tržišni pregled",
+    "digitalna imovina",
+    "Bitcoin",
+    "stablecoini",
+    "burzovni monitor",
+    "kontakt forma",
+    "službena komunikacija",
+    "sportska tehnologija",
+    "sportska analitika",
+    "GNK DINAMO Ltd. grupa"
+  ],
+  "core_topics_en": [
+    "corporate portal",
+    "business documentation",
+    "financial indicators",
+    "auditor report",
+    "GNK ASG Intelligence Desk",
+    "digital infrastructure",
+    "artificial intelligence",
+    "AI assistant",
+    "market overview",
+    "digital assets",
+    "Bitcoin",
+    "stablecoins",
+    "stock exchange monitor",
+    "contact form",
+    "official communication",
+    "sports technology",
+    "sports analytics",
+    "GNK DINAMO Ltd. group"
+  ],
+  "page_focus": {
+    "home": "GNK ASG d.o.o., GNK DINAMO Ltd., Nermin Sefić, korporativni portal, financijski pokazatelji, digitalna infrastruktura, poslovne vijesti",
+    "profile": "Nermin Sefić, Nermin Sefic, direktor, zakonski zastupnik, UBO, GNK ASG d.o.o., GNK DINAMO Ltd.",
+    "themes": "tematski monitoring, ekonomija, sport, javne politike, AI, tehnologija, mobilnost, tržišta",
+    "markets": "Digital Exchange Monitor, Cross-Asset Market Monitor, Bitcoin, zlato, Brent nafta, USD/EUR, digitalna imovina",
+    "contact": "kontakt GNK ASG, info@gnk-asg.hr, IT osobni digitalni asistent, službena komunikacija, kontakt forma",
+    "legal": "impresum, politika privatnosti, kolačići, uvjeti korištenja, pravna napomena, status podataka, AI napomena",
+    "insights": "autorske objave, dnevne objave, GNK ASG Intelligence Desk, Nermin Sefić, poslovne teme, tehnologija, tržišta"
+  },
+  "indexing_policy": {
+    "meta_keywords_supported_as_context": true,
+    "json_ld_entities_required": true,
+    "sitemap_include_contact_legal_insights": true,
+    "hreflang_hr_en": true,
+    "social_preview_required": true,
+    "avoid_undocumented_group_employee_count": true
+  }
+}

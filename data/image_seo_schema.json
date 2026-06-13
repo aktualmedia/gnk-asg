@@ -1,0 +1,32 @@
+{
+  "version": "2026-06-12-image-seo-schema-01",
+  "module": "image_seo_preparation",
+  "purpose": "Priprema metapodataka za fotografije prije objave na portalu.",
+  "fields": [
+    "file_name",
+    "title_hr",
+    "alt_hr",
+    "caption_hr",
+    "credit",
+    "category",
+    "keywords",
+    "target_page",
+    "public_status"
+  ],
+  "categories": [
+    "corporate",
+    "technology",
+    "finance",
+    "sports",
+    "market",
+    "documents",
+    "people",
+    "general"
+  ],
+  "public_status_values": [
+    "draft",
+    "ready",
+    "published"
+  ],
+  "operator_page": "/operator/images/"
+}

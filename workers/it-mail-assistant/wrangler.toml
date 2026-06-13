@@ -1,0 +1,23 @@
+name = "gnk-asg-it-mail-assistant"
+main = "src/index.js"
+compatibility_date = "2026-06-12"
+
+# This Worker is intended for Cloudflare Email Routing, not public HTTP routes.
+# Bind it to the inbound address it@gnk-asg.hr in Cloudflare Email Routing rules.
+
+[vars]
+IT_REPLY_FROM = "it@gnk-asg.hr"
+IT_NOTIFY_TO = "rht@gmx.com"
+IT_AUTO_REPLY_ENABLED = "false"
+
+# Set to true only after testing notification-only mode.
+# IT_AUTO_REPLY_ENABLED = "true"
+
+# Secrets, set in Cloudflare / Wrangler, not in GitHub:
+# RESEND_API_KEY
+# BREVO_API_KEY
+
+# Optional KV binding for inbound mail log:
+# [[kv_namespaces]]
+# binding = "IT_MAIL_LOG_KV"
+# id = "REPLACE_WITH_KV_NAMESPACE_ID"

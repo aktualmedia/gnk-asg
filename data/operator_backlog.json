@@ -1,0 +1,63 @@
+{
+  "version": "2026-06-12-operator-backlog-02",
+  "project": "GNK ASG Operator functional backlog",
+  "principle": "Funkcionalni sloj prije kozmetike. Svaka izvršna radnja ide kroz backend, potvrdu i zapis radnje.",
+  "items": [
+    {
+      "id": "backend-mail-log",
+      "priority": "high",
+      "title": "Službeni backend log mail paketa",
+      "status": "schema_ready",
+      "note": "Dodana je data/mail_log_schema.json; sljedeće je stvarni backend zapis."
+    },
+    {
+      "id": "image-r2-upload",
+      "priority": "high",
+      "title": "Upload slika u R2",
+      "status": "contract_ready",
+      "note": "Image SEO priprema, image_index i upload contract postoje; treba stvarni upload endpoint."
+    },
+    {
+      "id": "document-library-ui",
+      "priority": "high",
+      "title": "Document Library operator UI",
+      "status": "schema_and_index_ready",
+      "note": "Schema i document_index postoje; HTML forma se trenutno blokira i treba je izvesti drugim putem."
+    },
+    {
+      "id": "command-execution-backend",
+      "priority": "medium",
+      "title": "Command Center backend",
+      "status": "contract_ready",
+      "note": "Command Center i command_center_contract postoje; kasnije backend izvršava dopuštene naredbe."
+    },
+    {
+      "id": "whatsapp-inbox",
+      "priority": "medium",
+      "title": "WhatsApp inbox",
+      "status": "prep_ui_ready",
+      "note": "WhatsApp Prep postoji; kasnije dodati zaprimanje i prikaz poruka."
+    },
+    {
+      "id": "audio-mail-summary",
+      "priority": "medium",
+      "title": "Audio čitanje mail sažetka",
+      "status": "audio_ui_ready",
+      "note": "Audio Operator postoji; treba backend sažetak inboxa."
+    },
+    {
+      "id": "daily-owner-summary",
+      "priority": "medium",
+      "title": "Dnevni operativni sažetak",
+      "status": "schema_and_data_ready",
+      "note": "Dodani su daily_operator_summary_schema i početni daily_operator_summary.json."
+    },
+    {
+      "id": "media-kit-cosmetics",
+      "priority": "later",
+      "title": "Media kit, logo i boje",
+      "status": "later",
+      "note": "Raditi tek nakon funkcionalne stabilizacije."
+    }
+  ]
+}

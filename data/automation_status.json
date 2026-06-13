@@ -1,0 +1,15 @@
+{
+  "version": "2026-06-13-v1",
+  "items": [
+    {"name": "Business News", "path": "/news/", "data": "/data/news.json", "mode": "scheduled", "status": "active"},
+    {"name": "Market", "path": "/market/", "data": "/data/market.json", "mode": "snapshot first", "status": "active"},
+    {"name": "Corporate Front", "path": "/front/", "data": "/data/status.json", "mode": "preview", "status": "active"},
+    {"name": "Home Candidate", "path": "/home-candidate/", "data": "/data/release_checklist.json", "mode": "preview", "status": "active"},
+    {"name": "Locations", "path": "/locations/", "data": "/data/company_locations.json", "mode": "public data", "status": "active"},
+    {"name": "Assistant", "path": "/assistant/", "data": "/data/ai_assistant_public_model.json", "mode": "public information", "status": "active"},
+    {"name": "Downloads", "path": "/downloads/", "data": "/data/brand_identity.json", "mode": "hub", "status": "active"},
+    {"name": "Frontend Health", "path": "/operator/frontend-health/", "data": "/data/release_checklist.json", "mode": "check", "status": "active"},
+    {"name": "Release Check", "path": "/operator/release-check/", "data": "/data/release_checklist.json", "mode": "check", "status": "active"}
+  ],
+  "status": "ready"
+}

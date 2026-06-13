@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GNK ASG Mail Batch Composer</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
+  <style>
+    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:980px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:18px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.panel{background:#fff;border:1px solid #dce5f0;border-radius:24px;padding:22px;margin:16px 0;box-shadow:0 16px 44px rgba(0,0,0,.18)}label{display:block;font-weight:900;margin:14px 0 7px}input,textarea{width:100%;box-sizing:border-box;border:1px solid #cbd5e1;border-radius:14px;padding:12px;font:inherit}textarea{min-height:140px}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}button{border:0;border-radius:999px;padding:12px 16px;font-weight:900;cursor:pointer}.primary{background:#143b6d;color:#fff}.send{background:#166534;color:#fff}.ghost{background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35)}.danger{background:#7f1d1d;color:#fff}.status{white-space:pre-wrap;background:#f7f9fc;border-radius:16px;padding:14px;color:#23364e}.small{font-size:13px;color:#64748b;line-height:1.6}.ok{color:#166534;font-weight:900}.bad{color:#991b1b;font-weight:900}.history-item{border-bottom:1px solid #e5edf6;padding:10px 0}.history-item:last-child{border-bottom:0}.history-item strong{display:block}.history-item span{display:block;color:#64748b;font-size:13px;margin-top:3px}@media(max-width:800px){.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="head">
+      <p>GNK ASG Operator</p>
+      <h1>Mail Batch Composer</h1>
+      <p>Priprema do 30 adresa, predmet i tekst poruke. Nakon validacije paket se može poslati kroz autorizirani backend endpoint.</p>
+    </section>
+    <section class="panel">
+      <div class="row">
+        <div><label for="sender">Pošiljatelj</label><input id="sender" value="it@gnk-asg.hr"></div>
+        <div><label for="campaign">Naziv pripreme</label><input id="campaign" placeholder="npr. Obavijest partnerima"></div>
+      </div>
+      <div class="row">
+        <div><label for="endpoint">Autorizirani endpoint</label><input id="endpoint" value="/api/operator/mail-batch/send"></div>
+        <div><label for="sendAt">Vrijeme slanja, opcionalno</label><input id="sendAt" type="datetime-local"></div>
+      </div>
+      <div class="row">
+        <div><label for="testRecipient">Test primatelj</label><input id="testRecipient" value="beckuphome@gmail.com"></div>
+        <div><label for="batchLabel">Interna oznaka</label><input id="batchLabel" placeholder="npr. TEST-01 ili partneri-06-2026"></div>
+      </div>
+      <label for="recipients">Primatelji, najviše 30. Jedan e-mail po retku ili odvojeno zarezom.</label>
+      <textarea id="recipients" placeholder="ime@domena.hr&#10;drugi@domena.hr"></textarea>
+      <label for="subject">Predmet</label><input id="subject" placeholder="Predmet poruke">
+      <label for="body">Tekst poruke</label><textarea id="body" placeholder="Poštovani, ..."></textarea>
+      <label for="footer">Potpis</label><textarea id="footer">IT – Osobni digitalni asistent
+GNK ASG d.o.o.
+Korporativni portal: https://gnk-asg.hr
+E-mail: it@gnk-asg.hr
+
+Ova poruka je informativna. Za službene i osjetljive teme odgovor daje ovlaštena osoba nakon pregleda.</textarea>
+      <div class="btns"><button class="primary" id="validate">Validiraj</button><button class="ghost" id="save">Spremi pripremu</button><button class="ghost" id="copy">Kopiraj JSON</button><button class="ghost" id="testEndpoint">Testiraj endpoint</button><button class="ghost" id="sendTest">Pošalji test meni</button><button class="send" id="sendBatch">Pošalji svima</button><button class="danger" id="clear">Očisti</button></div>
+      <p class="small">Sigurnosno: token se ne sprema u stranici. Endpoint mora sam provjeriti autorizaciju, sesiju, ograničenja, log i dopuštenog pošiljatelja.</p>
+    </section>
+    <section class="panel"><h2>Status pripreme</h2><div id="status" class="status">Nema validacije.</div></section>
+    <section class="panel"><h2>Lokalna povijest slanja</h2><div id="history" class="status">Nema lokalne povijesti.</div><div class="btns"><button class="ghost" id="refreshHistory">Osvježi povijest</button><button class="danger" id="clearHistory">Obriši lokalnu povijest</button></div><p class="small">Ovo je lokalni prikaz u pregledniku. Službeni log mora voditi backend endpoint.</p></section>
+  </main>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const historyKey='gnk_asg_mail_batch_history';
+  function list(){return $('recipients').value.split(/[\n,;]+/).map(x=>x.trim()).filter(Boolean)}
+  function unique(arr){return [...new Set(arr.map(x=>x.toLowerCase()))]}
+  function endpoint(){return $('endpoint').value.trim()||'/api/operator/mail-batch/send'}
+  function validate(customEmails){
+    const raw=customEmails||list(); const emails=unique(raw); const invalid=emails.filter(x=>!emailRe.test(x));
+    const problems=[];
+    if(emails.length===0) problems.push('Nema primatelja.');
+    if(emails.length>30) problems.push('Previše primatelja: '+emails.length+' / 30.');
+    if(invalid.length) problems.push('Neispravne adrese: '+invalid.join(', '));
+    if(!$('sender').value.trim()) problems.push('Nedostaje pošiljatelj.');
+    if(!$('subject').value.trim()) problems.push('Nedostaje predmet.');
+    if(!$('body').value.trim()) problems.push('Nedostaje tekst poruke.');
+    const ok=problems.length===0;
+    $('status').innerHTML=(ok?'<span class="ok">SPREMNO</span>':'<span class="bad">NIJE SPREMNO</span>')+'\nPrimatelja: '+emails.length+' / 30\n'+(problems.length?problems.join('\n'):'Validacija je prošla. Možeš spremiti, poslati test ili poslati svima.');
+    return {ok,emails,problems};
+  }
+  function pack(customEmails, mode){const v=validate(customEmails); return {version:'2026-06-12-mail-batch-package-03',created_at:new Date().toISOString(),mode:mode||'send_via_authorized_endpoint',campaign:$('campaign').value.trim(),label:$('batchLabel').value.trim(),sender:$('sender').value.trim(),recipients:v.emails,subject:$('subject').value.trim(),body:$('body').value.trim(),footer:$('footer').value.trim(),send_at:$('sendAt').value||null,validation:v};}
+  function readHistory(){try{return JSON.parse(localStorage.getItem(historyKey)||'[]')}catch(e){return []}}
+  function writeHistory(item){const h=readHistory(); h.unshift(item); localStorage.setItem(historyKey,JSON.stringify(h.slice(0,25),null,2)); renderHistory();}
+  function renderHistory(){const h=readHistory(); if(!h.length){$('history').textContent='Nema lokalne povijesti.';return;} $('history').innerHTML=h.map(x=>'<div class="history-item"><strong>'+escapeHtml(x.type)+' · '+escapeHtml(x.subject||'bez predmeta')+'</strong><span>'+escapeHtml(x.at)+' · '+escapeHtml(String(x.recipients||0))+' primatelja · HTTP '+escapeHtml(String(x.status||''))+'</span></div>').join('')}
+  function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+  async function postPackage(p, label){
+    const r=await fetch(endpoint(),{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});
+    const txt=await r.text(); let out=txt; try{out=JSON.stringify(JSON.parse(txt),null,2)}catch(e){}
+    $('status').textContent='Odgovor endpointa: HTTP '+r.status+' '+r.statusText+'\n\n'+out;
+    writeHistory({at:new Date().toISOString(),type:label,subject:p.subject,recipients:p.recipients.length,status:r.status,ok:r.ok});
+  }
+  $('validate').onclick=()=>validate();
+  $('save').onclick=function(){const p=pack(); localStorage.setItem('gnk_asg_mail_batch_package',JSON.stringify(p,null,2)); $('status').textContent+='\n\nSpremljeno lokalno u preglednik.'};
+  $('copy').onclick=async function(){const p=pack(); await navigator.clipboard.writeText(JSON.stringify(p,null,2)); $('status').textContent+='\n\nJSON paket kopiran.'};
+  $('testEndpoint').onclick=async function(){try{const r=await fetch(endpoint(),{method:'OPTIONS',credentials:'include'}); $('status').textContent='Endpoint test: HTTP '+r.status+' '+r.statusText;}catch(e){$('status').textContent='Endpoint test nije uspio: '+e.message;}};
+  $('sendTest').onclick=async function(){const test=$('testRecipient').value.trim(); const p=pack([test],'test_send'); if(!p.validation.ok)return; if(!confirm('Potvrdi test slanje na '+test+'.'))return; $('sendTest').disabled=true; $('status').textContent='Šaljem test...'; try{await postPackage(p,'TEST')}catch(e){$('status').textContent='Test slanje nije uspjelo: '+e.message;} finally{$('sendTest').disabled=false;}};
+  $('sendBatch').onclick=async function(){const p=pack(null,'batch_send'); if(!p.validation.ok)return; if(!confirm('Potvrdi slanje paketa na '+p.recipients.length+' adresa.')){$('status').textContent+='\n\nSlanje otkazano.';return;} $('sendBatch').disabled=true; $('status').textContent='Šaljem paket kroz autorizirani endpoint...'; try{await postPackage(p,'BATCH')}catch(e){$('status').textContent='Slanje nije uspjelo: '+e.message;} finally{$('sendBatch').disabled=false;}};
+  $('clear').onclick=function(){['campaign','batchLabel','recipients','subject','body','sendAt'].forEach(id=>$(id).value=''); $('status').textContent='Očišćeno.'};
+  $('refreshHistory').onclick=renderHistory;
+  $('clearHistory').onclick=function(){if(confirm('Obrisati lokalnu povijest u ovom pregledniku?')){localStorage.removeItem(historyKey); renderHistory();}};
+  const saved=localStorage.getItem('gnk_asg_mail_batch_package');
+  if(saved){try{const p=JSON.parse(saved); $('campaign').value=p.campaign||''; $('batchLabel').value=p.label||''; $('sender').value=p.sender||'it@gnk-asg.hr'; $('recipients').value=(p.recipients||[]).join('\n'); $('subject').value=p.subject||''; $('body').value=p.body||''; $('footer').value=p.footer||$('footer').value; $('sendAt').value=p.send_at||''; $('status').textContent='Učitana lokalno spremljena priprema.';}catch(e){}}
+  renderHistory();
+})();
+</script>
+</body>
+</html>

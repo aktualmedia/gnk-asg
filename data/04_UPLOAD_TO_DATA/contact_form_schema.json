@@ -1,0 +1,14 @@
+{
+  "version": "2026-06-12",
+  "endpoint": "/api/contact",
+  "method": "POST",
+  "required_fields": [
+    "name",
+    "email",
+    "topic",
+    "message",
+    "privacy_consent",
+    "turnstile_token"
+  ],
+  "anti_spam": "Cloudflare Turnstile server-side validation"
+}

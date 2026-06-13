@@ -1,0 +1,63 @@
+{
+  "version": "2026-06-12-mail-outbox-v1",
+  "status": "prepared",
+  "kv_namespace_required": "MAIL_OUTBOX",
+  "worker": "gnk-asg-mail-operator",
+  "route": "gnk-asg.hr/api/mail*",
+  "required_bindings": [
+    "MAIL_OUTBOX",
+    "SEND_EMAIL",
+    "MAIL_ADMIN_TOKEN"
+  ],
+  "record_prefixes": {
+    "outbox": "outbox_",
+    "campaign": "campaign_",
+    "log": "mail_log_"
+  },
+  "record_statuses": [
+    "draft",
+    "approved_scheduled",
+    "sent",
+    "failed",
+    "cancelled"
+  ],
+  "default_sender": "no-reply@gnk-asg.hr",
+  "allowed_senders": [
+    "no-reply@gnk-asg.hr",
+    "it@gnk-asg.hr",
+    "assistant@gnk-asg.hr",
+    "info@gnk-asg.hr"
+  ],
+  "languages": [
+    "hr",
+    "en"
+  ],
+  "signature_types": [
+    "official",
+    "ai"
+  ],
+  "safety_rules": {
+    "one_recipient_per_email": true,
+    "no_mass_cc_bcc": true,
+    "human_approval_required_before_send": true,
+    "sensitive_topics_draft_only_until_explicit_approval": true,
+    "minimum_gap_seconds_between_messages": 120,
+    "store_sent_log": true
+  },
+  "request_example": {
+    "campaign_name": "Poslovna obavijest",
+    "sender": "info@gnk-asg.hr",
+    "signature_type": "official",
+    "language": "hr",
+    "subject": "Predmet poruke",
+    "body_text": "Tekst poruke...",
+    "recipients": [
+      {
+        "email": "primatelj@example.com",
+        "name": "Ime Prezime",
+        "send_at": "2026-06-13T09:00:00+02:00"
+      }
+    ],
+    "approved": false
+  }
+}

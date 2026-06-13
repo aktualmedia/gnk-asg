@@ -1,0 +1,37 @@
+{
+  "version": "2026-06-12-content-publish-contract-01",
+  "module": "content_publish",
+  "status": "backend_contract_ready",
+  "endpoint": "/api/operator/content/publish",
+  "list_endpoint": "/api/operator/content/list",
+  "storage_target": "CONTENT_DRAFT_KV",
+  "supported_types": [
+    "author_post",
+    "business_news",
+    "market_brief",
+    "document_note"
+  ],
+  "workflow": [
+    "Post Composer prepares a content package.",
+    "Operator sends package to protected backend endpoint.",
+    "Backend validates fields and stores package as draft or ready item in KV.",
+    "Publishing to static public pages requires a separate approved deploy/write process.",
+    "Every package must be logged with timestamp and operator identity."
+  ],
+  "required_fields": [
+    "type",
+    "status",
+    "author",
+    "title",
+    "slug",
+    "summary",
+    "body",
+    "target"
+  ],
+  "safety_rules": [
+    "No direct public publishing without explicit backend policy.",
+    "ready_to_publish still requires protected endpoint and log.",
+    "Legal, financial, media and dispute content requires human review.",
+    "No API keys or GitHub tokens in frontend."
+  ]
+}

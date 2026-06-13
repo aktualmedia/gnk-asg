@@ -1,0 +1,54 @@
+{
+  "version": "2026-06-12-cloudflare-mail-backend-04",
+  "module": "cloudflare_mail_backend_setup",
+  "status": "workers_runtime_ready_sender_identity_aligned",
+  "preferred_runtime": "cloudflare_workers",
+  "active_sender_identities": [
+    "it@gnk-asg.hr",
+    "info@gnk-asg.hr"
+  ],
+  "identity_rules": [
+    "it@gnk-asg.hr is used for IT – Osobni digitalni asistent",
+    "info@gnk-asg.hr is used for Nermin Sefić, director and UBO, GNK ASG d.o.o. and GNK DINAMO Ltd.",
+    "nermin@gnk-asg.hr is not used because it is not confirmed as an existing address"
+  ],
+  "pages_function_paths": [
+    "functions/api/operator/mail-batch/send.js",
+    "functions/api/operator/mail-log/list.js"
+  ],
+  "worker_paths": [
+    "workers/operator-mail-api/src/index.js",
+    "workers/operator-mail-api/wrangler.toml",
+    "workers/operator-mail-api/README.md"
+  ],
+  "send_endpoint": "/api/operator/mail-batch/send",
+  "log_endpoint": "/api/operator/mail-log/list",
+  "cloudflare_requirements": [
+    "Cloudflare Worker route or Pages Function route active for /api/operator/*",
+    "Cloudflare Access recommended for /operator/* and /api/operator/*",
+    "one outbound mail provider secret configured",
+    "optional KV binding for official mail log",
+    "it@gnk-asg.hr and info@gnk-asg.hr confirmed in outbound provider",
+    "SPF, DKIM and DMARC configured in Cloudflare DNS"
+  ],
+  "required_secret_one_of": [
+    "RESEND_API_KEY",
+    "BREVO_API_KEY"
+  ],
+  "environment_variable_policy": [
+    "Do not set fixed MAIL_FROM when operator UI should select sender identity",
+    "MAIL_FROM may be used only if all messages must be forced through one sender",
+    "MAIL_FROM_NAME should not override the identity label if both identities are active"
+  ],
+  "optional_bindings": [
+    "MAIL_LOG_KV"
+  ],
+  "temporary_test_variable": "OPERATOR_ALLOW_NO_ACCESS=true can be used only for controlled testing and should not remain enabled in production.",
+  "checks": [
+    "GET /api/operator/mail-batch/send returns endpoint mail-batch-send",
+    "GET /api/operator/mail-log/list returns endpoint mail-log-list",
+    "POST /api/operator/mail-batch/send writes to MAIL_LOG_KV when binding exists",
+    "test_send works from it@gnk-asg.hr",
+    "test_send works from info@gnk-asg.hr after provider verification"
+  ]
+}

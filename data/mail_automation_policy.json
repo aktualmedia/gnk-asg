@@ -1,0 +1,61 @@
+{
+  "version": "2026-06-12-mail-automation-draft-only-01",
+  "assistant_name": "IT – Osobni digitalni asistent",
+  "company": "GNK ASG d.o.o.",
+  "domain": "gnk-asg.hr",
+  "default_mode": "draft_only",
+  "human_approval_required": true,
+  "allowed_automatic_messages": [
+    {
+      "type": "generic_receipt_acknowledgement",
+      "language": "hr",
+      "subject": "Potvrda primitka upita – GNK ASG d.o.o.",
+      "body": "Poštovani, potvrđujemo primitak Vaše poruke. Upit je zaprimljen kroz komunikacijski sustav portala GNK ASG d.o.o. Ako se upit odnosi na pravna, financijska, osobna, medijska ili druga osjetljiva pitanja, odgovor će dati ovlaštena osoba nakon provjere."
+    },
+    {
+      "type": "generic_receipt_acknowledgement",
+      "language": "en",
+      "subject": "Inquiry received – GNK ASG d.o.o.",
+      "body": "Dear sender, we confirm receipt of your message. Your inquiry has been received through the GNK ASG d.o.o. portal communication system. If it concerns legal, financial, personal, media or other sensitive matters, an authorized person will review it before any substantive response."
+    }
+  ],
+  "blocked_automatic_response_categories": [
+    "legal_advice",
+    "financial_advice",
+    "tax_advice",
+    "investment_advice",
+    "media_statement",
+    "court_or_criminal_matter",
+    "contractual_commitment",
+    "bank_data",
+    "password_or_token",
+    "personal_sensitive_data",
+    "medical_data",
+    "employment_or_hr_decision",
+    "public_accusation_or_dispute"
+  ],
+  "classification_statuses": {
+    "received": "Poruka zaprimljena",
+    "classified": "Poruka klasificirana",
+    "safe_ack_sent": "Poslana generička potvrda primitka",
+    "draft_ready": "Pripremljen nacrt odgovora",
+    "needs_approval": "Potrebna ljudska potvrda",
+    "blocked_sensitive": "Automatski odgovor blokiran zbog osjetljivosti",
+    "sent_by_human": "Odgovor poslan nakon ljudske potvrde"
+  },
+  "security_rules": [
+    "Assistant may read only approved portal communication inbox/log records, not private mailboxes.",
+    "Assistant may prepare drafts for sensitive topics but must not send them automatically.",
+    "No secrets, tokens, passwords, bank data or private attachments may be exposed to the assistant without explicit approval.",
+    "Automatic outbound messages are limited to generic receipt acknowledgements unless the owner explicitly approves a broader mode."
+  ],
+  "recommended_sender_addresses": {
+    "general": "info@gnk-asg.hr",
+    "contact_form": "contact@gnk-asg.hr",
+    "assistant": "it@gnk-asg.hr",
+    "no_reply": "no-reply@gnk-asg.hr",
+    "privacy": "privacy@gnk-asg.hr",
+    "legal": "legal@gnk-asg.hr",
+    "media": "media@gnk-asg.hr"
+  }
+}

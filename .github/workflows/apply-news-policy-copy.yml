@@ -1,0 +1,62 @@
+name: Apply News Policy Static Copy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/apply-news-policy-copy.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Patch static homepage news copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          replacements = {
+              Path('index.html'): [
+                  ('Ažuriranje svakih 15 minuta', 'Ažuriranje u 09:00 i 16:00 po hrvatskom vremenu'),
+                  ('Javni prozor prikazuje do 500 najnovijih poslovnih i tehnoloških vijesti iz hrvatskih, regionalnih i međunarodnih izvora. Stariji višak ostaje spremljen u arhivi. Objave o GNK ASG d.o.o., GNK DINAMO Ltd. ili Nerminu Sefiću prikazuju se automatski i mogu se ukloniti kroz ovlaštenu kontrolu.', 'Javni prozor prikazuje do 100 najnovijih poslovnih i tehnoloških vijesti iz hrvatskih, regionalnih i međunarodnih izvora. Starije stavke prelaze u spremnik starih vijesti, koji se automatski rotira kada dosegne 500 stavki tako da zadržava 250 najnovijih starih vijesti.'),
+                  ('Najnovijih 500 javnih stavki osvježava se automatski, a stariji višak ostaje spremljen u arhivi.', 'Najnovijih 100 javnih stavki osvježava se u 09:00 i 16:00 po hrvatskom vremenu; starije stavke spremaju se i automatski rotiraju.')
+              ],
+              Path('en/index.html'): [
+                  ('Refresh every 15 minutes', 'Refresh at 09:00 and 16:00 Zagreb time'),
+                  ('The public window displays up to the 500 newest business and technology news items from Croatian, regional and international sources. Older overflow remains preserved in archive storage. Publications about GNK ASG d.o.o., GNK DINAMO Ltd. or Nermin Sefić are displayed automatically and may be removed through authorised control.', 'The public window displays up to the 100 newest business and technology news items from Croatian, regional and international sources. Older items move into the old-news container, which rotates automatically when it reaches 500 items by keeping the newest 250 old items.'),
+                  ('The newest 500 public items refresh automatically; older overflow remains stored in the archive.', 'The newest 100 public items refresh at 09:00 and 16:00 Europe/Zagreb; older items are stored and rotated automatically.')
+              ]
+          }
+          changed = False
+          for path, pairs in replacements.items():
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding='utf-8')
+              original = text
+              for old, new in pairs:
+                  text = text.replace(old, new)
+              if text != original:
+                  path.write_text(text, encoding='utf-8')
+                  changed = True
+          if not changed:
+              print('No static copy changes needed.')
+          PY
+      - name: Commit static news policy copy
+        run: |
+          git config user.name "gnk-asg-static-copy-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html en/index.html
+          if git diff --cached --quiet; then
+            echo "No static news copy changes."
+          else
+            git commit -m "Apply current news policy to static homepage copy"
+            git push origin HEAD:main
+          fi
+# Trigger: 2026-06-12T22:45:00+02:00

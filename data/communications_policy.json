@@ -1,0 +1,51 @@
+{
+  "version": "2026-06-12",
+  "status": "prepared",
+  "company": "GNK ASG d.o.o.",
+  "domain": "gnk-asg.hr",
+  "assistant_name": "IT – Osobni digitalni asistent",
+  "default_language": "hr",
+  "mode": "draft_only",
+  "inbound_addresses": [
+    "info@gnk-asg.hr",
+    "contact@gnk-asg.hr",
+    "it@gnk-asg.hr",
+    "assistant@gnk-asg.hr",
+    "legal@gnk-asg.hr",
+    "privacy@gnk-asg.hr",
+    "media@gnk-asg.hr"
+  ],
+  "outbound_addresses": [
+    "no-reply@gnk-asg.hr",
+    "it@gnk-asg.hr",
+    "assistant@gnk-asg.hr"
+  ],
+  "allowed_auto_replies": [
+    "generic_acknowledgement",
+    "public_portal_information",
+    "contact_routing",
+    "privacy_request_received",
+    "technical_issue_received"
+  ],
+  "blocked_auto_replies": [
+    "legal_advice",
+    "financial_advice",
+    "tax_advice",
+    "investment_advice",
+    "media_statement",
+    "court_or_criminal_matter",
+    "contractual_commitment",
+    "bank_or_password_or_token_data",
+    "personal_sensitive_data"
+  ],
+  "human_approval_required": true,
+  "whatsapp": {
+    "phase_1": "floating_link",
+    "number": "+385916104398",
+    "url": "https://wa.me/385916104398",
+    "default_message_hr": "Pozdrav, kontaktiram GNK ASG d.o.o. putem portala u vezi teme:",
+    "phase_2": "WhatsApp Business Cloud API webhook after Meta verification"
+  },
+  "generic_acknowledgement_hr": "Poštovani, potvrđujemo primitak Vaše poruke. Upit je zaprimljen kroz komunikacijski sustav portala GNK ASG d.o.o. Ako se upit odnosi na pravna, financijska, osobna ili druga osjetljiva pitanja, odgovor će dati ovlaštena osoba nakon provjere.",
+  "generic_acknowledgement_en": "Dear sender, we confirm receipt of your message. Your inquiry has been received through the GNK ASG d.o.o. portal communication system. If the inquiry concerns legal, financial, personal or other sensitive matters, an authorized person will review it before any substantive response."
+}

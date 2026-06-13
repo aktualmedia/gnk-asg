@@ -1,0 +1,7 @@
+name = "gnk-asg-subdomain-router"
+main = "src/index.js"
+compatibility_date = "2026-06-13"
+
+# Active router source: workers/subdomain-router/src/index.js
+# Supported hosts: front, news, market, status, admin, operator, backend, app, kontakt, mail, api.
+# Cloudflare DNS and Worker routes must be enabled in the Cloudflare dashboard before these hosts work publicly.

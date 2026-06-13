@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>GNK ASG API Check</title>
+<link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
+<style>body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:920px;margin:auto;padding:36px 16px 80px}.head{color:#fff}.head h1{font-family:Georgia,serif;font-size:48px;font-weight:500;margin:8px 0}.head p{color:#dbe7f5}.panel{background:#fff;border:1px solid #dce5f0;border-radius:24px;padding:22px;margin:16px 0;box-shadow:0 16px 44px rgba(0,0,0,.18)}.btn{display:inline-block;border:0;border-radius:999px;padding:12px 16px;font-weight:900;cursor:pointer;text-decoration:none;margin:8px 8px 8px 0}.blue{background:#143b6d;color:#fff}.ghost{background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35)}.box{white-space:pre-wrap;background:#f7f9fc;border-radius:16px;padding:14px;color:#23364e;line-height:1.6;overflow:auto}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{border:1px solid #e5edf6;border-radius:18px;padding:14px;background:#fbfdff}.pill{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;text-transform:uppercase}.ok{background:#dcfce7;color:#166534}.warn{background:#fef3c7;color:#92400e}.bad{background:#fee2e2;color:#991b1b}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style>
+</head>
+<body><main class="wrap">
+<section class="head"><p>GNK ASG Operator</p><h1>API Check</h1><p>Provjera Cloudflare/Worker endpointa bez slanja maila ili objave.</p><a class="btn ghost" href="../app/">Admin App</a><a class="btn ghost" href="../mail-test/">Mail Test</a><button class="btn blue" id="run">Pokreni provjeru</button></section>
+<section class="panel"><h2>Rezultat</h2><div id="summary" class="grid"></div></section>
+<section class="panel"><h2>Detalji</h2><div id="details" class="box">Provjera nije pokrenuta.</div></section>
+</main><script>
+(function(){
+const endpoints=[['Send endpoint','/api/operator/mail-batch/send'],['Mail log endpoint','/api/operator/mail-log/list?limit=5'],['Content publish endpoint','/api/operator/content/publish'],['Content list endpoint','/api/operator/content/list?limit=5']];
+const $=id=>document.getElementById(id);function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function card(label,status,cls,detail){return '<div class="card"><span class="pill '+cls+'">'+esc(status)+'</span><h3>'+esc(label)+'</h3><p>'+esc(detail||'')+'</p></div>'}
+async function testOne(label,url){try{const r=await fetch(url,{method:'GET',credentials:'include',cache:'no-store'});const text=await r.text();let data=text;try{data=JSON.parse(text)}catch(e){};return {label,url,http:r.status,ok:r.ok,data};}catch(e){return {label,url,http:0,ok:false,error:e.message};}}
+async function run(){ $('summary').innerHTML=''; $('details').textContent='Provjeravam...'; const out=[]; for(const e of endpoints){out.push(await testOne(e[0],e[1]));} $('summary').innerHTML=out.map(x=>card(x.label,x.ok?'OK':(x.http?'HTTP '+x.http:'GREŠKA'),x.ok?'ok':(x.http===401?'warn':'bad'),x.url)).join(''); $('details').textContent=JSON.stringify(out,null,2);} 
+$('run').onclick=run;run();
+})();
+</script></body></html>

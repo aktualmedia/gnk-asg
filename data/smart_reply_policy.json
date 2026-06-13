@@ -1,0 +1,50 @@
+{
+  "version": "2026-06-12-smart-reply-policy-01",
+  "module": "smart_reply_policy",
+  "assistant": "IT – Osobni digitalni asistent",
+  "default_mode": "draft_only",
+  "allowed_auto_reply": [
+    "receipt_acknowledgement",
+    "public_portal_navigation",
+    "author_posts_link",
+    "contact_form_link",
+    "general_availability_note"
+  ],
+  "requires_human_review": [
+    "legal",
+    "financial",
+    "tax",
+    "contractual",
+    "media",
+    "court_or_dispute",
+    "personal_data",
+    "confidential_document",
+    "bank_or_access_data",
+    "complaint",
+    "threat_or_pressure",
+    "unknown_intent"
+  ],
+  "classification_labels": [
+    "general_info",
+    "contact_received",
+    "author_posts",
+    "documents",
+    "market_data",
+    "technical_issue",
+    "legal_sensitive",
+    "financial_sensitive",
+    "media_sensitive",
+    "complaint_or_dispute",
+    "unknown"
+  ],
+  "safe_response_rule": "If the message is sensitive or unclear, prepare a draft only and mark review_required=true.",
+  "never_do": [
+    "do not give legal advice",
+    "do not give financial or investment advice",
+    "do not accept contractual obligations",
+    "do not confirm confidential facts",
+    "do not answer media or dispute questions without owner approval",
+    "do not send attachments automatically"
+  ],
+  "signature": "IT – Osobni digitalni asistent\nGNK ASG d.o.o.\nhttps://gnk-asg.hr"
+}

@@ -1,0 +1,22 @@
+{
+  "updated_at": "2026-06-13T00:00:00+02:00",
+  "status": "prepared",
+  "front_policy": "Main domain keeps the corporate front and lazy 3D layer. Heavy modules are separated from initial front loading.",
+  "target_load_seconds": 3,
+  "current_routes": {
+    "front": "https://gnk-asg.hr/",
+    "market": "https://gnk-asg.hr/market/",
+    "news": "https://gnk-asg.hr/news/",
+    "assistant": "https://gnk-asg.hr/assistant/",
+    "api_check": "https://gnk-asg.hr/operator/api-check/"
+  },
+  "future_subdomain_plan": {
+    "front": "https://gnk-asg.hr/",
+    "market": "https://market.gnk-asg.hr/",
+    "news": "https://news.gnk-asg.hr/",
+    "assistant": "https://assistant.gnk-asg.hr/",
+    "operator": "https://operator.gnk-asg.hr/",
+    "data": "https://data.gnk-asg.hr/"
+  },
+  "dns_note": "Subdomains require Cloudflare DNS/routes configuration outside GitHub Pages. Repository routes are prepared now as path-based modules."
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GNK ASG Mail Log</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="../../assets/style.css?v=20260523-8">
+  <style>
+    body{margin:0;background:#07162d;color:#07162d}.wrap{max-width:1080px;margin:auto;padding:36px 16px 80px}.head{color:#fff;margin-bottom:20px}.head h1{font-family:Georgia,serif;font-size:clamp(32px,6vw,56px);font-weight:500;margin:0 0 10px}.head p{color:#dbe7f5;line-height:1.65}.panel{background:#fff;border:1px solid #dce5f0;border-radius:24px;padding:22px;margin:16px 0;box-shadow:0 16px 44px rgba(0,0,0,.18)}.btn{display:inline-block;border:0;border-radius:999px;padding:11px 15px;background:#fffaf0;color:#7c5616;border:1px solid rgba(180,126,30,.35);font-weight:900;text-decoration:none;cursor:pointer;margin:6px 6px 6px 0}.primary{background:#143b6d;color:#fff}.box{white-space:pre-wrap;background:#f7f9fc;border-radius:16px;padding:14px;color:#23364e;line-height:1.6;overflow:auto}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.item{border:1px solid #e5edf6;border-radius:18px;padding:14px;background:#fbfdff}.item strong{display:block}.item span{display:block;color:#64748b;font-size:13px;margin-top:4px}.pill{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;text-transform:uppercase}.ok{background:#dcfce7;color:#166534}.warn{background:#fef3c7;color:#92400e}.bad{background:#fee2e2;color:#991b1b}.small{font-size:13px;color:#64748b;line-height:1.6}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="head">
+      <p>GNK ASG Operator</p>
+      <h1>Mail Log</h1>
+      <p>Službeni pregled mail loga iz Cloudflare Worker/KV sloja. Stranica samo čita log i ne šalje poruke.</p>
+      <a class="btn" href="../dashboard/">Dashboard</a><a class="btn" href="../mail/">Mail centar</a><button class="btn primary" id="reload">Osvježi log</button>
+    </section>
+    <section class="panel"><h2>Status endpointa</h2><div id="status" class="box">Učitavanje...</div></section>
+    <section class="panel"><h2>Zadnji zapisi</h2><div id="items" class="grid"></div><p class="small">Ako je prikaz prazan, vjerojatno još nije vezan MAIL_LOG_KV ili još nije poslano ništa kroz backend.</p></section>
+  </main>
+<script>
+(function(){
+  const endpoint='../../api/operator/mail-log/list?limit=30';
+  const $=id=>document.getElementById(id);
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  function card(x){
+    const cls=x.status==='sent'||x.status==='test_sent'?'ok':(x.status==='failed'?'bad':'warn');
+    return '<article class="item"><span class="pill '+cls+'">'+esc(x.status||'log')+'</span><strong>'+esc(x.subject||'Bez predmeta')+'</strong><span>'+esc(x.created_at||'')+'</span><span>Primatelja: '+esc(x.recipient_count||0)+' · Provider: '+esc(x.provider||'')+'</span><span>Mode: '+esc(x.mode||'')+' · Campaign: '+esc(x.campaign||'')+'</span></article>';
+  }
+  async function run(){
+    $('status').textContent='Učitavanje loga...'; $('items').innerHTML='';
+    try{
+      const r=await fetch(endpoint,{cache:'no-store',credentials:'include'});
+      const data=await r.json();
+      $('status').textContent=JSON.stringify({http:r.status,ok:data.ok,configured:data.configured,count:data.count,reason:data.reason||'',endpoint:data.endpoint},null,2);
+      $('items').innerHTML=(data.items||[]).map(card).join('')||'<div class="box">Nema zapisa.</div>';
+    }catch(e){$('status').textContent='Greška kod čitanja mail loga: '+e.message;}
+  }
+  $('reload').onclick=run; run();
+})();
+</script>
+</body>
+</html>

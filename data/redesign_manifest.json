@@ -1,0 +1,84 @@
+{
+  "version": "2026-06-13-corporate-redesign-v2",
+  "portal": "GNK ASG d.o.o.",
+  "identity": {
+    "brand": "GNK ASG",
+    "meaning": "Global Network Kapital - Advanced Sports & Governance",
+    "logo_primary": "/assets/brand/gnk-asg-logo-primary.svg",
+    "logo_dark": "/assets/brand/gnk-asg-logo-dark.svg",
+    "logo_light": "/assets/brand/gnk-asg-logo-light.svg",
+    "mark": "/assets/brand/gnk-asg-mark.svg",
+    "tokens": "/assets/brand/brand-tokens.css"
+  },
+  "corporate_layers": {
+    "gnk_asg_media_kit": "/media-kit/",
+    "gnk_dinamo_ltd_media_kit": "/gnk-dinamo-ltd-media-kit/",
+    "locations": "/locations/",
+    "downloads": "/downloads/",
+    "assistant_model": "/data/ai_assistant_public_model.json"
+  },
+  "locations": {
+    "source": "/data/company_locations.json",
+    "headquarters": "Boulder, Colorado, USA",
+    "existing_total": 33,
+    "planned_2026": 12,
+    "expanded_total": 45
+  },
+  "redesign_goals": [
+    "corporate premium look",
+    "faster first render",
+    "smaller and cleaner cards",
+    "preserve existing functions",
+    "separate news from corporate homepage",
+    "structured document and media kit hub",
+    "admin, operator, mailing and dashboard as protected operational layer"
+  ],
+  "front_architecture": {
+    "main_homepage_future": "/",
+    "preview_front": "/front/",
+    "media_kit": "/media-kit/",
+    "downloads": "/downloads/",
+    "news_public_path": "/news/",
+    "news_subdomain_target": "news.gnk-asg.hr",
+    "market_public_path": "/market/",
+    "status_lite": "/status-lite/"
+  },
+  "backend_architecture": {
+    "admin_app": "/operator/app/",
+    "frontend_health": "/operator/frontend-health/",
+    "api_check": "/operator/api-check/",
+    "backend_gateway": "/backend/",
+    "public_status": "/data/status.json",
+    "market_feed": "/data/market.json",
+    "news_feed": "/data/news.json",
+    "locations_feed": "/data/company_locations.json",
+    "contact_api": "/api/contact"
+  },
+  "performance_rules": [
+    "Render logo, corporate summary, status and key links without external APIs.",
+    "Use JSON snapshots before live API attempts.",
+    "Lazy-load heavy globe, map, assistant and visual effects.",
+    "Do not place long news grids on the homepage; link to news layer instead.",
+    "Use SVG logos and CSS variables instead of large raster images in primary navigation.",
+    "Keep legal, finance, document and media material in structured hubs."
+  ],
+  "protected_existing_functions": [
+    "Business News refresh at 09:00 and 16:00 Europe/Zagreb",
+    "Digital Exchange Monitor with EUR and clear LIVE/SNAPSHOT/DELAYED/FALLBACK statuses",
+    "Bitcoin, gold, Brent and USD/EUR informational modules",
+    "Contact form and WhatsApp communication",
+    "Assistant badge and public information assistant",
+    "Admin App, API Check, Frontend Health and backend operator routes",
+    "Legal, financial, registry and document pages",
+    "Nermin Sefić author content and GNK ASG / GNK DINAMO Ltd. corporate SEO structure"
+  ],
+  "next_steps": [
+    "Use /front/ as corporate preview shell.",
+    "Use /downloads/ as structured public hub.",
+    "Use /locations/ as global location layer.",
+    "Use /gnk-dinamo-ltd-media-kit/ as USA company media kit layer.",
+    "Move heavy news presentation to /news/ and news.gnk-asg.hr.",
+    "Refactor homepage into smaller sections using brand tokens.",
+    "Connect status badge to /data/status.json."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "version": "2026-06-12-faq-contact-01",
+  "channel": "website_contact_form",
+  "assistant": "IT – Osobni digitalni asistent",
+  "purpose": "Opći automatski odgovori za upite zaprimljene preko kontakt forme portala.",
+  "items": [
+    {
+      "id": "contact_received",
+      "question": "Što se događa nakon slanja kontakt forme?",
+      "answer_hr": "Vaš upit je zaprimljen kroz kontakt formu portala GNK ASG. Ako je riječ o općem upitu, odgovor može biti pripremljen automatski. Ako upit traži posebnu provjeru, prosljeđuje se ovlaštenoj osobi.",
+      "tags": ["kontakt", "zaprimanje", "forma"]
+    },
+    {
+      "id": "response_time_general",
+      "question": "Kada mogu očekivati odgovor?",
+      "answer_hr": "Opći upiti obrađuju se prema dostupnosti komunikacijskog sustava. Složeniji upiti mogu zahtijevati dodatni pregled prije odgovora.",
+      "tags": ["rok", "odgovor", "obrada"]
+    },
+    {
+      "id": "portal_navigation",
+      "question": "Gdje mogu pronaći javne informacije?",
+      "answer_hr": "Javne informacije dostupne su na glavnoj stranici portala, kroz rubrike objava autora, tržišnih pregleda, dokumenata, kontakta i pravnih napomena.",
+      "tags": ["portal", "navigacija", "javne informacije"]
+    },
+    {
+      "id": "market_data_note",
+      "question": "Jesu li tržišni podaci na portalu službeni savjet?",
+      "answer_hr": "Tržišni i digitalni podaci na portalu imaju informativni karakter. Mogu kasniti, biti označeni kao live, snapshot, delayed ili fallback te ne predstavljaju financijski ili investicijski savjet.",
+      "tags": ["tržišta", "digitalna imovina", "napomena"]
+    },
+    {
+      "id": "privacy_note",
+      "question": "Kako se obrađuju podaci iz kontakt forme?",
+      "answer_hr": "Podaci uneseni u kontakt formu koriste se za obradu upita i komunikaciju vezanu uz poslani upit. Za detalje je potrebno pratiti javne pravne napomene i politiku privatnosti portala.",
+      "tags": ["privatnost", "kontakt", "podaci"]
+    }
+  ]
+}

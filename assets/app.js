@@ -1,23 +1,158 @@
-(() => {
-'use strict';
-const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
-let DB=null, cur='eur', filter='all';
-const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const get=async()=>{if(DB)return DB; const candidates=['data/app-data.json','/data/app-data.json']; let last=null; for(const p of candidates){try{const r=await fetch(p+'?v='+Date.now(),{cache:'no-store'}); if(r.ok){DB=await r.json(); return DB;} last=r.status;}catch(e){last=e.message}} throw new Error('app-data unavailable: '+last);};
-const card=(a,b,c)=>`<article class="card"><small>${esc(a)}</small><strong>${b}</strong><span>${esc(c||'')}</span></article>`;
-const money=(v,c)=>{const n=Number(v); if(!Number.isFinite(n)) return '—'; return new Intl.NumberFormat('hr-HR',{style:'currency',currency:c.toUpperCase(),maximumFractionDigits:c==='jpy'?0:n<1?5:2}).format(n)};
-const date=v=>v?new Date(v).toLocaleString('hr-HR'):'nije dostupno';
-const badge=(id,t,k='ok')=>{const n=$(id); if(n){n.textContent=t; n.className='pill '+k;}};
-function lamps(){const l=$('#lamps'); if(l) l.innerHTML=Array.from({length:80},(_,i)=>`<b class="lamp l${i%3}"></b>`).join('');}
-function profile(d){$('#profileGrid').innerHTML=[card('Društvo',esc(d.company.name),d.company.seat),card('OIB / MBS',`${esc(d.company.oib)}<br>${esc(d.company.mbs)}`,'Javni korporativni identitet'),card('Direktor / UBO',esc(d.company.director),'Kontrolirani javni profil'),card('Parent',`${esc(d.parent_company.entity)}<br>${esc(d.parent_company.city)}, ${esc(d.parent_company.state)}`,d.parent_company.role)].join('');}
-function global(d){$('#globalGrid').innerHTML=[card('Parent company',`${esc(d.parent_company.entity)}<br>${esc(d.parent_company.city)}`,d.parent_company.role),card('Operating company',`${esc(d.operating_company.entity)}<br>${esc(d.operating_company.city)}`,d.operating_company.role),card('Postojeća društva',esc(d.group.existing_total_companies),'Grupni prikaz'),card('Planirano 2026.',esc(d.group.planned_2026_locations),'Expanded total 45')].join('');}
-function market(d){const m=d.demo_market, coins=m.coins||[]; $('#marketStatus').textContent=`Market: SNAPSHOT · ${coins.length} stavki · ${date(m.updated_at)}`; badge('#marketBadge','Market: SNAPSHOT','ok'); $('#marketGrid').innerHTML=coins.map(x=>{const ch=Number(x.changes_24h?.[cur]||0);return `<article class="coin"><small>${esc(x.id)}</small><h3>${esc(x.symbol)}</h3><div class="price">${money(x.prices?.[cur],cur)}</div><div class="${ch>=0?'pos':'neg'}">${ch>=0?'+':''}${ch.toFixed(2)}% / 24h</div></article>`}).join(''); const a=m.macro||{}; $('#macroGrid').innerHTML=[['btc','Bitcoin','usd'],['gold','Zlato','usd'],['oil','Brent','usd'],['usd','USD/EUR','eur']].map(([k,n,c])=>`<article class="macrocard"><small>${esc(a[k]?.ticker||k)}</small><h3>${a[k]?.current?money(a[k].current,c):'—'}</h3><p>${n} · ${a[k]?.change_30d_percent??'—'}% / 30d</p></article>`).join('');}
-function news(d){const rows=(d.demo_news||[]).filter(x=>filter==='all'||String(x.category).includes(filter)); $('#newsStatus').textContent=`Vijesti: SNAPSHOT · ${rows.length} stavki · ${date(d.created_at)}`; badge('#newsBadge','Vijesti: SNAPSHOT','ok'); $('#newsGrid').innerHTML=rows.map(x=>`<article class="news"><small>${esc(x.source)} · ${date(x.published_at).split(',')[0]}</small><h3>${esc(x.title)}</h3><p>${esc(x.summary)}</p><a href="${esc(x.url)}">Otvori izvor →</a></article>`).join('');}
-function ops(d){const items=[['Free public AI','Besplatni javni agent radi iz lokalne baze bez API troška.'],['Private agent','Privatni agent priprema command, mail i WhatsApp draftove.'],['MailOps','Prima, čita, klasificira, priprema draft, mail-to-command.'],['WhatsApp','wa.me sada, Business Cloud API za automatiku.'],['Backend router','Cloudflare Worker: command, contact, email, chat, WhatsApp.'],['GitHub upload','Jedan folder, manje od 99 datoteka.'],['Safety','Nema tajni u frontendu; high-risk traži potvrdu.'],['Performance','0 frameworka, lazy data, brz prikaz.']]; $('#opsGrid').innerHTML=items.map((x,i)=>card('OPS '+String(i+1).padStart(2,'0'),esc(x[0]),x[1])).join('');}
-function docs(d){$('#docGrid').innerHTML=d.documents.map(x=>`<a class="card" href="${esc(x.url)}"><small>${esc(x.category)}</small><strong>${esc(x.title)}</strong><span>${esc(x.id)}</span></a>`).join('');}
-function features(d){$('#featureGrid').innerHTML=d.features.slice(0,12).map(x=>`<article class="card"><small>${x.id} · ${esc(x.category)}</small><strong>${esc(x.name)}</strong><span>${esc(x.load)}</span></article>`).join('');}
-function answer(q,d,mode='public'){const s=q.toLowerCase(); const hit=d.knowledge.find(x=>s.includes(x.topic.toLowerCase())||x.topic.toLowerCase().includes(s)); if(hit)return hit.answer; if(s.includes('mail'))return d.knowledge.find(x=>x.topic==='mail automatizacija').answer; if(s.includes('whatsapp')||s.includes('wa'))return d.knowledge.find(x=>x.topic==='WhatsApp').answer; if(s.includes('parent')||s.includes('boulder'))return d.knowledge.find(x=>x.topic==='parent company').answer; if(s.includes('status'))return d.knowledge.find(x=>x.topic==='statusi').answer; if(s.includes('privat'))return d.knowledge.find(x=>x.topic==='privatni agent').answer; return mode==='public'?'Nemam taj podatak u javnoj bazi portala. Pošaljite upit kroz kontakt formu ili mail.':'Pripremam operativni nacrt; za izvršenje treba backend autorizacija.'}
-function bind(d){$('#menuBtn')?.addEventListener('click',()=>$('#nav')?.classList.toggle('open')); $('#currency')?.addEventListener('change',e=>{cur=e.target.value;market(d)}); $('#refresh')?.addEventListener('click',()=>render(d)); $$('#tabs button').forEach(b=>b.onclick=()=>{$$('#tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.f;news(d)}); $('#quickBtn')?.addEventListener('click',()=>{const q=($('#quick')?.value||'').toLowerCase(); const map=[['javni','agents/public/'],['besplat','agents/public/'],['privat','agents/private/'],['mail','mail/'],['whatsapp','communication/'],['wa','communication/'],['comms','communication/'],['admin','admin/'],['command','operator/command/'],['status','operator/status/'],['lokac','locations/'],['100','features/'],['feature','features/'],['autopilot','autopilot/'],['žig','brand-lab/'],['zig','brand-lab/'],['brand','brand-lab/'],['pretrag','search/'],['kategor','categories/'],['tag','tags/'],['arhiv','archive/'],['vijesti','news/'],['autori','authors/'],['editor','editor/'],['galer','gallery/'],['seo','seo/'],['google','google-indexing/'],['profil','profiles/'],['instal','install/'],['qr','install/'],['desktop','desktop/'],['download','downloads/'],['self','self-test/'],['test','self-test/'],['upload','upload/'],['legal','legal/']]; location.href=(map.find(x=>q.includes(x[0]))||['','#top'])[1];}); const form=$('#chatForm'); form&&form.addEventListener('submit',e=>{e.preventDefault(); const input=$('#chatInput'), chat=$('#chat'), q=input.value.trim(); if(!q)return; chat.insertAdjacentHTML('beforeend',`<div class="user">${esc(q)}</div><div class="bot">${esc(answer(q,d,'public'))}</div>`); input.value=''; chat.scrollTop=chat.scrollHeight;}); setInterval(()=>{const c=$('#clock'); if(c)c.textContent='Zagreb · '+new Date().toLocaleString('hr-HR',{timeZone:'Europe/Zagreb',hour:'2-digit',minute:'2-digit'})},30000); if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});}
-function render(d){profile(d);global(d);market(d);news(d);ops(d);docs(d);features(d);badge('#systemBadge','Sustav: V9 ready','ok');badge('#mailBadge','MailOps: ready','warn');}
-document.addEventListener('DOMContentLoaded',async()=>{lamps(); const d=await get(); bind(d); render(d);});
-})();
+document.addEventListener('DOMContentLoaded', function () {
+  var VERSION = '20260613-front-back-audit-02';
+
+  var nativeFetch = window.fetch && window.fetch.bind(window);
+  if (nativeFetch && !window.__gnkRootDataFetch) {
+    window.__gnkRootDataFetch = true;
+    window.fetch = function (input, init) {
+      if (typeof input === 'string' && input.indexOf('data/') === 0) input = '/' + input;
+      return nativeFetch(input, init);
+    };
+  }
+
+  function optimizeMedia() {
+    document.querySelectorAll('img').forEach(function (img, index) {
+      if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+      if (index > 1 && !img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+      if (index > 1 && !img.hasAttribute('fetchpriority')) img.setAttribute('fetchpriority', 'low');
+    });
+    document.querySelectorAll('iframe').forEach(function (frame) {
+      if (!frame.hasAttribute('loading')) frame.setAttribute('loading', 'lazy');
+    });
+  }
+
+  function style(path) {
+    if (document.querySelector('link[href^="' + path + '"]')) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet'; link.href = path + '?v=' + VERSION;
+    document.head.appendChild(link);
+  }
+  function script(path, callback) {
+    if (document.querySelector('script[src^="' + path + '"]')) { if (callback) callback(); return; }
+    var el = document.createElement('script');
+    el.src = path + '?v=' + VERSION; el.defer = true;
+    if (callback) el.onload = callback;
+    document.body.appendChild(el);
+  }
+  function runIdle(fn, timeout) {
+    if ('requestIdleCallback' in window) window.requestIdleCallback(fn, {timeout: timeout || 2200});
+    else window.setTimeout(fn, Math.min(timeout || 2200, 900));
+  }
+
+  script('/assets/frontend-stability-guard.js');
+  optimizeMedia();
+
+  style('/assets/fina-panel.css');
+  style('/assets/advanced.css');
+  style('/assets/header-premium.css');
+  style('/assets/group-contrast.css');
+  style('/assets/group-network.css');
+  style('/assets/network-fullwidth-fix.css');
+  style('/assets/network-motion.css');
+  style('/assets/group-globe-3d.css');
+  style('/assets/group-location-insights.css');
+  style('/assets/group-map-2d-geo.css');
+  style('/assets/group-google-map.css');
+  style('/assets/group-location-weather.css');
+  style('/assets/group-overview-panel.css');
+  style('/assets/group-market-coverage.css');
+  style('/assets/network-reading-layout.css');
+  style('/assets/bitcoin-chart.css');
+  style('/assets/market-expansion.css');
+  style('/assets/market-visual-fix.css');
+  style('/assets/bpp-public-card.css');
+  style('/assets/language.css');
+  style('/assets/intelligence-desk.css');
+  style('/assets/desk-hybrid.css');
+  style('/assets/command-centre.css');
+  style('/assets/mobile-app.css');
+  style('/assets/desk-search.css');
+  style('/assets/floating-intelligence.css');
+  style('/assets/public-sources.css');
+  style('/assets/mobile-stability.css');
+  style('/assets/group-mobile-accessible.css');
+  style('/assets/portal-integration.css');
+  style('/assets/seo-profile-link.css');
+  style('/assets/menu-fix.css');
+  style('/assets/quality-patch.css');
+
+  var menuToggle = document.getElementById('menuToggle');
+  var navLinks = document.getElementById('navLinks');
+  if (menuToggle && navLinks && !menuToggle.dataset.gnkMenuBaseBound) {
+    menuToggle.dataset.gnkMenuBaseBound = '1';
+    menuToggle.addEventListener('click', function () { navLinks.classList.toggle('open'); });
+    document.addEventListener('click', function (event) {
+      if (!navLinks.contains(event.target) && event.target !== menuToggle) navLinks.classList.remove('open');
+    });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    if (anchor.dataset.gnkSmoothBound === '1') return;
+    anchor.dataset.gnkSmoothBound = '1';
+    anchor.addEventListener('click', function (event) {
+      var target = document.querySelector(anchor.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      navLinks && navLinks.classList.remove('open');
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  script('/assets/i18n.js', function () { script('/assets/language-routing.js'); });
+  script('/assets/portal-navigation.js');
+  script('/assets/status.js');
+  script('/assets/browser-data-refresh.js');
+  script('/assets/market.js');
+  script('/assets/live-market-pulse.js');
+  script('/assets/bitcoin-chart.js');
+  script('/assets/market-expansion.js');
+  script('/assets/bpp-public-card.js');
+
+  runIdle(function () {
+    script('/assets/news-live.js');
+    script('/assets/assistant.js');
+    script('/assets/inline-assistant.js');
+    script('/assets/intelligence-desk.js');
+    script('/assets/desk-hybrid.js');
+    script('/assets/desk-search.js');
+    script('/assets/mobile-app.js');
+    script('/assets/mobile-navigation.js');
+    script('/assets/floating-intelligence.js');
+    script('/assets/ai-communication-upgrade.js');
+  }, 2200);
+
+  runIdle(function () {
+    script('/assets/world-geography.js', function () {
+      script('/assets/group-network.js', function () {
+        script('/assets/network-motion.js');
+        script('/assets/group-globe-3d.js', function () {
+          script('/assets/group-map-2d-geo.js');
+          script('/assets/group-location-insights.js');
+          script('/assets/group-map-selection-bridge.js');
+          script('/assets/group-google-map.js');
+          script('/assets/group-location-weather.js');
+          script('/assets/group-overview-panel.js');
+          script('/assets/group-market-coverage.js');
+          script('/assets/network-selection-sync.js');
+          script('/assets/command-centre.js');
+          script('/assets/network-search-3d.js');
+          script('/assets/group-map-pdf.js');
+          script('/assets/group-globe-pdf.js');
+          script('/assets/group-mobile-accessible.js');
+          script('/assets/group-clarity.js');
+        });
+      });
+    });
+  }, 1800);
+
+  runIdle(function () {
+    script('/assets/public-sources.js');
+    script('/assets/site-share.js');
+    script('/assets/hourly-data-disclosure.js');
+    script('/assets/portal-layout.js');
+    script('/assets/home-activity-model.js');
+  }, 2600);
+
+  var dataDisclaimer = document.getElementById('dataDisclaimer');
+  if (dataDisclaimer) dataDisclaimer.textContent = 'Podaci su informativni, mogu kasniti i nisu financijski savjet.';
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js?v=' + VERSION).catch(function () {});
+});

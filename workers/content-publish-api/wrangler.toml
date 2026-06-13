@@ -1,0 +1,21 @@
+name = "gnk-asg-content-publish-api"
+main = "src/index.js"
+compatibility_date = "2026-06-12"
+
+# Production routes should be enabled only after Cloudflare review.
+# Example:
+# routes = [
+#   { pattern = "gnk-asg.hr/api/operator/content/publish", zone_name = "gnk-asg.hr" },
+#   { pattern = "gnk-asg.hr/api/operator/content/list", zone_name = "gnk-asg.hr" }
+# ]
+
+[vars]
+OPERATOR_ALLOW_NO_ACCESS = "false"
+
+# Optional temporary controlled test only:
+# OPERATOR_ALLOW_NO_ACCESS = "true"
+
+# Required KV binding:
+# [[kv_namespaces]]
+# binding = "CONTENT_DRAFT_KV"
+# id = "REPLACE_WITH_KV_NAMESPACE_ID"

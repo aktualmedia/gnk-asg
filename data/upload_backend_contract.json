@@ -1,0 +1,24 @@
+{
+  "version": "2026-06-12-upload-contract-01",
+  "module": "upload_backend_contract",
+  "purpose": "Tehnički dogovor za kasniji backend upload slika i dokumenata.",
+  "image_endpoint": "/api/operator/upload/image",
+  "document_endpoint": "/api/operator/upload/document",
+  "metadata_sources": [
+    "data/image_seo_schema.json",
+    "data/document_library_schema.json"
+  ],
+  "storage_target": "Cloudflare R2",
+  "index_targets": [
+    "data/image_index.json",
+    "data/document_index.json"
+  ],
+  "required_backend_checks": [
+    "operator session",
+    "file type",
+    "file size",
+    "metadata completeness",
+    "write log",
+    "return public or internal URL"
+  ]
+}
