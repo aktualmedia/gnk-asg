@@ -1,0 +1,49 @@
+{
+  "version": "2026-06-13-v1",
+  "home_candidate": "/home-candidate/",
+  "public_hr": [
+    "/front/",
+    "/news/",
+    "/media-kit/",
+    "/gnk-dinamo-ltd-media-kit/",
+    "/downloads/",
+    "/locations/",
+    "/assistant/",
+    "/documentation/"
+  ],
+  "public_en": [
+    "/en/front/",
+    "/en/news/",
+    "/en/media-kit/",
+    "/en/gnk-dinamo-ltd-media-kit/",
+    "/en/downloads/",
+    "/en/locations/",
+    "/en/assistant/",
+    "/en/documentation/"
+  ],
+  "operator": [
+    "/operator/start/",
+    "/operator/app/",
+    "/operator/release-check/",
+    "/operator/frontend-health/",
+    "/operator/api-check/"
+  ],
+  "data": [
+    "/data/status.json",
+    "/data/release_checklist.json",
+    "/data/automation_status.json",
+    "/data/redesign_manifest.json",
+    "/data/brand_identity.json",
+    "/data/company_locations.json",
+    "/data/gnk_dinamo_ltd_media_kit.json",
+    "/data/ai_assistant_public_model.json",
+    "/data/news.json",
+    "/data/market.json"
+  ],
+  "seo": [
+    "/sitemap.xml",
+    "/sitemap-corporate.xml",
+    "/robots.txt"
+  ],
+  "status": "ready"
+}
