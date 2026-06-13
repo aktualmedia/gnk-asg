@@ -16,6 +16,21 @@ SITEMAP_PATH = ROOT / "sitemap.xml"
 ROBOTS_PATH = ROOT / "robots.txt"
 LLMS_PATH = ROOT / "llms.txt"
 
+BASE_SITEMAP_PAGES = [
+    {"path": "", "priority": "1.0", "changefreq": "daily"},
+    {"path": "en/", "priority": "0.9", "changefreq": "weekly"},
+    {"path": "nermin-sefic/", "priority": "0.9", "changefreq": "weekly"},
+    {"path": "en/nermin-sefic/", "priority": "0.9", "changefreq": "weekly"},
+    {"path": "trzista/", "priority": "0.9", "changefreq": "daily"},
+    {"path": "en/markets/", "priority": "0.9", "changefreq": "daily"},
+    {"path": "financije/", "priority": "0.8", "changefreq": "weekly"},
+    {"path": "tehnologija/", "priority": "0.8", "changefreq": "weekly"},
+    {"path": "intelligence-desk/", "priority": "0.8", "changefreq": "weekly"},
+    {"path": "registri/", "priority": "0.8", "changefreq": "weekly"},
+    {"path": "sadrzaj/", "priority": "0.8", "changefreq": "weekly"},
+    {"path": "teme/", "priority": "0.8", "changefreq": "daily"},
+]
+
 PAGES = [
     {"path": "kontakt/", "file": "kontakt/index.html", "title": "Kontakt | GNK ASG d.o.o. | Nermin Sefić | IT osobni digitalni asistent", "description": "Službena kontakt stranica GNK ASG d.o.o.: kontakt forma, info@gnk-asg.hr, IT osobni digitalni asistent, WhatsApp kanal i službena poslovna komunikacija.", "keywords": "kontakt GNK ASG, GNK ASG kontakt, info@gnk-asg.hr, contact@gnk-asg.hr, IT osobni digitalni asistent, assistant@gnk-asg.hr, Nermin Sefić, Nermin Sefic, službena komunikacija, poslovni upit", "type": "ContactPage", "priority": "0.8", "changefreq": "weekly", "lang": "hr"},
     {"path": "legal.html", "file": "legal.html", "title": "Legal | Impresum, privatnost i uvjeti korištenja | GNK ASG d.o.o.", "description": "Pravna dokumentacija portala GNK ASG d.o.o.: impresum, politika privatnosti, kolačići, uvjeti korištenja, pravna napomena, status podataka i AI napomena.", "keywords": "GNK ASG legal, GNK ASG impresum, politika privatnosti, kolačići, uvjeti korištenja, pravna napomena, status podataka, AI napomena, GDPR, GNK ASG d.o.o.", "type": "WebPage", "priority": "0.7", "changefreq": "monthly", "lang": "hr"},
@@ -47,9 +62,7 @@ def visible_daily_entries() -> list[dict]:
         if not isinstance(entry, dict) or entry.get("hidden"):
             continue
         local_url = str(entry.get("local_url") or "").strip()
-        if not local_url:
-            continue
-        if not local_url.startswith("daily/"):
+        if not local_url or not local_url.startswith("daily/"):
             continue
         items.append({"path": "insights-hr/" + local_url, "priority": "0.8", "changefreq": "monthly"})
     return items
@@ -110,7 +123,7 @@ def enhance_page(page: dict, matrix: dict) -> None:
 
 
 def sitemap_entries() -> str:
-    all_pages = PAGES + visible_daily_entries()
+    all_pages = BASE_SITEMAP_PAGES + PAGES + visible_daily_entries()
     entries = []
     seen = set()
     for page in all_pages:
@@ -123,15 +136,7 @@ def sitemap_entries() -> str:
 
 
 def update_sitemap() -> None:
-    if not SITEMAP_PATH.exists():
-        return
-    content = SITEMAP_PATH.read_text(encoding="utf-8")
-    content = re.sub(r"\s*<!-- SEO:FOCUS:SITEMAP:BEGIN -->.*?<!-- SEO:FOCUS:SITEMAP:END -->\s*", "\n", content, flags=re.S)
-    insert = "<!-- SEO:FOCUS:SITEMAP:BEGIN -->\n" + sitemap_entries() + "\n<!-- SEO:FOCUS:SITEMAP:END -->\n"
-    if "</urlset>" in content:
-        content = content.replace("</urlset>", insert + "</urlset>", 1)
-    else:
-        content = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + insert + "</urlset>\n"
+    content = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + sitemap_entries() + "\n</urlset>\n"
     SITEMAP_PATH.write_text(content, encoding="utf-8")
 
 
@@ -147,7 +152,7 @@ def write_llms(matrix: dict) -> None:
     for item in matrix.get("core_topics_en") or []:
         lines.append("- " + item)
     lines += ["", "Important public pages:"]
-    for page in PAGES:
+    for page in BASE_SITEMAP_PAGES + PAGES:
         lines.append("- " + SITE + page["path"])
     for page in visible_daily_entries()[:10]:
         lines.append("- " + SITE + page["path"])
