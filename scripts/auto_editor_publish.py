@@ -8,7 +8,6 @@ No legal, financial or investment advice is generated.
 from __future__ import annotations
 
 import datetime as dt
-import hashlib
 import json
 import os
 import re
@@ -152,7 +151,6 @@ def build_body(slot, news, market, status):
     reliability = ""
     if source_success is not None:
         reliability = f" Prema statusnom sloju, omjer uspješnosti javnih news izvora iznosi {source_success}."
-
     paragraphs = [
         f"{label} donosi informativni pregled javnih poslovnih, tehnoloških i tržišnih signala koje portal GNK ASG prati kroz vlastiti podatkovni sloj. Tekst je automatski sastavljen iz javno dostupnih zapisa portala, bez davanja pravnog, poreznog, financijskog ili investicijskog savjeta.",
         f"U fokusu su vijesti i tržišni podatci koji mogu biti korisni za razumijevanje šireg poslovnog okruženja. Portal prikazuje stanje kao snapshot, odnosno informativni presjek u trenutku zadnjeg dostupnog ažuriranja.{reliability}",
@@ -163,10 +161,28 @@ def build_body(slot, news, market, status):
     return "\n\n".join(paragraphs)
 
 
+def ensure_initial_files(posts, status, now):
+    if not isinstance(posts, list):
+        posts = []
+    if not isinstance(status, dict):
+        status = {}
+    status.setdefault("engine", "auto_editor_publish_v1")
+    status.setdefault("status", "initialized")
+    status.setdefault("mode", "published")
+    status.setdefault("timezone", "Europe/Zagreb")
+    status.setdefault("schedule_local", ["09:30", "13:30", "18:30"])
+    status.setdefault("last_run_at", now.isoformat())
+    save_json("auto_editor_posts.json", posts)
+    save_json("auto_editor_status.json", status)
+    return posts, status
+
+
 def main():
     now = now_zagreb()
     slot, force = requested_slot(now)
+    posts = load_json("auto_editor_posts.json", [])
     status = load_json("auto_editor_status.json", {})
+    posts, status = ensure_initial_files(posts, status, now)
 
     if not slot and not force:
         status.update({
@@ -177,17 +193,15 @@ def main():
             "last_run_at": now.isoformat(),
             "last_action": "outside_publication_time",
             "schedule_local": ["09:30", "13:30", "18:30"],
+            "post_count": len(posts),
         })
+        save_json("auto_editor_posts.json", posts)
         save_json("auto_editor_status.json", status)
         print("Auto Editor skipped: outside publication time.")
         return
 
     if not slot:
         slot = "morning"
-
-    posts = load_json("auto_editor_posts.json", [])
-    if not isinstance(posts, list):
-        posts = []
 
     day_key = now.strftime("%Y-%m-%d")
     post_id = f"auto-editor-{day_key}-{slot}"
@@ -201,8 +215,10 @@ def main():
             "last_action": "already_published",
             "last_slot": slot,
             "last_post_id": post_id,
+            "post_count": len(posts),
             "schedule_local": ["09:30", "13:30", "18:30"],
         })
+        save_json("auto_editor_posts.json", posts)
         save_json("auto_editor_status.json", status)
         print("Auto Editor already published for this slot.")
         return
